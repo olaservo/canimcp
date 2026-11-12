@@ -1,0 +1,61 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "2.2.6",
+    "config": "codemode-off",
+    "artifact": "probe/runs/opencode@2.2.6/codemode-off/both-stdio/tools.result.is_error",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"error\":{\"type\":\"tool.execution\",\"message\":\"Lookup failed MARK_CONTENT_7f3a\"},\"content\":[]}",
+      "payloadBytes": 92,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 59
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 15921,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

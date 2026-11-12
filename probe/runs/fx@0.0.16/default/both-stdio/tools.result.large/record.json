@@ -1,0 +1,64 @@
+{
+  "client": "fx",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.large",
+    "clientVersion": "0.0.16",
+    "config": "default",
+    "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.large",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_probe_probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_large\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists every issue. The result is over 64 KiB.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_large\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_large\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to p ... [37500 chars omitted] ... ap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4\\\"}],\\\"truncated\\\":true,\\\"original_bytes\\\":99674,\\\"cap_bytes\\\":65536}}\"]",
+      "payloadBytes": 41500,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 432
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 454
+        },
+        {
+          "marker": "largeEnd",
+          "count": 1,
+          "firstIndex": 41409
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_large\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists every issue. The result \"",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 5089,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

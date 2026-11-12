@@ -1,0 +1,24 @@
+default_model: "generic.gpt-probe"
+generic:
+  api_key: probe
+  base_url: "http://127.0.0.1:57750/v1"
+anthropic:
+  api_key: probe
+  base_url: "http://127.0.0.1:57750"
+logger:
+  type: file
+  path: "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/fast-agent@0.10.53/default/both-stdio/tools.result.mirror/client-log.jsonl"
+  level: info
+  progress_display: false
+  show_chat: false
+  show_tools: false
+  enable_markup: false
+mcp:
+  defaults:
+    protocol_mode: auto
+  servers:
+    probe:
+      transport: stdio
+      command: "node"
+      args: ["~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js", "--fixture", "mirror", "--mode", "sdk", "--era", "both", "--capture", "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/fast-agent@0.10.53/default/both-stdio/tools.result.mirror", "--transport", "stdio"]
+      read_timeout_seconds: 60

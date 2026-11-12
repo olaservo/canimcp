@@ -1,0 +1,89 @@
+{
+  "client": "libfx",
+  "capability": "tools.result.media",
+  "scenario": "tools.result.with_image",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.with_image",
+    "clientVersion": "0.0.0-eab1401",
+    "config": "default",
+    "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.with_image",
+    "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_image",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_with_image",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[Tool images were retained but not sent: this model does not accept inline images and no vision fallback is available. Ask the user to attach the image directly or switch to a vision-capable model.]\nFound 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+      "payloadBytes": 451,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 219
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 293
+        }
+      ],
+      "image": "absent",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          },
+          {
+            "type": "image",
+            "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+            "mimeType": "image/png"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "client prefixed the payload with a header: \"[Tool images were retained but not sent: this model does not accept inline images and no vision fallback is available. A\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8183,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

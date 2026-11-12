@@ -1,0 +1,30 @@
+{
+  "negotiation": "legacy",
+  "negotiatedVersion": "2025-11-25",
+  "tools": [
+    "probe_no_content_key"
+  ],
+  "toolOffered": true,
+  "result": {
+    "content": [],
+    "structuredContent": {
+      "issues": [
+        {
+          "id": 101,
+          "title": "Login button unresponsive MARK_SC_91be",
+          "state": "open"
+        },
+        {
+          "id": 102,
+          "title": "Dark mode flickers on load",
+          "state": "open"
+        },
+        {
+          "id": 103,
+          "title": "Export CSV drops header row",
+          "state": "open"
+        }
+      ]
+    }
+  }
+}

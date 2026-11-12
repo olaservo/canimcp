@@ -1,0 +1,58 @@
+{
+  "client": "codex",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "default",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/tools.result.sc_string",
+    "note": "{…} structuredContent only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe/probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Wall time: 0.0035 seconds\nOutput:\n\"three issues MARK_SC_91be\"",
+      "payloadBytes": 61,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 48
+        }
+      ],
+      "negotiatedRevision": "2025-06-18",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2004,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "client": "cline",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2024-11-05",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "3.0.74",
+    "config": "default",
+    "artifact": "probe/runs/cline@3.0.74/default/both-stdio/tools.result.schema_mismatch",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"wrong\":\"not issues MARK_SC_91be\"}}",
+      "payloadBytes": 132,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 55
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 117
+        }
+      ],
+      "negotiatedRevision": "2024-11-05",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 10247,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

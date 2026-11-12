@@ -1,0 +1,7 @@
+{"t":"2026-11-08T19:59:51.917Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"@cline/core","version":"0.0.0"}}}}
+{"t":"2026-11-08T19:59:51.921Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2024-11-05","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2024-11-05"}
+{"t":"2026-11-08T19:59:51.955Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T19:59:51.957Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":2,"method":"tools/list"}}
+{"t":"2026-11-08T19:59:51.958Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T19:59:54.152Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"probe_empty_object","arguments":{}}}}
+{"t":"2026-11-08T19:59:54.154Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":3,"result":{}}}

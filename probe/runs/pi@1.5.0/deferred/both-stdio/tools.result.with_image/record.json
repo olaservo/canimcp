@@ -1,0 +1,85 @@
+{
+  "client": "pi",
+  "capability": "tools.result.media",
+  "scenario": "tools.result.with_image",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.with_image",
+    "clientVersion": "1.5.0",
+    "config": "deferred",
+    "artifact": "probe/runs/pi@1.5.0/deferred/both-stdio/tools.result.with_image",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_image",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_with_image",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"Loaded 1 tool. They are available from your next call:\\n- mcp__probe__probe_with_image: Lists open issues with a chart image.\",\"Found 3 open issues MARK_CONTENT_7f3a\"]",
+      "payloadBytes": 169,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 150
+        }
+      ],
+      "image": "image-part",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          },
+          {
+            "type": "image",
+            "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+            "mimeType": "image/png"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 13275,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

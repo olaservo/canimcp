@@ -1,0 +1,62 @@
+{
+  "client": "crewai",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "1.15.37",
+    "config": "crewai-tools",
+    "artifact": "probe/runs/crewai@1.15.37/crewai-tools/both-stdio/tools.result.sc_string",
+    "note": "\"…\" client error text, no fixture field: \"Error executing tool: 1 validation error for CallToolResult\\nstructuredContent\\n  \"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Error executing tool: 1 validation error for CallToolResult\nstructuredContent\n  Input should be a valid dictionary [type=dict_type, input_value='three issues MARK_SC_91be', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/dict_type",
+      "payloadBytes": 267,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 158
+        }
+      ],
+      "placeholder": "Error executing tool: 1 validation error for CallToolResult\nstructuredContent\n  Input should be a valid dictionary [type=dict_type, input_value='three issues MARK_SC_91be', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.12/v/dict_type",
+      "clientError": true,
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 26865,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

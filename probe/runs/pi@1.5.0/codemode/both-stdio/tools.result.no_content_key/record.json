@@ -1,0 +1,73 @@
+{
+  "client": "pi",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "1.5.0",
+    "config": "codemode",
+    "artifact": "probe/runs/pi@1.5.0/codemode/both-stdio/tools.result.no_content_key",
+    "note": "⟨…⟩ envelope (content 0x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "codemode (indirect: probe_no_content_key)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Script completed\nWall time 0.3 seconds\nOutput:\n\n{\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]},\"content\":[]}",
+      "payloadBytes": 297,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 125
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name",
+        "client prefixed the payload with a header: \"Script completed\\nWall time 0.3 seconds\\nOutput:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 3211,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

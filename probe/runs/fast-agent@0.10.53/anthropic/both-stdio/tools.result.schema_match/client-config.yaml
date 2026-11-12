@@ -1,0 +1,24 @@
+default_model: "anthropic.claude-sonnet-4-5"
+generic:
+  api_key: probe
+  base_url: "http://127.0.0.1:61897/v1"
+anthropic:
+  api_key: probe
+  base_url: "http://127.0.0.1:61897"
+logger:
+  type: file
+  path: "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/fast-agent@0.10.53/anthropic/both-stdio/tools.result.schema_match/client-log.jsonl"
+  level: info
+  progress_display: false
+  show_chat: false
+  show_tools: false
+  enable_markup: false
+mcp:
+  defaults:
+    protocol_mode: auto
+  servers:
+    probe:
+      transport: stdio
+      command: "node"
+      args: ["~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js", "--fixture", "schema_match", "--mode", "sdk", "--era", "both", "--capture", "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/fast-agent@0.10.53/anthropic/both-stdio/tools.result.schema_match", "--transport", "stdio"]
+      read_timeout_seconds: 60

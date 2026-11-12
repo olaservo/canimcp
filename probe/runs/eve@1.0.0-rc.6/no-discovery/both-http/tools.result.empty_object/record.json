@@ -1,0 +1,48 @@
+{
+  "client": "eve",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.0.0-rc.6",
+    "config": "no-discovery",
+    "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.empty_object",
+    "note": "\"…\" client error text, no fixture field: \"{\\\"error\\\":\\\"MCPClientError: Failed to parse server response\\\"}\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "eve__tool (indirect: probe_empty_object)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+      "payloadBytes": 59,
+      "form": "json",
+      "markers": [],
+      "placeholder": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+      "clientError": true,
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 58491,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

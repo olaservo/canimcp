@@ -1,0 +1,70 @@
+{
+  "client": "fx",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "0.0.16",
+    "config": "default",
+    "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.meta_only",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_probe_probe_meta_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result carries _meta and content, no structuredContent.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_meta_only\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"isError\\\":false}}\"]",
+      "payloadBytes": 540,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 497
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture",
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The res\"",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4736,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

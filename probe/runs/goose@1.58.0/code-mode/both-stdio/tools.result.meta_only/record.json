@@ -1,0 +1,39 @@
+{
+  "client": "goose",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "1.58.0",
+    "config": "code-mode",
+    "artifact": "probe/runs/goose@1.58.0/code-mode/both-stdio/tools.result.meta_only",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": false,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "notes": [],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_meta_only among 3 tools."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1722,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

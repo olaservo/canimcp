@@ -1,0 +1,60 @@
+{
+  "client": "cline",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.large",
+    "clientVersion": "3.0.74",
+    "config": "default",
+    "artifact": "probe/runs/cline@3.0.74/default/both-http/tools.result.large",
+    "note": "[…] content only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [4760 chars omitted] ... e number 665 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":666,\\\"title\\\":\\\"Generated issue number 666 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":667,\\\"title\\\":\\\"Generated issue number 667 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":668,\\\"title\\\":\\\"Generated issue number 668 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":669,\\\"title\\\":\\\"Generated issue number 669 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":670,\\\"title\\\":\\\"Generated issue number 670 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":671,\\\"title\\\":\\\"Generated issue number 671 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":672,\\\"title\\\":\\\"Generated issue number 672 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":673,\\\"title\\\":\\\"Generated issue number 673 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":674,\\\"title\\\":\\\"Generated issue number 674 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":675,\\\"title\\\":\\\"Generated issue number 675 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":676,\\\"title\\\":\\\"Generated issue number 676 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":677,\\\"title\\\":\\\"Generated issue number 677 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":678,\\\"title\\\":\\\"Generated issue number 678 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":679,\\\"title\\\":\\\"Generated issue number 679 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":680,\\\"title\\\":\\\"Generated issue number 680 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":681,\\\"title\\\":\\\"Generated issue number 681 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":682,\\\"title\\\":\\\"Generated issue number 682 with some padding text\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":683,\\\"title\\\":\\\"MARK_LARGE_END_e2c4\\\"}]}}\"},{\"type\":\"text\",\"text\":\"Full result is temporarily saved to cline://cache/1794168314750_zb7hj/cce648a6-f94e-4fd8-bb52-32ab70990d3c.result.txt. Only read_files can access this cache URI. Use read_files with specific line ranges if omitted content is needed.\"}]",
+      "payloadBytes": 8760,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 68
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 90
+        },
+        {
+          "marker": "largeEnd",
+          "count": 1,
+          "firstIndex": 8474
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 9789,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

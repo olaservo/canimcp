@@ -1,0 +1,78 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.mirror",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.mirror",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "default",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/default/both-stdio/tools.result.mirror",
+    "note": "payload once (as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "mirror",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_mirror)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+      "payloadBytes": 324,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 81
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 17729,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

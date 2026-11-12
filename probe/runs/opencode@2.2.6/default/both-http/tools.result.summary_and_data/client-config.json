@@ -1,0 +1,44 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "probe": {
+      "name": "probe",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "env": [
+        "PROBE_API_KEY"
+      ],
+      "settings": {
+        "baseURL": "http://127.0.0.1:53991/v1",
+        "apiKey": "probe"
+      },
+      "models": {
+        "gpt-probe": {
+          "name": "gpt-probe",
+          "capabilities": {
+            "tools": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "probe": {
+        "type": "remote",
+        "url": "http://127.0.0.1:53992/mcp",
+        "timeout": {
+          "startup": 60000,
+          "catalog": 60000,
+          "execution": 60000
+        }
+      }
+    }
+  }
+}

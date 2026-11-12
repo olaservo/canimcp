@@ -1,0 +1,82 @@
+{
+  "client": "opencode",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.with_meta",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.with_meta",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "default",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/default/both-stdio/tools.result.with_meta",
+    "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_meta",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_with_meta)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+      "payloadBytes": 324,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 81
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 15587,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

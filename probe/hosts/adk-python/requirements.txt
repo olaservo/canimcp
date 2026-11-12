@@ -1,0 +1,8 @@
+# google-adk pinned at google/adk-python dd7161f (2026-11-07). The pin is 54 commits past tag v2.14.0 (93814c34, same day);
+# src/google/adk/version.py at the pin still says 2.14.0 and PyPI google-adk 2.14.0 is that tag. Of the 54 commits, 5 touch the
+# result path: 10711d05 (retry a tool call once after the server drops the session), 58d1ebe3 (MCP request headers), 946ca772,
+# 92b93c86 and e87ef73d (Anthropic thinking blocks, user-turn padding, gs:// media). None change what the model receives.
+# The [mcp] extra pulls the MCP SDK (mcp>=1.24,<3; resolved 2.3.0 on 2026-11-08). anthropic is for the AnthropicLlm model class.
+# Install: uv venv --python 3.13 .venv && uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+google-adk[mcp]==2.14.0
+anthropic>=0.78

@@ -1,0 +1,71 @@
+{
+  "client": "mastra",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+    "config": "default",
+    "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.meta_only",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_meta_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/source\":\"fixture\",\"probe/trace\":\"trace MARK_META_4d2e\"},\"content\":[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]}",
+      "payloadBytes": 236,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "meta",
+          "count": 1,
+          "firstIndex": 144
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 201
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture",
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 4971,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

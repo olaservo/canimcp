@@ -1,0 +1,50 @@
+{
+  "client": "fast-agent",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "0.10.53",
+    "config": "anthropic",
+    "artifact": "probe/runs/fast-agent@0.10.53/anthropic/both-stdio/tools.result.empty_object",
+    "note": "\"…\" client error text, no fixture field: \"[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Failed to call_tool 'probe_empty_object' on server 'prob\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Failed to call_tool 'probe_empty_object' on server 'probe': 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error\"}]",
+      "payloadBytes": 633,
+      "form": "text",
+      "markers": [],
+      "placeholder": "[{\"type\":\"text\",\"text\":\"Failed to call_tool 'probe_empty_object' on server 'probe': 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 22862,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

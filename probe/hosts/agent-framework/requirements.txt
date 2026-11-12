@@ -1,0 +1,17 @@
+# Microsoft Agent Framework (Python) at research pin 924a6e5 (2026-11-06).
+# Versions are the ones python/packages/*/pyproject.toml declare at the pin
+# (core 1.25.0, openai 1.18.1, anthropic 1.0.0b261106) and the ones
+# python/uv.lock resolves for their dependencies (mcp 2.3.0, openai 3.36.1,
+# anthropic 1.17.0). Install:
+#   uv venv probe/hosts/agent-framework/.venv --python 3.12
+#   uv pip install --python probe/hosts/agent-framework/.venv/Scripts/python.exe -r probe/hosts/agent-framework/requirements.txt
+agent-framework-core==1.25.0
+agent-framework-openai==1.18.1
+agent-framework-anthropic==1.0.0b261106
+mcp==2.3.0
+mcp-types==2.3.0
+openai==3.36.1
+anthropic==1.17.0
+# core lists tenacity only under its `all` extra, but MCPTool.connect imports it
+# (ModuleNotFoundError: MCP subscription recovery requires `tenacity`) at 1.25.0.
+tenacity==9.1.4

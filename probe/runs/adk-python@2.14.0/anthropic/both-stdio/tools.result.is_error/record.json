@@ -1,0 +1,61 @@
+{
+  "client": "adk-python",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "2.14.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/adk-python@2.14.0/anthropic/both-stdio/tools.result.is_error",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+      "payloadBytes": 31,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 14
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 26975,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

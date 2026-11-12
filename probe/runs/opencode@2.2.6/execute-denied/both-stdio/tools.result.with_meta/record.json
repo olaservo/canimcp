@@ -1,0 +1,80 @@
+{
+  "client": "opencode",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.with_meta",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.with_meta",
+    "clientVersion": "2.2.6",
+    "config": "execute-denied",
+    "artifact": "probe/runs/opencode@2.2.6/execute-denied/both-stdio/tools.result.with_meta",
+    "note": "[…] content only (1x, as text, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_meta",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_with_meta",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+      "payloadBytes": 37,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 20
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 17845,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

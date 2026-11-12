@@ -1,0 +1,63 @@
+{
+  "client": "pi",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "1.5.0",
+    "config": "deferred",
+    "artifact": "probe/runs/pi@1.5.0/deferred/both-stdio/tools.result.schema_mismatch",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"Loaded 1 tool. They are available from your next call:\\n- mcp__probe__probe_schema_mismatch: Lists open issues. Declares an outputSchema the result does not match.\",\"Found 3 open issues MARK_CONTENT_7f3a\"]",
+      "payloadBytes": 207,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 188
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8811,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

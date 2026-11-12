@@ -1,0 +1,48 @@
+{
+  "client": "pi",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.5.0",
+    "config": "deferred",
+    "artifact": "probe/runs/pi@1.5.0/deferred/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"[\\\"Loaded 1 tool. They are available from your next call:\\\\n- mcp__probe__probe_em\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"Loaded 1 tool. They are available from your next call:\\n- mcp__probe__probe_empty_object: Lists open issues. The result is an empty object.\",\"(no tool output)\"]",
+      "payloadBytes": 162,
+      "form": "text",
+      "markers": [],
+      "placeholder": "[\"Loaded 1 tool. They are available from your next call:\\n- mcp__probe__probe_empty_object: Lists open issues. The result is an empty object.\",\"(no tool output)\"]",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4041,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

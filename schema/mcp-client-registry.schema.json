@@ -1,0 +1,964 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canimcp.io/schemas/client-registry.json",
+  "title": "MCP Client Registry",
+  "description": "Schema for the MCP client capability registry. Tracks BOTH what clients declare to servers (sampling, elicitation, roots) AND which server capabilities clients can consume (tools, resources, prompts, completions, logging). Intentionally broader than the spec's ClientCapabilities interface. Spec-level version lifecycle of each capability lives in data/spec-versions.json; client entries here record SUPPORT and only override per-version where it differs (byProtocolVersion). Every capability may carry `evidence` recording HOW it is known, and `research` pointing at prose notes in research/. See https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1814",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/$defs/ClientEntry"
+  },
+  "$defs": {
+    "ClientEntry": {
+      "description": "A registered MCP client with its capabilities and metadata.",
+      "type": "object",
+      "required": [
+        "title",
+        "url",
+        "protocolVersions"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Display name of the client (e.g., 'Claude Code', 'Cursor')."
+        },
+        "clientInfoNames": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "description": "Literal `clientInfo.name` values this client sends on the wire. The join key between curated lists (which key on display name) and telemetry/conformance (which key on wire name). A client may send more than one across versions or surfaces."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Homepage or documentation URL for the client."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the client's purpose and features."
+        },
+        "protocolVersions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProtocolVersion"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "All MCP protocol versions the client supports. Clients MAY support multiple versions and negotiate one per session."
+        },
+        "preferredProtocolVersion": {
+          "$ref": "#/$defs/ProtocolVersion",
+          "description": "The version the client sends first during negotiation (SHOULD be the latest it supports). Must be a member of protocolVersions."
+        },
+        "category": {
+          "$ref": "#/$defs/ClientCategory",
+          "description": "Primary category of the client."
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Platform"
+          },
+          "description": "Platforms the client runs on."
+        },
+        "byProtocolVersion": {
+          "type": "object",
+          "description": "Per-protocol-version capability OVERRIDES. Top-level capabilities describe the client at its preferred version; entries here record only what differs at another negotiated version (e.g. a capability that is unsupported at an older version). Consumers merge: spec default -> top-level -> this override.",
+          "propertyNames": {
+            "$ref": "#/$defs/ProtocolVersion"
+          },
+          "additionalProperties": {
+            "allOf": [
+              {
+                "$ref": "#/$defs/Capabilities"
+              }
+            ],
+            "unevaluatedProperties": false
+          }
+        },
+        "research": {
+          "$ref": "#/$defs/ResearchRefs",
+          "description": "Client-level research notes: idiosyncrasies, gaps, and in-flight work that span more than one capability."
+        },
+        "metadata": {
+          "$ref": "#/$defs/ClientMetadata",
+          "description": "Additional metadata about the client."
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/Capabilities"
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "Capabilities": {
+      "description": "The full set of capability fields, shared by ClientEntry (top-level) and byProtocolVersion overrides. All optional so overrides may be partial.",
+      "type": "object",
+      "properties": {
+        "transports": {
+          "$ref": "#/$defs/TransportCapabilities",
+          "description": "Transport protocols the client supports."
+        },
+        "authentication": {
+          "$ref": "#/$defs/AuthenticationCapabilities",
+          "description": "Authentication methods the client supports for remote servers."
+        },
+        "resources": {
+          "$ref": "#/$defs/ResourceCapability",
+          "description": "Server resource consumption."
+        },
+        "prompts": {
+          "$ref": "#/$defs/PromptCapability",
+          "description": "Server prompt consumption."
+        },
+        "tools": {
+          "$ref": "#/$defs/ToolCapability",
+          "description": "Server tool consumption."
+        },
+        "sampling": {
+          "$ref": "#/$defs/SamplingCapability",
+          "description": "Client sampling (LLM completion) exposed to servers."
+        },
+        "elicitation": {
+          "$ref": "#/$defs/ElicitationCapability",
+          "description": "Client elicitation (user input) exposed to servers."
+        },
+        "roots": {
+          "$ref": "#/$defs/RootsCapability",
+          "description": "Client filesystem roots exposed to servers."
+        },
+        "completions": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Argument autocompletion support."
+        },
+        "logging": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Receives and displays server log messages."
+        },
+        "instructions": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Uses server instructions to enhance LLM context."
+        },
+        "icons": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Renders server-provided icons/websiteUrl on tools, resources, prompts, implementations (SEP-973, 2025-11-25+; PNG/JPEG MUST, SVG/WebP SHOULD)."
+        },
+        "tasks": {
+          "$ref": "#/$defs/TasksCapability",
+          "description": "Async/durable task support (2025-11-25+; an extension in draft)."
+        },
+        "jsonSchema": {
+          "$ref": "#/$defs/JsonSchemaSupport",
+          "description": "JSON Schema dialect + feature support (tool I/O, elicitation schemas)."
+        },
+        "extensions": {
+          "type": "object",
+          "description": "Named protocol extensions the client supports, keyed by reverse-DNS id (e.g. 'io.modelcontextprotocol/tasks'). See data/spec-versions.json#extensions.known.",
+          "additionalProperties": {
+            "$ref": "#/$defs/CapabilityStatus"
+          }
+        },
+        "bonusFeatures": {
+          "type": "object",
+          "description": "Useful-to-know capabilities that are not formal protocol features (SHOULD-level recommendations, conventions, proposals). See data/spec-versions.json#bonusFeatures.",
+          "additionalProperties": {
+            "$ref": "#/$defs/CapabilityStatus"
+          }
+        }
+      }
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "full",
+        "partial",
+        "unsupported",
+        "untested"
+      ],
+      "description": "Support status: full (complete), partial (with limitations), unsupported (explicitly not supported), untested (unknown)."
+    },
+    "EvidenceTier": {
+      "type": "string",
+      "enum": [
+        "declared",
+        "verified",
+        "observed",
+        "read"
+      ],
+      "description": "How a capability claim is known. `declared`: the client says so, via initialize.capabilities or a curated list. `verified`: a probe or conformance scenario exercised it. `observed`: telemetry over real traffic. `read`: someone read the client's source at a pinned commit. Tiers are not ranked and may disagree; a disagreement is a finding, not an error."
+    },
+    "ProbeObservation": {
+      "description": "A typed observation from the probe. One shape per scenario family, discriminated by `type`, so new families (initialize capabilities, roots, elicitation replies) add a member here without touching Evidence.",
+      "oneOf": [
+        { "$ref": "#/$defs/ToolResultObservation" }
+      ]
+    },
+    "ToolResultObservation": {
+      "type": "object",
+      "description": "Which of a tool result's fields reached the model, in what form, and how often. Produced by probe/classify/classify.ts from the model capture; marker strings in the fixture make the attribution mechanical.",
+      "required": ["type", "fixture", "toolOffered", "toolCalled", "resultSentToModel", "form", "markers", "serverMode", "notes"],
+      "properties": {
+        "type": { "const": "tools.result" },
+        "fixture": { "type": "string", "description": "Fixture id in probe/fixtures/tool-results.ts." },
+        "api": { "type": "string", "enum": ["chat", "responses", "anthropic", "gemini"], "description": "The provider API the client used to send the result to the model." },
+        "toolOffered": { "type": "boolean", "description": "A tool matching the fixture appeared in a model request's tool list." },
+        "offeredAs": { "type": "string", "description": "The tool name as the client presented it to the model, with any prefix or namespace." },
+        "toolCalled": { "type": "boolean", "description": "tools/call for the fixture tool was seen on the wire." },
+        "resultSentToModel": { "type": "boolean", "description": "A tool result for the call appeared in a later model request." },
+        "payloadExcerpt": { "type": "string", "description": "The tool result payload as the client put it in the model request, serialized, truncated past 4000 chars." },
+        "payloadBytes": { "type": "integer" },
+        "form": { "type": "string", "enum": ["text", "json", "envelope", "blocks", "empty", "unknown"], "description": "text: a plain string; json: the structuredContent value or its JSON text; envelope: the whole CallToolResult (or a wrapper around it) serialized; blocks: a provider block array that is not all text; empty: nothing." },
+        "markers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["marker", "count", "firstIndex"],
+            "properties": {
+              "marker": { "type": "string", "enum": ["content", "sc", "user", "image", "largeStart", "largeEnd", "meta"] },
+              "count": { "type": "integer", "minimum": 1 },
+              "firstIndex": { "type": "integer", "minimum": 0 }
+            }
+          },
+          "description": "Fixture markers found in the payload, ordered by first appearance. `content` marks the text block, `sc` marks structuredContent, `user` marks the audience-[user] block, `meta` marks the result-level _meta value."
+        },
+        "placeholder": { "type": "string", "description": "The payload when no marker reached the model: placeholders such as '(empty result)' and client error text show up here." },
+        "clientError": { "type": "boolean", "description": "The payload is a client or SDK error message about a rejected result, not the fixture's fields; any marker inside it is the rejected value echoed back." },
+        "image": { "type": "string", "enum": ["image-part", "base64-text", "absent"] },
+        "negotiatedRevision": { "type": "string", "description": "The protocol revision seen on the wire for the run." },
+        "serverMode": { "type": "string", "enum": ["sdk", "mcpserver", "raw"], "description": "Which fixture server path served the result; raw is the hand-written JSON-RPC path for results the SDK will not send unchanged." },
+        "sentResult": { "description": "The result as the fixture server put it on the wire, when small enough to inline." },
+        "sentUnchanged": { "type": "boolean", "description": "The server sent the fixture result unchanged, era stamps aside." },
+        "notes": { "type": "array", "items": { "type": "string" } },
+        "finalText": { "type": "string", "description": "The client's final text, when the adapter could find it." }
+      },
+      "additionalProperties": false
+    },
+    "Evidence": {
+      "type": "object",
+      "description": "One record of how a capability claim is known. A capability may carry several, including conflicting ones. The capability's own `status` is the editorial roll-up; each evidence record carries the status ITS tier supports.",
+      "required": [
+        "tier",
+        "source",
+        "date"
+      ],
+      "properties": {
+        "tier": {
+          "$ref": "#/$defs/EvidenceTier"
+        },
+        "status": {
+          "$ref": "#/$defs/Status",
+          "description": "What this evidence alone supports. Omit if the record only corroborates the rolled-up status. Set it when this tier disagrees — that disagreement is the point."
+        },
+        "at": {
+          "$ref": "#/$defs/ProtocolVersion",
+          "description": "The protocol revision this evidence is about. A claim without a revision is not portable: 2026-07-28 is stateless with per-request _meta, everything through 2025-11-25 uses the initialize handshake, and passing one says nothing about the other."
+        },
+        "source": {
+          "type": "string",
+          "description": "Short identifier for where this came from, e.g. 'apify/mcp-client-capabilities', 'evalstate/mcp-clients', 'probe.canimcp.io', 'research/goose-tool-context.md'."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "Link to the source: repo, dashboard, PR, run artifact."
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "When this evidence was gathered, not when it was written up."
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,40}$",
+          "description": "read tier: the commit the source was read at. Required in practice for `read` — an unpinned source claim is not reproducible."
+        },
+        "path": {
+          "type": "string",
+          "description": "read tier: file, or file:line, backing the claim (e.g. 'crates/goose/src/skills/mod.rs:discover_skills')."
+        },
+        "scenario": {
+          "type": "string",
+          "description": "verified tier: the probe or conformance scenario that produced the verdict (e.g. 'initialize', 'elicitation-defaults', 'tools.result.summary_and_data')."
+        },
+        "clientVersion": {
+          "type": "string",
+          "description": "verified tier: the client version the scenario ran against, as the client reports it. A verified record is about one build; the registry entry is about the client."
+        },
+        "config": {
+          "type": "string",
+          "description": "verified tier: the client configuration the run used, 'default' or the switch the run flipped (e.g. 'code-mode', 'anthropic', 'mcp-2026-07-28'). The adapter in probe/hosts/<client>/ documents each name."
+        },
+        "artifact": {
+          "type": "string",
+          "description": "verified tier: repo-relative path to the run directory holding the raw captures (wire.jsonl, model.jsonl, client output, record.json)."
+        },
+        "observation": {
+          "$ref": "#/$defs/ProbeObservation",
+          "description": "verified tier: what the probe saw, in the typed shape of the scenario family. The evidence row stays flat for consumers; the detail lives here."
+        },
+        "run": {
+          "type": "object",
+          "description": "verified tier: how the run was set up (transport, server mode, era policy, exit code, duration). Free-form, for reproduction.",
+          "additionalProperties": true
+        },
+        "window": {
+          "type": "string",
+          "description": "observed tier: the sampling window, e.g. '60d' or '2026-06-24/2026-08-22'."
+        },
+        "proportion": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "observed tier: share of traffic supporting the claim, against the source's own threshold. Record the threshold in `note` if it is not the source default."
+        },
+        "note": {
+          "type": "string",
+          "description": "Anything a reader needs to judge this record's weight."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResearchRefs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "description": "Ids of research notes in research/ that bear on this capability or client. Ids are the note's frontmatter `id`. See schema/research-note.schema.json."
+    },
+    "CapabilityCore": {
+      "type": "object",
+      "description": "Fields every capability object carries. Composed via allOf so each capability adds its own sub-features without restating these.",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/Status"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Limitations, version requirements, etc. For anything longer than a sentence or two, write a research note and reference it."
+        },
+        "since": {
+          "type": "string",
+          "description": "Client version when this capability was added (e.g. '1.4.0')."
+        },
+        "lastVerified": {
+          "type": "string",
+          "format": "date",
+          "description": "When this specific capability was last verified."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "description": "How this capability's status is known. Several records may coexist and disagree."
+        },
+        "research": {
+          "$ref": "#/$defs/ResearchRefs"
+        }
+      }
+    },
+    "CapabilityStatus": {
+      "description": "A capability/sub-feature's support, as a bare status string ('full') or a detailed object.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "ResourceCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "listChanged": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Handles resources/list_changed notifications."
+            },
+            "subscribe": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Supports resource subscriptions."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "PromptCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "listChanged": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Handles prompts/list_changed notifications."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "ToolCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "listChanged": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Handles tools/list_changed notifications."
+            },
+            "result": {
+              "type": "object",
+              "description": "How the client carries a CallToolResult to the model on its default conversational path. Status on each field means: full, the field reaches the model; partial, it reaches the model only under a condition the notes name; unsupported, it never does. Ids follow data/spec-versions.json (tools.result.content and so on). The read tier for these fields lives in olaservo/structured-content-research, one note per client at a pinned commit; evidence here points at that note by commit and does not restate it. Verified rows come from the probe overlay in data/verified/.",
+              "allOf": [
+                {
+                  "$ref": "#/$defs/CapabilityCore"
+                }
+              ],
+              "properties": {
+                "content": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "CallToolResult.content: whether the text and other blocks reach the model, and what stands in for an empty array."
+                },
+                "structuredContent": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "CallToolResult.structuredContent: whether it reaches the model, and whether it replaces, joins or is dropped next to content."
+                },
+                "outputSchema": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "Whether the client validates structuredContent against the tool outputSchema, and what the model sees on a mismatch."
+                },
+                "audience": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "Whether annotations.audience on content blocks is read on the model path."
+                },
+                "isError": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "Which field carries the error text the model sees when isError is true."
+                },
+                "media": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "Whether image, audio and resource blocks reach the model, and whether they change which text field wins."
+                },
+                "_meta": {
+                  "$ref": "#/$defs/CapabilityStatus",
+                  "description": "Whether application keys in the result _meta reach the model, and whether their presence changes the route."
+                }
+              },
+              "unevaluatedProperties": false
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "SamplingCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "context": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Supports the includeContext parameter."
+            },
+            "tools": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Supports tool use in sampling (SEP-1577, 2025-11-25+)."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "ElicitationCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "form": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Form-based elicitation (2025-06-18+)."
+            },
+            "url": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "URL-mode elicitation, e.g. OAuth flows (SEP-1036, 2025-11-25+)."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "RootsCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "listChanged": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Sends roots/list_changed notifications."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "TasksCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "list": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Supports tasks/list (removed in the 2026-07-28 redesign)."
+            },
+            "cancel": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Supports task cancellation."
+            },
+            "requests": {
+              "type": "object",
+              "description": "Which request types the client can task-augment (e.g. sampling.createMessage, tools.call).",
+              "additionalProperties": true
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "TransportCapabilities": {
+      "type": "object",
+      "description": "Transport protocols the client can use to connect to servers.",
+      "properties": {
+        "stdio": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Standard I/O (subprocess)."
+        },
+        "sse": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "HTTP+SSE (deprecated since 2025-03-26)."
+        },
+        "streamableHttp": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Streamable HTTP (2025-03-26+)."
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/CapabilityStatus"
+      }
+    },
+    "AuthenticationCapabilities": {
+      "type": "object",
+      "description": "Authentication methods the client supports for remote MCP servers.",
+      "properties": {
+        "oauth": {
+          "$ref": "#/$defs/OAuthCapability",
+          "description": "OAuth authentication support."
+        },
+        "header": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Header-based auth (API keys, bearer tokens)."
+        },
+        "none": {
+          "$ref": "#/$defs/CapabilityStatus",
+          "description": "Unauthenticated connections."
+        }
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/CapabilityStatus"
+      }
+    },
+    "OAuthCapability": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "description": "OAuth support with granular feature flags.",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "version": {
+              "type": "string",
+              "enum": [
+                "2.0",
+                "2.1"
+              ],
+              "description": "OAuth version supported."
+            },
+            "pkce": {
+              "type": "boolean",
+              "description": "Supports PKCE (RFC 7636)."
+            },
+            "dynamicRegistration": {
+              "type": "boolean",
+              "description": "Supports Dynamic Client Registration (RFC 7591)."
+            },
+            "clientIdMetadataDocument": {
+              "type": "boolean",
+              "description": "Supports Client ID Metadata Documents / CIMD (SEP-991, 2025-11-25+)."
+            },
+            "resourceIndicators": {
+              "type": "boolean",
+              "description": "Implements RFC 8707 Resource Indicators (2025-06-18+)."
+            },
+            "protectedResourceMetadata": {
+              "type": "boolean",
+              "description": "Supports RFC 9728 Protected Resource Metadata for AS discovery (SEP-985, 2025-11-25+)."
+            },
+            "openIdConnectDiscovery": {
+              "type": "boolean",
+              "description": "Supports OpenID Connect Discovery 1.0 for AS metadata (2025-11-25+)."
+            },
+            "issuerIdentification": {
+              "type": "boolean",
+              "description": "Validates the RFC 9207 issuer (iss) parameter in auth responses (SEP-2468)."
+            },
+            "grantTypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": [
+                  "authorization_code",
+                  "client_credentials",
+                  "refresh_token",
+                  "device_code"
+                ]
+              },
+              "description": "Supported OAuth grant types."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "JsonSchemaSupport": {
+      "type": "object",
+      "description": "Which JSON Schema dialects and features the client honors when validating tool I/O and elicitation schemas. Default dialect per spec is 2020-12 (SEP-1613).",
+      "properties": {
+        "defaultDialect": {
+          "type": "string",
+          "description": "Dialect assumed when a schema omits $schema (e.g. '2020-12').",
+          "default": "2020-12"
+        },
+        "supportedDialects": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Dialects the client can validate against (e.g. ['2020-12', 'draft-07'])."
+        },
+        "features": {
+          "description": "Coarse summary of how much of the dialect the client actually validates.",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": [
+                "full",
+                "subset",
+                "minimal"
+              ]
+            },
+            {
+              "type": "object",
+              "properties": {
+                "level": {
+                  "type": "string",
+                  "enum": [
+                    "full",
+                    "subset",
+                    "minimal"
+                  ]
+                },
+                "supported": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Keywords honored (e.g. enum, format, $ref, oneOf)."
+                },
+                "unsupported": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Keywords silently ignored or rejected. Often the more useful list — a server author needs to know what will be dropped."
+                },
+                "notes": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          }
+        },
+        "research": {
+          "$ref": "#/$defs/ResearchRefs"
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProtocolVersion": {
+      "type": "string",
+      "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}|draft)$",
+      "description": "An MCP protocol version: a YYYY-MM-DD date (e.g. '2026-07-28') or 'draft'. Dated revisions to date: 2024-11-05, 2025-03-26, 2025-06-18, 2025-11-25, 2026-07-28."
+    },
+    "ClientCategory": {
+      "type": "string",
+      "enum": [
+        "ide",
+        "chat",
+        "cli",
+        "agent-framework",
+        "automation",
+        "browser-extension",
+        "library",
+        "other"
+      ],
+      "description": "Category of the MCP client."
+    },
+    "Platform": {
+      "type": "string",
+      "enum": [
+        "windows",
+        "macos",
+        "linux",
+        "web",
+        "ios",
+        "android"
+      ],
+      "description": "Platform the client runs on."
+    },
+    "SourceTracking": {
+      "type": "object",
+      "description": "Where the client's source lives and what was last read. Drives the refresh job: shallow-clone the repo, diff HEAD against checkedCommit, and re-verify only what moved. This registry never vendors client source - it pins commits here and quotes only the excerpts a claim needs. Clones are local and disposable. Present only for clients whose source is public.",
+      "required": [
+        "repo"
+      ],
+      "properties": {
+        "repo": {
+          "type": "string",
+          "format": "uri",
+          "description": "Clone URL of the source repository."
+        },
+        "ref": {
+          "type": "string",
+          "description": "Branch or tag tracked (default: the remote's default branch)."
+        },
+        "checkedCommit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{7,40}$",
+          "description": "Commit the current `read`-tier evidence was gathered at."
+        },
+        "commitDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Committer date of `checkedCommit` upstream - when the source that was read was last updated. Distinct from `checkedAt`, which is when we read it. The gap between the two is how far behind the read already was; the gap between this and HEAD's date is how stale it has since become."
+        },
+        "checkedAt": {
+          "type": "string",
+          "format": "date",
+          "description": "Date this registry last read the source. Distinct from `commitDate`, which is when the source itself last changed."
+        },
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Subpaths holding the MCP client implementation, so a refresh can tell a relevant change from noise (e.g. 'crates/goose/src/agents')."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ClientSdk": {
+      "type": "object",
+      "description": "The MCP SDK the client's own MCP implementation is built on. Record what the lockfile resolves to, not only what the manifest declares: a version requirement and its resolved version are different claims, and only the resolved one describes what runs. A lockfile can hold several versions of the same SDK for unrelated reasons - record the one the client's MCP code resolves to, not every copy in the tree.",
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Package or crate name, e.g. 'rmcp' or '@modelcontextprotocol/sdk'. Use 'none' for a client that implements the protocol by hand."
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "rust",
+            "typescript",
+            "python",
+            "go",
+            "java",
+            "kotlin",
+            "csharp",
+            "swift",
+            "ruby",
+            "php",
+            "other"
+          ],
+          "description": "Language the SDK is written in."
+        },
+        "official": {
+          "type": "boolean",
+          "description": "Whether this is a reference SDK maintained under the modelcontextprotocol org."
+        },
+        "declared": {
+          "type": "string",
+          "description": "The version requirement as the manifest states it, verbatim - '3.0.0', '=3.1.3', '^1.29.0'. A range is not a version; it says what the client will accept, not what it got."
+        },
+        "resolved": {
+          "type": "string",
+          "description": "The version the lockfile resolves to at `source.checkedCommit`. This is what runs, and what a behavioural claim about the SDK should cite."
+        },
+        "patched": {
+          "type": "boolean",
+          "description": "Whether the client modifies the SDK's runtime: a bun or pnpm patch, patch-package, a Cargo [patch] section, or a vendored fork. When true, nothing about behaviour follows from the published version alone, and `notes` should say what changed."
+        },
+        "pinsProtocolVersion": {
+          "type": "string",
+          "description": "The protocol revision this SDK version pins as its latest, where the client inherits a negotiated version rather than choosing one. Present means the client's preferredProtocolVersion is the SDK's decision, not the client's."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Anything the fields above cannot carry - what a patch changes, why a version is held back, a second copy of the SDK in the tree."
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "description": "How the versions above are known. A read-tier record should cite the manifest and the lockfile."
+        },
+        "research": {
+          "$ref": "#/$defs/ResearchRefs"
+        }
+      }
+    },
+    "ClientMetadata": {
+      "type": "object",
+      "description": "Additional metadata about the client.",
+      "properties": {
+        "vendor": {
+          "type": "string",
+          "description": "Company or developer that maintains the client."
+        },
+        "openSource": {
+          "type": "boolean",
+          "description": "Whether the client is open source."
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to source code repository (human-facing; `source.repo` is what the refresh job clones)."
+        },
+        "source": {
+          "$ref": "#/$defs/SourceTracking",
+          "description": "Source-tracking block for clients we read directly."
+        },
+        "sdk": {
+          "$ref": "#/$defs/ClientSdk",
+          "description": "The MCP SDK this client is built on. Check this before attributing any behaviour to 'the official SDK'."
+        },
+        "license": {
+          "type": "string",
+          "description": "Software license (e.g. 'MIT', 'Apache-2.0')."
+        },
+        "lastVerified": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the capabilities were last verified (ISO 8601)."
+        },
+        "conformanceScore": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Percentage of conformance tests passed."
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

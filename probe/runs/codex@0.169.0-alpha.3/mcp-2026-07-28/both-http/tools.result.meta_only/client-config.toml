@@ -1,0 +1,18 @@
+model = "gpt-probe"
+model_provider = "probe"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[model_providers.probe]
+name = "probe"
+base_url = "http://127.0.0.1:65272/v1"
+env_key = "PROBE_API_KEY"
+wire_api = "responses"
+
+[mcp_servers.probe]
+url = "http://127.0.0.1:65275/mcp"
+startup_timeout_sec = 60
+tool_timeout_sec = 60
+
+[features]
+mcp_2026_07_28 = true

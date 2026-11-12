@@ -1,0 +1,246 @@
+{
+  "$comment": "The list of MCP clients the probe knows about: hosts people run, agent harnesses, and frameworks that embed an MCP client. `source` names the clone in _clients/repos.tsv. `adapter` points at probe/hosts/<id>/ when one exists. `drive` says what it takes to run a scenario: `cli` means a non-interactive command the runner can start, `script` means a short program on the framework's API, `gui` means a person has to click. `registryId` is the id in data/clients.json when the client has an entry there.",
+  "clients": {
+    "codex": {
+      "title": "Codex CLI",
+      "kind": "host",
+      "repo": "https://github.com/openai/codex",
+      "source": "codex",
+      "language": "rust",
+      "sdk": "rmcp",
+      "drive": "cli",
+      "adapter": "hosts/codex",
+      "registryId": "openai-codex",
+      "notes": "codex exec with a custom model provider on the Responses API."
+    },
+    "goose": {
+      "title": "goose",
+      "kind": "host",
+      "repo": "https://github.com/aaif-goose/goose",
+      "source": "goose",
+      "language": "rust",
+      "sdk": "rmcp",
+      "drive": "cli",
+      "adapter": "hosts/goose",
+      "registryId": "goose",
+      "notes": "goose run --no-session with OPENAI_BASE_URL or ANTHROPIC_HOST."
+    },
+    "mastra": {
+      "title": "Mastra",
+      "kind": "framework",
+      "repo": "https://github.com/mastra-ai/mastra",
+      "source": "mastra",
+      "language": "typescript",
+      "sdk": "@modelcontextprotocol/client",
+      "drive": "script",
+      "adapter": "hosts/mastra",
+      "notes": "Agent plus MCPClient on a model config with a custom url."
+    },
+    "fx": {
+      "title": "fx (native engine)",
+      "kind": "host",
+      "repo": "https://github.com/vercel-labs/fx",
+      "source": "fx",
+      "language": "zig",
+      "sdk": "hand-rolled",
+      "drive": "cli",
+      "adapter": "hosts/fx",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "notes": "fx ask with a configured openai-chat-completions provider. Runs from WSL on Windows."
+    },
+    "libfx": {
+      "title": "libfx (fx JavaScript adapter)",
+      "kind": "framework",
+      "repo": "https://github.com/vercel-labs/fx",
+      "source": "fx",
+      "language": "javascript",
+      "sdk": "host-supplied",
+      "drive": "script",
+      "adapter": "hosts/libfx",
+      "platforms": [
+        "linux",
+        "macos"
+      ],
+      "notes": "createMcpAdapter over the official TypeScript client."
+    },
+    "eve": {
+      "title": "eve",
+      "kind": "framework",
+      "repo": "https://github.com/vercel/eve",
+      "source": "eve",
+      "language": "typescript",
+      "drive": "script",
+      "adapter": "hosts/eve",
+      "sdk": "@ai-sdk/mcp 2.0.73 (vendored, patched)",
+      "notes": "eve dev --no-ui plus eve remote connect --print against a generated app; http only, MCP tools reached through eve__tool.",
+      "registryId": null
+    },
+    "opencode": {
+      "title": "opencode",
+      "kind": "host",
+      "repo": "https://github.com/anomalyco/opencode",
+      "source": "opencode",
+      "language": "typescript",
+      "sdk": "@modelcontextprotocol/client 2.3.1 (2.x line, npm @opencode/cli)",
+      "drive": "cli",
+      "registryId": "opencode",
+      "adapter": "hosts/opencode",
+      "notes": "opencode run --standalone with a custom OpenAI-compatible provider. Code Mode is the default route; codemode-off, execute-denied and protocol-2026-07-28 configs cover the direct path."
+    },
+    "cline": {
+      "title": "Cline",
+      "kind": "host",
+      "repo": "https://github.com/cline/cline",
+      "source": "cline",
+      "language": "typescript",
+      "sdk": "hand-rolled JSON-RPC on stdio (2024-11-05); @modelcontextprotocol/sdk 1.30.0 on http",
+      "drive": "cli",
+      "registryId": "cline",
+      "notes": "The CLI is drivable; the VS Code extension needs a person. cline CLI (npm cline) with --yolo and an openai-compatible provider; a mock script ends the run through submit_and_exit.",
+      "adapter": "hosts/cline"
+    },
+    "fast-agent": {
+      "title": "fast-agent",
+      "kind": "framework",
+      "repo": "https://github.com/evalstate/fast-agent",
+      "source": "fast-agent",
+      "language": "python",
+      "sdk": "mcp 2.3.0 (python-sdk)",
+      "drive": "cli",
+      "registryId": "fast-agent",
+      "adapter": "hosts/fast-agent",
+      "notes": "fast-agent go --quiet with a generic provider. Configs: default (auto), legacy, modern, anthropic, ptc (POSIX only, fails on Windows)."
+    },
+    "hermes-agent": {
+      "title": "Hermes Agent",
+      "kind": "host",
+      "repo": "https://github.com/NousResearch/hermes-agent",
+      "source": "hermes-agent",
+      "language": "python",
+      "sdk": "mcp 2.x (python-sdk)",
+      "drive": "cli",
+      "registryId": "hermes-agent",
+      "adapter": "hosts/hermes-agent",
+      "notes": "Installed from git at the pin on Python 3.14; PyPI stops at 0.19.0."
+    },
+    "openclaw": {
+      "title": "OpenClaw",
+      "kind": "host",
+      "repo": "https://github.com/openclaw/openclaw",
+      "source": "openclaw",
+      "language": "typescript",
+      "sdk": "@modelcontextprotocol/sdk",
+      "drive": "cli",
+      "registryId": "openclaw"
+    },
+    "pi": {
+      "title": "pi",
+      "kind": "host",
+      "repo": "https://github.com/earendil-works/pi",
+      "source": "pi-mono",
+      "language": "typescript",
+      "drive": "cli",
+      "adapter": "hosts/pi",
+      "sdk": "@earendil-works/pi-mcp (own client)",
+      "notes": "pi --print with a custom openai-completions provider. Stock exposure is codemode; the default config sets exposure direct, codemode and deferred configs cover the stock routes.",
+      "registryId": null
+    },
+    "zed": {
+      "title": "Zed",
+      "kind": "host",
+      "repo": "https://github.com/zed-industries/zed",
+      "source": "zed",
+      "language": "rust",
+      "drive": "gui"
+    },
+    "vscode": {
+      "title": "VS Code",
+      "kind": "host",
+      "repo": "https://github.com/microsoft/vscode",
+      "source": "vscode",
+      "language": "typescript",
+      "drive": "gui"
+    },
+    "kilocode": {
+      "title": "Kilo Code",
+      "kind": "host",
+      "repo": "https://github.com/Kilo-Org/kilocode",
+      "source": "kilocode",
+      "language": "typescript",
+      "drive": "gui",
+      "notes": "VS Code extension; a CLI exists and may be drivable."
+    },
+    "librechat": {
+      "title": "LibreChat",
+      "kind": "host",
+      "repo": "https://github.com/danny-avila/LibreChat",
+      "source": "librechat",
+      "language": "typescript",
+      "drive": "gui",
+      "notes": "A web app; its HTTP API may be drivable without a browser."
+    },
+    "strands": {
+      "title": "Strands Agents",
+      "kind": "framework",
+      "repo": "https://github.com/strands-agents/harness-sdk",
+      "source": "strands",
+      "language": "python",
+      "drive": "script",
+      "adapter": "hosts/strands",
+      "sdk": "mcp 2.3.0 (python-sdk)",
+      "notes": "strands-agents[openai,anthropic]; configs default (chat), responses, anthropic.",
+      "registryId": null
+    },
+    "crewai": {
+      "title": "crewAI",
+      "kind": "framework",
+      "repo": "https://github.com/crewAIInc/crewAI",
+      "source": "crewai",
+      "language": "python",
+      "drive": "script",
+      "adapter": "hosts/crewai",
+      "sdk": "mcp 1.30.0 (python-sdk)",
+      "notes": "Agent(mcps=[MCPServerStdio|MCPServerHTTP]) on the native OpenAI provider; the crewai-tools config uses MCPServerAdapter (mcpadapt). Stdio server names are hashed into the tool name, so the adapter spawns a short wrapper.",
+      "registryId": null
+    },
+    "deepagents": {
+      "title": "deepagents",
+      "kind": "framework",
+      "repo": "https://github.com/langchain-ai/deepagents",
+      "source": "deepagents",
+      "language": "python",
+      "drive": "script",
+      "adapter": "hosts/deepagents",
+      "sdk": "fastmcp 4.1.2 over mcp 2.2.0 (python-sdk)",
+      "notes": "The MCP route is deepagents-code (FastMCP proxy router + langchain.mcp); configs default, hooks, interpreter.",
+      "registryId": null
+    },
+    "adk-python": {
+      "title": "Google ADK (Python)",
+      "kind": "framework",
+      "repo": "https://github.com/google/adk-python",
+      "source": "adk-python",
+      "language": "python",
+      "drive": "script",
+      "notes": "Needs the Gemini API shape in the mock model. LlmAgent + McpToolset; configs default (Gemini, mock serves generateContent), anthropic (AnthropicLlm), modern (ADK_ENABLE_MCP_MODERN_PROTOCOL), strict-errors.",
+      "adapter": "hosts/adk-python",
+      "sdk": "mcp 2.3.0 (python-sdk)",
+      "registryId": null
+    },
+    "agent-framework": {
+      "title": "Microsoft Agent Framework",
+      "kind": "framework",
+      "repo": "https://github.com/microsoft/agent-framework",
+      "source": "agent-framework",
+      "language": "python, csharp",
+      "drive": "script",
+      "adapter": "hosts/agent-framework",
+      "sdk": "mcp 2.3.0 (python-sdk)",
+      "notes": "Python only; one config per tool_result_content mode plus responses and anthropic. .NET not probed.",
+      "registryId": null
+    }
+  }
+}

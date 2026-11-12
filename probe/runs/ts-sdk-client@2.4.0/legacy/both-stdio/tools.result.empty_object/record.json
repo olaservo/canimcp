@@ -1,0 +1,46 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "2.4.0",
+    "config": "legacy",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.empty_object",
+    "note": "⟨…⟩ envelope (content 0x, structuredContent 0x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "toolOffered": true,
+      "offeredAs": "probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"content\":[]}",
+      "payloadBytes": 14,
+      "form": "envelope",
+      "markers": [],
+      "placeholder": "{\"content\":[]}",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved"
+      ],
+      "finalText": "PROBE_DONE: host-level result written"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1062,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

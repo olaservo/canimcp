@@ -1,0 +1,45 @@
+{
+  "client": "pi",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.5.0",
+    "config": "default",
+    "artifact": "probe/runs/pi@1.5.0/default/both-http/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"(no tool output)\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "(no tool output)",
+      "payloadBytes": 16,
+      "form": "text",
+      "markers": [],
+      "placeholder": "(no tool output)",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2946,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

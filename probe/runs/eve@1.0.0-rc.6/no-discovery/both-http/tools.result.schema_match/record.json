@@ -1,0 +1,78 @@
+{
+  "client": "eve",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_match",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_match",
+    "clientVersion": "1.0.0-rc.6",
+    "config": "no-discovery",
+    "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_match",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_match",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "eve__tool (indirect: probe_schema_match)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+      "payloadBytes": 214,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 56
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 69204,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

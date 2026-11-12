@@ -1,0 +1,55 @@
+{
+  "client": "crewai",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.large",
+    "clientVersion": "1.15.37",
+    "config": "crewai-tools",
+    "artifact": "probe/runs/crewai@1.15.37/crewai-tools/both-stdio/tools.result.large",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "The result of `probe_large` with arguments `{}` was stored as temporary artifact `tool-result-J28A8QCWnfDHcpWswpsETA` at relative file path `tool-result-J28A8QCWnfDHcpWswpsETA/result.md`. It contains 1 lines and is estimated at 10249 tokens (about 10249.0 tokens per line).\n\nPreview of the first 10 lines:\n---\nMARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the \n[Preview truncated; read the artifact for more.]\n---\n\nUse `read_a_deferred_tool_result` to read it in bounded sections. For a roughly 348-token read, request about 1 lines, for example with `start_line=1` and `line_count=1`.\n\nThe artifact is deleted when this run ends, so do not cite its path in your final answer; include the content you need instead.",
+      "payloadBytes": 2664,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 310
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 332
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 33478,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

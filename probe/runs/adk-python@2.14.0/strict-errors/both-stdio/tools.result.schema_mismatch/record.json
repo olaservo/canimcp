@@ -1,0 +1,53 @@
+{
+  "client": "adk-python",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "2.14.0",
+    "config": "strict-errors",
+    "artifact": "probe/runs/adk-python@2.14.0/strict-errors/both-stdio/tools.result.schema_mismatch",
+    "note": "result never sent to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "gemini",
+      "toolOffered": true,
+      "offeredAs": "probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool was called on the wire but no tool result reached the model"
+      ]
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 10938,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "gemini"
+  }
+}

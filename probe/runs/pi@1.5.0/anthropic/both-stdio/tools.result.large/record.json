@@ -1,0 +1,60 @@
+{
+  "client": "pi",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.large",
+    "clientVersion": "1.5.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/pi@1.5.0/anthropic/both-stdio/tools.result.large",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Warning: truncated output (original token count: 10249)\nTotal output lines: 1\n\nMARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the resul ... [16675 chars omitted] ... iller text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4\n\n[Full output: ~\\AppData\\Local\\Temp\\pi-mcp-e33614d530a78ccc.txt (read it with offset/limit)]",
+      "payloadBytes": 20679,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 79
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 101
+        },
+        {
+          "marker": "largeEnd",
+          "count": 1,
+          "firstIndex": 20563
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2510,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

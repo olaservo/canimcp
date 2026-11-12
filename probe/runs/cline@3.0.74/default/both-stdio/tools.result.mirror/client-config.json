@@ -1,0 +1,43 @@
+{
+  "providers": {
+    "version": 1,
+    "lastUsedProvider": "openai-compatible",
+    "modes": {},
+    "providers": {
+      "openai-compatible": {
+        "settings": {
+          "provider": "openai-compatible",
+          "apiKey": "probe",
+          "model": "gpt-probe",
+          "baseUrl": "http://127.0.0.1:63032/v1"
+        },
+        "updatedAt": "2026-11-08T19:55:29.904Z",
+        "tokenSource": "manual"
+      }
+    }
+  },
+  "mcp": {
+    "mcpServers": {
+      "probe": {
+        "transport": {
+          "type": "stdio",
+          "command": "node",
+          "args": [
+            "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js",
+            "--fixture",
+            "mirror",
+            "--mode",
+            "sdk",
+            "--era",
+            "both",
+            "--capture",
+            "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/cline@3.0.74/default/both-stdio/tools.result.mirror",
+            "--transport",
+            "stdio"
+          ]
+        },
+        "timeout": 60
+      }
+    }
+  }
+}

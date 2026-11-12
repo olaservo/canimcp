@@ -1,0 +1,7 @@
+{"t":"2026-11-08T03:31:32.427Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"canimcp-probe-ts-sdk-client","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T03:31:32.429Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T03:31:32.440Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T03:31:32.442Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T03:31:32.443Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"probe_sc_null","description":"Lists open issues. structuredContent is null.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T03:31:32.449Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_sc_null","arguments":{}},"jsonrpc":"2.0","id":2}}
+{"t":"2026-11-08T03:31:32.450Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{"content":[{"type":"text","text":"Found 3 open issues MARK_CONTENT_7f3a"}],"structuredContent":null}}}

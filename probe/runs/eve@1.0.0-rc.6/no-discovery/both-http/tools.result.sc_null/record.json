@@ -1,0 +1,55 @@
+{
+  "client": "eve",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_null",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_null",
+    "clientVersion": "1.0.0-rc.6",
+    "config": "no-discovery",
+    "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_null",
+    "note": "\"…\" no marker reached the model; payload: \"null\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_null",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "eve__tool (indirect: probe_sc_null)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "null",
+      "payloadBytes": 4,
+      "form": "text",
+      "markers": [],
+      "placeholder": "null",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": null
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 21277,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

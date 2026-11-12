@@ -1,0 +1,55 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_empty",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.sc_empty",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "default",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/default/both-http/tools.result.sc_empty",
+    "note": "\"…\" no marker reached the model; payload: \"{}\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_empty",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_sc_empty)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{}",
+      "payloadBytes": 2,
+      "form": "json",
+      "markers": [],
+      "placeholder": "{}",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {}
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 19048,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

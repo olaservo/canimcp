@@ -1,0 +1,9 @@
+{
+  "negotiation": "legacy",
+  "negotiatedVersion": "2025-11-25",
+  "tools": [
+    "probe_sc_null"
+  ],
+  "toolOffered": true,
+  "callError": "SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received null\"\n  }\n]"
+}

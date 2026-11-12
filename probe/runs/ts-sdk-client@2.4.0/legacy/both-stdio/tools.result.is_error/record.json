@@ -1,0 +1,67 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "2.4.0",
+    "config": "legacy",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.is_error",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "toolOffered": true,
+      "offeredAs": "probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Lookup failed MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"},\"isError\":true}",
+      "payloadBytes": 143,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 49
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 113
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved"
+      ],
+      "finalText": "PROBE_DONE: host-level result written"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1232,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

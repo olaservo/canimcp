@@ -1,0 +1,11 @@
+{
+  "negotiation": "legacy",
+  "negotiatedVersion": "2025-11-25",
+  "tools": [
+    "probe_empty_object"
+  ],
+  "toolOffered": true,
+  "result": {
+    "content": []
+  }
+}

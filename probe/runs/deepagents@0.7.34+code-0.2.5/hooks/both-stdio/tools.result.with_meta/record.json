@@ -1,0 +1,88 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.with_meta",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.with_meta",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "hooks",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.with_meta",
+    "note": "[…] and {…} (content 1x, structuredContent 1x, as json, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_meta",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_with_meta",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"text\",\"text\":\"HOOK_ARTIFACT: {\\\"structured_content\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}}\"}]",
+      "payloadBytes": 376,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 44
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 189
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\\nHOOK_ARTIFACT:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 19746,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

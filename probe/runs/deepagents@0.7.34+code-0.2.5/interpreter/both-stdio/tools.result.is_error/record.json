@@ -1,0 +1,63 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "interpreter",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.is_error",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "js_eval (renamed)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "<result>[{type: \"text\", text: \"Lookup failed MARK_CONTENT_7f3a\", id: \"lc_f826783e-0422-4f44-9137-3c808b71a5e1\"}]</result>",
+      "payloadBytes": 121,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 45
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool offered under a name the matcher did not recognise; the mock called it and a result came back"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 22830,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

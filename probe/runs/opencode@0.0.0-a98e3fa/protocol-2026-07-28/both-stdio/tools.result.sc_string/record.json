@@ -1,0 +1,59 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "protocol-2026-07-28",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/protocol-2026-07-28/both-stdio/tools.result.sc_string",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+      "payloadBytes": 37,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 20
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be",
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 5193,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_null",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_null",
+    "clientVersion": "2.4.0",
+    "config": "legacy",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_null",
+    "note": "result never sent to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_null",
+      "toolOffered": true,
+      "offeredAs": "probe_sc_null",
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": null
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved",
+        "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received null\"\n  }\n]",
+        "tool was called on the wire but no tool result reached the model"
+      ],
+      "finalText": "]"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1044,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

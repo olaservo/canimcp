@@ -1,0 +1,57 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.large",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "default",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/default/both-http/tools.result.large",
+    "note": "{…} structuredContent only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_large)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 0,\n      \"title\": \"MARK_LARGE_START_e2c4 MARK_SC_91be\"\n    },\n    {\n      \"id\": 1,\n      \"title\": \"Generated issue number 1 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 2,\n      \"title\": \"Generated issue number 2 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 3,\n      \"title\": \"Generated issue number 3 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 4,\n      \"title\": \"Generated issue number 4 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 5,\n      \"title\": \"Generated issue number 5 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 6,\n      \"title\": \"Generated issue number 6 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 7,\n      \"title\": \"Generated issue number 7 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 8,\n      \"title\": \"Generated issue number 8 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 9,\n      \"title\": \"Generated issue number 9 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 10,\n      \"title\": \"Generated issue number 10 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 11,\n      \"title\": \"Generated issue number 11 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 12,\n      \"title\": \"Generated issue number 12 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 13,\n      \"title\": \"Generated issue number 13 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 14,\n      \"title\": \"Generated issue number 14 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 15,\n      \"title\": \"Generated issue number 15 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 16,\n      \"title\": \"Generated issue number 16 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 17,\n      \"title ... [43953 chars omitted] ...     },\n    {\n      \"id\": 385,\n      \"title\": \"Generated issue number 385 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 386,\n      \"title\": \"Generated issue number 386 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 387,\n      \"title\": \"Generated issue number 387 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 388,\n      \"title\": \"Generated issue number 388 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 389,\n      \"title\": \"Generated issue number 389 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 390,\n      \"title\": \"Generated issue number 390 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 391,\n      \"title\": \"Generated issue number 391 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 392,\n      \"title\": \"Generated issue number 392 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 393,\n      \"title\": \"Generated issue number 393 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 394,\n      \"title\": \"Generated issue number 394 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 395,\n      \"title\": \"Generated issue number 395 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 396,\n      \"title\": \"Generated issue number 396 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 397,\n      \"title\": \"Generated issue number 397 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 398,\n      \"title\": \"Generated issue number 398 with some padding text\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 399,\n      \"title\": \"Generated issue number 399 with some padding text\",\n      \"state\": \"open\"\n[showing lines 1-2000 of 3422; full output saved to C:\\canimcp-probe\\opencode@0.0.0-a98e3fa\\default\\both-http\\tools.result.large\\home\\.local\\share\\opencode\\tool-output\\tool_1ccbdd911001CnMbQ6Q4nQtN4L]",
+      "payloadBytes": 47953,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 53
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 75
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14568,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

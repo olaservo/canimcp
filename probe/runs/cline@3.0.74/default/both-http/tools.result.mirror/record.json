@@ -1,0 +1,76 @@
+{
+  "client": "cline",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.mirror",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.mirror",
+    "clientVersion": "3.0.74",
+    "config": "default",
+    "artifact": "probe/runs/cline@3.0.74/default/both-http/tools.result.mirror",
+    "note": "⟨…⟩ envelope (payload 2x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "mirror",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_mirror",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+      "payloadBytes": 520,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 2,
+          "firstIndex": 98
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8006,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

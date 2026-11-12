@@ -1,0 +1,47 @@
+{
+  "client": "goose",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.58.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"Error: -32603: -32603: Unexpected response type\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Error: -32603: -32603: Unexpected response type",
+      "payloadBytes": 47,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Error: -32603: -32603: Unexpected response type",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2143,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

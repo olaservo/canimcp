@@ -1,0 +1,92 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.audience",
+  "scenario": "tools.result.audience_user",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.audience_user",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "interpreter",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.audience_user",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "audience_user",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "js_eval (renamed)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "<result>[{type: \"text\", text: \"Shown to the user only MARK_USER_5a1d\", id: \"lc_653e33d5-347f-4885-88dd-8af9462588b3\"}, {type: \"text\", text: \"Found 3 open issues MARK_CONTENT_7f3a\", id: \"lc_ad3d47f0-ba4d-4113-a4c9-71cf8ffc27ad\"}]</result>",
+      "payloadBytes": 237,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "user",
+          "count": 1,
+          "firstIndex": 54
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 161
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Shown to the user only MARK_USER_5a1d",
+            "annotations": {
+              "audience": [
+                "user"
+              ]
+            }
+          },
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool offered under a name the matcher did not recognise; the mock called it and a result came back"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 30764,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

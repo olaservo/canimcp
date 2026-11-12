@@ -1,0 +1,63 @@
+{
+  "client": "mastra",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+    "config": "default",
+    "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.schema_mismatch",
+    "note": "\"…\" client error text, no fixture field: \"Structured content does not match the tool's output schema: data must have requi\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+      "payloadBytes": 101,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 5398,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

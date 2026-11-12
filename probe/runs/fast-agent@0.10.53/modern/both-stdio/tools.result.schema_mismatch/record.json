@@ -1,0 +1,71 @@
+{
+  "client": "fast-agent",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "0.10.53",
+    "config": "modern",
+    "artifact": "probe/runs/fast-agent@0.10.53/modern/both-stdio/tools.result.schema_mismatch",
+    "note": "\"…\" client error text, no fixture field: \"Failed to call_tool 'probe_schema_mismatch' on server 'probe': Invalid structure\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Failed to call_tool 'probe_schema_mismatch' on server 'probe': Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                                        'state': {'type': 'string'}},\n                                         'required': ['id',\n                                                      'title',\n                                                      'state']}}},\n     'required': ['issues']}\n\nOn instance:\n    {'wrong': 'not issues MARK_SC_91be'}",
+      "payloadBytes": 860,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 846
+        }
+      ],
+      "placeholder": "Failed to call_tool 'probe_schema_mismatch' on server 'probe': Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 12585,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

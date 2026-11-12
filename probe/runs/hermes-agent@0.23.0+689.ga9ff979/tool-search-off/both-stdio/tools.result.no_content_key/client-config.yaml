@@ -1,0 +1,36 @@
+{
+  "_config_version": 52,
+  "model": {
+    "default": "gpt-probe",
+    "provider": "custom",
+    "base_url": "http://127.0.0.1:55563/v1",
+    "api_key": "probe"
+  },
+  "gateway": {
+    "unmanaged_idle_exit_seconds": 2
+  },
+  "mcp_servers": {
+    "probe": {
+      "command": "C:/Program Files/nodejs/node.exe",
+      "args": [
+        "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js",
+        "--fixture",
+        "no_content_key",
+        "--mode",
+        "raw",
+        "--era",
+        "both",
+        "--capture",
+        "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/hermes-agent@0.23.0+689.ga9ff979/tool-search-off/both-stdio/tools.result.no_content_key",
+        "--transport",
+        "stdio"
+      ],
+      "timeout": 60
+    }
+  },
+  "tools": {
+    "tool_search": {
+      "enabled": "off"
+    }
+  }
+}

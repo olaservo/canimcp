@@ -1,0 +1,85 @@
+{
+  "client": "agent-framework",
+  "capability": "apps.visibility",
+  "scenario": "tools.result.app_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.app_only",
+    "clientVersion": "1.25.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/agent-framework@1.25.0/anthropic/both-stdio/tools.result.app_only",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "app_only",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_app_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"{\\\"issues\\\": [{\\\"id\\\": 101, \\\"title\\\": \\\"Login button unresponsive MARK_SC_91be\\\", \\\"state\\\": \\\"open\\\"}, {\\\"id\\\": 102, \\\"title\\\": \\\"Dark mode flickers on load\\\", \\\"state\\\": \\\"open\\\"}, {\\\"id\\\": 103, \\\"title\\\": \\\"Export CSV drops header row\\\", \\\"state\\\": \\\"open\\\"}]}\"}]",
+      "payloadBytes": 291,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 91
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 57299,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

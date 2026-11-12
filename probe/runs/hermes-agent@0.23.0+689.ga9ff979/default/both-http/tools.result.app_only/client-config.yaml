@@ -1,0 +1,18 @@
+{
+  "_config_version": 52,
+  "model": {
+    "default": "gpt-probe",
+    "provider": "custom",
+    "base_url": "http://127.0.0.1:53918/v1",
+    "api_key": "probe"
+  },
+  "gateway": {
+    "unmanaged_idle_exit_seconds": 2
+  },
+  "mcp_servers": {
+    "probe": {
+      "url": "http://127.0.0.1:53923/mcp",
+      "timeout": 60
+    }
+  }
+}

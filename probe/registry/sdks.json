@@ -1,0 +1,15 @@
+{
+  "$comment": "The MCP SDKs the probe tracks. Most client behaviour is the SDK's before it is the client's, so each SDK's own client is a probe target in its own right: what it hands the host after parsing, validation and any reshaping. `clientProbe` points at probe/hosts/<id>/ when a reference-client adapter exists. Pins are the versions the pilot clients resolve to.",
+  "sdks": {
+    "typescript-sdk": { "title": "TypeScript SDK", "repo": "https://github.com/modelcontextprotocol/typescript-sdk", "source": "typescript-sdk", "language": "typescript", "packages": ["@modelcontextprotocol/client", "@modelcontextprotocol/server", "@modelcontextprotocol/core"], "pinned": "2.4.0", "clientProbe": "hosts/ts-sdk-client", "usedBy": ["mastra", "libfx"] },
+    "python-sdk": { "title": "Python SDK", "repo": "https://github.com/modelcontextprotocol/python-sdk", "source": "python-sdk", "language": "python", "packages": ["mcp"], "usedBy": ["fast-agent", "hermes-agent", "strands", "crewai", "deepagents", "adk-python"] },
+    "rust-sdk": { "title": "Rust SDK (rmcp)", "repo": "https://github.com/modelcontextprotocol/rust-sdk", "language": "rust", "packages": ["rmcp"], "pinned": { "codex": "3.5.1 at 98a54789", "goose": "3.4.1" }, "usedBy": ["codex", "goose", "zed"] },
+    "go-sdk": { "title": "Go SDK", "repo": "https://github.com/modelcontextprotocol/go-sdk", "language": "go", "packages": ["github.com/modelcontextprotocol/go-sdk/mcp"] },
+    "csharp-sdk": { "title": "C# SDK", "repo": "https://github.com/modelcontextprotocol/csharp-sdk", "language": "csharp", "packages": ["ModelContextProtocol"], "usedBy": ["agent-framework"] },
+    "java-sdk": { "title": "Java SDK", "repo": "https://github.com/modelcontextprotocol/java-sdk", "language": "java", "packages": ["io.modelcontextprotocol.sdk:mcp"] },
+    "kotlin-sdk": { "title": "Kotlin SDK", "repo": "https://github.com/modelcontextprotocol/kotlin-sdk", "language": "kotlin", "packages": ["io.modelcontextprotocol:kotlin-sdk"] },
+    "swift-sdk": { "title": "Swift SDK", "repo": "https://github.com/modelcontextprotocol/swift-sdk", "language": "swift", "packages": ["MCP"] },
+    "php-sdk": { "title": "PHP SDK", "repo": "https://github.com/modelcontextprotocol/php-sdk", "language": "php", "packages": ["mcp/sdk"] },
+    "ruby-sdk": { "title": "Ruby SDK", "repo": "https://github.com/modelcontextprotocol/ruby-sdk", "language": "ruby", "packages": ["mcp"] }
+  }
+}

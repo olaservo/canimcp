@@ -1,0 +1,74 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.structured_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.structured_only",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "hooks",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.structured_only",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "structured_only",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_structured_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"HOOK_ARTIFACT: {\\\"structured_content\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}}\"}]",
+      "payloadBytes": 313,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 126
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"HOOK_ARTIFACT:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 23116,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

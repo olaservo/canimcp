@@ -1,0 +1,80 @@
+{
+  "client": "mastra",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.with_meta",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.with_meta",
+    "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+    "config": "legacy",
+    "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.with_meta",
+    "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "with_meta",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_with_meta",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+      "payloadBytes": 214,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 71
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 3304,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

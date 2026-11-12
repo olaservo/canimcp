@@ -1,0 +1,10 @@
+node_modules/
+dist/
+hosts/*/node_modules/
+hosts/*/bin/
+hosts/libfx/package-lock.json
+runs/**/tmp/
+.venv/
+__pycache__/
+*.egg-info/
+hosts/*/.venv/

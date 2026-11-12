@@ -1,0 +1,66 @@
+{
+  "client": "goose",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "1.58.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.meta_only",
+    "note": "[…] content only (1x, as text, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_meta_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+      "payloadBytes": 37,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 20
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture",
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2276,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

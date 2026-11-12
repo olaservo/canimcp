@@ -1,0 +1,73 @@
+{
+  "client": "adk-python",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "2.14.0",
+    "config": "modern",
+    "artifact": "probe/runs/adk-python@2.14.0/modern/both-stdio/tools.result.is_error",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "gemini",
+      "toolOffered": true,
+      "offeredAs": "probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Lookup failed MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"},\"isError\":true}",
+      "payloadBytes": 240,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 146
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 210
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true,
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 47470,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "gemini"
+  }
+}

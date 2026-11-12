@@ -1,0 +1,3 @@
+# fast-agent pinned at evalstate/fast-agent b8a36d2 (2026-11-07), tag v0.10.53; PyPI fast-agent-mcp 0.10.53 is that tag.
+# Install: uv venv --python 3.13 .venv && uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+fast-agent-mcp==0.10.53

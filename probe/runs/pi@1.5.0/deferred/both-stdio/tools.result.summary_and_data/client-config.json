@@ -1,0 +1,51 @@
+{
+  "models.json": {
+    "providers": {
+      "probe": {
+        "name": "probe",
+        "baseUrl": "http://127.0.0.1:64084/v1",
+        "api": "openai-completions",
+        "apiKey": "probe",
+        "models": [
+          {
+            "id": "gpt-probe",
+            "name": "gpt-probe",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  },
+  "mcp.json": {
+    "mcpServers": {
+      "probe": {
+        "command": "node",
+        "args": [
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js",
+          "--fixture",
+          "summary_and_data",
+          "--mode",
+          "sdk",
+          "--era",
+          "both",
+          "--capture",
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/pi@1.5.0/deferred/both-stdio/tools.result.summary_and_data",
+          "--transport",
+          "stdio"
+        ],
+        "timeout": 60,
+        "exposure": "deferred"
+      }
+    }
+  },
+  "settings.json": {
+    "quietStartup": true,
+    "cacheWarming": "off",
+    "defaultProjectTrust": "never"
+  }
+}

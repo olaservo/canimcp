@@ -1,0 +1,78 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.mirror",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.mirror",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "default",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.mirror",
+    "note": "payload once (as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "mirror",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_mirror",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\"}]",
+      "payloadBytes": 273,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 87
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 27812,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

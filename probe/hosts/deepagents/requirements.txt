@@ -1,0 +1,19 @@
+# Pins for the deepagents probe host, matching libs/code/uv.lock at research pin
+# 9c5d330 (2026-11-07). deepagents-code 0.2.5 was tagged 9 commits below the pin;
+# none of the commits between touch libs/code/deepagents_code/mcp_* (the two that
+# touch libs/code are a quickjs shutdown fix and a dependency-minimum bump).
+# deepagents-code requires Python 3.14. Install:
+#   uv venv probe/hosts/deepagents/.venv --python 3.14
+#   uv pip install --python probe/hosts/deepagents/.venv/Scripts/python.exe -r probe/hosts/deepagents/requirements.txt
+deepagents-code==0.2.5
+deepagents==0.7.34
+langchain==1.4.9
+langchain-core==1.7.6
+langchain-openai==1.7.4
+langchain-quickjs==0.3.12
+langgraph-prebuilt==1.1.0
+fastmcp==4.1.2
+mcp==2.2.0
+mcp-types==2.2.0
+openai==2.46.0
+pydantic==2.13.5

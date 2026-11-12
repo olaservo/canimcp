@@ -1,0 +1,52 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "interpreter",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.schema_mismatch",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool was called on the wire but no tool result reached the model"
+      ]
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 19617,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

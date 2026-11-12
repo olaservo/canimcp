@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-pi",
+  "private": true,
+  "type": "module",
+  "description": "Pins @earendil-works/pi-coding-agent 1.5.0, the npm latest, published from tag v1.5.0 (2026-11-02). The research pin 085c84e (2026-11-07, git describe v1.5.0-270-g085c84e98) is 270 commits past the tag; 18 of them touch packages/mcp or the coding-agent mcp and codemode extensions, and packages/mcp/src/protocol/content.ts is unchanged. The tools.ts diff moves limitMcpContent, createMcpToolName and toParameters into @earendil-works/pi-mcp and leaves convertMcpResult's content-first rule as it is.",
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "1.5.0"
+  }
+}

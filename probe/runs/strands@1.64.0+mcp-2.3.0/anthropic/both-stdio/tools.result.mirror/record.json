@@ -1,0 +1,85 @@
+{
+  "client": "strands",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.mirror",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.mirror",
+    "clientVersion": "1.64.0+mcp-2.3.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.mirror",
+    "note": "payload once (as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "mirror",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_mirror",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\",\"type\":\"text\"}]",
+      "payloadBytes": 273,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 73
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 19008,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

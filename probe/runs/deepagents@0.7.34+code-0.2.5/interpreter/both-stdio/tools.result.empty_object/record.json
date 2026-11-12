@@ -1,0 +1,42 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "interpreter",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.empty_object",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [
+        "tool was called on the wire but no tool result reached the model"
+      ]
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 22630,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

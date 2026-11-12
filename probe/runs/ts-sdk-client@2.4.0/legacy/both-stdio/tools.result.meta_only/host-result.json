@@ -1,0 +1,20 @@
+{
+  "negotiation": "legacy",
+  "negotiatedVersion": "2025-11-25",
+  "tools": [
+    "probe_meta_only"
+  ],
+  "toolOffered": true,
+  "result": {
+    "_meta": {
+      "probe/trace": "trace MARK_META_4d2e",
+      "probe/source": "fixture"
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Found 3 open issues MARK_CONTENT_7f3a"
+      }
+    ]
+  }
+}

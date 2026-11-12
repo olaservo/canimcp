@@ -1,0 +1,76 @@
+{
+  "client": "fx",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "0.0.16",
+    "config": "default",
+    "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.schema_mismatch",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_probe_probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Declares an outputSchema the result does not match.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_schema_mismatch\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"wrong\\\":\\\"not issues MARK_SC_91be\\\"},\\\"isError\\\":false}}\"]",
+      "payloadBytes": 612,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 507
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 575
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. D\"",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4738,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

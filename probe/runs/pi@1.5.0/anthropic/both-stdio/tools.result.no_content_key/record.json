@@ -1,0 +1,70 @@
+{
+  "client": "pi",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "1.5.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/pi@1.5.0/anthropic/both-stdio/tools.result.no_content_key",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+      "payloadBytes": 324,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 81
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2001,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "canimcp",
+  "version": "0.1.0",
+  "description": "MCP client capability registry with evidence provenance and research notes",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "build:cards": "node scripts/build-cards.js",
+    "check:cards": "node scripts/build-cards.js --check",
+    "migrate": "node scripts/migrate.js",
+    "build": "npm run validate && npm run check:cards && npm run check:private",
+    "build:site": "node scripts/build-site.js",
+    "serve": "node scripts/build-site.js && npx --yes serve site",
+    "ingest:observed": "node scripts/ingest-observed.js",
+    "check:private": "node scripts/check-private.js",
+    "prepare": "git config core.hooksPath .githooks"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "capabilities",
+    "client-registry"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

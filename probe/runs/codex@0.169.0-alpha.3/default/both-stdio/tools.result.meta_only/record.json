@@ -1,0 +1,63 @@
+{
+  "client": "codex",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "default",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/tools.result.meta_only",
+    "note": "[…] content only (1x, as text, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe/probe_meta_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"input_text\",\"text\":\"Wall time: 0.0168 seconds\\nOutput:\"},{\"type\":\"input_text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]",
+      "payloadBytes": 136,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 116
+        }
+      ],
+      "negotiatedRevision": "2025-06-18",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ]
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2268,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

@@ -1,0 +1,2113 @@
+[
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 2424,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-http/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 2468,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-http/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 2425,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.app_only",
+      "note": "tool not offered to the model",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": false,
+        "toolCalled": false,
+        "resultSentToModel": false,
+        "form": "unknown",
+        "markers": [],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "notes": [],
+        "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 0 tools."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4646,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.audience_user",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4795,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"array\\\",\\n    \\\"code\\\": \\\"inval\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+        "payloadBytes": 199,
+        "form": "json",
+        "markers": [],
+        "placeholder": "Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Invalid result for tools/call:\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 5284,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.is_error",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+        "payloadBytes": 31,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 14
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4552,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.large",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"state\":\"open\",\"title\":\"Generated issue number 1 with some padding text\"},{\"id\":2,\"state\":\"open\",\"title\":\"Generated issue number 2 with some padding text\"},{\"id\":3,\"state\":\"open\",\"title\":\"Generated issue number 3 with some padding text\"},{\"id\":4,\"state\":\"open\",\"title\":\"Generated issue number 4 with some padding text\"},{\"id\":5,\"state\":\"open\",\"title\":\"Generated issue number 5 with some padding text\"},{\"id\":6,\"state\":\"open\",\"title\":\"Generated issue number 6 with some padding text\"},{\"id\":7,\"state\":\"open\",\"title\":\"Generated issue number 7 with some padding text\"},{\"id\":8,\"state\":\"open\",\"title\":\"Generated issue number 8 with some padding text\"},{\"id\":9,\"state\":\"open\",\"title\":\"Generated issue number 9 with some padding text\"},{\"id\":10,\"state\":\"open\",\"title\":\"Generated issue number 10 with some padding text\"},{\"id\":11,\"state\":\"open\",\"title\":\"Generated issue number 11 with some padding text\"},{\"id\":12,\"state\":\"open\",\"title\":\"Generated issue number 12 with some padding text\"},{\"id\":13,\"state\":\"open\",\"title\":\"Generated issue number 13 with some padding text\"},{\"id\":14,\"state\":\"open\",\"title\":\"Generated issue number 14 with some padding text\"},{\"id\":15,\"state\":\"open\",\"title\":\"Generated issue number 15 with some padding text\"},{\"id\":16,\"state\":\"open\",\"title\":\"Generated issue number 16 with some padding text\"},{\"id\":17,\"state\":\"open\",\"title\":\"Generated issue number 17 with some padding text\"},{\"id\":18,\"state\":\"open\",\"title\":\"Generated issue number 18 with some padding text\"},{\"id\":19,\"state\":\"open\",\"title\":\"Generated issue number 19 with some padding text\"},{\"id\":20,\"state\":\"open\",\"title\":\"Generated issue number 20 with some padding text\"},{\"id\":21,\"state\":\"open\",\"title\":\"Generated issue number 21 with some padding text\"},{\"id\":22,\"state\":\"open\",\"title\":\"Generated issue number 22 with some padding text\"},{\"id\":23,\"state\":\"open\",\"title\":\"Generated issue number 23 with some padding text\"},{\"id\":24,\"state\":\"ope ... [54543 chars omitted] ... pen\",\"title\":\"Generated issue number 660 with some padding text\"},{\"id\":661,\"state\":\"open\",\"title\":\"Generated issue number 661 with some padding text\"},{\"id\":662,\"state\":\"open\",\"title\":\"Generated issue number 662 with some padding text\"},{\"id\":663,\"state\":\"open\",\"title\":\"Generated issue number 663 with some padding text\"},{\"id\":664,\"state\":\"open\",\"title\":\"Generated issue number 664 with some padding text\"},{\"id\":665,\"state\":\"open\",\"title\":\"Generated issue number 665 with some padding text\"},{\"id\":666,\"state\":\"open\",\"title\":\"Generated issue number 666 with some padding text\"},{\"id\":667,\"state\":\"open\",\"title\":\"Generated issue number 667 with some padding text\"},{\"id\":668,\"state\":\"open\",\"title\":\"Generated issue number 668 with some padding text\"},{\"id\":669,\"state\":\"open\",\"title\":\"Generated issue number 669 with some padding text\"},{\"id\":670,\"state\":\"open\",\"title\":\"Generated issue number 670 with some padding text\"},{\"id\":671,\"state\":\"open\",\"title\":\"Generated issue number 671 with some padding text\"},{\"id\":672,\"state\":\"open\",\"title\":\"Generated issue number 672 with some padding text\"},{\"id\":673,\"state\":\"open\",\"title\":\"Generated issue number 673 with some padding text\"},{\"id\":674,\"state\":\"open\",\"title\":\"Generated issue number 674 with some padding text\"},{\"id\":675,\"state\":\"open\",\"title\":\"Generated issue number 675 with some padding text\"},{\"id\":676,\"state\":\"open\",\"title\":\"Generated issue number 676 with some padding text\"},{\"id\":677,\"state\":\"open\",\"title\":\"Generated issue number 677 with some padding text\"},{\"id\":678,\"state\":\"open\",\"title\":\"Generated issue number 678 with some padding text\"},{\"id\":679,\"state\":\"open\",\"title\":\"Generated issue number 679 with some padding text\"},{\"id\":680,\"state\":\"open\",\"title\":\"Generated issue number 680 with some padding text\"},{\"id\":681,\"state\":\"open\",\"title\":\"Generated issue number 681 with some padding text\"},{\"id\":682,\"state\":\"open\",\"title\":\"Generated issue number 682 with some padding text\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}",
+        "payloadBytes": 58543,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 28
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 50
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 58520
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 5613,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.meta_only",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/source\":\"fixture\",\"probe/trace\":\"trace MARK_META_4d2e\"},\"content\":[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]}",
+        "payloadBytes": 236,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "meta",
+            "count": 1,
+            "firstIndex": 144
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 201
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4971,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3526,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.no_content_key",
+      "note": "\"…\" client error text, no fixture field: \"Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"array\\\",\\n    \\\"code\\\": \\\"inval\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+        "payloadBytes": 199,
+        "form": "json",
+        "markers": [],
+        "placeholder": "Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Invalid result for tools/call:\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 5556,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.schema_match",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 5327,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"Structured content does not match the tool's output schema: data must have requi\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+        "payloadBytes": 101,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 5398,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.sc_empty",
+      "note": "\"…\" no marker reached the model; payload: \"{}\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{}",
+        "payloadBytes": 2,
+        "form": "json",
+        "markers": [],
+        "placeholder": "{}",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3620,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.sc_null",
+      "note": "\"…\" no marker reached the model; payload: \"null\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "null",
+        "payloadBytes": 4,
+        "form": "text",
+        "markers": [],
+        "placeholder": "null",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4871,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.sc_string",
+      "note": "{…} structuredContent only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "three issues MARK_SC_91be",
+        "payloadBytes": 25,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 13
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4128,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3632,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3760,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.with_image",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "image": "absent",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3565,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "default",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.with_meta",
+      "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 8180,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "legacy",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.meta_only",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"_meta\":{\"probe/source\":\"fixture\",\"probe/trace\":\"trace MARK_META_4d2e\"},\"content\":[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]}",
+        "payloadBytes": 148,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "meta",
+            "count": 1,
+            "firstIndex": 56
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 113
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ]
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3202,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "legacy",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3539,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "legacy",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3250,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "legacy",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4250,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "legacy",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/legacy/both-stdio/tools.result.with_meta",
+      "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3304,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "return-errors",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/return-errors/both-stdio/tools.result.is_error",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"text\":\"Lookup failed MARK_CONTENT_7f3a\",\"type\":\"text\"}],\"isError\":true,\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"}}",
+        "payloadBytes": 241,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 133
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 226
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3793,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "return-errors",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/return-errors/both-stdio/tools.result.meta_only",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/source\":\"fixture\",\"probe/trace\":\"trace MARK_META_4d2e\"},\"content\":[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]}",
+        "payloadBytes": 236,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "meta",
+            "count": 1,
+            "firstIndex": 144
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 201
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3719,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "return-errors",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/return-errors/both-stdio/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 4473,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "mastra",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+      "config": "return-errors",
+      "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/return-errors/both-stdio/tools.result.with_meta",
+      "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"state\":\"open\",\"title\":\"Login button unresponsive MARK_SC_91be\"},{\"id\":102,\"state\":\"open\",\"title\":\"Dark mode flickers on load\"},{\"id\":103,\"state\":\"open\",\"title\":\"Export CSV drops header row\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 71
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 3221226505,
+      "timedOut": false,
+      "durationMs": 3730,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  }
+]

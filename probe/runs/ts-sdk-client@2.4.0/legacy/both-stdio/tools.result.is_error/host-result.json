@@ -1,0 +1,20 @@
+{
+  "negotiation": "legacy",
+  "negotiatedVersion": "2025-11-25",
+  "tools": [
+    "probe_is_error"
+  ],
+  "toolOffered": true,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Lookup failed MARK_CONTENT_7f3a"
+      }
+    ],
+    "structuredContent": {
+      "error": "rate limited MARK_SC_91be"
+    },
+    "isError": true
+  }
+}

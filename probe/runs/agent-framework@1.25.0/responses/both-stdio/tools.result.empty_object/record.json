@@ -1,0 +1,47 @@
+{
+  "client": "agent-framework",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.25.0",
+    "config": "responses",
+    "artifact": "probe/runs/agent-framework@1.25.0/responses/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"Error: Function failed.\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Error: Function failed.",
+      "payloadBytes": 23,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Error: Function failed.",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 10741,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

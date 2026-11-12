@@ -1,0 +1,57 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "2.2.6",
+    "config": "default",
+    "artifact": "probe/runs/opencode@2.2.6/default/both-http/tools.result.sc_string",
+    "note": "\"…\" client error text, no fixture field: \"MCP tool \\\"probe_sc_string\\\" on server \\\"probe\\\" failed: Invalid result for tools/ca\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_sc_string)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "MCP tool \"probe_sc_string\" on server \"probe\" failed: Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received string\"\n  }\n]",
+      "payloadBytes": 261,
+      "form": "json",
+      "markers": [],
+      "placeholder": "MCP tool \"probe_sc_string\" on server \"probe\" failed: Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received string\"\n  }\n]",
+      "clientError": true,
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name",
+        "client prefixed the payload with a header: \"MCP tool \\\"probe_sc_string\\\" on server \\\"probe\\\" failed: Invalid result for tools/call:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 16201,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

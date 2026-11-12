@@ -1,0 +1,45 @@
+{
+  "client": "libfx",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.large",
+    "clientVersion": "0.0.0-eab1401",
+    "config": "default",
+    "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.large",
+    "note": "\"…\" no marker reached the model; payload: \"Host tool result exceeded the configured limit\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Host tool result exceeded the configured limit",
+      "payloadBytes": 46,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Host tool result exceeded the configured limit",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8423,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

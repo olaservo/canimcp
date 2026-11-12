@@ -1,0 +1,30 @@
+{
+  "providers": {
+    "version": 1,
+    "lastUsedProvider": "openai-compatible",
+    "modes": {},
+    "providers": {
+      "openai-compatible": {
+        "settings": {
+          "provider": "openai-compatible",
+          "apiKey": "probe",
+          "model": "gpt-probe",
+          "baseUrl": "http://127.0.0.1:57249/v1"
+        },
+        "updatedAt": "2026-11-08T20:08:57.052Z",
+        "tokenSource": "manual"
+      }
+    }
+  },
+  "mcp": {
+    "mcpServers": {
+      "probe": {
+        "transport": {
+          "type": "streamableHttp",
+          "url": "http://127.0.0.1:57251/mcp"
+        },
+        "timeout": 60
+      }
+    }
+  }
+}

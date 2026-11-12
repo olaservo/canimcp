@@ -1,0 +1,60 @@
+{
+  "client": "mastra",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.large",
+    "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+    "config": "default",
+    "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.large",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"state\":\"open\",\"title\":\"Generated issue number 1 with some padding text\"},{\"id\":2,\"state\":\"open\",\"title\":\"Generated issue number 2 with some padding text\"},{\"id\":3,\"state\":\"open\",\"title\":\"Generated issue number 3 with some padding text\"},{\"id\":4,\"state\":\"open\",\"title\":\"Generated issue number 4 with some padding text\"},{\"id\":5,\"state\":\"open\",\"title\":\"Generated issue number 5 with some padding text\"},{\"id\":6,\"state\":\"open\",\"title\":\"Generated issue number 6 with some padding text\"},{\"id\":7,\"state\":\"open\",\"title\":\"Generated issue number 7 with some padding text\"},{\"id\":8,\"state\":\"open\",\"title\":\"Generated issue number 8 with some padding text\"},{\"id\":9,\"state\":\"open\",\"title\":\"Generated issue number 9 with some padding text\"},{\"id\":10,\"state\":\"open\",\"title\":\"Generated issue number 10 with some padding text\"},{\"id\":11,\"state\":\"open\",\"title\":\"Generated issue number 11 with some padding text\"},{\"id\":12,\"state\":\"open\",\"title\":\"Generated issue number 12 with some padding text\"},{\"id\":13,\"state\":\"open\",\"title\":\"Generated issue number 13 with some padding text\"},{\"id\":14,\"state\":\"open\",\"title\":\"Generated issue number 14 with some padding text\"},{\"id\":15,\"state\":\"open\",\"title\":\"Generated issue number 15 with some padding text\"},{\"id\":16,\"state\":\"open\",\"title\":\"Generated issue number 16 with some padding text\"},{\"id\":17,\"state\":\"open\",\"title\":\"Generated issue number 17 with some padding text\"},{\"id\":18,\"state\":\"open\",\"title\":\"Generated issue number 18 with some padding text\"},{\"id\":19,\"state\":\"open\",\"title\":\"Generated issue number 19 with some padding text\"},{\"id\":20,\"state\":\"open\",\"title\":\"Generated issue number 20 with some padding text\"},{\"id\":21,\"state\":\"open\",\"title\":\"Generated issue number 21 with some padding text\"},{\"id\":22,\"state\":\"open\",\"title\":\"Generated issue number 22 with some padding text\"},{\"id\":23,\"state\":\"open\",\"title\":\"Generated issue number 23 with some padding text\"},{\"id\":24,\"state\":\"ope ... [54543 chars omitted] ... pen\",\"title\":\"Generated issue number 660 with some padding text\"},{\"id\":661,\"state\":\"open\",\"title\":\"Generated issue number 661 with some padding text\"},{\"id\":662,\"state\":\"open\",\"title\":\"Generated issue number 662 with some padding text\"},{\"id\":663,\"state\":\"open\",\"title\":\"Generated issue number 663 with some padding text\"},{\"id\":664,\"state\":\"open\",\"title\":\"Generated issue number 664 with some padding text\"},{\"id\":665,\"state\":\"open\",\"title\":\"Generated issue number 665 with some padding text\"},{\"id\":666,\"state\":\"open\",\"title\":\"Generated issue number 666 with some padding text\"},{\"id\":667,\"state\":\"open\",\"title\":\"Generated issue number 667 with some padding text\"},{\"id\":668,\"state\":\"open\",\"title\":\"Generated issue number 668 with some padding text\"},{\"id\":669,\"state\":\"open\",\"title\":\"Generated issue number 669 with some padding text\"},{\"id\":670,\"state\":\"open\",\"title\":\"Generated issue number 670 with some padding text\"},{\"id\":671,\"state\":\"open\",\"title\":\"Generated issue number 671 with some padding text\"},{\"id\":672,\"state\":\"open\",\"title\":\"Generated issue number 672 with some padding text\"},{\"id\":673,\"state\":\"open\",\"title\":\"Generated issue number 673 with some padding text\"},{\"id\":674,\"state\":\"open\",\"title\":\"Generated issue number 674 with some padding text\"},{\"id\":675,\"state\":\"open\",\"title\":\"Generated issue number 675 with some padding text\"},{\"id\":676,\"state\":\"open\",\"title\":\"Generated issue number 676 with some padding text\"},{\"id\":677,\"state\":\"open\",\"title\":\"Generated issue number 677 with some padding text\"},{\"id\":678,\"state\":\"open\",\"title\":\"Generated issue number 678 with some padding text\"},{\"id\":679,\"state\":\"open\",\"title\":\"Generated issue number 679 with some padding text\"},{\"id\":680,\"state\":\"open\",\"title\":\"Generated issue number 680 with some padding text\"},{\"id\":681,\"state\":\"open\",\"title\":\"Generated issue number 681 with some padding text\"},{\"id\":682,\"state\":\"open\",\"title\":\"Generated issue number 682 with some padding text\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}",
+      "payloadBytes": 58543,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 28
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 50
+        },
+        {
+          "marker": "largeEnd",
+          "count": 1,
+          "firstIndex": 58520
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 5613,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

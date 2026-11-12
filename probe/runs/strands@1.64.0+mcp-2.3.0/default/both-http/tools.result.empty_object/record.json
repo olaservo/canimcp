@@ -1,0 +1,48 @@
+{
+  "client": "strands",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.64.0+mcp-2.3.0",
+    "config": "default",
+    "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.empty_object",
+    "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+      "payloadBytes": 563,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further inf",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 11125,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

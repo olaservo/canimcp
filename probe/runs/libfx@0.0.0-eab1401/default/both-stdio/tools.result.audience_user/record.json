@@ -1,0 +1,97 @@
+{
+  "client": "libfx",
+  "capability": "tools.result.audience",
+  "scenario": "tools.result.audience_user",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.audience_user",
+    "clientVersion": "0.0.0-eab1401",
+    "config": "default",
+    "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.audience_user",
+    "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "audience_user",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_audience_user",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Shown to the user only MARK_USER_5a1d\nFound 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+      "payloadBytes": 290,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "user",
+          "count": 1,
+          "firstIndex": 23
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 58
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 132
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Shown to the user only MARK_USER_5a1d",
+            "annotations": {
+              "audience": [
+                "user"
+              ]
+            }
+          },
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "client prefixed the payload with a header: \"Shown to the user only MARK_USER_5a1d\\nFound 3 open issues MARK_CONTENT_7f3a\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 7888,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-libfx",
+  "private": true,
+  "type": "module",
+  "description": "libfx built from vercel-labs/fx at the research pin eab1401 (no npm release covers it: v0.0.16 is 638 commits behind). Build in a Linux checkout with Zig 0.17.0: zig build -Dnapi-surface=core -Doptimize=ReleaseSafe -Dnode-include-dir=<node>/include/node; zig build -Dwasm-surface=core; zig build -Dwasm-surface=term; npm ci --prefix sdk/durable; LIBFX_VERSION=0.0.0-eab1401 node sdk/scripts/package-libfx.mjs <out>; then here: npm install <out>/libfx <out>/libfx-linux-x64-gnu @modelcontextprotocol/client@2.4.0 (npm rewrites this file with file: paths; restore it). The official TypeScript client supplies the MCP connection.",
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.4.0"
+  }
+}

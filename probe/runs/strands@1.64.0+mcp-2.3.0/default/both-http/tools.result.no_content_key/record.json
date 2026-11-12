@@ -1,0 +1,67 @@
+{
+  "client": "strands",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "1.64.0+mcp-2.3.0",
+    "config": "default",
+    "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.no_content_key",
+    "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+      "payloadBytes": 589,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_typ",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        },
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 18022,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

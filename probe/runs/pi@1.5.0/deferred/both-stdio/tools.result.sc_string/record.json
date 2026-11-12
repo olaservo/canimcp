@@ -1,0 +1,61 @@
+{
+  "client": "pi",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "1.5.0",
+    "config": "deferred",
+    "artifact": "probe/runs/pi@1.5.0/deferred/both-stdio/tools.result.sc_string",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe__probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"Loaded 1 tool. They are available from your next call:\\n- mcp__probe__probe_sc_string: Lists open issues. structuredContent is a string.\",\"Found 3 open issues MARK_CONTENT_7f3a\"]",
+      "payloadBytes": 180,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 161
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2741,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "canimcp-probe-host-mastra",
+  "private": true,
+  "type": "module",
+  "description": "Pins the @mastra/mcp and @mastra/core versions published from f21e0742ce, the 'chore: version packages' commit below the research pin b1f91397 (2026-11-08; the previous pin 027be9c5 was two commits above the same release). None of the commits between touch packages/mcp or packages/core/src/tools. Install with npm install --legacy-peer-deps: the mcp package's peer range excludes the core alpha it was published with.",
+  "dependencies": {
+    "@mastra/core": "1.83.0-alpha.1",
+    "@mastra/mcp": "2.9.0-alpha.1",
+    "zod": "^4.0.0"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "2.4.0",
+    "config": "legacy",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.no_content_key",
+    "note": "⟨…⟩ envelope (content 0x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "toolOffered": true,
+      "offeredAs": "probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"content\":[],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+      "payloadBytes": 249,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 90
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved"
+      ],
+      "finalText": "PROBE_DONE: host-level result written"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1109,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

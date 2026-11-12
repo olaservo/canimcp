@@ -1,0 +1,9 @@
+{"t":"2026-11-08T20:19:08.307Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:19:08.318Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T20:19:08.330Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"notifications/initialized","jsonrpc":"2.0"}}
+{"t":"2026-11-08T20:19:08.332Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T20:19:08.333Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"probe_sc_string","description":"Lists open issues. structuredContent is a string.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:19:08.336Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":2}}
+{"t":"2026-11-08T20:19:08.337Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"probe_sc_string","description":"Lists open issues. structuredContent is a string.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:19:11.136Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_sc_string","arguments":{}},"jsonrpc":"2.0","id":3}}
+{"t":"2026-11-08T20:19:11.137Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":3,"result":{"content":[{"type":"text","text":"Found 3 open issues MARK_CONTENT_7f3a"}],"structuredContent":"three issues MARK_SC_91be"}}}

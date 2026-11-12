@@ -1,0 +1,69 @@
+{
+  "client": "pi",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "1.5.0",
+    "config": "codemode",
+    "artifact": "probe/runs/pi@1.5.0/codemode/both-stdio/tools.result.is_error",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "codemode (indirect: probe_is_error)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Script completed\nWall time 0.4 seconds\nOutput:\n\n{\"content\":[{\"type\":\"text\",\"text\":\"Lookup failed MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"},\"isError\":true}",
+      "payloadBytes": 191,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 97
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 161
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name",
+        "client prefixed the payload with a header: \"Script completed\\nWall time 0.4 seconds\\nOutput:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4002,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

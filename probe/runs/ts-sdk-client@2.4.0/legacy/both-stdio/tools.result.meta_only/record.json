@@ -1,0 +1,67 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "2.4.0",
+    "config": "legacy",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.meta_only",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "toolOffered": true,
+      "offeredAs": "probe_meta_only",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"_meta\":{\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
+      "payloadBytes": 148,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "meta",
+          "count": 1,
+          "firstIndex": 31
+        },
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 127
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ]
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved"
+      ],
+      "finalText": "PROBE_DONE: host-level result written"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1205,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

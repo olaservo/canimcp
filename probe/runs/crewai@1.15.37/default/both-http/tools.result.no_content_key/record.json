@@ -1,0 +1,66 @@
+{
+  "client": "crewai",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "1.15.37",
+    "config": "default",
+    "artifact": "probe/runs/crewai@1.15.37/default/both-http/tools.result.no_content_key",
+    "note": "\"…\" client error text, no fixture field: \"Error executing tool: Error executing MCP tool probe_no_content_key: Operation f\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_127_0_0_1_60025_mcp_probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Error executing tool: Error executing MCP tool probe_no_content_key: Operation failed after 3 attempts: 1 validation error for CallToolResult\ncontent\n  Field required [type=missing, input_value={'structuredContent': {'i...ow', 'state': 'open'}]}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing",
+      "payloadBytes": 341,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Error executing tool: Error executing MCP tool probe_no_content_key: Operation failed after 3 attempts: 1 validation error for CallToolResult\ncontent\n  Field required [type=missing, input_value={'structuredContent': {'i...ow', 'state': 'open'}]}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/missing",
+      "clientError": true,
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 66120,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

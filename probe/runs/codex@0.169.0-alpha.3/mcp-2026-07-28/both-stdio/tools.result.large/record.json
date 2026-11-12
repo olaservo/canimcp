@@ -1,0 +1,62 @@
+{
+  "client": "codex",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.large",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "mcp-2026-07-28",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/both-stdio/tools.result.large",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe/probe_large",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Wall time: 0.0171 seconds\nOutput:\n{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"title\":\"Generated issue number 1 with some padding text\",\"state\":\"open\"},{\"id\":2,\"title\":\"Generated issue number 2 with some padding text\",\"state\":\"open\"},{\"id\":3,\"title\":\"Generated issue number 3 with some padding text\",\"state\":\"open\"},{\"id\":4,\"title\":\"Generated issue number 4 with some padding text\",\"state\":\"open\"},{\"id\":5,\"title\":\"Generated issue number 5 with some padding text\",\"state\":\"open\"},{\"id\":6,\"title\":\"Generated issue number 6 with some padding text\",\"state\":\"open\"},{\"id\":7,\"title\":\"Generated issue number 7 with some padding text\",\"state\":\"open\"},{\"id\":8,\"title\":\"Generated issue number 8 with some padding text\",\"state\":\"open\"},{\"id\":9,\"title\":\"Generated issue number 9 with some padding text\",\"state\":\"open\"},{\"id\":10,\"title\":\"Generated issue number 10 with some padding text\",\"state\":\"open\"},{\"id\":11,\"title\":\"Generated issue number 11 with some padding text\",\"state\":\"open\"},{\"id\":12,\"title\":\"Generated issue number 12 with some padding text\",\"state\":\"open\"},{\"id\":13,\"title\":\"Generated issue number 13 with some padding text\",\"state\":\"open\"},{\"id\":14,\"title\":\"Generated issue number 14 with some padding text\",\"state\":\"open\"},{\"id\":15,\"title\":\"Generated issue number 15 with some padding text\",\"state\":\"open\"},{\"id\":16,\"title\":\"Generated issue number 16 with some padding text\",\"state\":\"open\"},{\"id\":17,\"title\":\"Generated issue number 17 with some padding text\",\"state\":\"open\"},{\"id\":18,\"title\":\"Generated issue number 18 with some padding text\",\"state\":\"open\"},{\"id\":19,\"title\":\"Generated issue number 19 with some padding text\",\"state\":\"open\"},{\"id\":20,\"title\":\"Generated issue number 20 with some padding text\",\"state\":\"open\"},{\"id\":21,\"title\":\"Generated issue number 21 with some padding text\",\"state\":\"open\"},{\"id\":22,\"title\":\"Generated issue number 22 with some padding text\",\"state\":\"open\"},{\"id\":23,\"title\":\"Generated issue number 23 with some padding text\",\"st ... [8020 chars omitted] ... enerated issue number 660 with some padding text\",\"state\":\"open\"},{\"id\":661,\"title\":\"Generated issue number 661 with some padding text\",\"state\":\"open\"},{\"id\":662,\"title\":\"Generated issue number 662 with some padding text\",\"state\":\"open\"},{\"id\":663,\"title\":\"Generated issue number 663 with some padding text\",\"state\":\"open\"},{\"id\":664,\"title\":\"Generated issue number 664 with some padding text\",\"state\":\"open\"},{\"id\":665,\"title\":\"Generated issue number 665 with some padding text\",\"state\":\"open\"},{\"id\":666,\"title\":\"Generated issue number 666 with some padding text\",\"state\":\"open\"},{\"id\":667,\"title\":\"Generated issue number 667 with some padding text\",\"state\":\"open\"},{\"id\":668,\"title\":\"Generated issue number 668 with some padding text\",\"state\":\"open\"},{\"id\":669,\"title\":\"Generated issue number 669 with some padding text\",\"state\":\"open\"},{\"id\":670,\"title\":\"Generated issue number 670 with some padding text\",\"state\":\"open\"},{\"id\":671,\"title\":\"Generated issue number 671 with some padding text\",\"state\":\"open\"},{\"id\":672,\"title\":\"Generated issue number 672 with some padding text\",\"state\":\"open\"},{\"id\":673,\"title\":\"Generated issue number 673 with some padding text\",\"state\":\"open\"},{\"id\":674,\"title\":\"Generated issue number 674 with some padding text\",\"state\":\"open\"},{\"id\":675,\"title\":\"Generated issue number 675 with some padding text\",\"state\":\"open\"},{\"id\":676,\"title\":\"Generated issue number 676 with some padding text\",\"state\":\"open\"},{\"id\":677,\"title\":\"Generated issue number 677 with some padding text\",\"state\":\"open\"},{\"id\":678,\"title\":\"Generated issue number 678 with some padding text\",\"state\":\"open\"},{\"id\":679,\"title\":\"Generated issue number 679 with some padding text\",\"state\":\"open\"},{\"id\":680,\"title\":\"Generated issue number 680 with some padding text\",\"state\":\"open\"},{\"id\":681,\"title\":\"Generated issue number 681 with some padding text\",\"state\":\"open\"},{\"id\":682,\"title\":\"Generated issue number 682 with some padding text\",\"state\":\"open\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}",
+      "payloadBytes": 12024,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 62
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 84
+        },
+        {
+          "marker": "largeEnd",
+          "count": 1,
+          "firstIndex": 11997
+        }
+      ],
+      "negotiatedRevision": "2025-06-18",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [
+        "client prefixed the payload with a header: \"Wall time: 0.0171 seconds\\nOutput:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1905,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

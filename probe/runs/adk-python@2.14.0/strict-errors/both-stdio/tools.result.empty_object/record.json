@@ -1,0 +1,43 @@
+{
+  "client": "adk-python",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "2.14.0",
+    "config": "strict-errors",
+    "artifact": "probe/runs/adk-python@2.14.0/strict-errors/both-stdio/tools.result.empty_object",
+    "note": "result never sent to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "gemini",
+      "toolOffered": true,
+      "offeredAs": "probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [
+        "tool was called on the wire but no tool result reached the model"
+      ]
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 10628,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "gemini"
+  }
+}

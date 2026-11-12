@@ -1,0 +1,117 @@
+// Which fixtures can the SDK paths send unchanged? Runs the official client
+// against the fixture server in each mode and era over stdio and compares
+// the result on the wire with the fixture. Writes registry/sdk-compat.json,
+// which the runner's `--mode auto` reads to decide when the raw path is needed.
+//
+//   node dist/scripts/sdk-compat.js
+import { mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Client } from '@modelcontextprotocol/client';
+import { StdioClientTransport } from '@modelcontextprotocol/client/stdio';
+import { FIXTURES } from '../fixtures/tool-results.js';
+import type { ServerMode } from '../lib/hosts.js';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const probeRoot = resolve(here, '../..');
+const serverScript = resolve(probeRoot, 'dist/server/fixture-server.js');
+const scratch = resolve(probeRoot, 'runs/_sdk-compat');
+
+interface Entry {
+  fixture: string;
+  era: 'legacy' | 'modern';
+  mode: ServerMode;
+  /** The result as the server put it on the wire, with the era's stamps removed. */
+  sent?: unknown;
+  sentUnchanged: boolean;
+  /** What the client returned to the host after its own parsing. */
+  received?: unknown;
+  /** Thrown by the server (wire error) or by the client. */
+  error?: string;
+  negotiated?: string;
+}
+
+function sortKeys(v: unknown): unknown {
+  if (Array.isArray(v)) return v.map(sortKeys);
+  if (v && typeof v === 'object') {
+    const out: Record<string, unknown> = {};
+    for (const k of Object.keys(v as Record<string, unknown>).sort()) out[k] = sortKeys((v as Record<string, unknown>)[k]);
+    return out;
+  }
+  return v;
+}
+const same = (a: unknown, b: unknown) => JSON.stringify(sortKeys(a)) === JSON.stringify(sortKeys(b));
+
+function stripStamps(result: Record<string, unknown>): Record<string, unknown> {
+  const out = { ...result };
+  delete out.resultType;
+  if (out._meta && typeof out._meta === 'object') {
+    const meta = { ...(out._meta as Record<string, unknown>) };
+    delete meta['io.modelcontextprotocol/serverInfo'];
+    if (Object.keys(meta).length === 0) delete out._meta;
+    else out._meta = meta;
+  }
+  return out;
+}
+
+const entries: Entry[] = [];
+const modes: ServerMode[] = ['sdk', 'mcpserver', 'raw'];
+const eras: Array<'legacy' | 'modern'> = ['legacy', 'modern'];
+
+for (const fixture of FIXTURES) {
+  for (const mode of modes) {
+    for (const era of eras) {
+      const dir = resolve(scratch, `${fixture.id}-${mode}-${era}`);
+      rmSync(dir, { recursive: true, force: true });
+      mkdirSync(dir, { recursive: true });
+      const entry: Entry = { fixture: fixture.id, era, mode, sentUnchanged: false };
+      const client = new Client({ name: 'sdk-compat', version: '0.1.0' }, { versionNegotiation: era === 'legacy' ? { mode: 'legacy' } : { mode: { pin: '2026-07-28' } } });
+      const transport = new StdioClientTransport({
+        command: process.execPath,
+        args: [serverScript, '--fixture', fixture.id, '--mode', mode, '--era', 'both', '--transport', 'stdio', '--capture', dir],
+        stderr: 'pipe',
+      });
+      try {
+        await client.connect(transport);
+        entry.negotiated = client.getNegotiatedProtocolVersion?.();
+        const result = await client.callTool({ name: fixture.tool, arguments: {} });
+        entry.received = result;
+      } catch (e) {
+        entry.error = String(e).split('\n')[0].slice(0, 400);
+      } finally {
+        await client.close().catch(() => undefined);
+      }
+      // Read what went over the wire for the tools/call id.
+      const wirePath = resolve(dir, 'wire.jsonl');
+      if (existsSync(wirePath)) {
+        const lines = readFileSync(wirePath, 'utf8')
+          .split('\n')
+          .filter(Boolean)
+          .map((l) => JSON.parse(l) as { dir: string; message?: Record<string, unknown> });
+        const callIds = new Set(lines.filter((l) => l.dir === 'in' && l.message?.method === 'tools/call').map((l) => String(l.message?.id)));
+        const reply = lines.find((l) => l.dir === 'out' && l.message && callIds.has(String(l.message.id)));
+        if (reply?.message && 'result' in reply.message) {
+          entry.sent = reply.message.result;
+          entry.sentUnchanged = same(stripStamps(reply.message.result as Record<string, unknown>), fixture.result);
+        } else if (reply?.message && 'error' in reply.message) {
+          entry.error = entry.error ?? `wire error: ${JSON.stringify(reply.message.error)}`;
+        }
+      }
+      entries.push(entry);
+      const flag = entry.error ? 'ERR ' : entry.sentUnchanged ? 'same' : 'DIFF';
+      console.log(`${flag}  ${fixture.id.padEnd(18)} ${mode.padEnd(9)} ${era.padEnd(7)} ${entry.negotiated ?? '?'}${entry.error ? '  ' + entry.error.slice(0, 120) : ''}`);
+    }
+  }
+}
+
+const out = {
+  $comment:
+    'Generated by scripts/sdk-compat.ts. For each fixture, mode and era: did the fixture server send the fixture result unchanged (era stamps aside)? The runner uses the sdk rows to pick the raw path. sdk = low-level Server, mcpserver = McpServer.registerTool, raw = hand-written JSON-RPC.',
+  sdkVersion: (JSON.parse(readFileSync(resolve(probeRoot, 'node_modules/@modelcontextprotocol/server/package.json'), 'utf8')) as { version: string }).version,
+  generated: new Date().toISOString(),
+  entries,
+};
+writeFileSync(resolve(probeRoot, 'registry/sdk-compat.json'), JSON.stringify(out, null, 2));
+rmSync(scratch, { recursive: true, force: true });
+console.log(`wrote registry/sdk-compat.json with ${entries.length} entries`);
+process.exit(0);

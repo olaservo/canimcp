@@ -1,0 +1,1188 @@
+[
+  {
+    "client": "libfx",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.app_only",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 252,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 94
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8732,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.audience_user",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Shown to the user only MARK_USER_5a1d\nFound 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 290,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 23
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 58
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 132
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Shown to the user only MARK_USER_5a1d\\nFound 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 7888,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.empty_object",
+      "note": "\"…\" no marker reached the model; payload: \"\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "",
+        "payloadBytes": 0,
+        "form": "empty",
+        "markers": [],
+        "placeholder": "",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {},
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8282,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.is_error",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a\n{\"error\":\"rate limited MARK_SC_91be\"}",
+        "payloadBytes": 69,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 14
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 55
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Lookup failed MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8098,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.large",
+      "note": "\"…\" no marker reached the model; payload: \"Host tool result exceeded the configured limit\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Host tool result exceeded the configured limit",
+        "payloadBytes": 46,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Host tool result exceeded the configured limit",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8423,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ]
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 14112,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 5810,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.no_content_key",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8391,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.schema_match",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 252,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 94
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8205,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"Structured content does not match the tool's output schema: data must have requi\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+        "payloadBytes": 101,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Structured content does not match the tool's output schema: data must have required property 'issues'",
+        "clientError": true,
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8760,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.sc_empty",
+      "note": "[…] content only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a\n{}",
+        "payloadBytes": 40,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {}
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8618,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.sc_null",
+      "note": "\"…\" client error text, no fixture field: \"Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"record\\\",\\n    \\\"code\\\": \\\"inva\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received null\"\n  }\n]",
+        "payloadBytes": 206,
+        "form": "json",
+        "markers": [],
+        "placeholder": "Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received null\"\n  }\n]",
+        "clientError": true,
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Invalid result for tools/call:\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 17547,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.sc_string",
+      "note": "\"…\" client error text, no fixture field: \"Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"record\\\",\\n    \\\"code\\\": \\\"inva\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received string\"\n  }\n]",
+        "payloadBytes": 208,
+        "form": "json",
+        "markers": [],
+        "placeholder": "Invalid result for tools/call: [\n  {\n    \"expected\": \"record\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"structuredContent\"\n    ],\n    \"message\": \"Invalid input: expected record, received string\"\n  }\n]",
+        "clientError": true,
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Invalid result for tools/call:\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8910,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8366,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.summary_and_data",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 252,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 94
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 7754,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.with_image",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[Tool images were retained but not sent: this model does not accept inline images and no vision fallback is available. Ask the user to attach the image directly or switch to a vision-capable model.]\nFound 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 451,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 219
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 293
+          }
+        ],
+        "image": "absent",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"[Tool images were retained but not sent: this model does not accept inline images and no vision fallback is available. A\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 8183,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "libfx",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "0.0.0-eab1401",
+      "config": "default",
+      "artifact": "probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.with_meta",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a\n{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 252,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 94
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\""
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18883,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  }
+]

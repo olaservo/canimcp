@@ -1,0 +1,68 @@
+{
+  "client": "pi",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "1.5.0",
+    "config": "codemode",
+    "artifact": "probe/runs/pi@1.5.0/codemode/both-stdio/tools.result.schema_mismatch",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "codemode (indirect: probe_schema_mismatch)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Script completed\nWall time 0.4 seconds\nOutput:\n\n{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"wrong\":\"not issues MARK_SC_91be\"}}",
+      "payloadBytes": 180,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 103
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 165
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name",
+        "client prefixed the payload with a header: \"Script completed\\nWall time 0.4 seconds\\nOutput:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 5694,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

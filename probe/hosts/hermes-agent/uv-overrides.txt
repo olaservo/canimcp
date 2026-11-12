@@ -1,0 +1,5 @@
+# uv overrides copied from [tool.uv].override-dependencies in hermes-agent pyproject.toml at a9ff9799.
+# uv pip install does not read a git source's [tool.uv], so pass this with --override.
+pynacl>=1.6,<1.7
+cryptography==50.0.2
+Pillow==13.0.0

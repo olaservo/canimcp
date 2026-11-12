@@ -1,0 +1,521 @@
+{
+  "$comment": "Authoritative, spec-level lifecycle of MCP capabilities across protocol versions. This is the SAME for every client - it describes the protocol, not any implementation. Client entries in clients.json should only record DEVIATIONS from these defaults (e.g. a client that does NOT support a capability that exists at its negotiated version, or that still supports a deprecated one). Consumers cross-reference this map to know which capabilities are even applicable at a given protocol version - so a UI can gray out 'tasks' for a client whose max version predates 2025-11-25 without anyone hand-authoring per-version snapshots. Sourced from the official MCP specification changelogs and the deprecated-features registry.",
+  "title": "MCP Specification Version Map",
+  "description": "Per-protocol-version lifecycle (introduced / changed / deprecated / removed) for MCP capabilities and protocol-level features.",
+  "lastUpdated": "2026-11-07",
+  "capabilityIdScheme": "Capability ids are dotted paths rooted at a core primitive and following the wire field names, so tools.result.structuredContent names CallToolResult.structuredContent. Features of an extension are rooted at the short alias recorded on the extension's entry under extensions.known (apps for io.modelcontextprotocol/ui), because reverse-DNS names with slashes do not nest in a dotted id. Probe scenario ids in probe/registry/scenarios.json reuse the capability id and add the fixture name.",
+  "sources": [
+    "https://modelcontextprotocol.io/specification/2026-07-28/changelog",
+    "https://modelcontextprotocol.io/specification/2026-07-28/deprecated",
+    "https://modelcontextprotocol.io/community/feature-lifecycle"
+  ],
+
+  "protocolVersions": [
+    { "version": "2024-11-05", "status": "final",   "label": "Initial release" },
+    { "version": "2025-03-26", "status": "final",   "label": "OAuth + Streamable HTTP" },
+    { "version": "2025-06-18", "status": "final",   "label": "Elicitation + structured output" },
+    { "version": "2025-11-25", "status": "final",   "label": "Tasks, sampling tools, URL elicitation, CIMD" },
+    { "version": "2026-07-28", "status": "current", "label": "Stateless redesign - no initialize handshake, no sessions, MRTR replaces server-initiated requests" },
+    { "version": "draft",      "status": "draft",   "label": "Nothing accumulated since 2026-07-28 as of this file's lastUpdated" }
+  ],
+
+  "lifecycleStates": {
+    "active": "Part of the spec and recommended for new implementations.",
+    "deprecated": "Still functional during the deprecation window (min 12 months per SEP-2596) but new implementations should not adopt it.",
+    "removed": "No longer part of the spec at this version."
+  },
+
+  "capabilities": {
+    "tools": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2025-03-26": "Added tool annotations (read-only, destructive, etc.) - PR #185",
+        "2025-06-18": "Added structured tool output (PR #371) and resource links in results (PR #603)",
+        "2026-07-28": "tools/list no longer varies per-connection; deterministic ordering recommended; CacheableResult (ttlMs/cacheScope) required on results (SEP-2549, SEP-2567)"
+      }
+    },
+    "tools.result.content": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "How a client carries CallToolResult.content to the model: which block types reach it, size caps and truncation, and what stands in for an empty array. Probe scenarios: tools.result.large, tools.result.no_content_key, tools.result.empty_object.",
+      "changes": {
+        "2025-03-26": "Audio content blocks added",
+        "2025-06-18": "Resource link blocks added (PR #603)"
+      }
+    },
+    "tools.result.structuredContent": {
+      "kind": "server-primitive",
+      "introducedIn": "2025-06-18",
+      "notes": "Whether CallToolResult.structuredContent reaches the model, and whether it replaces, joins or is dropped next to content. Added with structured tool output (PR #371). Probe scenarios: tools.result.summary_and_data, tools.result.mirror, tools.result.structured_only, tools.result.sc_empty, tools.result.sc_string, tools.result.sc_null.",
+      "changes": {
+        "2026-07-28": "structuredContent may be any JSON value, not only an object (SEP-2106)"
+      }
+    },
+    "tools.result.outputSchema": {
+      "kind": "server-primitive",
+      "introducedIn": "2025-06-18",
+      "notes": "Whether the client validates structuredContent against the tool's outputSchema, whether the schema changes which field the model reads, and what the model sees on a mismatch. Probe scenarios: tools.result.schema_match, tools.result.schema_mismatch.",
+      "changes": {
+        "2026-07-28": "outputSchema may have a non-object root and any JSON Schema 2020-12 keywords (SEP-2106)"
+      }
+    },
+    "tools.result.audience": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "Whether the client reads annotations.audience on content blocks on the model path, so a block addressed to the user only stays out of the model's context. Probe scenario: tools.result.audience_user."
+    },
+    "tools.result.isError": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "Which field carries the error text the model sees when isError is true, and whether the call surfaces as a tool error or a normal result. Probe scenario: tools.result.is_error."
+    },
+    "tools.result.media": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "Whether image and audio blocks in a tool result reach the model as native media parts, as text, or not at all, and whether a media block changes which text field wins. Images since 2024-11-05, audio since 2025-03-26. Probe scenario: tools.result.with_image."
+    },
+    "tools.result._meta": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "What a client does with CallToolResult._meta: whether application keys in it reach the model, and whether their presence changes which of content and structuredContent the model gets (the C# SDK, for one, returns the whole envelope when _meta holds anything beyond serverInfo). Probe scenarios: tools.result.with_meta, tools.result.meta_only.",
+      "changes": {
+        "2026-07-28": "Servers stamp io.modelcontextprotocol/serverInfo into every result _meta (PR #3002), so a result _meta is never empty on this revision"
+      }
+    },
+    "tools.listChanged": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "Delivered via subscriptions/listen opt-in (toolsListChanged) instead of an always-on stream (SEP-2575)"
+      }
+    },
+    "resources": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "CacheableResult (ttlMs/cacheScope) required on resources/list, resources/read and resources/templates/list results (SEP-2549). Resource-not-found error code changed from -32002 to -32602"
+      }
+    },
+    "resources.listChanged": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "Delivered via subscriptions/listen opt-in (resourcesListChanged) (SEP-2575)"
+      }
+    },
+    "resources.subscribe": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "resources/subscribe and resources/unsubscribe replaced by subscriptions/listen with a resourceSubscriptions opt-in (SEP-2575)"
+      }
+    },
+    "prompts": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "CacheableResult (ttlMs/cacheScope) required on prompts/list results (SEP-2549)"
+      }
+    },
+    "prompts.listChanged": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "Delivered via subscriptions/listen opt-in (promptsListChanged) (SEP-2575)"
+      }
+    },
+    "completions": {
+      "kind": "server-primitive",
+      "introducedIn": "2025-03-26",
+      "notes": "Argument autocompletion (completion/complete) existed as a feature in 2024-11-05, but the explicit `completions` capability flag was added in 2025-03-26.",
+      "changes": {
+        "2025-06-18": "Added context field to CompletionRequest for previously-resolved variables (PR #598)"
+      }
+    },
+    "logging": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "deprecatedIn": "2026-07-28",
+      "earliestRemoval": "First revision released on or after 2027-07-28",
+      "sep": "SEP-2577",
+      "migration": "Log to stderr (stdio) or use OpenTelemetry for observability.",
+      "changes": {
+        "2026-07-28": "logging/setLevel removed; log level set per-request via io.modelcontextprotocol/logLevel in _meta, and servers MUST NOT emit notifications/message for requests that omitted it. Feature deprecated (SEP-2575, SEP-2577)"
+      }
+    },
+    "instructions": {
+      "kind": "server-primitive",
+      "introducedIn": "2024-11-05",
+      "notes": "Optional `instructions` field on InitializeResult, used by the client to enhance LLM context. Present in the schema since 2024-11-05 (not shown in that version's lifecycle example).",
+      "changes": {
+        "2026-07-28": "InitializeResult no longer exists; server identity and capabilities are advertised via server/discover (SEP-2575)"
+      }
+    },
+    "icons": {
+      "kind": "server-primitive",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-973",
+      "notes": "Whether the client renders server-provided icons (and websiteUrl) on tools, resources, resource templates, prompts, and implementations. Clients that render icons MUST support image/png and image/jpeg, and SHOULD support image/svg+xml and image/webp. This is a consume/display capability, not a negotiated ClientCapabilities field."
+    },
+
+    "sampling": {
+      "kind": "client-feature",
+      "introducedIn": "2024-11-05",
+      "deprecatedIn": "2026-07-28",
+      "earliestRemoval": "First revision released on or after 2027-07-28",
+      "sep": "SEP-2577",
+      "migration": "Integrate directly with LLM provider APIs.",
+      "changes": {
+        "2026-07-28": "Server-initiated sampling/createMessage replaced by the Multi Round-Trip Requests (MRTR) inputRequests pattern (SEP-2322). Feature deprecated (SEP-2577)"
+      }
+    },
+    "sampling.context": {
+      "kind": "client-feature",
+      "introducedIn": "2024-11-05",
+      "deprecatedIn": "2025-11-25",
+      "earliestRemoval": "Follows Sampling (SEP-2577)",
+      "sep": "SEP-2596",
+      "notes": "includeContext parameter (none | thisServer | allServers).",
+      "migration": "Omit the field or use \"none\".",
+      "changes": {
+        "2025-11-25": "thisServer/allServers soft-deprecated",
+        "2026-07-28": "thisServer/allServers reclassified Deprecated under the feature lifecycle policy; deprecation still dates from 2025-11-25 (SEP-2596)"
+      }
+    },
+    "sampling.tools": {
+      "kind": "client-feature",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-1577",
+      "notes": "Tool calling support in sampling via tools and toolChoice parameters."
+    },
+    "elicitation": {
+      "kind": "client-feature",
+      "introducedIn": "2025-06-18",
+      "sep": "SEP-382",
+      "changes": {
+        "2026-07-28": "Server-initiated elicitation/create replaced by the MRTR inputRequests pattern (SEP-2322)"
+      }
+    },
+    "elicitation.form": {
+      "kind": "client-feature",
+      "introducedIn": "2025-06-18",
+      "notes": "The original form-based elicitation (the only mode in 2025-06-18).",
+      "changes": {
+        "2025-11-25": "ElicitResult/EnumSchema reworked for titled/untitled, single/multi-select enums (SEP-1330); default values for string/number/enum (SEP-1034)"
+      }
+    },
+    "elicitation.url": {
+      "kind": "client-feature",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-1036",
+      "notes": "URL-mode elicitation, e.g. for OAuth / browser redirect flows.",
+      "changes": {
+        "2026-07-28": "notifications/elicitation/complete and the elicitationId field both removed, one revision after they were introduced. Under MRTR the client learns the outcome by retrying the original request, so a server-initiated completion signal no longer fits; servers correlate across retries via their own identifier in requestState (SEP-2322)"
+      }
+    },
+    "roots": {
+      "kind": "client-feature",
+      "introducedIn": "2024-11-05",
+      "deprecatedIn": "2026-07-28",
+      "earliestRemoval": "First revision released on or after 2027-07-28",
+      "sep": "SEP-2577",
+      "migration": "Pass directories or files via tool parameters, resource URIs, or server configuration.",
+      "changes": {
+        "2026-07-28": "Server-initiated roots/list replaced by the MRTR inputRequests pattern. Feature deprecated (SEP-2322, SEP-2577)"
+      }
+    },
+    "roots.listChanged": {
+      "kind": "client-feature",
+      "introducedIn": "2024-11-05",
+      "removedIn": "2026-07-28",
+      "changes": {
+        "2026-07-28": "notifications/roots/list_changed removed (SEP-2575)"
+      }
+    },
+
+    "transports.stdio": {
+      "kind": "transport",
+      "introducedIn": "2024-11-05",
+      "changes": {
+        "2026-07-28": "server/discover doubles as a backward-compatibility probe on stdio (SEP-2575)"
+      }
+    },
+    "transports.sse": {
+      "kind": "transport",
+      "introducedIn": "2024-11-05",
+      "deprecatedIn": "2025-03-26",
+      "earliestRemoval": "Three months after SEP-2596 reaches Final",
+      "sep": "SEP-2596",
+      "notes": "The original HTTP+SSE transport.",
+      "migration": "Streamable HTTP.",
+      "changes": {
+        "2025-03-26": "Superseded by Streamable HTTP (PR #206)",
+        "2026-07-28": "Reclassified as Deprecated under the formal feature lifecycle policy; deprecation still dates from 2025-03-26 (SEP-2596)"
+      }
+    },
+    "transports.streamableHttp": {
+      "kind": "transport",
+      "introducedIn": "2025-03-26",
+      "notes": "Replaced the HTTP+SSE transport (PR #206).",
+      "changes": {
+        "2026-07-28": "Mcp-Session-Id and protocol-level sessions removed (SEP-2567); HTTP GET endpoint replaced by subscriptions/listen (SEP-2575); SSE resumability and message redelivery removed (SEP-2575); Mcp-Method and Mcp-Name headers now required on POST, with x-mcp-header for custom headers from tool parameters (SEP-2243)"
+      }
+    },
+
+    "authentication.oauth": {
+      "kind": "auth",
+      "introducedIn": "2025-03-26",
+      "notes": "OAuth 2.1-based authorization framework (PR #133).",
+      "changes": {
+        "2025-06-18": "Servers classified as OAuth Resource Servers with protected resource metadata (PR #338); RFC 8707 Resource Indicators required of clients (PR #734)",
+        "2025-11-25": "OpenID Connect Discovery 1.0 (PR #797); incremental scope consent via WWW-Authenticate (SEP-835); RFC 9728 alignment makes WWW-Authenticate optional (SEP-985)",
+        "2026-07-28": "Client credentials bound to the issuing authorization server: clients MUST key persisted credentials by issuer, MUST NOT reuse them across authorization servers, and MUST re-register when the AS changes (SEP-2352)"
+      }
+    },
+    "authentication.oauth.clientIdMetadataDocument": {
+      "kind": "auth",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-991",
+      "notes": "Client ID Metadata Documents (CIMD) - URL-based client IDs as a recommended registration mechanism, as an alternative to Dynamic Client Registration.",
+      "changes": {
+        "2026-07-28": "Becomes the preferred registration mechanism as Dynamic Client Registration is deprecated (PR #2858)"
+      }
+    },
+    "authentication.oauth.dynamicRegistration": {
+      "kind": "auth",
+      "introducedIn": "2025-03-26",
+      "deprecatedIn": "2026-07-28",
+      "earliestRemoval": "First revision released on or after 2027-07-28",
+      "sep": "PR #2858",
+      "notes": "OAuth Dynamic Client Registration (RFC 7591). Part of the original OAuth 2.1 framework. Remains available for backwards compatibility with authorization servers that do not support CIMD.",
+      "migration": "Client ID Metadata Documents (SEP-991).",
+      "changes": {
+        "2025-11-25": "Client ID Metadata Documents (CIMD, SEP-991) added as a recommended alternative to DCR",
+        "2026-07-28": "Deprecated in favor of CIMD (PR #2858). Clients MUST specify an appropriate application_type during registration to avoid OpenID Connect redirect URI conflicts (SEP-837)"
+      }
+    },
+    "authentication.oauth.resourceIndicators": {
+      "kind": "auth",
+      "introducedIn": "2025-06-18",
+      "notes": "RFC 8707 Resource Indicators - clients MUST bind tokens to a specific MCP server to prevent token misuse by malicious servers (PR #734)."
+    },
+    "authentication.oauth.protectedResourceMetadata": {
+      "kind": "auth",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-985",
+      "notes": "RFC 9728 OAuth 2.0 Protected Resource Metadata for authorization-server discovery. Clients MUST parse the resource_metadata URL from the WWW-Authenticate header when present, else fall back to the .well-known URI (SEP-985 aligned this with RFC 9728)."
+    },
+    "authentication.oauth.openIdConnectDiscovery": {
+      "kind": "auth",
+      "introducedIn": "2025-11-25",
+      "notes": "OpenID Connect Discovery 1.0 as an authorization-server metadata discovery mechanism. Clients MUST support both OAuth 2.0 Authorization Server Metadata (RFC 8414) and OIDC Discovery 1.0 (PR #797)."
+    },
+    "authentication.oauth.issuerIdentification": {
+      "kind": "auth",
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2468",
+      "notes": "RFC 9207 OAuth 2.0 Authorization Server Issuer Identification. Authorization servers SHOULD include the iss parameter in authorization responses; clients MUST validate a present iss against the recorded issuer before redeeming the authorization code. Distinct from the metadata-document issuer check that existed in 2025-11-25."
+    },
+    "authentication.header": {
+      "kind": "auth",
+      "introducedIn": null,
+      "notes": "Header-based auth (API keys, bearer tokens) is an implementation/deployment detail, not a spec-gated capability. Applicable at any protocol version."
+    },
+
+    "tasks": {
+      "kind": "extension",
+      "introducedIn": "2025-11-25",
+      "sep": "SEP-1686",
+      "notes": "Durable/async requests with polling and deferred result retrieval. Experimental when introduced.",
+      "changes": {
+        "2026-07-28": "Moved out of core into an official extension (io.modelcontextprotocol/tasks). Redesigned: tasks/result (blocking) replaced by polling via tasks/get; tasks/update added for client-to-server input; tasks/list removed; servers may return task handles unsolicited (SEP-2663)"
+      }
+    }
+  },
+
+  "protocol": {
+    "$comment": "Protocol-wide / structural features that are not a single client-facing capability but materially affect what a server author can expect at a given version.",
+    "initializeHandshake": {
+      "introducedIn": "2024-11-05",
+      "removedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "notes": "initialize request + notifications/initialized. 2026-07-28 makes MCP stateless: every request carries protocolVersion, clientCapabilities and (SHOULD) clientInfo in _meta instead, under the io.modelcontextprotocol/ keys. Version mismatches return UnsupportedProtocolVersionError."
+    },
+    "serverDiscover": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "notes": "server/discover RPC that servers MUST implement to advertise supported protocol versions, capabilities, and identity. Clients MAY call it before any other request for up-front version selection, or use it as a backward-compatibility probe on stdio."
+    },
+    "subscriptionsListen": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "notes": "Single long-lived POST-response stream carrying opted-in server-to-client change notifications, replacing the HTTP GET endpoint and resources/subscribe. Clients opt in per type (toolsListChanged, promptsListChanged, resourcesListChanged, resourceSubscriptions); the server acknowledges and tags notifications with io.modelcontextprotocol/subscriptionId. Request-scoped notifications such as notifications/progress and notifications/message still flow on the response stream of the request they belong to."
+    },
+    "mrtr": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2322",
+      "notes": "Multi Round-Trip Requests. Replaces server-initiated requests (roots/list, sampling/createMessage, elicitation/create). The server returns an InputRequiredResult (resultType: \"input_required\") whose inputRequests field names what it needs; the client retries the original request with inputResponses. Servers correlate across retries using their own identifier in requestState."
+    },
+    "resultType": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2322",
+      "notes": "Required field on all results: \"complete\" for ordinary results, \"input_required\" for MRTR interim results. Clients MUST treat results from earlier-protocol servers that omit it as \"complete\"."
+    },
+    "cacheableResult": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2549",
+      "notes": "ttlMs and cacheScope required on results from tools/list, prompts/list, resources/list, resources/read and resources/templates/list. ttlMs is a freshness hint in milliseconds; cacheScope (\"public\" or \"private\") controls whether shared intermediaries may cache. Complements listChanged rather than replacing it."
+    },
+    "standardRequestHeaders": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2243",
+      "notes": "Mcp-Method and Mcp-Name required on Streamable HTTP POST requests. Adds x-mcp-header for populating custom headers from tool parameters."
+    },
+    "protocolVersionHeader": {
+      "introducedIn": "2025-06-18",
+      "notes": "MCP-Protocol-Version HTTP header required on all requests after negotiation (PR #548)."
+    },
+    "sessions": {
+      "introducedIn": "2025-03-26",
+      "removedIn": "2026-07-28",
+      "sep": "SEP-2567",
+      "notes": "Mcp-Session-Id header / protocol-level sessions on Streamable HTTP. Removed in 2026-07-28 - servers use explicit server-minted handles passed as ordinary tool arguments, and list endpoints no longer vary per-connection."
+    },
+    "sseResumability": {
+      "introducedIn": "2025-03-26",
+      "removedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "notes": "Last-Event-ID header and SSE event IDs on Streamable HTTP. Removed: a broken response stream loses the in-flight request, and clients MUST re-issue it as a new request with a new request ID."
+    },
+    "ping": {
+      "introducedIn": "2024-11-05",
+      "removedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "notes": "ping request removed."
+    },
+    "jsonRpcBatching": {
+      "introducedIn": "2025-03-26",
+      "removedIn": "2025-06-18",
+      "notes": "JSON-RPC batching (PR #228) added in 2025-03-26 and removed in 2025-06-18 (PR #416)."
+    },
+    "errorCodeAllocation": {
+      "introducedIn": "2026-07-28",
+      "notes": "Partitions the JSON-RPC server-error range: -32000..-32019 stays implementation-defined (existing SDK usage grandfathered), -32020..-32099 reserved for the MCP specification. Codes introduced in this revision were renumbered accordingly - HeaderMismatch -32001 to -32020, MissingRequiredClientCapability -32003 to -32021, UnsupportedProtocolVersion -32004 to -32022 - and HeaderMismatchError was added to the schema, having previously existed only in transport prose. Separately, resource-not-found moved from -32002 to -32602 (Invalid Params) to align with JSON-RPC."
+    },
+    "openTelemetryTraceContext": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-414",
+      "notes": "Documents OpenTelemetry trace context propagation conventions for the _meta keys traceparent, tracestate and baggage. Conventions, not a negotiated capability."
+    },
+    "featureLifecyclePolicy": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2596",
+      "notes": "Defines the Active, Deprecated and Removed feature states, a minimum twelve-month deprecation window, and a registry of deprecated features. Earliest removal marks when a feature becomes eligible for removal; the actual removal is a Core Maintainer decision at release preparation and may happen later."
+    }
+  },
+
+  "jsonSchemaDialect": {
+    "$comment": "How MCP uses JSON Schema (tool inputSchema/outputSchema, elicitation requestedSchema). Spec-level rules here; a client's OWN dialect/feature support is recorded in clients.json (see clientFieldGuidance).",
+    "introducedIn": "2025-11-25",
+    "sep": "SEP-1613",
+    "defaultDialect": "2020-12",
+    "rules": [
+      "Default dialect is JSON Schema 2020-12 when a schema omits the $schema field.",
+      "Schemas MAY set $schema to declare a different dialect (e.g. draft-07).",
+      "Implementations MUST support at least 2020-12 and MUST validate per the declared/default dialect.",
+      "Implementations MUST handle unsupported dialects gracefully (return an error indicating non-support).",
+      "Implementations SHOULD document which additional dialects they support."
+    ],
+    "perVersion": {
+      "2024-11-05": "JSON Schema used for tool inputSchema, but the dialect was not formally specified.",
+      "2025-03-26": "Unchanged - dialect not formally specified.",
+      "2025-06-18": "Unchanged - dialect not formally specified.",
+      "2025-11-25": "JSON Schema 2020-12 established as the default dialect with explicit support/validation rules (SEP-1613).",
+      "2026-07-28": "inputSchema and outputSchema loosened to allow any JSON Schema 2020-12 keywords, and structuredContent to allow any JSON value. Adds $ref resolution requirements and composition-keyword resource bounds (SEP-2106). schema.json corrected so minimum/maximum/default are number rather than integer (PR #2710).",
+      "draft": "Unchanged from 2026-07-28."
+    },
+    "clientFieldGuidance": "In clients.json, model a client as { defaultDialect: '2020-12', supportedDialects: ['2020-12', 'draft-07'?], features: <summary> }, where `features` summarizes which JSON Schema keywords the client actually validates/honors - e.g. enum, const, format, pattern, minimum/maximum, nested objects, $ref, oneOf/anyOf/allOf. Many clients implement only a flat subset (especially for elicitation), so a coarse 'full | subset | minimal' plus notes is usually enough."
+  },
+
+  "extensions": {
+    "$comment": "Optional capabilities beyond the core protocol, identified by reverse-DNS names. The `extensions` field was added to ClientCapabilities and ServerCapabilities in 2026-07-28 (SEP-2575); the earlier equivalent was the `experimental` capability field. This catalog lists KNOWN extensions; a client records which it supports via its own `extensions` map in clients.json.",
+    "capabilityField": {
+      "introducedIn": "2026-07-28",
+      "sep": "SEP-2575",
+      "priorEquivalent": "experimental",
+      "notes": "`extensions` on ClientCapabilities/ServerCapabilities. Extension-advertised values can also widen open enums such as ResultType."
+    },
+    "known": {
+      "io.modelcontextprotocol/ui": {
+        "status": "official",
+        "introducedIn": "2025-11-25",
+        "sep": "SEP-1865",
+        "repo": "https://github.com/modelcontextprotocol/ext-apps",
+        "notes": "MCP Apps: servers deliver interactive UIs via predeclared ui:// HTML resources (text/html;profile=mcp-app), referenced by tools via _meta.ui, rendered in sandboxed iframes with bi-directional JSON-RPC. The UI layer has its own internal protocolVersion (e.g. 2025-11-21). Client support means: ui:// prefetch, iframe sandboxing, postMessage JSON-RPC bridge, user consent for UI-initiated tool calls.",
+        "alias": "apps",
+        "features": {
+          "apps": {
+            "introducedIn": "2025-11-25",
+            "notes": "The client declares io.modelcontextprotocol/ui in ClientCapabilities.extensions. The HF telemetry's mcp_apps flag is this."
+          },
+          "apps.visibility": {
+            "introducedIn": "2025-11-25",
+            "notes": "Whether a tool whose _meta.ui.visibility leaves out 'model' is hidden from the model. Probe scenario: tools.result.app_only."
+          },
+          "apps.resourceUri": {
+            "introducedIn": "2025-11-25",
+            "notes": "Whether the client reads _meta.ui.resourceUri, prefetches the ui:// resource, and hands the tool result to the view; which of content and structuredContent the view receives."
+          }
+        }
+      },
+      "io.modelcontextprotocol/oauth-client-credentials": {
+        "status": "official",
+        "introducedIn": "2025-11-25",
+        "sep": "SEP-1046",
+        "repo": "https://github.com/modelcontextprotocol/ext-auth",
+        "notes": "OAuth 2.0 client_credentials grant for machine-to-machine auth. Also expressible via authentication.oauth.grantTypes; tracked here as the official ext-auth extension form."
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "official",
+        "introducedIn": "2026-07-28",
+        "sep": "SEP-2663",
+        "notes": "Durable/async requests (polling via tasks/get, client input via tasks/update). Was a core experimental feature in 2025-11-25 before being moved into this extension."
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "proposed",
+        "sep": "SEP-2640",
+        "notes": "Skills over MCP: skills/list, skills/get and resources/directory/read against servers that declare the extension. A draft SEP, not part of any revision.",
+        "alias": "skills",
+        "features": {
+          "skills": {
+            "notes": "The client calls skills/list against a server declaring the extension. The HF telemetry's skills flag is a successful client-originated skills/list call."
+          }
+        }
+      }
+    }
+  },
+
+  "bonusFeatures": {
+    "$comment": "Useful-to-know capabilities that are NOT formal protocol features (no negotiated capability flag) - SHOULD-level recommendations, common conventions, or in-flight proposals. Tracked so the registry can answer 'who supports X' even before/without formal standardization. A client records support via a `bonusFeatures` map in clients.json (e.g. { modelInitiatedResourceRead: { status: 'full' } }).",
+    "modelInitiatedResourceRead": {
+      "title": "Expose resource read to models",
+      "kind": "recommendation",
+      "status": "proposed",
+      "reference": "https://github.com/modelcontextprotocol/modelcontextprotocol/pull/2527",
+      "pr": 2527,
+      "prState": "open, conflicted (mergeable_state dirty)",
+      "lastActivity": "2026-04-29",
+      "targetVersion": "draft",
+      "research": "model-initiated-resource-read",
+      "notes": "SHOULD-level guidance that the client give the model a mechanism (e.g. a host-level tool) to read resources by URI via resources/read, rather than relying solely on application-driven context inclusion. Mechanism-agnostic. Model-initiated reads SHOULD receive the same confirmation, visibility, validation, and audit treatment as tool invocations."
+    },
+    "deterministicToolOrder": {
+      "title": "Return tools in a deterministic order",
+      "kind": "recommendation",
+      "status": "shipped",
+      "shippedIn": "2026-07-28",
+      "notes": "Servers SHOULD return tools from tools/list in a deterministic order, so clients can cache and LLM prompt caches hit more often. A SHOULD with no capability flag, so support is only observable by inspecting a server's output - tracked here rather than as a capability."
+    }
+  }
+}

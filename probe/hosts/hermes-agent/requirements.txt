@@ -1,0 +1,13 @@
+# Hermes Agent at the research pin a9ff9799 (2026-11-07; git describe v0.23.0+canary.20261107T064357Z).
+# PyPI hermes-agent stops at 0.19.0 and the project's setup.py refuses wheel builds outside Nix,
+# so the install is an editable checkout of a detached git worktree of the _clients clone, placed
+# outside this repo:
+#
+#   git -C <_clients>/hermes-agent worktree add --detach "%LOCALAPPDATA%/canimcp-build/hermes-agent" a9ff9799
+#   uv venv .venv --python 3.14
+#   uv pip install --python .venv/Scripts/python.exe --override uv-overrides.txt -e "%LOCALAPPDATA%/canimcp-build/hermes-agent[mcp]"
+#
+# uv-overrides.txt copies the project's [tool.uv].override-dependencies (pillow 13 over browser-harness's
+# pillow==12.3.0 pin), which uv pip install does not read from a non-project source.
+# The [mcp] extra pulls the SDK the project pins: mcp==2.3.0, mcp-types==2.3.0.
+hermes-agent[mcp] @ git+https://github.com/NousResearch/hermes-agent.git@a9ff9799e273f525b82718cdc69fdec71b1dca5a

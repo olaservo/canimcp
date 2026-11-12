@@ -1,0 +1,1350 @@
+[
+  {
+    "client": "fx",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.app_only",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_app_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Shows the issue dashboard. Visible to the app only.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_app_only\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_app_only\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 779,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 467
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 574
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_app_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Shows the issue dashboard. \"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4993,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.audience_user",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_audience_user\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. One text block is addressed to the user only.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_audience_user\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_audience_user\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Shown to the user only MARK_USER_5a1d\\\",\\\"annotations\\\":{\\\"audience\\\":[\\\"user\\\"]}},{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 920,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 498
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 608
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 715
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_audience_user\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. One\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4732,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.empty_object",
+      "note": "\"…\" no marker reached the model; payload: \"[\\\"{\\\\\\\"skills\\\\\\\":[],\\\\\\\"mcp_tools\\\\\\\":[{\\\\\\\"name\\\\\\\":\\\\\\\"mcp_probe_probe_empty_object\\\\\\\",\\\\\\\"ser\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_empty_object\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result is an empty object.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_empty_object\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\\n\\nThis exact call has already failed 2 times this turn with the same arguments. Do not retry it unchanged.\"]",
+        "payloadBytes": 635,
+        "form": "text",
+        "markers": [],
+        "placeholder": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_empty_object\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result is an empty object.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_empty_object\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malforme",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "3 text block(s) joined for classification",
+          "3 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 5507,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.is_error",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_is_error\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Always fails.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_is_error\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_is_error\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Lookup failed MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"error\\\":\\\"rate limited MARK_SC_91be\\\"},\\\"isError\\\":true}}\"]",
+        "payloadBytes": 548,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 442
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 512
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_is_error\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Always f\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4624,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.large",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.large",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_large\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists every issue. The result is over 64 KiB.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_large\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_large\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to p ... [37500 chars omitted] ... ap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4\\\"}],\\\"truncated\\\":true,\\\"original_bytes\\\":99674,\\\"cap_bytes\\\":65536}}\"]",
+        "payloadBytes": 41500,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 432
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 454
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 41409
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_large\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists every issue. The result \"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 5089,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.meta_only",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result carries _meta and content, no structuredContent.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_meta_only\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"isError\\\":false}}\"]",
+        "payloadBytes": 540,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 497
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_meta_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The res\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4736,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.mirror",
+      "note": "⟨…⟩ envelope (payload 2x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_mirror\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The text block is an exact JSON copy of structuredContent.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_mirror\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_mirror\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"{\\\\\\\"issues\\\\\\\":[{\\\\\\\"id\\\\\\\":101,\\\\\\\"title\\\\\\\":\\\\\\\"Login button unresponsive MARK_SC_91be\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"open\\\\\\\"},{\\\\\\\"id\\\\\\\":102,\\\\\\\"title\\\\\\\":\\\\\\\"Dark mode flickers on load\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"open\\\\\\\"},{\\\\\\\"id\\\\\\\":103,\\\\\\\"title\\\\\\\":\\\\\\\"Export CSV drops header row\\\\\\\",\\\\\\\"state\\\\\\\":\\\\\\\"open\\\\\\\"}]}\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 1072,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 2,
+            "firstIndex": 544
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_mirror\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The text b\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4818,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.no_content_key",
+      "note": "\"…\" no marker reached the model; payload: \"[\\\"{\\\\\\\"skills\\\\\\\":[],\\\\\\\"mcp_tools\\\\\\\":[{\\\\\\\"name\\\\\\\":\\\\\\\"mcp_probe_probe_no_content_key\\\\\\\",\\\\\\\"s\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_no_content_key\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result has no content key.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_no_content_key\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\\n\\nThis exact call has already failed 2 times this turn with the same arguments. Do not retry it unchanged.\"]",
+        "payloadBytes": 639,
+        "form": "text",
+        "markers": [],
+        "placeholder": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_no_content_key\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result has no content key.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_no_content_key\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malf",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "3 text block(s) joined for classification",
+          "3 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 5474,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.schema_match",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_match\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Declares an outputSchema the result matches.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_schema_match\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_schema_match\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 803,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 491
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 598
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_match\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Decl\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4731,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.schema_mismatch",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Declares an outputSchema the result does not match.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_schema_mismatch\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"wrong\\\":\\\"not issues MARK_SC_91be\\\"},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 612,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 507
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 575
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_schema_mismatch\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. D\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4738,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.sc_empty",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_empty\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structuredContent is an empty object.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_sc_empty\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_sc_empty\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 540,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 472
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_empty\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structur\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4813,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.sc_null",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_null\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structuredContent is null.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_sc_null\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_sc_null\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":null,\\\"isError\\\":false}}\"]",
+        "payloadBytes": 528,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 458
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_null\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structure\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4672,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.sc_string",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_string\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structuredContent is a string.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_sc_string\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_sc_string\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":\\\"three issues MARK_SC_91be\\\",\\\"isError\\\":false}}\"]",
+        "payloadBytes": 563,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 468
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 527
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_sc_string\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. structu\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4590,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.structured_only",
+      "note": "⟨…⟩ envelope (content 0x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_structured_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Returns structuredContent and an empty content array.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_structured_only\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_structured_only\\\",\\\"result\\\":{\\\"content\\\":[],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 751,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 546
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_structured_only\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. R\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4435,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.summary_and_data",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_summary_and_data\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Returns a short summary and the full data.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_summary_and_data\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_summary_and_data\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 813,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 501
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 608
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_summary_and_data\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. \"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 9448,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.with_image",
+      "note": "[…] and {…} (content 1x, structuredContent 1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_with_image\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues with a chart image.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_with_image\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"[Tool images were retained but not sent: this model does not accept inline images and no vision fallback is available. Ask the user to attach the image directly or switch to a vision-capable model.]\\n{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_with_image\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"},{\\\"type\\\":\\\"image\\\",\\\"mimeType\\\":\\\"image/png\\\",\\\"delivery\\\":\\\"image content\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 1050,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 659
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 845
+          }
+        ],
+        "image": "absent",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4803,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "fx",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-11",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "0.0.16",
+      "config": "default",
+      "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.with_meta",
+      "note": "⟨…⟩ envelope (content 1x, structuredContent 1x, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "mcp_probe_probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_with_meta\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result carries application keys in _meta.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_with_meta\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_with_meta\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Found 3 open issues MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]},\\\"isError\\\":false}}\"]",
+        "payloadBytes": 795,
+        "form": "envelope",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 483
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 590
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification",
+          "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_with_meta\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The res\"",
+          "2 tool results in one request"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 4705,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  }
+]

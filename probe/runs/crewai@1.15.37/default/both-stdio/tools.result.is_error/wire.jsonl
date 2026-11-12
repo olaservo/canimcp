@@ -1,0 +1,10 @@
+{"t":"2026-11-08T20:01:10.907Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":0,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}}}}
+{"t":"2026-11-08T20:01:10.959Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:01:10.969Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T20:01:10.972Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":1,"method":"tools/list"}}
+{"t":"2026-11-08T20:01:10.975Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"tools":[{"name":"probe_is_error","description":"Lists open issues. Always fails.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]},"jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T20:01:16.033Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":0,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}}}}
+{"t":"2026-11-08T20:01:16.088Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:01:16.157Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T20:01:16.160Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"probe_is_error","arguments":{}}}}
+{"t":"2026-11-08T20:01:16.168Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"content":[{"type":"text","text":"Lookup failed MARK_CONTENT_7f3a"}],"structuredContent":{"error":"rate limited MARK_SC_91be"},"isError":true},"jsonrpc":"2.0","id":1}}

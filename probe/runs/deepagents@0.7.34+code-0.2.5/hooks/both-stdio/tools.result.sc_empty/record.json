@@ -1,0 +1,61 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_empty",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_empty",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "hooks",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_empty",
+    "note": "[…] content only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_empty",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_sc_empty",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"text\",\"text\":\"HOOK_ARTIFACT: {\\\"structured_content\\\":{}}\"}]",
+      "payloadBytes": 132,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 44
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {}
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"Found 3 open issues MARK_CONTENT_7f3a\\nHOOK_ARTIFACT:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 24477,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

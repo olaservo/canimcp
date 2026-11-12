@@ -1,0 +1,63 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "hooks",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.no_content_key",
+    "note": "result never sent to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool was called on the wire but no tool result reached the model"
+      ]
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 18620,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

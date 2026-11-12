@@ -1,0 +1,46 @@
+{
+  "client": "codex",
+  "capability": "apps.visibility",
+  "scenario": "tools.result.app_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.app_only",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "default",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/tools.result.app_only",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "app_only",
+      "api": "responses",
+      "toolOffered": false,
+      "toolCalled": false,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\",\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\",\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\"]",
+      "payloadBytes": 427,
+      "form": "json",
+      "markers": [],
+      "placeholder": "[\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\",\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\",\"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]}\"]",
+      "negotiatedRevision": "2025-06-18",
+      "serverMode": "sdk",
+      "notes": [
+        "3 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"{\\\"resources\\\":[{\\\"server\\\":\\\"probe\\\",\\\"uri\\\":\\\"ui://probe/dashboard\\\",\\\"name\\\":\\\"dashboard\\\",\\\"mimeType\\\":\\\"text/html;profile=mcp-app\\\"}]\"",
+        "3 tool results in one request"
+      ],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: after 3 warm-up calls no tool matching probe_app_only; offered: exec_command, write_stdin, list_mcp_resources, list_mcp_resource_templates, read_mcp_resource, request_user_input, view_image, close_agent, resume_agent, send_input, spawn_agent, wait_agent, get_goal, create_goal, update_goal, web_search"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14798,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

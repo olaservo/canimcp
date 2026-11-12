@@ -1,0 +1,48 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "2.2.6",
+    "config": "protocol-2026-07-28",
+    "artifact": "probe/runs/opencode@2.2.6/protocol-2026-07-28/both-stdio/tools.result.empty_object",
+    "note": "\"…\" client error text, no fixture field: \"{\\\"error\\\":{\\\"type\\\":\\\"tool.execution\\\",\\\"message\\\":\\\"MCP tool \\\\\\\"probe_empty_object\\\\\\\" on \"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"error\":{\"type\":\"tool.execution\",\"message\":\"MCP tool \\\"probe_empty_object\\\" on server \\\"probe\\\" failed: Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"array\\\",\\n    \\\"code\\\": \\\"invalid_type\\\",\\n    \\\"path\\\": [\\n      \\\"content\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid input: expected array, received undefined\\\"\\n  }\\n]\"},\"content\":[]}",
+      "payloadBytes": 345,
+      "form": "envelope",
+      "markers": [],
+      "placeholder": "{\"error\":{\"type\":\"tool.execution\",\"message\":\"MCP tool \\\"probe_empty_object\\\" on server \\\"probe\\\" failed: Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"array\\\",\\n    \\\"code\\\": \\\"invalid_type\\\",\\n    \\\"path\\\": [\\n      \\\"content\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid input: expected array, received undefined\\\"\\n  }\\n]\"},\"content\":[]}",
+      "clientError": true,
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 6373,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

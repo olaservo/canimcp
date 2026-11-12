@@ -1,0 +1,133 @@
+{
+  "$schema": "../schema/mcp-client-registry.schema.json",
+  "$comment": "Worked example, not the registry. One entry, showing how evidence records carry a disagreement instead of hiding it. Every field here is sourced from a file on disk; nothing is inferred. The real registry lives in clients.json.",
+
+  "claude-code": {
+    "title": "Claude Code",
+    "clientInfoNames": ["claude-code"],
+    "url": "https://claude.com/product/claude-code",
+    "category": "cli",
+    "platforms": ["windows", "macos", "linux"],
+
+    "protocolVersions": ["2025-06-18", "2025-11-25"],
+    "preferredProtocolVersion": "2025-11-25",
+
+    "elicitation": {
+      "status": "full",
+      "notes": "Declared and observed disagree. The curated record predates the capability; observed traffic carries it.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "status": "unsupported",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities",
+          "date": "2026-02-02",
+          "commit": "4406120",
+          "note": "No elicitation key on the claude-code record. The file's last data change was 2026-02-02; the 2026-07-13 commit touched only types, validator and generated table."
+        },
+        {
+          "tier": "observed",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "evalstate/mcp-clients",
+          "url": "https://huggingface.co/datasets/evalstate/mcp-clients",
+          "date": "2026-08-23",
+          "window": "2026-06-24/2026-08-22",
+          "note": "capability_support_60d.elicitation true, read from clientCapabilities.elicitation against the report's own 0.5 proportion threshold."
+        }
+      ],
+      "research": ["utilized-capability-declarations"]
+    },
+
+    "tools": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "date": "2026-02-02",
+          "commit": "4406120"
+        }
+      ]
+    },
+
+    "resources": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "date": "2026-02-02",
+          "commit": "4406120"
+        }
+      ]
+    },
+
+    "prompts": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "date": "2026-02-02",
+          "commit": "4406120"
+        }
+      ]
+    },
+
+    "roots": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "date": "2026-02-02",
+          "commit": "4406120"
+        }
+      ]
+    },
+
+    "tasks": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "observed",
+          "status": "unsupported",
+          "at": "2025-11-25",
+          "source": "evalstate/mcp-clients",
+          "date": "2026-08-23",
+          "window": "2026-06-24/2026-08-22",
+          "note": "No client in the 12-client panel shows observed task traffic."
+        }
+      ]
+    },
+
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "observed",
+            "status": "unsupported",
+            "at": "2025-11-25",
+            "source": "evalstate/mcp-clients",
+            "date": "2026-08-23",
+            "window": "2026-06-24/2026-08-22",
+            "note": "mcp_apps false, read from clientCapabilities.extensions['io.modelcontextprotocol/ui']."
+          }
+        ]
+      }
+    },
+
+    "metadata": {
+      "vendor": "Anthropic",
+      "openSource": false,
+      "lastVerified": "2026-08-23"
+    }
+  }
+}

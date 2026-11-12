@@ -1,0 +1,39 @@
+{
+  "client": "fast-agent",
+  "capability": "apps.visibility",
+  "scenario": "tools.result.app_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.app_only",
+    "clientVersion": "0.10.53",
+    "config": "legacy",
+    "artifact": "probe/runs/fast-agent@0.10.53/legacy/both-stdio/tools.result.app_only",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "app_only",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": false,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "notes": [],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 0 tools."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 15283,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

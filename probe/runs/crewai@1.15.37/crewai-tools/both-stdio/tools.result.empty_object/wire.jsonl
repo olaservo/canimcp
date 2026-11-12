@@ -1,0 +1,9 @@
+{"t":"2026-11-08T20:18:41.202Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:18:41.204Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T20:18:41.209Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"notifications/initialized","jsonrpc":"2.0"}}
+{"t":"2026-11-08T20:18:41.210Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T20:18:41.211Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:18:41.214Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":2}}
+{"t":"2026-11-08T20:18:41.215Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:18:43.480Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_empty_object","arguments":{}},"jsonrpc":"2.0","id":3}}
+{"t":"2026-11-08T20:18:43.482Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":3,"result":{}}}

@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-codex",
+  "private": true,
+  "description": "Pins the Codex CLI release closest to the research pin 748ab55 (2026-11-08): rust-v0.169.0-alpha.3 is 9 commits below it, and the diff between touches no MCP result path (incremental Code Mode exec catalog plumbing behind IncrementalExecTools, answer-moderation display fields in codex-rs/protocol). The previous pin 57a808a was 3 commits below the same release. npm install here puts the binary in node_modules/.bin.",
+  "dependencies": {
+    "@openai/codex": "0.169.0-alpha.3"
+  },
+  "type": "module"
+}

@@ -1,0 +1,8 @@
+# Research pin: strands-agents/harness-sdk 3d32c22 (2026-11-06). The strands-py package version comes
+# from git tags; the last tag below the pin is python/v1.64.0 at 0bd132a06 (2026-11-04), published to
+# PyPI the same day. 35 commits sit between the tag and the pin; 12 touch strands-py and none touch
+# strands-py/src/strands/tools/mcp (git diff --stat python/v1.64.0 3d32c22 -- strands-py/src/strands/tools/mcp
+# is empty). The anthropic and openai extras pull the provider SDKs the two model configs need.
+# Install: uv venv --python 3.13 .venv && uv pip install --python .venv/Scripts/python.exe -r requirements.txt
+# Resolved at install (2026-11-08): mcp 2.3.0, mcp-types 2.3.0, openai 3.46.0, anthropic 0.125.0.
+strands-agents[openai,anthropic]==1.64.0

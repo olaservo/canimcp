@@ -1,0 +1,13 @@
+{
+  "name": "canimcp-probe-host-eve",
+  "private": true,
+  "type": "module",
+  "description": "Pins eve 1.0.0-rc.6, the release tagged eve@1.0.0-rc.6 (published 2026-11-05), 12 commits below the research pin f50f672 (2026-11-07, also at version 1.0.0-rc.6). None of the 12 touches the MCP result path: the three that touch runtime/connections, execution/catalog, harness or vendor-compiled change the vendored @workflow/world-local stream reads, an OpenTelemetry declaration file, and two catalog test files. ai, @ai-sdk/openai and zod match eve's pnpm-lock.yaml at the pin; just-bash is the sandbox provider the probe agent selects so eve dev does not probe Docker or install it at run time.",
+  "dependencies": {
+    "@ai-sdk/openai": "4.0.91",
+    "ai": "7.0.137",
+    "eve": "1.0.0-rc.6",
+    "just-bash": "3.6.0",
+    "zod": "4.4.3"
+  }
+}

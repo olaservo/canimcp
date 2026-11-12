@@ -1,0 +1,68 @@
+{
+  "client": "agent-framework",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.no_content_key",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.no_content_key",
+    "clientVersion": "1.25.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/agent-framework@1.25.0/anthropic/both-stdio/tools.result.no_content_key",
+    "note": "\"…\" no marker reached the model; payload: \"[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Error: Function failed.\\\"}]\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "no_content_key",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_no_content_key",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Error: Function failed.\"}]",
+      "payloadBytes": 50,
+      "form": "text",
+      "markers": [],
+      "placeholder": "[{\"type\":\"text\",\"text\":\"Error: Function failed.\"}]",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "structuredContent": {
+          "issues": [
+            {
+              "id": 101,
+              "title": "Login button unresponsive MARK_SC_91be",
+              "state": "open"
+            },
+            {
+              "id": 102,
+              "title": "Dark mode flickers on load",
+              "state": "open"
+            },
+            {
+              "id": 103,
+              "title": "Export CSV drops header row",
+              "state": "open"
+            }
+          ]
+        },
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14048,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

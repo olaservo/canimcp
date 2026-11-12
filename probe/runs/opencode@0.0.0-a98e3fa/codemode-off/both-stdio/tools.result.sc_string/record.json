@@ -1,0 +1,54 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "codemode-off",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/codemode-off/both-stdio/tools.result.sc_string",
+    "note": "\"…\" client error text, no fixture field: \"{\\\"error\\\":{\\\"type\\\":\\\"tool.execution\\\",\\\"message\\\":\\\"MCP tool \\\\\\\"probe_sc_string\\\\\\\" on ser\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"error\":{\"type\":\"tool.execution\",\"message\":\"MCP tool \\\"probe_sc_string\\\" on server \\\"probe\\\" failed: Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"record\\\",\\n    \\\"code\\\": \\\"invalid_type\\\",\\n    \\\"path\\\": [\\n      \\\"structuredContent\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid input: expected record, received string\\\"\\n  }\\n]\"},\"content\":[]}",
+      "payloadBytes": 351,
+      "form": "envelope",
+      "markers": [],
+      "placeholder": "{\"error\":{\"type\":\"tool.execution\",\"message\":\"MCP tool \\\"probe_sc_string\\\" on server \\\"probe\\\" failed: Invalid result for tools/call: [\\n  {\\n    \\\"expected\\\": \\\"record\\\",\\n    \\\"code\\\": \\\"invalid_type\\\",\\n    \\\"path\\\": [\\n      \\\"structuredContent\\\"\\n    ],\\n    \\\"message\\\": \\\"Invalid input: expected record, received string\\\"\\n  }\\n]\"},\"content\":[]}",
+      "clientError": true,
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 15951,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

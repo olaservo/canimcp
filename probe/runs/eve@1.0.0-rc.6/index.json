@@ -1,0 +1,2443 @@
+[
+  {
+    "client": "eve",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.app_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_app_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 36298,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.audience_user",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_audience_user)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 40172,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"{\\\"error\\\":\\\"MCPClientError: Failed to parse server response\\\"}\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_empty_object)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+        "payloadBytes": 59,
+        "form": "json",
+        "markers": [],
+        "placeholder": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31779,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.is_error",
+      "note": "[…] content only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_is_error)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"error\":\"Error: Lookup failed MARK_CONTENT_7f3a\"}",
+        "payloadBytes": 50,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 31
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 50297,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.large",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_large)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"title\":\"Generated issue number 1 with some padding text\",\"state\":\"open\"},{\"id\":2,\"title\":\"Generated issue number 2 with some padding text\",\"state\":\"open\"},{\"id\":3,\"title\":\"Generated issue number 3 with some padding text\",\"state\":\"open\"},{\"id\":4,\"title\":\"Generated issue number 4 with some padding text\",\"state\":\"open\"},{\"id\":5,\"title\":\"Generated issue number 5 with some padding text\",\"state\":\"open\"},{\"id\":6,\"title\":\"Generated issue number 6 with some padding text\",\"state\":\"open\"},{\"id\":7,\"title\":\"Generated issue number 7 with some padding text\",\"state\":\"open\"},{\"id\":8,\"title\":\"Generated issue number 8 with some padding text\",\"state\":\"open\"},{\"id\":9,\"title\":\"Generated issue number 9 with some padding text\",\"state\":\"open\"},{\"id\":10,\"title\":\"Generated issue number 10 with some padding text\",\"state\":\"open\"},{\"id\":11,\"title\":\"Generated issue number 11 with some padding text\",\"state\":\"open\"},{\"id\":12,\"title\":\"Generated issue number 12 with some padding text\",\"state\":\"open\"},{\"id\":13,\"title\":\"Generated issue number 13 with some padding text\",\"state\":\"open\"},{\"id\":14,\"title\":\"Generated issue number 14 with some padding text\",\"state\":\"open\"},{\"id\":15,\"title\":\"Generated issue number 15 with some padding text\",\"state\":\"open\"},{\"id\":16,\"title\":\"Generated issue number 16 with some padding text\",\"state\":\"open\"},{\"id\":17,\"title\":\"Generated issue number 17 with some padding text\",\"state\":\"open\"},{\"id\":18,\"title\":\"Generated issue number 18 with some padding text\",\"state\":\"open\"},{\"id\":19,\"title\":\"Generated issue number 19 with some padding text\",\"state\":\"open\"},{\"id\":20,\"title\":\"Generated issue number 20 with some padding text\",\"state\":\"open\"},{\"id\":21,\"title\":\"Generated issue number 21 with some padding text\",\"state\":\"open\"},{\"id\":22,\"title\":\"Generated issue number 22 with some padding text\",\"state\":\"open\"},{\"id\":23,\"title\":\"Generated issue number 23 with some padding text\",\"state\":\"open\"},{\"id\":24,\"title\":\"Gen ... [54543 chars omitted] ... enerated issue number 660 with some padding text\",\"state\":\"open\"},{\"id\":661,\"title\":\"Generated issue number 661 with some padding text\",\"state\":\"open\"},{\"id\":662,\"title\":\"Generated issue number 662 with some padding text\",\"state\":\"open\"},{\"id\":663,\"title\":\"Generated issue number 663 with some padding text\",\"state\":\"open\"},{\"id\":664,\"title\":\"Generated issue number 664 with some padding text\",\"state\":\"open\"},{\"id\":665,\"title\":\"Generated issue number 665 with some padding text\",\"state\":\"open\"},{\"id\":666,\"title\":\"Generated issue number 666 with some padding text\",\"state\":\"open\"},{\"id\":667,\"title\":\"Generated issue number 667 with some padding text\",\"state\":\"open\"},{\"id\":668,\"title\":\"Generated issue number 668 with some padding text\",\"state\":\"open\"},{\"id\":669,\"title\":\"Generated issue number 669 with some padding text\",\"state\":\"open\"},{\"id\":670,\"title\":\"Generated issue number 670 with some padding text\",\"state\":\"open\"},{\"id\":671,\"title\":\"Generated issue number 671 with some padding text\",\"state\":\"open\"},{\"id\":672,\"title\":\"Generated issue number 672 with some padding text\",\"state\":\"open\"},{\"id\":673,\"title\":\"Generated issue number 673 with some padding text\",\"state\":\"open\"},{\"id\":674,\"title\":\"Generated issue number 674 with some padding text\",\"state\":\"open\"},{\"id\":675,\"title\":\"Generated issue number 675 with some padding text\",\"state\":\"open\"},{\"id\":676,\"title\":\"Generated issue number 676 with some padding text\",\"state\":\"open\"},{\"id\":677,\"title\":\"Generated issue number 677 with some padding text\",\"state\":\"open\"},{\"id\":678,\"title\":\"Generated issue number 678 with some padding text\",\"state\":\"open\"},{\"id\":679,\"title\":\"Generated issue number 679 with some padding text\",\"state\":\"open\"},{\"id\":680,\"title\":\"Generated issue number 680 with some padding text\",\"state\":\"open\"},{\"id\":681,\"title\":\"Generated issue number 681 with some padding text\",\"state\":\"open\"},{\"id\":682,\"title\":\"Generated issue number 682 with some padding text\",\"state\":\"open\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}",
+        "payloadBytes": 58543,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 28
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 50
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 58520
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 37080,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_meta_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 32915,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_mirror)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 54148,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.no_content_key",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_no_content_key)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34586,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.schema_match",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_schema_match)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 46440,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.schema_mismatch",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_schema_mismatch)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"wrong\":\"not issues MARK_SC_91be\"}",
+        "payloadBytes": 35,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 21
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 33731,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_empty",
+      "note": "\"…\" no marker reached the model; payload: \"{}\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_empty)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{}",
+        "payloadBytes": 2,
+        "form": "json",
+        "markers": [],
+        "placeholder": "{}",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 82295,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_null",
+      "note": "\"…\" no marker reached the model; payload: \"null\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_null)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "null",
+        "payloadBytes": 4,
+        "form": "text",
+        "markers": [],
+        "placeholder": "null",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28296,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_string",
+      "note": "{…} structuredContent only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_string)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "three issues MARK_SC_91be",
+        "payloadBytes": 25,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 13
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 35852,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_structured_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 51757,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_summary_and_data)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 103849,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.with_image",
+      "note": "[…] content only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_with_image)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"text\":\"Attached file /workspace/.eve/attachments/6b7fa434f92a8b80/file-6b7fa434f92a8b80.png (image/png)\",\"type\":\"text\"},{\"text\":\"Attached file file (image/png) follows this tool result.\",\"type\":\"text\"}]",
+        "payloadBytes": 268,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 44
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34511,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "default",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.with_meta",
+      "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_with_meta)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 66554,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.app_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_app_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 30408,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.audience_user",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_audience_user)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 32771,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"{\\\"error\\\":\\\"MCPClientError: Failed to parse server response\\\"}\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_empty_object)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+        "payloadBytes": 59,
+        "form": "json",
+        "markers": [],
+        "placeholder": "{\"error\":\"MCPClientError: Failed to parse server response\"}",
+        "clientError": true,
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {},
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 58491,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.is_error",
+      "note": "[…] content only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_is_error)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"error\":\"Error: Lookup failed MARK_CONTENT_7f3a\"}",
+        "payloadBytes": 50,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 31
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 33390,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.large",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_large)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"title\":\"Generated issue number 1 with some padding text\",\"state\":\"open\"},{\"id\":2,\"title\":\"Generated issue number 2 with some padding text\",\"state\":\"open\"},{\"id\":3,\"title\":\"Generated issue number 3 with some padding text\",\"state\":\"open\"},{\"id\":4,\"title\":\"Generated issue number 4 with some padding text\",\"state\":\"open\"},{\"id\":5,\"title\":\"Generated issue number 5 with some padding text\",\"state\":\"open\"},{\"id\":6,\"title\":\"Generated issue number 6 with some padding text\",\"state\":\"open\"},{\"id\":7,\"title\":\"Generated issue number 7 with some padding text\",\"state\":\"open\"},{\"id\":8,\"title\":\"Generated issue number 8 with some padding text\",\"state\":\"open\"},{\"id\":9,\"title\":\"Generated issue number 9 with some padding text\",\"state\":\"open\"},{\"id\":10,\"title\":\"Generated issue number 10 with some padding text\",\"state\":\"open\"},{\"id\":11,\"title\":\"Generated issue number 11 with some padding text\",\"state\":\"open\"},{\"id\":12,\"title\":\"Generated issue number 12 with some padding text\",\"state\":\"open\"},{\"id\":13,\"title\":\"Generated issue number 13 with some padding text\",\"state\":\"open\"},{\"id\":14,\"title\":\"Generated issue number 14 with some padding text\",\"state\":\"open\"},{\"id\":15,\"title\":\"Generated issue number 15 with some padding text\",\"state\":\"open\"},{\"id\":16,\"title\":\"Generated issue number 16 with some padding text\",\"state\":\"open\"},{\"id\":17,\"title\":\"Generated issue number 17 with some padding text\",\"state\":\"open\"},{\"id\":18,\"title\":\"Generated issue number 18 with some padding text\",\"state\":\"open\"},{\"id\":19,\"title\":\"Generated issue number 19 with some padding text\",\"state\":\"open\"},{\"id\":20,\"title\":\"Generated issue number 20 with some padding text\",\"state\":\"open\"},{\"id\":21,\"title\":\"Generated issue number 21 with some padding text\",\"state\":\"open\"},{\"id\":22,\"title\":\"Generated issue number 22 with some padding text\",\"state\":\"open\"},{\"id\":23,\"title\":\"Generated issue number 23 with some padding text\",\"state\":\"open\"},{\"id\":24,\"title\":\"Gen ... [54543 chars omitted] ... enerated issue number 660 with some padding text\",\"state\":\"open\"},{\"id\":661,\"title\":\"Generated issue number 661 with some padding text\",\"state\":\"open\"},{\"id\":662,\"title\":\"Generated issue number 662 with some padding text\",\"state\":\"open\"},{\"id\":663,\"title\":\"Generated issue number 663 with some padding text\",\"state\":\"open\"},{\"id\":664,\"title\":\"Generated issue number 664 with some padding text\",\"state\":\"open\"},{\"id\":665,\"title\":\"Generated issue number 665 with some padding text\",\"state\":\"open\"},{\"id\":666,\"title\":\"Generated issue number 666 with some padding text\",\"state\":\"open\"},{\"id\":667,\"title\":\"Generated issue number 667 with some padding text\",\"state\":\"open\"},{\"id\":668,\"title\":\"Generated issue number 668 with some padding text\",\"state\":\"open\"},{\"id\":669,\"title\":\"Generated issue number 669 with some padding text\",\"state\":\"open\"},{\"id\":670,\"title\":\"Generated issue number 670 with some padding text\",\"state\":\"open\"},{\"id\":671,\"title\":\"Generated issue number 671 with some padding text\",\"state\":\"open\"},{\"id\":672,\"title\":\"Generated issue number 672 with some padding text\",\"state\":\"open\"},{\"id\":673,\"title\":\"Generated issue number 673 with some padding text\",\"state\":\"open\"},{\"id\":674,\"title\":\"Generated issue number 674 with some padding text\",\"state\":\"open\"},{\"id\":675,\"title\":\"Generated issue number 675 with some padding text\",\"state\":\"open\"},{\"id\":676,\"title\":\"Generated issue number 676 with some padding text\",\"state\":\"open\"},{\"id\":677,\"title\":\"Generated issue number 677 with some padding text\",\"state\":\"open\"},{\"id\":678,\"title\":\"Generated issue number 678 with some padding text\",\"state\":\"open\"},{\"id\":679,\"title\":\"Generated issue number 679 with some padding text\",\"state\":\"open\"},{\"id\":680,\"title\":\"Generated issue number 680 with some padding text\",\"state\":\"open\"},{\"id\":681,\"title\":\"Generated issue number 681 with some padding text\",\"state\":\"open\"},{\"id\":682,\"title\":\"Generated issue number 682 with some padding text\",\"state\":\"open\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}",
+        "payloadBytes": 58543,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 28
+          },
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 50
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 58520
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28120,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_meta_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ]
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 24882,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_mirror)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31675,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.no_content_key",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_no_content_key)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 24279,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_match",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_schema_match)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 69204,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_mismatch",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_schema_mismatch)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"wrong\":\"not issues MARK_SC_91be\"}",
+        "payloadBytes": 35,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 21
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 27942,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_empty",
+      "note": "\"…\" no marker reached the model; payload: \"{}\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_empty)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{}",
+        "payloadBytes": 2,
+        "form": "json",
+        "markers": [],
+        "placeholder": "{}",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {}
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 105087,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_null",
+      "note": "\"…\" no marker reached the model; payload: \"null\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_null)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "null",
+        "payloadBytes": 4,
+        "form": "text",
+        "markers": [],
+        "placeholder": "null",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 21277,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_string",
+      "note": "{…} structuredContent only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_sc_string)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "three issues MARK_SC_91be",
+        "payloadBytes": 25,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 13
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 30918,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_structured_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 49410,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_summary_and_data)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34519,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_image",
+      "note": "[…] content only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_with_image)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"text\":\"Attached file /workspace/.eve/attachments/6b7fa434f92a8b80/file-6b7fa434f92a8b80.png (image/png)\",\"type\":\"text\"},{\"text\":\"Attached file file (image/png) follows this tool result.\",\"type\":\"text\"}]",
+        "payloadBytes": 268,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 44
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 45673,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "eve",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.0.0-rc.6",
+      "config": "no-discovery",
+      "artifact": "probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_meta",
+      "note": "{…} structuredContent only (1x, as json, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "eve__tool (indirect: probe_with_meta)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture"
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 27212,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  }
+]

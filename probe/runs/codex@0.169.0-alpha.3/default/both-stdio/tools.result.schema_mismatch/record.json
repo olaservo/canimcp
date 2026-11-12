@@ -1,0 +1,62 @@
+{
+  "client": "codex",
+  "capability": "tools.result.outputSchema",
+  "scenario": "tools.result.schema_mismatch",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.schema_mismatch",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "default",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/tools.result.schema_mismatch",
+    "note": "{…} structuredContent only (1x, as json)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "schema_mismatch",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe/probe_schema_mismatch",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Wall time: 0.0108 seconds\nOutput:\n{\"wrong\":\"not issues MARK_SC_91be\"}",
+      "payloadBytes": 69,
+      "form": "json",
+      "markers": [
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 55
+        }
+      ],
+      "negotiatedRevision": "2025-06-18",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "wrong": "not issues MARK_SC_91be"
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "client prefixed the payload with a header: \"Wall time: 0.0108 seconds\\nOutput:\""
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 2519,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

@@ -1,0 +1,23 @@
+default_model: "generic.gpt-probe"
+generic:
+  api_key: probe
+  base_url: "http://127.0.0.1:58044/v1"
+anthropic:
+  api_key: probe
+  base_url: "http://127.0.0.1:58044"
+logger:
+  type: file
+  path: "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/fast-agent@0.10.53/default/both-http/tools.result.empty_object/client-log.jsonl"
+  level: info
+  progress_display: false
+  show_chat: false
+  show_tools: false
+  enable_markup: false
+mcp:
+  defaults:
+    protocol_mode: auto
+  servers:
+    probe:
+      transport: http
+      url: "http://127.0.0.1:58073/mcp"
+      read_timeout_seconds: 60

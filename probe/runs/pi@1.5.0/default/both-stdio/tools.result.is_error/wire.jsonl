@@ -1,0 +1,7 @@
+{"t":"2026-11-08T19:47:42.901Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{"roots":{}},"clientInfo":{"name":"pi","version":"1.5.0"}}}}
+{"t":"2026-11-08T19:47:42.948Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}},"jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T19:47:42.954Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T19:47:42.959Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":2,"method":"tools/list"}}
+{"t":"2026-11-08T19:47:42.961Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"tools":[{"name":"probe_is_error","description":"Lists open issues. Always fails.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]},"jsonrpc":"2.0","id":2}}
+{"t":"2026-11-08T19:47:43.209Z","transport":"stdio","mode":"sdk","dir":"in","message":{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"_meta":{"progressToken":3},"name":"probe_is_error","arguments":{}}}}
+{"t":"2026-11-08T19:47:43.220Z","transport":"stdio","mode":"sdk","dir":"out","message":{"result":{"content":[{"type":"text","text":"Lookup failed MARK_CONTENT_7f3a"}],"structuredContent":{"error":"rate limited MARK_SC_91be"},"isError":true},"jsonrpc":"2.0","id":3}}

@@ -1,0 +1,62 @@
+{
+  "client": "agent-framework",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_empty",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_empty",
+    "clientVersion": "1.25.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/agent-framework@1.25.0/anthropic/both-stdio/tools.result.sc_empty",
+    "note": "\"…\" no marker reached the model; payload: \"[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"{}\\\"}]\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_empty",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_sc_empty",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"{}\"}]",
+      "payloadBytes": 29,
+      "form": "json",
+      "markers": [],
+      "placeholder": "[{\"type\":\"text\",\"text\":\"{}\"}]",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {},
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14893,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

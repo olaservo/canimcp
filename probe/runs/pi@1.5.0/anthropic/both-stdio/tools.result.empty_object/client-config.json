@@ -1,0 +1,51 @@
+{
+  "models.json": {
+    "providers": {
+      "probe": {
+        "name": "probe",
+        "baseUrl": "http://127.0.0.1:63967",
+        "api": "anthropic-messages",
+        "apiKey": "probe",
+        "models": [
+          {
+            "id": "gpt-probe",
+            "name": "gpt-probe",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  },
+  "mcp.json": {
+    "mcpServers": {
+      "probe": {
+        "command": "node",
+        "args": [
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js",
+          "--fixture",
+          "empty_object",
+          "--mode",
+          "raw",
+          "--era",
+          "both",
+          "--capture",
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/pi@1.5.0/anthropic/both-stdio/tools.result.empty_object",
+          "--transport",
+          "stdio"
+        ],
+        "timeout": 60,
+        "exposure": "direct"
+      }
+    }
+  },
+  "settings.json": {
+    "quietStartup": true,
+    "cacheWarming": "off",
+    "defaultProjectTrust": "never"
+  }
+}

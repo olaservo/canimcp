@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canimcp.io/schemas/research-note.json",
+  "title": "canimcp Research Note",
+  "description": "Frontmatter schema for a research note in research/. Notes are Markdown files with YAML frontmatter matching this schema. A matrix cell answers whether a client supports something; a note answers what is actually going on — a nuance the boolean hides, a gap nobody has filled, a feature routinely misunderstood, an idiosyncrasy in one client, or work still moving in the spec repos and working groups. Notes are referenced by id from client entries and capabilities in data/clients.json.",
+  "type": "object",
+  "required": ["id", "title", "kind", "summary", "status", "lastVerified"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable kebab-case identifier. Referenced from `research` arrays in the client registry. Never reuse an id for different subject matter."
+    },
+    "title": {
+      "type": "string",
+      "description": "Sentence-case title. Say what is true, not what the note is about: 'Goose summarizes loaded skill bodies away' beats 'Notes on goose skill loading'."
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["nuance", "gap", "misconception", "idiosyncrasy", "in-flight"],
+      "description": "nuance: the boolean is true but the behaviour has conditions worth knowing. gap: something the spec or ecosystem does not cover, or covers badly. misconception: a widely-held belief about MCP that is wrong. idiosyncrasy: one client behaves unlike the others. in-flight: actively being worked on in the spec repos, SEPs, or a working group — the note tracks the work rather than a settled fact."
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 280,
+      "description": "One sentence stating the finding. This is what renders on a matrix cell's hover and in listings, so it must stand alone."
+    },
+    "capabilities": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "Dotted capability paths this note bears on, matching the registry's shape (e.g. 'elicitation.url', 'tools.listChanged', 'authentication.oauth.clientIdMetadataDocument'). Use the spec-versions.json capability keys where one exists. Empty for notes about the protocol as a whole."
+    },
+    "clients": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "Registry keys of clients this note bears on. Empty means it applies across the ecosystem rather than to particular clients."
+    },
+    "specVersions": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}|draft)$" },
+      "uniqueItems": true,
+      "description": "Protocol revisions the note applies to. A note about stateless lifecycle behaviour is not portable back to the initialize handshake, and saying so is the point."
+    },
+    "tracking": {
+      "type": "object",
+      "description": "For kind: in-flight — where the work lives and how far along it is. Also useful on gap notes that have a proposal attached.",
+      "properties": {
+        "state": {
+          "type": "string",
+          "enum": ["idea", "proposed", "in-review", "accepted", "shipped", "withdrawn", "stalled"],
+          "description": "Where the work stands. `stalled` is a legitimate and useful verdict — an open proposal untouched for months is a finding."
+        },
+        "seps": {
+          "type": "array",
+          "items": { "type": "integer" },
+          "description": "SEP numbers, e.g. [1381, 2575]."
+        },
+        "prs": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "description": "Pull requests carrying the work."
+        },
+        "issues": {
+          "type": "array",
+          "items": { "type": "string", "format": "uri" },
+          "description": "Issues and discussions where it is being argued."
+        },
+        "workingGroup": {
+          "type": "string",
+          "description": "Working group carrying it, if any (e.g. 'Skills Over MCP')."
+        },
+        "targetVersion": {
+          "type": "string",
+          "pattern": "^([0-9]{4}-[0-9]{2}-[0-9]{2}|draft)$",
+          "description": "Revision the work is aimed at, if declared."
+        },
+        "lastActivity": {
+          "type": "string",
+          "format": "date",
+          "description": "Most recent movement seen on the tracked items. Drives the staleness sweep — a note claiming in-flight with no activity in months should be re-read."
+        }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "description": "What the note was written from. A source-level claim without a commit is not reproducible; pin it.",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string", "format": "uri" },
+          "title": { "type": "string" },
+          "commit": { "type": "string", "pattern": "^[0-9a-f]{7,40}$", "description": "Commit read, for source repositories." },
+          "path": { "type": "string", "description": "File or file:symbol backing the claim." },
+          "date": { "type": "string", "format": "date", "description": "When this source was read." }
+        },
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["current", "needs-review", "stale", "superseded"],
+      "description": "current: verified against its sources at lastVerified. needs-review: a tracked source moved and nobody has re-read it. stale: known to describe behaviour that has since changed. superseded: replaced, see supersededBy."
+    },
+    "supersededBy": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Id of the note replacing this one. Required when status is superseded."
+    },
+    "lastVerified": {
+      "type": "string",
+      "format": "date",
+      "description": "When the note's claims were last checked against its sources — not when the prose was last edited."
+    },
+    "related": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+      "uniqueItems": true,
+      "description": "Ids of related notes."
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "superseded" } }, "required": ["status"] },
+      "then": { "required": ["supersededBy"] }
+    },
+    {
+      "if": { "properties": { "kind": { "const": "in-flight" } }, "required": ["kind"] },
+      "then": { "required": ["tracking"] }
+    }
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,5001 @@
+[
+  {
+    "client": "strands",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.app_only",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 71161,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.audience_user",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Shown to the user only MARK_USER_5a1d\",\"type\":\"text\"},{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 127,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 33
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 93
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18455,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"[{\\\"text\\\":\\\"Tool execution failed: 2 validation errors for union[CallToolResult,fu\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error\",\"type\":\"text\"}]",
+        "payloadBytes": 596,
+        "form": "text",
+        "markers": [],
+        "placeholder": "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\\n   ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 26629,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.is_error",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Lookup failed MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 58,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 24
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 14440,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.large",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result ... [37023 chars omitted] ... e with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4\",\"type\":\"text\"}]",
+        "payloadBytes": 41023,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 10
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 32
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 40987
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 42664,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 39397,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\",\"type\":\"text\"}]",
+        "payloadBytes": 273,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 73
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 19008,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.no_content_key",
+      "note": "\"…\" client error text, no fixture field: \"[{\\\"text\\\":\\\"Tool execution failed: 2 validation errors for union[CallToolResult,fu\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error\",\"type\":\"text\"}]",
+        "payloadBytes": 622,
+        "form": "text",
+        "markers": [],
+        "placeholder": "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\\nCallToolResult.content\\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\\nfunction-after[_require_one_field(), InputRequiredResult].resultType\\n  Input should be 'input_required' [type=literal_error, input_value='compl",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 25196,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_match",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 23184,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"[{\\\"text\\\":\\\"Tool execution failed: Invalid structured content returned by tool pro\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\\n\\nFailed validating 'required' in schema:\\n    {'type': 'object',\\n     'properties': {'issues': {'type': 'array',\\n                               'items': {'type': 'object',\\n                                         'properties': {'id': {'type': 'integer'},\\n                                                        'title': {'type': 'string'},\\n                                                        'state': {'type': 'string'}},\\n                                         'required': ['id',\\n                                                      'title',\\n                                                      'state']}}},\\n     'required': ['issues']}\\n\\nOn instance:\\n    {'wrong': 'not issues MARK_SC_91be'}\",\"type\":\"text\"}]",
+        "payloadBytes": 862,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 831
+          }
+        ],
+        "placeholder": "[{\"text\":\"Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\\n\\nFailed validating 'required' in schema:\\n    {'type': 'object',\\n     'properties': {'issues': {'type': 'array',\\n                               'items': {'type': 'object',\\n                                         'properties': {'id': {'type': 'integer'},\\n                                                        'title': {'type': 'string'},\\n                     ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification",
+          "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 26304,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_empty",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 48933,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_null",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28934,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_string",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 14634,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.structured_only",
+      "note": "\"…\" no marker reached the model; payload: \"[]\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[]",
+        "payloadBytes": 2,
+        "form": "empty",
+        "markers": [],
+        "placeholder": "[]",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20546,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 17771,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_image",
+      "note": "[…] content only (1x, as blocks)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"},{\"source\":{\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\",\"media_type\":\"image/png\",\"type\":\"base64\"},\"type\":\"image\"}]",
+        "payloadBytes": 239,
+        "form": "blocks",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          },
+          {
+            "marker": "image",
+            "count": 1,
+            "firstIndex": 83
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 42813,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "anthropic",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_meta",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "anthropic",
+        "toolOffered": true,
+        "offeredAs": "probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+        "payloadBytes": 64,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 30
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "1 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 43759,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "anthropic"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.app_only",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 15794,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.audience_user",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Shown to the user only MARK_USER_5a1d\nFound 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 75,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 23
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 58
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 12999,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 563,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further inf",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 11125,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.is_error",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+        "payloadBytes": 31,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 14
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 13750,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.large",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [36996 chars omitted] ... ne cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4",
+        "payloadBytes": 40996,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 0
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 22
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 40977
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 13354,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 9726,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 11123,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.no_content_key",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 589,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_typ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18022,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.schema_match",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 10969,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: Invalid structured content returned by tool probe_schema_\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                                        'state': {'type': 'string'}},\n                                         'required': ['id',\n                                                      'title',\n                                                      'state']}}},\n     'required': ['issues']}\n\nOn instance:\n    {'wrong': 'not issues MARK_SC_91be'}",
+        "payloadBytes": 820,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 806
+          }
+        ],
+        "placeholder": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                       ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 25377,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_empty",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 10528,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_null",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 9994,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_string",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 10251,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.structured_only",
+      "note": "\"…\" no marker reached the model; payload: \"\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "",
+        "payloadBytes": 0,
+        "form": "empty",
+        "markers": [],
+        "placeholder": "",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 10182,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16574,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.with_image",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"text\",\"text\":\"Tool successfully returned an image. The image is being provided in the following user message.\"}]",
+        "payloadBytes": 185,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 44
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 12675,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.with_meta",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 12312,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.app_only",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 36463,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.audience_user",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Shown to the user only MARK_USER_5a1d\nFound 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 75,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 23
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 58
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28634,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 563,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further inf",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 19969,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.is_error",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+        "payloadBytes": 31,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 14
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 17935,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.large",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [36996 chars omitted] ... ne cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4",
+        "payloadBytes": 40996,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 0
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 22
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 40977
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 21064,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18920,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 11384,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.no_content_key",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 589,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_typ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 14598,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.schema_match",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 83898,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: Invalid structured content returned by tool probe_schema_\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                                        'state': {'type': 'string'}},\n                                         'required': ['id',\n                                                      'title',\n                                                      'state']}}},\n     'required': ['issues']}\n\nOn instance:\n    {'wrong': 'not issues MARK_SC_91be'}",
+        "payloadBytes": 820,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 806
+          }
+        ],
+        "placeholder": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                       ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 53812,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_empty",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16145,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_null",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 29040,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_string",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 46416,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.structured_only",
+      "note": "\"…\" no marker reached the model; payload: \"\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "",
+        "payloadBytes": 0,
+        "form": "empty",
+        "markers": [],
+        "placeholder": "",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 9919,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 10064,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.with_image",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"text\",\"text\":\"Tool successfully returned an image. The image is being provided in the following user message.\"}]",
+        "payloadBytes": 185,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 44
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "2 text block(s) joined for classification"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 33686,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "default",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.with_meta",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20827,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "apps.visibility",
+    "scenario": "tools.result.app_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.app_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.app_only",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "app_only",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_app_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28611,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.audience",
+    "scenario": "tools.result.audience_user",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.audience_user",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.audience_user",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "audience_user",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_audience_user",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Shown to the user only MARK_USER_5a1d\nFound 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 75,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "user",
+            "count": 1,
+            "firstIndex": 23
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 58
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Shown to the user only MARK_USER_5a1d",
+              "annotations": {
+                "audience": [
+                  "user"
+                ]
+              }
+            },
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 12375,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.empty_object",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.empty_object",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.empty_object",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "empty_object",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_empty_object",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 563,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further inf",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 26302,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.isError",
+    "scenario": "tools.result.is_error",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.is_error",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.is_error",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "is_error",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_is_error",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+        "payloadBytes": 31,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 14
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Lookup failed MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "error": "rate limited MARK_SC_91be"
+          },
+          "isError": true,
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16719,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.large",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.large",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.large",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "large",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_large",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [36996 chars omitted] ... ne cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4",
+        "payloadBytes": 40996,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "largeStart",
+            "count": 1,
+            "firstIndex": 0
+          },
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 22
+          },
+          {
+            "marker": "largeEnd",
+            "count": 1,
+            "firstIndex": 40977
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": "<large; see wire.jsonl>",
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 21487,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.meta_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.meta_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.meta_only",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "meta_only",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_meta_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 19779,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 24072,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.content",
+    "scenario": "tools.result.no_content_key",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.no_content_key",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.no_content_key",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: 2 validation errors for union[CallToolResult,function-aft\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "no_content_key",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_no_content_key",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.14/v/literal_error",
+        "payloadBytes": 589,
+        "form": "text",
+        "markers": [],
+        "placeholder": "Tool execution failed: 2 validation errors for union[CallToolResult,function-after[_require_one_field(), InputRequiredResult]]\nCallToolResult.content\n  Field required [type=missing, input_value={'structuredContent': {'i...resultType': 'complete'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nfunction-after[_require_one_field(), InputRequiredResult].resultType\n  Input should be 'input_required' [type=literal_error, input_value='complete', input_typ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 21114,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_match",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_match",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_match",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_match",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_match",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 90587,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.outputSchema",
+    "scenario": "tools.result.schema_mismatch",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.schema_mismatch",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_mismatch",
+      "note": "\"…\" client error text, no fixture field: \"Tool execution failed: Invalid structured content returned by tool probe_schema_\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "schema_mismatch",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_schema_mismatch",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                                        'state': {'type': 'string'}},\n                                         'required': ['id',\n                                                      'title',\n                                                      'state']}}},\n     'required': ['issues']}\n\nOn instance:\n    {'wrong': 'not issues MARK_SC_91be'}",
+        "payloadBytes": 820,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 806
+          }
+        ],
+        "placeholder": "Tool execution failed: Invalid structured content returned by tool probe_schema_mismatch: 'issues' is a required property\n\nFailed validating 'required' in schema:\n    {'type': 'object',\n     'properties': {'issues': {'type': 'array',\n                               'items': {'type': 'object',\n                                         'properties': {'id': {'type': 'integer'},\n                                                        'title': {'type': 'string'},\n                                       ",
+        "clientError": true,
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "wrong": "not issues MARK_SC_91be"
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "markers appear inside an error message that echoes the rejected value; the field itself did not reach the model"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 22555,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_empty",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_empty",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_empty",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_empty",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_empty",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {},
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18357,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_null",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_null",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_null",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_null",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_null",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": null,
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 41373,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.sc_string",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.sc_string",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_string",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "sc_string",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_sc_string",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "raw",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": "three issues MARK_SC_91be",
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 49842,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.structured_only",
+      "note": "\"…\" no marker reached the model; payload: \"\"",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "",
+        "payloadBytes": 0,
+        "form": "empty",
+        "markers": [],
+        "placeholder": "",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 27176,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 28525,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result.media",
+    "scenario": "tools.result.with_image",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_image",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_image",
+      "note": "[…] content only (1x, as blocks)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_image",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_with_image",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "[{\"type\":\"input_text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"input_image\",\"image_url\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"}]",
+        "payloadBytes": 226,
+        "form": "blocks",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 50
+          },
+          {
+            "marker": "image",
+            "count": 1,
+            "firstIndex": 127
+          }
+        ],
+        "image": "image-part",
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            },
+            {
+              "type": "image",
+              "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+              "mimeType": "image/png"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete",
+          "_meta": {
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 13206,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  },
+  {
+    "client": "strands",
+    "capability": "tools.result._meta",
+    "scenario": "tools.result.with_meta",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-08",
+      "scenario": "tools.result.with_meta",
+      "clientVersion": "1.64.0+mcp-2.3.0",
+      "config": "responses",
+      "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_meta",
+      "note": "[…] content only (1x, as text, _meta did not reach the model)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "with_meta",
+        "api": "responses",
+        "toolOffered": true,
+        "offeredAs": "probe_with_meta",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2026-07-28",
+        "serverMode": "sdk",
+        "sentResult": {
+          "_meta": {
+            "probe/trace": "trace MARK_META_4d2e",
+            "probe/source": "fixture",
+            "io.modelcontextprotocol/serverInfo": {
+              "name": "canimcp-probe-fixture",
+              "version": "0.1.0"
+            }
+          },
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          },
+          "resultType": "complete"
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 22969,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "responses"
+    }
+  }
+]

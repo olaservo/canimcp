@@ -1,0 +1,63 @@
+{
+  "client": "deepagents",
+  "capability": "tools.result._meta",
+  "scenario": "tools.result.meta_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.meta_only",
+    "clientVersion": "0.7.34+code-0.2.5",
+    "config": "interpreter",
+    "artifact": "probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.meta_only",
+    "note": "[…] content only (1x, as text, _meta did not reach the model)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "meta_only",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "js_eval (renamed)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "<result>[{type: \"text\", text: \"Found 3 open issues MARK_CONTENT_7f3a\", id: \"lc_3e71dd27-7151-48aa-aa46-2c29811a0fc5\"}]</result>",
+      "payloadBytes": 127,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 51
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "sdk",
+      "sentResult": {
+        "_meta": {
+          "probe/trace": "trace MARK_META_4d2e",
+          "probe/source": "fixture"
+        },
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ]
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "tool offered under a name the matcher did not recognise; the mock called it and a result came back"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 27927,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-opencode",
+  "private": true,
+  "type": "module",
+  "description": "The adapter prefers bin/opencode(.exe) built from source at the research pin a98e3fa (2026-11-08) and falls back to this npm install of @opencode/cli@2.2.6. No release contains the pin: v2.2.6 was cut on 2026-11-06 from 33f94fce96, and packages/core/src/mcp/client.ts changed between (10bc5cbebb drops outputSchema from the toolDefinition passed to callTool, so the SDK no longer validates results), which is why 2.2.6 and the pin disagree on schema_mismatch. Build recipe: git worktree of _clients/opencode at a98e3fa under %LOCALAPPDATA%\\canimcp-build\\opencode; bun 1.4.4 (packages/script requires ^1.4.4; installed with npm install bun@1.4.4 into %LOCALAPPDATA%\\canimcp-build\\bun144, not globally); bun install (about 5 min); then in packages/cli, with OPENCODE_VERSION=0.0.0-a98e3fa OPENCODE_CHANNEL=local, bun run script/build.ts --single --skip-install --skip-web-ui (about 3 min, fetches the models.opencode.ai snapshot); copy dist/cli-windows-x64/bin/opencode.exe to bin/. The 1.x line on npm (opencode-ai) is the V1 code the note excludes.",
+  "dependencies": {
+    "@opencode/cli": "2.2.6"
+  }
+}

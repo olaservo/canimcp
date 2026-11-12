@@ -1,0 +1,39 @@
+{
+  "client": "mastra",
+  "capability": "apps.visibility",
+  "scenario": "tools.result.app_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.app_only",
+    "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
+    "config": "default",
+    "artifact": "probe/runs/mastra@mcp-2.9.0-alpha.1+core-1.83.0-alpha.1/default/both-stdio/tools.result.app_only",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "app_only",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": false,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "notes": [],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 0 tools."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4646,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

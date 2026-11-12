@@ -1,0 +1,58 @@
+{
+  "client": "fast-agent",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_null",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_null",
+    "clientVersion": "0.10.53",
+    "config": "legacy",
+    "artifact": "probe/runs/fast-agent@0.10.53/legacy/both-stdio/tools.result.sc_null",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_null",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_sc_null",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+      "payloadBytes": 37,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 20
+        }
+      ],
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": null
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14309,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

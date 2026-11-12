@@ -1,0 +1,45 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "0.0.0-a98e3fa",
+    "config": "codemode-off",
+    "artifact": "probe/runs/opencode@0.0.0-a98e3fa/codemode-off/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"null\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "null",
+      "payloadBytes": 4,
+      "form": "text",
+      "markers": [],
+      "placeholder": "null",
+      "negotiatedRevision": "2025-11-25",
+      "serverMode": "raw",
+      "sentResult": {},
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 5296,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

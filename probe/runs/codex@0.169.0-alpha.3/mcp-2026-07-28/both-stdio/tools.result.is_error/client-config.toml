@@ -1,0 +1,19 @@
+model = "gpt-probe"
+model_provider = "probe"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+
+[model_providers.probe]
+name = "probe"
+base_url = "http://127.0.0.1:53914/v1"
+env_key = "PROBE_API_KEY"
+wire_api = "responses"
+
+[mcp_servers.probe]
+command = "node"
+args = ["~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js", "--fixture", "is_error", "--mode", "sdk", "--era", "both", "--capture", "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/both-stdio/tools.result.is_error", "--transport", "stdio"]
+startup_timeout_sec = 60
+tool_timeout_sec = 60
+
+[features]
+mcp_2026_07_28 = true

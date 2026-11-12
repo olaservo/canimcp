@@ -1,0 +1,42 @@
+{
+  "client": "cline",
+  "capability": "apps.visibility",
+  "scenario": "tools.result.app_only",
+  "evidence": {
+    "tier": "verified",
+    "at": "2024-11-05",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.app_only",
+    "clientVersion": "3.0.74",
+    "config": "default",
+    "artifact": "probe/runs/cline@3.0.74/default/both-stdio/tools.result.app_only",
+    "note": "tool offered but never called",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "app_only",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "submit_and_exit (indirect: probe_app_only)",
+      "toolCalled": false,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2024-11-05",
+      "serverMode": "sdk",
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 4 tools."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 17529,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

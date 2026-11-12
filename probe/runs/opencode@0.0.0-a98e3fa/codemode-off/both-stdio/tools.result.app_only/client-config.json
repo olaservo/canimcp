@@ -1,0 +1,58 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "probe": {
+      "name": "probe",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "env": [
+        "PROBE_API_KEY"
+      ],
+      "settings": {
+        "baseURL": "http://127.0.0.1:61351/v1",
+        "apiKey": "probe"
+      },
+      "models": {
+        "gpt-probe": {
+          "name": "gpt-probe",
+          "capabilities": {
+            "tools": true,
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "mcp": {
+    "servers": {
+      "probe": {
+        "type": "local",
+        "command": [
+          "node",
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/dist/server/fixture-server.js",
+          "--fixture",
+          "app_only",
+          "--mode",
+          "sdk",
+          "--era",
+          "both",
+          "--capture",
+          "~/OneDrive/Documents/GitHub/__canimcp/canimcp/probe/runs/opencode@0.0.0-a98e3fa/codemode-off/both-stdio/tools.result.app_only",
+          "--transport",
+          "stdio"
+        ],
+        "codemode": false,
+        "timeout": {
+          "startup": 60000,
+          "catalog": 60000,
+          "execution": 60000
+        }
+      }
+    }
+  }
+}

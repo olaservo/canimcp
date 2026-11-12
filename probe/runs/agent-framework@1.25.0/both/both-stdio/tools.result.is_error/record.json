@@ -1,0 +1,63 @@
+{
+  "client": "agent-framework",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "1.25.0",
+    "config": "both",
+    "artifact": "probe/runs/agent-framework@1.25.0/both/both-stdio/tools.result.is_error",
+    "note": "\"…\" no marker reached the model; payload: \"Error: Function failed.\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "Error: Function failed.",
+      "payloadBytes": 23,
+      "form": "text",
+      "markers": [],
+      "placeholder": "Error: Function failed.",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true,
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read.\r"
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14189,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

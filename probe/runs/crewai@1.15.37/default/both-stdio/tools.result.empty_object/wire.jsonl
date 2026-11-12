@@ -1,0 +1,14 @@
+{"t":"2026-11-08T20:06:38.809Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:06:38.812Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T20:06:38.817Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"notifications/initialized","jsonrpc":"2.0"}}
+{"t":"2026-11-08T20:06:38.819Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T20:06:38.820Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:06:43.627Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"mcp","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-08T20:06:43.630Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T20:06:43.653Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"notifications/initialized","jsonrpc":"2.0"}}
+{"t":"2026-11-08T20:06:43.654Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_empty_object","arguments":{}},"jsonrpc":"2.0","id":1}}
+{"t":"2026-11-08T20:06:43.655Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{}}}
+{"t":"2026-11-08T20:06:44.665Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_empty_object","arguments":{}},"jsonrpc":"2.0","id":2}}
+{"t":"2026-11-08T20:06:44.670Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{}}}
+{"t":"2026-11-08T20:06:46.684Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_empty_object","arguments":{}},"jsonrpc":"2.0","id":3}}
+{"t":"2026-11-08T20:06:46.691Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":3,"result":{}}}

@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-cline",
+  "private": true,
+  "type": "module",
+  "description": "Pins cline@3.0.74 from npm, the CLI wrapper package: apps/cli publishes as cline with the binary in @cline/cli-<platform> (apps/cli/script/publish-npm.ts), not as @cline/cli, whose last release 0.0.13 is from 2026-05. 3.0.74 is the newest release (2026-10-26, release commit 071e1b25b, 2026-10-25) and the closest to the research pin 94eecbb (2026-11-06), 49 commits later. Of the files on the MCP result path only sdk/packages/agents/src/agent-runtime.ts (tool policy dependencies) and sdk/packages/core/src/session/services/message-builder.ts (a looser cap for read-tool results; MCP results keep DEFAULT_MAX_TOOL_RESULT_CHARS 8000) changed in between; neither changes which field reaches the model.",
+  "dependencies": {
+    "cline": "3.0.74"
+  }
+}

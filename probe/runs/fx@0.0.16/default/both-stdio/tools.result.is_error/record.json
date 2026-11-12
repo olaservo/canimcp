@@ -1,0 +1,77 @@
+{
+  "client": "fx",
+  "capability": "tools.result.isError",
+  "scenario": "tools.result.is_error",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.is_error",
+    "clientVersion": "0.0.16",
+    "config": "default",
+    "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.is_error",
+    "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "is_error",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_probe_probe_is_error",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_is_error\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Always fails.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_is_error\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"{\\\"server\\\":\\\"probe\\\",\\\"tool\\\":\\\"mcp_probe_probe_is_error\\\",\\\"result\\\":{\\\"content\\\":[{\\\"type\\\":\\\"text\\\",\\\"text\\\":\\\"Lookup failed MARK_CONTENT_7f3a\\\"}],\\\"structuredContent\\\":{\\\"error\\\":\\\"rate limited MARK_SC_91be\\\"},\\\"isError\\\":true}}\"]",
+      "payloadBytes": 548,
+      "form": "envelope",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 442
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 512
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Lookup failed MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": {
+          "error": "rate limited MARK_SC_91be"
+        },
+        "isError": true,
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
+        }
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification",
+        "client prefixed the payload with a header: \"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_is_error\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. Always f\"",
+        "2 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4624,
+    "transport": "stdio",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

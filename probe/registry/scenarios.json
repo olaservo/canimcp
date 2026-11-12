@@ -1,0 +1,34 @@
+{
+  "$comment": "The scenario registry. Each scenario names the canimcp capability id it produces evidence for, the protocol revisions it applies to, the fixture the server serves, which capture the classifier reads, and the observation type it records. Scenario ids are stable; capability ids come from data/spec-versions.json.",
+  "families": {
+    "tools.result": {
+      "capture": ["wire", "model"],
+      "observation": "tools.result",
+      "description": "Which of content and structuredContent reaches the model, and in what form.",
+      "classifier": "classify/classify.ts"
+    }
+  },
+  "scenarios": [
+    { "id": "tools.result.summary_and_data", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "summary_and_data", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "Both fields present and different: which one does the model read?" },
+    { "id": "tools.result.mirror", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "mirror", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "Text mirrors the JSON exactly: once, twice, or deduplicated?" },
+    { "id": "tools.result.structured_only", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "structured_only", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "content is empty: does the data reach the model, or a placeholder?" },
+    { "id": "tools.result.sc_empty", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "sc_empty", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "structuredContent is {}: treated as present or absent?" },
+    { "id": "tools.result.with_image", "family": "tools.result", "capability": "tools.result.media", "fixture": "with_image", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Does an image block change which field wins, and does the image survive?" },
+    { "id": "tools.result.audience_user", "family": "tools.result", "capability": "tools.result.audience", "fixture": "audience_user", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Does a block with audience [user] reach the model?" },
+    { "id": "tools.result.is_error", "family": "tools.result", "capability": "tools.result.isError", "fixture": "is_error", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "On isError, which field carries the error text the model sees?" },
+    { "id": "tools.result.schema_match", "family": "tools.result", "capability": "tools.result.outputSchema", "fixture": "schema_match", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "With a declared outputSchema that matches, which field reaches the model?" },
+    { "id": "tools.result.schema_mismatch", "family": "tools.result", "capability": "tools.result.outputSchema", "fixture": "schema_mismatch", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "With a declared outputSchema that does not match, what does the model see?" },
+    { "id": "tools.result.app_only", "family": "tools.result", "capability": "apps.visibility", "fixture": "app_only", "appliesTo": ["2025-11-25", "2026-07-28"], "question": "Is a tool with _meta.ui.visibility [app] offered to the model?" },
+    { "id": "tools.result.large", "family": "tools.result", "capability": "tools.result.content", "fixture": "large", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Over 64 KiB: what is dropped, truncated, or reordered?" },
+    { "id": "tools.result.no_content_key", "family": "tools.result", "capability": "tools.result.content", "fixture": "no_content_key", "appliesTo": ["2025-06-18", "2025-11-25", "2026-07-28"], "question": "No content key at all: parse failure, empty, or the data?" },
+    { "id": "tools.result.empty_object", "family": "tools.result", "capability": "tools.result.content", "fixture": "empty_object", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "An empty result object: parse failure, empty, or placeholder?" },
+    { "id": "tools.result.sc_string", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "sc_string", "appliesTo": ["2026-07-28"], "question": "A non-object structuredContent (legal since 2026-07-28): same path as an object?" },
+    { "id": "tools.result.sc_null", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "sc_null", "appliesTo": ["2026-07-28"], "question": "structuredContent null: absent or present?" },
+    { "id": "tools.result.with_meta", "family": "tools.result", "capability": "tools.result._meta", "fixture": "with_meta", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Result-level _meta next to both payload fields: does it reach the model, and does its presence change which field wins?" },
+    { "id": "tools.result.meta_only", "family": "tools.result", "capability": "tools.result._meta", "fixture": "meta_only", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Result-level _meta with content only: does _meta alone switch the client to an envelope or another path?" }
+  ],
+  "sets": {
+    "core": ["tools.result.summary_and_data", "tools.result.mirror", "tools.result.structured_only"],
+    "tool-results": ["tools.result.summary_and_data", "tools.result.mirror", "tools.result.structured_only", "tools.result.sc_empty", "tools.result.with_image", "tools.result.audience_user", "tools.result.is_error", "tools.result.schema_match", "tools.result.schema_mismatch", "tools.result.app_only", "tools.result.large", "tools.result.no_content_key", "tools.result.empty_object", "tools.result.sc_string", "tools.result.sc_null", "tools.result.with_meta", "tools.result.meta_only"]
+  }
+}

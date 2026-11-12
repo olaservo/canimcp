@@ -1,0 +1,38 @@
+{
+  "models.json": {
+    "providers": {
+      "probe": {
+        "name": "probe",
+        "baseUrl": "http://127.0.0.1:50139/v1",
+        "api": "openai-completions",
+        "apiKey": "probe",
+        "models": [
+          {
+            "id": "gpt-probe",
+            "name": "gpt-probe",
+            "input": [
+              "text",
+              "image"
+            ],
+            "contextWindow": 128000,
+            "maxTokens": 16384
+          }
+        ]
+      }
+    }
+  },
+  "mcp.json": {
+    "mcpServers": {
+      "probe": {
+        "url": "http://127.0.0.1:50140/mcp",
+        "timeout": 60,
+        "exposure": "direct"
+      }
+    }
+  },
+  "settings.json": {
+    "quietStartup": true,
+    "cacheWarming": "off",
+    "defaultProjectTrust": "never"
+  }
+}

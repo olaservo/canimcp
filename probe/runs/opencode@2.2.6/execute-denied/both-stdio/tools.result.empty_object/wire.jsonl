@@ -1,0 +1,7 @@
+{"t":"2026-11-11T22:59:54.304Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{"elicitation":{"form":{},"url":{}},"roots":{}},"clientInfo":{"name":"opencode","version":"2.2.6"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-11T22:59:54.305Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-11T22:59:54.318Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-11T22:59:54.319Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/list","jsonrpc":"2.0","id":1}}
+{"t":"2026-11-11T22:59:54.320Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-11T23:00:04.839Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"tools/call","params":{"name":"probe_empty_object","arguments":{},"_meta":{"ai.opencode/sessionID":"ses_e33293336ffegY8f7Pea4ATnBC","progressToken":2}},"jsonrpc":"2.0","id":2}}
+{"t":"2026-11-11T23:00:04.841Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{}}}

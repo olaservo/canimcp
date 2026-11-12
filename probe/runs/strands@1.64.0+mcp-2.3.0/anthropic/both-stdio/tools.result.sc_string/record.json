@@ -1,0 +1,61 @@
+{
+  "client": "strands",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_string",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-08",
+    "scenario": "tools.result.sc_string",
+    "clientVersion": "1.64.0+mcp-2.3.0",
+    "config": "anthropic",
+    "artifact": "probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_string",
+    "note": "[…] content only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_string",
+      "api": "anthropic",
+      "toolOffered": true,
+      "offeredAs": "probe_sc_string",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\",\"type\":\"text\"}]",
+      "payloadBytes": 64,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "content",
+          "count": 1,
+          "firstIndex": 30
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Found 3 open issues MARK_CONTENT_7f3a"
+          }
+        ],
+        "structuredContent": "three issues MARK_SC_91be",
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "1 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 14634,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "anthropic"
+  }
+}

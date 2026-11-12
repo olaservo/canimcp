@@ -1,0 +1,10 @@
+# crewAI at the research pin 73f4832 (2026-11-06), which is tag 1.15.37 of
+# crewAIInc/crewAI; crewai, crewai-core and crewai-tools are released together
+# from the monorepo at that tag. The [mcp] extra of crewai-tools pulls mcpadapt
+# for the MCPServerAdapter path. The mcp SDK resolves to 1.30.0 from crewai's
+# "mcp>=1.30.0,<2". crewai requires Python >=3.10,<3.14.
+#
+#   uv venv probe/hosts/crewai/.venv --python 3.12
+#   uv pip install --python probe/hosts/crewai/.venv/Scripts/python.exe -r probe/hosts/crewai/requirements.txt
+crewai==1.15.37
+crewai-tools[mcp]==1.15.37

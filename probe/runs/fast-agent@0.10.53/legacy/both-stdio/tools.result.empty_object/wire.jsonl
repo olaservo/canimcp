@@ -1,0 +1,7 @@
+{"t":"2026-11-08T20:14:04.785Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{"sampling":{"tools":{}},"elicitation":{"form":{},"url":{}}},"clientInfo":{"name":"fast-agent-mcp","version":"0.10.53"}}}}
+{"t":"2026-11-08T20:14:04.788Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":1,"result":{"protocolVersion":"2025-11-25","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2025-11-25"}
+{"t":"2026-11-08T20:14:04.795Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","method":"notifications/initialized"}}
+{"t":"2026-11-08T20:14:04.871Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":2,"method":"tools/list"}}
+{"t":"2026-11-08T20:14:04.872Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":2,"result":{"tools":[{"name":"probe_empty_object","description":"Lists open issues. The result is an empty object.","inputSchema":{"type":"object","properties":{},"additionalProperties":false}}]}}}
+{"t":"2026-11-08T20:14:08.126Z","transport":"stdio","mode":"raw","dir":"in","message":{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"probe_empty_object","arguments":{},"_meta":{"progressToken":3}}}}
+{"t":"2026-11-08T20:14:08.127Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":3,"result":{}}}

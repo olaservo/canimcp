@@ -1,0 +1,50 @@
+{
+  "client": "fx",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-11",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "0.0.16",
+    "config": "default",
+    "artifact": "probe/runs/fx@0.0.16/default/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"[\\\"{\\\\\\\"skills\\\\\\\":[],\\\\\\\"mcp_tools\\\\\\\":[{\\\\\\\"name\\\\\\\":\\\\\\\"mcp_probe_probe_empty_object\\\\\\\",\\\\\\\"ser\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "mcp_probe_probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_empty_object\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result is an empty object.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_empty_object\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\\n\\nThis exact call has already failed 2 times this turn with the same arguments. Do not retry it unchanged.\"]",
+      "payloadBytes": 635,
+      "form": "text",
+      "markers": [],
+      "placeholder": "[\"{\\\"skills\\\":[],\\\"mcp_tools\\\":[{\\\"name\\\":\\\"mcp_probe_probe_empty_object\\\",\\\"server\\\":\\\"probe\\\",\\\"description\\\":\\\"Lists open issues. The result is an empty object.\\\",\\\"usage\\\":[\\\"mcp\\\",\\\"probe\\\",\\\"probe_empty_object\\\"],\\\"schema_loaded\\\":true}],\\\"counts\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1},\\\"total_matches\\\":{\\\"skills\\\":0,\\\"mcp_tools\\\":1}}\",\"MCP server 'probe' ended the call: the server's answer was malformed. The tool may have run.\",\"MCP server 'probe' ended the call: the server's answer was malforme",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "3 text block(s) joined for classification",
+        "3 tool results in one request"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 5507,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}
