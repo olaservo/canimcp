@@ -43,6 +43,9 @@ cards/
 scripts/
   validate.js                       validates the schemas, the overlays and cross-checks references
   build-cards.js                    renders cards/ from the registry
+  build-site.js                     renders site/ from cards/, research/, data/ and schema/
+web/                                the hand-written pages and the stylesheet
+worker/index.js                     the Worker in front of site/: Markdown negotiation, 404, www redirect
 probe/
   README.md                         the live probe: fixture server, mock model, adapters, runner
   registry/                         scenarios, the list of clients, the list of SDKs
@@ -131,7 +134,15 @@ Re-render the client cards after editing the registry:
 npm run build:cards
 ```
 
-`npm run build` runs the validator and then checks the cards are current.
+`npm run build` runs the validator, checks the cards are current, and builds the site.
+
+Preview the site locally:
+
+```bash
+npm run preview
+```
+
+This builds `site/` and serves it with `wrangler dev` on <http://localhost:8787>, through the same Worker and asset routing as production. Every page is also served as Markdown at its URL plus `.md`, and at the page URL for `Accept: text/markdown`. The build fails on an internal link that does not resolve, an unclosed code fence, or a page over 100,000 characters of text.
 
 ## Known work
 

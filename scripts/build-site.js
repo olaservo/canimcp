@@ -1,27 +1,483 @@
-// build-site.js — copy data JSON into site/data/ so the static site is
-// fully self-contained for any static host (Cloudflare Pages, Vercel, etc.).
-import { mkdirSync, copyFileSync, existsSync, readdirSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+#!/usr/bin/env node
+/**
+ * Builds the static site into site/.
+ *
+ * Every page is written twice: HTML, and a Markdown twin at the same path with
+ * `.md` appended. The Markdown is the source; the HTML is rendered from it.
+ * Also writes the JSON Schemas at their `$id` paths, the registry under /data,
+ * llms.txt, sitemap.xml, robots.txt and _headers.
+ *
+ * Fails when an internal link does not resolve, a served Markdown file has an
+ * unclosed code fence, or a page's text is over the size budget.
+ *
+ * Usage: node scripts/build-site.js
+ */
+
+import { marked } from 'marked';
+import { execFileSync } from 'node:child_process';
+import {
+  copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync,
+} from 'node:fs';
 import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { parseFrontmatter } from './lib/frontmatter.js';
+
+const ORIGIN = 'https://canimcp.io';
+const REPO = 'https://github.com/olaservo/canimcp';
+const SITE_NAME = 'canimcp';
+const TAGLINE = 'Which MCP clients support what, how each claim is known, and research notes on the parts a support matrix cannot express.';
+// Ora's page-token-budget check: about 25K tokens of extracted text.
+const MAX_PAGE_CHARS = 100_000;
+const MAX_LLMS_CHARS = 30_000;
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const outDir = join(root, 'site', 'data');
+const out = join(root, 'site');
+const today = new Date().toISOString().slice(0, 10);
 
-mkdirSync(outDir, { recursive: true });
+const read = (...p) => readFileSync(join(root, ...p), 'utf8').replace(/\r\n/g, '\n');
+const readJson = (...p) => JSON.parse(readFileSync(join(root, ...p), 'utf8'));
 
-const files = ['clients.json', 'spec-versions.json'];
-for (const f of files) {
-  copyFileSync(join(root, 'data', f), join(outDir, f));
-  console.log(`copied data/${f} -> site/data/${f}`);
+function write(rel, content) {
+  const file = join(out, rel);
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, content);
 }
 
-// The probe's verified-tier overlay, one file per client.
-const verifiedDir = join(root, 'data', 'verified');
-if (existsSync(verifiedDir)) {
-  mkdirSync(join(outDir, 'verified'), { recursive: true });
-  for (const f of readdirSync(verifiedDir).filter((f) => f.endsWith('.json'))) {
-    copyFileSync(join(verifiedDir, f), join(outDir, 'verified', f));
-    console.log(`copied data/verified/${f} -> site/data/verified/${f}`);
+/** Date of the last commit that touched a source file, or today when git has no answer. */
+function lastmod(...paths) {
+  try {
+    const d = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...paths], {
+      cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  } catch { /* not a git checkout */ }
+  return today;
+}
+
+const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const yamlString = (s) => JSON.stringify(String(s));
+const stripMd = (s) => s.replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/[`*_<>]/g, '').replace(/\s+/g, ' ').trim();
+
+function firstParagraph(md) {
+  const para = md.split('\n\n').map((b) => b.trim()).find((b) => b && !b.startsWith('#') && !b.startsWith('|'));
+  const text = stripMd(para || '');
+  return text.length > 300 ? `${text.slice(0, 297).replace(/\s+\S*$/, '')}...` : text;
+}
+
+const h1 = (md) => (md.match(/^# (.+)$/m) || [, ''])[1].trim();
+
+// --- links ------------------------------------------------------------------
+
+const cardUrl = (id) => (id === 'observed' || id === 'tool-results' ? `/${id}` : `/clients/${id}`);
+
+/** Rewrites a source file's relative links to site paths. `from` is `cards` or `research`. */
+function siteLinks(md, from, label) {
+  return md.replace(/\]\((?!https?:|mailto:|#|\/)([^)\s]+)\)/g, (_, target) => {
+    const [path, frag = ''] = target.split('#');
+    const hash = frag ? `#${frag}` : '';
+    let m;
+    if (path.startsWith('../probe/')) return `](${REPO}/blob/main/${path.slice(3)}${hash})`;
+    if ((m = path.match(/^\.\.\/research\/([^/]+)\.md$/))) return `](/research/${m[1]}${hash})`;
+    if ((m = path.match(/^\.\.\/cards\/([^/]+)\.md$/))) return `](${cardUrl(m[1])}${hash})`;
+    if ((m = path.match(/^([^/]+)\.md$/))) return `](${from === 'cards' ? cardUrl(m[1]) : `/research/${m[1]}`}${hash})`;
+    throw new Error(`${label}: no site path for relative link "${target}"`);
+  });
+}
+
+// --- pages ------------------------------------------------------------------
+
+/** @type {{url:string,title:string,description:string,md:string,lastmod:string,frontmatter?:string,type?:string}[]} */
+const pages = [];
+const page = (p) => { pages.push(p); return p; };
+
+const clients = Object.entries(readJson('data', 'clients.json')).filter(([k]) => !k.startsWith('$'));
+
+// Client cards, and the two generated cross-client cards.
+const cardFiles = readdirSync(join(root, 'cards')).filter((f) => f.endsWith('.md')).sort();
+for (const f of cardFiles) {
+  const id = f.slice(0, -3);
+  if (id === 'tool-results') continue;
+  const md = siteLinks(read('cards', f), 'cards', `cards/${f}`);
+  page({ url: cardUrl(id), title: h1(md), description: firstParagraph(md), md, lastmod: lastmod(`cards/${f}`) });
+}
+
+// cards/tool-results.md is over the page budget, so the per-client record
+// tables under "Every record" become one page each.
+const toolResultPages = [];
+{
+  const src = siteLinks(read('cards', 'tool-results.md'), 'cards', 'cards/tool-results.md');
+  const mod = lastmod('cards/tool-results.md');
+  const cut = src.indexOf('\n## Every record\n');
+  if (cut === -1) throw new Error('cards/tool-results.md: no "## Every record" section');
+  const head = src.slice(0, cut).trimEnd();
+  const sections = src.slice(cut).split(/\n(?=### )/).slice(1);
+  for (const s of sections) {
+    const title = s.match(/^### (.+)$/m)[1].trim();
+    const body = s.replace(/^### .+\n/, '').trim();
+    const overlay = body.match(/data\/verified\/([a-z0-9-]+)\.json/);
+    const slug = overlay ? overlay[1] : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const summary = stripMd(body.split('\n\n')[0]);
+    toolResultPages.push({ slug, title, summary });
+    page({
+      url: `/tool-results/${slug}`,
+      title: `Tool result records: ${title}`,
+      description: `Every probe record for ${title}. ${summary}`,
+      md: `# Tool result records: ${title}\n\nThe verdict line for each probe run, with a link to the record and its captures. The cross-client matrix is on [Tool result handling, verified](/tool-results).\n\n${body}\n`,
+      lastmod: mod,
+    });
+  }
+  const list = toolResultPages.map((p) => `- [${p.title}](/tool-results/${p.slug}): ${p.summary}`).join('\n');
+  const md = `${head}\n\n## Every record\n\nThe full verdict line per run, with a link to the record and its captures, one page per client.\n\n${list}\n`;
+  page({ url: '/tool-results', title: h1(md), description: firstParagraph(md), md, lastmod: mod });
+}
+
+// Research notes.
+const notes = [];
+const noteFiles = readdirSync(join(root, 'research')).filter((f) => f.endsWith('.md')).sort();
+for (const f of noteFiles) {
+  const id = f.slice(0, -3);
+  const text = read('research', f);
+  const fm = parseFrontmatter(text, f);
+  const block = text.match(/^---\n[\s\S]*?\n---\n/);
+  if (!fm || !block) throw new Error(`research/${f}: no frontmatter`);
+  const mod = lastmod(`research/${f}`);
+  const url = `/research/${id}`;
+  let body = siteLinks(text.slice(block[0].length).trim(), 'research', `research/${f}`);
+
+  const meta = [
+    `Kind: ${fm.kind}`,
+    `Status: ${fm.status}`,
+    fm.lastVerified && `Last verified: ${fm.lastVerified}`,
+    fm.clients?.length && `Clients: ${fm.clients.map((c) => (cardFiles.includes(`${c}.md`) ? `[${c}](${cardUrl(c)})` : c)).join(', ')}`,
+    fm.specVersions?.length && `Revisions: ${fm.specVersions.map((v) => `\`${v}\``).join(', ')}`,
+  ].filter(Boolean).join(' · ');
+  body = body.replace(/^(# .+)$/m, `$1\n\n${meta}`);
+
+  if (fm.sources?.length && !/^## Sources$/m.test(body)) {
+    const items = fm.sources.map((s) => {
+      const at = [s.commit && `commit \`${s.commit}\``, s.path && `\`${s.path}\``, s.date].filter(Boolean).join(', ');
+      return `- [${s.title || s.url}](${s.url})${at ? `, ${at}` : ''}`;
+    });
+    body += `\n\n## Sources\n\n${items.join('\n')}`;
+  }
+  // A related id with no note file yet is listed without a link.
+  if (fm.related?.length) {
+    body += `\n\n## Related notes\n\n${fm.related.map((r) => (noteFiles.includes(`${r}.md`) ? `- [${r}](/research/${r})` : `- ${r}`)).join('\n')}`;
+  }
+
+  notes.push({ id, fm, url });
+  page({
+    url, title: fm.title, description: fm.summary, md: `${body}\n`, lastmod: mod,
+    frontmatter: `${block[0].trimEnd().replace(/\n---$/, '')}\ncanonical: ${ORIGIN}${url}\nlast-updated: ${mod}\n---\n`,
+  });
+}
+
+// Index pages.
+const clientRows = clients.map(([id, c]) => {
+  const m = c.metadata || {};
+  return `| [${c.title}](/clients/${id}) | ${m.vendor || ''} | ${c.category || ''} | ${c.preferredProtocolVersion ? `\`${c.preferredProtocolVersion}\`` : ''} | ${m.lastVerified || ''} |`;
+});
+const clientTable = `| Client | Vendor | Category | Prefers | Last read |\n|---|---|---|---|---|\n${clientRows.join('\n')}`;
+const newest = (list) => list.reduce((a, b) => (a > b ? a : b), '0000-00-00');
+
+page({
+  url: '/clients/',
+  title: 'Clients',
+  description: `The ${clients.length} MCP clients with a researched registry entry, each with its capabilities, the evidence for them, and research notes.`,
+  md: `# Clients\n\nThe ${clients.length} MCP clients with a researched registry entry. Each page has the client's capabilities, how each one is known, the probe's records for it, and its research notes.\n\n${clientTable}\n\n${clients.map(([id, c]) => `- [${c.title}](/clients/${id}): ${c.description}`).join('\n')}\n\nThe probe has also run clients that have no registry entry yet. Their records are on [Tool result handling, verified](/tool-results).\n`,
+  lastmod: newest(pages.filter((p) => p.url.startsWith('/clients/')).map((p) => p.lastmod)),
+});
+
+page({
+  url: '/research/',
+  title: 'Research notes',
+  description: `${notes.length} notes on MCP client behaviour that a support matrix cannot express, each citing the source it was read from.`,
+  md: `# Research notes\n\n${notes.length} notes on client behaviour that a support matrix cannot express. Each cites the repository, commit and path it was read from.\n\n${notes.map((n) => `- [${n.fm.title}](${n.url}) (${n.fm.kind}): ${n.fm.summary}`).join('\n')}\n`,
+  lastmod: newest(pages.filter((p) => p.url.startsWith('/research/')).map((p) => p.lastmod)),
+});
+
+{
+  const md = read('web', 'about.md');
+  page({ url: '/about', title: h1(md), description: firstParagraph(md), md, lastmod: lastmod('web/about.md') });
+}
+
+const home = page({
+  url: '/',
+  title: SITE_NAME,
+  description: TAGLINE,
+  type: 'website',
+  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client.\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
+  lastmod: today,
+});
+home.lastmod = newest(pages.map((p) => p.lastmod));
+
+// --- render -----------------------------------------------------------------
+
+const pageUrls = new Set(pages.map((p) => p.url));
+const mdPath = (url) => (url.endsWith('/') ? `${url}index.md` : `${url}.md`);
+const htmlFile = (url) => (url.endsWith('/') ? `${url}index.html` : `${url}.html`);
+
+/** Points a page's internal links at the Markdown twins, for the `.md` output. */
+function markdownLinks(md) {
+  return md.replace(/\]\((\/[^)\s#]*)(#[^)\s]*)?\)/g, (all, path, hash = '') => (pageUrls.has(path) ? `](${mdPath(path)}${hash})` : all));
+}
+
+let slugs = new Map();
+marked.use({
+  gfm: true,
+  renderer: {
+    heading({ tokens, depth }) {
+      const inner = this.parser.parseInline(tokens);
+      const base = inner.replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/gi, '').toLowerCase().replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-') || 'section';
+      const n = slugs.get(base) || 0;
+      slugs.set(base, n + 1);
+      return `<h${depth} id="${n ? `${base}-${n}` : base}">${inner}</h${depth}>\n`;
+    },
+  },
+});
+
+function renderHtml(p, { robots } = {}) {
+  slugs = new Map();
+  const body = marked.parse(p.md).replace(/<table>/g, '<div class="scroll"><table>').replace(/<\/table>/g, '</table></div>');
+  const canonical = `${ORIGIN}${p.url}`;
+  const title = p.url === '/' ? `${SITE_NAME}: MCP client support, with evidence` : `${p.title} · ${SITE_NAME}`;
+  const jsonLd = p.url !== '/' ? '' : `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: SITE_NAME, url: `${ORIGIN}/`, description: TAGLINE, inLanguage: 'en', sameAs: [REPO] },
+      {
+        '@type': 'Dataset', '@id': `${ORIGIN}/#dataset`, name: 'canimcp MCP client capability registry', description: TAGLINE,
+        url: `${ORIGIN}/`, license: 'https://creativecommons.org/licenses/by/4.0/', isAccessibleForFree: true, dateModified: p.lastmod,
+        keywords: ['Model Context Protocol', 'MCP', 'MCP clients', 'capabilities'], sameAs: [REPO],
+        distribution: [{ '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: `${ORIGIN}/data/clients.json` }],
+      },
+    ],
+  }).replace(/</g, '\\u003c')}</script>\n`;
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(p.description)}">
+${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical" href="${canonical}">
+<link rel="alternate" type="text/markdown" href="${mdPath(p.url)}">
+<meta property="og:type" content="${p.type || 'article'}">
+<meta property="og:site_name" content="${SITE_NAME}">
+<meta property="og:title" content="${esc(p.title)}">
+<meta property="og:description" content="${esc(p.description)}">
+<meta property="og:url" content="${canonical}">
+`}<link rel="stylesheet" href="/style.css">
+${jsonLd}</head>
+<body>
+<main>
+${body}</main>
+<nav aria-label="Site">
+<a href="/">canimcp</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/about">About</a>
+</nav>
+<footer>
+<p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+</footer>
+</body>
+</html>
+`;
+}
+
+rmSync(out, { recursive: true, force: true });
+mkdirSync(out, { recursive: true });
+
+for (const p of pages) {
+  const frontmatter = p.frontmatter
+    || `---\ntitle: ${yamlString(p.title)}\ndescription: ${yamlString(p.description)}\ncanonical: ${ORIGIN}${p.url}\nlast-updated: ${p.lastmod}\n---\n`;
+  write(htmlFile(p.url), renderHtml(p));
+  write(mdPath(p.url), `${frontmatter}\n${markdownLinks(p.md)}`);
+}
+
+{
+  const md = read('web', '404.md');
+  write('404.html', renderHtml({ url: '/404', title: h1(md), description: 'There is no page at this URL.', md, lastmod: today }, { robots: 'noindex' }));
+  write('404.md', markdownLinks(md));
+}
+copyFileSync(join(root, 'web', 'style.css'), join(out, 'style.css'));
+
+// --- data and schemas -------------------------------------------------------
+
+const schemaNames = {
+  'mcp-client-registry.schema.json': 'client-registry.json',
+  'research-note.schema.json': 'research-note.json',
+  'verified-evidence.schema.json': 'verified-evidence.json',
+  'observed-evidence.schema.json': 'observed-evidence.json',
+};
+for (const [src, name] of Object.entries(schemaNames)) {
+  const schema = readJson('schema', src);
+  if (schema.$id !== `${ORIGIN}/schemas/${name}`) throw new Error(`schema/${src}: $id is ${schema.$id}, expected ${ORIGIN}/schemas/${name}`);
+  write(`schemas/${name}`, readFileSync(join(root, 'schema', src)));
+}
+
+/** A data file's `$schema` is a path into schema/; the published copy names the `$id`. */
+function publishJson(rel, data) {
+  const m = typeof data.$schema === 'string' && data.$schema.match(/schema\/([^/]+)$/);
+  if (m && schemaNames[m[1]]) data = { ...data, $schema: `${ORIGIN}/schemas/${schemaNames[m[1]]}` };
+  write(rel, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+publishJson('data/clients.json', readJson('data', 'clients.json'));
+publishJson('data/spec-versions.json', readJson('data', 'spec-versions.json'));
+const dataFiles = ['/data/clients.json', '/data/spec-versions.json', '/data/clients/index.json'];
+for (const [id, c] of clients) {
+  publishJson(`data/clients/${id}.json`, { id, schema: `${ORIGIN}/schemas/client-registry.json#/$defs/ClientEntry`, entry: c });
+}
+publishJson('data/clients/index.json', clients.map(([id, c]) => ({
+  id, title: c.title, description: c.description, data: `${ORIGIN}/data/clients/${id}.json`, page: `${ORIGIN}/clients/${id}`,
+})));
+for (const dir of ['verified', 'observed']) {
+  if (!existsSync(join(root, 'data', dir))) continue;
+  for (const f of readdirSync(join(root, 'data', dir)).filter((f) => f.endsWith('.json')).sort()) {
+    publishJson(`data/${dir}/${f}`, readJson('data', dir, f));
+    dataFiles.push(`/data/${dir}/${f}`);
   }
 }
-console.log('site build complete.');
+
+// --- discovery files --------------------------------------------------------
+
+const abs = (url) => `${ORIGIN}${url}`;
+const mdLink = (title, url, note) => `- [${title}](${abs(pageUrls.has(url) ? mdPath(url) : url)})${note ? `: ${note}` : ''}`;
+const byUrl = (url) => pages.find((p) => p.url === url);
+const clientPages = clients.map(([id]) => byUrl(`/clients/${id}`));
+
+const llms = `# ${SITE_NAME}
+
+> ${TAGLINE}
+
+canimcp is a registry of Model Context Protocol clients. A capability carries evidence, and each piece of evidence has a tier (\`declared\`, \`verified\`, \`observed\`, \`read\`) and the protocol revision it applies to. Tiers are not ranked and can disagree.
+
+## When to use this
+
+- Before relying on an MCP feature in a server, check which clients implement it and at which protocol revision.
+- To find out what a client does with a tool result: which of \`content\` and \`structuredContent\` reaches the model.
+- To see where a client's declared capabilities, its source and its observed traffic disagree.
+
+For one client, fetch \`${ORIGIN}/data/clients/<id>.json\` or its page below. Every page is Markdown at the URL with \`.md\` appended, and at the page URL with \`Accept: text/markdown\`. Nothing here needs authentication.
+
+## Clients
+
+${clientPages.map((p) => mdLink(p.title, p.url, p.description)).join('\n')}
+- [All clients](${abs('/clients/llms.txt')}): the section index
+
+## Across clients
+
+${mdLink('Tool result handling, verified', '/tool-results', 'what reached the model when each client called a fixture tool; links to one record page per client')}
+${mdLink('Capabilities observed in traffic', '/observed', 'capabilities clients declare in real traffic, by protocol revision')}
+
+## Research notes
+
+${mdLink('Research notes', '/research/', `${notes.length} notes, each with a one-paragraph summary`)}
+- [Research notes index](${abs('/research/llms.txt')}): the section index
+
+## Data
+
+- [Client registry](${abs('/data/clients.json')}): every researched client in one JSON file
+- [Client index](${abs('/data/clients/index.json')}): ids, titles and the per-client JSON URLs
+- [Capability lifecycle](${abs('/data/spec-versions.json')}): each capability across protocol revisions
+- [Observed telemetry](${abs('/data/observed/hf-mcp-clients.json')}): the feed behind the observed tier
+- Probe records per client: \`${ORIGIN}/data/verified/<client>.json\`
+
+## Schemas
+
+${Object.values(schemaNames).map((n) => `- [${n}](${abs(`/schemas/${n}`)})`).join('\n')}
+
+## Optional
+
+${mdLink('About', '/about', 'where the data comes from, the licence, and how to report a correction')}
+- [Source repository](${REPO}): the registry, the probe and its captures
+`;
+if (llms.length > MAX_LLMS_CHARS) throw new Error(`llms.txt is ${llms.length} characters, over ${MAX_LLMS_CHARS}`);
+write('llms.txt', llms);
+
+write('clients/llms.txt', `# ${SITE_NAME}: clients
+
+> One page per MCP client: capabilities, how each is known, probe records and research notes.
+
+## Client pages
+
+${clientPages.map((p) => mdLink(p.title, p.url, p.description)).join('\n')}
+
+## Client data
+
+${clients.map(([id, c]) => `- [${c.title} JSON](${abs(`/data/clients/${id}.json`)})`).join('\n')}
+
+## Probe records by client
+
+${toolResultPages.map((p) => mdLink(p.title, `/tool-results/${p.slug}`, p.summary)).join('\n')}
+`);
+
+write('research/llms.txt', `# ${SITE_NAME}: research notes
+
+> Notes on MCP client behaviour that a support matrix cannot express, each citing the source it was read from.
+
+## Notes
+
+${notes.map((n) => mdLink(n.fm.title, n.url, n.fm.summary)).join('\n')}
+`);
+
+write('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map((p) => `<url><loc>${abs(p.url)}</loc><lastmod>${p.lastmod}</lastmod></url>`).sort().join('\n')}
+</urlset>
+`);
+
+write('robots.txt', `User-agent: *
+Allow: /
+
+Sitemap: ${ORIGIN}/sitemap.xml
+`);
+
+write('_headers', `/*
+  X-Content-Type-Options: nosniff
+  Link: </sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain"
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+/*.txt
+  Content-Type: text/plain; charset=utf-8
+/schemas/*
+  Content-Type: application/schema+json
+  Access-Control-Allow-Origin: *
+/data/*
+  Access-Control-Allow-Origin: *
+`);
+
+// --- checks -----------------------------------------------------------------
+
+const problems = [];
+const exists = (url) => {
+  const path = decodeURI(url.split('#')[0].split('?')[0]);
+  if (pageUrls.has(path)) return true;
+  return path !== '/' && !path.endsWith('/') && existsSync(join(out, path));
+};
+
+for (const p of pages) {
+  const html = readFileSync(join(out, htmlFile(p.url)), 'utf8');
+  for (const [, href] of html.matchAll(/href="(\/[^"]*)"/g)) {
+    if (!exists(href)) problems.push(`${p.url}: link to ${href} does not resolve`);
+  }
+  const text = html.replace(/<(script|style)[\s\S]*?<\/\1>/g, '').replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/gi, ' ');
+  if (text.length > MAX_PAGE_CHARS) problems.push(`${p.url}: ${text.length} characters of text, over ${MAX_PAGE_CHARS}`);
+
+  const md = readFileSync(join(out, mdPath(p.url)), 'utf8');
+  for (const [, href] of md.matchAll(/\]\((\/[^)\s]*)\)/g)) {
+    if (!exists(href)) problems.push(`${mdPath(p.url)}: link to ${href} does not resolve`);
+  }
+  if ((md.match(/^\s*(```|~~~)/gm) || []).length % 2) problems.push(`${mdPath(p.url)}: unclosed code fence`);
+}
+for (const f of ['llms.txt', 'clients/llms.txt', 'research/llms.txt']) {
+  for (const [, url] of readFileSync(join(out, f), 'utf8').matchAll(/\]\((https?:[^)\s]+)\)/g)) {
+    if (url.startsWith(ORIGIN) && !exists(url.slice(ORIGIN.length))) problems.push(`${f}: link to ${url} does not resolve`);
+  }
+}
+
+if (problems.length) {
+  console.error(problems.join('\n'));
+  console.error(`\nsite build failed: ${problems.length} problem(s)`);
+  process.exit(1);
+}
+console.log(`site: ${pages.length} pages, ${dataFiles.length + clients.length} data files, ${Object.keys(schemaNames).length} schemas -> site/`);

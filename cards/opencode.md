@@ -320,7 +320,7 @@ Paths read:
 - `packages/core/src/v1/config/mcp.ts`
 - `patches/@modelcontextprotocol%2Fsdk@1.29.0.patch`
 
-Source is not vendored. Client source is read from the shared `_clients` checkout (see `AGENTS.md`); check out that commit there to reproduce any claim above.
+Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 
 ---
 
