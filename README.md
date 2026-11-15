@@ -155,6 +155,29 @@ The Worker also serves a read-only MCP server at `/mcp`, built on `@modelcontext
 
 Each folder under `skills/` is an [Agent Skill](https://agentskills.io/). The MCP server serves them with the SDK's skills extension (`@modelcontextprotocol/server/ext/skills`, SEP-2640) at `skill://<name>/SKILL.md`. The build loads them through the same extension in strict mode, so a skill the SDK rejects fails the build. It also writes them to `/.well-known/agent-skills/` with a discovery index, and to `/data/skills.json`, the bundle the Worker reads. To add a skill, add a folder whose name matches the `name` in its `SKILL.md` frontmatter. The discovery index publishes one `SKILL.md` per skill, so the build stops on a skill with more files until archive entries are added.
 
+## MCP Registry
+
+`server.json` is the listing for the [official MCP Registry](https://registry.modelcontextprotocol.io), as the remote server `io.canimcp/registry`. The build fails when its name, title, description, version or URL differ from what the server at `/mcp` reports. As of 2026-11-15 it has not been published.
+
+The `io.canimcp/*` namespace is proved by HTTP authentication: the Registry fetches `https://canimcp.io/.well-known/mcp-registry-auth` and checks a signature against the public key in it. The build publishes that file from `web/mcp-registry-auth` when it exists. To publish, in Git Bash:
+
+```bash
+# 1. Once: make a key outside the repo, and write its public half into the site.
+openssl genpkey -algorithm Ed25519 -out ~/canimcp-registry.pem
+echo "v=MCPv1; k=ed25519; p=$(openssl pkey -in ~/canimcp-registry.pem -pubout -outform DER | tail -c 32 | base64)" > web/mcp-registry-auth
+npm run deploy
+
+# 2. Check the file the way the Registry fetches it. Expect the record and 200.
+curl -sS -w '\n%{http_code}\n' -H 'Accept: text/plain' -A 'mcp-registry/1.0' https://canimcp.io/.well-known/mcp-registry-auth
+
+# 3. Log in and publish. mcp-publisher comes from the Registry's releases page.
+mcp-publisher validate
+mcp-publisher login http --domain canimcp.io --private-key "$(openssl pkey -in ~/canimcp-registry.pem -noout -text | grep -A3 'priv:' | tail -n +2 | tr -d ' :\n')"
+mcp-publisher publish
+```
+
+A published version cannot be changed, and each publish needs a new `version`. The version is `package.json`'s, so bump it there and in `server.json` together. DNS authentication, a TXT record at the apex of `canimcp.io` holding the same record, works in place of the file.
+
 ## Known work
 
 - Two of the five clients above are unresearched. `clients.apify-seed.json` holds their old apify-derived records; entries move into `clients.json` as they are read, not before.

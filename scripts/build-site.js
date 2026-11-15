@@ -396,6 +396,16 @@ write('.well-known/api-catalog', json(api.apiCatalog));
 write('.well-known/ard.json', json(api.ard));
 write('.well-known/ai-catalog.json', json(api.ard));
 
+// --- MCP Registry -----------------------------------------------------------
+
+// The proof record for the Registry's HTTP authentication. It holds a public
+// key and is absent until one is generated; see "MCP Registry" in the README.
+const registryAuth = existsSync(join(root, 'web', 'mcp-registry-auth')) ? read('web', 'mcp-registry-auth').trim() : null;
+if (registryAuth !== null) {
+  if (!/^v=MCPv1; k=(ed25519|ecdsap384); p=[A-Za-z0-9+/=]+$/.test(registryAuth)) throw new Error('web/mcp-registry-auth: not an MCPv1 proof record');
+  write('.well-known/mcp-registry-auth', `${registryAuth}\n`);
+}
+
 // --- skills -----------------------------------------------------------------
 
 for (const [path, text] of Object.entries(skillBundle)) write(`.well-known/agent-skills/${path}`, text);
@@ -530,6 +540,8 @@ write('_headers', `/*
   Access-Control-Allow-Origin: *
 /.well-known/api-catalog
   Content-Type: ${API_CATALOG_TYPE}
+/.well-known/mcp-registry-auth
+  Content-Type: text/plain; charset=utf-8
 `);
 
 // --- checks -----------------------------------------------------------------
@@ -564,6 +576,19 @@ for (const f of ['llms.txt', 'clients/llms.txt', 'research/llms.txt']) {
 }
 
 problems.push(...checkApiFiles({ origin: ORIGIN, ...api }, exists));
+
+// server.json is what the MCP Registry publishes. It must say what the server says.
+{
+  const listing = readJson('server.json');
+  const want = {
+    name: MCP_SERVER.name, title: MCP_SERVER.title, description: MCP_SERVER.description,
+    version: readJson('package.json').version, websiteUrl: ORIGIN, 'repository.url': REPO, 'remotes[0].url': api.mcpUrl,
+  };
+  const got = { ...listing, 'repository.url': listing.repository?.url, 'remotes[0].url': listing.remotes?.[0]?.url };
+  for (const [k, v] of Object.entries(want)) {
+    if (got[k] !== v) problems.push(`server.json: ${k} is ${JSON.stringify(got[k])}, and the server has ${JSON.stringify(v)}`);
+  }
+}
 
 if (problems.length) {
   console.error(problems.join('\n'));
