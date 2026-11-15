@@ -183,6 +183,8 @@ function buildServer(read) {
         revision: nullable(str).describe('The protocol revision negotiated.'),
         date: nullable(str),
         verdict: nullable(str).describe('What reached the model, in one line.'),
+        modelApi: nullable(str).describe('The model API the client was talking to: anthropic, chat, responses or gemini. Null when the run had no model call.'),
+        image: nullable(str).describe('The image scenario only: image-part when the image reached the model as an image, base64-text when its data was pasted into text, absent when it was dropped. Null for other scenarios.'),
         captures: nullable(str).describe('The run\'s captures in the repository.'),
       })),
     }),
@@ -198,6 +200,7 @@ function buildServer(read) {
         results.push({
           capability: id, scenario: e.scenario ?? null, clientVersion: e.clientVersion ?? null, config: e.config ?? null,
           revision: e.at ?? null, date: e.date ?? null, verdict: e.note ?? null,
+          modelApi: e.observation?.api ?? null, image: e.observation?.image ?? null,
           captures: e.artifact ? `${REPO}/tree/main/${e.artifact}` : null,
         });
       }

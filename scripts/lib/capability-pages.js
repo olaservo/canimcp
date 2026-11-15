@@ -7,6 +7,8 @@ import { KIND_MEANING } from './kinds.js';
 
 const STATUS_MARK = { full: '●', partial: '◐', unsupported: '○', untested: '·' };
 const TIER_LETTER = { read: 'R', verified: 'V', observed: 'O', declared: 'D' };
+const MODEL_API = { anthropic: 'Anthropic Messages', chat: 'Chat Completions', responses: 'Responses', gemini: 'Gemini' };
+const IMAGE_OUTCOME = { 'image-part': 'image part', 'base64-text': 'base64 pasted into text', absent: 'dropped' };
 const cellText = (s) => String(s ?? '').replace(/\|/g, '\\|').replace(/\s*\n\s*/g, ' ');
 const code = (s) => `\`${s}\``;
 const local = (url, origin) => (url.startsWith(origin) ? url.slice(origin.length) : url);
@@ -81,6 +83,21 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
       L.push(`| [${subject[s.subject].title}](${local(v.records, origin)}) | ${subject[s.subject].kind} | ${v.clientVersions.map(code).join(', ')} | ${v.runs} | ${v.revisions.map(code).join(', ')} | ${verdicts} |`);
     }
     L.push('', 'The number after each verdict is how many runs ended that way. Each client name links to its full records.', '');
+  }
+
+  const withImage = probed.filter((s) => s.verified.image);
+  if (withImage.length) {
+    const total = { 'image-part': 0, 'base64-text': 0, absent: 0 };
+    for (const s of withImage) for (const r of s.verified.image) total[r.outcome] = (total[r.outcome] ?? 0) + r.runs;
+    L.push('## Whether the image reached the model', '');
+    L.push(`The image scenario returns a text block and a PNG. A client can hand the image to the model as an image part of the provider's API, paste its base64 data into text, or drop it. Across ${Object.values(total).reduce((a, b) => a + b, 0)} runs the image arrived as an image part in ${total['image-part']}, as base64 text in ${total['base64-text']}, and not at all in ${total.absent}. The outcome depends on the model API as well as the client, so each row is one client on one API.`, '');
+    L.push('| Client | Kind | Model API | Outcome | Runs | Configurations |', '|---|---|---|---|---|---|');
+    for (const s of withImage) {
+      for (const r of s.verified.image) {
+        L.push(`| [${subject[s.subject].title}](${local(s.verified.records, origin)}) | ${subject[s.subject].kind} | ${MODEL_API[r.api] ?? 'none: the SDK hands the result to its host'} | ${MODEL_API[r.api] ? IMAGE_OUTCOME[r.outcome] ?? r.outcome : r.outcome === 'absent' ? 'missing from the result' : 'present in the result, as base64'} | ${r.runs} | ${r.configs.map(code).join(', ')} |`);
+      }
+    }
+    L.push('', 'One 1×1 PNG is the only image tested. Audio, embedded resources, resource links, other image formats and large images have no scenario yet, and what a client shows the user is outside what the probe can see.', '');
   }
 
   if (seen.length) {

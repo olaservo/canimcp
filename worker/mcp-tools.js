@@ -45,7 +45,7 @@ export const TOOLS = [
   {
     name: 'get_probe_results',
     title: 'Get probe results for a client',
-    description: 'Returns verified-tier results from the canimcp probe for one client: for each tool-result scenario, what reached the model, with the client version, model API, protocol revision and a link to the captures. Covers clients that have no registry entry. Pass `capability` to narrow the results.',
+    description: 'Returns verified-tier results from the canimcp probe for one client: for each tool-result scenario, what reached the model, with the client version, model API, protocol revision and a link to the captures. For the image scenario it also says whether the image arrived as an image, as base64 text, or not at all. Covers clients that have no registry entry. Pass `capability` to narrow the results.',
   },
   {
     name: 'search_research_notes',

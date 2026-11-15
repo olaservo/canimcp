@@ -42,6 +42,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
   - `read`: someone read the client's source at the commit given.
 - Tiers are not ranked. When two disagree, report both. An evidence item whose own `status` differs from the capability's is a recorded disagreement.
 - Each evidence item has `at`, the protocol revision it applies to. `2026-07-28` is stateless, and every revision through `2025-11-25` uses the initialize handshake. A result at one says nothing about the other.
+- For images in tool results, use `tools.result.media`. Each probe result has `image` (`image-part`, `base64-text` or `absent`) and `modelApi`. The same client can pass an image on one model API and drop it on another, so report the API with the outcome. Only one small PNG is tested. Audio, embedded resources and resource links are not.
 - A declaration can be wrong in either direction. Some clients declare a capability their code declines, and some implement one they do not declare.
 - The registry covers only the clients `list_clients` returns. A client that is not listed is unknown here.
 

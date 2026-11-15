@@ -76,7 +76,19 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
       if (!runs.length) continue;
       const verdicts = new Map();
       for (const e of runs) verdicts.set(e.note ?? '(no verdict)', (verdicts.get(e.note ?? '(no verdict)') ?? 0) + 1);
+      // The image scenario records how the image reached the model. It varies by model API as well as by client.
+      const image = new Map();
+      for (const e of runs) {
+        const o = e.observation;
+        if (!o?.image) continue;
+        const key = `${o.api ?? ''}|${o.image}`;
+        const row = image.get(key) ?? { api: o.api ?? null, outcome: o.image, runs: 0, configs: [] };
+        row.runs += 1;
+        if (e.config && !row.configs.includes(e.config)) row.configs.push(e.config);
+        image.set(key, row);
+      }
       cell(capId, id).verified = {
+        ...(image.size ? { image: [...image.values()].sort((a, b) => String(a.api).localeCompare(String(b.api)) || a.outcome.localeCompare(b.outcome)) } : {}),
         probeId: overlay.client,
         runs: runs.length,
         clientVersions: distinct(runs.map((e) => e.clientVersion)),
