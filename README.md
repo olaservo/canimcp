@@ -44,8 +44,9 @@ scripts/
   validate.js                       validates the schemas, the overlays and cross-checks references
   build-cards.js                    renders cards/ from the registry
   build-site.js                     renders site/ from cards/, research/, data/ and schema/
+  lib/api-files.js                  the OpenAPI document, API catalog, ARD catalog and /api page over /data
 web/                                the hand-written pages and the stylesheet
-worker/index.js                     the Worker in front of site/: Markdown negotiation, 404, www redirect
+worker/index.js                     the Worker in front of site/: Markdown negotiation, 404s, www redirect
 probe/
   README.md                         the live probe: fixture server, mock model, adapters, runner
   registry/                         scenarios, the list of clients, the list of SDKs
@@ -143,6 +144,8 @@ npm run preview
 ```
 
 This builds `site/` and serves it with `wrangler dev` on <http://localhost:8787>, through the same Worker and asset routing as production. Every page is also served as Markdown at its URL plus `.md`, and at the page URL for `Accept: text/markdown`. The build fails on an internal link that does not resolve, an unclosed code fence, or a page over 100,000 characters of text.
+
+The JSON under `/data` is described as an API. `scripts/lib/api-files.js` holds one list of operations and generates `/openapi.json`, `/.well-known/api-catalog` (RFC 9727), `/.well-known/ard.json` (Agentic Resource Discovery, also written to `/.well-known/ai-catalog.json`) and the `/api` page from it. The build fails when a described path was not built or an ARD entry is missing a required term. A missing path under `/data`, `/schemas` or `/.well-known` returns `application/problem+json` from the Worker.
 
 ## Known work
 

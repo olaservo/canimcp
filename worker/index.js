@@ -1,7 +1,36 @@
 // Serves the static site in site/. Adds what static hosting cannot do alone:
-// Markdown for `Accept: text/markdown`, a Markdown 404, and the www redirect.
+// Markdown for `Accept: text/markdown`, a Markdown 404, a JSON 404 for the
+// data paths, and the www redirect.
 
 const CANONICAL_HOST = 'canimcp.io';
+const JSON_PREFIXES = ['/data/', '/schemas/', '/.well-known/'];
+
+/** True when a missing path should get a JSON error and not the HTML 404 page. */
+function wantsJson(pathname, accept) {
+  if (pathname.endsWith('.json') || JSON_PREFIXES.some((p) => pathname.startsWith(p))) return true;
+  return /\bapplication\/([a-z.-]+\+)?json\b/i.test(accept || '') && !/\btext\/html\b/i.test(accept || '');
+}
+
+/** An RFC 9457 problem document, as described in /openapi.json. */
+function notFound(request, pathname) {
+  const body = {
+    type: 'about:blank',
+    title: 'Not Found',
+    status: 404,
+    code: 'not_found',
+    detail: `No file at ${pathname}. https://${CANONICAL_HOST}/openapi.json lists the paths that exist.`,
+    instance: pathname,
+  };
+  return new Response(request.method === 'HEAD' ? null : `${JSON.stringify(body, null, 2)}\n`, {
+    status: 404,
+    headers: {
+      'Content-Type': 'application/problem+json',
+      'Access-Control-Allow-Origin': '*',
+      'X-Content-Type-Options': 'nosniff',
+      Link: '</openapi.json>; rel="service-desc"',
+    },
+  });
+}
 
 /** True when the Accept header ranks text/markdown at or above text/html. */
 function prefersMarkdown(accept) {
@@ -29,8 +58,8 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    // A page is any path without a file extension.
-    const isPage = !/\.[a-z0-9]+$/i.test(url.pathname);
+    // A page is any path without a file extension, outside /.well-known.
+    const isPage = !/\.[a-z0-9]+$/i.test(url.pathname) && !url.pathname.startsWith('/.well-known/');
     const readable = request.method === 'GET' || request.method === 'HEAD';
 
     if (isPage && readable && prefersMarkdown(request.headers.get('accept'))) {
@@ -44,6 +73,9 @@ export default {
     }
 
     const response = await env.ASSETS.fetch(request);
+    if (response.status === 404 && wantsJson(url.pathname, request.headers.get('accept'))) {
+      return notFound(request, url.pathname);
+    }
     if (!isPage) return response;
 
     const headers = new Headers(response.headers);

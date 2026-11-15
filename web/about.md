@@ -21,4 +21,4 @@ The registry and evidence under `/data`, the research notes and the client pages
 
 ## For agents
 
-[`/llms.txt`](/llms.txt) lists every page and data file. Each page is available as Markdown by appending `.md` to its URL or by sending `Accept: text/markdown`. The JSON Schemas for the data are served at the URLs in their `$id` fields, under `/schemas`.
+[`/llms.txt`](/llms.txt) lists every page and data file. Each page is available as Markdown by appending `.md` to its URL or by sending `Accept: text/markdown`. The JSON Schemas for the data are served at the URLs in their `$id` fields, under `/schemas`. [Data API](/api) lists the JSON endpoints, and [`/openapi.json`](/openapi.json) describes them.

@@ -4,6 +4,14 @@
   "title": "MCP Client Registry",
   "description": "Schema for the MCP client capability registry. Tracks BOTH what clients declare to servers (sampling, elicitation, roots) AND which server capabilities clients can consume (tools, resources, prompts, completions, logging). Intentionally broader than the spec's ClientCapabilities interface. Spec-level version lifecycle of each capability lives in data/spec-versions.json; client entries here record SUPPORT and only override per-version where it differs (byProtocolVersion). Every capability may carry `evidence` recording HOW it is known, and `research` pointing at prose notes in research/. See https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1814",
   "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "$comment": {
+      "type": "string"
+    }
+  },
   "additionalProperties": {
     "$ref": "#/$defs/ClientEntry"
   },

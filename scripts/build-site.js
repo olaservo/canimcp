@@ -5,6 +5,7 @@
  * Every page is written twice: HTML, and a Markdown twin at the same path with
  * `.md` appended. The Markdown is the source; the HTML is rendered from it.
  * Also writes the JSON Schemas at their `$id` paths, the registry under /data,
+ * the OpenAPI document and the catalogs under /.well-known that describe it,
  * llms.txt, sitemap.xml, robots.txt and _headers.
  *
  * Fails when an internal link does not resolve, a served Markdown file has an
@@ -20,6 +21,7 @@ import {
 } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { API_CATALOG_TYPE, OPENAPI_TYPE, buildApiFiles, checkApiFiles } from './lib/api-files.js';
 import { parseFrontmatter } from './lib/frontmatter.js';
 
 const ORIGIN = 'https://canimcp.io';
@@ -91,6 +93,13 @@ const pages = [];
 const page = (p) => { pages.push(p); return p; };
 
 const clients = Object.entries(readJson('data', 'clients.json')).filter(([k]) => !k.startsWith('$'));
+const verifiedFiles = readdirSync(join(root, 'data', 'verified')).filter((f) => f.endsWith('.json')).sort();
+const verified = verifiedFiles.map((f) => readJson('data', 'verified', f));
+
+const api = buildApiFiles({
+  origin: ORIGIN, repo: REPO, version: readJson('package.json').version, tagline: TAGLINE,
+  clients: clients.map(([id, c]) => ({ id, title: c.title })), verified,
+});
 
 // Client cards, and the two generated cross-client cards.
 const cardFiles = readdirSync(join(root, 'cards')).filter((f) => f.endsWith('.md')).sort();
@@ -201,12 +210,17 @@ page({
   page({ url: '/about', title: h1(md), description: firstParagraph(md), md, lastmod: lastmod('web/about.md') });
 }
 
+page({
+  url: '/api', title: h1(api.docsMd), description: firstParagraph(api.docsMd), md: api.docsMd,
+  lastmod: lastmod('scripts/lib/api-files.js', 'data', 'schema'),
+});
+
 const home = page({
   url: '/',
   title: SITE_NAME,
   description: TAGLINE,
   type: 'website',
-  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client.\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
+  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
   lastmod: today,
 });
 home.lastmod = newest(pages.map((p) => p.lastmod));
@@ -262,6 +276,8 @@ function renderHtml(p, { robots } = {}) {
 <meta name="description" content="${esc(p.description)}">
 ${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical" href="${canonical}">
 <link rel="alternate" type="text/markdown" href="${mdPath(p.url)}">
+<link rel="ard" href="/.well-known/ard.json">
+<link rel="service-desc" type="${esc(OPENAPI_TYPE)}" href="/openapi.json">
 <meta property="og:type" content="${p.type || 'article'}">
 <meta property="og:site_name" content="${SITE_NAME}">
 <meta property="og:title" content="${esc(p.title)}">
@@ -273,7 +289,7 @@ ${jsonLd}</head>
 <main>
 ${body}</main>
 <nav aria-label="Site">
-<a href="/">canimcp</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/about">About</a>
+<a href="/">canimcp</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a>
 </nav>
 <footer>
 <p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
@@ -323,12 +339,17 @@ function publishJson(rel, data) {
 
 publishJson('data/clients.json', readJson('data', 'clients.json'));
 publishJson('data/spec-versions.json', readJson('data', 'spec-versions.json'));
-const dataFiles = ['/data/clients.json', '/data/spec-versions.json', '/data/clients/index.json'];
+const dataFiles = ['/data/clients.json', '/data/spec-versions.json', '/data/clients/index.json', '/data/verified/index.json'];
 for (const [id, c] of clients) {
   publishJson(`data/clients/${id}.json`, { id, schema: `${ORIGIN}/schemas/client-registry.json#/$defs/ClientEntry`, entry: c });
 }
 publishJson('data/clients/index.json', clients.map(([id, c]) => ({
   id, title: c.title, description: c.description, data: `${ORIGIN}/data/clients/${id}.json`, page: `${ORIGIN}/clients/${id}`,
+})));
+publishJson('data/verified/index.json', verified.map((v) => ({
+  client: v.client, registryId: v.registryId ?? null, title: v.title, versions: v.versions,
+  data: `${ORIGIN}/data/verified/${v.client}.json`,
+  ...(pageUrls.has(`/tool-results/${v.client}`) ? { page: `${ORIGIN}/tool-results/${v.client}` } : {}),
 })));
 for (const dir of ['verified', 'observed']) {
   if (!existsSync(join(root, 'data', dir))) continue;
@@ -337,6 +358,15 @@ for (const dir of ['verified', 'observed']) {
     dataFiles.push(`/data/${dir}/${f}`);
   }
 }
+
+// --- API description --------------------------------------------------------
+
+const json = (data) => `${JSON.stringify(data, null, 2)}\n`;
+write('openapi.json', json(api.openapi));
+write('.well-known/api-catalog', json(api.apiCatalog));
+// The AI Catalog Standard reads the same document at its own path.
+write('.well-known/ard.json', json(api.ard));
+write('.well-known/ai-catalog.json', json(api.ard));
 
 // --- discovery files --------------------------------------------------------
 
@@ -380,7 +410,14 @@ ${mdLink('Research notes', '/research/', `${notes.length} notes, each with a one
 - [Client index](${abs('/data/clients/index.json')}): ids, titles and the per-client JSON URLs
 - [Capability lifecycle](${abs('/data/spec-versions.json')}): each capability across protocol revisions
 - [Observed telemetry](${abs('/data/observed/hf-mcp-clients.json')}): the feed behind the observed tier
-- Probe records per client: \`${ORIGIN}/data/verified/<client>.json\`
+- [Probe record index](${abs('/data/verified/index.json')}): the clients the probe has run; records are at \`${ORIGIN}/data/verified/<client>.json\`
+
+## API
+
+${mdLink('Data API', '/api', 'the JSON above as an API: endpoints, examples, errors and versioning')}
+- [OpenAPI description](${abs('/openapi.json')}): OpenAPI 3.1, ${api.operations.length} operations, no authentication
+- [API catalog](${abs('/.well-known/api-catalog')}): RFC 9727 linkset
+- [ARD catalog](${abs('/.well-known/ard.json')}): Agentic Resource Discovery entries
 
 ## Schemas
 
@@ -434,7 +471,7 @@ Sitemap: ${ORIGIN}/sitemap.xml
 
 write('_headers', `/*
   X-Content-Type-Options: nosniff
-  Link: </sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain"
+  Link: </sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain", </.well-known/api-catalog>; rel="api-catalog", </openapi.json>; rel="service-desc"; type="${OPENAPI_TYPE}", </api>; rel="service-doc", </.well-known/ard.json>; rel="ard"
 /*.md
   Content-Type: text/markdown; charset=utf-8
 /*.txt
@@ -444,6 +481,12 @@ write('_headers', `/*
   Access-Control-Allow-Origin: *
 /data/*
   Access-Control-Allow-Origin: *
+/openapi.json
+  Access-Control-Allow-Origin: *
+/.well-known/*
+  Access-Control-Allow-Origin: *
+/.well-known/api-catalog
+  Content-Type: ${API_CATALOG_TYPE}
 `);
 
 // --- checks -----------------------------------------------------------------
@@ -475,9 +518,11 @@ for (const f of ['llms.txt', 'clients/llms.txt', 'research/llms.txt']) {
   }
 }
 
+problems.push(...checkApiFiles({ origin: ORIGIN, ...api }, exists));
+
 if (problems.length) {
   console.error(problems.join('\n'));
   console.error(`\nsite build failed: ${problems.length} problem(s)`);
   process.exit(1);
 }
-console.log(`site: ${pages.length} pages, ${dataFiles.length + clients.length} data files, ${Object.keys(schemaNames).length} schemas -> site/`);
+console.log(`site: ${pages.length} pages, ${dataFiles.length + clients.length} data files, ${Object.keys(schemaNames).length} schemas, ${api.operations.length} API operations -> site/`);
