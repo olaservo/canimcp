@@ -28,5 +28,9 @@
     "ajv-formats": "^3.0.1",
     "marked": "^18.2.0",
     "wrangler": "^4.161.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
   }
 }

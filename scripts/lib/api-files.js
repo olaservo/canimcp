@@ -1,8 +1,12 @@
 /**
  * Describes the static JSON under /data as an API. One list of operations
  * yields the OpenAPI document, the RFC 9727 API catalog, the ARD catalog and
- * the Markdown for the /api page.
+ * the Markdown for the /api page. The MCP server's entry in the catalog and
+ * its section of the page come from worker/mcp-tools.js.
  */
+
+import { SUPPORTED_PROTOCOL_VERSIONS } from '@modelcontextprotocol/server';
+import { SERVER, TOOLS } from '../../worker/mcp-tools.js';
 
 export const OPENAPI_TYPE = 'application/vnd.oai.openapi+json;version=3.1';
 export const API_CATALOG_TYPE = 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"';
@@ -147,6 +151,34 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
       returns: 'Capabilities seen in real traffic, by client and revision',
       schema: schema('observed-evidence.json'),
     },
+    {
+      id: 'listResearchNotes',
+      path: '/data/research/index.json',
+      tag: 'research',
+      summary: 'List the research notes',
+      description: 'Every research note with its kind, status, one-paragraph summary, and the clients and capabilities it covers. The note itself is Markdown at the `markdown` URL.',
+      returns: 'The id, title and summary of every research note',
+      schema: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['id', 'title', 'kind', 'status', 'summary', 'clients', 'capabilities', 'page', 'markdown'],
+          properties: {
+            id: str,
+            title: str,
+            kind: { ...str, description: 'nuance, gap, misconception, idiosyncrasy or in-flight.' },
+            status: str,
+            summary: str,
+            clients: { type: 'array', items: str, description: 'Registry ids.' },
+            capabilities: { type: 'array', items: str, description: 'Capability ids.' },
+            specVersions: { type: 'array', items: str },
+            lastVerified: { type: ['string', 'null'] },
+            page: uri,
+            markdown: { ...uri, description: 'The note as Markdown.' },
+          },
+        },
+      },
+    },
   ];
 
   const notFound = { $ref: '#/components/responses/NotFound' };
@@ -194,6 +226,7 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
     tags: [
       { name: 'registry', description: 'Client entries and the capability lifecycle.' },
       { name: 'evidence', description: 'The probe\'s records and the telemetry feed.' },
+      { name: 'research', description: 'Notes on behaviour a status cannot express.' },
     ],
     paths,
     components: {
@@ -233,10 +266,27 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
   };
 
   const host = new URL(origin).hostname;
+  const mcpUrl = `${origin}${SERVER.path}`;
+  const mcpVersions = [...SERVER.modernVersions, ...SUPPORTED_PROTOCOL_VERSIONS];
   const ard = {
     specVersion: '1.0',
     host: { displayName: 'canimcp', documentationUrl: `${origin}/about` },
     entries: [{
+      identifier: `urn:air:${host}:mcp:registry`,
+      displayName: 'canimcp MCP server',
+      type: 'application/mcp-server-card+json',
+      url: `${origin}${SERVER.cardPath}`,
+      description: SERVER.description,
+      version,
+      tags: ['mcp', 'model-context-protocol', 'mcp-clients', 'capabilities', 'mcp-server'],
+      capabilities: TOOLS.map((t) => t.name),
+      representativeQueries: [
+        'which MCP clients support elicitation',
+        'does this MCP client pass structuredContent to the model',
+        'what does the probe show for this client\'s tool results',
+        'are there known gaps in this client\'s MCP support',
+      ],
+    }, {
       identifier: `urn:air:${host}:api:registry`,
       displayName: 'canimcp data API',
       type: OPENAPI_TYPE,
@@ -290,6 +340,16 @@ ${JSON.stringify(problemExample, null, 2)}
 
 ${versioning}
 
+## MCP server
+
+The same data is served over the Model Context Protocol at \`${mcpUrl}\`, by Streamable HTTP with no authentication. The server is stateless and read-only. It answers protocol revisions ${mcpVersions.map((v) => `\`${v}\``).join(', ')}.
+
+| Tool | What it does |
+|---|---|
+${TOOLS.map((t) => `| \`${t.name}\` | ${t.description.replace(/\|/g, '\\|')} |`).join('\n')}
+
+Each tool returns JSON in \`structuredContent\` and the same JSON as text in \`content\`. \`get_research_note\` returns Markdown. The server card is at [\`${SERVER.cardPath}\`](${SERVER.cardPath}).
+
 ## Discovery
 
 - [\`/openapi.json\`](/openapi.json): the OpenAPI 3.1 description.
@@ -302,7 +362,7 @@ ${versioning}
 The data is licensed under [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). Telemetry under \`/data/observed\` follows the terms of the dataset it is derived from. [About](/about) covers where the data comes from and how to report a correction.
 `;
 
-  return { operations, openapi, apiCatalog, ard, docsMd };
+  return { operations, openapi, apiCatalog, ard, docsMd, mcpUrl };
 }
 
 /** Problems with the generated files, as strings. `exists` answers whether a site path was built. */
@@ -346,5 +406,6 @@ export function checkApiFiles({ origin, openapi, apiCatalog, ard }, exists) {
     if (Boolean(e.url) === Boolean(e.data)) problems.push(`${label}: needs exactly one of url and data`);
     if (e.url) local(e.url, label);
   }
+  if (SERVER.description.length > 100) problems.push(`mcp-tools.js: the server description is ${SERVER.description.length} characters, and the server card allows 100`);
   return problems;
 }

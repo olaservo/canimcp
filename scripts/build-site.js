@@ -23,6 +23,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { API_CATALOG_TYPE, OPENAPI_TYPE, buildApiFiles, checkApiFiles } from './lib/api-files.js';
 import { parseFrontmatter } from './lib/frontmatter.js';
+import { SERVER as MCP_SERVER, TOOLS as MCP_TOOLS } from '../worker/mcp-tools.js';
 
 const ORIGIN = 'https://canimcp.io';
 const REPO = 'https://github.com/olaservo/canimcp';
@@ -220,7 +221,7 @@ const home = page({
   title: SITE_NAME,
   description: TAGLINE,
   type: 'website',
-  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
+  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [MCP server](/api#mcp-server): the same data over MCP at \`${api.mcpUrl}\`, read-only, no authentication.\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
   lastmod: today,
 });
 home.lastmod = newest(pages.map((p) => p.lastmod));
@@ -339,7 +340,12 @@ function publishJson(rel, data) {
 
 publishJson('data/clients.json', readJson('data', 'clients.json'));
 publishJson('data/spec-versions.json', readJson('data', 'spec-versions.json'));
-const dataFiles = ['/data/clients.json', '/data/spec-versions.json', '/data/clients/index.json', '/data/verified/index.json'];
+const dataFiles = ['/data/clients.json', '/data/spec-versions.json', '/data/clients/index.json', '/data/verified/index.json', '/data/research/index.json'];
+publishJson('data/research/index.json', notes.map(({ id, fm, url }) => ({
+  id, title: fm.title, kind: fm.kind, status: fm.status, summary: fm.summary,
+  clients: fm.clients ?? [], capabilities: fm.capabilities ?? [], specVersions: fm.specVersions ?? [],
+  lastVerified: fm.lastVerified ?? null, page: `${ORIGIN}${url}`, markdown: `${ORIGIN}${url}.md`,
+})));
 for (const [id, c] of clients) {
   publishJson(`data/clients/${id}.json`, { id, schema: `${ORIGIN}/schemas/client-registry.json#/$defs/ClientEntry`, entry: c });
 }
@@ -415,6 +421,7 @@ ${mdLink('Research notes', '/research/', `${notes.length} notes, each with a one
 ## API
 
 ${mdLink('Data API', '/api', 'the JSON above as an API: endpoints, examples, errors and versioning')}
+- MCP server: \`${api.mcpUrl}\`, Streamable HTTP, read-only, no authentication, ${MCP_TOOLS.length} tools; [server card](${abs(MCP_SERVER.cardPath)})
 - [OpenAPI description](${abs('/openapi.json')}): OpenAPI 3.1, ${api.operations.length} operations, no authentication
 - [API catalog](${abs('/.well-known/api-catalog')}): RFC 9727 linkset
 - [ARD catalog](${abs('/.well-known/ard.json')}): Agentic Resource Discovery entries
@@ -492,9 +499,11 @@ write('_headers', `/*
 // --- checks -----------------------------------------------------------------
 
 const problems = [];
+// Paths the Worker answers itself, which have no file in site/.
+const workerPaths = new Set([MCP_SERVER.path, MCP_SERVER.cardPath]);
 const exists = (url) => {
   const path = decodeURI(url.split('#')[0].split('?')[0]);
-  if (pageUrls.has(path)) return true;
+  if (pageUrls.has(path) || workerPaths.has(path)) return true;
   return path !== '/' && !path.endsWith('/') && existsSync(join(out, path));
 };
 

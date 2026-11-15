@@ -1,6 +1,9 @@
 // Serves the static site in site/. Adds what static hosting cannot do alone:
 // Markdown for `Accept: text/markdown`, a Markdown 404, a JSON 404 for the
-// data paths, and the www redirect.
+// data paths, the www redirect, and the MCP server at /mcp.
+
+import { handleMcp } from './mcp.js';
+import { SERVER } from './mcp-tools.js';
 
 const CANONICAL_HOST = 'canimcp.io';
 const JSON_PREFIXES = ['/data/', '/schemas/', '/.well-known/'];
@@ -57,6 +60,8 @@ export default {
       url.hostname = CANONICAL_HOST;
       return Response.redirect(url.toString(), 301);
     }
+
+    if (url.pathname === SERVER.path || url.pathname === SERVER.cardPath) return handleMcp(request, env, url);
 
     // A page is any path without a file extension, outside /.well-known.
     const isPage = !/\.[a-z0-9]+$/i.test(url.pathname) && !url.pathname.startsWith('/.well-known/');
