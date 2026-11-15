@@ -269,7 +269,7 @@ Paths read:
 - `pyproject.toml`
 - `uv.lock`
 
-Source is not vendored. Client source is read from the shared `_clients` checkout (see `AGENTS.md`); check out that commit there to reproduce any claim above.
+Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 
 ---
 

@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "canimcp-site",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "canimcp.io", "custom_domain": true },
+    // The Worker redirects www to the apex.
+    { "pattern": "www.canimcp.io", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    // Every request goes through the Worker so page URLs can negotiate Markdown.
+    "run_worker_first": true
+  }
+}

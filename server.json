@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.canimcp/registry",
+  "title": "canimcp",
+  "description": "Which MCP clients support what, with the evidence for each claim. Read-only, no authentication.",
+  "version": "0.1.0",
+  "websiteUrl": "https://canimcp.io",
+  "icons": [
+    {
+      "src": "https://canimcp.io/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": ["any"]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/olaservo/canimcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://canimcp.io/mcp"
+    }
+  ]
+}
