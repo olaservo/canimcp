@@ -31,6 +31,12 @@ const ORIGIN = 'https://canimcp.io';
 const REPO = 'https://github.com/olaservo/canimcp';
 const SITE_NAME = 'canimcp';
 const TAGLINE = 'Which MCP clients support what, how each claim is known, and research notes on the parts a support matrix cannot express.';
+const KEYWORDS = ['Model Context Protocol', 'MCP', 'MCP clients', 'MCP client capabilities', 'MCP client support'];
+// The subject of the site, linked to the pages that define it.
+const MCP_ENTITY = {
+  '@type': 'Thing', name: 'Model Context Protocol',
+  sameAs: ['https://modelcontextprotocol.io/', 'https://en.wikipedia.org/wiki/Model_Context_Protocol'],
+};
 // Ora's page-token-budget check: about 25K tokens of extracted text.
 const MAX_PAGE_CHARS = 100_000;
 const MAX_LLMS_CHARS = 30_000;
@@ -232,6 +238,10 @@ page({
   const md = read('web', 'about.md');
   page({ url: '/about', title: h1(md), description: firstParagraph(md), md, lastmod: lastmod('web/about.md') });
 }
+for (const name of ['contact', 'privacy']) {
+  const md = read('web', `${name}.md`);
+  page({ url: `/${name}`, title: h1(md), description: firstParagraph(md), md, lastmod: lastmod(`web/${name}.md`) });
+}
 
 page({
   url: '/api', title: h1(api.docsMd), description: firstParagraph(api.docsMd), md: api.docsMd,
@@ -281,11 +291,19 @@ function renderHtml(p, { robots } = {}) {
   const jsonLd = p.url !== '/' ? '' : `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: SITE_NAME, url: `${ORIGIN}/`, description: TAGLINE, inLanguage: 'en', sameAs: [REPO] },
+      {
+        '@type': 'Organization', '@id': `${ORIGIN}/#org`, name: SITE_NAME, url: `${ORIGIN}/`, description: TAGLINE,
+        logo: `${ORIGIN}/icon.svg`, sameAs: [REPO],
+        contactPoint: { '@type': 'ContactPoint', contactType: 'corrections and support', url: `${ORIGIN}/contact` },
+      },
+      {
+        '@type': 'WebSite', '@id': `${ORIGIN}/#website`, name: SITE_NAME, url: `${ORIGIN}/`, description: TAGLINE, inLanguage: 'en',
+        keywords: KEYWORDS, sameAs: [REPO], publisher: { '@id': `${ORIGIN}/#org` }, about: MCP_ENTITY,
+      },
       {
         '@type': 'Dataset', '@id': `${ORIGIN}/#dataset`, name: 'canimcp MCP client capability registry', description: TAGLINE,
         url: `${ORIGIN}/`, license: 'https://creativecommons.org/licenses/by/4.0/', isAccessibleForFree: true, dateModified: p.lastmod,
-        keywords: ['Model Context Protocol', 'MCP', 'MCP clients', 'capabilities'], sameAs: [REPO],
+        keywords: KEYWORDS, sameAs: [REPO], creator: { '@id': `${ORIGIN}/#org` }, about: MCP_ENTITY,
         distribution: [{ '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: `${ORIGIN}/data/clients.json` }],
       },
     ],
@@ -306,7 +324,13 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical"
 <meta property="og:title" content="${esc(p.title)}">
 <meta property="og:description" content="${esc(p.description)}">
 <meta property="og:url" content="${canonical}">
-`}<link rel="stylesheet" href="/style.css">
+<meta property="og:image" content="${ORIGIN}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="canimcp: which MCP clients support what, and how each claim is known.">
+<meta name="twitter:card" content="summary_large_image">
+`}<link rel="icon" type="image/svg+xml" href="/icon.svg">
+<link rel="stylesheet" href="/style.css">
 ${jsonLd}</head>
 <body>
 <main>
@@ -315,7 +339,7 @@ ${body}</main>
 <a href="/">canimcp</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a>
 </nav>
 <footer>
-<p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+<p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="/contact">Contact</a>. <a href="/privacy">Privacy</a>.</p>
 </footer>
 </body>
 </html>
@@ -337,7 +361,7 @@ for (const p of pages) {
   write('404.html', renderHtml({ url: '/404', title: h1(md), description: 'There is no page at this URL.', md, lastmod: today }, { robots: 'noindex' }));
   write('404.md', markdownLinks(md));
 }
-copyFileSync(join(root, 'web', 'style.css'), join(out, 'style.css'));
+for (const f of ['style.css', 'icon.svg', 'og.png']) copyFileSync(join(root, 'web', f), join(out, f));
 
 // --- data and schemas -------------------------------------------------------
 
@@ -479,6 +503,8 @@ ${Object.values(schemaNames).map((n) => `- [${n}](${abs(`/schemas/${n}`)})`).joi
 ## Optional
 
 ${mdLink('About', '/about', 'where the data comes from, the licence, and how to report a correction')}
+${mdLink('Contact', '/contact', 'how to report an error or ask for a client')}
+${mdLink('Privacy', '/privacy', 'what the site and its host record')}
 - [Source repository](${REPO}): the registry, the probe and its captures
 `;
 if (llms.length > MAX_LLMS_CHARS) throw new Error(`llms.txt is ${llms.length} characters, over ${MAX_LLMS_CHARS}`);
@@ -583,8 +609,12 @@ problems.push(...checkApiFiles({ origin: ORIGIN, ...api }, exists));
   const want = {
     name: MCP_SERVER.name, title: MCP_SERVER.title, description: MCP_SERVER.description,
     version: readJson('package.json').version, websiteUrl: ORIGIN, 'repository.url': REPO, 'remotes[0].url': api.mcpUrl,
+    'icons[0].src': `${ORIGIN}${MCP_SERVER.icon.path}`,
   };
-  const got = { ...listing, 'repository.url': listing.repository?.url, 'remotes[0].url': listing.remotes?.[0]?.url };
+  const got = {
+    ...listing, 'repository.url': listing.repository?.url, 'remotes[0].url': listing.remotes?.[0]?.url, 'icons[0].src': listing.icons?.[0]?.src,
+  };
+  if (!existsSync(join(out, MCP_SERVER.icon.path))) problems.push(`mcp-tools.js: the icon ${MCP_SERVER.icon.path} was not built`);
   for (const [k, v] of Object.entries(want)) {
     if (got[k] !== v) problems.push(`server.json: ${k} is ${JSON.stringify(got[k])}, and the server has ${JSON.stringify(v)}`);
   }

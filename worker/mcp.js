@@ -13,6 +13,7 @@ import { SERVER, TOOLS } from './mcp-tools.js';
 const ORIGIN = 'https://canimcp.io';
 const REPO = 'https://github.com/olaservo/canimcp';
 const CARD_TYPE = 'application/mcp-server-card+json';
+const ICONS = [{ src: `${ORIGIN}${SERVER.icon.path}`, mimeType: SERVER.icon.mimeType, sizes: SERVER.icon.sizes }];
 const READ_ONLY = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: false };
 const HOUR = { ttlMs: 3_600_000, cacheScope: 'public' };
 
@@ -56,7 +57,7 @@ const capabilityShape = { status: str, notes: str.optional(), evidence: z.array(
 
 function buildServer(read) {
   const server = new McpServer(
-    { name: SERVER.name, title: SERVER.title, version: pkg.version, websiteUrl: ORIGIN },
+    { name: SERVER.name, title: SERVER.title, version: pkg.version, websiteUrl: ORIGIN, icons: ICONS },
     {
       instructions: SERVER.instructions,
       // The tools and skills are fixed per deploy, so nothing is ever announced as changed.
@@ -259,6 +260,7 @@ async function serverCard(request) {
     title: SERVER.title,
     description: SERVER.description,
     websiteUrl: ORIGIN,
+    icons: ICONS,
     repository: { source: 'github', url: REPO },
     remotes: [{
       type: 'streamable-http',

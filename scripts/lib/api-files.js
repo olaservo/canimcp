@@ -195,6 +195,7 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
         responses: {
           200: { description: op.returns, content: { 'application/json': { schema: op.schema } } },
           ...(op.parameters ? { 404: notFound } : {}),
+          default: { $ref: '#/components/responses/Problem' },
         },
       },
     };
@@ -236,6 +237,10 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
           description: 'No file at this path.',
           content: { 'application/problem+json': { schema: { $ref: '#/components/schemas/Problem' }, example: problemExample } },
         },
+        Problem: {
+          description: 'Any other error. A method other than GET, HEAD or OPTIONS returns 405.',
+          content: { 'application/problem+json': { schema: { $ref: '#/components/schemas/Problem' } } },
+        },
       },
       schemas: {
         Problem: {
@@ -246,7 +251,7 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
             type: { ...str, description: 'Always about:blank.' },
             title: str,
             status: { type: 'integer' },
-            code: { ...str, description: 'Machine-readable error code.', enum: ['not_found'] },
+            code: { ...str, description: 'Machine-readable error code.', enum: ['not_found', 'method_not_allowed'] },
             detail: str,
             instance: { ...str, description: 'The path requested.' },
           },
@@ -338,7 +343,10 @@ A client entry holds one object per capability. Each has a \`status\` and an \`e
 
 ## Errors
 
-A path under \`/data\`, \`/schemas\` or \`/.well-known\` with no file returns \`404\` and an \`application/problem+json\` body ([RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)). Any other missing path does the same for a request whose \`Accept\` header asks for JSON.
+Errors are \`application/problem+json\` documents ([RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)) with a machine-readable \`code\`.
+
+- \`404\`, \`not_found\`: a path under \`/data\`, \`/schemas\`, \`/api\` or \`/.well-known\` with no file, or any path ending in \`.json\`. Any other missing path returns the same for a request whose \`Accept\` header ranks JSON at or above HTML.
+- \`405\`, \`method_not_allowed\`: any method other than \`GET\`, \`HEAD\` or \`OPTIONS\`, on any path except \`/mcp\`.
 
 \`\`\`json
 ${JSON.stringify(problemExample, null, 2)}

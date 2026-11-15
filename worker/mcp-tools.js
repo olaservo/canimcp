@@ -10,6 +10,7 @@ export const SERVER = {
   description: 'Which MCP clients support what, with the evidence for each claim. Read-only, no authentication.',
   path: '/mcp',
   cardPath: '/mcp/server-card',
+  icon: { path: '/icon.svg', mimeType: 'image/svg+xml', sizes: ['any'] },
   modernVersions: ['2026-07-28'],
   // Every file under skills/, keyed by path, written by the site build.
   skillsBundle: '/data/skills.json',
