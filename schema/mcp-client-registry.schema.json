@@ -200,8 +200,42 @@
     "ProbeObservation": {
       "description": "A typed observation from the probe. One shape per scenario family, discriminated by `type`, so new families (initialize capabilities, roots, elicitation replies) add a member here without touching Evidence.",
       "oneOf": [
-        { "$ref": "#/$defs/ToolResultObservation" }
+        { "$ref": "#/$defs/ToolResultObservation" },
+        { "$ref": "#/$defs/NegotiationObservation" }
       ]
+    },
+    "NegotiationObservation": {
+      "type": "object",
+      "description": "Which protocol version the client proposed and how, what the fixture server answered, and what the client sent afterwards. Produced by probe/classify/negotiation.ts from the wire capture.",
+      "required": ["type", "handshake", "initializedSent", "followUps", "requestMetaVersions", "headerVersions", "toolCalled", "notes"],
+      "properties": {
+        "type": { "const": "protocol.negotiation" },
+        "forcedReply": { "type": "string", "description": "The version the fixture server was told to put in every initialize result. Absent: it echoed the client's." },
+        "handshake": {
+          "type": "array",
+          "description": "initialize and server/discover requests and their answers, in wire order.",
+          "items": {
+            "type": "object",
+            "required": ["dir", "method"],
+            "properties": {
+              "dir": { "type": "string", "enum": ["in", "out"], "description": "in: the client's request. out: the server's answer to it." },
+              "method": { "type": "string", "enum": ["initialize", "server/discover"] },
+              "version": { "type": "string", "description": "in: the version the client proposed. out: the version in the initialize result." },
+              "supportedVersions": { "type": "array", "items": { "type": "string" }, "description": "out, server/discover: the versions the server listed." },
+              "errorCode": { "type": "integer", "description": "out: the JSON-RPC error code, when the server refused." }
+            },
+            "additionalProperties": false
+          }
+        },
+        "initializedSent": { "type": "boolean", "description": "notifications/initialized was seen on the wire." },
+        "followUps": { "type": "array", "items": { "type": "string" }, "description": "Methods the client sent after the handshake, in order of first appearance." },
+        "requestMetaVersions": { "type": "array", "items": { "type": "string" }, "description": "Distinct per-request _meta protocol versions on those messages." },
+        "headerVersions": { "type": "array", "items": { "type": "string" }, "description": "Distinct MCP-Protocol-Version header values on those messages (HTTP)." },
+        "toolCalled": { "type": "boolean", "description": "tools/call was seen on the wire." },
+        "negotiatedRevision": { "type": "string", "description": "The revision the client used after the handshake: the per-request _meta version if it sent one, else the last initialize result." },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
     },
     "ToolResultObservation": {
       "type": "object",

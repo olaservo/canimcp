@@ -16,6 +16,7 @@ probe/
   mock-model/server.ts         the mock model: Chat Completions, Responses, Anthropic Messages; logs every request body
   mock-model/script.ts         the scripted turn: call the fixture tool, then end with text; adapters can supply their own script
   classify/classify.ts         captures in, observation out
+  classify/negotiation.ts      the negotiation family's classifier: wire capture in, handshake observation out
   registry/scenarios.json      scenario registry: capability id, revisions, fixture, capture, observation type
   registry/clients.json        every client the probe knows about: hosts, harnesses, frameworks, how each is driven
   registry/sdks.json           the MCP SDKs, and which clients sit on which
@@ -37,6 +38,7 @@ npm run build
 node dist/scripts/sdk-compat.js                   # once per SDK version
 node dist/runner.js --client goose --set core      # or --set tool-results, or --scenarios a,b,c
 node dist/runner.js --client codex --set tool-results --config mcp-2026-07-28 --transport http
+node dist/runner.js --client codex --set negotiation --config default
 node dist/scripts/collect.js                       # writes ../data/verified/<client>.json
 cd .. && npm run validate
 ```
@@ -56,7 +58,7 @@ Everything here was learned on a Windows 11 machine with the repo under OneDrive
 - **hermes-agent** is an editable install of a detached git worktree at `%LOCALAPPDATA%\canimcp-build\hermes-agent`; `hosts/hermes-agent/requirements.txt` has the recipe. Deleting that worktree breaks the venv.
 - **opencode is built from source** when no release contains the pin, from a detached worktree at `%LOCALAPPDATA%\canimcp-build\opencode` with bun 1.4.4 installed locally under `%LOCALAPPDATA%\canimcp-build\bun144` (the build script refuses older bun; the global bun here is 1.3.4). `hosts/opencode/package.json` has the recipe; the binary goes to `hosts/opencode/bin/` (gitignored) and the adapter prefers it over the npm install. The worktree and the local bun can be deleted once the binary exists.
 - **Python clients** import slowly from a venv under OneDrive (10 to 60 s cold). Run `.venv/Scripts/python.exe -m compileall -q -j 4 .venv/Lib/site-packages` once after installing, and pass `--timeout 300000` (hermes: `--timeout 240000`) to the runner.
-- **Codex** at 0.169.0-alpha.3 speaks the Responses API only (`wire_api = "chat"` fails config loading), puts MCP tools in a `namespace` tool named `mcp__<server>`, and applies its `mcp_2026_07_28` feature to Streamable HTTP servers only. Its first turn may start before MCP tools are listed; the mock script spends a warm-up round trip.
+- **Codex** at 0.169.0-alpha.3 speaks the Responses API only (`wire_api = "chat"` fails config loading), puts MCP tools in a `namespace` tool named `mcp__<server>`, and applies its `mcp_2026_07_28` feature to Streamable HTTP servers only unless a stdio server also sets `CODEX_MCP_PROTOCOL_VERSION=2026-07-28` in its `env` (the `mcp-2026-07-28-stdio-opt-in` config). Its first turn may start before MCP tools are listed; the mock script spends a warm-up round trip.
 - **Clients that split a stdio command line on whitespace** cannot take `C:\Program Files
 odejs
 ode.exe`; the runner passes `node` from PATH. crewAI also hashes long server names into the tool name, so its adapter spawns a one-line `srv.mjs` wrapper.
@@ -92,6 +94,35 @@ Every fixture is one tool. Each payload carries a unique marker: `MARK_CONTENT_7
 The full matrix with error texts is `registry/sdk-compat.json`. The runner's default mode reads the `sdk` rows and uses the raw path for `no_content_key`, `empty_object`, `sc_string` and `sc_null`.
 
 The conformance suite's `src/mock-server/` was read first and not reused: it is built on the legacy `@modelcontextprotocol/sdk` 1.x, depends on the suite's own wire-schema validator, and has no stdio. Its two ideas carried over: record every request before validation, and build the stateless server by hand so it can front-run SDK support.
+
+## Negotiation scenarios
+
+The `protocol.negotiation` family records which version a client proposes, through `initialize` or `server/discover`, and what it does with the server's answer. It reads the wire capture only. The scenarios run on the raw server path with the `summary_and_data` fixture, so a run still ends with one tool call.
+
+| Scenario | The server |
+|---|---|
+| `protocol.initializeHandshake.echo` | accepts whatever the client proposes |
+| `protocol.initializeHandshake.reply_2024_11_05`, `reply_2025_11_25`, `reply_2026_07_28` | puts that version in the `initialize` result whatever was proposed (`--init-reply`) |
+| `protocol.serverDiscover.method_not_found` | answers `server/discover` with `-32601`, as a server from before 2026-07-28 does (`--discover-not-found`) |
+
+`--era legacy` on `echo` gives the other refusal: `server/discover` with an envelope gets `-32022` and a list of handshake-era versions.
+
+The Codex records behind `research/codex-defaults-to-2025-06-18.md`:
+
+```
+E=protocol.initializeHandshake.echo
+D=protocol.serverDiscover.method_not_found
+node dist/runner.js --client codex --set negotiation --config default --transport stdio
+node dist/runner.js --client codex --set negotiation --config default --transport http
+node dist/runner.js --client codex --scenarios $E --config mcp-2026-07-28 --transport stdio
+node dist/runner.js --client codex --scenarios $E --config stdio-opt-in-no-flag --transport stdio
+node dist/runner.js --client codex --scenarios $E,$D --config mcp-2026-07-28-stdio-opt-in --transport stdio
+node dist/runner.js --client codex --scenarios $E,$D --config mcp-2026-07-28 --transport http
+node dist/runner.js --client codex --scenarios $E --config mcp-2026-07-28-stdio-opt-in --transport stdio --era legacy
+node dist/runner.js --client codex --scenarios $E --config mcp-2026-07-28 --transport http --era legacy
+```
+
+On Windows, run `node scripts/strip-operator-skills.js <run-dir>...` and `node scripts/check-private.js --fix` from the repo root before collecting, as for any Codex capture.
 
 ## Adding a client
 

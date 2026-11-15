@@ -6,6 +6,12 @@
       "observation": "tools.result",
       "description": "Which of content and structuredContent reaches the model, and in what form.",
       "classifier": "classify/classify.ts"
+    },
+    "protocol.negotiation": {
+      "capture": ["wire"],
+      "observation": "protocol.negotiation",
+      "description": "Which protocol version the client proposes and how, and what it does when the server's initialize result names a different one. Runs on the raw server path; `server.initReply` is the version the server answers initialize with, and `server.discoverNotFound` makes it answer server/discover with -32601.",
+      "classifier": "classify/negotiation.ts"
     }
   },
   "scenarios": [
@@ -25,10 +31,16 @@
     { "id": "tools.result.sc_string", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "sc_string", "appliesTo": ["2026-07-28"], "question": "A non-object structuredContent (legal since 2026-07-28): same path as an object?" },
     { "id": "tools.result.sc_null", "family": "tools.result", "capability": "tools.result.structuredContent", "fixture": "sc_null", "appliesTo": ["2026-07-28"], "question": "structuredContent null: absent or present?" },
     { "id": "tools.result.with_meta", "family": "tools.result", "capability": "tools.result._meta", "fixture": "with_meta", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Result-level _meta next to both payload fields: does it reach the model, and does its presence change which field wins?" },
-    { "id": "tools.result.meta_only", "family": "tools.result", "capability": "tools.result._meta", "fixture": "meta_only", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Result-level _meta with content only: does _meta alone switch the client to an envelope or another path?" }
+    { "id": "tools.result.meta_only", "family": "tools.result", "capability": "tools.result._meta", "fixture": "meta_only", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "Result-level _meta with content only: does _meta alone switch the client to an envelope or another path?" },
+    { "id": "protocol.initializeHandshake.echo", "family": "protocol.negotiation", "capability": "protocol.initializeHandshake", "fixture": "summary_and_data", "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25", "2026-07-28"], "question": "The server accepts whatever is proposed: which version does the client propose, and through initialize or server/discover?" },
+    { "id": "protocol.initializeHandshake.reply_2024_11_05", "family": "protocol.negotiation", "capability": "protocol.initializeHandshake", "fixture": "summary_and_data", "server": { "initReply": "2024-11-05" }, "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25"], "question": "The initialize result names 2024-11-05 whatever was proposed: does the client carry on or disconnect?" },
+    { "id": "protocol.initializeHandshake.reply_2025_11_25", "family": "protocol.negotiation", "capability": "protocol.initializeHandshake", "fixture": "summary_and_data", "server": { "initReply": "2025-11-25" }, "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25"], "question": "The initialize result names 2025-11-25 whatever was proposed: does the client carry on or disconnect?" },
+    { "id": "protocol.initializeHandshake.reply_2026_07_28", "family": "protocol.negotiation", "capability": "protocol.initializeHandshake", "fixture": "summary_and_data", "server": { "initReply": "2026-07-28" }, "appliesTo": ["2024-11-05", "2025-03-26", "2025-06-18", "2025-11-25"], "question": "The initialize result names 2026-07-28, a revision with no handshake: does the client carry on, and with which per-request version?" },
+    { "id": "protocol.serverDiscover.method_not_found", "family": "protocol.negotiation", "capability": "protocol.serverDiscover", "fixture": "summary_and_data", "server": { "discoverNotFound": true }, "appliesTo": ["2026-07-28"], "question": "server/discover is answered with -32601, as a server from before 2026-07-28 answers it: does the client fall back to initialize?" }
   ],
   "sets": {
     "core": ["tools.result.summary_and_data", "tools.result.mirror", "tools.result.structured_only"],
-    "tool-results": ["tools.result.summary_and_data", "tools.result.mirror", "tools.result.structured_only", "tools.result.sc_empty", "tools.result.with_image", "tools.result.audience_user", "tools.result.is_error", "tools.result.schema_match", "tools.result.schema_mismatch", "tools.result.app_only", "tools.result.large", "tools.result.no_content_key", "tools.result.empty_object", "tools.result.sc_string", "tools.result.sc_null", "tools.result.with_meta", "tools.result.meta_only"]
+    "tool-results": ["tools.result.summary_and_data", "tools.result.mirror", "tools.result.structured_only", "tools.result.sc_empty", "tools.result.with_image", "tools.result.audience_user", "tools.result.is_error", "tools.result.schema_match", "tools.result.schema_mismatch", "tools.result.app_only", "tools.result.large", "tools.result.no_content_key", "tools.result.empty_object", "tools.result.sc_string", "tools.result.sc_null", "tools.result.with_meta", "tools.result.meta_only"],
+    "negotiation": ["protocol.initializeHandshake.echo", "protocol.initializeHandshake.reply_2024_11_05", "protocol.initializeHandshake.reply_2025_11_25", "protocol.initializeHandshake.reply_2026_07_28", "protocol.serverDiscover.method_not_found"]
   }
 }

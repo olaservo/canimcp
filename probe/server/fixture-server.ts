@@ -22,7 +22,7 @@ import { Server, McpServer, createMcpHandler, type McpServerFactory } from '@mod
 import { fromJsonSchema } from '@modelcontextprotocol/server';
 import { StdioServerTransport, serveStdio } from '@modelcontextprotocol/server/stdio';
 import type { Transport, JSONRPCMessage, CallToolResult } from '@modelcontextprotocol/server';
-import { Capture, arg } from '../lib/capture.js';
+import { Capture, arg, flag } from '../lib/capture.js';
 import { fixtureById, APP_RESOURCE, type Fixture } from '../fixtures/tool-results.js';
 import { RawServer, fixtureCapabilities, fixtureToolDefinition, type EraPolicy } from './raw-jsonrpc.js';
 
@@ -34,6 +34,14 @@ const fixture = fixtureById(arg('fixture'));
 const mode = arg('mode', 'sdk') as Mode;
 const transportKind = arg('transport', 'stdio') as 'stdio' | 'http';
 const era = arg('era', 'both') as EraPolicy;
+// The version to put in every initialize result, for the negotiation scenarios. Raw mode only.
+const initReply = arg('init-reply', '') || undefined;
+// Answer server/discover with -32601, as a server from before 2026-07-28 does. Raw mode only.
+const discoverNotFound = flag('discover-not-found');
+if ((initReply || discoverNotFound) && mode !== 'raw') {
+  process.stderr.write('--init-reply and --discover-not-found need --mode raw\n');
+  process.exit(2);
+}
 const captureDir = arg('capture');
 const wire = new Capture(`${captureDir}/wire.jsonl`);
 const log = (entry: Record<string, unknown>) => wire.write({ transport: transportKind, mode, ...entry });
@@ -172,7 +180,7 @@ function parseSseOrJson(text: string, contentType: string): unknown {
 }
 
 async function serveHttp(port: number): Promise<void> {
-  const raw = mode === 'raw' ? new RawServer({ fixture, era, serverInfo: SERVER_INFO }) : undefined;
+  const raw = mode === 'raw' ? new RawServer({ fixture, era, serverInfo: SERVER_INFO, initReply, discoverNotFound }) : undefined;
   const handler = raw
     ? undefined
     : createMcpHandler(sdkFactory(fixture), { legacy: era === 'modern' ? 'reject' : 'stateless', onerror: (e) => log({ dir: 'error', error: String(e) }) });
@@ -274,7 +282,7 @@ async function serveHttp(port: number): Promise<void> {
 // -------------------------------------------------------------- stdio side
 
 function serveStdioRaw(): void {
-  const raw = new RawServer({ fixture, era, serverInfo: SERVER_INFO });
+  const raw = new RawServer({ fixture, era, serverInfo: SERVER_INFO, initReply, discoverNotFound });
   const rl = createInterface({ input: process.stdin, crlfDelay: Infinity });
   rl.on('line', (line) => {
     if (!line.trim()) return;

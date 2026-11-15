@@ -17,6 +17,7 @@ import { dirname, resolve, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { fixtureById } from './fixtures/tool-results.js';
 import { classify, verdict, type ToolResultObservation } from './classify/classify.js';
+import { classifyNegotiation, negotiationVerdict, type NegotiationObservation } from './classify/negotiation.js';
 import { freePort, startService, killTree, ensureDir, slash, type HostAdapter, type Era, type ServerMode, type RunContext } from './lib/hosts.js';
 import { arg, flag } from './lib/capture.js';
 import { scratchRoot, operatorMarkers, findOperatorText } from './lib/operator-guard.js';
@@ -32,6 +33,8 @@ interface Scenario {
   fixture: string;
   appliesTo: string[];
   question: string;
+  /** Fixture server behaviour the scenario needs beyond the fixture. */
+  server?: { initReply?: string; discoverNotFound?: boolean };
 }
 
 interface ScenarioRegistry {
@@ -122,7 +125,10 @@ const records: unknown[] = [];
 for (const config of configs) {
   for (const scenario of scenarios) {
     const fixture = fixtureById(scenario.fixture);
-    const mode = pickMode(fixture.id);
+    // The negotiation family reads the wire only, and the forced initialize reply exists on the raw path alone.
+    const negotiation = scenario.family === 'protocol.negotiation';
+    const initReply = scenario.server?.initReply;
+    const mode = negotiation ? 'raw' : pickMode(fixture.id);
     const runDir = ensureDir(resolve(outRoot, `${adapter.id}@${clientVersion}`, config.name, `${era}-${transport}`, scenario.id));
     // Outside the operator's home, so a client searching upward for skills or instructions cannot reach theirs.
     const tmpDir = ensureDir(resolve(scratch, `${adapter.id}@${clientVersion}`, config.name, `${era}-${transport}`, scenario.id));
@@ -137,7 +143,7 @@ for (const config of configs) {
     const mock = await startService(process.execPath, mockArgs, /mock-model listening/, { logPath: resolve(runDir, 'mock-model.log') });
 
     const serverScript = resolve(probeRoot, 'dist/server/fixture-server.js');
-    const serverArgsBase = ['--fixture', fixture.id, '--mode', mode, '--era', era, '--capture', slash(runDir)];
+    const serverArgsBase = ['--fixture', fixture.id, '--mode', mode, '--era', era, '--capture', slash(runDir), ...(initReply ? ['--init-reply', initReply] : []), ...(scenario.server?.discoverNotFound ? ['--discover-not-found'] : [])];
     let httpServer: Awaited<ReturnType<typeof startService>> | undefined;
     let serverUrl: string | undefined;
     if (transport === 'http') {
@@ -175,8 +181,8 @@ for (const config of configs) {
     writeFileSync(resolve(runDir, 'client-stdout.txt'), result.stdout);
     writeFileSync(resolve(runDir, 'client-stderr.txt'), result.stderr);
 
-    const observation: ToolResultObservation = classify(runDir, fixture.id, mode, result.finalText);
-    const summary = verdict(observation);
+    const observation: ToolResultObservation | NegotiationObservation = negotiation ? classifyNegotiation(runDir, initReply) : classify(runDir, fixture.id, mode, result.finalText);
+    const summary = observation.type === 'protocol.negotiation' ? negotiationVerdict(observation) : verdict(observation);
     const at = observation.negotiatedRevision && !observation.negotiatedRevision.startsWith('requested:') ? observation.negotiatedRevision : undefined;
     const record = {
       client: adapter.id,
@@ -207,7 +213,7 @@ for (const config of configs) {
     writeFileSync(resolve(runDir, 'record.json'), JSON.stringify(record, null, 2));
     records.push(record);
     for (const { file, hits } of findOperatorText(runDir, markers)) leaks.push(`${relative(probeRoot, resolve(runDir, file))} (${hits} marker(s))`);
-    process.stdout.write(`   ${summary}\n   exit=${result.exitCode} timedOut=${result.timedOut} ${result.durationMs}ms at=${at ?? '?'} offeredAs=${observation.offeredAs ?? '-'}\n`);
+    process.stdout.write(`   ${summary}\n   exit=${result.exitCode} timedOut=${result.timedOut} ${result.durationMs}ms at=${at ?? '?'} offeredAs=${('offeredAs' in observation ? observation.offeredAs : undefined) ?? '-'}\n`);
     // Helper processes (hermes gateway, eve dev) may hold files for a moment after the client exits.
     if (!keepTmp) rmSync(tmpDir, { recursive: true, force: true, maxRetries: 10, retryDelay: 500 });
   }

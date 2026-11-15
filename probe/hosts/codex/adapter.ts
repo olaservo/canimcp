@@ -25,7 +25,17 @@ const adapter: HostAdapter = {
     {
       name: 'mcp-2026-07-28',
       description:
-        'features.mcp_2026_07_28 = true (also passed as --enable): discover-first, 2026-07-28 preferred. Observed to apply to Streamable HTTP servers only; stdio servers keep the 2025-06-18 handshake (connection_manager.rs stdio_protocol_mode), so run this config with --transport http.',
+        'features.mcp_2026_07_28 = true (also passed as --enable): discover-first, 2026-07-28 preferred. On its own it applies to Streamable HTTP servers only; a stdio server keeps the 2025-06-18 handshake unless it also opts in (rmcp-client protocol_mode.rs stdio_mode), which is the next config.',
+      modelApi: 'responses',
+    },
+    {
+      name: 'mcp-2026-07-28-stdio-opt-in',
+      description: 'The feature flag plus CODEX_MCP_PROTOCOL_VERSION = "2026-07-28" in the stdio server\'s env table. Stdio only; over HTTP it is the same as mcp-2026-07-28.',
+      modelApi: 'responses',
+    },
+    {
+      name: 'stdio-opt-in-no-flag',
+      description: 'CODEX_MCP_PROTOCOL_VERSION = "2026-07-28" in the stdio server\'s env table with the feature flag off. Stdio only; over HTTP it is the same as default.',
       modelApi: 'responses',
     },
     // No Chat Completions config: at 0.169.0-alpha.3 `wire_api = "chat"` fails config loading
@@ -46,6 +56,8 @@ const adapter: HostAdapter = {
       ctx.transport === 'http'
         ? `url = ${tomlString(ctx.serverUrl as string)}`
         : `command = ${tomlString(ctx.serverCommand.command)}\nargs = [${ctx.serverCommand.args.map(tomlString).join(', ')}]`;
+    const flagOn = ctx.config.name === 'mcp-2026-07-28' || ctx.config.name === 'mcp-2026-07-28-stdio-opt-in';
+    const stdioOptIn = ctx.transport === 'stdio' && (ctx.config.name === 'mcp-2026-07-28-stdio-opt-in' || ctx.config.name === 'stdio-opt-in-no-flag');
     const config = [
       'model = "gpt-probe"',
       'model_provider = "probe"',
@@ -63,13 +75,14 @@ const adapter: HostAdapter = {
       'startup_timeout_sec = 60',
       'tool_timeout_sec = 60',
       '',
-      ...(ctx.config.name === 'mcp-2026-07-28' ? ['[features]', 'mcp_2026_07_28 = true'] : []),
+      ...(stdioOptIn ? ['[mcp_servers.probe.env]', 'CODEX_MCP_PROTOCOL_VERSION = "2026-07-28"', ''] : []),
+      ...(flagOn ? ['[features]', 'mcp_2026_07_28 = true'] : []),
       '',
     ].join('\n');
     writeFileSync(resolve(home, 'config.toml'), config);
     writeFileSync(resolve(ctx.runDir, 'client-config.toml'), config);
 
-    const enable = ctx.config.name === 'mcp-2026-07-28' ? ['--enable', 'mcp_2026_07_28'] : [];
+    const enable = flagOn ? ['--enable', 'mcp_2026_07_28'] : [];
     const cmd = invoke(['exec', ...enable, '--skip-git-repo-check', '--ephemeral', '--json', '--dangerously-bypass-approvals-and-sandbox', '-C', slash(cwd), ctx.prompt]);
     const r = await runCommand(cmd.command, cmd.args, {
       cwd,

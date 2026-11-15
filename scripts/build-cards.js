@@ -531,7 +531,7 @@ function renderCard(id, entry, notes, verified, observed) {
     L.push(
       `${rows.length} records from the live probe (\`probe/\`), client version${verified.versions.length > 1 ? 's' : ''} ${verified.versions
         .map((v) => `\`${v}\``)
-        .join(', ')}. Each row is one run against the instrumented fixture server with the model mocked; the verdict says which fixture fields reached the model. Glyphs: \`[…]\` content, \`{…}\` structuredContent, \`⟨…⟩\` the whole envelope, \`"…"\` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: \`${VERIFIED_DIR}/${verified.file}\`.`,
+        .join(', ')}. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: \`[…]\` content, \`{…}\` structuredContent, \`⟨…⟩\` the whole envelope, \`"…"\` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: \`${VERIFIED_DIR}/${verified.file}\`.`,
     );
     L.push('');
     L.push(...verifiedTable(rows, { withCapability: true }));
@@ -612,7 +612,8 @@ function renderCard(id, entry, notes, verified, observed) {
 /** The cross-client matrix: one row per probed client, config and run, one column per scenario. */
 function renderMatrix(overlays, registry) {
   const L = [];
-  const rowsByOverlay = overlays.map((o) => ({ overlay: o, rows: verifiedRows(o) }));
+  // Other scenario families (protocol.negotiation) are listed on the client cards only.
+  const rowsByOverlay = overlays.map((o) => ({ overlay: o, rows: verifiedRows(o).filter((r) => r.scenario.startsWith('tools.result.')) }));
   const scenarios = scenarioOrder(rowsByOverlay.flatMap((x) => x.rows));
   const short = (id) => id.replace(/^tools\.result\./, '');
   const total = rowsByOverlay.reduce((n, x) => n + x.rows.length, 0);
