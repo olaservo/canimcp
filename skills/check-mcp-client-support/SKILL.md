@@ -14,13 +14,13 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 | Question | MCP tool | JSON |
 |---|---|---|
 | Which clients are covered | `list_clients` | `/data/clients/index.json` |
-| Which capability ids exist | `list_capabilities` | the `capabilities` keys of `/data/spec-versions.json` |
-| Which clients support a capability | `find_capability_support` | `/data/clients.json` |
+| Which capability ids exist | `list_capabilities` | `/data/capabilities/index.json` |
+| Which clients support a capability | `find_capability_support` | `/data/capabilities/{slug}.json`, where the slug is the id with dots as hyphens |
 | What one client does | `get_client` | `/data/clients/{id}.json` |
 | What reached the model from a tool result | `get_probe_results` | `/data/verified/{client}.json` |
 | Why a status is what it is | `search_research_notes`, `get_research_note` | `/data/research/index.json` |
 
-`https://canimcp.io/openapi.json` describes the JSON. Every page on the site is Markdown at its URL plus `.md`.
+`https://canimcp.io/openapi.json` describes the JSON. Every page on the site is Markdown at its URL plus `.md`, and each capability has a page at `/capabilities/{slug}`.
 
 ## Steps
 
@@ -34,6 +34,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 
 - A status is `full`, `partial`, `unsupported` or `untested`.
 - A client under `notRecorded` has no entry for that capability. That is not `unsupported`. Say it is not recorded.
+- A client with no `status` has probe records or telemetry and no registry record. Report what the `verified` or `observed` part says, and say the registry has not settled a status.
 - Each evidence item has a `tier`:
   - `declared`: the client says so, in the capabilities it sends or in a curated list.
   - `verified`: the probe exercised it.

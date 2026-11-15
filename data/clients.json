@@ -10,6 +10,7 @@
     "url": "https://block.github.io/goose",
     "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.1.4.",
     "category": "agent-framework",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -294,6 +295,7 @@
     "url": "https://openai.com/codex",
     "description": "OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1.3 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -782,6 +784,7 @@
     "url": "https://opencode.ai",
     "description": "Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of SDK 1.29.0, so its transport behaviour is not stock.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -1268,6 +1271,7 @@
     "url": "https://cline.bot/",
     "description": "Open-source coding agent shipping as a VS Code extension and a CLI from one monorepo. Both surfaces use the official TypeScript SDK unpatched, except the CLI's stdio path, which is a hand-written JSON-RPC client fixed at 2024-11-05.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -1976,6 +1980,7 @@
     "url": "https://fast-agent.ai/",
     "description": "Python framework and CLI for building and running agents, from the maintainer of the SEP-2640 skills proposal and the HF client telemetry feed. The first client read here that leads with the 2026-07-28 stateless era: it probes server/discover before falling back to the initialize handshake, and behaves differently on each.",
     "category": "agent-framework",
+    "kind": "framework",
     "platforms": [
       "windows",
       "macos",
@@ -2956,6 +2961,7 @@
     "url": "https://github.com/openclaw/openclaw",
     "description": "Multi-channel AI gateway that runs agents across chat surfaces and remote nodes. Two MCP client surfaces: the per-session agent bundle and the headless node host.",
     "category": "agent-framework",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -3449,6 +3455,7 @@
     "url": "https://github.com/NousResearch/hermes-agent",
     "description": "Python agent CLI, desktop app and gateway from Nous Research. The second client here on the mcp Python SDK and the counterpart to fast-agent on it: same library, opposite protocol-era default. Hermes leads with the initialize handshake and probes server/discover only when a server rejects it. One MCP client serves every surface.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -4470,6 +4477,7 @@
     "url": "https://kilo.ai",
     "description": "Open-source coding agent for VS Code, JetBrains and the terminal. Now built on opencode, not Cline: the CLI is a fork of opencode's, and the VS Code and JetBrains extensions both spawn `kilo serve`, so one MCP client sits behind every surface. Ships a patched SDK 1.32.1 on main; the v2 branch has moved to the split SDK.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -5028,6 +5036,7 @@
     "url": "https://antigravity.google",
     "description": "Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts. Closed source, so nothing here is a read. The entry joins Apify's curated record, unchanged since November 2025, to Hugging Face MCP traffic, and the two disagree on protocol revision and elicitation.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",

@@ -120,26 +120,23 @@ function buildServer(read) {
   tool('list_capabilities', {
     inputSchema: z.object({}),
     outputSchema: z.object({
-      clientCount: z.number(),
+      clientCount: z.number().describe('How many clients have a registry entry.'),
       capabilities: z.array(z.object({
         id: str,
         introducedIn: nullable(str).describe('The protocol revision that introduced it, or null when it is not a protocol feature.'),
         statuses: z.record(str, z.number()).describe('How many clients record each status. Clients with no record are not counted.'),
+        page: str,
       })),
     }),
   }, async () => {
-    const { clients, spec, aliases } = await load();
-    const statuses = new Map(Object.keys(spec.capabilities).map((id) => [id, {}]));
-    for (const [, entry] of clients) {
-      for (const { id, node } of capabilityNodes(entry, aliases)) {
-        const counts = statuses.get(id) ?? {};
-        counts[node.status] = (counts[node.status] ?? 0) + 1;
-        statuses.set(id, counts);
-      }
-    }
+    const index = await read('/data/capabilities/index.json');
     return ok({
-      clientCount: clients.length,
-      capabilities: [...statuses].map(([id, counts]) => ({ id, introducedIn: spec.capabilities[id]?.introducedIn ?? null, statuses: counts })),
+      clientCount: index.subjects.filter((s) => s.registry).length,
+      capabilities: index.capabilities.map((c) => {
+        const counts = {};
+        for (const status of Object.values(c.statuses)) counts[status] = (counts[status] ?? 0) + 1;
+        return { id: c.id, introducedIn: c.introducedIn, statuses: counts, page: c.page };
+      }),
     });
   });
 
@@ -149,22 +146,28 @@ function buildServer(read) {
     }),
     outputSchema: z.object({
       capability: str,
+      page: str,
       lifecycle: nullable(z.record(str, z.unknown())).describe('When the protocol introduced, changed, deprecated or removed it. Null when it is not a protocol feature.'),
-      clients: z.array(loose({ id: str, title: str, page: str, ...capabilityShape })),
-      notRecorded: z.array(str).describe('Clients whose entry says nothing about it. Not the same as unsupported.'),
+      clients: z.array(loose({
+        id: str, title: str, kind: str, page: str,
+        status: str.optional().describe('The registry\'s status. Absent when the client has probe records or telemetry and no registry record.'),
+        tiers: z.array(str).describe('The evidence tiers behind this client\'s row.'),
+        verified: z.record(str, z.unknown()).optional().describe('A summary of the probe\'s runs: versions, revisions, and each verdict with its count.'),
+        observed: z.array(loose({ tier: str })).optional().describe('What telemetry saw.'),
+        disagreements: z.array(loose({ tier: str })).describe('Evidence whose own status differs from the registry\'s.'),
+      })),
+      notRecorded: z.array(str).describe('Registry clients whose entry says nothing about it. Not the same as unsupported.'),
+      research: z.array(str).describe('Ids of research notes about it, for get_research_note.'),
     }),
   }, async ({ capability }) => {
-    const { clients, spec, aliases } = await load();
-    const found = [];
-    const notRecorded = [];
-    for (const [id, entry] of clients) {
-      const hit = capabilityNodes(entry, aliases).find((n) => n.id === capability);
-      if (hit) found.push({ id, title: entry.title, page: `${ORIGIN}/clients/${id}`, ...ownFields(hit.node) });
-      else notRecorded.push(id);
-    }
-    const lifecycle = spec.capabilities[capability] ?? null;
-    if (!found.length && !lifecycle) return fail(`No capability with id "${capability}". Call list_capabilities for the ids.`);
-    return ok({ capability, lifecycle, clients: found, notRecorded });
+    const index = await read('/data/capabilities/index.json');
+    const hit = index.capabilities.find((c) => c.id === capability);
+    if (!hit) return fail(`No capability with id "${capability}". Call list_capabilities for the ids.`);
+    const record = await read(`/data/capabilities/${hit.slug}.json`);
+    return ok({
+      capability: record.capability, page: record.page, lifecycle: record.lifecycle, clients: record.clients,
+      notRecorded: record.notRecorded, research: record.research,
+    });
   });
 
   tool('get_probe_results', {

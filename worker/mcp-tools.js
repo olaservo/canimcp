@@ -40,7 +40,7 @@ export const TOOLS = [
   {
     name: 'find_capability_support',
     title: 'Compare one capability across clients',
-    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions.',
+    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, a summary of the probe\'s runs, what telemetry observed, where the tiers disagree, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions.',
   },
   {
     name: 'get_probe_results',

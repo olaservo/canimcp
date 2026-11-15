@@ -15,6 +15,7 @@
 
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
+import { KIND_MEANING, kindOf } from './lib/kinds.js';
 
 const REGISTRY = 'data/clients.json';
 const RESEARCH_DIR = 'research';
@@ -469,6 +470,8 @@ function renderCard(id, entry, notes, verified, observed) {
   const row = (k, v) => v && L.push(`| ${k} | ${escapeCell(v)} |`);
   row('Registry id', `\`${id}\``);
   row('Vendor', m.vendor);
+  row('Kind', `${kindOf(entry)}. ${KIND_MEANING[kindOf(entry)]}`);
+  row('Speaks MCP via', entry.speaksMcpVia ? `\`${entry.speaksMcpVia.name}\`${entry.speaksMcpVia.kind ? ` (${entry.speaksMcpVia.kind})` : ''}` : '');
   row('Category', entry.category);
   row('Platforms', (entry.platforms ?? []).join(', '));
   row('Licence', m.openSource === false ? `closed source${m.license ? ` (${m.license})` : ''}` : m.license);

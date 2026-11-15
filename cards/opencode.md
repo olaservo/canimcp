@@ -8,6 +8,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 |---|---|
 | Registry id | `opencode` |
 | Vendor | Anomaly |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | cli |
 | Platforms | windows, macos, linux |
 | Licence | MIT |
