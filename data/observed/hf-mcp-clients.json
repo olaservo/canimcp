@@ -4,7 +4,7 @@
   "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json",
   "revision": "c30d6f2859b699fe9f36e674e4722bfd2d8a1258",
   "generatedAt": "2026-11-09T04:16:33.898705+00:00",
-  "fetchedAt": "2026-11-11",
+  "fetchedAt": "2026-11-15",
   "window": {
     "start": "2026-09-10",
     "end": "2026-11-08"
@@ -49,7 +49,7 @@
     {
       "id": "claude-code",
       "label": "Claude Code",
-      "registryId": null,
+      "registryId": "claude-code",
       "sourceNames": [
         "claude-code"
       ],
@@ -121,7 +121,7 @@
     {
       "id": "claude-ai",
       "label": "Claude.ai",
-      "registryId": null,
+      "registryId": "claude-ai",
       "sourceNames": [
         "Anthropic/ClaudeAI"
       ],
@@ -260,7 +260,7 @@
     {
       "id": "codex-web",
       "label": "Codex Desktop",
-      "registryId": null,
+      "registryId": "codex-desktop",
       "sourceNames": [
         "openai-mcp (Codex)"
       ],
@@ -330,7 +330,7 @@
     {
       "id": "openai",
       "label": "OpenAI ChatGPT",
-      "registryId": null,
+      "registryId": "chatgpt",
       "sourceNames": [
         "openai-mcp"
       ],
@@ -400,7 +400,7 @@
     {
       "id": "huggingface-chatui",
       "label": "Hugging Face ChatUI",
-      "registryId": null,
+      "registryId": "huggingface-chat-ui",
       "sourceNames": [
         "chat-ui-mcp"
       ],
@@ -543,7 +543,7 @@
     {
       "id": "cursor",
       "label": "Cursor",
-      "registryId": null,
+      "registryId": "cursor",
       "sourceNames": [
         "Cursor",
         "Cursor MCP Availability",
@@ -595,7 +595,7 @@
     {
       "id": "visual-studio-code",
       "label": "Visual Studio Code",
-      "registryId": null,
+      "registryId": "vscode",
       "sourceNames": [
         "Visual Studio Code",
         "Visual Studio Code - Insiders"
