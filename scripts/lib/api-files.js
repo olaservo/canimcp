@@ -19,8 +19,9 @@ export const API_CATALOG_TYPE = 'application/linkset+json; profile="https://www.
  * @param {string} o.tagline
  * @param {{id:string,title:string}[]} o.clients registry entries
  * @param {{client:string,title:string}[]} o.verified clients with probe records
+ * @param {{name:string,description:string,uri:string,url:string}[]} o.skills the Agent Skills under skills/
  */
-export function buildApiFiles({ origin, repo, version, tagline, clients, verified }) {
+export function buildApiFiles({ origin, repo, version, tagline, clients, verified, skills }) {
   const schema = (name) => ({ $ref: `${origin}/schemas/${name}` });
   const uri = { type: 'string', format: 'uri' };
   const str = { type: 'string' };
@@ -301,7 +302,14 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
         'which protocol revision does an MCP client negotiate',
         'when was an MCP capability deprecated',
       ],
-    }],
+    }, ...skills.map((s) => ({
+      identifier: `urn:air:${host}:skill:${s.name}`,
+      displayName: s.name,
+      type: 'application/agent-skills+md',
+      url: s.url,
+      description: s.description,
+      tags: ['agent-skills', 'mcp', 'mcp-clients'],
+    }))],
   };
 
   const example = (path) => `curl ${origin}${path}`;
@@ -350,11 +358,22 @@ ${TOOLS.map((t) => `| \`${t.name}\` | ${t.description.replace(/\|/g, '\\|')} |`)
 
 Each tool returns JSON in \`structuredContent\` and the same JSON as text in \`content\`. \`get_research_note\` returns Markdown. The server card is at [\`${SERVER.cardPath}\`](${SERVER.cardPath}).
 
+## Skills
+
+The MCP server serves [Agent Skills](https://agentskills.io/) with the skills extension, \`io.modelcontextprotocol/skills\` ([SEP-2640](https://modelcontextprotocol.io/seps/2640-skills-extension)). A client lists them with \`skills/list\` and reads each file with \`resources/read\`. The same files are published over HTTP, indexed at [\`/.well-known/agent-skills/index.json\`](/.well-known/agent-skills/index.json), and the digests match.
+
+| Skill | Over MCP | Over HTTP |
+|---|---|---|
+${skills.map((s) => `| \`${s.name}\` | \`${s.uri}\` | [SKILL.md](${s.url.slice(origin.length)}) |`).join('\n')}
+
+${skills.map((s) => `\`${s.name}\`: ${s.description}`).join('\n\n')}
+
 ## Discovery
 
 - [\`/openapi.json\`](/openapi.json): the OpenAPI 3.1 description.
 - [\`/.well-known/api-catalog\`](/.well-known/api-catalog): the API catalog ([RFC 9727](https://www.rfc-editor.org/rfc/rfc9727)).
-- [\`/.well-known/ard.json\`](/.well-known/ard.json): the [Agentic Resource Discovery](https://agenticresourcediscovery.org/) catalog. The same document is at \`/.well-known/ai-catalog.json\`.
+- [\`/.well-known/ard.json\`](/.well-known/ard.json): the [Agentic Resource Discovery](https://agenticresourcediscovery.org/) catalog, listing the MCP server, the API and the skills. The same document is at \`/.well-known/ai-catalog.json\`.
+- [\`/.well-known/agent-skills/index.json\`](/.well-known/agent-skills/index.json): the Agent Skills discovery index.
 - [\`/llms.txt\`](/llms.txt): every page and data file.
 
 ## Licence

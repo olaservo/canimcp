@@ -14,8 +14,10 @@
  * Usage: node scripts/build-site.js
  */
 
+import { SkillsExtension, memorySkillFiles } from '@modelcontextprotocol/server/ext/skills';
 import { marked } from 'marked';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import {
   copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync,
 } from 'node:fs';
@@ -97,9 +99,29 @@ const clients = Object.entries(readJson('data', 'clients.json')).filter(([k]) =>
 const verifiedFiles = readdirSync(join(root, 'data', 'verified')).filter((f) => f.endsWith('.json')).sort();
 const verified = verifiedFiles.map((f) => readJson('data', 'verified', f));
 
+// Each folder under skills/ is an Agent Skill. The same bytes are published
+// under /.well-known/agent-skills and, through the bundle, by the MCP server.
+const skillBundle = {};
+(function walk(dir, rel) {
+  for (const e of readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+    if (e.isDirectory()) walk(join(dir, e.name), `${rel}${e.name}/`);
+    else skillBundle[`${rel}${e.name}`] = read('skills', `${rel}${e.name}`);
+  }
+})(join(root, 'skills'), '');
+// The SDK that serves the skills also checks them here, so a bad skill fails the build.
+const skillCatalog = await SkillsExtension.load(memorySkillFiles(skillBundle), { strict: true });
+const skills = skillCatalog.entries.map((s) => {
+  const dir = s.uri.replace(/^skill:\/\//, '').replace(/\/SKILL\.md$/, '');
+  if (s.resources.length !== 1) throw new Error(`skills/${dir}: has ${s.resources.length} files, and the discovery index publishes a single SKILL.md per skill`);
+  return {
+    name: s.frontmatter.name, description: s.frontmatter.description, uri: s.uri, digest: s.resources[0].digest,
+    url: `${ORIGIN}/.well-known/agent-skills/${dir}/SKILL.md`, file: `${dir}/SKILL.md`,
+  };
+});
+
 const api = buildApiFiles({
   origin: ORIGIN, repo: REPO, version: readJson('package.json').version, tagline: TAGLINE,
-  clients: clients.map(([id, c]) => ({ id, title: c.title })), verified,
+  clients: clients.map(([id, c]) => ({ id, title: c.title })), verified, skills,
 });
 
 // Client cards, and the two generated cross-client cards.
@@ -374,6 +396,19 @@ write('.well-known/api-catalog', json(api.apiCatalog));
 write('.well-known/ard.json', json(api.ard));
 write('.well-known/ai-catalog.json', json(api.ard));
 
+// --- skills -----------------------------------------------------------------
+
+for (const [path, text] of Object.entries(skillBundle)) write(`.well-known/agent-skills/${path}`, text);
+write(MCP_SERVER.skillsBundle.slice(1), json(skillBundle));
+write('.well-known/agent-skills/index.json', json({
+  $schema: 'https://schemas.agentskills.io/discovery/0.2.0/schema.json',
+  skills: skills.map((s) => {
+    const digest = `sha256:${createHash('sha256').update(skillBundle[s.file]).digest('hex')}`;
+    if (digest !== s.digest) throw new Error(`skills/${s.file}: the SDK's digest ${s.digest} is not the SHA-256 of the published file`);
+    return { name: s.name, type: 'skill-md', description: s.description, url: s.url, digest };
+  }),
+}));
+
 // --- discovery files --------------------------------------------------------
 
 const abs = (url) => `${ORIGIN}${url}`;
@@ -422,6 +457,7 @@ ${mdLink('Research notes', '/research/', `${notes.length} notes, each with a one
 
 ${mdLink('Data API', '/api', 'the JSON above as an API: endpoints, examples, errors and versioning')}
 - MCP server: \`${api.mcpUrl}\`, Streamable HTTP, read-only, no authentication, ${MCP_TOOLS.length} tools; [server card](${abs(MCP_SERVER.cardPath)})
+- [Agent Skills index](${abs('/.well-known/agent-skills/index.json')}): ${skills.map((s) => `[${s.name}](${s.url})`).join(', ')}; the MCP server serves the same skills at \`skill://\` URIs
 - [OpenAPI description](${abs('/openapi.json')}): OpenAPI 3.1, ${api.operations.length} operations, no authentication
 - [API catalog](${abs('/.well-known/api-catalog')}): RFC 9727 linkset
 - [ARD catalog](${abs('/.well-known/ard.json')}): Agentic Resource Discovery entries
@@ -534,4 +570,4 @@ if (problems.length) {
   console.error(`\nsite build failed: ${problems.length} problem(s)`);
   process.exit(1);
 }
-console.log(`site: ${pages.length} pages, ${dataFiles.length + clients.length} data files, ${Object.keys(schemaNames).length} schemas, ${api.operations.length} API operations -> site/`);
+console.log(`site: ${pages.length} pages, ${dataFiles.length + clients.length} data files, ${Object.keys(schemaNames).length} schemas, ${api.operations.length} API operations, ${skills.length} skill(s) -> site/`);

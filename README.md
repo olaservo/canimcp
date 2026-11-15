@@ -47,6 +47,7 @@ scripts/
   lib/api-files.js                  the OpenAPI document, API catalog, ARD catalog and /api page over /data
   lib/capabilities.js               walks a registry entry into capability ids; shared with the Worker
 web/                                the hand-written pages and the stylesheet
+skills/<name>/SKILL.md              Agent Skills, served over MCP and under /.well-known/agent-skills
 worker/index.js                     the Worker in front of site/: Markdown negotiation, 404s, www redirect
 worker/mcp.js                       the MCP server at /mcp and its server card
 worker/mcp-tools.js                 the MCP server's name, instructions and tool descriptions
@@ -151,6 +152,8 @@ This builds `site/` and serves it with `wrangler dev` on <http://localhost:8787>
 The JSON under `/data` is described as an API. `scripts/lib/api-files.js` holds one list of operations and generates `/openapi.json`, `/.well-known/api-catalog` (RFC 9727), `/.well-known/ard.json` (Agentic Resource Discovery, also written to `/.well-known/ai-catalog.json`) and the `/api` page from it. The build fails when a described path was not built or an ARD entry is missing a required term. A missing path under `/data`, `/schemas` or `/.well-known` returns `application/problem+json` from the Worker.
 
 The Worker also serves a read-only MCP server at `/mcp`, built on `@modelcontextprotocol/server` with `createMcpHandler`. It is stateless, answers `2026-07-28` and the 2025 revisions, and reads the same JSON through the assets binding. `worker/mcp-tools.js` holds the tool descriptions, which the build also uses for the `/api` page and the ARD entry. The server card is at `/mcp/server-card`. To try it locally, run `npm run preview` and point a client at `http://localhost:8787/mcp`.
+
+Each folder under `skills/` is an [Agent Skill](https://agentskills.io/). The MCP server serves them with the SDK's skills extension (`@modelcontextprotocol/server/ext/skills`, SEP-2640) at `skill://<name>/SKILL.md`. The build loads them through the same extension in strict mode, so a skill the SDK rejects fails the build. It also writes them to `/.well-known/agent-skills/` with a discovery index, and to `/data/skills.json`, the bundle the Worker reads. To add a skill, add a folder whose name matches the `name` in its `SKILL.md` frontmatter. The discovery index publishes one `SKILL.md` per skill, so the build stops on a skill with more files until archive entries are added.
 
 ## Known work
 

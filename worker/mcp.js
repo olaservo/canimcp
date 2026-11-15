@@ -1,8 +1,10 @@
 // A read-only MCP server over the registry, at /mcp. Stateless: the SDK builds
 // a fresh server per request and serves 2026-07-28 and the 2025 revisions.
 // The data is the static JSON the site already publishes, read through ASSETS.
+// The skills under skills/ are served with the SDK's skills extension.
 
 import { McpServer, SUPPORTED_PROTOCOL_VERSIONS, createMcpHandler } from '@modelcontextprotocol/server';
+import { SkillsExtension, memorySkillFiles } from '@modelcontextprotocol/server/ext/skills';
 import * as z from 'zod';
 import pkg from '../package.json';
 import { capabilityNodes, extensionAliases, ownFields } from '../scripts/lib/capabilities.js';
@@ -57,7 +59,8 @@ function buildServer(read) {
     { name: SERVER.name, title: SERVER.title, version: pkg.version, websiteUrl: ORIGIN },
     {
       instructions: SERVER.instructions,
-      capabilities: { tools: { listChanged: false } },
+      // The tools and skills are fixed per deploy, so nothing is ever announced as changed.
+      capabilities: { tools: { listChanged: false }, resources: { listChanged: false } },
       cacheHints: { 'tools/list': HOUR, 'server/discover': HOUR },
     },
   );
@@ -272,6 +275,15 @@ async function serverCard(request) {
 
 let read;
 let handler;
+// The skills catalog (SEP-2640), built once per isolate from the bundle the site build writes.
+let skills;
+
+async function serverWithSkills() {
+  skills ??= await SkillsExtension.load(memorySkillFiles(await read(SERVER.skillsBundle)), { cacheHint: HOUR });
+  const server = buildServer(read);
+  skills.attach(server);
+  return server;
+}
 
 /** Serves /mcp and /mcp/server-card. */
 export async function handleMcp(request, env, url) {
@@ -281,7 +293,7 @@ export async function handleMcp(request, env, url) {
     return serverCard(request);
   }
   read = reader(env.ASSETS);
-  handler ??= createMcpHandler(() => buildServer(read));
+  handler ??= createMcpHandler(serverWithSkills);
   const response = await handler.fetch(request);
   const headers = new Headers(response.headers);
   for (const [k, v] of Object.entries(CORS)) headers.set(k, v);
