@@ -353,6 +353,8 @@ marked.use({
   },
 });
 
+const themeJs = read('web', 'theme.js').replace(/^\/\/.*\n/, '');
+
 function renderHtml(p, { robots } = {}) {
   slugs = new Map();
   const body = marked.parse(p.md).replace(/<table>/g, '<div class="scroll"><table>').replace(/<\/table>/g, '</table></div>');
@@ -401,12 +403,13 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical"
 <meta name="twitter:card" content="summary_large_image">
 `}<link rel="icon" type="image/svg+xml" href="/icon.svg">
 <link rel="stylesheet" href="/style.css">
+<script>${themeJs}</script>
 ${jsonLd}</head>
 <body>
 <main>
 ${body}</main>
 <nav aria-label="Site">
-<a href="/">canimcp</a><a href="/capabilities/">Capabilities</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a>
+<a href="/">canimcp</a><a href="/capabilities/">Capabilities</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a><button id="theme" type="button" hidden>Theme: system</button>
 </nav>
 <footer>
 <p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="/contact">Contact</a>. <a href="/privacy">Privacy</a>.</p>

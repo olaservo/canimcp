@@ -51,7 +51,7 @@ scripts/
   lib/kinds.js                      what a capability row means for a host, framework, adapter or SDK
   refresh-check.js                  reports which entries have fallen behind their sources
 .claude/skills/refresh-registry/    the workflow that acts on that report
-web/                                the hand-written pages and the stylesheet
+web/                                the hand-written pages, the stylesheet and the theme toggle script
 skills/<name>/SKILL.md              Agent Skills, served over MCP and under /.well-known/agent-skills
 worker/index.js                     the Worker in front of site/: Markdown negotiation, 404s, www redirect
 worker/mcp.js                       the MCP server at /mcp and its server card

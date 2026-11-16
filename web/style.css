@@ -1,22 +1,14 @@
 :root {
   color-scheme: light dark;
-  --fg: #1a1a1a;
-  --bg: #ffffff;
-  --muted: #5c5c5c;
-  --rule: #d9d9d9;
-  --code: #f3f3f3;
-  --link: #0b57d0;
+  --fg: light-dark(#1a1a1a, #e6e6e6);
+  --bg: light-dark(#ffffff, #161616);
+  --muted: light-dark(#5c5c5c, #a0a0a0);
+  --rule: light-dark(#d9d9d9, #3a3a3a);
+  --code: light-dark(#f3f3f3, #242424);
+  --link: light-dark(#0b57d0, #8ab4f8);
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --fg: #e6e6e6;
-    --bg: #161616;
-    --muted: #a0a0a0;
-    --rule: #3a3a3a;
-    --code: #242424;
-    --link: #8ab4f8;
-  }
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 body {
   margin: 0 auto;
   padding: 0 16px 48px;
@@ -27,8 +19,9 @@ body {
   color: var(--fg);
   background: var(--bg);
 }
-nav { order: -1; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+nav { order: -1; padding: 12px 0; border-bottom: 1px solid var(--rule); display: flex; flex-wrap: wrap; align-items: baseline; }
 nav a { margin-right: 16px; }
+nav button { margin-left: auto; padding: 2px 8px; font: inherit; font-size: 14px; color: var(--fg); background: none; border: 1px solid var(--rule); border-radius: 3px; cursor: pointer; }
 footer { margin-top: 48px; padding-top: 12px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 14px; }
 a { color: var(--link); }
 h1, h2, h3 { line-height: 1.25; }
