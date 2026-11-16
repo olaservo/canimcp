@@ -75,12 +75,14 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
   }
 
   if (probed.length) {
-    L.push('## Probe results', '', 'The probe ran each client against a fixture server and recorded what the client sent to its model.', '');
-    L.push('| Client | Kind | Versions | Runs | Revisions | What reached the model |', '|---|---|---|---|---|---|');
+    // A protocol.* scenario is classified from the wire, and its records are listed on the client's page.
+    const wire = cap.id.startsWith('protocol.');
+    L.push('## Probe results', '', `The probe ran each client against a fixture server and recorded what the client sent to ${wire ? 'the server' : 'its model'}.`, '');
+    L.push(`| Client | Kind | Versions | Runs | Revisions | ${wire ? 'What the client sent' : 'What reached the model'} |`, '|---|---|---|---|---|---|');
     for (const s of probed) {
       const v = s.verified;
       const verdicts = v.verdicts.slice(0, 4).map((x) => `${cellText(x.verdict)} (${x.count})`).join('; ') + (v.verdicts.length > 4 ? `; ${v.verdicts.length - 4} more` : '');
-      L.push(`| [${subject[s.subject].title}](${local(v.records, origin)}) | ${subject[s.subject].kind} | ${v.clientVersions.map(code).join(', ')} | ${v.runs} | ${v.revisions.map(code).join(', ')} | ${verdicts} |`);
+      L.push(`| [${subject[s.subject].title}](${local(wire ? subject[s.subject].page : v.records, origin)}) | ${subject[s.subject].kind} | ${v.clientVersions.map(code).join(', ')} | ${v.runs} | ${v.revisions.map(code).join(', ')} | ${verdicts} |`);
     }
     L.push('', 'The number after each verdict is how many runs ended that way. Each client name links to its full records.', '');
   }

@@ -31,8 +31,10 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
   const subjects = new Map();
   const capabilities = new Map();
 
+  // A protocol.<key> id is a key of spec.protocol, which holds the lifecycle of protocol-wide features.
+  const lifecycle = (id) => spec.capabilities[id] ?? (id.startsWith('protocol.') ? spec.protocol?.[id.slice('protocol.'.length)] : undefined) ?? null;
   const capability = (id) => {
-    if (!capabilities.has(id)) capabilities.set(id, { id, slug: capabilitySlug(id), lifecycle: spec.capabilities[id] ?? null, subjects: {} });
+    if (!capabilities.has(id)) capabilities.set(id, { id, slug: capabilitySlug(id), lifecycle: lifecycle(id), subjects: {} });
     return capabilities.get(id);
   };
   const cell = (capId, subjectId) => (capability(capId).subjects[subjectId] ??= { subject: subjectId });
