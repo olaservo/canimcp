@@ -16,6 +16,10 @@ export interface RawServerOptions {
   fixture: Fixture;
   era: EraPolicy;
   serverInfo: { name: string; version: string };
+  /** Put this version in every initialize result, whatever the client proposed. */
+  initReply?: string;
+  /** Answer server/discover with -32601, as a server from before 2026-07-28 does, envelope or not. */
+  discoverNotFound?: boolean;
 }
 
 type Json = Record<string, unknown>;
@@ -69,6 +73,7 @@ export class RawServer {
     const ok = (result: Json, revision?: string): RawReply => ({ status: 200, revision, response: { jsonrpc: '2.0', id, result } });
 
     if (method === undefined) return { status: 202 };
+    if (method === 'server/discover' && this.opts.discoverNotFound) return err(-32601, 'Method not found: server/discover', 404);
 
     if (modern) {
       if (this.opts.era === 'legacy') return err(-32022, 'Unsupported protocol version', 400, { supported: LEGACY_VERSIONS, requested: claimed });
@@ -118,7 +123,7 @@ export class RawServer {
         });
       case 'initialize': {
         const requested = params.protocolVersion as string | undefined;
-        const version = requested && LEGACY_VERSIONS.includes(requested) ? requested : '2025-11-25';
+        const version = this.opts.initReply ?? (requested && LEGACY_VERSIONS.includes(requested) ? requested : '2025-11-25');
         return ok({ protocolVersion: version, capabilities: fixtureCapabilities(this.opts.fixture), serverInfo: this.opts.serverInfo }, version);
       }
       case 'notifications/initialized':

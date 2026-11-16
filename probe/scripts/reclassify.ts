@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { resolve, dirname, join, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { classify, verdict } from '../classify/classify.js';
+import { classifyNegotiation, negotiationVerdict } from '../classify/negotiation.js';
 import { arg } from '../lib/capture.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -27,14 +28,15 @@ for (const file of recordFiles(runsRoot)) {
   const record = JSON.parse(readFileSync(file, 'utf8')) as {
     client: string;
     scenario: string;
-    evidence: { config: string; observation: { fixture: string; serverMode: 'sdk' | 'mcpserver' | 'raw'; finalText?: string }; note: string; at?: string; artifact: string };
+    evidence: { config: string; observation: { type: string; fixture: string; serverMode: 'sdk' | 'mcpserver' | 'raw'; finalText?: string; forcedReply?: string }; note: string; at?: string; artifact: string };
     run: { eraPolicy: string; transport: string };
   };
   const runDir = dirname(file);
   record.evidence.artifact = relative(resolve(probeRoot, '..'), runDir).replace(/\\/g, '/');
-  const observation = classify(runDir, record.evidence.observation.fixture, record.evidence.observation.serverMode, record.evidence.observation.finalText);
-  record.evidence.observation = observation as typeof record.evidence.observation;
-  record.evidence.note = verdict(observation);
+  const previous = record.evidence.observation;
+  const observation = previous.type === 'protocol.negotiation' ? classifyNegotiation(runDir, previous.forcedReply) : classify(runDir, previous.fixture, previous.serverMode, previous.finalText);
+  record.evidence.observation = observation as unknown as typeof record.evidence.observation;
+  record.evidence.note = observation.type === 'protocol.negotiation' ? negotiationVerdict(observation) : verdict(observation);
   const at = observation.negotiatedRevision && !observation.negotiatedRevision.startsWith('requested:') ? observation.negotiatedRevision : undefined;
   if (at) record.evidence.at = at;
   else delete record.evidence.at;

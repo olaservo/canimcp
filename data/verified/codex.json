@@ -7,6 +7,883 @@
     "0.169.0-alpha.3"
   ],
   "capabilities": {
+    "protocol.initializeHandshake": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5389,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-http/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-06-18"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1916,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/both-stdio/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5483,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/both-http/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1709,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/legacy-http/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → error -32022; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32022
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-06-18"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1792,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "legacy",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28-stdio-opt-in",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28-stdio-opt-in/both-stdio/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2006,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28-stdio-opt-in",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28-stdio-opt-in/legacy-stdio/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → error -32022; client sent nothing further",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32022
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": false,
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15362,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "legacy",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "stdio-opt-in-no-flag",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/stdio-opt-in-no-flag/both-stdio/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5654,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2024-11-05",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "initialize at 2025-06-18 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2024-11-05"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2024-11-05",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 4959,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2024-11-05",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-http/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "initialize at 2025-06-18 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2024-11-05"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2024-11-05"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2024-11-05",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2009,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "initialize at 2025-06-18 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5059,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-http/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "initialize at 2025-06-18 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1760,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "initialize at 2025-06-18 → 2026-07-28; client continued at 2026-07-28 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2026-07-28"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5358,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-http/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "initialize at 2025-06-18 → 2026-07-28; client continued at 2026-07-28 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2026-07-28"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2651,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        }
+      ]
+    },
+    "protocol.serverDiscover": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-stdio/protocol.serverDiscover.method_not_found",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5131,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "default",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/default/both-http/protocol.serverDiscover.method_not_found",
+          "note": "initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-06-18"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5005,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28/both-http/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-06-18"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2627,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-06-18",
+          "source": "canimcp-probe",
+          "date": "2026-11-15",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "0.169.0-alpha.3",
+          "config": "mcp-2026-07-28-stdio-opt-in",
+          "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28-stdio-opt-in/both-stdio/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-06-18"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-06-18"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-06-18",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 5355,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "responses"
+          }
+        }
+      ]
+    },
     "apps.visibility": {
       "evidence": [
         {

@@ -171,6 +171,8 @@ function knownCapabilityIds(spec) {
   for (const ext of Object.values(spec.extensions?.known ?? {})) {
     for (const id of Object.keys(ext.features ?? {})) ids.add(id);
   }
+  // Protocol-wide features, which the probe's negotiation scenarios produce evidence for.
+  for (const id of Object.keys(spec.protocol ?? {})) if (!id.startsWith('$')) ids.add(`protocol.${id}`);
   return ids;
 }
 

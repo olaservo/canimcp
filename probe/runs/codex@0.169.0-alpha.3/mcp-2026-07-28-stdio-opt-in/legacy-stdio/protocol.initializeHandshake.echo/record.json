@@ -1,0 +1,45 @@
+{
+  "client": "codex",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.echo",
+  "evidence": {
+    "tier": "verified",
+    "source": "canimcp-probe",
+    "date": "2026-11-15",
+    "scenario": "protocol.initializeHandshake.echo",
+    "clientVersion": "0.169.0-alpha.3",
+    "config": "mcp-2026-07-28-stdio-opt-in",
+    "artifact": "probe/runs/codex@0.169.0-alpha.3/mcp-2026-07-28-stdio-opt-in/legacy-stdio/protocol.initializeHandshake.echo",
+    "note": "server/discover at 2026-07-28 → error -32022; client sent nothing further",
+    "observation": {
+      "type": "protocol.negotiation",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "errorCode": -32022
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [],
+      "requestMetaVersions": [],
+      "headerVersions": [],
+      "toolCalled": false,
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 15362,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "legacy",
+    "modelApi": "responses"
+  }
+}
