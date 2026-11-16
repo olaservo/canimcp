@@ -8,6 +8,7 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 |---|---|
 | Registry id | `cline` |
 | Vendor | Cline Bot Inc. |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | ide |
 | Platforms | windows, macos, linux |
 | Licence | Apache-2.0 |

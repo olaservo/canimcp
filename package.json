@@ -11,6 +11,7 @@
     "build": "npm run validate && npm run check:cards && npm run check:private && npm run build:site",
     "build:site": "node scripts/build-site.js",
     "ingest:observed": "node scripts/ingest-observed.js",
+    "refresh:check": "node scripts/refresh-check.js",
     "check:private": "node scripts/check-private.js",
     "prepare": "git config core.hooksPath .githooks",
     "preview": "npm run build:site && wrangler dev",

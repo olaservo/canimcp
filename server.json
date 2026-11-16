@@ -5,6 +5,13 @@
   "description": "Which MCP clients support what, with the evidence for each claim. Read-only, no authentication.",
   "version": "0.1.0",
   "websiteUrl": "https://canimcp.io",
+  "icons": [
+    {
+      "src": "https://canimcp.io/icon.svg",
+      "mimeType": "image/svg+xml",
+      "sizes": ["any"]
+    }
+  ],
   "repository": {
     "url": "https://github.com/olaservo/canimcp",
     "source": "github"

@@ -8,6 +8,7 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 |---|---|
 | Registry id | `kilocode` |
 | Vendor | Kilo Code |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | ide |
 | Platforms | windows, macos, linux |
 | Licence | MIT |

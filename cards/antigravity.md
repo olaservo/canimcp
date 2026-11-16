@@ -8,6 +8,7 @@ Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts.
 |---|---|
 | Registry id | `antigravity` |
 | Vendor | Google |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | ide |
 | Platforms | windows, macos, linux |
 | Licence | closed source |

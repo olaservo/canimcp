@@ -8,6 +8,7 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 |---|---|
 | Registry id | `hermes-agent` |
 | Vendor | Nous Research |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | cli |
 | Platforms | windows, macos, linux |
 | Licence | MIT |
