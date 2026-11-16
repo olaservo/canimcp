@@ -8,6 +8,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1
 |---|---|
 | Registry id | `openai-codex` |
 | Vendor | OpenAI |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | cli |
 | Platforms | windows, macos, linux |
 | Licence | Apache-2.0 |

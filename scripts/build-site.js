@@ -24,6 +24,9 @@ import {
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { API_CATALOG_TYPE, OPENAPI_TYPE, buildApiFiles, checkApiFiles } from './lib/api-files.js';
+import { buildCapabilityIndex } from './lib/capability-index.js';
+import { capabilityJson, capabilityPage, indexJson, matrixPage } from './lib/capability-pages.js';
+import { KIND_LABEL, KIND_MEANING, KINDS, kindOf } from './lib/kinds.js';
 import { parseFrontmatter } from './lib/frontmatter.js';
 import { SERVER as MCP_SERVER, TOOLS as MCP_TOOLS } from '../worker/mcp-tools.js';
 
@@ -125,11 +128,6 @@ const skills = skillCatalog.entries.map((s) => {
   };
 });
 
-const api = buildApiFiles({
-  origin: ORIGIN, repo: REPO, version: readJson('package.json').version, tagline: TAGLINE,
-  clients: clients.map(([id, c]) => ({ id, title: c.title })), verified, skills,
-});
-
 // Client cards, and the two generated cross-client cards.
 const cardFiles = readdirSync(join(root, 'cards')).filter((f) => f.endsWith('.md')).sort();
 for (const f of cardFiles) {
@@ -210,29 +208,101 @@ for (const f of noteFiles) {
   });
 }
 
+// Capabilities: the registry, the probe's overlays, the telemetry and the
+// lifecycle joined by capability id, as one page each and a matrix.
+const observedOverlays = readdirSync(join(root, 'data', 'observed')).filter((f) => f.endsWith('.json')).sort().map((f) => readJson('data', 'observed', f));
+const capIndex = buildCapabilityIndex({
+  clients, spec: readJson('data', 'spec-versions.json'), verified, observed: observedOverlays,
+  probeClients: readJson('probe', 'registry', 'clients.json').clients, probeSdks: readJson('probe', 'registry', 'sdks.json').sdks,
+  notes, origin: ORIGIN,
+});
+{
+  const slugs = new Set(capIndex.capabilities.map((c) => c.slug));
+  if (slugs.size !== capIndex.capabilities.length) throw new Error('two capability ids share a page slug');
+  const mod = lastmod('data', 'probe/registry/clients.json');
+  const noteTitles = Object.fromEntries(notes.map((n) => [n.id, n.fm.title]));
+  for (const cap of capIndex.capabilities) {
+    const md = capabilityPage(cap, capIndex, { origin: ORIGIN, noteTitles });
+    page({ url: `/capabilities/${cap.slug}`, title: `${cap.id} support in MCP clients`, description: firstParagraph(md), md: `${md}\n`, lastmod: mod });
+  }
+  const md = matrixPage(capIndex, { origin: ORIGIN });
+  page({ url: '/capabilities/', title: 'Capabilities', description: firstParagraph(md), md: `${md}\n`, lastmod: mod });
+}
+
+const api = buildApiFiles({
+  origin: ORIGIN, repo: REPO, version: readJson('package.json').version, tagline: TAGLINE,
+  clients: clients.map(([id, c]) => ({ id, title: c.title })), verified, skills,
+  capabilitySlugs: capIndex.capabilities.map((c) => c.slug),
+});
+
 // Index pages.
 const clientRows = clients.map(([id, c]) => {
   const m = c.metadata || {};
-  return `| [${c.title}](/clients/${id}) | ${m.vendor || ''} | ${c.category || ''} | ${c.preferredProtocolVersion ? `\`${c.preferredProtocolVersion}\`` : ''} | ${m.lastVerified || ''} |`;
+  return `| [${c.title}](/clients/${id}) | ${m.vendor || ''} | ${kindOf(c)} | ${c.category || ''} | ${c.preferredProtocolVersion ? `\`${c.preferredProtocolVersion}\`` : ''} | ${m.lastVerified || ''} |`;
 });
-const clientTable = `| Client | Vendor | Category | Prefers | Last read |\n|---|---|---|---|---|\n${clientRows.join('\n')}`;
+const clientTable = `| Client | Vendor | Kind | Category | Prefers | Last read |\n|---|---|---|---|---|---|\n${clientRows.join('\n')}`;
 const newest = (list) => list.reduce((a, b) => (a > b ? a : b), '0000-00-00');
+
+// The lenses on the clients index: by kind, by SDK, and what has evidence but no entry.
+const byKind = `| Kind | What a capability row means | Clients |\n|---|---|---|\n${KINDS.map((k) => [k, clients.filter(([, c]) => kindOf(c) === k)]).filter(([, list]) => list.length)
+  .map(([k, list]) => `| ${KIND_LABEL[k]} | ${KIND_MEANING[k]} | ${list.map(([id, c]) => `[${c.title}](/clients/${id})`).join(', ')} |`).join('\n')}`;
+const aboutTable = `| Client | About |\n|---|---|\n${clients.map(([id, c]) => `| [${c.title}](/clients/${id}) | ${c.description.replace(/\|/g, '\\|')} |`).join('\n')}`;
+const sdkGroups = new Map();
+for (const [id, c] of clients) {
+  const sdk = c.metadata?.sdk;
+  const key = sdk?.name ?? 'not recorded';
+  if (!sdkGroups.has(key)) sdkGroups.set(key, []);
+  const version = sdk?.resolved ?? sdk?.declared;
+  sdkGroups.get(key).push(`[${c.title}](/clients/${id})${version ? ` at \`${version}\`` : ''}${sdk?.patched ? ', patched' : ''}`);
+}
+const bySdk = `| SDK | Clients |\n|---|---|\n${[...sdkGroups].map(([name, list]) => `| ${name === 'not recorded' ? name : `\`${name}\``} | ${list.join('; ')} |`).join('\n')}`;
+const unregistered = capIndex.subjects.filter((s) => !s.registry);
+const unregisteredList = `| Project | Kind | Evidence | Source |\n|---|---|---|---|\n${unregistered.map((s) => {
+  const has = capIndex.capabilities.flatMap((c) => (c.subjects[s.id] ? [c.subjects[s.id]] : []));
+  const what = [has.some((x) => x.verified) && 'probe records', has.some((x) => x.observed) && 'telemetry'].filter(Boolean).join(', ');
+  return `| [${s.title}](${s.page.slice(ORIGIN.length)}) | ${s.kind} | ${what} | ${s.repo ? `<${s.repo}>` : ''} |`;
+}).join('\n')}`;
 
 page({
   url: '/clients/',
   title: 'Clients',
   description: `The ${clients.length} MCP clients with a researched registry entry, each with its capabilities, the evidence for them, and research notes.`,
-  md: `# Clients\n\nThe ${clients.length} MCP clients with a researched registry entry. Each page has the client's capabilities, how each one is known, the probe's records for it, and its research notes.\n\n${clientTable}\n\n${clients.map(([id, c]) => `- [${c.title}](/clients/${id}): ${c.description}`).join('\n')}\n\nThe probe has also run clients that have no registry entry yet. Their records are on [Tool result handling, verified](/tool-results).\n`,
+  md: `# Clients\n\nThe ${clients.length} MCP clients with a researched registry entry. Each page has the client's capabilities, how each one is known, the probe's records for it, and its research notes.\n\n${clientTable}\n\n[Capabilities](/capabilities/) has the same clients as a matrix, one row per capability.\n\n## About each client\n\n${aboutTable}\n\n## By kind\n\nThe kind of an entry decides what a capability row means.\n\n${byKind}\n\n## By SDK\n\nThe SDK each client's MCP code is built on, at the version its lockfile resolves to.\n\n${bySdk}\n\n## Evidence without a registry entry\n\nThese ${unregistered.length} have probe records or telemetry and no researched entry yet. Each links to what there is.\n\n${unregisteredList}\n`,
   lastmod: newest(pages.filter((p) => p.url.startsWith('/clients/')).map((p) => p.lastmod)),
 });
 
-page({
-  url: '/research/',
-  title: 'Research notes',
-  description: `${notes.length} notes on MCP client behaviour that a support matrix cannot express, each citing the source it was read from.`,
-  md: `# Research notes\n\n${notes.length} notes on client behaviour that a support matrix cannot express. Each cites the repository, commit and path it was read from.\n\n${notes.map((n) => `- [${n.fm.title}](${n.url}) (${n.fm.kind}): ${n.fm.summary}`).join('\n')}\n`,
-  lastmod: newest(pages.filter((p) => p.url.startsWith('/research/')).map((p) => p.lastmod)),
-});
+// The research index: one table per kind of finding, then the same notes by client.
+const NOTE_KINDS = [
+  ['idiosyncrasy', 'Idiosyncrasies', 'One client behaves unlike the others.'],
+  ['nuance', 'Nuances', 'The status is right, and the behaviour has conditions that matter.'],
+  ['gap', 'Gaps', 'Something the spec or the ecosystem does not cover, or covers badly.'],
+  ['misconception', 'Misconceptions', 'A widely held belief about MCP that is wrong.'],
+  ['in-flight', 'In flight', 'Work under way in the spec repositories, a SEP or a working group.'],
+];
+{
+  const capPage = Object.fromEntries(capIndex.capabilities.map((c) => [c.id, `/capabilities/${c.slug}`]));
+  const titles = Object.fromEntries(clients.map(([id, c]) => [id, c.title]));
+  const clientLink = (c) => (cardFiles.includes(`${c}.md`) ? `[${titles[c] ?? c}](${cardUrl(c)})` : titles[c] ?? c);
+  const capLink = (c) => (capPage[c] ? `[\`${c}\`](${capPage[c]})` : `\`${c}\``);
+  const anchor = (label) => label.toLowerCase().replace(/\s+/g, '-');
+  const unknown = notes.filter((n) => !NOTE_KINDS.some(([k]) => k === n.fm.kind));
+  if (unknown.length) throw new Error(`research/${unknown[0].id}.md: kind "${unknown[0].fm.kind}" has no section on the research index`);
+  const groups = NOTE_KINDS.map(([kind, label, meaning]) => ({ label, meaning, list: notes.filter((n) => n.fm.kind === kind) })).filter((g) => g.list.length);
+  const row = (n) => `| [${n.fm.title}](${n.url})${n.fm.status === 'current' ? '' : ` (${n.fm.status})`} | ${(n.fm.clients ?? []).map(clientLink).join(', ')} | ${(n.fm.capabilities ?? []).map(capLink).join(', ')} | ${n.fm.lastVerified ?? ''} |`;
+  const sections = groups.map((g) => `## ${g.label}\n\n${g.meaning}\n\n| Note | Clients | Capabilities | Verified |\n|---|---|---|---|\n${g.list.map(row).join('\n')}`).join('\n\n');
+  const noteClients = [...new Set(notes.flatMap((n) => n.fm.clients ?? []))].sort();
+  const byClient = noteClients.map((c) => {
+    const list = notes.filter((n) => (n.fm.clients ?? []).includes(c));
+    return `| ${clientLink(c)} | ${list.length} | ${list.map((n) => `[${n.fm.title}](${n.url})`).join('<br>')} |`;
+  }).join('\n');
+  page({
+    url: '/research/',
+    title: 'Research notes',
+    description: `${notes.length} notes on MCP client behaviour that a support matrix cannot express, each citing the source it was read from.`,
+    md: `# Research notes\n\n${notes.length} notes on client behaviour that a support matrix cannot express. Each cites the repository, commit and path it was read from.\n\n| Kind | Notes | What it is |\n|---|---|---|\n${groups.map((g) => `| [${g.label}](#${anchor(g.label)}) | ${g.list.length} | ${g.meaning} |`).join('\n')}\n\nThe same notes are listed [by client](#by-client) below. A note marked stale describes behaviour that has since changed.\n\n${sections}\n\n## By client\n\n| Client | Notes | Titles |\n|---|---|---|\n${byClient}\n`,
+    lastmod: newest(pages.filter((p) => p.url.startsWith('/research/')).map((p) => p.lastmod)),
+  });
+}
 
 {
   const md = read('web', 'about.md');
@@ -253,7 +323,7 @@ const home = page({
   title: SITE_NAME,
   description: TAGLINE,
   type: 'website',
-  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [MCP server](/api#mcp-server): the same data over MCP at \`${api.mcpUrl}\`, read-only, no authentication.\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
+  md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Capabilities](/capabilities/): the matrix, ${capIndex.capabilities.length} capabilities by client, with a page per capability that has the evidence behind every cell.\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [MCP server](/api#mcp-server): the same data over MCP at \`${api.mcpUrl}\`, read-only, no authentication.\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
   lastmod: today,
 });
 home.lastmod = newest(pages.map((p) => p.lastmod));
@@ -336,7 +406,7 @@ ${jsonLd}</head>
 <main>
 ${body}</main>
 <nav aria-label="Site">
-<a href="/">canimcp</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a>
+<a href="/">canimcp</a><a href="/capabilities/">Capabilities</a><a href="/clients/">Clients</a><a href="/tool-results">Tool results</a><a href="/observed">Observed</a><a href="/research/">Research notes</a><a href="/api">API</a><a href="/about">About</a>
 </nav>
 <footer>
 <p>Updated ${p.lastmod}.${robots ? '' : ` <a href="${mdPath(p.url)}">This page as Markdown</a>.`} <a href="/llms.txt">llms.txt</a>. <a href="${REPO}">Source on GitHub</a>. Data and writing under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. <a href="/contact">Contact</a>. <a href="/privacy">Privacy</a>.</p>
@@ -392,6 +462,12 @@ publishJson('data/research/index.json', notes.map(({ id, fm, url }) => ({
   clients: fm.clients ?? [], capabilities: fm.capabilities ?? [], specVersions: fm.specVersions ?? [],
   lastVerified: fm.lastVerified ?? null, page: `${ORIGIN}${url}`, markdown: `${ORIGIN}${url}.md`,
 })));
+publishJson('data/capabilities/index.json', indexJson(capIndex, { origin: ORIGIN }));
+dataFiles.push('/data/capabilities/index.json');
+for (const cap of capIndex.capabilities) {
+  publishJson(`data/capabilities/${cap.slug}.json`, capabilityJson(cap, capIndex, { origin: ORIGIN }));
+  dataFiles.push(`/data/capabilities/${cap.slug}.json`);
+}
 for (const [id, c] of clients) {
   publishJson(`data/clients/${id}.json`, { id, schema: `${ORIGIN}/schemas/client-registry.json#/$defs/ClientEntry`, entry: c });
 }
@@ -471,6 +547,8 @@ ${clientPages.map((p) => mdLink(p.title, p.url, p.description)).join('\n')}
 
 ## Across clients
 
+${mdLink('Capabilities', '/capabilities/', `the matrix of ${capIndex.capabilities.length} capabilities by client; each capability has its own page with the evidence`)}
+- [Capability pages](${abs('/capabilities/llms.txt')}): the section index
 ${mdLink('Tool result handling, verified', '/tool-results', 'what reached the model when each client called a fixture tool; links to one record page per client')}
 ${mdLink('Capabilities observed in traffic', '/observed', 'capabilities clients declare in real traffic, by protocol revision')}
 
@@ -483,6 +561,7 @@ ${mdLink('Research notes', '/research/', `${notes.length} notes, each with a one
 
 - [Client registry](${abs('/data/clients.json')}): every researched client in one JSON file
 - [Client index](${abs('/data/clients/index.json')}): ids, titles and the per-client JSON URLs
+- [Capability index](${abs('/data/capabilities/index.json')}): the matrix as JSON; one capability with its evidence is at \`${ORIGIN}/data/capabilities/<slug>.json\`
 - [Capability lifecycle](${abs('/data/spec-versions.json')}): each capability across protocol revisions
 - [Observed telemetry](${abs('/data/observed/hf-mcp-clients.json')}): the feed behind the observed tier
 - [Probe record index](${abs('/data/verified/index.json')}): the clients the probe has run; records are at \`${ORIGIN}/data/verified/<client>.json\`
@@ -525,6 +604,19 @@ ${clients.map(([id, c]) => `- [${c.title} JSON](${abs(`/data/clients/${id}.json`
 ## Probe records by client
 
 ${toolResultPages.map((p) => mdLink(p.title, `/tool-results/${p.slug}`, p.summary)).join('\n')}
+`);
+
+write('capabilities/llms.txt', `# ${SITE_NAME}: capabilities
+
+> One page per MCP capability: which clients support it, the evidence for each, probe results, telemetry and the protocol lifecycle.
+
+## Matrix
+
+${mdLink('Capabilities', '/capabilities/', 'every capability by client')}
+
+## Capability pages
+
+${capIndex.capabilities.map((c) => mdLink(c.id, `/capabilities/${c.slug}`, `${Object.values(c.subjects).filter((s) => s.status !== undefined).length} clients recorded${c.lifecycle?.introducedIn ? `, introduced in ${c.lifecycle.introducedIn}` : ''}`)).join('\n')}
 `);
 
 write('research/llms.txt', `# ${SITE_NAME}: research notes
@@ -595,7 +687,7 @@ for (const p of pages) {
   }
   if ((md.match(/^\s*(```|~~~)/gm) || []).length % 2) problems.push(`${mdPath(p.url)}: unclosed code fence`);
 }
-for (const f of ['llms.txt', 'clients/llms.txt', 'research/llms.txt']) {
+for (const f of ['llms.txt', 'clients/llms.txt', 'capabilities/llms.txt', 'research/llms.txt']) {
   for (const [, url] of readFileSync(join(out, f), 'utf8').matchAll(/\]\((https?:[^)\s]+)\)/g)) {
     if (url.startsWith(ORIGIN) && !exists(url.slice(ORIGIN.length))) problems.push(`${f}: link to ${url} does not resolve`);
   }

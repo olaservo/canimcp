@@ -10,6 +10,7 @@
     "url": "https://block.github.io/goose",
     "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.1.4.",
     "category": "agent-framework",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -294,6 +295,7 @@
     "url": "https://openai.com/codex",
     "description": "OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1.3 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -782,6 +784,7 @@
     "url": "https://opencode.ai",
     "description": "Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of SDK 1.29.0, so its transport behaviour is not stock.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -1268,6 +1271,7 @@
     "url": "https://cline.bot/",
     "description": "Open-source coding agent shipping as a VS Code extension and a CLI from one monorepo. Both surfaces use the official TypeScript SDK unpatched, except the CLI's stdio path, which is a hand-written JSON-RPC client fixed at 2024-11-05.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -1976,6 +1980,7 @@
     "url": "https://fast-agent.ai/",
     "description": "Python framework and CLI for building and running agents, from the maintainer of the SEP-2640 skills proposal and the HF client telemetry feed. The first client read here that leads with the 2026-07-28 stateless era: it probes server/discover before falling back to the initialize handshake, and behaves differently on each.",
     "category": "agent-framework",
+    "kind": "framework",
     "platforms": [
       "windows",
       "macos",
@@ -2956,6 +2961,7 @@
     "url": "https://github.com/openclaw/openclaw",
     "description": "Multi-channel AI gateway that runs agents across chat surfaces and remote nodes. Two MCP client surfaces: the per-session agent bundle and the headless node host.",
     "category": "agent-framework",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -3449,6 +3455,7 @@
     "url": "https://github.com/NousResearch/hermes-agent",
     "description": "Python agent CLI, desktop app and gateway from Nous Research. The second client here on the mcp Python SDK and the counterpart to fast-agent on it: same library, opposite protocol-era default. Hermes leads with the initialize handshake and probes server/discover only when a server rejects it. One MCP client serves every surface.",
     "category": "cli",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -4470,6 +4477,7 @@
     "url": "https://kilo.ai",
     "description": "Open-source coding agent for VS Code, JetBrains and the terminal. Now built on opencode, not Cline: the CLI is a fork of opencode's, and the VS Code and JetBrains extensions both spawn `kilo serve`, so one MCP client sits behind every surface. Ships a patched SDK 1.32.1 on main; the v2 branch has moved to the split SDK.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -5028,6 +5036,7 @@
     "url": "https://antigravity.google",
     "description": "Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts. Closed source, so nothing here is a read. The entry joins Apify's curated record, unchanged since November 2025, to Hugging Face MCP traffic, and the two disagree on protocol revision and elicitation.",
     "category": "ide",
+    "kind": "host",
     "platforms": [
       "windows",
       "macos",
@@ -5151,6 +5160,621 @@
     "metadata": {
       "vendor": "Google",
       "openSource": false
+    }
+  },
+  "claude-code": {
+    "title": "Claude Code",
+    "clientInfoNames": [
+      "claude-code"
+    ],
+    "url": "https://claude.com/product/claude-code",
+    "description": "Anthropic's coding agent for the terminal and IDEs. Closed source, so nothing here is a read. The entry joins Apify's curated record, written at 2025-06-18, to Hugging Face MCP traffic. 99.2% of its tool calls in the feed are at 2026-07-28. The two disagree on elicitation.",
+    "category": "cli",
+    "kind": "host",
+    "protocolVersions": [
+      "2025-03-26",
+      "2025-06-18",
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "preferredProtocolVersion": "2026-07-28",
+    "tools": {
+      "status": "full",
+      "notes": "Hugging Face traffic includes tool calls from this client.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "resources": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "prompts": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No sampling key on the claude-code record."
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "untested",
+      "notes": "The tiers disagree. Apify's record has no elicitation key at 2025-06-18. Hugging Face traffic declares elicitation, with no revision recorded, and URL elicitation at 2026-07-28. Neither tier exercised it, and the source cannot be read.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "status": "unsupported",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No elicitation key on the claude-code record."
+        }
+      ]
+    },
+    "roots": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "Anthropic",
+      "openSource": false
+    }
+  },
+  "claude-ai": {
+    "title": "Claude.ai",
+    "clientInfoNames": [
+      "Anthropic/ClaudeAI",
+      "claude-ai"
+    ],
+    "url": "https://claude.ai",
+    "description": "Anthropic's chat product. Closed source, so nothing here is a read. The entry joins Apify's curated record, written at 2025-06-18, to Hugging Face MCP traffic. 99.7% of its tool calls in the feed are at 2026-07-28.",
+    "category": "chat",
+    "kind": "host",
+    "protocolVersions": [
+      "2025-06-18",
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "preferredProtocolVersion": "2026-07-28",
+    "tools": {
+      "status": "full",
+      "notes": "Hugging Face traffic includes tool calls from this client.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "resources": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "prompts": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No sampling key on the claude-ai record."
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "unsupported",
+      "notes": "Both tiers agree: Apify's record has no elicitation key, and the traffic does not declare it.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No elicitation key on the claude-ai record."
+        }
+      ]
+    },
+    "roots": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No roots key on the claude-ai record."
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "Anthropic",
+      "openSource": false
+    }
+  },
+  "chatgpt": {
+    "title": "ChatGPT",
+    "clientInfoNames": [
+      "openai-mcp",
+      "ChatGPT"
+    ],
+    "url": "https://chatgpt.com",
+    "description": "OpenAI's chat product. Closed source, so nothing here is a read. The entry joins Apify's curated record, written at 2025-06-18, to Hugging Face MCP traffic. Its tool calls in the feed are split: 53.8% at 2025-11-25, 46.2% at 2026-07-28. Apify's record is under the wire name ChatGPT. The traffic is under openai-mcp, which the feed labels OpenAI ChatGPT, and that label is what joins the two.",
+    "category": "chat",
+    "kind": "host",
+    "protocolVersions": [
+      "2025-06-18",
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "tools": {
+      "status": "full",
+      "notes": "Hugging Face traffic includes tool calls from this client.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No resources key on the ChatGPT record."
+        }
+      ]
+    },
+    "prompts": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No prompts key on the ChatGPT record."
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No sampling key on the ChatGPT record."
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "unsupported",
+      "notes": "Both tiers agree: Apify's record has no elicitation key, and the traffic does not declare it.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No elicitation key on the ChatGPT record."
+        }
+      ]
+    },
+    "roots": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No roots key on the ChatGPT record."
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "OpenAI",
+      "openSource": false
+    }
+  },
+  "codex-desktop": {
+    "title": "Codex Desktop",
+    "clientInfoNames": [
+      "openai-mcp (Codex)"
+    ],
+    "url": "https://openai.com/codex",
+    "description": "OpenAI's Codex outside the CLI. Closed source, so nothing here is a read. Apify has no record for it, so the entry rests on Hugging Face MCP traffic alone. 96.5% of its tool calls in the feed are at 2026-07-28. What the traffic declares is on the capability pages. The feed labels the wire name `openai-mcp (Codex)` as Codex Desktop, under the id codex-web, and that label is the only source here for which product this is. Codex CLI has its own entry.",
+    "category": "other",
+    "kind": "host",
+    "protocolVersions": [
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "preferredProtocolVersion": "2026-07-28",
+    "tools": {
+      "status": "full",
+      "notes": "Known only from traffic: the feed counts tool calls from this wire name.",
+      "evidence": [
+        {
+          "tier": "observed",
+          "source": "evalstate/mcp-clients",
+          "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json",
+          "date": "2026-11-11",
+          "note": "The feed counts tool calls from this client over 2026-09-10 to 2026-11-08."
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "OpenAI",
+      "openSource": false
+    }
+  },
+  "huggingface-chat-ui": {
+    "title": "Hugging Face Chat UI",
+    "clientInfoNames": [
+      "chat-ui-mcp"
+    ],
+    "url": "https://github.com/huggingface/chat-ui",
+    "description": "Hugging Face's open-source chat interface. Open source, and the source has not been read for this entry yet. Apify has no record for it, so the entry rests on Hugging Face MCP traffic alone. 100% of its tool calls in the feed are at 2026-07-28. What the traffic declares is on the capability pages. The wire name chat-ui-mcp appears in `src/lib/server/mcp/client.ts` of that repository.",
+    "category": "chat",
+    "kind": "host",
+    "protocolVersions": [
+      "2026-07-28"
+    ],
+    "preferredProtocolVersion": "2026-07-28",
+    "tools": {
+      "status": "full",
+      "notes": "Known only from traffic: the feed counts tool calls from this wire name.",
+      "evidence": [
+        {
+          "tier": "observed",
+          "source": "evalstate/mcp-clients",
+          "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json",
+          "date": "2026-11-11",
+          "note": "The feed counts tool calls from this client over 2026-09-10 to 2026-11-08."
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "Hugging Face",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "sourceUrl": "https://github.com/huggingface/chat-ui"
+    }
+  },
+  "cursor": {
+    "title": "Cursor",
+    "clientInfoNames": [
+      "Cursor",
+      "Cursor MCP Availability",
+      "cursor-agent",
+      "cursor-check",
+      "cursor-diag",
+      "cursor-hf-check",
+      "cursor-mcp-sync-check",
+      "cursor-public-preflight",
+      "cursor-test",
+      "cursor-vscode"
+    ],
+    "url": "https://cursor.com",
+    "description": "AI code editor from Anysphere. Closed source, so nothing here is a read. The entry joins Apify's curated record, written at 2025-06-18, to Hugging Face MCP traffic. 99.9% of its tool calls in the feed are at 2025-11-25.",
+    "category": "ide",
+    "kind": "host",
+    "protocolVersions": [
+      "2024-11-05",
+      "2025-03-26",
+      "2025-06-18",
+      "2025-11-25"
+    ],
+    "preferredProtocolVersion": "2025-11-25",
+    "tools": {
+      "status": "full",
+      "notes": "Hugging Face traffic includes tool calls from this client.",
+      "listChanged": {
+        "status": "full"
+      },
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "resources": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "prompts": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97",
+          "note": "No sampling key on the cursor-vscode record."
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "roots": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "Anysphere",
+      "openSource": false
+    }
+  },
+  "vscode": {
+    "title": "Visual Studio Code",
+    "clientInfoNames": [
+      "Visual Studio Code",
+      "Visual Studio Code - Insiders"
+    ],
+    "url": "https://code.visualstudio.com",
+    "description": "Microsoft's editor. Open source, and the source has not been read for this entry yet. The entry joins Apify's curated record, written at 2025-06-18, to Hugging Face MCP traffic. 100% of its tool calls in the feed are at 2025-11-25.",
+    "category": "ide",
+    "kind": "host",
+    "protocolVersions": [
+      "2025-06-18",
+      "2025-11-25"
+    ],
+    "preferredProtocolVersion": "2025-11-25",
+    "tools": {
+      "status": "full",
+      "notes": "Hugging Face traffic includes tool calls from this client.",
+      "listChanged": {
+        "status": "full"
+      },
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "resources": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "prompts": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "full",
+      "form": {
+        "status": "full"
+      },
+      "url": {
+        "status": "full"
+      },
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "roots": {
+      "status": "full",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "tasks": {
+      "status": "full",
+      "notes": "Declared as {\"requests\":{\"tools\":{\"call\":{}}}}.",
+      "evidence": [
+        {
+          "tier": "declared",
+          "at": "2025-06-18",
+          "source": "apify/mcp-client-capabilities",
+          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+          "date": "2026-11-15",
+          "commit": "2b28e97"
+        }
+      ]
+    },
+    "metadata": {
+      "vendor": "Microsoft",
+      "openSource": true,
+      "license": "MIT",
+      "sourceUrl": "https://github.com/microsoft/vscode"
     }
   }
 }

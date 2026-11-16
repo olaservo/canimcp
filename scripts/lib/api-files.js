@@ -21,7 +21,7 @@ export const API_CATALOG_TYPE = 'application/linkset+json; profile="https://www.
  * @param {{client:string,title:string}[]} o.verified clients with probe records
  * @param {{name:string,description:string,uri:string,url:string}[]} o.skills the Agent Skills under skills/
  */
-export function buildApiFiles({ origin, repo, version, tagline, clients, verified, skills }) {
+export function buildApiFiles({ origin, repo, version, tagline, clients, verified, skills, capabilitySlugs }) {
   const schema = (name) => ({ $ref: `${origin}/schemas/${name}` });
   const uri = { type: 'string', format: 'uri' };
   const str = { type: 'string' };
@@ -153,6 +153,95 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
       schema: schema('observed-evidence.json'),
     },
     {
+      id: 'listCapabilities',
+      path: '/data/capabilities/index.json',
+      tag: 'capabilities',
+      summary: 'Get the capability matrix',
+      description: 'Every capability with the status each client records for it and the evidence tiers behind each cell. `subjects` lists the clients, including those that have probe records or telemetry and no registry entry. Start here to find a capability slug.',
+      returns: 'Every capability, with each client\'s status and evidence tiers',
+      schema: {
+        type: 'object',
+        required: ['subjects', 'capabilities'],
+        properties: {
+          subjects: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['id', 'title', 'kind', 'registry', 'page'],
+              properties: {
+                id: str,
+                title: str,
+                kind: { ...str, enum: ['host', 'framework', 'adapter', 'sdk'] },
+                registry: { type: 'boolean', description: 'True when the client has a researched registry entry.' },
+                page: uri,
+                repo: uri,
+              },
+            },
+          },
+          capabilities: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['id', 'slug', 'introducedIn', 'page', 'data', 'statuses', 'tiers'],
+              properties: {
+                id: { ...str, description: 'Capability id, a dotted path such as elicitation.url.' },
+                slug: { ...str, description: 'The id with dots and slashes as hyphens, used in /data/capabilities/{slug}.json.' },
+                introducedIn: { type: ['string', 'null'], description: 'The protocol revision that introduced it, or null when it is not a protocol feature.' },
+                page: uri,
+                data: uri,
+                statuses: { type: 'object', additionalProperties: str, description: 'Client id to status. A client with no status recorded is absent.' },
+                tiers: { type: 'object', additionalProperties: { type: 'array', items: str }, description: 'Client id to the evidence tiers behind it.' },
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      id: 'getCapability',
+      path: '/data/capabilities/{slug}.json',
+      tag: 'capabilities',
+      summary: 'Get one capability across clients',
+      description: 'Answers "which clients support X". For one capability: each client\'s status, notes and evidence from the registry, a summary of the probe\'s runs, what telemetry observed, where the tiers disagree, the clients with no record, the protocol lifecycle and the research notes about it.',
+      returns: 'One capability with every client\'s status and evidence',
+      parameters: [pathParam('slug', 'Capability slug, from listCapabilities.', capabilitySlugs)],
+      schema: {
+        type: 'object',
+        required: ['capability', 'slug', 'page', 'lifecycle', 'clients', 'notRecorded', 'research'],
+        properties: {
+          capability: str,
+          slug: str,
+          page: uri,
+          lifecycle: { type: ['object', 'null'], additionalProperties: true },
+          parent: { type: ['string', 'null'] },
+          children: { type: 'array', items: str },
+          clients: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['id', 'title', 'kind', 'page', 'tiers', 'disagreements'],
+              properties: {
+                id: str,
+                title: str,
+                kind: str,
+                page: uri,
+                status: { ...str, description: 'The registry\'s status. Absent when the client has evidence and no registry record.' },
+                notes: str,
+                evidence: { type: 'array', items: object, description: 'Evidence items from the registry entry.' },
+                research: { type: 'array', items: str },
+                verified: { ...object, description: 'A summary of the probe\'s runs: versions, revisions and each verdict with its count.' },
+                observed: { type: 'array', items: object, description: 'Evidence items from telemetry.' },
+                tiers: { type: 'array', items: str },
+                disagreements: { type: 'array', items: object, description: 'Evidence items whose own status differs from the registry\'s.' },
+              },
+            },
+          },
+          notRecorded: { type: 'array', items: str, description: 'Registry clients with no record. Not the same as unsupported.' },
+          research: { type: 'array', items: str, description: 'Research note ids.' },
+        },
+      },
+    },
+    {
       id: 'listResearchNotes',
       path: '/data/research/index.json',
       tag: 'research',
@@ -228,6 +317,7 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
     tags: [
       { name: 'registry', description: 'Client entries and the capability lifecycle.' },
       { name: 'evidence', description: 'The probe\'s records and the telemetry feed.' },
+      { name: 'capabilities', description: 'The four evidence sources joined by capability.' },
       { name: 'research', description: 'Notes on behaviour a status cannot express.' },
     ],
     paths,

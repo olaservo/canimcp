@@ -8,6 +8,7 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 |---|---|
 | Registry id | `goose` |
 | Vendor | Block |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | agent-framework |
 | Platforms | windows, macos, linux |
 | Licence | Apache-2.0 |

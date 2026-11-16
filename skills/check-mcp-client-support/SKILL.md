@@ -14,13 +14,13 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 | Question | MCP tool | JSON |
 |---|---|---|
 | Which clients are covered | `list_clients` | `/data/clients/index.json` |
-| Which capability ids exist | `list_capabilities` | the `capabilities` keys of `/data/spec-versions.json` |
-| Which clients support a capability | `find_capability_support` | `/data/clients.json` |
+| Which capability ids exist | `list_capabilities` | `/data/capabilities/index.json` |
+| Which clients support a capability | `find_capability_support` | `/data/capabilities/{slug}.json`, where the slug is the id with dots as hyphens |
 | What one client does | `get_client` | `/data/clients/{id}.json` |
 | What reached the model from a tool result | `get_probe_results` | `/data/verified/{client}.json` |
 | Why a status is what it is | `search_research_notes`, `get_research_note` | `/data/research/index.json` |
 
-`https://canimcp.io/openapi.json` describes the JSON. Every page on the site is Markdown at its URL plus `.md`.
+`https://canimcp.io/openapi.json` describes the JSON. Every page on the site is Markdown at its URL plus `.md`, and each capability has a page at `/capabilities/{slug}`.
 
 ## Steps
 
@@ -34,6 +34,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 
 - A status is `full`, `partial`, `unsupported` or `untested`.
 - A client under `notRecorded` has no entry for that capability. That is not `unsupported`. Say it is not recorded.
+- A client with no `status` has probe records or telemetry and no registry record. Report what the `verified` or `observed` part says, and say the registry has not settled a status.
 - Each evidence item has a `tier`:
   - `declared`: the client says so, in the capabilities it sends or in a curated list.
   - `verified`: the probe exercised it.
@@ -41,6 +42,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
   - `read`: someone read the client's source at the commit given.
 - Tiers are not ranked. When two disagree, report both. An evidence item whose own `status` differs from the capability's is a recorded disagreement.
 - Each evidence item has `at`, the protocol revision it applies to. `2026-07-28` is stateless, and every revision through `2025-11-25` uses the initialize handshake. A result at one says nothing about the other.
+- For images in tool results, use `tools.result.media`. Each probe result has `image` (`image-part`, `base64-text` or `absent`) and `modelApi`. The same client can pass an image on one model API and drop it on another, so report the API with the outcome. Only one small PNG is tested. Audio, embedded resources and resource links are not.
 - A declaration can be wrong in either direction. Some clients declare a capability their code declines, and some implement one they do not declare.
 - The registry covers only the clients `list_clients` returns. A client that is not listed is unknown here.
 

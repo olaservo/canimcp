@@ -8,6 +8,7 @@ Python framework and CLI for building and running agents, from the maintainer of
 |---|---|
 | Registry id | `fast-agent` |
 | Vendor | Shaun Smith (llmindset) |
+| Kind | framework. A library an application embeds. A capability row is what a default install declares, and the embedding application can change it. |
 | Category | agent-framework |
 | Platforms | windows, macos, linux |
 | Licence | Apache-2.0 |

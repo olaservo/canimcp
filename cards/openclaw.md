@@ -8,6 +8,7 @@ Multi-channel AI gateway that runs agents across chat surfaces and remote nodes.
 |---|---|
 | Registry id | `openclaw` |
 | Vendor | OpenClaw Foundation |
+| Kind | host. A shipped application. A capability row is what it declares and implements. |
 | Category | agent-framework |
 | Platforms | windows, macos, linux |
 | Licence | MIT |

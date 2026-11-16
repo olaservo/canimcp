@@ -40,12 +40,12 @@ export const TOOLS = [
   {
     name: 'find_capability_support',
     title: 'Compare one capability across clients',
-    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions.',
+    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, a summary of the probe\'s runs, what telemetry observed, where the tiers disagree, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions.',
   },
   {
     name: 'get_probe_results',
     title: 'Get probe results for a client',
-    description: 'Returns verified-tier results from the canimcp probe for one client: for each tool-result scenario, what reached the model, with the client version, model API, protocol revision and a link to the captures. Covers clients that have no registry entry. Pass `capability` to narrow the results.',
+    description: 'Returns verified-tier results from the canimcp probe for one client: for each tool-result scenario, what reached the model, with the client version, model API, protocol revision and a link to the captures. For the image scenario it also says whether the image arrived as an image, as base64 text, or not at all. Covers clients that have no registry entry. Pass `capability` to narrow the results.',
   },
   {
     name: 'search_research_notes',
