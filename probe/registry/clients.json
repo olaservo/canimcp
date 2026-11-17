@@ -34,6 +34,7 @@
       "sdk": "@modelcontextprotocol/client",
       "drive": "script",
       "adapter": "hosts/mastra",
+      "registryId": "mastra",
       "notes": "Agent plus MCPClient on a model config with a custom url."
     },
     "fx": {
@@ -49,6 +50,7 @@
         "linux",
         "macos"
       ],
+      "registryId": "fx",
       "notes": "fx ask with a configured openai-chat-completions provider. Runs from WSL on Windows."
     },
     "libfx": {
@@ -64,6 +66,7 @@
         "linux",
         "macos"
       ],
+      "registryId": "libfx",
       "notes": "createMcpAdapter over the official TypeScript client."
     },
     "eve": {
@@ -75,8 +78,8 @@
       "drive": "script",
       "adapter": "hosts/eve",
       "sdk": "@ai-sdk/mcp 2.0.73 (vendored, patched)",
-      "notes": "eve dev --no-ui plus eve remote connect --print against a generated app; http only, MCP tools reached through eve__tool.",
-      "registryId": null
+      "registryId": "eve",
+      "notes": "eve dev --no-ui plus eve remote connect --print against a generated app; http only, MCP tools reached through eve__tool."
     },
     "opencode": {
       "title": "opencode",
@@ -145,8 +148,8 @@
       "drive": "cli",
       "adapter": "hosts/pi",
       "sdk": "@earendil-works/pi-mcp (own client)",
-      "notes": "pi --print with a custom openai-completions provider. Stock exposure is codemode; the default config sets exposure direct, codemode and deferred configs cover the stock routes.",
-      "registryId": null
+      "registryId": "pi",
+      "notes": "pi --print with a custom openai-completions provider. Stock exposure is codemode; the default config sets exposure direct, codemode and deferred configs cover the stock routes."
     },
     "zed": {
       "title": "Zed",
@@ -191,8 +194,8 @@
       "drive": "script",
       "adapter": "hosts/strands",
       "sdk": "mcp 2.3.0 (python-sdk)",
-      "notes": "strands-agents[openai,anthropic]; configs default (chat), responses, anthropic.",
-      "registryId": null
+      "registryId": "strands",
+      "notes": "strands-agents[openai,anthropic]; configs default (chat), responses, anthropic."
     },
     "crewai": {
       "title": "crewAI",
@@ -203,8 +206,8 @@
       "drive": "script",
       "adapter": "hosts/crewai",
       "sdk": "mcp 1.30.0 (python-sdk)",
-      "notes": "Agent(mcps=[MCPServerStdio|MCPServerHTTP]) on the native OpenAI provider; the crewai-tools config uses MCPServerAdapter (mcpadapt). Stdio server names are hashed into the tool name, so the adapter spawns a short wrapper.",
-      "registryId": null
+      "registryId": "crewai",
+      "notes": "Agent(mcps=[MCPServerStdio|MCPServerHTTP]) on the native OpenAI provider; the crewai-tools config uses MCPServerAdapter (mcpadapt). Stdio server names are hashed into the tool name, so the adapter spawns a short wrapper."
     },
     "deepagents": {
       "title": "deepagents",
@@ -215,8 +218,8 @@
       "drive": "script",
       "adapter": "hosts/deepagents",
       "sdk": "fastmcp 4.1.2 over mcp 2.2.0 (python-sdk)",
-      "notes": "The MCP route is deepagents-code (FastMCP proxy router + langchain.mcp); configs default, hooks, interpreter.",
-      "registryId": null
+      "registryId": "deepagents",
+      "notes": "The MCP route is deepagents-code (FastMCP proxy router + langchain.mcp); configs default, hooks, interpreter."
     },
     "adk-python": {
       "title": "Google ADK (Python)",
@@ -225,10 +228,10 @@
       "source": "adk-python",
       "language": "python",
       "drive": "script",
+      "registryId": "adk-python",
       "notes": "Needs the Gemini API shape in the mock model. LlmAgent + McpToolset; configs default (Gemini, mock serves generateContent), anthropic (AnthropicLlm), modern (ADK_ENABLE_MCP_MODERN_PROTOCOL), strict-errors.",
       "adapter": "hosts/adk-python",
-      "sdk": "mcp 2.3.0 (python-sdk)",
-      "registryId": null
+      "sdk": "mcp 2.3.0 (python-sdk)"
     },
     "agent-framework": {
       "title": "Microsoft Agent Framework",
@@ -239,8 +242,8 @@
       "drive": "script",
       "adapter": "hosts/agent-framework",
       "sdk": "mcp 2.3.0 (python-sdk)",
-      "notes": "Python only; one config per tool_result_content mode plus responses and anthropic. .NET not probed.",
-      "registryId": null
+      "registryId": "agent-framework",
+      "notes": "Python only; one config per tool_result_content mode plus responses and anthropic. .NET not probed."
     }
   }
 }

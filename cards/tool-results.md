@@ -8,40 +8,40 @@ Columns are the probe scenarios (`probe/registry/scenarios.json`); drop the `too
 
 | Client | Config | Run | At | summary_and_data | mirror | structured_only | sc_empty | with_image | audience_user | is_error | schema_match | schema_mismatch | app_only | large | no_content_key | empty_object | sc_string | sc_null | with_meta | meta_only |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Google ADK (Python) `2.14.0` | default | http | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | "…" | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
-| Google ADK (Python) `2.14.0` | default | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | "…" | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
-| Google ADK (Python) `2.14.0` | anthropic | stdio | `2025-11-25` | […] | ≡ | ⟨…⟩ | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
-| Google ADK (Python) `2.14.0` | modern | stdio | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | ⟨…⟩ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
-| Google ADK (Python) `2.14.0` | strict-errors | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ✗ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
-| Microsoft Agent Framework `1.25.0` | default | http | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
-| Microsoft Agent Framework `1.25.0` | default | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
-| Microsoft Agent Framework `1.25.0` | anthropic | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
-| Microsoft Agent Framework `1.25.0` | both | stdio | `2026-07-28` | […]{…} | ≡×2 | {…} | […] | […]{…} | […]{…} | "…" | […]{…} | "…" | […]{…} | […]{…} | "…" | "…" | […]{…} | […] | […]{…} | […] |
-| Microsoft Agent Framework `1.25.0` | content-first | stdio | `2026-07-28` | […] | ≡ | {…} | […] | […] | […] | "…" | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| Microsoft Agent Framework `1.25.0` | content-only | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | "…" | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| Microsoft Agent Framework `1.25.0` | responses | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
-| Microsoft Agent Framework `1.25.0` | structured-only | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | "…" | {…} | "…" |
+| [Google ADK (Python)](adk-python.md) `2.14.0` | default | http | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | "…" | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [Google ADK (Python)](adk-python.md) `2.14.0` | default | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | "…" | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [Google ADK (Python)](adk-python.md) `2.14.0` | anthropic | stdio | `2025-11-25` | […] | ≡ | ⟨…⟩ | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
+| [Google ADK (Python)](adk-python.md) `2.14.0` | modern | stdio | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | "…" | "…" | ⟨…⟩ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [Google ADK (Python)](adk-python.md) `2.14.0` | strict-errors | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ✗ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | default | http | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | default | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | anthropic | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | both | stdio | `2026-07-28` | […]{…} | ≡×2 | {…} | […] | […]{…} | […]{…} | "…" | […]{…} | "…" | […]{…} | […]{…} | "…" | "…" | […]{…} | […] | […]{…} | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | content-first | stdio | `2026-07-28` | […] | ≡ | {…} | […] | […] | […] | "…" | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | content-only | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | "…" | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | responses | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | […] | {…} | […] |
+| [Microsoft Agent Framework](agent-framework.md) `1.25.0` | structured-only | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | "…" | {…} | "…" | {…} | {…} | "…" | "…" | {…} | "…" | {…} | "…" |
 | [Cline](cline.md) `3.0.74` | default | http | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | ↛ | […] | ⟨…⟩ | ⟨…⟩ | "…" | "…" | ⟨…⟩+_meta | ⟨…⟩+_meta |
 | [Cline](cline.md) `3.0.74` | default | stdio | `2024-11-05` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ↛ | […] | ⟨…⟩ | "…" | ⟨…⟩ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
 | [Codex CLI](openai-codex.md) `0.169.0-alpha.3` | default | http | `2025-06-18` | {…} | ≡ | {…} |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | [Codex CLI](openai-codex.md) `0.169.0-alpha.3` | default | stdio | `2025-06-18` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | {…} | ∅ | {…} | {…} | "…" | {…} | […] | {…} | […] |
 | [Codex CLI](openai-codex.md) `0.169.0-alpha.3` | mcp-2026-07-28 | http | `2026-07-28` | {…} |  |  |  |  |  |  |  |  |  |  |  |  |  |  | {…} | […] |
 | [Codex CLI](openai-codex.md) `0.169.0-alpha.3` | mcp-2026-07-28 | stdio | `2025-06-18` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | {…} | ∅ | {…} | {…} | "…" | {…} | […] |  |  |
-| crewAI `1.15.37` | default | http | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
-| crewAI `1.15.37` | default | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
-| crewAI `1.15.37` | crewai-tools | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
-| deepagents `0.7.34+code-0.2.5` | default | http | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ✗ | […] | […] | ✗ | ✗ | ✗ | […] | […] | […] |
-| deepagents `0.7.34+code-0.2.5` | default | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ✗ | […] | […] | ✗ | ✗ | ✗ | […] | […] | […] |
-| deepagents `0.7.34+code-0.2.5` | hooks | stdio | `2025-11-25` | […]{…} | ≡×2 | {…} | […] | […]{…} | […]{…} | […] | […]{…} | ✗ | […]{…} | […]{…} | ✗ | ✗ | ✗ | […] | […]{…} | […] |
-| deepagents `0.7.34+code-0.2.5` | interpreter | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ∅ | […] | […] | ∅ | ∅ | ∅ | […] | […] | […] |
-| eve `1.0.0-rc.6` | default | http | `2026-07-28` | {…} | ≡ | {…} | "…" | […] | {…} | […] | {…} | {…} | {…} | {…} | {…} | "…" | {…} | "…" | {…} | […] |
-| eve `1.0.0-rc.6` | no-discovery | http | `2025-11-25` | {…} | ≡ | {…} | "…" | […] | {…} | […] | {…} | {…} | {…} | {…} | {…} | "…" | {…} | "…" | {…} | […] |
+| [crewAI](crewai.md) `1.15.37` | default | http | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
+| [crewAI](crewai.md) `1.15.37` | default | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
+| [crewAI](crewai.md) `1.15.37` | crewai-tools | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | "…" | […] | […] | […] |
+| [deepagents](deepagents.md) `0.7.34+code-0.2.5` | default | http | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ✗ | […] | […] | ✗ | ✗ | ✗ | […] | […] | […] |
+| [deepagents](deepagents.md) `0.7.34+code-0.2.5` | default | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ✗ | […] | […] | ✗ | ✗ | ✗ | […] | […] | […] |
+| [deepagents](deepagents.md) `0.7.34+code-0.2.5` | hooks | stdio | `2025-11-25` | […]{…} | ≡×2 | {…} | […] | […]{…} | […]{…} | […] | […]{…} | ✗ | […]{…} | […]{…} | ✗ | ✗ | ✗ | […] | […]{…} | […] |
+| [deepagents](deepagents.md) `0.7.34+code-0.2.5` | interpreter | stdio | `2025-11-25` | […] | ≡ | "…" | […] | […] | […] | […] | […] | ∅ | […] | […] | ∅ | ∅ | ∅ | […] | […] | […] |
+| [eve](eve.md) `1.0.0-rc.6` | default | http | `2026-07-28` | {…} | ≡ | {…} | "…" | […] | {…} | […] | {…} | {…} | {…} | {…} | {…} | "…" | {…} | "…" | {…} | […] |
+| [eve](eve.md) `1.0.0-rc.6` | no-discovery | http | `2025-11-25` | {…} | ≡ | {…} | "…" | […] | {…} | […] | {…} | {…} | {…} | {…} | {…} | "…" | {…} | "…" | {…} | […] |
 | [fast-agent](fast-agent.md) `0.10.53` | default | http | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | "…" | ∅ | {…} | "…" | "…" | {…} | […] | {…} | […] |
 | [fast-agent](fast-agent.md) `0.10.53` | default | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | "…" | ∅ | {…} | "…" | "…" | {…} | […] | {…} | […] |
 | [fast-agent](fast-agent.md) `0.10.53` | anthropic | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | "…" | ∅ | {…} | "…" | "…" | {…} | […] | {…} | […] |
 | [fast-agent](fast-agent.md) `0.10.53` | legacy | stdio | `2025-11-25` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | "…" | ∅ | {…} | "…" | "…" | "…" | […] | {…} | […] |
 | [fast-agent](fast-agent.md) `0.10.53` | modern | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | {…} | {…} | "…" | ∅ | {…} | "…" | "…" | {…} | […] | {…} | […] |
-| fx (native engine) `0.0.16` | default | stdio | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | […]{…} | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | "…" | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| [fx (native engine)](fx.md) `0.0.16` | default | stdio | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | […]{…} | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | "…" | "…" | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
 | [goose](goose.md) `1.58.0` | default | http | `2026-07-28` | […] | ≡ | "…" |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | [goose](goose.md) `1.58.0` | default | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | […] | ∅ | […] | "…" | "…" | […] | […] | […] | […] |
 | [goose](goose.md) `1.58.0` | anthropic | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | […] | ∅ | […] | "…" | "…" | […] | […] | […] | […] |
@@ -51,25 +51,25 @@ Columns are the probe scenarios (`probe/registry/scenarios.json`); drop the `too
 | [Hermes Agent](hermes-agent.md) `0.23.0+689.ga9ff979` | legacy | stdio | `2025-11-25` | […]{…} | ≡ | {…} | […] | […]{…} | […]{…} | […] | […]{…} | "…" | […]{…} | […] | "…" | "…" | "…" | […] | […]{…}+_meta | […]+_meta |
 | [Hermes Agent](hermes-agent.md) `0.23.0+689.ga9ff979` | stateless | stdio | `2026-07-28` | […]{…} | ≡ | {…} | […] | […]{…} | […]{…} | […] | […]{…} | "…" | […]{…} | […] | "…" | "…" | […] | […] | […]{…}+_meta | […]+_meta |
 | [Hermes Agent](hermes-agent.md) `0.23.0+689.ga9ff979` | tool-search-off | stdio | `2025-11-25` | […]{…} | ≡ | {…} | […] | […]{…} | […]{…} | […] | […]{…} | "…" | […]{…} | […] | "…" | "…" | "…" | […] | […]{…}+_meta | […]+_meta |
-| libfx (fx JavaScript adapter) `0.0.0-eab1401` | default | stdio | `2025-11-25` | […]{…} | ≡ | {…} | […] | […]{…} | […]{…} | […]{…} | […]{…} | "…" | […]{…} | "…" | {…} | "…" | "…" | "…" | […]{…} | […] |
-| Mastra `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | default | http | `2026-07-28` | {…} | ≡ | {…} |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| Mastra `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | default | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | […] | […] | "…" | ∅ | {…} | "…" | "…" | {…} | "…" | {…} | ⟨…⟩+_meta |
-| Mastra `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | legacy | stdio | `2025-11-25` | {…} | ≡ | {…} |  |  |  |  |  |  |  |  |  |  |  |  | {…} | ⟨…⟩+_meta |
-| Mastra `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | return-errors | stdio | `2026-07-28` | {…} |  |  |  |  |  | ⟨…⟩ |  |  |  |  |  |  |  |  | {…} | ⟨…⟩+_meta |
+| [libfx (fx JavaScript adapter)](libfx.md) `0.0.0-eab1401` | default | stdio | `2025-11-25` | […]{…} | ≡ | {…} | […] | […]{…} | […]{…} | […]{…} | […]{…} | "…" | […]{…} | "…" | {…} | "…" | "…" | "…" | […]{…} | […] |
+| [Mastra](mastra.md) `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | default | http | `2026-07-28` | {…} | ≡ | {…} |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| [Mastra](mastra.md) `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | default | stdio | `2026-07-28` | {…} | ≡ | {…} | "…" | {…} | {…} | […] | […] | "…" | ∅ | {…} | "…" | "…" | {…} | "…" | {…} | ⟨…⟩+_meta |
+| [Mastra](mastra.md) `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | legacy | stdio | `2025-11-25` | {…} | ≡ | {…} |  |  |  |  |  |  |  |  |  |  |  |  | {…} | ⟨…⟩+_meta |
+| [Mastra](mastra.md) `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` | return-errors | stdio | `2026-07-28` | {…} |  |  |  |  |  | ⟨…⟩ |  |  |  |  |  |  |  |  | {…} | ⟨…⟩+_meta |
 | [opencode](opencode.md) `0.0.0-a98e3fa`, `2.2.6` | default | http | `2025-11-25` | {…} / {…} | ≡ / ≡ | {…} / {…} | "…" / "…" | {…} / {…} | {…} / {…} | […] / […] | {…} / {…} | {…} / "…" | {…} / {…} | {…} / {…} | {…} / {…} | "…" / "…" | "…" / "…" | "…" / "…" | {…} / {…} | […] / […] |
 | [opencode](opencode.md) `0.0.0-a98e3fa`, `2.2.6` | default | stdio | `2025-11-25` | {…} / {…} | ≡ / ≡ | {…} / {…} | "…" / "…" | {…} / {…} | {…} / {…} | […] / […] | {…} / {…} | {…} / "…" | {…} / {…} | {…} / {…} | {…} / {…} | "…" / "…" | "…" / "…" | "…" / "…" | {…} / {…} | […] / […] |
 | [opencode](opencode.md) `0.0.0-a98e3fa`, `2.2.6` | codemode-off | stdio | `2025-11-25` | […] / […] | ≡ / ≡ | {…} / {…} | […] / […] | […] / […] | […] / […] | ⟨…⟩ / ⟨…⟩ | […] / […] | […] / "…" | […] / […] | […] / […] | {…} / {…} | "…" / "…" | "…" / "…" | "…" / "…" | […] / […] | […] / […] |
 | [opencode](opencode.md) `0.0.0-a98e3fa`, `2.2.6` | execute-denied | stdio | `2025-11-25` | […] / […] | ≡ / ≡ | {…} / {…} | […] / […] | […] / […] | […] / […] | ⟨…⟩ / ⟨…⟩ | […] / […] | […] / "…" | […] / […] | […] / […] | {…} / {…} | "…" / "…" | "…" / "…" | "…" / "…" | […] / […] | […] / […] |
 | [opencode](opencode.md) `0.0.0-a98e3fa`, `2.2.6` | protocol-2026-07-28 | stdio | `2026-07-28` | […] / […] | ≡ / ≡ | {…} / {…} | […] / […] | […] / […] | […] / […] | ⟨…⟩ / ⟨…⟩ | […] / […] | […] / "…" | […] / […] | […] / […] | "…" / "…" | "…" / "…" | […] / […] | […] / […] | […] / […] | […] / […] |
-| pi `1.5.0` | default | http | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
-| pi `1.5.0` | default | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
-| pi `1.5.0` | anthropic | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
-| pi `1.5.0` | codemode | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | […] | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
-| pi `1.5.0` | deferred | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
-| Strands Agents `1.64.0+mcp-2.3.0` | default | http | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| Strands Agents `1.64.0+mcp-2.3.0` | default | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| Strands Agents `1.64.0+mcp-2.3.0` | anthropic | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| Strands Agents `1.64.0+mcp-2.3.0` | responses | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [pi](pi.md) `1.5.0` | default | http | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
+| [pi](pi.md) `1.5.0` | default | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
+| [pi](pi.md) `1.5.0` | anthropic | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
+| [pi](pi.md) `1.5.0` | codemode | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | […] | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ |
+| [pi](pi.md) `1.5.0` | deferred | stdio | `2025-11-25` | […] | ≡ | {…} | […] | […] | […] | […] | […] | […] | […] | […] | {…} | "…" | […] | […] | […] | […] |
+| [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | default | http | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | default | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | anthropic | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
+| [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | responses | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
 | ts-sdk-client `2.4.0` | auto | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ |  |  |  |  |  |  |  |  |  |  |  |  | ⟨…⟩+_meta | ⟨…⟩+_meta |
 | ts-sdk-client `2.4.0` | legacy | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩+_meta | ⟨…⟩+_meta |
 
@@ -101,7 +101,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### Google ADK (Python)
 
-85 records, version `2.14.0`, no registry entry yet. Overlay `data/verified/adk-python.json`.
+85 records, version `2.14.0`, registry entry [adk-python](adk-python.md). Overlay `data/verified/adk-python.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -193,7 +193,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### Microsoft Agent Framework
 
-136 records, version `1.25.0`, no registry entry yet. Overlay `data/verified/agent-framework.json`.
+136 records, version `1.25.0`, registry entry [agent-framework](agent-framework.md). Overlay `data/verified/agent-framework.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -422,7 +422,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### crewAI
 
-51 records, version `1.15.37`, no registry entry yet. Overlay `data/verified/crewai.json`.
+51 records, version `1.15.37`, registry entry [crewai](crewai.md). Overlay `data/verified/crewai.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -480,7 +480,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### deepagents
 
-68 records, version `0.7.34+code-0.2.5`, no registry entry yet. Overlay `data/verified/deepagents.json`.
+68 records, version `0.7.34+code-0.2.5`, registry entry [deepagents](deepagents.md). Overlay `data/verified/deepagents.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -555,7 +555,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### eve
 
-34 records, version `1.0.0-rc.6`, no registry entry yet. Overlay `data/verified/eve.json`.
+34 records, version `1.0.0-rc.6`, registry entry [eve](eve.md). Overlay `data/verified/eve.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -688,7 +688,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### fx (native engine)
 
-17 records, version `0.0.16`, no registry entry yet. Overlay `data/verified/fx.json`.
+17 records, version `0.0.16`, registry entry [fx](fx.md). Overlay `data/verified/fx.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -850,7 +850,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### libfx (fx JavaScript adapter)
 
-17 records, version `0.0.0-eab1401`, no registry entry yet. Overlay `data/verified/libfx.json`.
+17 records, version `0.0.0-eab1401`, registry entry [libfx](libfx.md). Overlay `data/verified/libfx.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -874,7 +874,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### Mastra
 
-29 records, version `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1`, no registry entry yet. Overlay `data/verified/mastra.json`.
+29 records, version `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1`, registry entry [mastra](mastra.md). Overlay `data/verified/mastra.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -1087,7 +1087,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### pi
 
-85 records, version `1.5.0`, no registry entry yet. Overlay `data/verified/pi.json`.
+85 records, version `1.5.0`, registry entry [pi](pi.md). Overlay `data/verified/pi.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -1179,7 +1179,7 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### Strands Agents
 
-68 records, version `1.64.0+mcp-2.3.0`, no registry entry yet. Overlay `data/verified/strands.json`.
+68 records, version `1.64.0+mcp-2.3.0`, registry entry [strands](strands.md). Overlay `data/verified/strands.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|

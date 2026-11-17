@@ -82,7 +82,9 @@ async function main() {
   const url = fileUrl(rev, REPORT, 'blob');
 
   const clients = report.clients.map((c) => {
-    const registryId = registryIds.find((id) => (registry[id].clientInfoNames ?? []).some((n) => c.source_names.includes(n))) ?? null;
+    // A wire name several entries share (the Python SDK's placeholder `mcp`) identifies none of them.
+    const claimants = registryIds.filter((id) => (registry[id].clientInfoNames ?? []).some((n) => c.source_names.includes(n)));
+    const registryId = claimants.length === 1 ? claimants[0] : null;
     const last = c.traffic.at(-1);
     const modernShare = last?.rolling_30d_protocol_proportions?.[MODERN] ?? 0;
     const hasModern = c.traffic.some((t) => (t.daily_protocol_proportions?.[MODERN] ?? 0) > 0);
