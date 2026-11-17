@@ -50,7 +50,9 @@ scripts/
   lib/capability-pages.js           renders the capability matrix, pages and JSON from that join
   lib/kinds.js                      what a capability row means for a host, framework, adapter or SDK
   refresh-check.js                  reports which entries have fallen behind their sources
+  check-live.js                     compares the built site/ with what canimcp.io serves
 .claude/skills/refresh-registry/    the workflow that acts on that report
+.claude/skills/publish/             the workflow that takes a change to main and to the live site
 web/                                the hand-written pages, the stylesheet and the theme toggle script
 skills/<name>/SKILL.md              Agent Skills, served over MCP and under /.well-known/agent-skills
 worker/index.js                     the Worker in front of site/: Markdown negotiation, 404s, www redirect

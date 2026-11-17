@@ -13,6 +13,7 @@
     "ingest:observed": "node scripts/ingest-observed.js",
     "refresh:check": "node scripts/refresh-check.js",
     "check:private": "node scripts/check-private.js",
+    "check:live": "node scripts/check-live.js",
     "prepare": "git config core.hooksPath .githooks",
     "preview": "npm run build:site && wrangler dev",
     "deploy": "npm run build && wrangler deploy"
