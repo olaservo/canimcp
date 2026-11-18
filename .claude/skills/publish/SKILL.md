@@ -80,8 +80,8 @@ Check first that nothing is listening on the port, since another project's dev s
 3. `git push -u origin <branch>`.
 4. Open the pull request with `gh pr create --base main --body-file <file>`, with the body written to a file outside the repo. Follow the earlier pull requests: a sentence on what it does, a short list of what changed, anything a reader should know before trusting it, and what was checked locally. Write as the owner, in the first person singular.
 5. `gh pr checks <number> --watch`. Merge only when the `check` workflow passes. If it fails, fix it on the branch and push again.
-6. `gh pr merge <number> --merge --delete-branch`. The repo uses merge commits.
-7. `git checkout main` and `git merge --ff-only origin/main`.
+6. `gh pr merge <number> --merge --delete-branch`. The repo uses merge commits. The command also switches to `main`, fast-forwards it and deletes the branch locally and on `origin`.
+7. Confirm with `git status -sb` and `git log --oneline -1` that you are on `main` at the merge commit.
 
 ## Step 6: Deploy from main
 
@@ -93,6 +93,8 @@ npm run deploy
 
 It runs the build again and then `wrangler deploy`. Keep the `Current Version ID` it prints.
 
+Skip the deploy when it would change nothing: Step 4 listed no difference, and the change set touches none of the files the Worker is bundled from. Those are `worker/`, `wrangler.jsonc`, `scripts/lib/capabilities.js`, and `package.json` with its dependencies. Say in the report that the deploy was skipped and why, and still run Step 7.
+
 ## Step 7: Check the live site
 
 ```
@@ -103,6 +105,6 @@ It should end with "The running site matches the build." If files differ, wait a
 
 ## Step 8: Record and report
 
-In `../TODO.md`, update the "Last updated" date and add to the relevant paragraph what was published: the date, the pull request number, the merge commit and the Worker version id. Correct any line the publish made untrue, such as "not deployed" or "not pushed". Delete the merged local branch.
+In `../TODO.md`, update the "Last updated" date and add to the relevant paragraph what was published: the date, the pull request number, the merge commit, and the Worker version id or that the deploy was skipped. Correct any line the publish made untrue, such as "not deployed" or "not pushed".
 
 Report the pull request URL, the merge commit, the Worker version id, and the result of the live check. Say plainly if a step was skipped or failed.
