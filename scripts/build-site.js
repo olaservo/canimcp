@@ -324,8 +324,9 @@ const home = page({
   description: TAGLINE,
   type: 'website',
   md: `${read('web', 'index.md').trimEnd()}\n\n## Clients\n\n${clientTable}\n\n## Across clients\n\n- [Capabilities](/capabilities/): the matrix, ${capIndex.capabilities.length} capabilities by client, with a page per capability that has the evidence behind every cell.\n- [Tool result handling, verified](/tool-results): what reached the model when each client called a fixture tool, from ${toolResultPages.length} clients run through the probe.\n- [Capabilities observed in traffic](/observed): which capabilities clients declare in real traffic, by protocol revision.\n- [Research notes](/research/): ${notes.length} notes on behaviour a matrix cannot express.\n\n## Data and schemas\n\n- [Data API](/api): the files below as an API, described by [\`/openapi.json\`](/openapi.json).\n- [MCP server](/api#mcp-server): the same data over MCP at \`${api.mcpUrl}\`, read-only, no authentication.\n- [\`/data/clients.json\`](/data/clients.json): the registry. One entry per client is at \`/data/clients/<id>.json\`, listed in [\`/data/clients/index.json\`](/data/clients/index.json).\n- [\`/data/spec-versions.json\`](/data/spec-versions.json): the lifecycle of each capability across protocol revisions.\n- \`/data/verified/<client>.json\`: the probe's records per client, listed in [\`/data/verified/index.json\`](/data/verified/index.json).\n- [\`/data/observed/hf-mcp-clients.json\`](/data/observed/hf-mcp-clients.json): the telemetry feed.\n- [\`/schemas/client-registry.json\`](/schemas/client-registry.json), [\`research-note.json\`](/schemas/research-note.json), [\`verified-evidence.json\`](/schemas/verified-evidence.json), [\`observed-evidence.json\`](/schemas/observed-evidence.json): JSON Schemas, served at their \`$id\`.\n\nThe source is at <${REPO}>. [About](/about) covers where the data comes from and how to report a correction.\n`,
-  lastmod: today,
+  lastmod: lastmod('web/index.md'),
 });
+// The home page lists every other page, so it is as new as the newest of them.
 home.lastmod = newest(pages.map((p) => p.lastmod));
 
 // --- render -----------------------------------------------------------------
@@ -431,7 +432,7 @@ for (const p of pages) {
 
 {
   const md = read('web', '404.md');
-  write('404.html', renderHtml({ url: '/404', title: h1(md), description: 'There is no page at this URL.', md, lastmod: today }, { robots: 'noindex' }));
+  write('404.html', renderHtml({ url: '/404', title: h1(md), description: 'There is no page at this URL.', md, lastmod: lastmod('web/404.md') }, { robots: 'noindex' }));
   write('404.md', markdownLinks(md));
 }
 for (const f of ['style.css', 'icon.svg', 'og.png']) copyFileSync(join(root, 'web', f), join(out, f));
