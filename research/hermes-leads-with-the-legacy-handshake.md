@@ -14,20 +14,20 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _negotiate_session and _complete_handshake_at_offered_version
-    commit: 9dcf7714
-    path: tools/mcp_tool_transport.py:188-252
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: tools/mcp_tool_transport.py:198-262
+    date: 2026-11-20
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_errors.py, the fallback signals
-    commit: 9dcf7714
+    commit: 2de9f51b
     path: tools/mcp_tool_errors.py:30-42
-    date: 2026-11-09
+    date: 2026-11-20
   - url: https://pypi.org/project/mcp-types/2.3.0/
     title: mcp 2.3.0, ClientSession.discover and the handshake/modern version split
     path: mcp/client/session.py:651-673, mcp_types/version.py:24-59
     date: 2026-11-09
 status: current
-lastVerified: 2026-11-09
+lastVerified: 2026-11-20
 related:
   - fast-agent-leads-with-the-modern-discover-probe
 ---

@@ -18,8 +18,8 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | SDK | `mcp` 2.3.0 · declares `==2.3.0` · official Python SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
-| Source last updated | 2026-11-09 |
-| Last read | 2026-11-09 |
+| Source last updated | 2026-11-20 |
+| Last read | 2026-11-20 |
 | Probed | `0.23.0+689.ga9ff979` (see below) |
 
 ## Capabilities
@@ -48,7 +48,7 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | **Sampling** | ● full | read, declared | `2025-11-25` |
 | &nbsp;&nbsp;↳ tools | ◇ opt-in | read, declared | `2025-11-25` |
 | **Elicitation** | ◐ partial | read, declared | `2025-11-25` |
-| &nbsp;&nbsp;↳ form | ◐ partial | read, declared | `2025-11-25` |
+| &nbsp;&nbsp;↳ form | ● full | read, declared | `2025-11-25` |
 | &nbsp;&nbsp;↳ url | ○ unsupported | read, declared | `2025-11-25` |
 | **Roots** | ○ unsupported | read, declared | `2025-11-25` |
 | **Logging** | ◐ partial | read | `2025-11-25` |
@@ -94,8 +94,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **completions** — No completion/complete call anywhere. Neither prompt arguments nor resource template variables get server-side completion.
 - **sampling** — Declared and served by default: sampling.enabled defaults to true on the server entry. Requests are rate-limited, ten a minute by default, audited to the log with model and token counts, and a failure is returned as ErrorData. A docstring records sampling as deprecated upstream under SEP-2577 and freezes the handler.
 - **sampling.tools** — Opt-in per server through expose_client_tools, off by default. A comment says strict servers rejected the unknown sampling.tools sub-capability during initialization (#5468). Server-sent tools are forwarded to the model and CreateMessageResultWithTools is returned whatever the setting. At a24c12d1 the sub-capability was always declared.
-- **elicitation** — Declared and served by default: elicitation.enabled defaults to true. Hermes passes only an elicitation callback, and mcp 2.3.0 turns any callback into a declaration of both form and url modes. Requests go through Hermes' approval system, and accept, decline and error counts are tracked per server.
-- **elicitation.form** — The user sees the message and a summary of the requested fields and answers accept, decline or cancel. Accept returns empty content, so the server gets no field values back. A timeout or exception fails closed. The empty accept was already there at a24c12d1.
+- **elicitation** — Declared and served by default: elicitation.enabled defaults to true. Hermes passes only an elicitation callback, and mcp 2.3.0 turns any callback into a declaration of both form and url modes. Form requests are asked on the agent's clarify surface, with the approval prompt as fallback, and accept, decline and error counts are tracked per server.
+- **elicitation.form** — When the tool call that triggered the request runs on a surface with a clarify callback (CLI, TUI, Desktop, messaging) and a user can answer, Hermes asks for each schema field, validates answers by type, re-asks a wrong answer up to twice, and returns the values as content. Otherwise it falls back to a yes/no consent prompt. On accept, that fallback fills content only for a form with no required fields, a single required boolean, or a single required enum offering allow_once, and declines any other form. A request outside a tool call, such as during resources/read or prompts/get, takes the fallback. A timeout or exception still fails closed. Through 9dcf7714, accept returned empty content.
 - **elicitation.url** — URL-mode requests are declined with a log line saying URL-mode elicitation is not implemented. The url capability is declared anyway, because the SDK declares it whenever an elicitation callback is set. The August entry recorded this as full; the decline was already there at a24c12d1.
 - **roots** — No list_roots_callback is passed at either session construction site and no roots handler exists anywhere in the client, so nothing is declared and roots/list is never answered. Hermes is the second client read here that does not reach the SDK roots.listChanged problem at all, for the same reason as OpenClaw: it never opts in.
 - **logging** — Receives but does not steer. A logging_callback routes notifications/message into Hermes' own logging, tagged with the server name, mapping MCP levels onto Python ones and truncating a single payload at 2000 characters so a chatty or broken server cannot flood the log. The docstring records that without it the SDK's default callback discards them, so server-side warnings during a tool call were invisible, and credits the fix as a port of an opencode change. Nothing calls logging/setLevel, so the server's default verbosity is whatever it chooses.
@@ -105,9 +105,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.toolDescriptionScrubbing** — Ten regexes check every MCP tool description for prompt-injection patterns and log a warning; the text reaches the model unchanged. What is removed is Unicode tag characters and bidi embedding, override and isolate controls. The August entry called the regex pass scrubbing; it was warn-only then too.
 - **bonusFeatures.deferredToolLoading** — MCP tools are removed from the model-visible tool array by default and replaced with a tool_search, tool_describe and tool_call bridge, with a catalog listing embedded in the bridge's description under a token budget that degrades through five fixed forms rather than truncating. Core Hermes tools are deferred only when named in a curated list.
 - **bonusFeatures.resultSpillover** — An MCP result past 50,000 characters, configurable through tool_budget.mcp_result_size_chars and tighter than the 100,000 generic default, is written to a spillover file and replaced in context by a block naming its size, path and a read_file recovery line. A single result is hard-capped at 2,000,000 characters with a head and tail split around an omission notice.
-- **bonusFeatures.sessionRecovery** — Expired HTTP sessions are detected and the transport reconnected. The call is retried once only for tools annotated readOnlyHint: true; any other tool gets the transport healed and an outcome_uncertain error instead of a replay. A connect-failure cooldown keeps a dead server from being retried in a tight loop, and a parked server probes itself every 300 seconds.
+- **bonusFeatures.sessionRecovery** — Expired HTTP sessions are detected and the transport reconnected. The call is retried once only for tools annotated readOnlyHint: true; any other tool gets the transport healed and an outcome_uncertain error instead of a replay. A connect-failure cooldown keeps a dead server from being retried in a tight loop, and a parked server first probes after 300 seconds, doubling after each failed revival up to 3600. A stdio server marked single_instance that fails its initial connect attempts parks with no timed probe until an explicit reconnect.
 - **bonusFeatures.nonMcpEndpointDetection** — A URL that answers HEAD or GET with a content type outside the MCP media types is POSTed a hand-written minimal initialize frame at 2025-03-26, naming itself hermes-probe, before Hermes raises NonMcpEndpointError. The check is skipped for SSE, OAuth servers and any server that has connected before.
-- **bonusFeatures.trustTiers** — Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way.
+- **bonusFeatures.trustTiers** — Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way. A call with no recorded tier re-reads config and fails closed to untrusted. On a reconnect the readOnlyHint is refreshed from the new tools/list, and a call cleared as read-only is refused if the hint is gone by the time it runs.
 - **bonusFeatures.declaredToolCosts** — A server entry can declare per-tool costs, single figures or ranges, through tool_costs, plus a per-chat spend_limit. The approval prompt names the cost and the chat's running total, counted at the top of each range, and a call that would pass the limit needs an explicit yes even on a trust: full server. The figures come from client config, not from the server.
 - **bonusFeatures.lazyServerStart** — With lazy: true on a server entry, Hermes registers the server's tools from an on-disk schema cache without starting the server, and connects on first use. Entries are keyed by server name and a fingerprint of the connection config, are written after each live registration, and expire on the SEP-2549 ttlMs from tools/list. Entries without a TTL never expire, and a missing or stale entry falls back to a normal connect.
 - **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
@@ -218,8 +218,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl). No tools key under sampling.
 - **elicitation** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
-- **elicitation.form** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
-  <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
+- **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
+  <br>NousResearch/hermes-agent `9dcf7714` `tools/mcp_tool_sampling.py:290-333` (2026-11-09)
+- **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
+  <br>NousResearch/hermes-agent `a24c12d1` `tools/mcp_tool.py:2363` (2026-11-09)
 - **elicitation.url** — recorded as `unsupported`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 
@@ -228,7 +230,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [A Hermes server configured by URL alone gets Streamable HTTP](../research/hermes-defaults-a-url-server-to-streamable-http.md) — *idiosyncrasy*. A bare URL gets Streamable HTTP. Since `a24c12d1`, Hermes falls back to SSE when the first Streamable HTTP connect is rejected with a transport-mismatch status, and keeps SSE for later reconnects. It is still the first client read here whose default is the current transport.
 - [Hermes seeds MCP-Protocol-Version from the handshake era, not the newest revision](../research/hermes-seeds-the-protocol-header-from-the-handshake-version.md) — *nuance*. On HTTP, Hermes defaults `MCP-Protocol-Version` to the SDK's `LATEST_HANDSHAKE_VERSION` rather than `LATEST_PROTOCOL_VERSION`. The header has to agree with the body, and the body on that path is still an `initialize` handshake.
 - [Hermes gives the model resources and prompts under a fifth set of tool names](../research/hermes-names-its-resource-tools-a-fifth-way.md) — *nuance*. Hermes materializes per-server `list_resources`, `read_resource`, `list_prompts` and `get_prompt` tools under an `mcp__<server>__` prefix. The model can read a resource, but the names match neither Codex and opencode's convention nor OpenClaw's.
-- [Hermes declares URL-mode elicitation and declines every URL-mode request](../research/hermes-declares-url-elicitation-it-declines.md) — *gap*. mcp 2.3.0 declares both `form` and `url` elicitation for any callback, and the probe saw both on the wire from Hermes. The Hermes callback declines every URL-mode request, and an accepted form request returns empty content.
+- [Hermes declares URL-mode elicitation and declines every URL-mode request](../research/hermes-declares-url-elicitation-it-declines.md) — *gap*. mcp 2.3.0 declares both `form` and `url` elicitation for any callback, and the probe saw both on the wire from Hermes. Hermes declines every URL-mode request. An accepted form returned empty content through `9dcf7714` and returns the user's values at `2de9f51b`.
 - [fast-agent declares roots.listChanged and never sends the notification](../research/fast-agent-never-sends-roots-list-changed.md) — *gap*. The Python SDK sets `roots.listChanged: true` whenever a client passes a roots callback, with no way to opt out. fast-agent's roots come from static config, so it never sends the notification. Two SDKs, three clients, same gap.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [OpenClaw scrubs MCP tool descriptions for prompt injection, and one of its two rules does nothing](../research/openclaw-scrubs-tool-descriptions-with-three-regexes.md) — *nuance*. Server-supplied tool descriptions pass a sanitizer before reaching the model on both surfaces. It redacts two fixed phrasings of "ignore previous instructions" and truncates at 1,200 characters. Its second rule rewrites "system prompt" to itself, changing only whitespace.
@@ -243,9 +245,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `9dcf7714` on 2026-11-09, from `main` of https://github.com/NousResearch/hermes-agent.git. That commit was authored 2026-11-09.
+Read at `2de9f51b` on 2026-11-20, from `main` of https://github.com/NousResearch/hermes-agent.git. That commit was authored 2026-11-20.
 
-**SDK.** mcp==2.3.0 exactly, resolving to 2.3.0 in uv.lock alongside mcp-types 2.3.0, with no [tool.uv] source override and no vendored fork. Unlike every other client read here, the SDK is not a base dependency. It is declared identically under the mcp and computer-use extras and the dev dependency group. The runtime lazy install the August read found is gone: tools/lazy_deps.py is now a retired shim, and install repair syncs the mcp extra when mcp_servers is configured and the SDK is missing. The import is deferred behind _ensure_mcp_sdk, so a session with no MCP servers configured never pays for it. Every version decision on the live path is the SDK's: Hermes names no revision of its own and picks an era instead. The revisions it names itself are 2025-03-26, in a fallback constant and the non-MCP-endpoint probe frame, and 2025-06-18, in the desktop-app liveness probe.
+**SDK.** mcp==2.3.0 exactly, resolving to 2.3.0 in uv.lock alongside mcp-types 2.3.0, with no [tool.uv] source override and no vendored fork. Unlike every other client read here, the SDK is not a base dependency. It is declared identically under the mcp and computer-use extras and the dev dependency group. The runtime lazy install the August read found is gone: tools/lazy_deps.py is now a retired shim, and install repair syncs the mcp extra when mcp_servers is configured and the SDK is missing. The import is deferred behind _ensure_mcp_sdk, so a session with no MCP servers configured never pays for it. Every version decision on the live path is the SDK's: Hermes names no revision of its own and picks an era instead. The revisions it names itself are 2025-03-26, in a fallback constant and the non-MCP-endpoint probe frame, and 2025-06-18, in the desktop-app liveness probe. The SDK import probe retries a failure that may be temporary on the next connect instead of caching it.
 
 Paths read:
 
@@ -256,6 +258,7 @@ Paths read:
 - `tools/mcp_oauth_device.py`
 - `tools/mcp_oauth_provider.py`
 - `tools/mcp_dashboard_oauth.py`
+- `tools/mcp_elicitation_form.py`
 - `tools/mcp_schema_cache.py`
 - `tools/tool_search.py`
 - `tools/budget_config.py`
@@ -269,6 +272,7 @@ Paths read:
 - `hermes_cli/main_install_repair.py`
 - `pyproject.toml`
 - `uv.lock`
+- `agent/tool_executor.py`
 
 Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 

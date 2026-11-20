@@ -2,7 +2,7 @@
 id: hermes-declares-url-elicitation-it-declines
 title: Hermes declares URL-mode elicitation and declines every URL-mode request
 kind: gap
-summary: mcp 2.3.0 declares both `form` and `url` elicitation for any callback, and the probe saw both on the wire from Hermes. The Hermes callback declines every URL-mode request, and an accepted form request returns empty content.
+summary: mcp 2.3.0 declares both `form` and `url` elicitation for any callback, and the probe saw both on the wire from Hermes. Hermes declines every URL-mode request. An accepted form returned empty content through `9dcf7714` and returns the user's values at `2de9f51b`.
 capabilities:
   - elicitation
   - elicitation.url
@@ -13,10 +13,25 @@ specVersions:
   - 2025-11-25
 sources:
   - url: https://github.com/NousResearch/hermes-agent
-    title: tools/mcp_tool_sampling.py, the elicitation callback
+    title: tools/mcp_tool_sampling.py, the elicitation callback with the empty accept
     commit: 9dcf7714
     path: tools/mcp_tool_sampling.py:264-333
     date: 2026-11-09
+  - url: https://github.com/NousResearch/hermes-agent
+    title: tools/mcp_tool_sampling.py, the elicitation callback and the consent fallback
+    commit: 2de9f51b
+    path: tools/mcp_tool_sampling.py:265-295,297-403
+    date: 2026-11-20
+  - url: https://github.com/NousResearch/hermes-agent
+    title: tools/mcp_elicitation_form.py, form collection through the clarify callback
+    commit: 2de9f51b
+    path: tools/mcp_elicitation_form.py:1-10,288-343
+    date: 2026-11-20
+  - url: https://github.com/NousResearch/hermes-agent
+    title: agent/tool_executor.py, binding the clarify callback per tool call
+    commit: 2de9f51b
+    path: agent/tool_executor.py:750-752
+    date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0
     title: mcp 2.3.0, ClientSession._build_capabilities
     commit: 2118f14f
@@ -27,7 +42,7 @@ sources:
     path: probe/runs/hermes-agent@0.23.0+689.ga9ff979/default/both-http/tools.result.mirror/wire.jsonl
     date: 2026-11-08
 status: current
-lastVerified: 2026-11-09
+lastVerified: 2026-11-20
 related:
   - fast-agent-never-sends-roots-list-changed
 ---
@@ -38,8 +53,8 @@ In mcp 2.3.0, `ClientSession._build_capabilities` declares elicitation as `Elici
 
 Hermes passes a callback by default, since `elicitation.enabled` defaults to true. The callback's first check is for URL mode, and it declines with a log line saying URL-mode elicitation is not implemented. The probe run against `hermes-agent 0.23.0` recorded the initialize request with `"elicitation":{"form":{},"url":{}}`. A server that trusts the declaration and sends a URL-mode request for an OAuth or payment step gets a decline every time.
 
-Form mode is declared and handled, but only as a consent prompt. The user sees the message and a summary of the requested fields and answers accept, decline or cancel. Accept returns `content={}`, so a server that asked for values receives none.
+Form mode is declared and handled. At `2de9f51b`, when the tool call that triggered the request runs on a surface with a clarify callback and a user can answer, Hermes asks for each field in the requested schema, validates the answers by type, re-asks a wrong answer up to twice, and returns the values as `content`. Otherwise it falls back to a yes/no consent prompt. On accept, that fallback fills a form only when the answer is unambiguous: no required fields, a single required boolean, or a single required enum offering `allow_once`. Any other form is declined. Requests outside a tool call, such as during `resources/read` or `prompts/get`, have no clarify callback bound and take the fallback.
 
-Both behaviours were already present at `a24c12d1`. The August registry entry recorded URL mode as full, with a browser opened at the URL, and form mode as full. Neither was correct at that commit.
+Through `9dcf7714` form mode was only a consent prompt, and accept returned `content={}`, so a server that asked for values received none. Both behaviours were already present at `a24c12d1`. The August registry entry recorded URL mode as full, with a browser opened at the URL, and form mode as full. Neither was correct at that commit.
 
 The SDK side matches the `roots.listChanged` problem in `fast-agent-never-sends-roots-list-changed`: the SDK declares a capability on the strength of a callback being present, and the caller has no way to narrow it.

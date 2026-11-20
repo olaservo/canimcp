@@ -21,16 +21,21 @@ sources:
     date: 2026-08-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _session_kwargs now passes client_info
-    commit: 9dcf7714
-    path: tools/mcp_tool_transport.py:171-186
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: tools/mcp_tool_transport.py:181-196
+    date: 2026-11-20
   - url: https://github.com/NousResearch/hermes-agent
     title: hermes_platform/resolver/app.py, desktop-app liveness probe
-    commit: 9dcf7714
-    path: hermes_platform/resolver/app.py:405-415
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: hermes_platform/resolver/app.py:427-448
+    date: 2026-11-20
+  - url: https://github.com/NousResearch/hermes-agent
+    title: tools/mcp_tool_transport.py, the non-MCP-endpoint probe frame
+    commit: 2de9f51b
+    path: tools/mcp_tool_transport.py:27-29
+    date: 2026-11-20
 status: stale
-lastVerified: 2026-11-09
+lastVerified: 2026-11-20
 related:
   - goose-client-name-varies-by-surface
   - codex-prefers-a-chatgpt-hosted-client-identifier

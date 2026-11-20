@@ -14,16 +14,16 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, HTTP header seeding
-    commit: 9dcf7714
-    path: tools/mcp_tool_transport.py:612-620
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: tools/mcp_tool_transport.py:632-635
+    date: 2026-11-20
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, LATEST_HANDSHAKE_VERSION fallback constant
-    commit: 9dcf7714
-    path: tools/mcp_tool.py:79-84,166-170
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: tools/mcp_tool.py:79-84,255-258
+    date: 2026-11-20
 status: current
-lastVerified: 2026-11-09
+lastVerified: 2026-11-20
 related:
   - hermes-leads-with-the-legacy-handshake
 ---
