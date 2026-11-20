@@ -79,6 +79,6 @@ A server that accepted Content-Length framing would work against Cline's CLI and
 
 ## Why it matters for the matrix
 
-A version-shaped question about Cline has no single answer, and neither surface nor transport alone decides it. `preferredProtocolVersion` records 2025-11-25 because that is what three of the four paths send, but a server that only ever sees stdio traffic from the CLI will only ever see 2024-11-05 — from a client whose extension, on the same machine, reading the same settings file, is speaking a revision four releases newer.
+A version-shaped question about Cline has no single answer, and neither surface nor transport alone decides it. `preferredProtocolVersion` records 2025-11-25 because that is what three of the four paths send, but a server that only ever sees stdio traffic from the CLI will only ever see 2024-11-05 — from a client whose extension, on the same machine, reading the same settings file, is speaking a revision three releases newer.
 
 It also settles the question the opencode read raised. Cline is on `@modelcontextprotocol/sdk`, as opencode was at the time, and Cline does not patch it: `patchedDependencies` covers `@opentui-ui/dialog`, `ollama-ai-provider-v2` and `@shadcn/react` and nothing else. Where opencode changed the SDK's behaviour and kept using it, Cline left the SDK alone and wrote around it.
