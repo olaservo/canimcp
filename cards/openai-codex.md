@@ -1,6 +1,6 @@
 # Codex CLI
 
-OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1.3 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.
+OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6.0 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.
 
 ## At a glance
 
@@ -15,11 +15,11 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1
 | Source | <https://github.com/openai/codex> |
 | Home | <https://openai.com/codex> |
 | Wire names | `codex-mcp-client` |
-| SDK | `rmcp` 3.1.3 · declares `=3.1.3` · official Rust SDK · unpatched |
+| SDK | `rmcp` 3.6.0 · declares `=3.6.0 (git rev b11a40d8)` · official Rust SDK · unpatched |
 | Prefers | `2025-06-18` |
 | Speaks | `2025-06-18`, `2026-07-28` |
-| Source last updated | 2026-08-24 |
-| Last read | 2026-08-24 |
+| Source last updated | 2026-11-20 |
+| Last read | 2026-11-20 |
 | Probed | `0.169.0-alpha.3` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
 
@@ -28,7 +28,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1
 | Capability | Status | Known by | At |
 |---|---|---|---|
 | **Transports** |  |  |  |
-| &nbsp;&nbsp;↳ stdio | ● full | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ stdio | ● full | read | `2025-06-18`, `2026-07-28` |
 | &nbsp;&nbsp;↳ sse | ○ unsupported | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ streamableHttp | ● full | read, declared | `2025-06-18` |
 | **Authentication** |  |  |  |
@@ -41,8 +41,8 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ◐ partial | read ⇧ | `2025-06-18` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ audience | ○ unsupported | read ⇧ | `2025-06-18` |
 | **Resources** | ● full | read | `2025-06-18` |
-| &nbsp;&nbsp;↳ listChanged | ◐ partial | read ⇧ | `2025-06-18` |
-| &nbsp;&nbsp;↳ subscribe | ○ unsupported | read ⇧ | `2025-06-18` |
+| &nbsp;&nbsp;↳ listChanged | ◐ partial | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-06-18` |
 | **Prompts** | ○ unsupported | read | `2025-06-18` |
 | **Completions** | ○ unsupported | read | `2025-06-18` |
 | **Sampling** | ○ unsupported | read | `2025-06-18` |
@@ -57,6 +57,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1
 | JSON Schema | — not recorded | | |
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ openai/form | ◐ partial | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ openai/elicitation | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/standard-form-input | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-06-18` |
 | **Beyond the spec** |  |  |  |
@@ -68,13 +69,13 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## What the table flattens
 
-- **transports.stdio** — Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments.
-- **transports.sse** — rmcp is built without transport-sse-client. Only transport-child-process, transport-async-rw and the streamable HTTP client and server are enabled.
+- **transports.stdio** — Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.
+- **transports.sse** — rmcp 3.6.0 has no standalone SSE client feature. Codex enables transport-child-process, transport-async-rw and the streamable HTTP client and server, and its config has only stdio and streamable HTTP transports.
 - **transports.streamableHttp** — Carries OAuth, a bearer token, or neither, with session-expiry retry on 404 and a configurable redirect policy.
-- **authentication.oauth** — Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.
+- **authentication.oauth** — Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. When the server also advertises authorization_response_iss_parameter_supported and names an issuer, the identifier is one shared document, https://chatgpt.com/oauth/codex/client.json. A per-server oauth.client_id and client_secret can be configured instead. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.
 - **authentication.header** — Per-server http_headers, env_http_headers, bearer_token_env_var, and an http_headers_helper command whose stdout supplies headers.
-- **tools** — In the shipped default mode nextCursor from tools/list is discarded, so only the first page of a server's tool catalog is read.
-- **tools.listChanged** — The notification is received and written to the tracing log. Nothing re-lists, so a tool added mid-session is not picked up.
+- **tools** — tools/list is paginated to the end in every protocol mode, capped at 100 pages and 2,048 tools per server. Before cc31e374 (first stable release 0.162.0) the default mode discarded nextCursor and read one page.
+- **tools.listChanged** — The notification is received, written to the tracing log and counted per connection. A default install does not re-list, so a tool added mid-session is not picked up. The mcp_tool_list_changed flag, under development and off, re-lists after a notification.
 - **tools.result** — structuredContent replaces content. Every payload is prefixed with a Wall time header.
 - **tools.result.structuredContent** — Serialized compact JSON of structuredContent is the whole tool output whenever it is non-null, including {}.
 - **tools.result.content** — Dropped whenever structuredContent is non-null. Reaches the model only when structuredContent is absent or null, or when a block carries the private _meta key codex/encryptedContent.
@@ -84,15 +85,16 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **resources.subscribe** — No resources/subscribe call. resources/updated notifications are logged if they arrive.
 - **prompts** — No prompts/list or prompts/get on the client path. The handlers by those names live in codex-rs/mcp-server, where Codex is the server.
 - **sampling** — Not in the declared capabilities and no create_message handler. The word appears in the codebase only for Codex's own model calls.
-- **elicitation** — The only capability Codex declares by default. Form and URL modes are added when the auth_elicitation feature is on, which is stable and default-enabled; without it an empty elicitation object is declared.
+- **elicitation** — The only standard capability Codex declares by default. Form and URL modes are added when the auth_elicitation feature is on, which is stable and default-enabled; without it an empty elicitation object is declared. On stdio connections Codex also declares the vendor keys experimental["codex/auth-change"] and, for a pooled local stdio connection, extensions["codex/connection-lease"].
 - **roots** — Not in the declared capabilities and no list_roots handler, so a server cannot learn the working directory this way. ready_selected_capability_roots in the same crates is a Codex-internal concept, unrelated to MCP roots.
 - **logging** — notifications/message is mapped onto tracing levels and written to Codex's own log, not shown in the UI. logging/setLevel is never sent, and neither is the io.modelcontextprotocol/logLevel _meta key that replaces it, so on a 2026-07-28 session a conforming server sends nothing and the handler is unreachable.
 - **instructions** — Server instructions are read from the initialize result and attached to each of that server's tools when the catalog is built.
 - **icons** — Server icons are parsed from the initialize result and carried into McpServerInfo. No rendering path was found in the crates read, and tool-level icons are not handled.
 - **tasks** — No tasks/* calls at this commit.
 - **extensions.openai/form** — A vendor elicitation extension. An openai/form request carries message and requestedSchema and is routed into the same elicitation path as elicitation/create. Declared only when the app-server host asks for it, or when the legacy form-elicitation flag is set.
+- **extensions.openai/elicitation** — A vendor elicitation extension. Method openai/elicitation/create with form and userVerification modes. Declared only when the app-server host declares it; the TUI and codex exec declare none of the four extensions. userVerification is stripped for every server except the host-owned Apps server.
 - **extensions.openai/standard-form-input** — Client-only extension, never projected to downstream servers.
-- **extensions.io.modelcontextprotocol/ui** — Forwarded to servers only when the app-server host declares it. Codex keeps just the three extension namespaces it knows and drops anything else the host declares.
+- **extensions.io.modelcontextprotocol/ui** — Forwarded to servers only when the app-server host declares it. Codex keeps just the four extension namespaces it knows and drops anything else the host declares.
 - **bonusFeatures.modelInitiatedResourceRead** — list_mcp_resources, list_mcp_resource_templates and read_mcp_resource are registered as built-in tools whenever any MCP server is configured, with no feature gate. Pagination cursors are passed to and from the model.
 
 ## Verified by the probe
@@ -188,18 +190,17 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 ## Research notes
 
-- [Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com](../research/codex-prefers-a-chatgpt-hosted-client-identifier.md) — *idiosyncrasy*. When an authorization server advertises client_id_metadata_document_supported and accepts public clients, Codex registers with an HTTPS client identifier under chatgpt.com keyed by the ephemeral loopback callback id, and only falls back to Dynamic Client Registration otherwise.
-- [Codex discards the tools/list cursor unless the 2026-07-28 mode is on](../research/codex-reads-one-page-of-tools.md) — *idiosyncrasy*. The paginator that collects a server's tool catalog is fed a nextCursor of None whenever Codex is in its default protocol mode, so it stops after the first page. No warning is emitted and the truncated catalog looks complete.
+- [Codex proposes 2025-06-18 and accepts whatever version the server returns](../research/codex-defaults-to-2025-06-18.md) — *idiosyncrasy*. Codex's initialize names 2025-06-18 and the reply's version is not checked, so a server that answers 2025-11-25 still gets a session. From 0.173.0-alpha.1 a default install first sends server/discover at 2026-07-28 to a local stdio server. Over HTTP that needs a flag.
+- [Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com](../research/codex-prefers-a-chatgpt-hosted-client-identifier.md) — *idiosyncrasy*. When an authorization server advertises client_id_metadata_document_supported and accepts public clients, Codex registers with an HTTPS client identifier under chatgpt.com, shared or keyed by a per-server callback id, and only falls back to Dynamic Client Registration otherwise.
 - [goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it](../research/goose-sends-removed-roots-notification.md) — *idiosyncrasy*. notify_roots_list_changed fires on every working-directory change with no version check, goose prefers 2026-07-28 where the notification no longer exists, and rmcp 3.1.4 gates nothing on the outbound notification path.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
-- [Codex proposes 2025-06-18 and accepts whatever version the server returns](../research/codex-defaults-to-2025-06-18.md) — *idiosyncrasy*. A default Codex install sends initialize at 2025-06-18 and does not check the version in the reply, so a server that answers 2025-11-25 still gets a session. Codex does nothing specific to 2025-11-25. 2026-07-28 is behind an under-development flag that is off by default.
 - [notes/codex-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/codex-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Codex CLI source at 748ab55.
 
 ## Provenance
 
-Read at `b705b6b0` on 2026-08-24, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-08-24.
+Read at `2fb728da` on 2026-11-20, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-20.
 
-**SDK.** Pinned exactly with '=', so the declared requirement and the resolved version agree. codex-rs/patches/ holds twenty-odd build-toolchain patches (v8, llvm, windows link flags) and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects 2025-06-18 through its own protocol mode rather than inheriting a version from rmcp.
+**SDK.** A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.
 
 Paths read:
 
@@ -208,6 +209,11 @@ Paths read:
 - `codex-rs/core/src/tools/handlers/mcp_resource`
 - `codex-rs/core/src/config/mod.rs`
 - `codex-rs/features/src/lib.rs`
+- `codex-rs/core/src/tools/spec_plan.rs`
+- `codex-rs/config/src/mcp_types.rs`
+- `codex-rs/protocol/src/mcp.rs`
+- `codex-rs/Cargo.toml`
+- `codex-rs/Cargo.lock`
 
 Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 

@@ -55,4 +55,4 @@ Read at `c6586f19`.
 
 ## Against the other reads
 
-Codex, opencode and Kilo Code are recorded in this registry with three host tools named `list_mcp_resources`, `list_mcp_resource_templates` and `read_mcp_resource`. [[model-initiated-resource-read]] describes the proposal those tools anticipate, which is a way for the model to read a resource by URI. ADK has one tool, under a different name, and it takes names. Its own result carries a status stub, and the contents arrive as separate user turns on the next request.
+Codex and Kilo Code are recorded in this registry with three host tools named `list_mcp_resources`, `list_mcp_resource_templates` and `read_mcp_resource`; opencode now has two, without the templates tool. [[model-initiated-resource-read]] describes the proposal those tools anticipate, which is a way for the model to read a resource by URI. ADK has one tool, under a different name, and it takes names. Its own result carries a status stub, and the contents arrive as separate user turns on the next request.

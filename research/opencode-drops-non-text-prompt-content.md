@@ -11,17 +11,17 @@ specVersions:
   - 2025-11-25
 sources:
   - url: https://github.com/anomalyco/opencode
-    title: packages/opencode/src/command/index.ts, MCP prompts registered as commands
-    commit: 7cde8329
-    path: packages/opencode/src/command/index.ts:105-131
-    date: 2026-08-24
+    title: packages/core/src/plugin/command.ts, MCP prompts registered as commands
+    commit: b5e0abd7
+    path: packages/core/src/plugin/command.ts:55-81,96-102
+    date: 2026-11-20
   - url: https://github.com/anomalyco/opencode
-    title: packages/opencode/src/mcp/catalog.ts, prompts pagination
-    commit: 7cde8329
-    path: packages/opencode/src/mcp/catalog.ts:117-124
-    date: 2026-08-24
+    title: packages/core/src/mcp/client.ts, prompts listing
+    commit: b5e0abd7
+    path: packages/core/src/mcp/client.ts:680-685
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-24
+lastVerified: 2026-11-20
 ---
 
 # opencode keeps only the text parts of an MCP prompt, and fills arguments positionally
@@ -31,8 +31,9 @@ opencode surfaces prompts well at the listing level. `prompts/list` is fully pag
 The loss is in the template. A prompt's messages are flattened by taking the text of each and joining them:
 
 ```ts
-.map((message) => (message.content.type === "text" ? message.content.text : ""))
+.map((message) => promptMessageText(message.content))
 .join("\n")
+.trim()
 ```
 
 A message whose content is an image or an embedded resource contributes an empty string. It is not skipped and not reported — it becomes a blank line in the middle of the template. A prompt built around a diagram or an attached document arrives as its surrounding prose with a hole where the content was, and nothing distinguishes that from a prompt the server wrote with a blank line in it.
@@ -44,10 +45,10 @@ Prompt content has allowed image and resource parts since `2024-11-05`, so this 
 Arguments are filled by index rather than by name:
 
 ```ts
-Object.fromEntries(prompt.arguments.map((argument, i) => [argument.name, `$${i + 1}`]))
+Object.fromEntries((prompt.arguments ?? []).map((argument, index) => [argument.name, args[index] ?? ""]))
 ```
 
-Each declared argument gets the placeholder `$1`, `$2` and so on in declaration order, and the command's hints are the same list. The names the server declared are used as keys but never shown to the user, so invoking a prompt means knowing what the server put first.
+Each declared argument gets the word at the same position in the text typed after the command, in declaration order, and an empty string when there is none. The names the server declared are used as keys but never shown to the user, so invoking a prompt means knowing what the server put first.
 
 This is fine for a one-argument prompt and gets worse as arguments accumulate, particularly where several are optional — there is no way to supply the third without supplying the first two.
 

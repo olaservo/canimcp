@@ -48,7 +48,7 @@ related:
 
 # Kilo Code is built on opencode now, and one MCP client serves the CLI, VS Code and JetBrains
 
-`BATCH-PLAN.md` put Kilo Code with Roo Code in a "Cline lineage" batch. The code at `278edf3a` does not support that. Kilo's MCP client is opencode's: `packages/opencode/src/mcp/index.ts` is opencode's file with 78 `kilocode_change` markers. The capability object keeps opencode's commented-out `sampling`, `elicitation` and `tasks`, each still linking to an `anomalyco/opencode` issue, so Kilo declares `roots` and nothing else, as opencode does.
+`BATCH-PLAN.md` put Kilo Code with Roo Code in a "Cline lineage" batch. The code at `278edf3a` does not support that. Kilo's MCP client is opencode's: `packages/opencode/src/mcp/index.ts` is opencode's file with 78 `kilocode_change` markers. The capability object keeps opencode's commented-out `sampling`, `elicitation` and `tasks`, each still linking to an `anomalyco/opencode` issue, so Kilo declares `roots` and nothing else, as opencode did at `7cde8329`.
 
 There is one MCP implementation. The VS Code extension spawns the CLI as `kilo serve --port 0` and reaches MCP through the generated SDK client (`client.mcp.status`). The JetBrains backend spawns the same command. Neither extension creates an MCP `Client`. Capability rows hold for every surface, as with Hermes and unlike Cline. The wire name is `kilo`.
 

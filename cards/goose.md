@@ -1,6 +1,6 @@
 # goose
 
-Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.1.4.
+Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.10.0.
 
 ## At a glance
 
@@ -14,12 +14,12 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | Licence | Apache-2.0 |
 | Source | <https://github.com/aaif-goose/goose> |
 | Home | <https://block.github.io/goose> |
-| Wire names | `goose-desktop`, `goose-cli` |
-| SDK | `rmcp` 3.1.4 · declares `3.0.0` · official Rust SDK · unpatched |
+| Wire names | `goose-app`, `goose-desktop`, `goose-cli` |
+| SDK | `rmcp` 3.10.0 · declares `3.9.0` · official Rust SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-11-25`, `2026-07-28` |
-| Source last updated | 2026-08-23 |
-| Last read | 2026-08-23 |
+| Source last updated | 2026-11-20 |
+| Last read | 2026-11-20 |
 | Probed | `1.58.0` (see below) |
 
 ## Capabilities
@@ -30,7 +30,7 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | &nbsp;&nbsp;↳ stdio | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ streamableHttp | ● full | read | `2026-07-28` |
 | Authentication | — not recorded | | |
-| **Tools** | ● full | declared | `2025-03-26` |
+| **Tools** | ● full | read, declared | `2025-03-26`, `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ result | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ● full | read ⇧ | `2026-07-28` |
@@ -39,12 +39,12 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | Resources | — not recorded | | |
 | Prompts | — not recorded | | |
 | Completions | — not recorded | | |
-| **Sampling** | ● full | read, declared | `2025-03-26`, `2026-07-28` |
+| **Sampling** | ○ unsupported | read, declared | `2025-03-26`, `2026-07-28` |
 | **Elicitation** | ● full | read, declared | `2025-03-26`, `2026-07-28` |
 | &nbsp;&nbsp;↳ form | ● full | read, declared ⇧ | `2025-03-26`, `2026-07-28` |
 | &nbsp;&nbsp;↳ url | ● full | read, declared ⇧ | `2025-03-26`, `2026-07-28` |
 | **Roots** | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ listChanged | ● full | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | **Logging** | ● full | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2026-07-28` |
 | Icons | — not recorded | | |
@@ -60,16 +60,16 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## What the table flattens
 
-- **tools.listChanged** — on_tool_list_changed invalidates the tools cache and bumps a version counter, so a changed tool list is picked up mid-session.
+- **tools.listChanged** — on_tool_list_changed bumps a version counter that the tools cache is checked against, so a changed tool list is picked up mid-session.
 - **tools.result** — content only. Code mode also reads content text only.
 - **tools.result.content** — Every content block reaches the model, filtered by audience annotation. When nothing non-empty is left the placeholder text (empty result) is sent instead.
 - **tools.result.structuredContent** — No provider formatter names structuredContent, so it never reaches the model. The ACP surface and the desktop app receive it for MCP Apps.
 - **tools.result.audience** — filter_for_audience drops blocks whose annotations.audience excludes the assistant before the provider sees them.
-- **sampling** — create_message is implemented and marked #[expect(deprecated)] — sampling is deprecated as of 2026-07-28 (SEP-2577), the revision goose prefers.
-- **elicitation** — Resolves a session id and a tool-call request id from the request context and returns INTERNAL_ERROR if either is missing, so elicitation only works inside a tool call. Hard 300-second timeout.
-- **elicitation.url** — URL mode is flattened into the same prompt path as form mode, passed as {"url": url} rather than a requested schema.
-- **roots** — list_roots returns roots derived from the working directory. Marked #[expect(deprecated)] at the declaration site — roots is deprecated as of 2026-07-28 (SEP-2577).
-- **roots.listChanged** — Sent on working-directory change with no protocol-version gate, including when 2026-07-28 is negotiated, where the notification no longer exists. rmcp 3.1.4 does not filter it, so it reaches the wire.
+- **sampling** — Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.10.0's default handler answers method not found.
+- **elicitation** — Resolves a session id and a tool-call request id from the request context and returns INTERNAL_ERROR if either is missing, so elicitation only works inside a tool call. Hard 300-second timeout. Declared as {"form": {}}.
+- **elicitation.url** — URL mode is flattened into the same prompt path as form mode, passed as {"url": url} rather than a requested schema. Handled but not declared: the elicitation capability names form only.
+- **roots** — list_roots returns one root derived from the working directory the client was connected with. Marked #[expect(deprecated)] at the declaration site — roots is deprecated as of 2026-07-28 (SEP-2577). Declared as roots: {} with no listChanged.
+- **roots.listChanged** — Not declared and never sent. The notify_roots_list_changed call was removed in 5bd5e548e (2026-10-05, #12161), and each MCP client keeps the working directory it was connected with.
 - **logging** — on_logging_message fans notifications out to subscribers. Marked #[expect(deprecated)] — logging is deprecated as of 2026-07-28 (SEP-2577).
 - **instructions** — Server instructions are carried through into the system prompt as a per-extension block.
 - **extensions.io.modelcontextprotocol/ui** — Declared by goose Desktop, not by goose CLI. Advertised with mimeTypes ["text/html;profile=mcp-app"]. An embedder passing explicit host extensions overrides the default either way.
@@ -130,29 +130,34 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Where the evidence disagrees
 
-- **sampling** — recorded as `full`, but declared-tier evidence at `2025-03-26` says `unsupported`.
-  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — No sampling key on the goose record.
 - **elicitation** — recorded as `full`, but declared-tier evidence at `2025-03-26` says `unsupported`.
-  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — No elicitation key on the goose record. Both form and URL mode are implemented.
+  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — No elicitation key on the goose record. Form and URL mode are implemented, and form is declared.
 
 ## Research notes
 
 - [goose only answers elicitation raised inside a tool call](../research/goose-elicitation-needs-tool-call-context.md) — *nuance*. create_elicitation resolves a session id and a tool-call request id from the request context and errors if either is missing, so an elicitation raised outside a tool call fails rather than prompting.
 - [goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it](../research/goose-sends-removed-roots-notification.md) — *idiosyncrasy*. notify_roots_list_changed fires on every working-directory change with no version check, goose prefers 2026-07-28 where the notification no longer exists, and rmcp 3.1.4 gates nothing on the outbound notification path.
-- [goose never sends the client name every registry lists it under](../research/goose-client-name-varies-by-surface.md) — *idiosyncrasy*. goose sends clientInfo.name as goose-desktop or goose-cli, not goose, and an embedder can override it entirely. The two surfaces also differ on MCP Apps support.
+- [goose never sends the client name every registry lists it under](../research/goose-client-name-varies-by-surface.md) — *idiosyncrasy*. goose sends clientInfo.name as goose-app, goose-desktop or goose-cli, not goose, and an embedder can override it entirely. The two surfaces also differ on MCP Apps support.
 - [notes/goose-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/goose-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the goose source at 5bad61a.
 
 ## Provenance
 
-Read at `c5e5929a` on 2026-08-23, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-08-23.
+Read at `ea5dded7` on 2026-11-20, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-11-20.
 
-**SDK.** The workspace declares rmcp "3.0.0" as a caret requirement and the lockfile resolves it to 3.1.4, so behavioural claims cite 3.1.4. The lockfile also holds rmcp 1.8.0, pulled in by the pctx_code_execution_runtime, pctx_config and pctx_registry crates; that copy is unrelated to goose's own MCP client. [patch.crates-io] exists but covers agent-client-protocol, v8 and cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 itself rather than inheriting a version from rmcp, using rmcp's ProtocolVersion::LATEST only as the legacy fallback.
+**SDK.** The workspace declares rmcp "3.9.0" as a caret requirement and the lockfile resolves it to 3.10.0, so behavioural claims cite 3.10.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.
 
 Paths read:
 
-- `crates/goose/src/agents/mcp_client.rs`
-- `crates/goose/src/agents/extension_manager.rs`
-- `crates/goose/src/agents/agent.rs`
+- `crates/oi-kit-agent/src/mcp/client.rs`
+- `crates/oi-kit-agent/src/mcp/mod.rs`
+- `crates/oi-kit-agent/src/mcp/lease.rs`
+- `crates/oi-kit-agent/src/mcp/stdio.rs`
+- `crates/oi-kit-agent/src/mcp/streamable_http.rs`
+- `crates/goose/src/agents/extension_manager/mod.rs`
+- `crates/goose/src/agents/services.rs`
+- `crates/goose/src/acp/server.rs`
+- `Cargo.toml`
+- `Cargo.lock`
 
 Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 

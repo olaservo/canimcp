@@ -13,11 +13,16 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-materialize.ts, utility tool materialization
-    commit: a2d54319
-    path: src/agents/agent-bundle-mcp-materialize.ts:337-403
-    date: 2026-08-26
+    commit: 3e7c305f
+    path: src/agents/agent-bundle-mcp-materialize.ts:243-344
+    date: 2026-11-20
+  - url: https://github.com/openclaw/openclaw
+    title: src/agents/agent-bundle-mcp-materialize.ts, utility tool execute functions
+    commit: 3e7c305f
+    path: src/agents/agent-bundle-mcp-materialize.ts:401-415,561-592
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-26
+lastVerified: 2026-11-20
 related:
   - model-initiated-resource-read
   - cline-lists-resources-and-prompts-but-never-reads-them
@@ -35,8 +40,8 @@ So the model can read a resource without a user typing anything. That is the sam
 | Codex CLI | yes | `list_mcp_resources`, `read_mcp_resource` |
 | opencode | yes | `list_mcp_resources`, `read_mcp_resource` |
 | OpenClaw | yes | `resources_list`, `resources_read` |
-| Cline | no | lists into a UI tab, no read path |
-| fast-agent | no, by design | user-typed `@server:uri` mentions |
+| Cline | no | lists into a UI tab, no read path for the model |
+| fast-agent | not by default; `get_resource` when `harness_tools` is on | user-typed `@server:uri` mentions |
 
 The convergence that made PR #2527's SHOULD look cheap to ratify was Codex and opencode independently picking the same two names. OpenClaw is the counter-example: a third client that solved the same problem and did not land on those names. Ratifying `read_mcp_resource` now strands OpenClaw as well, and ratifying nothing leaves three shipped conventions.
 

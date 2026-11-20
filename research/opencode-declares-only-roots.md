@@ -23,13 +23,20 @@ sources:
     commit: 7cde8329
     path: packages/opencode/src/mcp/index.ts:76-80
     date: 2026-08-24
-status: current
-lastVerified: 2026-08-24
+  - url: https://github.com/anomalyco/opencode
+    title: packages/core/src/mcp/client.ts, the capabilities passed to Client
+    commit: b5e0abd7
+    path: packages/core/src/mcp/client.ts:356-363,416-429
+    date: 2026-11-20
+status: stale
+lastVerified: 2026-11-20
 related:
   - utilized-capability-declarations
 ---
 
 # opencode declares roots and nothing else, with sampling, elicitation and tasks commented out
+
+At `b5e0abd7` the client was rewritten in `packages/core/src/mcp/client.ts`, declares `elicitation: { form: {}, url: {} }` beside `roots: {}` with a handler for both modes, and the commented-out `sampling` and `tasks` keys are gone.
 
 opencode's declaration is one live key surrounded by three dead ones, each commented out above a link to its issue:
 

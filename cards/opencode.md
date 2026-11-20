@@ -1,6 +1,6 @@
 # opencode
 
-Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of SDK 1.29.0, so its transport behaviour is not stock.
+Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of @modelcontextprotocol/client 2.4.0 and its own stdio transport, so its behaviour is not stock.
 
 ## At a glance
 
@@ -15,11 +15,11 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | Source | <https://github.com/anomalyco/opencode> |
 | Home | <https://opencode.ai> |
 | Wire names | `opencode` |
-| SDK | `@modelcontextprotocol/sdk` 1.29.0 · official TypeScript SDK · **patched** · pins `2025-11-25` |
+| SDK | `@modelcontextprotocol/client` 2.4.0 · official TypeScript SDK · **patched** · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
-| Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
-| Source last updated | 2026-08-24 |
-| Last read | 2026-08-24 |
+| Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Source last updated | 2026-11-20 |
+| Last read | 2026-11-20 |
 | Probed | `0.0.0-a98e3fa`, `2.2.6` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
 
@@ -29,7 +29,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 |---|---|---|---|
 | **Transports** |  |  |  |
 | &nbsp;&nbsp;↳ stdio | ● full | read, declared | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ sse | ● full | read, declared | `2025-06-18`, `2025-11-25` |
+| &nbsp;&nbsp;↳ sse | ○ unsupported | read, declared | `2025-06-18`, `2025-11-25` |
 | &nbsp;&nbsp;↳ streamableHttp | ● full | read, declared | `2025-06-18`, `2025-11-25` |
 | **Authentication** |  |  |  |
 | &nbsp;&nbsp;↳ oauth | ● full | read | `2025-11-25` |
@@ -40,16 +40,18 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ● full | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ structuredContent | ◐ partial | read ⇧ | `2025-11-25` |
 | **Resources** | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ◐ partial | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
 | **Prompts** | ◐ partial | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ● full | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
-| **Elicitation** | ○ unsupported | read | `2025-11-25` |
+| **Elicitation** | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ form | ● full | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;↳ url | ● full | read ⇧ | `2025-11-25` |
 | **Roots** | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read ⇧ | `2025-11-25` |
-| **Logging** | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
+| **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
 | **Tasks** | ○ unsupported | read | `2025-11-25` |
@@ -57,7 +59,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | Extensions | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ patchedSdkSessionRecovery | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
 
 `●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
@@ -65,31 +67,32 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## What the table flattens
 
-- **transports.sse** — Tried as a fallback when Streamable HTTP fails to connect, against the same URL. A remote server is configured by URL alone, with no transport field to choose between them.
-- **transports.streamableHttp** — Tried first for every remote server.
-- **authentication.oauth** — Dynamic Client Registration is the default path; a clientId can be pinned in config instead. token_endpoint_auth_method is none unless a clientSecret is configured. The callback is a loopback server on port 19876 by default.
-- **authentication.header** — A headers map on a remote server is passed through as requestInit headers on both transports.
-- **tools** — tools/list is only called when the server declares a tools capability. Fully paginated, with a duplicate-cursor guard and a 1000-page cap. A tool result carrying only structuredContent is stringified into a text block before it reaches the model.
-- **tools.listChanged** — Re-lists the catalog and publishes a ToolsChanged event, so a changed catalog is picked up mid-session. The handler is registered only when the server declared tools.
+- **transports.stdio** — opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line.
+- **transports.sse** — No SSE transport. A remote server is always opened with StreamableHTTPClientTransport, and nothing imports SSEClientTransport. At 7cde8329 SSE was tried as a fallback when Streamable HTTP failed to connect.
+- **transports.streamableHttp** — The only remote transport. By default the configured URL is dialled with ?codemode=false appended, and retried once without it when the server answers 400 or 404. A transient connect failure (408, 429, 5xx other than 501, or a network error) is retried twice within the startup timeout. On close the client sends a DELETE for a legacy session.
+- **authentication.oauth** — A configured client_id wins. Otherwise opencode uses a Client ID Metadata Document at https://opencode.ai/oauth/opencode/client.json when the authorization server advertises client_id_metadata_document_supported and the none token auth method and no redirect_uri is configured, and falls back to Dynamic Client Registration. token_endpoint_auth_method is none unless a client_secret is configured, then client_secret_post. The callback is a loopback server on 127.0.0.1 at callback_port, else the redirect_uri port, else an ephemeral port. A connection never starts a login; it refreshes a stored token 30 seconds before expiry or after a 401. oauth: false turns OAuth off for a server.
+- **authentication.header** — A headers map on a remote server is passed through as requestInit headers on the Streamable HTTP transport. The OAuth challenge probe sends them too.
+- **tools** — tools/list is only called when the server declares a tools capability. Pagination is the SDK's: listTools walks every page with a 64-page cap and stops on a repeated cursor with identical items. The SDK is patched to leave listed tools unvalidated; opencode checks each one and skips a tool with no name or a non-object inputSchema. A tools/call carries _meta["ai.opencode/sessionID"] and a progress token. A transient list failure is retried twice. A tool result carrying only structuredContent is stringified into a text block before it reaches the model.
+- **tools.listChanged** — Re-lists the catalog and publishes mcp.tools.changed, so a changed catalog is picked up mid-session. The SDK registers the handler only when the server declared tools.listChanged.
 - **tools.result** — Code Mode is the default route: MCP tools are reachable only through the execute script tool, scripts receive structuredContent, and the model sees the script return value. The direct path applies with codemode: false.
 - **tools.result.content** — On the direct path (codemode: false, or execute wholly denied) the content blocks reach the model; media blocks become data URIs or saved-file notes.
 - **tools.result.structuredContent** — On the direct path it fills in as one text block of JSON.stringify(structuredContent) only when content is empty, and is otherwise held in a tool output field that is not persisted. On the default Code Mode route scripts receive it directly.
-- **resources** — Exposed to the model as three built-in tools rather than a host-side picker, each behind a permission ask. Registered only when some connected server declares resources. A user can also attach a resource to a message directly.
-- **resources.listChanged** — No resources/list_changed handler is registered.
+- **resources** — Exposed to the model as two built-in tools rather than a host-side picker, each behind a permission ask. The tools are registered whether or not any server declares resources. resources/list and resources/templates/list are sent only to a server that declared resources.
+- **resources.listChanged** — A handler is registered through the SDK's listChanged option and republished as an mcp.resources.changed bus event. Nothing in core consumes the event, and opencode keeps no resource cache, so the model's list tool reads live on each call.
 - **resources.subscribe** — No resources/subscribe call and no resources/updated handler.
-- **prompts** — Every server prompt becomes a slash command. Only text content survives: a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the template. Arguments are filled positionally as $1, $2 regardless of their names.
-- **prompts.listChanged** — No prompts/list_changed handler is registered.
+- **prompts** — Every server prompt becomes a slash command named <server>:<prompt>. Only text content survives: a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the text. Arguments are filled positionally: the words typed after the command are assigned to the declared arguments in order, regardless of their names.
+- **prompts.listChanged** — The SDK handler re-lists prompts and publishes mcp.prompts.changed, and the command plugin reloads the slash commands.
 - **completions** — No completion/complete call at this commit.
-- **sampling** — Present in the capability object but commented out, against issue 11948. The client never declares it, so a server cannot ask.
-- **elicitation** — Commented out against issue 23066.
-- **roots** — The only capability opencode declares. list_roots returns exactly one root, the file URL of the instance directory.
+- **sampling** — Not declared, and no sampling/createMessage handler is registered. The commented-out key from the old client is gone.
+- **elicitation** — Declared as elicitation: { form: {}, url: {} } on every connection; no flag gates it. Form mode renders the requested schema as a form and returns accept with the answers or cancel. URL mode shows the URL as an external field and returns accept or cancel; on the handshake era notifications/elicitation/complete settles the form. A schema with no properties is accepted with empty content without asking. decline is never returned.
+- **roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
 - **roots.listChanged** — Declared as a bare roots:{} with no listChanged, and nothing sends notifications/roots/list_changed. The single root is fixed at client creation.
-- **logging** — Receives notifications/message and routes them to the server log. Never calls logging/setLevel, so the level is whatever the server defaults to.
-- **instructions** — Server instructions are trimmed and carried per server.
-- **icons** — No icon handling anywhere in the client.
-- **tasks** — Commented out against issue 28567, though SDK 1.29.0 carries an experimental tasks client.
-- **bonusFeatures.modelInitiatedResourceRead** — list_mcp_resources, list_mcp_resource_templates and read_mcp_resource - the same three tool names Codex uses, arrived at independently on a different SDK and language. Each is permission-gated; blobs are capped at 10MB.
-- **bonusFeatures.patchedSdkSessionRecovery** — opencode patches SDK 1.29.0 so a 404 on a request carrying a session id clears the session, fires onsessionexpired and retries once. Stock 1.29.0 has no recovery path. The patch also treats a JSON-RPC error over SSE as a response, and stops a stale session id from overwriting a newer one.
+- **logging** — No notifications/message handler is registered and logging/setLevel is never called. Server stderr on stdio goes to the debug log, which is not MCP logging. At 7cde8329 the client received notifications/message and routed it to the server log.
+- **instructions** — Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools.
+- **icons** — No icon handling. The tool type opencode keeps from tools/list drops icons.
+- **tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
+- **bonusFeatures.modelInitiatedResourceRead** — Two tools, list_mcp_resources and read_mcp_resource, registered in the opencode namespace, so the effective names are opencode_list_mcp_resources and opencode_read_mcp_resource. The list tool returns resources and templates together, for one server or all. Each call is permission-gated. Image and PDF blobs are passed to the model as files.
+- **bonusFeatures.sessionRecovery** — A 404, or a 400 with body "Bad Request: Server not initialized", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery.
 
 ## Verified by the probe
 
@@ -282,8 +285,8 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
-| elicitation | ● full | `2026-07-28` | ○ unsupported ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
-| elicitation.url | ● full | `2026-07-28` | — not recorded | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
+| elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
+| elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
 | apps | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
 | tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.044% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
 
@@ -291,35 +294,41 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 ## Where the evidence disagrees
 
-- **transports.sse** — recorded as `full`, but declared-tier evidence at `2025-06-18` says `unsupported`.
-  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — Records stdio only, at 2025-06-18, on platform "web". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP or SSE.
 - **transports.streamableHttp** — recorded as `full`, but declared-tier evidence at `2025-06-18` says `unsupported`.
-  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — Records stdio only, at 2025-06-18, on platform "web". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP or SSE.
+  <br>apify/mcp-client-capabilities `4406120` (2026-02-02) — Records stdio only, at 2025-06-18, on platform "web". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP.
 
 ## Research notes
 
-- [opencode retries tools/list with outputSchema stripped when the SDK rejects one](../research/opencode-retries-tools-list-without-output-schema.md) — *idiosyncrasy*. If the SDK's validation of a tools/list result fails in a way that looks schema-related, opencode re-requests the page against a result schema with outputSchema omitted. The match is a regex over the error message, so the fallback both misses and over-fires.
+- [opencode patches SDK 2.4.0 to leave tools/list unchecked and checks each tool itself](../research/opencode-checks-listed-tools-itself-on-a-patched-sdk.md) — *idiosyncrasy*. opencode applies a bun patch to @modelcontextprotocol/client 2.4.0. The patch stops the SDK validating listed tools, so opencode checks each one and skips only the malformed ones. Session recovery on a 404 is in opencode's own code.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [opencode keeps only the text parts of an MCP prompt, and fills arguments positionally](../research/opencode-drops-non-text-prompt-content.md) — *nuance*. Server prompts become slash commands, but a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the template. Named arguments are also replaced positionally, so argument order decides the result.
-- [opencode declares roots and nothing else, with sampling, elicitation and tasks commented out](../research/opencode-declares-only-roots.md) — *idiosyncrasy*. The client capability object lists sampling, elicitation and tasks, each commented out above a link to the issue tracking it. Only roots is live, so a server that offers any of the other three never gets asked.
 - [opencode ships a patched MCP SDK that recovers an expired HTTP session](../research/opencode-patches-its-sdk-for-session-recovery.md) — *idiosyncrasy*. opencode applies a bun patch to @modelcontextprotocol/sdk 1.29.0 that clears the session and retries once when a request carrying a session id gets a 404. Stock 1.29.0 has no recovery path, so opencode's Streamable HTTP behaviour is not the SDK's.
 - [notes/opencode-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/opencode-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the opencode source at a98e3fa.
 
 ## Provenance
 
-Read at `7cde8329` on 2026-08-24, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-08-24.
+Read at `b5e0abd7` on 2026-11-20, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-20.
 
-**SDK.** Pinned exactly, then patched. bun.lock registers a patch against the resolved package that changes four runtime files - client/index.js, client/streamableHttp.js, client/auth.js and shared/protocol.js - so the published 1.29.0 does not describe what runs. The SDK is also where opencode's protocol version comes from: 1.29.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07, a revision this registry does not track because it was never published.
+**SDK.** Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. 2026-07-28 is reached only when a server's config sets protocol to auto or 2026-07-28, or pool to true.
 
 Paths read:
 
-- `packages/opencode/src/mcp/index.ts`
-- `packages/opencode/src/mcp/catalog.ts`
-- `packages/opencode/src/mcp/oauth-provider.ts`
-- `packages/opencode/src/session/tools.ts`
-- `packages/opencode/src/command/index.ts`
-- `packages/core/src/v1/config/mcp.ts`
-- `patches/@modelcontextprotocol%2Fsdk@1.29.0.patch`
+- `packages/core/src/mcp/client.ts`
+- `packages/core/src/mcp/index.ts`
+- `packages/core/src/mcp/connection.ts`
+- `packages/core/src/mcp/pool.ts`
+- `packages/core/src/mcp/oauth.ts`
+- `packages/core/src/mcp/stdio.ts`
+- `packages/core/src/mcp/socket-client.ts`
+- `packages/core/src/mcp/instructions.ts`
+- `packages/core/src/tool/mcp.ts`
+- `packages/core/src/tool/plugin/mcp-resource.ts`
+- `packages/core/src/plugin/command.ts`
+- `packages/schema/src/mcp.ts`
+- `packages/schema/src/config/flag.ts`
+- `packages/core/package.json`
+- `bun.lock`
+- `patches/@modelcontextprotocol%2Fclient@2.4.0.patch`
 
 Source is not vendored. To reproduce any claim above, check out that commit in the client's repository.
 

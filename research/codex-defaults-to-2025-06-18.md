@@ -2,7 +2,7 @@
 id: codex-defaults-to-2025-06-18
 title: Codex proposes 2025-06-18 and accepts whatever version the server returns
 kind: idiosyncrasy
-summary: A default Codex install sends initialize at 2025-06-18 and does not check the version in the reply, so a server that answers 2025-11-25 still gets a session. Codex does nothing specific to 2025-11-25. 2026-07-28 is behind an under-development flag that is off by default.
+summary: Codex's initialize names 2025-06-18 and the reply's version is not checked, so a server that answers 2025-11-25 still gets a session. From 0.173.0-alpha.1 a default install first sends server/discover at 2026-07-28 to a local stdio server. Over HTTP that needs a flag.
 capabilities: []
 clients:
   - openai-codex
@@ -13,39 +13,63 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/protocol_mode.rs
-    commit: 03cb3294
+    commit: 2fb728da
     path: codex-rs/rmcp-client/src/protocol_mode.rs:7-54
-    date: 2026-11-15
+    date: 2026-11-20
   - url: https://github.com/openai/codex
     title: codex-rs/features/src/lib.rs, the mcp_2026_07_28, mcp_connection_sharing, codex_apps_mcp_2026_07_28 and use_xaa feature records
-    commit: 03cb3294
-    path: codex-rs/features/src/lib.rs:1763-1768, 1775-1780, 1805-1810, 1817-1822
-    date: 2026-11-15
+    commit: 2fb728da
+    path: codex-rs/features/src/lib.rs:1807-1812, 1819-1824, 1849-1854, 1861-1866
+    date: 2026-11-20
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, mcp_initialize_request_params
-    commit: 03cb3294
+    commit: 2fb728da
     path: codex-rs/codex-mcp/src/rmcp_client.rs:1370-1401
-    date: 2026-11-15
+    date: 2026-11-20
   - url: https://github.com/openai/codex
-    title: codex-rs/core/src/config/mod.rs, mcp_protocol_mode
-    commit: 03cb3294
-    path: codex-rs/core/src/config/mod.rs:2117-2123
-    date: 2026-11-15
+    title: codex-rs/core/src/config/mod.rs, discover_local_stdio and mcp_protocol_mode
+    commit: 2fb728da
+    path: codex-rs/core/src/config/mod.rs:2087, 2164-2170
+    date: 2026-11-20
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/connection_manager.rs, per-connection mode selection
-    commit: 03cb3294
-    path: codex-rs/codex-mcp/src/connection_manager.rs:560-580, 686-692
-    date: 2026-11-15
+    commit: 2fb728da
+    path: codex-rs/codex-mcp/src/connection_manager.rs:562-582, 688-694
+    date: 2026-11-20
   - url: https://github.com/openai/codex
-    title: codex-rs/rmcp-client/src/rmcp_client.rs, the stdio opt-in variable and the modern-session check
-    commit: 03cb3294
-    path: codex-rs/rmcp-client/src/rmcp_client.rs:522-528, 931-948
-    date: 2026-11-15
+    title: codex-rs/codex-mcp/src/server.rs, can_discover_local_stdio and stdio_protocol_mode
+    commit: 2fb728da
+    path: codex-rs/codex-mcp/src/server.rs:93-116
+    date: 2026-11-20
+  - url: https://github.com/openai/codex
+    title: codex-rs/rmcp-client/src/rmcp_client.rs, the stdio opt-in variable, the modern-session check and the discovery handshake
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/rmcp_client.rs:564-570, 973-995, 1686-1694, 1731-1781
+    date: 2026-11-20
+  - url: https://github.com/openai/codex
+    title: codex-rs/rmcp-client/src/stdio_handshake.rs, when a failed discovery restarts the server in Legacy
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/stdio_handshake.rs:18-115
+    date: 2026-11-20
+  - url: https://github.com/openai/codex
+    title: codex-rs/rmcp-client/src/local_stdio_transport.rs, handle_reply and the empty discovery reply
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/local_stdio_transport.rs:68-152
+    date: 2026-11-20
+  - url: https://github.com/openai/codex
+    title: codex-rs/rmcp-client/src/stdio_server_launcher.rs, the Windows fallback to Legacy without a job object
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/stdio_server_launcher.rs:529-536
+    date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/rust-sdk
-    title: rmcp at the revision Codex pins, the legacy initialize handshake
-    commit: 98a54789
-    path: crates/rmcp/src/service/client.rs:921-935
-    date: 2026-11-15
+    title: rmcp at the revision Codex pins, the Auto lifecycle and the legacy initialize handshake
+    commit: b11a40d8
+    path: crates/rmcp/src/service/client.rs:861-904, 990-1004
+    date: 2026-11-20
+  - url: https://github.com/openai/codex/pull/62552
+    title: Enable MCP connection sharing by default
+    commit: ac784eb1
+    date: 2026-11-19
   - url: https://github.com/openai/codex/pull/34747
     title: Register the MCP 2026-07-28 feature flag
     date: 2026-07-22
@@ -53,7 +77,7 @@ sources:
     title: Add MCP 2026-07-28 discovery support
     date: 2026-07-28
 status: current
-lastVerified: 2026-11-15
+lastVerified: 2026-11-20
 related:
   - codex-reads-one-page-of-tools
 ---
@@ -142,7 +166,7 @@ What happens when the server refuses `server/discover` depends on the error and 
 
 The `-32601` rows are the `protocol.serverDiscover.method_not_found` scenario. The `-32022` rows are `echo` run with `--era legacy`.
 
-Three more settings reach the modern lifecycle. All three are `UnderDevelopment` and off by default, and none was run for this note.
+Three more settings reach the modern lifecycle. None was run for this note. `codex_apps_mcp_2026_07_28` and `use_xaa` are `UnderDevelopment` and off by default. `mcp_connection_sharing` was too at `03cb3294`, and is `Stable` and on by default from `ac784eb1`.
 
 - `mcp_connection_sharing` puts an eligible local stdio server in `DiscoverLocalStdio`, which probes `server/discover` without the `env` marker.
 - `codex_apps_mcp_2026_07_28` switches the host-owned Codex Apps server on its own.
@@ -151,6 +175,21 @@ Three more settings reach the modern lifecycle. All three are `UnderDevelopment`
 A Streamable HTTP server's registration can also carry its own mode, added for hosted Apps contributions in openai/codex#46019.
 
 Codex's own modern request paths need both conditions: a mode other than `Legacy`, and a negotiated version equal to `2026-07-28`.
+
+## Connection sharing is on by default from 0.173.0-alpha.1
+
+`ac784eb1` (openai/codex#62552, 2026-11-19) marks `mcp_connection_sharing` `Stable` with `default_enabled: true`. `rust-v0.173.0-alpha.1` contains it. `rust-v0.167.0`, the newest stable tag in the clone at `2fb728da`, has the flag off.
+
+With the flag on, a stdio server gets `DiscoverLocalStdio` when it runs in the local environment, is not the reserved `codex_apps` server, has no ChatGPT runtime auth provider and does not use enterprise-managed auth. No `env` marker and no `mcp_2026_07_28` flag is needed. Streamable HTTP servers are not affected and stay on `Legacy`.
+
+Read from source at `2fb728da`, not run on the probe:
+
+- The first message to such a server is `server/discover` with `_meta` version `2026-07-28`.
+- A `DiscoverResult` that lists `2026-07-28` gives a `2026-07-28` session with no `initialize`.
+- A Method not found error, or an empty `{}` result, is followed by `initialize` at `2025-06-18` on the same pipe.
+- With no reply, rmcp's `Auto` lifecycle sends `initialize` at `2025-06-18` after 10 seconds, under the default 30-second startup timeout.
+- When that `initialize` is rejected or the pipe closes, or the server's Unsupported protocol version error lists only handshake-era versions, Codex stops the process, starts it again and sends `initialize` first.
+- On Windows, a server that could not be placed in a job object is launched in `Legacy`.
 
 ## Reproducing
 
@@ -165,6 +204,6 @@ Those two commands cover the first table. `probe/README.md` lists the commands f
 
 ## Why this matters for a matrix
 
-`preferredProtocolVersion` is `2025-06-18` because that is what a server meets from a default install. `2026-07-28` is in `protocolVersions` because configuration turns it on and the probe has recorded it on the wire. `2025-11-25` is left out: Codex never proposes it and does nothing specific to it.
+`preferredProtocolVersion` is `2025-06-18` because that is what a server met from a default install at `03cb3294`. From `ac784eb1` that holds for Streamable HTTP, and a local stdio server meets `server/discover` at `2026-07-28` first. `2026-07-28` is in `protocolVersions` because configuration turns it on and the probe has recorded it on the wire. `2025-11-25` is left out: Codex never proposes it and does nothing specific to it.
 
 For a server author, answering `2025-06-18` to Codex's `initialize` is the conforming reply when the server supports that version. A server that answers with another handshake-era version still gets a Codex session.

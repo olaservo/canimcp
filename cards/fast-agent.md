@@ -15,11 +15,11 @@ Python framework and CLI for building and running agents, from the maintainer of
 | Source | <https://github.com/evalstate/fast-agent> |
 | Home | <https://fast-agent.ai/> |
 | Wire names | `fast-agent-mcp` |
-| SDK | `mcp` 2.0.0 · declares `==2.0.0` · official Python SDK · unpatched |
+| SDK | `mcp` 2.3.0 · declares `==2.3.0` · official Python SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
-| Source last updated | 2026-08-23 |
-| Last read | 2026-08-25 |
+| Source last updated | 2026-11-19 |
+| Last read | 2026-11-20 |
 | Probed | `0.10.53` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
 
@@ -62,7 +62,7 @@ Python framework and CLI for building and running agents, from the maintainer of
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
-| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ transportDiagnostics | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ remoteFileUriSanitization | ● full | read | `2026-07-28` |
@@ -76,7 +76,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 - **transports.stdio** — The SDK's stdio_client, wrapped in a tracking layer that records every frame on the transport timeline. Child environment is built from the SDK's default environment plus the server entry's env and cwd. Server stderr is routed line by line into fast-agent's logger.
 - **transports.sse** — Reached only by setting transport: sse explicitly. A url with no transport resolves to http, not sse, so the deprecated transport is never the accidental default. Rejected in config validation when combined with protocol_mode: modern, since discover has no SSE path.
-- **transports.streamableHttp** — The default for any url server. fast-agent supplies its own httpx client so it can hang request and response hooks off it, which is where the transport timeline, the 401 escalation signal and the discover-response accounting come from. Redirects are followed. Timeouts fall back to the SDK defaults unless configured.
+- **transports.streamableHttp** — The default for any url server. fast-agent supplies its own httpx client so it can hang request and response hooks off it, which is where the transport timeline, the 401 escalation signal and the discover-response accounting come from. Redirects are followed only within the endpoint's origin, and that is the SDK's doing: mcp 2.3.0 sends each request with redirect following off and follows a same-origin redirect itself, and fast-agent no longer sets follow_redirects. Timeouts fall back to the SDK defaults unless configured.
 - **authentication.oauth** — Escalated rather than assumed: a remote server is tried unauthenticated first, and OAuth is only enabled on a second attempt after a 401. auth.oauth: true forces it, auth.oauth: false and a configured Authorization header both suppress it. Tokens persist in the OS keyring under service fast-agent-mcp, with an in-memory fallback and a printed warning when no keyring backend is available. The callback is a local loopback server, with a paste fallback.
 - **authentication.header** — A headers map on a remote server is passed through on both HTTP transports. An Authorization or X-HF-Authorization header suppresses the OAuth escalation entirely. auth.forward: huggingface injects the local HF token as a header for Hugging Face endpoints and disables OAuth for that server.
 - **tools** — One page of tools/list, no cursor, on both eras — the SDK accepts a cursor and the aggregator never passes one. Tools are flattened into <server>__<tool>, truncated to 64 characters. When a server does not declare a tools capability fast-agent calls tools/list anyway and treats a method-not-found as the answer, so an undeclared-but-present tool list is still found.
@@ -85,7 +85,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **tools.result.structuredContent** — Compact, key-sorted JSON of structuredContent replaces every text block whenever the field is present, {} and [] included.
 - **tools.result.content** — Text blocks reach the model only when structuredContent is absent. Non-text blocks always stay.
 - **tools.result.media** — Image, resource and resource-link blocks stay next to the JSON; audio is dropped or rendered as an unsupported-content note depending on the provider converter.
-- **resources** — resources/list, resources/templates/list and resources/read are all called. A resource reaches the model as an @server:uri mention a person typed, expanded into EmbeddedResource blocks before the turn — there is no tool the model can call to read one. Anything a remote server returns carrying a file:// URI is rewritten before it reaches the conversation.
+- **resources** — resources/list, resources/templates/list and resources/read are all called. A resource reaches the model as an @server:uri mention a person typed, expanded into EmbeddedResource blocks before the turn. A default agent has no tool the model can call to read one; an agent with harness_tools: true gets a get_resource tool. Anything a remote server returns carrying a file:// URI is rewritten before it reaches the conversation.
 - **resources.listChanged** — Modern only, through the subscriptions/listen filter. On the handshake path the notification is received and dropped.
 - **resources.subscribe** — Expressed as resource URIs in the subscriptions/listen filter, gated on the server advertising resources.subscribe. resources/subscribe is never called, so there is no subscription at all on a handshake-era connection. Changing the watched set closes and reopens the stream.
 - **prompts** — prompts/list and prompts/get are both called, with a per-server prompt cache and a search across servers when a prompt is named without one. A fetched prompt is applied as persistent conversation messages. Triggered by /prompt or the agent API, never by the model.
@@ -95,15 +95,15 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **sampling.tools** — Tools in the request are passed to the LLM, and a tool call comes back as CreateMessageResultWithTools with stopReason "toolUse". The server executes and follows up.
 - **sampling.context** — includeContext is not read anywhere; the sampling converter ignores it.
 - **elicitation** — Declared and served by default. Three modes — forms (the default), auto-cancel, and none — resolvable globally, per server, or per agent through a decorator. The forms handler renders a schema-driven prompt in the terminal.
-- **elicitation.url** — ElicitRequestURLParams is handled as a distinct branch: the URL is shown inline and queued for attachment to the originating request's result, so a URL elicitation raised mid-tool-call is reported against that call. A -32042 URL_ELICITATION_REQUIRED error is decorated with the same display payload.
+- **elicitation.url** — ElicitRequestURLParams is handled as a distinct branch: the URL is shown inline and queued for attachment to a request's result. On a 2026-07-28 connection the elicitation is dispatched inside the originating request's task and is attached to that request. On a handshake connection it arrives on the receive loop, cannot be correlated, and is attached to the next request on that connection that completes. A -32042 URL_ELICITATION_REQUIRED error is decorated with the same display payload.
 - **roots** — Declared only for a server whose config entry lists roots, and served correctly when it is: roots/list returns the configured file:// URIs, with an optional alias so the URI presented to the server differs from the local path. The roots are read once from config and never change.
 - **roots.listChanged** — The SDK declares roots.listChanged: true whenever a roots callback exists, with no way to opt out. Nothing in fast-agent sends notifications/roots/list_changed. The declaration is inaccurate and not fast-agent's to fix.
 - **logging** — logging/setLevel is never called and no handler renders a notifications/message. On the handshake path a log notification reaches the generic server-notification callback, which is only ever assigned in a unit test.
 - **instructions** — The server's instructions string is read and injected into the system prompt through a {{serverInstructions}} resolver, re-resolved when servers are attached or detached. Suppressible per server with include_instructions: false, and the UI reports both whether a server sent instructions and whether they are enabled.
 - **icons** — No icon handling anywhere in the MCP client.
 - **tasks** — No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with "tasks" — the enum member is the only trace.
-- **extensions.io.modelcontextprotocol/skills** — SEP-2640 draft d7490ecd, implemented against locally-declared wire models because the Python SDK carries none. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. Skill resources are verified against SHA-256 digests before install, under six size and count limits fast-agent chose itself.
-- **bonusFeatures.modelInitiatedResourceRead** — By design rather than omission. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. The model gets no mechanism.
+- **extensions.io.modelcontextprotocol/skills** — SEP-2640, now Final, implemented against locally-declared wire models because the Python SDK (mcp 2.3.0) carries none. The models followed draft d7490ecd in August and follow the stable Skills extension now. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. A skill's resources are a manifest of uri, digest and size, or the string dynamic; a dynamic skill is listed and cannot be installed. Skill resources are verified against their size and SHA-256 digest before install, under size and count limits fast-agent chose itself.
+- **bonusFeatures.modelInitiatedResourceRead** — Off by default. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. An agent configured with harness_tools: true (false by default) also gets a get_resource tool that takes a URI and an optional server name and reads an attached MCP resource, checked against the agent's resources filter. A default agent gives the model no mechanism.
 - **bonusFeatures.protocolEraForcing** — protocol_mode: auto \| modern \| legacy, global or per server, also settable per connection from the CLI. modern subclasses the SDK client so a failed discover unwinds the transport instead of silently falling back. The negotiated era and how it was reached are shown in /mcp.
 - **bonusFeatures.transportDiagnostics** — Every frame is attributed to a channel — stdio, GET, POST (JSON), POST (SSE), listen, resumption — and rendered as a bucketed timeline in /mcp. The channel for a POST is decided from the response content type and the request method, so a subscriptions/listen stream is separated from ordinary SSE traffic. Discovery responses are accounted separately so a probe rejection is not counted as a transport error.
 - **bonusFeatures.remoteFileUriSanitization** — A tool result, prompt result or resource read from a remote server that carries a file:// URI is rewritten before it reaches the conversation: a ResourceLink becomes a text block saying the attachment was blocked, and an embedded resource keeps its content under a sanitized URI.
@@ -232,7 +232,7 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 - [fast-agent opens every connection with a 2026-07-28 discover probe](../research/fast-agent-leads-with-the-modern-discover-probe.md) — *idiosyncrasy*. A default fast-agent install sends `server/discover` at `2026-07-28` as the first request on every transport, and falls back to the `initialize` handshake only when that fails. It is the first client read here that leads with the stateless era rather than the handshake.
 - [fast-agent watches server state through subscriptions/listen, and only there](../research/fast-agent-subscribes-only-on-the-modern-path.md) — *nuance*. On a 2026-07-28 connection fast-agent opens a `subscriptions/listen` stream and refreshes its whole cached view on any event. On the fallback handshake path it acts on `tools/list_changed` and drops the prompts and resources equivalents.
-- [fast-agent reads resources and prompts, but only a person can trigger either](../research/fast-agent-resources-need-a-user-to-ask.md) — *nuance*. fast-agent calls `resources/read` and `prompts/get` properly, and gives the model no way to call either. Resources arrive as `@server:uri` mentions a user typed; prompts arrive through `/prompt` or the agent API. Three clients, three different answers to the same SHOULD.
+- [fast-agent reads resources and prompts, but only a person can trigger either](../research/fast-agent-resources-need-a-user-to-ask.md) — *nuance*. fast-agent calls `resources/read` and `prompts/get` properly. By default the model can call neither. Resources arrive as `@server:uri` mentions a user typed; prompts arrive through `/prompt` or the agent API. Three clients, three different answers to the same SHOULD.
 - [fast-agent's capability declaration varies from server to server](../research/fast-agent-declares-capabilities-per-server.md) — *idiosyncrasy*. fast-agent builds its client capability object per connection, from that server's config. Sampling and elicitation are on by default, roots only when the server entry lists them. Two servers in one config file can see two different clients.
 - [fast-agent declares roots.listChanged and never sends the notification](../research/fast-agent-never-sends-roots-list-changed.md) — *gap*. The Python SDK sets `roots.listChanged: true` whenever a client passes a roots callback, with no way to opt out. fast-agent's roots come from static config, so it never sends the notification. Two SDKs, three clients, same gap.
 - [fast-agent implements SEP-2640 skills over MCP with wire types it defines itself](../research/fast-agent-ships-skills-over-mcp-ahead-of-the-sdk.md) — *in-flight*. fast-agent calls `skills/list`, `skills/get` and `resources/directory/read` against servers declaring the `io.modelcontextprotocol/skills` extension, verifying every resource against a SHA-256 digest. The Python SDK has none of these types, so fast-agent declares them itself.
@@ -240,9 +240,9 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `1b58e686` on 2026-08-25, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-08-23.
+Read at `288b5339` on 2026-11-20, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-19.
 
-**SDK.** The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.0.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.
+**SDK.** The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.3.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.
 
 Paths read:
 
@@ -263,6 +263,7 @@ Paths read:
 - `src/fast_agent/core/instruction_refresh.py`
 - `src/fast_agent/config.py`
 - `src/fast_agent/utils/transports.py`
+- `src/fast_agent/core/harness_tools.py`
 - `pyproject.toml`
 - `uv.lock`
 

@@ -83,4 +83,4 @@ The document was opt-in from v1.0.1 (`1499466d`, 2026-10-02) and became the pref
 
 pi's conformance baseline lists `auth/basic-cimd` as failing the `cimd-client-id-used` check. The suite expects its own document URL, and pi sends the pi.dev one.
 
-The registry records Codex as preferring a document under chatgpt.com keyed by a callback id, and Kilo Code as offering one document URL for every server.
+The registry records Codex as preferring a document under chatgpt.com, keyed by a callback id or shared when the server advertises `authorization_response_iss_parameter_supported`, and Kilo Code as offering one document URL for every server.

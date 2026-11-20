@@ -12,21 +12,27 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, list_tools_for_client_uncached
-    commit: b705b6b0
-    path: codex-rs/codex-mcp/src/rmcp_client.rs:618-651
-    date: 2026-08-24
+    commit: 2fb728da
+    path: codex-rs/codex-mcp/src/rmcp_client.rs:846-924
+    date: 2026-11-20
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/pagination.rs
-    commit: b705b6b0
-    path: codex-rs/codex-mcp/src/pagination.rs:27-79
-    date: 2026-08-24
-status: current
-lastVerified: 2026-08-24
+    commit: 2fb728da
+    path: codex-rs/codex-mcp/src/pagination.rs:27-80
+    date: 2026-11-20
+  - url: https://github.com/openai/codex/pull/50035
+    title: Follow MCP tool pagination in legacy protocol mode
+    commit: cc31e374
+    date: 2026-10-01
+status: stale
+lastVerified: 2026-11-20
 related:
   - codex-defaults-to-2025-06-18
 ---
 
 # Codex discards the tools/list cursor unless the 2026-07-28 mode is on
+
+At `2fb728da` `list_tools_for_client_uncached` passes `response.next_cursor` to the paginator in every protocol mode, so Codex follows `tools/list` pagination, from `cc31e374` (openai/codex#50035, 2026-10-01, first stable release 0.162.0).
 
 Codex has a careful paginator. `collect_paginated_with_limit` caps pages at 100 and items at 2,048, rejects a cursor over 64 KB, detects a repeated cursor, and puts a 30-second timeout over the whole loop. It stops when a page returns no `nextCursor`.
 
