@@ -5070,36 +5070,6 @@
           }
         ]
       },
-      "eventsExtension": {
-        "status": "opt-in",
-        "notes": "Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2025-11-25",
-            "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_events.py:1-11,226-245,357-436"
-          },
-          {
-            "tier": "read",
-            "at": "2025-11-25",
-            "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_registration.py:196-197"
-          },
-          {
-            "tier": "read",
-            "at": "2025-11-25",
-            "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "gateway/platforms/webhook_mcp_events.py:1-60"
-          }
-        ]
-      },
       "trustTiers": {
         "status": "full",
         "notes": "Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way.",
@@ -5280,6 +5250,38 @@
         ],
         "research": [
           "hermes-leads-with-the-legacy-handshake"
+        ]
+      }
+    },
+    "extensions": {
+      "io.modelcontextprotocol/events": {
+        "status": "opt-in",
+        "notes": "Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-09",
+            "commit": "9dcf7714",
+            "path": "tools/mcp_tool_events.py:1-11,226-245,357-436"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-09",
+            "commit": "9dcf7714",
+            "path": "tools/mcp_tool_registration.py:196-197"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-09",
+            "commit": "9dcf7714",
+            "path": "gateway/platforms/webhook_mcp_events.py:1-60"
+          }
         ]
       }
     }
@@ -6820,6 +6822,52 @@
             "path": "packages/mcp/src/shared/tasks/capability.ts:14-22"
           }
         ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "opt-in",
+        "notes": "Application API for the draft MCP Events extension (SEP-3415). mcp.events.list() sends events/list, and subscribe() delivers occurrences by webhook (events/subscribe) when the client has a webhook option, else push (events/stream), else poll (events/poll), from the modes the event advertises. Nothing is declared in the client capabilities; the client reads the server's io.modelcontextprotocol/events entry. createMCPEventsTools gives a model mcp_events_list, mcp_events_subscribe and mcp_events_unsubscribe.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/configuration.ts:331-375"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/client.ts:1545-1600"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/events/mode.ts:52-93"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/shared/events/constants.ts:7-19"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/integrations/events-tools.ts:70-118"
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -6875,52 +6923,6 @@
             "date": "2026-11-16",
             "commit": "bb984550",
             "path": "packages/mcp/src/client/configuration.ts:1156-1166"
-          }
-        ]
-      },
-      "eventsExtension": {
-        "status": "opt-in",
-        "notes": "Application API for the draft MCP Events extension (SEP-3415). mcp.events.list() sends events/list, and subscribe() delivers occurrences by webhook (events/subscribe) when the client has a webhook option, else push (events/stream), else poll (events/poll), from the modes the event advertises. Nothing is declared in the client capabilities; the client reads the server's io.modelcontextprotocol/events entry. createMCPEventsTools gives a model mcp_events_list, mcp_events_subscribe and mcp_events_unsubscribe.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/configuration.ts:331-375"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/client.ts:1545-1600"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/events/mode.ts:52-93"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/shared/events/constants.ts:7-19"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/integrations/events-tools.ts:70-118"
           }
         ]
       },
@@ -9806,6 +9808,44 @@
             "note": "The MCP Apps and visibility findings are in that note, which read the eve source at be1adda."
           }
         ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "opt-in",
+        "notes": "Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-16",
+            "commit": "0940c042",
+            "path": "packages/eve/src/runtime/connections/events/actions.ts:32-34,99-152"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-16",
+            "commit": "0940c042",
+            "path": "packages/eve/src/runtime/resolve-connection.ts:138-158"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-16",
+            "commit": "0940c042",
+            "path": "packages/eve/src/runtime/connections/events/lifecycle-step.ts:65-66,109"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-16",
+            "commit": "0940c042",
+            "path": "docs/connections/mcp.mdx:230-238"
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -9938,44 +9978,6 @@
         ],
         "research": [
           "eve-leaves-oauth-to-a-token-provider"
-        ]
-      },
-      "eventsExtension": {
-        "status": "opt-in",
-        "notes": "Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/connections/events/actions.ts:32-34,99-152"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/resolve-connection.ts:138-158"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/connections/events/lifecycle-step.ts:65-66,109"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "docs/connections/mcp.mdx:230-238"
-          }
         ]
       },
       "devReachabilityProbe": {

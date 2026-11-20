@@ -56,7 +56,8 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | Icons | — not recorded | | |
 | **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| Extensions | — not recorded | | |
+| **Extensions** |  |  |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolDescriptionScrubbing | ◐ partial | read | `2025-11-25` |
@@ -64,7 +65,6 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | &nbsp;&nbsp;↳ resultSpillover | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ nonMcpEndpointDetection | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ eventsExtension | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ trustTiers | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ declaredToolCosts | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ lazyServerStart | ● full | read | `2025-11-25` |
@@ -107,10 +107,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.resultSpillover** — An MCP result past 50,000 characters, configurable through tool_budget.mcp_result_size_chars and tighter than the 100,000 generic default, is written to a spillover file and replaced in context by a block naming its size, path and a read_file recovery line. A single result is hard-capped at 2,000,000 characters with a head and tail split around an omission notice.
 - **bonusFeatures.sessionRecovery** — Expired HTTP sessions are detected and the transport reconnected. The call is retried once only for tools annotated readOnlyHint: true; any other tool gets the transport healed and an outcome_uncertain error instead of a replay. A connect-failure cooldown keeps a dead server from being retried in a tight loop, and a parked server probes itself every 300 seconds.
 - **bonusFeatures.nonMcpEndpointDetection** — A URL that answers HEAD or GET with a content type outside the MCP media types is POSTed a hand-written minimal initialize frame at 2025-03-26, naming itself hermes-probe, before Hermes raises NonMcpEndpointError. The check is skipped for SSE, OAuth servers and any server that has connected before.
-- **bonusFeatures.eventsExtension** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
 - **bonusFeatures.trustTiers** — Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way.
 - **bonusFeatures.declaredToolCosts** — A server entry can declare per-tool costs, single figures or ranges, through tool_costs, plus a per-chat spend_limit. The approval prompt names the cost and the chat's running total, counted at the top of each range, and a call that would pass the limit needs an explicit yes even on a trust: full server. The figures come from client config, not from the server.
 - **bonusFeatures.lazyServerStart** — With lazy: true on a server entry, Hermes registers the server's tools from an on-disk schema cache without starting the server, and connects on first use. Entries are keyed by server name and a fingerprint of the connection config, are written after each live registration, and expire on the SEP-2549 ttlMs from tools/list. Entries without a TTL never expire, and a missing or stale entry falls back to a normal connect.
+- **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
 
 ## Verified by the probe
 
