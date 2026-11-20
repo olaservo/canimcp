@@ -65,13 +65,13 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 | **JSON Schema** |  |  |  |
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ traceContextInRequestMeta | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ toolResultAuthChallenge | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ eventsExtension | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ devReachabilityProbe | ● full | read | `2025-03-26` |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -117,12 +117,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema** — Tool inputs are validated before the call with @cfworker/json-schema in 2020-12 mode, whatever $schema the tool declares. Omitted properties receive their default values. outputSchema is never validated.
 - **jsonSchema.features** — format is removed before validation. Boolean exclusiveMinimum and exclusiveMaximum are rewritten to the numeric form. A schema with an unknown type, an invalid pattern or an unresolvable $ref is advertised and its values pass through unvalidated.
 - **extensions.io.modelcontextprotocol/ui** — Not declared: eve passes no capabilities, and the SDK exports the declaration as mcpAppClientCapabilities for hosts that want it. No code under packages/eve/src reads ui:// resources. A tool whose _meta.ui.visibility leaves out the model is still found by eve__search.
+- **extensions.io.modelcontextprotocol/events** — Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.
 - **bonusFeatures.modelInitiatedResourceRead** — eve has no resource path of any kind.
 - **bonusFeatures.deferredToolLoading** — Every connection tool is a deferred catalog entry with an empty description. The model gets two fixed tools, eve__search and eve__tool, whose definitions do not change when the catalog does.
 - **bonusFeatures.protocolEraForcing** — protocolVersionDiscovery: false on a connection skips server/discover and starts with initialize at 2025-11-25. Nothing restricts a connection to 2026-07-28.
 - **bonusFeatures.traceContextInRequestMeta** — eve's fetch wrapper rewrites each JSON-RPC request body to add the active OpenTelemetry trace context to params._meta. The probe's capture of eve 1.0.0-rc.6 shows a traceparent key on server/discover, initialize, notifications/initialized, tools/list and tools/call.
 - **bonusFeatures.toolResultAuthChallenge** — An error result with a non-empty _meta["mcp/www_authenticate"] starts sign-in for the connection. The source comment names the key as the OpenAI Apps SDK convention.
-- **bonusFeatures.eventsExtension** — Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.
 - **bonusFeatures.devReachabilityProbe** — The dev TUI, on a local target, posts a bare initialize at 2025-03-26 with clientInfo eve / connection-probe to every scaffoldable catalog entry that has an MCP URL, at start and every 60 seconds. It sends no notifications/initialized and no DELETE.
 - **byProtocolVersion.2025-11-25.transports.streamableHttp** — Reached when server/discover is answered with a JSON-RPC error other than -32020 and -32021 or with an HTTP error status other than 401, or when the connection sets protocolVersionDiscovery: false. A -32022 qualifies only when it lists a handshake version the client supports. initialize proposes 2025-11-25, or the newest handshake version a -32022 error listed, and any of the five supported revisions is accepted in the reply. The session id is kept, one GET stream is opened, and close sends a DELETE with a 5 second deadline. The client is closed at the end of every step, so each step that uses the connection starts a new session.
 

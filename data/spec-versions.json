@@ -439,7 +439,7 @@
   },
 
   "extensions": {
-    "$comment": "Optional capabilities beyond the core protocol, identified by reverse-DNS names. The `extensions` field was added to ClientCapabilities and ServerCapabilities in 2026-07-28 (SEP-2575); the earlier equivalent was the `experimental` capability field. This catalog lists KNOWN extensions; a client records which it supports via its own `extensions` map in clients.json.",
+    "$comment": "Optional capabilities beyond the core protocol, identified by reverse-DNS names. The `extensions` field was added to ClientCapabilities and ServerCapabilities in 2026-07-28 (SEP-2575); the earlier equivalent was the `experimental` capability field. This catalog lists KNOWN extensions; a client records which it supports via its own `extensions` map in clients.json. `stage` is the lifecycle stage from https://modelcontextprotocol.io/extensions/overview (SEP-3392: experimental, beta, stable), checked 2026-11-20. A beta extension also carries `destination` (stable, core, or null when not yet stated).",
     "capabilityField": {
       "introducedIn": "2026-07-28",
       "sep": "SEP-2575",
@@ -448,7 +448,7 @@
     },
     "known": {
       "io.modelcontextprotocol/ui": {
-        "status": "official",
+        "stage": "stable",
         "introducedIn": "2025-11-25",
         "sep": "SEP-1865",
         "repo": "https://github.com/modelcontextprotocol/ext-apps",
@@ -470,28 +470,61 @@
         }
       },
       "io.modelcontextprotocol/oauth-client-credentials": {
-        "status": "official",
+        "stage": "stable",
         "introducedIn": "2025-11-25",
         "sep": "SEP-1046",
         "repo": "https://github.com/modelcontextprotocol/ext-auth",
         "notes": "OAuth 2.0 client_credentials grant for machine-to-machine auth. Also expressible via authentication.oauth.grantTypes; tracked here as the official ext-auth extension form."
       },
+      "io.modelcontextprotocol/enterprise-managed-authorization": {
+        "stage": "stable",
+        "sep": "SEP-990",
+        "repo": "https://github.com/modelcontextprotocol/ext-auth",
+        "notes": "Access to MCP servers controlled centrally through the organization's identity provider, so each user does not authorize each server. The client declares io.modelcontextprotocol/enterprise-managed-authorization in its capabilities."
+      },
       "io.modelcontextprotocol/tasks": {
-        "status": "official",
+        "stage": "beta",
+        "destination": "core",
         "introducedIn": "2026-07-28",
         "sep": "SEP-2663",
+        "repo": "https://github.com/modelcontextprotocol/ext-tasks",
         "notes": "Durable/async requests (polling via tasks/get, client input via tasks/update). Was a core experimental feature in 2025-11-25 before being moved into this extension."
       },
       "io.modelcontextprotocol/skills": {
-        "status": "proposed",
+        "stage": "beta",
+        "destination": null,
         "sep": "SEP-2640",
-        "notes": "Skills over MCP: skills/list, skills/get and resources/directory/read against servers that declare the extension. A draft SEP, not part of any revision.",
+        "repo": "https://github.com/modelcontextprotocol/ext-skills",
+        "notes": "Skills over MCP: skills/list, skills/get and resources/directory/read against servers that declare the extension. Skill files are read with resources/read. SEP-2640 is Final.",
         "alias": "skills",
         "features": {
           "skills": {
             "notes": "The client calls skills/list against a server declaring the extension. The HF telemetry's skills flag is a successful client-originated skills/list call."
           }
         }
+      },
+      "io.modelcontextprotocol/events": {
+        "stage": "beta",
+        "destination": null,
+        "sep": "SEP-3415",
+        "repo": "https://github.com/modelcontextprotocol/ext-events",
+        "notes": "Subscriptions to events in upstream systems: events/list, then delivery by poll, push or webhook. SEP-3415 is Final. Most client implementations predate it and track the draft.",
+        "alias": "events",
+        "features": {
+          "events": {
+            "notes": "The client lists a server's events and subscribes to them by at least one delivery mode. Say in notes which modes, and whether the client declares the extension in its own capabilities."
+          }
+        }
+      }
+    },
+    "withoutIdentifier": {
+      "$comment": "Official extensions with no capability identifier, so no client declares them. Listed for completeness; no clients.json field records them yet.",
+      "server-card": {
+        "stage": "beta",
+        "destination": null,
+        "sep": "SEP-2127",
+        "repo": "https://github.com/modelcontextprotocol/ext-server-card",
+        "notes": "HTTP discovery of a server's metadata before connecting, through a Server Card and an AI Catalog at /.well-known/ai-catalog.json. canimcp serves one at /mcp/server-card."
       }
     }
   },
