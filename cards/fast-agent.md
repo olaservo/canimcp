@@ -52,7 +52,7 @@ Python framework and CLI for building and running agents, from the maintainer of
 | **Elicitation** | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ form | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ url | ● full | read | `2026-07-28` |
-| **Roots** | ◐ partial | read | `2026-07-28` |
+| **Roots** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2026-07-28` |
@@ -62,13 +62,13 @@ Python framework and CLI for building and running agents, from the maintainer of
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
-| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ transportDiagnostics | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ remoteFileUriSanitization | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ providerManagedMcp | ● full | read | `2026-07-28` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

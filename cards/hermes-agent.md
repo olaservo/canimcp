@@ -46,7 +46,7 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ● full | read, declared | `2025-11-25` |
-| &nbsp;&nbsp;↳ tools | ◐ partial | read, declared | `2025-11-25` |
+| &nbsp;&nbsp;↳ tools | ◇ opt-in | read, declared | `2025-11-25` |
 | **Elicitation** | ◐ partial | read, declared | `2025-11-25` |
 | &nbsp;&nbsp;↳ form | ◐ partial | read, declared | `2025-11-25` |
 | &nbsp;&nbsp;↳ url | ○ unsupported | read, declared | `2025-11-25` |
@@ -64,12 +64,12 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | &nbsp;&nbsp;↳ resultSpillover | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ nonMcpEndpointDetection | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ eventsExtension | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ eventsExtension | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ trustTiers | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ declaredToolCosts | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ lazyServerStart | ● full | read | `2025-11-25` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
@@ -214,7 +214,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Where the evidence disagrees
 
-- **sampling.tools** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `unsupported`.
+- **sampling.tools** — recorded as `opt-in`, but declared-tier evidence at `2025-11-25` says `unsupported`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl). No tools key under sampling.
 - **elicitation** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).

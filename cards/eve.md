@@ -71,10 +71,10 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ traceContextInRequestMeta | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ toolResultAuthChallenge | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ eventsExtension | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ eventsExtension | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ devReachabilityProbe | ● full | read | `2025-03-26` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

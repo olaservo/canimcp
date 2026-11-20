@@ -51,7 +51,7 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | &nbsp;&nbsp;↳ listChanged | ● full | read | `2025-11-25`, `2026-07-28` |
 | **Completions** | ○ unsupported | read | `2026-07-28` |
 | **Sampling** | ◐ partial | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ tools | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ tools | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ context | ○ unsupported | read | `2026-07-28` |
 | **Elicitation** | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ form | ○ unsupported | read | `2026-07-28` |
@@ -64,16 +64,16 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | **Tasks** | ○ unsupported | read | `2026-07-28` |
 | **JSON Schema** |  |  |  |
 | **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ deferredToolLoading | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ deferredToolLoading | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ providerManagedMcp | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ openTelemetryTraceContext | ● full | read | `2026-07-28` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

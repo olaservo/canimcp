@@ -70,8 +70,8 @@ Columns are the probe scenarios (`probe/registry/scenarios.json`); drop the `too
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | default | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | anthropic | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | responses | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| ts-sdk-client `2.4.0` | auto | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ |  |  |  |  |  |  |  |  |  |  |  |  | ⟨…⟩+_meta | ⟨…⟩+_meta |
-| ts-sdk-client `2.4.0` | legacy | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | auto | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ |  |  |  |  |  |  |  |  |  |  |  |  | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | legacy | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩+_meta | ⟨…⟩+_meta |
 
 ## Scenarios
 
@@ -1252,9 +1252,9 @@ The full verdict line per run, with a link to the record and its captures.
 | [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.summary_and_data/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.summary_and_data/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 
-### ts-sdk-client
+### TypeScript SDK client
 
-22 records, version `2.4.0`, no registry entry yet. Overlay `data/verified/ts-sdk-client.json`.
+22 records, version `2.4.0`, registry entry [ts-sdk-client](ts-sdk-client.md). Overlay `data/verified/ts-sdk-client.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|

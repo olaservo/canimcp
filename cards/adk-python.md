@@ -43,10 +43,10 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ isError | ● full | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ media | ◐ partial | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ _meta | ● full | read ⇧ | `2025-11-25` |
-| **Resources** | ◐ partial | read | `2025-11-25` |
+| **Resources** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
-| **Prompts** | ◐ partial | read | `2025-11-25` |
+| **Prompts** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
@@ -63,7 +63,7 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
-| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolDescriptionFencing | ● full | read | `2025-11-25` |
@@ -71,7 +71,7 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | &nbsp;&nbsp;↳ traceContextPropagation | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ providerManagedMcp | ● full | read | `2025-11-25` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

@@ -52,6 +52,7 @@ const CAPABILITY_ORDER = [
 const STATUS_MARK = {
   full: '●',
   partial: '◐',
+  'opt-in': '◇',
   unsupported: '○',
   untested: '·',
 };
@@ -514,7 +515,7 @@ function renderCard(id, entry, notes, verified, observed) {
     }
   }
   L.push('');
-  L.push('`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability\'s evidence');
+  L.push('`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability\'s evidence');
   L.push('');
   L.push('Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.');
   L.push('');

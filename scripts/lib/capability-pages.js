@@ -5,7 +5,7 @@
 
 import { KIND_MEANING } from './kinds.js';
 
-const STATUS_MARK = { full: '●', partial: '◐', unsupported: '○', untested: '·' };
+const STATUS_MARK = { full: '●', partial: '◐', 'opt-in': '◇', unsupported: '○', untested: '·' };
 const TIER_LETTER = { read: 'R', verified: 'V', observed: 'O', declared: 'D' };
 const MODEL_API = { anthropic: 'Anthropic Messages', chat: 'Chat Completions', responses: 'Responses', gemini: 'Gemini' };
 const IMAGE_OUTCOME = { 'image-part': 'image part', 'base64-text': 'base64 pasted into text', absent: 'dropped' };
@@ -149,7 +149,7 @@ export function matrixPage(index, { origin }) {
   const L = [];
   L.push('# Capabilities', '');
   L.push(`Which MCP clients support what. ${index.capabilities.length} capabilities down, the ${columns.length} clients with a registry entry across. Each capability links to a page with the evidence behind every cell.`, '');
-  L.push('A cell is the status the registry records, then the tiers it is known from: **R** read, **V** verified, **O** observed, **D** declared. ● full, ◐ partial, ○ unsupported, · untested. An empty cell means nothing is recorded, which is not the same as unsupported.', '');
+  L.push('A cell is the status the registry records, then the tiers it is known from: **R** read, **V** verified, **O** observed, **D** declared. ● full, ◐ partial, ◇ opt-in, ○ unsupported, · untested. An empty cell means nothing is recorded, which is not the same as unsupported.', '');
   L.push(`| Capability | Since | ${columns.map((s) => `[${cellText(s.title)}](${local(s.page, origin)})`).join(' | ')} |`);
   L.push(`|---|---|${columns.map(() => '---').join('|')}|`);
   for (const cap of index.capabilities) {

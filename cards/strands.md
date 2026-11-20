@@ -34,7 +34,7 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | &nbsp;&nbsp;↳ oauth | ◐ partial | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ header | ● full | read | `2026-07-28` |
 | **Tools** | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ listChanged | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ result | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ● full | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ structuredContent | ○ unsupported | read ⇧ | `2026-07-28` |
@@ -43,37 +43,37 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ isError | ● full | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ media | ◐ partial | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ _meta | ○ unsupported | read ⇧ | `2026-07-28` |
-| **Resources** | ◐ partial | read | `2026-07-28` |
+| **Resources** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2026-07-28` |
-| **Prompts** | ◐ partial | read | `2026-07-28` |
+| **Prompts** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | **Completions** | ○ unsupported | read | `2026-07-28` |
 | **Sampling** | ○ unsupported | read, declared | `2026-07-28` |
-| **Elicitation** | ◐ partial | read, declared | `2026-07-28` |
-| &nbsp;&nbsp;↳ form | ◐ partial | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ url | ◐ partial | read | `2026-07-28` |
+| **Elicitation** | ◇ opt-in | read, declared | `2026-07-28` |
+| &nbsp;&nbsp;↳ form | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ url | ◇ opt-in | read | `2026-07-28` |
 | **Roots** | ○ unsupported | read, declared | `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | **Logging** | ○ unsupported | read | `2026-07-28` |
-| **Instructions** | ◐ partial | read | `2026-07-28` |
+| **Instructions** | ◇ opt-in | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ◐ partial | read | `2026-07-28` |
+| **Tasks** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ cancel | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
 | JSON Schema | — not recorded | | |
 | **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/oauth-client-credentials | ◐ partial | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ sessionRecovery | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ sessionRecovery | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ callCancellation | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ traceContextPropagation | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ mcpRouterTool | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ mcpRouterTool | ◇ opt-in | read | `2026-07-28` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
@@ -209,7 +209,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Where the evidence disagrees
 
-- **elicitation** — recorded as `partial`, but declared-tier evidence at `2026-07-28` says `unsupported`.
+- **elicitation** — recorded as `opt-in`, but declared-tier evidence at `2026-07-28` says `unsupported`.
   <br>canimcp-probe (2026-11-08) — The server/discover request and every later request carried io.modelcontextprotocol/clientCapabilities {} and clientInfo {"name":"mcp","version":"0.1.0"} (wire.jsonl). The server answered discover, so no initialize was sent.
 
 ## Research notes
