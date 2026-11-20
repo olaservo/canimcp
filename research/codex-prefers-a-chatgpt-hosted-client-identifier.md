@@ -2,7 +2,7 @@
 id: codex-prefers-a-chatgpt-hosted-client-identifier
 title: Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com
 kind: idiosyncrasy
-summary: When an authorization server advertises client_id_metadata_document_supported and accepts public clients, Codex registers with an HTTPS client identifier under chatgpt.com keyed by the ephemeral loopback callback id, and only falls back to Dynamic Client Registration otherwise.
+summary: When an authorization server advertises client_id_metadata_document_supported and accepts public clients, Codex registers with an HTTPS client identifier under chatgpt.com, shared or keyed by a per-server callback id, and only falls back to Dynamic Client Registration otherwise.
 capabilities:
   - authentication.oauth.clientIdMetadataDocument
   - authentication.oauth.dynamicRegistration
@@ -19,9 +19,14 @@ tracking:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/oauth_client_registration.rs
-    commit: b705b6b0
-    path: codex-rs/rmcp-client/src/oauth_client_registration.rs:32-110
-    date: 2026-08-24
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/oauth_client_registration.rs:37-135
+    date: 2026-11-20
+  - url: https://github.com/openai/codex
+    title: codex-rs/rmcp-client/src/oauth_callback.rs, callback_mode and callback_id_from_server_url
+    commit: 2fb728da
+    path: codex-rs/rmcp-client/src/oauth_callback.rs:52-67, 90-102
+    date: 2026-11-20
   - url: https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/
     title: OAuth Client ID Metadata Document (IETF Internet-Draft)
     date: 2026-08-24
@@ -29,7 +34,7 @@ sources:
     title: 2026-07-28 authorization, client registration
     date: 2026-08-24
 status: current
-lastVerified: 2026-08-24
+lastVerified: 2026-11-20
 ---
 
 # Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com
@@ -54,14 +59,17 @@ The registration modes are also selectable directly — `Cimd` requires it and f
 ## The identifier is a ChatGPT URL
 
 ```rust
-request = request.with_client_metadata_url(format!(
-    "https://chatgpt.com/oauth/codex/{callback_id}/client.json"
-));
+let client_metadata_url = if uses_shared_callback {
+    "https://chatgpt.com/oauth/codex/client.json".to_string()
+} else {
+    format!("https://chatgpt.com/oauth/codex/{callback_id}/client.json")
+};
+request = request.with_client_metadata_url(client_metadata_url);
 ```
 
-The `callback_id` is the same value the loopback redirect path is keyed on, so the metadata document is per-login rather than a single static Codex client identity. The authorization server therefore resolves a `chatgpt.com` URL during an MCP login against an unrelated server, and what it reads there is served by OpenAI.
+The `callback_id` is the same value the loopback redirect path is keyed on, so the metadata document is per-server rather than a single static Codex client identity. The id is the first nine bytes of the SHA-256 of the MCP server URL without its fragment, in base64url. When the authorization server advertises `authorization_response_iss_parameter_supported` and names an issuer, Codex keeps the shared `/callback` path and presents the single document `https://chatgpt.com/oauth/codex/client.json`. The authorization server therefore resolves a `chatgpt.com` URL during an MCP login against an unrelated server, and what it reads there is served by OpenAI.
 
-The native redirect check is strict about that binding: the URI must be `http` on `127.0.0.1` or `localhost`, on a real port, with path exactly `/callback/{callback_id}`, and no query, fragment, username or password.
+The native redirect check is strict about that binding: the URI must be `http` on `127.0.0.1` or `localhost`, on a real port, with path exactly `/callback/{callback_id}`, or `/callback` in the shared case, and no query, fragment, username or password.
 
 ## What it means for a server operator
 

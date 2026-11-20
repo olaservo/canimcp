@@ -15,11 +15,18 @@ sources:
     commit: 7cde8329
     path: packages/opencode/src/mcp/catalog.ts:14-16,143-165
     date: 2026-08-24
-status: current
-lastVerified: 2026-08-24
+  - url: https://github.com/anomalyco/opencode
+    title: packages/core/src/mcp/client.ts, tools
+    commit: b5e0abd7
+    path: packages/core/src/mcp/client.ts:628-679
+    date: 2026-11-20
+status: stale
+lastVerified: 2026-11-20
 ---
 
 # opencode retries tools/list with outputSchema stripped when the SDK rejects one
+
+At `b5e0abd7` the retry and its regex are gone: opencode patches `@modelcontextprotocol/client` 2.4.0 so the SDK leaves listed tools unchecked, then checks each tool itself and skips only the malformed ones; see [[opencode-checks-listed-tools-itself-on-a-patched-sdk]].
 
 `outputSchema` arrived in `2025-06-18`. The TypeScript SDK validates it, and a server whose `outputSchema` contains a `$ref` the validator cannot resolve makes the whole `tools/list` page fail — not just the offending tool.
 

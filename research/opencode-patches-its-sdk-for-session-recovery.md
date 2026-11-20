@@ -25,11 +25,23 @@ sources:
     commit: 7cde8329
     path: packages/opencode/test/fixture/mcp-session-recovery.ts
     date: 2026-08-24
-status: current
-lastVerified: 2026-08-24
+  - url: https://github.com/anomalyco/opencode
+    title: packages/core/src/mcp/client.ts, failure
+    commit: b5e0abd7
+    path: packages/core/src/mcp/client.ts:438-460
+    date: 2026-11-20
+  - url: https://github.com/anomalyco/opencode
+    title: packages/core/src/mcp/connection.ts, recover and recovering
+    commit: b5e0abd7
+    path: packages/core/src/mcp/connection.ts:131-151
+    date: 2026-11-20
+status: stale
+lastVerified: 2026-11-20
 ---
 
 # opencode ships a patched MCP SDK that recovers an expired HTTP session
+
+At `b5e0abd7` opencode is on `@modelcontextprotocol/client` 2.4.0 with a different patch that has no session recovery in it, and the recovery is in opencode's own code, which maps a 404 on a connection holding a session id to `SessionExpiredError`, reconnects and runs the request once more; see [[opencode-checks-listed-tools-itself-on-a-patched-sdk]].
 
 opencode pins `@modelcontextprotocol/sdk` at an exact `1.29.0` and then patches it. `bun.lock` registers the patch, so it applies on every install rather than being a local experiment.
 

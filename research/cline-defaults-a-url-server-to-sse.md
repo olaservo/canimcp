@@ -14,16 +14,16 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/schemas.ts, createServerTypeSchema
-    commit: 110138b5
+    commit: 20b04272
     path: apps/vscode/src/services/mcp/schemas.ts:116-162
-    date: 2026-08-25
+    date: 2026-11-20
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/config-loader.ts, URL server transform
-    commit: 110138b5
-    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:170-205
-    date: 2026-08-25
+    commit: 20b04272
+    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:172-207
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-25
+lastVerified: 2026-11-20
 related:
   - cline-rewrites-mcp-remote-proxy-configs
 ---
@@ -46,4 +46,4 @@ The `mcp-remote` rewrite described in [[cline-rewrites-mcp-remote-proxy-configs]
 
 ## Compared to opencode
 
-opencode takes a URL with no transport field too, and resolves it the opposite way: Streamable HTTP first, SSE only as a fallback when the connection fails. Same configuration, same ambiguity, opposite default — and opencode's fallback means a server that speaks only one of them still connects, where Cline's does not.
+opencode takes a URL with no transport field too, and resolves it the opposite way: Streamable HTTP only, with no SSE fallback at `b5e0abd7`. Same configuration, same ambiguity, opposite default. An SSE-only server does not connect to opencode, and a Streamable-HTTP-only server does not connect to Cline's default.

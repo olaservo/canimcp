@@ -16,21 +16,21 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/mcp_connection_manager.py, _subscription_filter and _run_subscription_loop
-    commit: 1b58e686
-    path: src/fast_agent/mcp/mcp_connection_manager.py:525-596
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/mcp_connection_manager.py:525-607
+    date: 2026-11-20
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, _handle_message
-    commit: 1b58e686
-    path: src/fast_agent/mcp/client_callback_runtime.py:252-284
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/client_callback_runtime.py:312-344
+    date: 2026-11-20
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/mcp_aggregator.py, server_notification_callback
-    commit: 1b58e686
-    path: src/fast_agent/mcp/mcp_aggregator.py:503
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/mcp_aggregator.py:587-589
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-25
+lastVerified: 2026-11-20
 related:
   - fast-agent-leads-with-the-modern-discover-probe
 ---

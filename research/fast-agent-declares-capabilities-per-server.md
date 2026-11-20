@@ -18,20 +18,20 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, __post_init__ and the callback factories
-    commit: 1b58e686
-    path: src/fast_agent/mcp/client_callback_runtime.py:93-102,123-164
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/client_callback_runtime.py:114-123,144-188
+    date: 2026-11-20
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/elicitation_factory.py, resolve_elicitation_handler
-    commit: 1b58e686
+    commit: 288b5339
     path: src/fast_agent/mcp/elicitation_factory.py:97-146
-    date: 2026-08-25
+    date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/python-sdk
-    title: mcp 2.0.0, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:576-611
-    date: 2026-08-25
+    title: mcp 2.3.0, mcp/client/session.py, _build_capabilities
+    path: mcp/client/session.py:614-649
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-25
+lastVerified: 2026-11-20
 related:
   - cline-declares-no-client-capabilities
   - opencode-declares-only-roots
@@ -57,9 +57,9 @@ Five clients read, and fast-agent is the first whose declaration is not a fixed 
 
 | Client | Declares |
 |---|---|
-| goose | less than it implements |
+| goose | roots and form elicitation |
 | Codex CLI | elicitation |
-| opencode | roots |
+| opencode | roots, elicitation |
 | Cline | nothing |
 | fast-agent | sampling and elicitation by default; roots per server; all three configurable per server |
 

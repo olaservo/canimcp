@@ -15,23 +15,33 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-transport-config.ts, resolveMcpTransportConfig fallthrough
-    commit: a2d54319
-    path: src/agents/mcp-transport-config.ts:258-286
-    date: 2026-08-26
+    commit: 3e7c305f
+    path: src/agents/mcp-transport-config.ts:87-181
+    date: 2026-11-20
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-transport.ts, transport factory
-    commit: a2d54319
-    path: src/agents/mcp-transport.ts:1-40
-    date: 2026-08-26
+    commit: 3e7c305f
+    path: src/agents/mcp-transport.ts:182-213
+    date: 2026-11-20
+  - url: https://github.com/openclaw/openclaw
+    title: src/config/mcp-config-normalize.ts, transport field and type aliases
+    commit: 3e7c305f
+    path: src/config/mcp-config-normalize.ts:12-17,63-65,86-97
+    date: 2026-11-20
+  - url: https://github.com/openclaw/openclaw
+    title: docs/cli/mcp/transports.md, "when omitted, OpenClaw uses sse"
+    commit: 3e7c305f
+    path: docs/cli/mcp/transports.md:236
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-26
+lastVerified: 2026-11-20
 related:
   - cline-defaults-a-url-server-to-sse
 ---
 
 # An OpenClaw server configured by URL alone gets SSE, not Streamable HTTP
 
-The resolver checks stdio first. If the server is not stdio, it reads an effective transport name from the config's `type` or `transport` field, normalized through a shared alias resolver. Streamable HTTP is built only inside `if (effectiveTransport === "streamable-http")`. When no transport was named, that branch is skipped and the next statement builds an SSE transport unconditionally. SSE is therefore the default for a URL-only server, and also the fallback when a config asks for Streamable HTTP and that resolution returns nothing.
+The resolver checks stdio first. If the server is not stdio, it reads an effective transport name from the config's `transport` field, which config normalization fills from a `type` alias (`http` or `streamable-http`) when `transport` is absent. Streamable HTTP is chosen only by `effectiveTransport === "streamable-http" ? "streamable-http" : "sse"`. When no transport was named, that test fails and the resolver builds an SSE transport. SSE is therefore the default for a URL-only server. A transport name that is neither `sse` nor `streamable-http` skips the server with a warning.
 
 This is the second client entry with an SSE default for a bare URL, and the two arrived by different routes. Cline's extension schema orders a union with SSE first and carries a comment saying why: reordering it would break configs written before Streamable HTTP existed. OpenClaw's is structural — the modern transport is behind a name check and the deprecated one is the fallthrough — with no comment defending it.
 

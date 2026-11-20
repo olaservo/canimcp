@@ -12,20 +12,20 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/config.py, MCPServerSettings.protocol_mode
-    commit: 1b58e686
-    path: src/fast_agent/config.py:602
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/config.py:256,701
+    date: 2026-11-20
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_connection.py, sdk_connect_mode
-    commit: 1b58e686
-    path: src/fast_agent/mcp/client_connection.py:62-64,108-120
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/client_connection.py:64-66,69-94,110-122
+    date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/python-sdk
-    title: mcp 2.0.0, mcp/client/_probe.py, negotiate_auto
+    title: mcp 2.3.0, mcp/client/_probe.py, negotiate_auto
     path: mcp/client/_probe.py:52-114
-    date: 2026-08-25
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-25
+lastVerified: 2026-11-20
 related:
   - fast-agent-subscribes-only-on-the-modern-path
   - codex-defaults-to-2025-06-18
@@ -60,7 +60,7 @@ Non-`MCPError` exceptions — network failures, cancellation — propagate. An o
 
 `modern` is fast-agent's own subclass, `_ForcedModernClient`, which enters the client context only after a successful discover so a failed negotiation unwinds the transport cleanly. It is rejected in config validation when combined with the SSE transport.
 
-`legacy` offers `LATEST_HANDSHAKE_VERSION`, which is `2025-11-25` in mcp-types 2.0.0. fast-agent never names a revision of its own; both ends of the range come from the SDK's version registry.
+`legacy` offers `LATEST_HANDSHAKE_VERSION`, which is `2025-11-25` in mcp-types 2.3.0. fast-agent never names a revision of its own; both ends of the range come from the SDK's version registry.
 
 ## Why this matters for a support matrix
 

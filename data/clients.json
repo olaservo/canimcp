@@ -4,11 +4,12 @@
   "goose": {
     "title": "goose",
     "clientInfoNames": [
+      "goose-app",
       "goose-desktop",
       "goose-cli"
     ],
     "url": "https://block.github.io/goose",
-    "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.1.4.",
+    "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.10.0.",
     "category": "agent-framework",
     "kind": "host",
     "platforms": [
@@ -29,9 +30,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-23",
-            "commit": "c5e5929a",
-            "path": "crates/goose/src/agents/mcp_client.rs"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/stdio.rs:14-91"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/mod.rs:723-743"
           }
         ]
       },
@@ -42,9 +51,9 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-23",
-            "commit": "c5e5929a",
-            "path": "crates/goose/Cargo.toml"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/streamable_http.rs:554-655"
           }
         ]
       }
@@ -53,15 +62,23 @@
       "status": "full",
       "listChanged": {
         "status": "full",
-        "notes": "on_tool_list_changed invalidates the tools cache and bumps a version counter, so a changed tool list is picked up mid-session.",
+        "notes": "on_tool_list_changed bumps a version counter that the tools cache is checked against, so a changed tool list is picked up mid-session.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-23",
-            "commit": "c5e5929a",
-            "path": "crates/goose/src/agents/mcp_client.rs:handle_tool_list_changed"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:241-243,388-390"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/mod.rs:265-292"
           }
         ]
       },
@@ -95,6 +112,22 @@
       },
       "evidence": [
         {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:763-857"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/mod.rs:293-332"
+        },
+        {
           "tier": "declared",
           "status": "full",
           "at": "2025-03-26",
@@ -106,46 +139,46 @@
       ]
     },
     "sampling": {
-      "status": "full",
-      "notes": "create_message is implemented and marked #[expect(deprecated)] — sampling is deprecated as of 2026-07-28 (SEP-2577), the revision goose prefers.",
+      "status": "unsupported",
+      "notes": "Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.10.0's default handler answers method not found.",
       "evidence": [
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-08-23",
-          "commit": "c5e5929a",
-          "path": "crates/goose/src/agents/mcp_client.rs:create_message"
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:366-494"
         },
         {
           "tier": "declared",
-          "status": "unsupported",
           "at": "2025-03-26",
           "source": "apify/mcp-client-capabilities",
           "date": "2026-02-02",
           "commit": "4406120",
-          "note": "No sampling key on the goose record."
+          "note": "No sampling key on the goose record.",
+          "status": "unsupported"
         }
       ]
     },
     "elicitation": {
       "status": "full",
-      "notes": "Resolves a session id and a tool-call request id from the request context and returns INTERNAL_ERROR if either is missing, so elicitation only works inside a tool call. Hard 300-second timeout.",
+      "notes": "Resolves a session id and a tool-call request id from the request context and returns INTERNAL_ERROR if either is missing, so elicitation only works inside a tool call. Hard 300-second timeout. Declared as {\"form\": {}}.",
       "form": {
         "status": "full"
       },
       "url": {
         "status": "full",
-        "notes": "URL mode is flattened into the same prompt path as form mode, passed as {\"url\": url} rather than a requested schema."
+        "notes": "URL mode is flattened into the same prompt path as form mode, passed as {\"url\": url} rather than a requested schema. Handled but not declared: the elicitation capability names form only."
       },
       "evidence": [
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-08-23",
-          "commit": "c5e5929a",
-          "path": "crates/goose/src/agents/mcp_client.rs:create_elicitation"
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:252-304,406-483"
         },
         {
           "tier": "declared",
@@ -154,7 +187,7 @@
           "source": "apify/mcp-client-capabilities",
           "date": "2026-02-02",
           "commit": "4406120",
-          "note": "No elicitation key on the goose record. Both form and URL mode are implemented."
+          "note": "No elicitation key on the goose record. Form and URL mode are implemented, and form is declared."
         }
       ],
       "research": [
@@ -163,12 +196,22 @@
     },
     "roots": {
       "status": "full",
-      "notes": "list_roots returns roots derived from the working directory. Marked #[expect(deprecated)] at the declaration site — roots is deprecated as of 2026-07-28 (SEP-2577).",
+      "notes": "list_roots returns one root derived from the working directory the client was connected with. Marked #[expect(deprecated)] at the declaration site — roots is deprecated as of 2026-07-28 (SEP-2577). Declared as roots: {} with no listChanged.",
       "listChanged": {
-        "status": "full",
-        "notes": "Sent on working-directory change with no protocol-version gate, including when 2026-07-28 is negotiated, where the notification no longer exists. rmcp 3.1.4 does not filter it, so it reaches the wire.",
+        "status": "unsupported",
+        "notes": "Not declared and never sent. The notify_roots_list_changed call was removed in 5bd5e548e (2026-10-05, #12161), and each MCP client keeps the working directory it was connected with.",
         "research": [
           "goose-sends-removed-roots-notification"
+        ],
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:197-207,478-479"
+          }
         ]
       },
       "evidence": [
@@ -176,9 +219,9 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-08-23",
-          "commit": "c5e5929a",
-          "path": "crates/goose/src/agents/mcp_client.rs:list_roots"
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:346-373,478-479"
         }
       ]
     },
@@ -190,9 +233,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-08-23",
-          "commit": "c5e5929a",
-          "path": "crates/goose/src/agents/mcp_client.rs:on_logging_message"
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:354-364,392-404"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/lease.rs:581-585,654-673"
         }
       ]
     },
@@ -204,9 +255,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-08-23",
-          "commit": "c5e5929a",
-          "path": "crates/goose/src/agents/mcp_client.rs:get_instructions"
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/lease.rs:454-475"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-20",
+          "commit": "ea5dded7",
+          "path": "crates/oi-kit-agent/src/mcp/client.rs:597-606"
         }
       ]
     },
@@ -219,9 +278,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-23",
-            "commit": "c5e5929a",
-            "path": "crates/goose/src/agents/agent.rs:414-421"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:52-64,306-318"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/goose/src/agents/extension_manager/mod.rs:95-117"
           }
         ],
         "research": [
@@ -237,51 +304,58 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/aaif-goose/goose",
-      "lastVerified": "2026-08-23",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/aaif-goose/goose.git",
         "ref": "main",
-        "checkedCommit": "c5e5929a641ffc0edbccad476e18f726e9024f70",
-        "commitDate": "2026-08-23T23:27:17Z",
-        "checkedAt": "2026-08-23",
+        "checkedCommit": "ea5dded738a46e1eac591642316ca8500a1e8158",
+        "commitDate": "2026-11-20T04:21:50Z",
+        "checkedAt": "2026-11-20",
         "paths": [
-          "crates/goose/src/agents/mcp_client.rs",
-          "crates/goose/src/agents/extension_manager.rs",
-          "crates/goose/src/agents/agent.rs"
+          "crates/oi-kit-agent/src/mcp/client.rs",
+          "crates/oi-kit-agent/src/mcp/mod.rs",
+          "crates/oi-kit-agent/src/mcp/lease.rs",
+          "crates/oi-kit-agent/src/mcp/stdio.rs",
+          "crates/oi-kit-agent/src/mcp/streamable_http.rs",
+          "crates/goose/src/agents/extension_manager/mod.rs",
+          "crates/goose/src/agents/services.rs",
+          "crates/goose/src/acp/server.rs",
+          "Cargo.toml",
+          "Cargo.lock"
         ]
       },
       "sdk": {
         "name": "rmcp",
         "language": "rust",
         "official": true,
-        "declared": "3.0.0",
-        "resolved": "3.1.4",
+        "declared": "3.9.0",
+        "resolved": "3.10.0",
         "patched": false,
-        "notes": "The workspace declares rmcp \"3.0.0\" as a caret requirement and the lockfile resolves it to 3.1.4, so behavioural claims cite 3.1.4. The lockfile also holds rmcp 1.8.0, pulled in by the pctx_code_execution_runtime, pctx_config and pctx_registry crates; that copy is unrelated to goose's own MCP client. [patch.crates-io] exists but covers agent-client-protocol, v8 and cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 itself rather than inheriting a version from rmcp, using rmcp's ProtocolVersion::LATEST only as the legacy fallback.",
+        "notes": "The workspace declares rmcp \"3.9.0\" as a caret requirement and the lockfile resolves it to 3.10.0, so behavioural claims cite 3.10.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-24",
-            "commit": "c5e5929a",
-            "path": "Cargo.toml:23,115-119"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "Cargo.toml:21,108-109"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-24",
-            "commit": "c5e5929a",
-            "path": "Cargo.lock"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "Cargo.lock:8154-8157"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-08-24",
-            "commit": "c5e5929a",
-            "path": "crates/goose/src/agents/mcp_client.rs:677-695"
+            "date": "2026-11-20",
+            "commit": "ea5dded7",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:573-596"
           }
         ]
       }
@@ -293,7 +367,7 @@
       "codex-mcp-client"
     ],
     "url": "https://openai.com/codex",
-    "description": "OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.1.3 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.",
+    "description": "OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6.0 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.",
     "category": "cli",
     "kind": "host",
     "platforms": [
@@ -309,29 +383,59 @@
     "transports": {
       "stdio": {
         "status": "full",
-        "notes": "Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments.",
+        "notes": "Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:409"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:509-531,555-607"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/stdio_server_launcher.rs:896-961",
+            "note": "The executor process transport."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/features/src/lib.rs:1819-1824",
+            "note": "mcp_connection_sharing is Stable and on by default from ac784eb1 (2026-11-19). The newest stable tag in the clone, rust-v0.167.0, has it off."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/codex-mcp/src/server.rs:93-116",
+            "note": "Which local stdio servers are eligible for the server/discover probe."
           }
+        ],
+        "research": [
+          "codex-defaults-to-2025-06-18"
         ]
       },
       "sse": {
         "status": "unsupported",
-        "notes": "rmcp is built without transport-sse-client. Only transport-child-process, transport-async-rw and the streamable HTTP client and server are enabled.",
+        "notes": "rmcp 3.6.0 has no standalone SSE client feature. Codex enables transport-child-process, transport-async-rw and the streamable HTTP client and server, and its config has only stdio and streamable HTTP transports.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/Cargo.toml"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/Cargo.toml:37-48"
           }
         ]
       },
@@ -343,9 +447,27 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:483"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:669-716"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:1978",
+            "note": "Session-expiry retry on 404."
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/http_client_adapter.rs:74",
+            "note": "Redirect policy."
           },
           {
             "tier": "declared",
@@ -362,7 +484,7 @@
     "authentication": {
       "oauth": {
         "status": "full",
-        "notes": "Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.",
+        "notes": "Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. When the server also advertises authorization_response_iss_parameter_supported and names an issuer, the identifier is one shared document, https://chatgpt.com/oauth/codex/client.json. A per-server oauth.client_id and client_secret can be configured instead. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.",
         "clientIdMetadataDocument": true,
         "dynamicRegistration": true,
         "resourceIndicators": true,
@@ -377,36 +499,45 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/oauth_client_registration.rs:32"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/oauth_client_registration.rs:37-135"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/oauth/issuer_binding.rs:11",
-            "note": "issuerIdentification: rejects an authorization endpoint that cannot be bound to its issuer, honouring authorization_response_iss_parameter_supported. Two hardcoded compatibility exceptions, for Figma and Robinhood."
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/oauth/issuer_binding.rs:11-77",
+            "note": "issuerIdentification: rejects an authorization endpoint that cannot be bound to its issuer, honouring authorization_response_iss_parameter_supported. Two hardcoded compatibility exceptions, for Mercado Pago and Robinhood."
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/perform_oauth_login.rs:585-589",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/perform_oauth_login.rs:739-743",
             "note": "resourceIndicators: a resource parameter is appended to the authorization URL. Whether it also reaches the token endpoint is rmcp's, not read."
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/auth_status.rs:195",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/auth_status.rs:219-285",
             "note": "protectedResourceMetadata: discovery goes through rmcp's AuthorizationManager. Codex's own test drives a WWW-Authenticate resource_metadata challenge end to end, so the behaviour holds, but the implementation was not read."
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/oauth_client_credentials.rs:13-40",
+            "note": "The pre-registered client from per-server oauth.client_id and client_secret."
           }
         ],
         "research": [
@@ -421,27 +552,61 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/http_headers.rs"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/http_headers.rs:141,352"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/config/src/mcp_types.rs:408-417",
+            "note": "The config fields."
           }
         ]
       }
     },
     "tools": {
       "status": "full",
-      "notes": "In the shipped default mode nextCursor from tools/list is discarded, so only the first page of a server's tool catalog is read.",
+      "notes": "tools/list is paginated to the end in every protocol mode, capped at 100 pages and 2,048 tools per server. Before cc31e374 (first stable release 0.162.0) the default mode discarded nextCursor and read one page.",
       "listChanged": {
         "status": "partial",
-        "notes": "The notification is received and written to the tracing log. Nothing re-lists, so a tool added mid-session is not picked up.",
+        "notes": "The notification is received, written to the tracing log and counted per connection. A default install does not re-list, so a tool added mid-session is not picked up. The mcp_tool_list_changed flag, under development and off, re-lists after a notification.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:86"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:86-88"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/tool_list_changes.rs:57-68"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/codex-mcp/src/connection_manager.rs:290-312"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/features/src/lib.rs:1813-1818",
+            "note": "mcp_tool_list_changed is under development and off."
           }
         ]
       },
@@ -478,9 +643,17 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:618"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:846-924"
+        },
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/pagination.rs:27-80"
         },
         {
           "tier": "declared",
@@ -490,9 +663,6 @@
           "date": "2026-02-02",
           "commit": "4406120"
         }
-      ],
-      "research": [
-        "codex-reads-one-page-of-tools"
       ]
     },
     "resources": {
@@ -500,20 +670,41 @@
       "notes": "list, templates and read are all implemented, and all three are exposed to the model as built-in tools rather than through a host-side picker.",
       "listChanged": {
         "status": "partial",
-        "notes": "Received and logged only, like tools/list_changed."
+        "notes": "Received and logged only, like tools/list_changed.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:82-84"
+          }
+        ]
       },
       "subscribe": {
         "status": "unsupported",
-        "notes": "No resources/subscribe call. resources/updated notifications are logged if they arrive."
+        "notes": "No resources/subscribe call. resources/updated notifications are logged if they arrive.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:74-80",
+            "note": "on_resource_updated logs. No resources/subscribe call in codex-rs/rmcp-client/src or codex-rs/codex-mcp/src."
+          }
+        ]
       },
       "evidence": [
         {
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/rmcp-client/src/rmcp_client.rs:711-770"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/rmcp-client/src/rmcp_client.rs:886-1002"
         }
       ]
     },
@@ -525,8 +716,8 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -538,8 +729,8 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -552,15 +743,15 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1006"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1370-1401"
         }
       ]
     },
     "elicitation": {
       "status": "full",
-      "notes": "The only capability Codex declares by default. Form and URL modes are added when the auth_elicitation feature is on, which is stable and default-enabled; without it an empty elicitation object is declared.",
+      "notes": "The only standard capability Codex declares by default. Form and URL modes are added when the auth_elicitation feature is on, which is stable and default-enabled; without it an empty elicitation object is declared. On stdio connections Codex also declares the vendor keys experimental[\"codex/auth-change\"] and, for a pooled local stdio connection, extensions[\"codex/connection-lease\"].",
       "form": {
         "status": "full"
       },
@@ -572,9 +763,27 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/core/src/config/mod.rs:1742-1750"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/core/src/config/mod.rs:2089-2097"
+        },
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/features/src/lib.rs:2377-2382",
+          "note": "auth_elicitation is stable and default-enabled."
+        },
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1178-1194",
+          "note": "The vendor capability keys on stdio connections."
         },
         {
           "tier": "declared",
@@ -594,9 +803,18 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/rmcp-client/src/logging_client_handler.rs"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:40-141"
+        },
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/connection_manager.rs:433",
+          "note": "ready_selected_capability_roots, the Codex-internal concept."
         }
       ],
       "research": [
@@ -611,9 +829,9 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:96"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:99-140"
         }
       ]
     },
@@ -625,9 +843,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:967"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1063-1082,1282"
         }
       ]
     },
@@ -639,9 +857,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1041"
+          "date": "2026-11-20",
+          "commit": "2fb728da",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1403-1421"
         }
       ]
     },
@@ -653,8 +871,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "openai/codex",
-          "date": "2026-08-24",
-          "commit": "b705b6b0",
+          "date": "2026-11-20",
+          "commit": "2fb728da",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -668,9 +886,48 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/rmcp-client/src/elicitation_client_service.rs:31"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/elicitation_client_service.rs:40,277-286"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:82-86",
+            "note": "The legacy form-elicitation flag."
+          }
+        ]
+      },
+      "openai/elicitation": {
+        "status": "partial",
+        "notes": "A vendor elicitation extension. Method openai/elicitation/create with form and userVerification modes. Declared only when the app-server host declares it; the TUI and codex exec declare none of the four extensions. userVerification is stripped for every server except the host-owned Apps server.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/protocol/src/mcp.rs:27"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/elicitation_client_service.rs:41,260-309"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:14-51,76-81"
           }
         ]
       },
@@ -682,23 +939,23 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/protocol/src/mcp.rs:76"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/protocol/src/mcp.rs:31,91"
           }
         ]
       },
       "io.modelcontextprotocol/ui": {
         "status": "partial",
-        "notes": "Forwarded to servers only when the app-server host declares it. Codex keeps just the three extension namespaces it knows and drops anything else the host declares.",
+        "notes": "Forwarded to servers only when the app-server host declares it. Codex keeps just the four extension namespaces it knows and drops anything else the host declares.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:14"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:58-88"
           }
         ]
       }
@@ -712,9 +969,18 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/core/src/tools/spec_plan.rs:1001"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/core/src/tools/spec_plan.rs:1265-1285"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/core/src/tools/handlers/mcp_resource.rs:154-186,297-312",
+            "note": "Pagination cursors."
           }
         ],
         "research": [
@@ -724,7 +990,6 @@
     },
     "research": [
       "codex-defaults-to-2025-06-18",
-      "codex-reads-one-page-of-tools",
       "codex-prefers-a-chatgpt-hosted-client-identifier"
     ],
     "metadata": {
@@ -732,45 +997,59 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/openai/codex",
-      "lastVerified": "2026-08-24",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/openai/codex.git",
         "ref": "main",
-        "checkedCommit": "b705b6b076c64e5d66d6b340a32b07ae32d20486",
-        "commitDate": "2026-08-24T17:07:21Z",
-        "checkedAt": "2026-08-24",
+        "checkedCommit": "2fb728da7d0b3e4273f19c3b4eb798a13cacb37c",
+        "commitDate": "2026-11-20T06:05:04Z",
+        "checkedAt": "2026-11-20",
         "paths": [
           "codex-rs/rmcp-client/src",
           "codex-rs/codex-mcp/src",
           "codex-rs/core/src/tools/handlers/mcp_resource",
           "codex-rs/core/src/config/mod.rs",
-          "codex-rs/features/src/lib.rs"
+          "codex-rs/features/src/lib.rs",
+          "codex-rs/core/src/tools/spec_plan.rs",
+          "codex-rs/config/src/mcp_types.rs",
+          "codex-rs/protocol/src/mcp.rs",
+          "codex-rs/Cargo.toml",
+          "codex-rs/Cargo.lock"
         ]
       },
       "sdk": {
         "name": "rmcp",
         "language": "rust",
         "official": true,
-        "declared": "=3.1.3",
-        "resolved": "3.1.3",
+        "declared": "=3.6.0 (git rev b11a40d8)",
+        "resolved": "3.6.0",
         "patched": false,
-        "notes": "Pinned exactly with '=', so the declared requirement and the resolved version agree. codex-rs/patches/ holds twenty-odd build-toolchain patches (v8, llvm, windows link flags) and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects 2025-06-18 through its own protocol mode rather than inheriting a version from rmcp.",
+        "notes": "A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/Cargo.toml:401,587-597"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/Cargo.toml:485,689-702"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-08-24",
-            "commit": "b705b6b0",
-            "path": "codex-rs/Cargo.lock"
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/Cargo.lock:13637-13639"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-20",
+            "commit": "2fb728da",
+            "path": "codex-rs/rmcp-client/src/protocol_mode.rs:21-36",
+            "note": "Codex names 2025-06-18 and 2026-07-28 itself."
           }
         ]
       }
@@ -782,7 +1061,7 @@
       "opencode"
     ],
     "url": "https://opencode.ai",
-    "description": "Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of SDK 1.29.0, so its transport behaviour is not stock.",
+    "description": "Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK. Ships a patched copy of @modelcontextprotocol/client 2.4.0 and its own stdio transport, so its behaviour is not stock.",
     "category": "cli",
     "kind": "host",
     "platforms": [
@@ -794,7 +1073,8 @@
       "2024-11-05",
       "2025-03-26",
       "2025-06-18",
-      "2025-11-25"
+      "2025-11-25",
+      "2026-07-28"
     ],
     "preferredProtocolVersion": "2025-11-25",
     "transports": {
@@ -805,9 +1085,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:347"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:464-477"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/stdio.ts:54-134"
           },
           {
             "tier": "declared",
@@ -818,19 +1106,20 @@
             "commit": "4406120",
             "note": "Records stdio, agreeing with the read."
           }
-        ]
+        ],
+        "notes": "opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line."
       },
       "sse": {
-        "status": "full",
-        "notes": "Tried as a fallback when Streamable HTTP fails to connect, against the same URL. A remote server is configured by URL alone, with no transport field to choose between them.",
+        "status": "unsupported",
+        "notes": "No SSE transport. A remote server is always opened with StreamableHTTPClientTransport, and nothing imports SSEClientTransport. At 7cde8329 SSE was tried as a fallback when Streamable HTTP failed to connect.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:269-284"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:485-492"
           },
           {
             "tier": "declared",
@@ -839,21 +1128,29 @@
             "source": "apify/mcp-client-capabilities",
             "date": "2026-02-02",
             "commit": "4406120",
-            "note": "Records stdio only, at 2025-06-18, on platform \"web\". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP or SSE."
+            "note": "Records stdio only, at 2025-06-18, on platform \"web\". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP."
           }
         ]
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "Tried first for every remote server.",
+        "notes": "The only remote transport. By default the configured URL is dialled with ?codemode=false appended, and retried once without it when the server answers 400 or 404. A transient connect failure (408, 429, 5xx other than 501, or a network error) is retried twice within the startup timeout. On close the client sends a DELETE for a legacy session.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:269-278"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:485-507"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:62-68,511-529"
           },
           {
             "tier": "declared",
@@ -862,7 +1159,7 @@
             "source": "apify/mcp-client-capabilities",
             "date": "2026-02-02",
             "commit": "4406120",
-            "note": "Records stdio only, at 2025-06-18, on platform \"web\". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP or SSE."
+            "note": "Records stdio only, at 2025-06-18, on platform \"web\". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP."
           }
         ]
       }
@@ -870,8 +1167,8 @@
     "authentication": {
       "oauth": {
         "status": "full",
-        "notes": "Dynamic Client Registration is the default path; a clientId can be pinned in config instead. token_endpoint_auth_method is none unless a clientSecret is configured. The callback is a loopback server on port 19876 by default.",
-        "clientIdMetadataDocument": false,
+        "notes": "A configured client_id wins. Otherwise opencode uses a Client ID Metadata Document at https://opencode.ai/oauth/opencode/client.json when the authorization server advertises client_id_metadata_document_supported and the none token auth method and no redirect_uri is configured, and falls back to Dynamic Client Registration. token_endpoint_auth_method is none unless a client_secret is configured, then client_secret_post. The callback is a loopback server on 127.0.0.1 at callback_port, else the redirect_uri port, else an ephemeral port. A connection never starts a login; it refreshes a stored token 30 seconds before expiry or after a 401. oauth: false turns OAuth off for a server.",
+        "clientIdMetadataDocument": true,
         "dynamicRegistration": true,
         "grantTypes": [
           "authorization_code",
@@ -882,41 +1179,74 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/oauth-provider.ts:43-51"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/oauth.ts:36,149-193,492-499,526-542"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/oauth.ts:46,264-347",
+            "note": "Token refresh ahead of expiry and after a 401."
           }
         ]
       },
       "header": {
         "status": "full",
-        "notes": "A headers map on a remote server is passed through as requestInit headers on both transports.",
+        "notes": "A headers map on a remote server is passed through as requestInit headers on the Streamable HTTP transport. The OAuth challenge probe sends them too.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:274,281"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:486-487"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/oauth.ts:507-511"
           }
         ]
       }
     },
     "tools": {
       "status": "full",
-      "notes": "tools/list is only called when the server declares a tools capability. Fully paginated, with a duplicate-cursor guard and a 1000-page cap. A tool result carrying only structuredContent is stringified into a text block before it reaches the model.",
+      "notes": "tools/list is only called when the server declares a tools capability. Pagination is the SDK's: listTools walks every page with a 64-page cap and stops on a repeated cursor with identical items. The SDK is patched to leave listed tools unvalidated; opencode checks each one and skips a tool with no name or a non-object inputSchema. A tools/call carries _meta[\"ai.opencode/sessionID\"] and a progress token. A transient list failure is retried twice. A tool result carrying only structuredContent is stringified into a text block before it reaches the model.",
       "listChanged": {
         "status": "full",
-        "notes": "Re-lists the catalog and publishes a ToolsChanged event, so a changed catalog is picked up mid-session. The handler is registered only when the server declared tools.",
+        "notes": "Re-lists the catalog and publishes mcp.tools.changed, so a changed catalog is picked up mid-session. The SDK registers the handler only when the server declared tools.listChanged.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:461-470"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:312-317,365-369"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/connection.ts:159"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/tool/mcp.ts:129-140"
           }
         ]
       },
@@ -949,9 +1279,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/catalog.ts:18-35,143-160"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:548-549,628-679"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/tool/mcp.ts:49-120"
         },
         {
           "tier": "declared",
@@ -964,23 +1302,39 @@
         }
       ],
       "research": [
-        "opencode-retries-tools-list-without-output-schema"
+        "opencode-checks-listed-tools-itself-on-a-patched-sdk"
       ]
     },
     "resources": {
       "status": "full",
-      "notes": "Exposed to the model as three built-in tools rather than a host-side picker, each behind a permission ask. Registered only when some connected server declares resources. A user can also attach a resource to a message directly.",
+      "notes": "Exposed to the model as two built-in tools rather than a host-side picker, each behind a permission ask. The tools are registered whether or not any server declares resources. resources/list and resources/templates/list are sent only to a server that declared resources.",
       "listChanged": {
-        "status": "unsupported",
-        "notes": "No resources/list_changed handler is registered.",
+        "status": "partial",
+        "notes": "A handler is registered through the SDK's listChanged option and republished as an mcp.resources.changed bus event. Nothing in core consumes the event, and opencode keeps no resource cache, so the model's list tool reads live on each call.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:457-462"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:368"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/connection.ts:161"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/index.ts:137,642"
           }
         ]
       },
@@ -992,9 +1346,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/mcp/index.ts:457-462"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:686-703"
           }
         ]
       },
@@ -1003,9 +1357,18 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/session/tools.ts:27-31,136-139"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/tool/plugin/mcp-resource.ts:16-98"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/plugin/internal.ts:285",
+          "note": "The resource tools plugin is in the unconditional internal list."
         }
       ],
       "research": [
@@ -1014,19 +1377,37 @@
     },
     "prompts": {
       "status": "partial",
-      "notes": "Every server prompt becomes a slash command. Only text content survives: a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the template. Arguments are filled positionally as $1, $2 regardless of their names.",
+      "notes": "Every server prompt becomes a slash command named <server>:<prompt>. Only text content survives: a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the text. Arguments are filled positionally: the words typed after the command are assigned to the declared arguments in order, regardless of their names.",
       "listChanged": {
-        "status": "unsupported",
-        "notes": "No prompts/list_changed handler is registered."
+        "status": "full",
+        "notes": "The SDK handler re-lists prompts and publishes mcp.prompts.changed, and the command plugin reloads the slash commands.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/connection.ts:123-129,160"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/plugin/command.ts:18-26"
+          }
+        ]
       },
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/command/index.ts:105-130"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/plugin/command.ts:55-81,96-102"
         }
       ],
       "research": [
@@ -1041,223 +1422,322 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp"
         }
       ]
     },
     "sampling": {
       "status": "unsupported",
-      "notes": "Present in the capability object but commented out, against issue 11948. The client never declares it, so a server cannot ask.",
+      "notes": "Not declared, and no sampling/createMessage handler is registered. The commented-out key from the old client is gone.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:41-42"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:357-363"
         }
-      ],
-      "research": [
-        "opencode-declares-only-roots"
       ]
     },
     "elicitation": {
-      "status": "unsupported",
-      "notes": "Commented out against issue 23066.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:43-44"
-        }
-      ],
-      "research": [
-        "opencode-declares-only-roots"
-      ]
-    },
-    "roots": {
       "status": "full",
-      "notes": "The only capability opencode declares. list_roots returns exactly one root, the file URL of the instance directory.",
-      "listChanged": {
-        "status": "unsupported",
-        "notes": "Declared as a bare roots:{} with no listChanged, and nothing sends notifications/roots/list_changed. The single root is fixed at client creation."
+      "notes": "Declared as elicitation: { form: {}, url: {} } on every connection; no flag gates it. Form mode renders the requested schema as a form and returns accept with the answers or cancel. URL mode shows the URL as an external field and returns accept or cancel; on the handshake era notifications/elicitation/complete settles the form. A schema with no properties is accepted with empty content without asking. decline is never returned.",
+      "form": {
+        "status": "full"
+      },
+      "url": {
+        "status": "full"
       },
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:46,76-80"
-        }
-      ]
-    },
-    "logging": {
-      "status": "partial",
-      "notes": "Receives notifications/message and routes them to the server log. Never calls logging/setLevel, so the level is whatever the server defaults to.",
-      "evidence": [
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:358,416-429"
+        },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:457-459"
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/index.ts:480-554,596"
         }
       ]
     },
-    "instructions": {
+    "roots": {
       "status": "full",
-      "notes": "Server instructions are trimmed and carried per server.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:399"
-        }
-      ]
-    },
-    "icons": {
-      "status": "unsupported",
-      "notes": "No icon handling anywhere in the client.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp"
-        }
-      ]
-    },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Commented out against issue 28567, though SDK 1.29.0 carries an experimental tasks client.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "anomalyco/opencode",
-          "date": "2026-08-24",
-          "commit": "7cde8329",
-          "path": "packages/opencode/src/mcp/index.ts:47-48"
-        }
-      ],
-      "research": [
-        "opencode-declares-only-roots"
-      ]
-    },
-    "bonusFeatures": {
-      "modelInitiatedResourceRead": {
-        "status": "full",
-        "notes": "list_mcp_resources, list_mcp_resource_templates and read_mcp_resource - the same three tool names Codex uses, arrived at independently on a different SDK and language. Each is permission-gated; blobs are capped at 10MB.",
+      "notes": "Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "Declared as a bare roots:{} with no listChanged, and nothing sends notifications/roots/list_changed. The single root is fixed at client creation.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/src/session/tools.ts:27-31"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:361,378"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:359-361,377-378"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/connection.ts:188",
+          "note": "A pooled connection declares no roots."
+        }
+      ]
+    },
+    "logging": {
+      "status": "unsupported",
+      "notes": "No notifications/message handler is registered and logging/setLevel is never called. Server stderr on stdio goes to the debug log, which is not MCP logging. At 7cde8329 the client received notifications/message and routed it to the server log.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:372-429"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/stdio.ts:177-189",
+          "note": "The stderr drain."
+        }
+      ]
+    },
+    "instructions": {
+      "status": "full",
+      "notes": "Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:556"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/index.ts:1008-1016"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/instructions.ts:30-31,82-102"
+        }
+      ]
+    },
+    "icons": {
+      "status": "unsupported",
+      "notes": "No icon handling. The tool type opencode keeps from tools/list drops icons.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:140-155"
+        }
+      ]
+    },
+    "tasks": {
+      "status": "unsupported",
+      "notes": "Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-20",
+          "commit": "b5e0abd7",
+          "path": "packages/core/src/mcp/client.ts:357-363"
+        }
+      ]
+    },
+    "bonusFeatures": {
+      "modelInitiatedResourceRead": {
+        "status": "full",
+        "notes": "Two tools, list_mcp_resources and read_mcp_resource, registered in the opencode namespace, so the effective names are opencode_list_mcp_resources and opencode_read_mcp_resource. The list tool returns resources and templates together, for one server or all. Each call is permission-gated. Image and PDF blobs are passed to the model as files.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/tool/plugin/mcp-resource.ts:16-98"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/tool/runtime.ts:300-305",
+            "note": "The opencode_ prefix on the effective tool names."
           }
         ],
         "research": [
           "model-initiated-resource-read"
         ]
       },
-      "patchedSdkSessionRecovery": {
+      "sessionRecovery": {
         "status": "full",
-        "notes": "opencode patches SDK 1.29.0 so a 404 on a request carrying a session id clears the session, fires onsessionexpired and retries once. Stock 1.29.0 has no recovery path. The patch also treats a JSON-RPC error over SSE as a response, and stops a stale session id from overwriting a newer one.",
+        "notes": "A 404, or a 400 with body \"Bad Request: Server not initialized\", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "patches/@modelcontextprotocol%2Fsdk@1.29.0.patch"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:438-460"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/connection.ts:131-151"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/index.ts:1006,1028,1056"
           }
         ],
         "research": [
+          "opencode-checks-listed-tools-itself-on-a-patched-sdk",
           "opencode-patches-its-sdk-for-session-recovery"
         ]
       }
     },
     "research": [
-      "opencode-declares-only-roots",
-      "opencode-patches-its-sdk-for-session-recovery"
+      "opencode-checks-listed-tools-itself-on-a-patched-sdk"
     ],
     "metadata": {
       "vendor": "Anomaly",
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/anomalyco/opencode",
-      "lastVerified": "2026-08-24",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/anomalyco/opencode.git",
         "ref": "dev",
-        "checkedCommit": "7cde8329bc33801248d6aafa2a4dd46dc86e5683",
-        "commitDate": "2026-08-24T17:19:53Z",
-        "checkedAt": "2026-08-24",
+        "checkedCommit": "b5e0abd7306f35f989f419de286aec946223d977",
+        "commitDate": "2026-11-20T06:21:14Z",
+        "checkedAt": "2026-11-20",
         "paths": [
-          "packages/opencode/src/mcp/index.ts",
-          "packages/opencode/src/mcp/catalog.ts",
-          "packages/opencode/src/mcp/oauth-provider.ts",
-          "packages/opencode/src/session/tools.ts",
-          "packages/opencode/src/command/index.ts",
-          "packages/core/src/v1/config/mcp.ts",
-          "patches/@modelcontextprotocol%2Fsdk@1.29.0.patch"
+          "packages/core/src/mcp/client.ts",
+          "packages/core/src/mcp/index.ts",
+          "packages/core/src/mcp/connection.ts",
+          "packages/core/src/mcp/pool.ts",
+          "packages/core/src/mcp/oauth.ts",
+          "packages/core/src/mcp/stdio.ts",
+          "packages/core/src/mcp/socket-client.ts",
+          "packages/core/src/mcp/instructions.ts",
+          "packages/core/src/tool/mcp.ts",
+          "packages/core/src/tool/plugin/mcp-resource.ts",
+          "packages/core/src/plugin/command.ts",
+          "packages/schema/src/mcp.ts",
+          "packages/schema/src/config/flag.ts",
+          "packages/core/package.json",
+          "bun.lock",
+          "patches/@modelcontextprotocol%2Fclient@2.4.0.patch"
         ]
       },
       "sdk": {
-        "name": "@modelcontextprotocol/sdk",
+        "name": "@modelcontextprotocol/client",
         "language": "typescript",
         "official": true,
-        "declared": "1.29.0",
-        "resolved": "1.29.0",
+        "declared": "2.4.0",
+        "resolved": "2.4.0",
         "patched": true,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Pinned exactly, then patched. bun.lock registers a patch against the resolved package that changes four runtime files - client/index.js, client/streamableHttp.js, client/auth.js and shared/protocol.js - so the published 1.29.0 does not describe what runs. The SDK is also where opencode's protocol version comes from: 1.29.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07, a revision this registry does not track because it was never published.",
+        "notes": "Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. 2026-07-28 is reached only when a server's config sets protocol to auto or 2026-07-28, or pool to true.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "packages/opencode/package.json:83"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/package.json:110-112"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-08-24",
-            "commit": "7cde8329",
-            "path": "bun.lock:595,1070,1832"
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "bun.lock:998,1700,1702"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "patches/@modelcontextprotocol%2Fclient@2.4.0.patch"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-20",
+            "commit": "b5e0abd7",
+            "path": "packages/core/src/mcp/client.ts:808-813",
+            "note": "An unset or legacy protocol setting sends plain initialize with no server/discover probe."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "modelcontextprotocol/typescript-sdk",
-            "date": "2026-08-24",
-            "commit": "e12cbd70",
-            "path": "src/types.ts:4-6",
-            "note": "Tag v1.29.0 is commit e12cbd70, committed 2026-03-30. LATEST_PROTOCOL_VERSION = '2025-11-25'; SUPPORTED_PROTOCOL_VERSIONS lists 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05, 2024-10-07."
+            "date": "2026-11-20",
+            "path": "dist/schemas-DscsoNZN.mjs:4-12",
+            "note": "@modelcontextprotocol/core 2.4.0, read from the npm tarball. LATEST_PROTOCOL_VERSION = '2025-11-25'; SUPPORTED_PROTOCOL_VERSIONS lists 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05, 2024-10-07."
           }
         ],
         "research": [
-          "opencode-patches-its-sdk-for-session-recovery"
+          "opencode-checks-listed-tools-itself-on-a-patched-sdk"
         ]
       }
     }
@@ -1269,7 +1749,7 @@
       "@cline/core"
     ],
     "url": "https://cline.bot/",
-    "description": "Open-source coding agent shipping as a VS Code extension and a CLI from one monorepo. Both surfaces use the official TypeScript SDK unpatched, except the CLI's stdio path, which is a hand-written JSON-RPC client fixed at 2024-11-05.",
+    "description": "Open-source coding agent shipping as a VS Code extension and a CLI from one monorepo. Both surfaces use the official TypeScript SDK unpatched, except the stdio path in @cline/core, which is a hand-written JSON-RPC client fixed at 2024-11-05.",
     "category": "ide",
     "kind": "host",
     "platforms": [
@@ -1287,23 +1767,23 @@
     "transports": {
       "stdio": {
         "status": "full",
-        "notes": "Two implementations. The extension uses the SDK's StdioClientTransport. The CLI uses a hand-written client that tries newline-delimited framing first and respawns the server with LSP-style Content-Length framing if initialize fails, a framing MCP's stdio transport does not define.",
+        "notes": "Two implementations. The extension uses the SDK's StdioClientTransport. The CLI uses a hand-written client that tries newline-delimited framing first and respawns the server with LSP-style Content-Length framing if initialize fails, a framing MCP's stdio transport does not define. Agent Plugin MCP servers use the hand-written client on every surface, the extension included.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:484-493"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:487-496"
           },
           {
             "tier": "read",
             "at": "2024-11-05",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/client.ts:214-238"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:256-299"
           },
           {
             "tier": "declared",
@@ -1313,6 +1793,15 @@
             "date": "2026-02-02",
             "commit": "4406120",
             "note": "Records stdio, agreeing with the read."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/runtime/orchestration/runtime-builder.ts:230-243,615-629",
+            "note": "Agent Plugin MCP servers are registered through @cline/core on every surface."
           }
         ],
         "research": [
@@ -1327,17 +1816,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:574-577"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:577-580"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:439-451"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:576-589"
           },
           {
             "tier": "declared",
@@ -1361,17 +1850,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:598-622"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:601-625"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:454-458"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:591-595"
           },
           {
             "tier": "declared",
@@ -1391,7 +1880,7 @@
     "authentication": {
       "oauth": {
         "status": "full",
-        "notes": "One flow shared by both surfaces: the extension delegates to @cline/core's authorizeMcpServerOAuth, the same call the CLI makes. Tokens live in the shared settings file under each server's oauth key, so an authorization completed in the CLI is picked up by an open extension window. token_endpoint_auth_method is none unless a clientSecret is configured. The callback binds a loopback server, first free port of 1456-1461. Discovery, PKCE and protected-resource metadata are the SDK's auth() and were not read.",
+        "notes": "One flow shared by both surfaces: the extension delegates to @cline/core's authorizeMcpServerOAuth, the same call the CLI makes. Tokens live in the shared settings file under each server's oauth key, so an authorization completed in the CLI is picked up by an open extension window. token_endpoint_auth_method is none unless a clientSecret is configured. The callback binds a loopback server on the first free port, 1456-1461 from the extension and 1456-1458 from the CLI. Discovery, PKCE and protected-resource metadata are the SDK's auth() and were not read.",
         "clientIdMetadataDocument": false,
         "dynamicRegistration": true,
         "grantTypes": [
@@ -1403,16 +1892,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:98-106"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/oauth.ts:214-222"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
+            "date": "2026-11-20",
+            "commit": "20b04272",
             "path": "apps/vscode/src/services/mcp/McpOAuthManager.ts:108-116,242-269"
           }
         ]
@@ -1425,24 +1914,24 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:546-548,618-620"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:549-551,621-623"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/client.ts:712-720"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:993-1001"
           }
         ]
       }
     },
     "tools": {
       "status": "full",
-      "notes": "One page of tools/list, no cursor, on both surfaces. Every tool is flattened into a model-facing tool named <server>__<tool>, sanitized to [A-Za-z0-9_-] and truncated to 64 characters with an 8-character sha1 suffix when it does not fit. outputSchema and structuredContent appear nowhere in the codebase, so a tool's structured output is dropped even though the extension negotiates a revision that defines it.",
+      "notes": "One page of tools/list, no cursor, on both surfaces. Every tool is flattened into a model-facing tool named <server>__<tool>, sanitized to [A-Za-z0-9_-] and truncated to 64 characters with an 8-character sha1 suffix when it does not fit. A tool whose _meta.ui.visibility is an array without \"model\" is left out of the model's tool list, whether or not MCP Apps is on. Tool annotations are kept on the descriptor and not passed to the model. outputSchema and structuredContent appear nowhere in the codebase.",
       "listChanged": {
         "status": "partial",
         "notes": "The extension registers a handler and refreshes the cached list, coalescing a burst into one refresh and retrying a failed refresh three times with backoff. The CLI registers no handler, so a catalog change is invisible to it until restart.",
@@ -1451,17 +1940,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:767-769,1009-1027"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:770-772,1012-1030"
           },
           {
             "tier": "read",
             "at": "2024-11-05",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/client.ts",
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:549-577",
             "note": "No notification handler of any kind in either the stdio or the URL client."
           }
         ]
@@ -1507,24 +1996,24 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:884-900"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:887-903"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:256-282"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:372-408"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "sdk/packages/core/src/extensions/mcp/name-transform.ts:1-35"
         },
         {
@@ -1535,12 +2024,37 @@
           "date": "2026-02-02",
           "commit": "4406120",
           "note": "Records tools and tools.listChanged as full. The read agrees on tools and finds listChanged on the extension only."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "cline/cline",
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/tools.ts:23"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "cline/cline",
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/apps.ts:38-62",
+          "note": "The _meta.ui.visibility filter."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "cline/cline",
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/annotations.ts:15-31"
         }
       ]
     },
     "resources": {
       "status": "partial",
-      "notes": "The extension lists resources and resource templates and shows them in the server configuration UI. Nothing reads one: there is no resources/read call and no readResource anywhere, and the access_mcp_resource tool id survives in the tool enum with no registration and no handler. The CLI does not list them at all.",
+      "notes": "The extension lists resources and resource templates and shows them in the server configuration UI. The model cannot read one: the access_mcp_resource tool id survives in the tool enum with no registration and no handler. A resources/read call was added in October 2026 for MCP Apps. In @cline/core it reads only ui:// URIs, for the host, and only when the session sets mcpApps: true, which no app in the repo does. The extension's McpHub.readResource has no caller. The CLI does not list resources at all.",
       "listChanged": {
         "status": "full",
         "notes": "Extension only, same debounced refresh as tools.",
@@ -1549,9 +2063,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:770-772"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:773-775"
           }
         ]
       },
@@ -1563,9 +2077,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:767-784"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:770-787"
           }
         ]
       },
@@ -1574,24 +2088,24 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:915-971"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:918-974"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "apps/vscode/src/shared/tools.ts:20"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/ServerRow.tsx:323-363"
         },
         {
@@ -1602,6 +2116,24 @@
           "date": "2026-02-02",
           "commit": "4406120",
           "note": "Records resources as full. The read finds a list and a UI tab, and no path from either to the model or to the resource contents."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "cline/cline",
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:1748-1769",
+          "note": "McpHub.readResource, which has no caller outside a test."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "cline/cline",
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/session-apps.ts:88-102",
+          "note": "The only caller of resources/read in @cline/core, for ui:// URIs."
         }
       ],
       "research": [
@@ -1619,9 +2151,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:773-775"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:776-778"
           }
         ]
       },
@@ -1630,16 +2162,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:974-1007"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:977-1010"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/ServerRow.tsx:365-386"
         }
       ],
@@ -1655,39 +2187,39 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "apps/vscode/src/services/mcp"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "sdk/packages/core/src/extensions/mcp"
         }
       ]
     },
     "sampling": {
       "status": "unsupported",
-      "notes": "Both surfaces initialize with a literally empty capabilities object, and no CreateMessageRequestSchema handler exists.",
+      "notes": "Both surfaces initialize with an empty capabilities object by default, and no CreateMessageRequestSchema handler exists.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:464-472"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:209-213"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:266-270"
         }
       ],
       "research": [
@@ -1702,17 +2234,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:464-472"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:209-213"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:266-270"
         }
       ],
       "research": [
@@ -1727,17 +2259,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:464-472"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:209-213"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:266-270"
         }
       ],
       "research": [
@@ -1752,17 +2284,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:722-784"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:725-787"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:366-394"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:549-577"
         }
       ]
     },
@@ -1774,17 +2306,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:659-790"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:662-793"
         },
         {
           "tier": "read",
           "at": "2024-11-05",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "sdk/packages/core/src/extensions/mcp/client.ts:199-241"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "sdk/packages/core/src/extensions/mcp/client.ts:256-299"
         }
       ]
     },
@@ -1796,16 +2328,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "apps/vscode/src/services/mcp"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
+          "date": "2026-11-20",
+          "commit": "20b04272",
           "path": "sdk/packages/core/src/extensions/mcp"
         }
       ]
@@ -1818,9 +2350,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "cline/cline",
-          "date": "2026-08-25",
-          "commit": "110138b5",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:464-472"
+          "date": "2026-11-20",
+          "commit": "20b04272",
+          "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
         }
       ]
     },
@@ -1833,17 +2365,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
+            "date": "2026-11-20",
+            "commit": "20b04272",
             "path": "sdk/packages/core/src/extensions/mcp/remote-proxy.ts:19-53"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/src/extensions/mcp/config-loader.ts:756"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/config-loader.ts:761"
           }
         ],
         "research": [
@@ -1858,17 +2390,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
+            "date": "2026-11-20",
+            "commit": "20b04272",
             "path": "apps/vscode/src/services/mcp/McpOAuthManager.ts:1-18"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/src/services/mcp/McpHub.ts:87-108"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:90-111"
           }
         ]
       }
@@ -1885,13 +2417,13 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/cline/cline",
-      "lastVerified": "2026-08-25",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/cline/cline.git",
         "ref": "main",
-        "checkedCommit": "110138b54056e4e6b13c9d767aec81e9a94e4165",
-        "commitDate": "2026-08-25T22:19:29Z",
-        "checkedAt": "2026-08-25",
+        "checkedCommit": "20b042723a14412f6c1e84230b008708534d6e8c",
+        "commitDate": "2026-11-19T18:06:58Z",
+        "checkedAt": "2026-11-20",
         "paths": [
           "apps/vscode/src/services/mcp/McpHub.ts",
           "apps/vscode/src/services/mcp/McpOAuthManager.ts",
@@ -1907,6 +2439,10 @@
           "sdk/packages/core/src/extensions/mcp/name-transform.ts",
           "sdk/packages/core/src/extensions/mcp/tools.ts",
           "sdk/packages/core/src/runtime/orchestration/runtime-builder.ts",
+          "sdk/packages/core/src/extensions/mcp/apps.ts",
+          "sdk/packages/core/src/extensions/mcp/session-apps.ts",
+          "sdk/packages/core/src/extensions/mcp/manager.ts",
+          "apps/vscode/src/sdk/cline-session-factory.ts",
           "apps/vscode/package.json",
           "sdk/packages/core/package.json",
           "package.json",
@@ -1921,40 +2457,40 @@
         "resolved": "1.30.0",
         "patched": false,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Two workspaces declare it and disagree: sdk/packages/core asks for ^1.29.0 and apps/vscode for ^1.25.1. bun.lock hoists one copy, so both run 1.30.0. patchedDependencies covers @opentui-ui/dialog and ollama-ai-provider-v2 and not the SDK, which is the answer to the question opencode raised: Cline is on the same SDK and does not patch it. The protocol version is the SDK's on every path except one - 1.30.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 - but the CLI's stdio client does not use the SDK at all and sends 2024-11-05 of its own accord.",
+        "notes": "Two workspaces declare it and disagree: sdk/packages/core asks for ^1.29.0 and apps/vscode for ^1.25.1. bun.lock hoists one copy, so both run 1.30.0. patchedDependencies covers @opentui-ui/dialog, ollama-ai-provider-v2 and @shadcn/react and not the SDK, which is the answer to the question opencode raised: Cline is on the same SDK and does not patch it. The protocol version is the SDK's on every path except one - 1.30.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 - but the @cline/core stdio client does not use the SDK at all and sends 2024-11-05 of its own accord.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "apps/vscode/package.json:471"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/package.json:474"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "sdk/packages/core/package.json:55"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/package.json:59"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "bun.lock:375,653,1660"
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "bun.lock:382,667,1697"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "cline/cline",
-            "date": "2026-08-25",
-            "commit": "110138b5",
-            "path": "package.json:92-95",
-            "note": "patchedDependencies lists two packages, neither of them the MCP SDK."
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "package.json:93-97",
+            "note": "patchedDependencies lists three packages, none of them the MCP SDK."
           },
           {
             "tier": "read",
@@ -1968,6 +2504,34 @@
         ],
         "research": [
           "cline-hand-rolls-stdio-in-its-cli"
+        ]
+      }
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "partial",
+        "notes": "Declared by @cline/core with a mimeTypes list of text/html;profile=mcp-app only when the session config sets mcpApps: true, which defaults to false. No app in the repo sets it, so the CLI and the extension declare no extensions. The extension's own client never declares it.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/extensions/mcp/apps.ts:16-24"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "sdk/packages/core/src/runtime/orchestration/runtime-builder.ts:409",
+            "note": "mcpApps is on only when the session config sets it to true."
+          }
+        ],
+        "research": [
+          "cline-declares-no-client-capabilities"
         ]
       }
     }
@@ -2003,17 +2567,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:287-305"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:285-303"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/stdio_tracking_simple.py:8-13"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/stdio_tracking_simple.py:8,20-59"
           }
         ]
       },
@@ -2025,26 +2589,26 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:341-347"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:339-345"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/config.py:720-745",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/config.py:819-844",
             "note": "validate_transport_inference: a url with no explicit transport becomes http."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/config.py:776-777"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/config.py:875-876"
           }
         ],
         "research": [
@@ -2053,23 +2617,31 @@
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "The default for any url server. fast-agent supplies its own httpx client so it can hang request and response hooks off it, which is where the transport timeline, the 401 escalation signal and the discover-response accounting come from. Redirects are followed. Timeouts fall back to the SDK defaults unless configured.",
+        "notes": "The default for any url server. fast-agent supplies its own httpx client so it can hang request and response hooks off it, which is where the transport timeline, the 401 escalation signal and the discover-response accounting come from. Redirects are followed only within the endpoint's origin, and that is the SDK's doing: mcp 2.3.0 sends each request with redirect following off and follows a same-origin redirect itself, and fast-agent no longer sets follow_redirects. Timeouts fall back to the SDK defaults unless configured.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:349-359"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:347-356"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:397-488"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:394-485"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-20",
+            "path": "mcp/shared/_httpx_utils.py:112-145",
+            "note": "mcp 2.3.0 follows a same-origin redirect itself."
           }
         ]
       }
@@ -2092,35 +2664,35 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:93-111,183-249"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:93-111,183-247"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/oauth_client.py:643-671",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/oauth_client.py:643-664",
             "note": "CIMD is preferred over DCR when a client metadata URL is set and the authorization server accepts one."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/oauth_client.py:875-915,1178-1202",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/oauth_client.py:887-917,1181-1210",
             "note": "Keyring-backed token storage and the no-backend warning."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "modelcontextprotocol/python-sdk",
-            "date": "2026-08-25",
-            "path": "mcp/client/auth/oauth2.py:116-124,391-405,459,511",
-            "note": "mcp 2.0.0. PKCE S256 and the RFC 8707 resource indicator on authorize, token and refresh are the SDK's, not fast-agent's."
+            "date": "2026-11-20",
+            "path": "mcp/client/auth/oauth2.py:115-127,412-418,470-471,524-525",
+            "note": "mcp 2.3.0. PKCE S256 and the RFC 8707 resource indicator on authorize, token and refresh are the SDK's, not fast-agent's."
           }
         ]
       },
@@ -2132,16 +2704,16 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:491-541"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:488-538"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/hf_auth.py"
           }
         ]
@@ -2158,25 +2730,25 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/mcp_connection_manager.py:525-556"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_callback_runtime.py:252-271"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_callback_runtime.py:312-331"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/mcp_aggregator.py:3508-3524"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/mcp_aggregator.py:3602-3618"
           }
         ],
         "research": [
@@ -2216,25 +2788,25 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:839-866",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:926-953",
           "note": "The optimistic tools/list call when the server declared no tools capability."
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/common.py:6-26",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/common.py:14,36-38",
           "note": "SEP = \"__\", namespaced name truncated to 64."
         }
       ]
     },
     "resources": {
       "status": "full",
-      "notes": "resources/list, resources/templates/list and resources/read are all called. A resource reaches the model as an @server:uri mention a person typed, expanded into EmbeddedResource blocks before the turn — there is no tool the model can call to read one. Anything a remote server returns carrying a file:// URI is rewritten before it reaches the conversation.",
+      "notes": "resources/list, resources/templates/list and resources/read are all called. A resource reaches the model as an @server:uri mention a person typed, expanded into EmbeddedResource blocks before the turn. A default agent has no tool the model can call to read one; an agent with harness_tools: true gets a get_resource tool. Anything a remote server returns carrying a file:// URI is rewritten before it reaches the conversation.",
       "listChanged": {
         "status": "full",
         "notes": "Modern only, through the subscriptions/listen filter. On the handshake path the notification is received and dropped.",
@@ -2243,8 +2815,8 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/mcp_connection_manager.py:535-536"
           }
         ],
@@ -2260,17 +2832,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/mcp_connection_manager.py:537-542,587-602"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "modelcontextprotocol/python-sdk",
-            "date": "2026-08-25",
-            "path": "mcp/client/subscriptions.py:1,201-233",
-            "note": "mcp 2.0.0. subscriptions/listen is SEP-2575, 2026-07-28 only."
+            "date": "2026-11-20",
+            "path": "mcp/client/subscriptions.py:1,201-210",
+            "note": "mcp 2.3.0. subscriptions/listen is SEP-2575, 2026-07-28 only."
           }
         ],
         "research": [
@@ -2282,17 +2854,34 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/client_connection.py:252-263,395-416"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/client_connection.py:254-265,400-421"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/ui/prompt/resource_mentions.py:250-278"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/ui/prompt/resource_mentions.py:298-376"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "evalstate/fast-agent",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/core/harness_tools.py:102-115,152-180"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "evalstate/fast-agent",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/agents/agent_types.py:118",
+          "note": "harness_tools defaults to false."
         }
       ],
       "research": [
@@ -2310,8 +2899,8 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/mcp_connection_manager.py:534"
           }
         ],
@@ -2324,17 +2913,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:3132-3193,3414-3448"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:3226-3266,3508-3542"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/agents/mcp_agent.py:1810-1811"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/agents/mcp_agent.py:2403-2462"
         }
       ],
       "research": [
@@ -2349,17 +2938,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:4007-4035"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:4111-4140"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/client_connection.py:278-284"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/client_connection.py:280-286"
         }
       ]
     },
@@ -2374,9 +2963,9 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/sampling.py:168-188,252-266"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/sampling.py:185-198,272-279"
           }
         ]
       },
@@ -2388,8 +2977,8 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/llm/sampling_converter.py"
           }
         ]
@@ -2399,26 +2988,26 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/client_callback_runtime.py:139-164"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/client_callback_runtime.py:160-188"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/config.py:248-252",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/config.py:263-268",
           "note": "auto_sampling defaults to true."
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/sampling.py:191-274"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/sampling.py:211-294"
         }
       ],
       "research": [
@@ -2435,31 +3024,39 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/elicitation_handlers.py:296-330"
           }
         ]
       },
       "url": {
         "status": "full",
-        "notes": "ElicitRequestURLParams is handled as a distinct branch: the URL is shown inline and queued for attachment to the originating request's result, so a URL elicitation raised mid-tool-call is reported against that call. A -32042 URL_ELICITATION_REQUIRED error is decorated with the same display payload.",
+        "notes": "ElicitRequestURLParams is handled as a distinct branch: the URL is shown inline and queued for attachment to a request's result. On a 2026-07-28 connection the elicitation is dispatched inside the originating request's task and is attached to that request. On a handshake connection it arrives on the receive loop, cannot be correlated, and is attached to the next request on that connection that completes. A -32042 URL_ELICITATION_REQUIRED error is decorated with the same display payload.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/elicitation_handlers.py:191-215,312-313"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_connection.py:58,320-376"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_connection.py:60,327-381"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_callback_runtime.py:247-304"
           }
         ]
       },
@@ -2468,8 +3065,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
+          "date": "2026-11-20",
+          "commit": "288b5339",
           "path": "src/fast_agent/mcp/elicitation_factory.py:97-146",
           "note": "The global default mode is forms, so a default install declares elicitation."
         },
@@ -2477,9 +3074,9 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/python-sdk",
-          "date": "2026-08-25",
-          "path": "mcp/client/session.py:594-602",
-          "note": "mcp 2.0.0 declares both the form and url sub-capabilities whenever any elicitation callback is passed; a client cannot declare one without the other."
+          "date": "2026-11-20",
+          "path": "mcp/client/session.py:634-638",
+          "note": "mcp 2.3.0 declares both the form and url sub-capabilities whenever any elicitation callback is passed; a client cannot declare one without the other."
         }
       ],
       "research": [
@@ -2497,17 +3094,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_callback_runtime.py:123-137"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_callback_runtime.py:144-158"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "modelcontextprotocol/python-sdk",
-            "date": "2026-08-25",
-            "path": "mcp/client/session.py:603-608",
-            "note": "mcp 2.0.0. The upstream TODO beside it asks the same question."
+            "date": "2026-11-20",
+            "path": "mcp/client/session.py:639-646",
+            "note": "mcp 2.3.0. The upstream TODO beside it asks the same question."
           }
         ],
         "research": [
@@ -2519,17 +3116,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/client_callback_runtime.py:123-137"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/client_callback_runtime.py:144-158"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/config.py:571-580",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/config.py:661-679",
           "note": "A root URI must start with file://, enforced in config."
         }
       ],
@@ -2546,17 +3143,17 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/client_callback_runtime.py:252-284"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/client_callback_runtime.py:312-344"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:503",
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:587-589",
           "note": "server_notification_callback is set to None here and assigned nowhere else in src/."
         }
       ],
@@ -2572,25 +3169,25 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:2019-2068"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:2107-2156"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/core/instruction_refresh.py:238-246"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/core/instruction_refresh.py:269-282"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/config.py:662-663"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/config.py:761-762"
         }
       ]
     },
@@ -2602,8 +3199,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
+          "date": "2026-11-20",
+          "commit": "288b5339",
           "path": "src/fast_agent/mcp"
         }
       ]
@@ -2616,40 +3213,40 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "evalstate/fast-agent",
-          "date": "2026-08-25",
-          "commit": "1b58e686",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:1875-1911"
+          "date": "2026-11-20",
+          "commit": "288b5339",
+          "path": "src/fast_agent/mcp/mcp_aggregator.py:1962-1998"
         }
       ]
     },
     "extensions": {
       "io.modelcontextprotocol/skills": {
         "status": "full",
-        "notes": "SEP-2640 draft d7490ecd, implemented against locally-declared wire models because the Python SDK carries none. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. Skill resources are verified against SHA-256 digests before install, under six size and count limits fast-agent chose itself.",
+        "notes": "SEP-2640, now Final, implemented against locally-declared wire models because the Python SDK (mcp 2.3.0) carries none. The models followed draft d7490ecd in August and follow the stable Skills extension now. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. A skill's resources are a manifest of uri, digest and size, or the string dynamic; a dynamic skill is listed and cannot be installed. Skill resources are verified against their size and SHA-256 digest before install, under size and count limits fast-agent chose itself.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/skills_extension.py:1-91"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/skills_extension.py:1-99"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/skills/mcp_registry.py:67-171"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/skills/mcp_registry.py:68-177"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_connection.py:286-303"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_connection.py:288-310"
           }
         ],
         "research": [
@@ -2659,16 +3256,42 @@
     },
     "bonusFeatures": {
       "modelInitiatedResourceRead": {
-        "status": "unsupported",
-        "notes": "By design rather than omission. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. The model gets no mechanism.",
+        "status": "partial",
+        "notes": "Off by default. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. An agent configured with harness_tools: true (false by default) also gets a get_resource tool that takes a URI and an optional server name and reads an attached MCP resource, checked against the agent's resources filter. A default agent gives the model no mechanism.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/ui/prompt/resource_mentions.py:250-278"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/core/harness_tools.py:102-115,152-180",
+            "note": "The get_resource tool. It was already present at 1b58e686, where the first read missed it."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/agents/agent_types.py:118",
+            "note": "harness_tools defaults to false."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/agents/mcp_agent.py:2525-2547"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/ui/prompt/resource_mentions.py:298-376"
           }
         ],
         "research": [
@@ -2683,17 +3306,26 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/config.py:241,602-603"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/config.py:256,701-702"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_connection.py:62-64,67-92"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_connection.py:64-66,69-94"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/connect_targets.py:39",
+            "note": "The CLI flag."
           }
         ],
         "research": [
@@ -2708,17 +3340,17 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/mcp/transport_tracking.py"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_gateway.py:378-388,449-480"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_gateway.py:375-385,431-479"
           }
         ]
       },
@@ -2730,9 +3362,9 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/mcp/client_connection.py:378-416"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/client_connection.py:383-421"
           }
         ]
       },
@@ -2744,9 +3376,9 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "src/fast_agent/config.py:596-597,747-771"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/config.py:695-696,846-870"
           }
         ]
       }
@@ -2772,9 +3404,9 @@
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/mcp/client_callback_runtime.py:252-284"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/mcp/client_callback_runtime.py:312-344"
               }
             ]
           },
@@ -2786,8 +3418,8 @@
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
+                "date": "2026-11-20",
+                "commit": "288b5339",
                 "path": "src/fast_agent/mcp/mcp_connection_manager.py:525-532"
               }
             ]
@@ -2806,9 +3438,9 @@
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/mcp/client_callback_runtime.py:252-284"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/mcp/client_callback_runtime.py:312-344"
               }
             ]
           }
@@ -2822,25 +3454,25 @@
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/mcp/mcp_connection_manager.py:726-728"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/mcp/mcp_connection_manager.py:725-727"
               },
               {
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/config.py:614-618"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/config.py:713-717"
               },
               {
                 "tier": "read",
                 "at": "2026-07-28",
                 "source": "modelcontextprotocol/python-sdk",
-                "date": "2026-08-25",
-                "path": "mcp/client/client.py:522",
-                "note": "mcp 2.0.0 deprecates ping outside mode=legacy."
+                "date": "2026-11-20",
+                "path": "mcp/client/client.py:526-532",
+                "note": "mcp 2.3.0 deprecates ping outside mode=legacy."
               }
             ]
           },
@@ -2852,17 +3484,17 @@
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/mcp/client_connection.py:305-318"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/mcp/client_connection.py:312-325"
               },
               {
                 "tier": "read",
                 "at": "2025-11-25",
                 "source": "evalstate/fast-agent",
-                "date": "2026-08-25",
-                "commit": "1b58e686",
-                "path": "src/fast_agent/config.py:665-671"
+                "date": "2026-11-20",
+                "commit": "288b5339",
+                "path": "src/fast_agent/config.py:764-770"
               }
             ]
           }
@@ -2874,13 +3506,13 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/evalstate/fast-agent",
-      "lastVerified": "2026-08-25",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/evalstate/fast-agent.git",
         "ref": "main",
-        "checkedCommit": "1b58e686482627e4fc841b40ee69c34056fec55d",
-        "commitDate": "2026-08-23T21:04:17Z",
-        "checkedAt": "2026-08-25",
+        "checkedCommit": "288b53393791d10b7ffc4eb01ffc3009591a4d05",
+        "commitDate": "2026-11-19T22:54:08Z",
+        "checkedAt": "2026-11-20",
         "paths": [
           "src/fast_agent/mcp/client_connection.py",
           "src/fast_agent/mcp/client_callback_runtime.py",
@@ -2899,6 +3531,7 @@
           "src/fast_agent/core/instruction_refresh.py",
           "src/fast_agent/config.py",
           "src/fast_agent/utils/transports.py",
+          "src/fast_agent/core/harness_tools.py",
           "pyproject.toml",
           "uv.lock"
         ]
@@ -2907,41 +3540,41 @@
         "name": "mcp",
         "language": "python",
         "official": true,
-        "declared": "==2.0.0",
-        "resolved": "2.0.0",
+        "declared": "==2.3.0",
+        "resolved": "2.3.0",
         "patched": false,
-        "notes": "The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.0.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.",
+        "notes": "The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.3.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "pyproject.toml:18-20"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "pyproject.toml:17-19"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
-            "path": "uv.lock:1918-1920,1943-1945"
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "uv.lock:2220-2221,2245-2246"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "modelcontextprotocol/python-sdk",
-            "date": "2026-08-25",
+            "date": "2026-11-20",
             "path": "mcp_types/version.py",
-            "note": "mcp-types 2.0.0. KNOWN_PROTOCOL_VERSIONS spans 2024-11-05 to 2026-07-28; LATEST_HANDSHAKE_VERSION is 2025-11-25 and LATEST_MODERN_VERSION is 2026-07-28. Read from the PyPI wheel, which the project does not publish as a tagged source tree."
+            "note": "mcp-types 2.3.0. KNOWN_PROTOCOL_VERSIONS spans 2024-11-05 to 2026-07-28; LATEST_HANDSHAKE_VERSION is 2025-11-25 and LATEST_MODERN_VERSION is 2026-07-28. Read from the PyPI wheel, which the project does not publish as a tagged source tree."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "evalstate/fast-agent",
-            "date": "2026-08-25",
-            "commit": "1b58e686",
+            "date": "2026-11-20",
+            "commit": "288b5339",
             "path": "src/fast_agent/patch/engine.py:1-3",
             "note": "The patch package is an apply_patch port, not a dependency patch."
           }
@@ -2959,7 +3592,7 @@
       "openclaw-node-host"
     ],
     "url": "https://github.com/openclaw/openclaw",
-    "description": "Multi-channel AI gateway that runs agents across chat surfaces and remote nodes. Two MCP client surfaces: the per-session agent bundle and the headless node host.",
+    "description": "Multi-channel AI gateway that runs agents across chat surfaces and remote nodes. Two MCP client surfaces for configured servers: the per-session agent bundle and the headless node host. Bundled plugins carry a few fixed-purpose MCP clients of their own.",
     "category": "agent-framework",
     "kind": "host",
     "platforms": [
@@ -2977,37 +3610,61 @@
     "transports": {
       "stdio": {
         "status": "full",
-        "notes": "SDK StdioClientTransport subclassed as OpenClawStdioClientTransport. Server stderr is attached to the debug log per line rather than discarded.",
+        "notes": "OpenClaw's own Transport implementation, OpenClawStdioClientTransport, rather than a subclass of the SDK's StdioClientTransport. Server stderr is drained and its content is not logged: one debug line per server says output was omitted.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-transport.ts:36-62"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-stdio-transport.ts:47"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-transport-config.ts:240-256"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport.ts:39-54,107-121"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport-config.ts:113-123"
           }
         ]
       },
       "sse": {
         "status": "full",
-        "notes": "The fallback for any non-stdio server, including one configured by URL with no transport named. See openclaw-defaults-a-url-server-to-sse.",
+        "notes": "The fallback for any non-stdio server, including one configured by URL with no transport named. See openclaw-defaults-a-url-server-to-sse. A 404 on a message POST is treated as an expired session.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-transport-config.ts:283-286"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport-config.ts:138"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport.ts:201-213"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-http-transport.ts:312-347"
           }
         ],
         "research": [
@@ -3016,31 +3673,47 @@
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "Built only when the config names it explicitly. Sends the mcp-protocol-version header from the transport's negotiated value. Recovers from an expired session on a 404 without replaying the failed call.",
+        "notes": "Built only when the config names it explicitly through transport: streamable-http or a type alias of http or streamable-http. The SDK transport is wrapped, not subclassed; the wrapper forwards the negotiated protocol version and sends it on its own session DELETE. Recovers from an expired session on a 404 without replaying the failed call.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-transport-config.ts:271-282"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport-config.ts:138"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-http-transport.ts:128-129,186-187"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-transport.ts:182-200"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-client-lifecycle.ts:19-30"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-http-transport.ts:304-306,444-446,482-484"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-client-lifecycle.ts:23-41"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/config/mcp-config-normalize.ts:12-17"
           }
         ],
         "research": [
@@ -3051,7 +3724,7 @@
     "authentication": {
       "oauth": {
         "status": "full",
-        "notes": "Full SDK OAuth provider with a persisted per-identity store. Both registration paths are available: Dynamic Client Registration through saveClientInformation, and a Client ID Metadata Document through a per-server oauth.clientMetadataUrl. Credentials can be invalidated by scope (all, client, tokens, verifier, discovery).",
+        "notes": "Full SDK OAuth provider with a persisted per-identity store, now in the shared SQLite state database. Both registration paths are available: Dynamic Client Registration through saveClientInformation, and a Client ID Metadata Document through a per-server oauth.clientMetadataUrl. Credentials can be invalidated by scope (all, client, tokens, verifier, discovery). The node host skips any server configured for OAuth.",
         "clientIdMetadataDocument": true,
         "dynamicRegistration": true,
         "evidence": [
@@ -3059,35 +3732,44 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-oauth-provider.ts:42-116"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-oauth-provider.ts:100-332"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-oauth-provider.ts:103",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-oauth-provider.ts:168",
             "note": "clientMetadataUrl is plumbed to the SDK provider."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/config/types.mcp.ts:55",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/config/zod-schema.mcp-server.ts:46",
             "note": "Per-server oauth.clientMetadataUrl config field."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/mcp-oauth-provider.ts:171-186"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-oauth-provider.ts:310-321"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/node-host/mcp.ts:481-486",
+            "note": "Node host skips OAuth servers."
           }
         ]
       }
@@ -3097,23 +3779,23 @@
       "notes": "Every tool on every enabled server is materialized as a first-class agent tool with its full JSON schema, prefixed per server with collision-safe renaming. Descriptions are passed through a prompt-injection scrubber first. Two compaction surfaces can hide them behind a search interface instead.",
       "listChanged": {
         "status": "full",
-        "notes": "Subscribed on both surfaces with autoRefresh false and no debounce: the notification invalidates the catalog and the next turn rebuilds it, rather than refetching immediately.",
+        "notes": "Subscribed on both surfaces with autoRefresh false and no debounce. On the agent bundle the notification invalidates the catalog and the next turn rebuilds it. On the node host it queues a tools/list refetch straight away.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/agent-bundle-mcp-runtime.ts:686-701"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/agent-bundle-mcp-runtime.ts:356-374"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/node-host/mcp.ts:279-286"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/node-host/mcp.ts:354-360,374-380,464-479"
           }
         ]
       },
@@ -3122,18 +3804,27 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-materialize.ts:337-403"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-materialize.ts:120-351"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-runtime.ts:831",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-catalog-projection.ts:133",
           "note": "Descriptions pass through sanitizeMcpMetadataText."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/mcp.ts:136-178",
+          "note": "Node host descriptors."
         }
       ],
       "research": [
@@ -3148,9 +3839,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-materialize.ts:337-374"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-materialize.ts:243-319,561-573"
         }
       ],
       "research": [
@@ -3165,9 +3856,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-materialize.ts:376-403"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-materialize.ts:320-344,574-592"
         }
       ],
       "research": [
@@ -3176,38 +3867,55 @@
     },
     "completions": {
       "status": "unsupported",
-      "notes": "No completion/complete call in either surface. Verified by searching the MCP client files rather than inferred.",
+      "notes": "No completion/complete call on either surface for a configured server. A complete operation exists on the native projection view added in October, which has no production caller.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
           "path": "src/agents",
-          "note": "No completion/complete call in src/agents or src/node-host."
-        }
-      ]
-    },
-    "sampling": {
-      "status": "unsupported",
-      "notes": "Not declared and not implemented. No CreateMessageRequestSchema handler exists on either surface.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-runtime.ts:219-231"
+          "note": "No completion/complete request in src/agents or src/node-host outside the native projection view."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/node-host/mcp.ts:276-288"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/native-mcp-runtime.ts:92",
+          "note": "The native projection view, type only."
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "notes": "Not declared and not implemented for configured servers. A sampling/createMessage handler exists only on the native projection bridge, registered when a borrowing caller supplies a sampling capability, and nothing in production acquires that view.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/mcp-metadata.ts:11-21"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/mcp.ts:346-362"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/native-mcp-runtime-client.ts:143-147"
         }
       ],
       "research": [
@@ -3215,24 +3923,57 @@
       ]
     },
     "elicitation": {
-      "status": "unsupported",
-      "notes": "Not declared and not implemented. No ElicitRequestSchema handler on either surface.",
+      "status": "partial",
+      "notes": "Declared as elicitation: { form: {}, url: {} } and handled on both surfaces, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares and handles nothing. With the flag on, the agent bundle routes the request to a Gateway question and the node host forwards it to the Gateway; a request with no single active tool call is rejected. The bundle also declares an openai/elicitation extension.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-runtime.ts:219-231"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/mcp-metadata.ts:11-21"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/node-host/mcp.ts:276-288"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-runtime.ts:379-381"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/mcp-client-elicitation.runtime.ts:15-61"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/mcp.ts:349-351,366-368"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/runtime.ts:410",
+          "note": "elicitationClient passed only when mcp.apps.enabled === true."
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/mcp-elicitation.ts:15-46"
         }
       ],
       "research": [
@@ -3241,23 +3982,31 @@
     },
     "roots": {
       "status": "unsupported",
-      "notes": "Not declared and not implemented. No ListRootsRequestSchema handler, so unlike goose, opencode and fast-agent this client does not reach the roots.listChanged declaration gap at all.",
+      "notes": "Not declared and not implemented for configured servers, so unlike goose, opencode and fast-agent this client does not reach the roots.listChanged declaration gap at all. A roots/list handler and a sendRootsListChanged call exist only on the native projection bridge, which nothing in production acquires.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/agent-bundle-mcp-runtime.ts:219-231"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/mcp-metadata.ts:11-21"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/node-host/mcp.ts:276-288"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/node-host/mcp.ts:346-362"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/native-mcp-runtime-client.ts:116-125,388"
         }
       ],
       "research": [
@@ -3266,30 +4015,61 @@
     },
     "logging": {
       "status": "unsupported",
-      "notes": "No logging/setLevel call and no logging notification handler. Server stderr on stdio is logged, which is not the same thing.",
+      "notes": "No logging/setLevel call. A notifications/message handler exists only on the native projection bridge. Server stderr on stdio is drained without logging its content.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents/mcp-transport.ts:36-62"
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/mcp-transport.ts:39-54"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/native-mcp-runtime-client.ts:204"
         }
       ]
     },
     "instructions": {
-      "status": "unsupported",
-      "notes": "The server's instructions field from initialize is never read. Verified by searching both surfaces for it rather than assumed.",
+      "status": "partial",
+      "notes": "The agent bundle reads the initialize result's instructions and puts them in the system prompt under an \"MCP Server Instructions\" heading, per server, cut at 2,000 characters, and only while that server backs at least one tool in the prompt. The node host does not read them.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
-          "path": "src/agents",
-          "note": "No read of the initialize result's instructions field in either surface."
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-runtime.ts:569"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/agent-bundle-mcp-materialize.ts:131-143"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/system-prompt-config.ts:52-70"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "openclaw/openclaw",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
+          "path": "src/agents/system-prompt-tool-list.ts:125-130"
         }
       ]
     },
@@ -3301,8 +4081,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "openclaw/openclaw",
-          "date": "2026-08-26",
-          "commit": "a2d54319",
+          "date": "2026-11-20",
+          "commit": "3e7c305f",
           "path": "src/agents",
           "note": "No tasks/* request in src/agents or src/node-host."
         }
@@ -3311,32 +4091,41 @@
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "partial",
-        "notes": "Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares no extensions and no capabilities at all.",
+        "notes": "Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares no extensions and no capabilities at all. The same flag also turns on the elicitation declaration.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/agent-bundle-mcp-runtime.ts:93-94"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-metadata.ts:8-9"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/agent-bundle-mcp-runtime.ts:219-231"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/mcp-metadata.ts:11-21"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "src/agents/agent-bundle-mcp-runtime.ts:294",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/agent-bundle-mcp-runtime.ts:90",
             "note": "mcp.apps.enabled === true, default false."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/config/zod-schema.root-support.ts:324-326",
+            "note": "enabled is an optional boolean with no default."
           }
         ],
         "research": [
@@ -3356,87 +4145,113 @@
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/openclaw/openclaw",
-      "lastVerified": "2026-08-26",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/openclaw/openclaw.git",
         "ref": "main",
-        "checkedCommit": "a2d54319bc31d8c4079d8960eb59beb568b8e16a",
-        "commitDate": "2026-08-26T16:44:13Z",
-        "checkedAt": "2026-08-26",
+        "checkedCommit": "3e7c305f4572a0ce0407b112db1d5c2048da2624",
+        "commitDate": "2026-11-20T06:24:03Z",
+        "checkedAt": "2026-11-20",
         "paths": [
           "src/agents/agent-bundle-mcp-runtime.ts",
           "src/agents/agent-bundle-mcp-materialize.ts",
+          "src/agents/agent-bundle-mcp-catalog-projection.ts",
+          "src/agents/mcp-metadata.ts",
           "src/agents/mcp-client-lifecycle.ts",
+          "src/agents/mcp-client-elicitation.runtime.ts",
           "src/agents/mcp-transport.ts",
           "src/agents/mcp-transport-config.ts",
           "src/agents/mcp-http-transport.ts",
           "src/agents/mcp-stdio-transport.ts",
           "src/agents/mcp-oauth-provider.ts",
-          "src/agents/mcp-metadata.ts",
+          "src/agents/native-mcp-runtime-client.ts",
+          "src/agents/mcp-event-request.ts",
+          "src/config/mcp-config-normalize.ts",
+          "src/config/zod-schema.mcp-server.ts",
           "src/node-host/mcp.ts",
+          "src/node-host/mcp-elicitation.ts",
+          "src/node-host/runtime.ts",
           "package.json",
-          "pnpm-lock.yaml"
+          "pnpm-lock.yaml",
+          "pnpm-workspace.yaml"
         ]
       },
       "sdk": {
-        "name": "@modelcontextprotocol/sdk",
+        "name": "@modelcontextprotocol/client",
         "language": "typescript",
         "official": true,
-        "declared": "1.30.0",
-        "resolved": "1.30.0",
+        "declared": "2.4.0",
+        "resolved": "2.4.0",
         "patched": false,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Pinned to an exact version at four declaration sites (root, ui, extensions/browser, extensions/qa-lab) and they all agree, unlike Cline where two workspaces disagreed. Unpatched: patches/ is empty and pnpm-workspace.yaml has no patchedDependencies. No protocol version literal appears anywhere in the client code, so the revision is entirely the SDK's: 1.30.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25. Where opencode patched the SDK for expired-session recovery, OpenClaw subclasses the transports instead and handles it in its own lifecycle code.",
+        "notes": "Moved from @modelcontextprotocol/sdk 1.30.0 to the v2 split packages: @modelcontextprotocol/client and @modelcontextprotocol/core, both pinned to exactly 2.4.0 at every declaration site (root, ui, extensions/browser, extensions/qa-lab), and the lockfile agrees. Unpatched: patches/ holds 16 patches and pnpm-workspace.yaml patchedDependencies lists 16 packages, none of them an @modelcontextprotocol package, and there is no override. Every SDK Client is constructed with versionNegotiation mode 'legacy', so the handshake is initialize and the revision is the SDK's: client 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25. @modelcontextprotocol/sdk 1.32.2 is still a root dependency, used for v1 result schemas the plugin SDK keeps for one release window. Where opencode patched the SDK for expired-session recovery, OpenClaw wraps the SDK HTTP transports, replaces the stdio transport with its own, and handles expiry in its own lifecycle code.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "package.json:2040"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "package.json:2448-2452"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "ui/package.json:22"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "ui/package.json:19-20"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
             "path": "extensions/browser/package.json:8"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "extensions/qa-lab/package.json:9"
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "extensions/qa-lab/package.json:12"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "pnpm-lock.yaml:66,417,489,1008",
-            "note": "All resolutions are 1.30.0."
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "pnpm-lock.yaml:271-273,864-866,2241-2243,3216-3218",
+            "note": "All resolutions are 2.4.0."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "openclaw/openclaw",
-            "date": "2026-08-26",
-            "commit": "a2d54319",
-            "path": "patches/",
-            "note": "Directory is empty; no patchedDependencies in pnpm-workspace.yaml or package.json."
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "pnpm-workspace.yaml:131-147",
+            "note": "patchedDependencies has 16 entries, none for @modelcontextprotocol; patches/ has the same 16 files."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents/agent-bundle-mcp-runtime.ts:353",
+            "note": "versionNegotiation mode 'legacy' on every production path."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/node-host/mcp.ts:353"
           }
         ],
         "research": [

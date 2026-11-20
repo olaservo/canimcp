@@ -23,16 +23,16 @@ sources:
     date: 2026-08-23
   - url: https://github.com/openai/codex
     title: codex-rs/core/src/tools/spec_plan.rs, the three built-in resource tools
-    commit: b705b6b0
-    path: codex-rs/core/src/tools/spec_plan.rs:1001
-    date: 2026-08-24
+    commit: 2fb728da
+    path: codex-rs/core/src/tools/spec_plan.rs:1265-1285
+    date: 2026-11-20
   - url: https://github.com/anomalyco/opencode
-    title: packages/opencode/src/session/tools.ts, MCP_RESOURCE_TOOLS
-    commit: 7cde8329
-    path: packages/opencode/src/session/tools.ts:27-31,136-139
-    date: 2026-08-24
+    title: packages/core/src/tool/plugin/mcp-resource.ts, the two resource tools
+    commit: b5e0abd7
+    path: packages/core/src/tool/plugin/mcp-resource.ts:16-98
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-24
+lastVerified: 2026-11-20
 related:
   - utilized-capability-declarations
 ---
@@ -55,11 +55,11 @@ Open. `mergeable_state` is `dirty`, so it has conflicts against `main`. Last act
 
 ## Two clients converged on the same three tool names
 
-Codex and opencode both expose the read path to the model as built-in host tools, and both named them `list_mcp_resources`, `list_mcp_resource_templates` and `read_mcp_resource`.
+Codex and opencode both expose the read path to the model as built-in host tools. Codex named them `list_mcp_resources`, `list_mcp_resource_templates` and `read_mcp_resource`; opencode has `list_mcp_resources` and `read_mcp_resource`, and its list tool returns templates too.
 
 They share no code. Codex is Rust on rmcp, opencode is TypeScript on the official SDK, and neither the spec nor either SDK suggests these names. A convention is forming in the space the spec left empty, which is the usual way an unspecified thing gets settled — by whoever shipped first being copied.
 
-The two differ in what surrounds the tools. Codex registers them whenever any MCP server is configured, with no gate. opencode registers them only when some connected server actually declares `resources`, and puts a permission ask in front of each call. So a model talking to Codex can always try to read a resource and a model talking to opencode sometimes has no such tool at all — a difference in the shape of the capability that PR #2527's SHOULD would not settle either way.
+The two differ in what surrounds the tools. Codex registers them whenever any MCP server is configured, with no gate. opencode registers them unconditionally too, and puts a permission ask in front of each call.
 
 If the SHOULD lands, these names are what it will be landing on top of. Worth putting in front of the PR, since a recommendation that ratifies the existing names costs clients nothing and one that picks different names strands two shipped implementations.
 

@@ -16,15 +16,15 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, _make_list_roots_callback
-    commit: 1b58e686
-    path: src/fast_agent/mcp/client_callback_runtime.py:123-137
-    date: 2026-08-25
+    commit: 288b5339
+    path: src/fast_agent/mcp/client_callback_runtime.py:144-158
+    date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/python-sdk
-    title: mcp 2.0.0, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:603-608
-    date: 2026-08-25
+    title: mcp 2.3.0, mcp/client/session.py, _build_capabilities
+    path: mcp/client/session.py:639-646
+    date: 2026-11-20
 status: current
-lastVerified: 2026-08-25
+lastVerified: 2026-11-20
 related:
   - fast-agent-declares-capabilities-per-server
   - opencode-declares-only-roots
@@ -33,7 +33,7 @@ related:
 
 # fast-agent declares roots.listChanged and never sends the notification
 
-`_make_list_roots_callback` returns `None` unless the server entry lists roots. When it does return a callback, the roots are built from `server_config.roots`, which is read once from config and never changes for the life of the process. Nothing in the repository sends `notifications/roots/list_changed`; the string does not appear.
+`_make_list_roots_callback` returns `None` unless the server entry lists roots. When it does return a callback, the roots are built from `server_config.roots`, which is read once from config and never changes for the life of the process. Nothing in the repository sends `notifications/roots/list_changed`; the string does not appear in `src/`.
 
 The declaration is not fast-agent's. The SDK builds it:
 
@@ -52,7 +52,7 @@ The TODO is upstream's own. There is no parameter a caller can pass to declare r
 
 ## The same shape in the TypeScript SDK
 
-opencode is in the same position for the same reason: it declares roots, answers `roots/list`, holds one root fixed at client creation, and never notifies. goose declares no roots capability at all and sends the notification anyway, which is the mirror image.
+opencode is in the same position for the same reason: it declares roots, answers `roots/list`, holds one root fixed at client creation, and never notifies. goose was the mirror image at `c5e5929a`, declaring no roots capability and sending the notification anyway. At `ea5dded7` it declares `roots: {}` without `listChanged`, holds one root fixed at connect, and never notifies.
 
 So across two reference SDKs and three clients, the `listChanged` flag on `roots` carries no information. A server that reads it and skips its own re-polling on the strength of it will hold a stale root list against every one of them.
 

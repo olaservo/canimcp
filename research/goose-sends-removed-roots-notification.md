@@ -16,6 +16,11 @@ sources:
     commit: "c5e5929a"
     path: crates/goose/src/agents/mcp_client.rs:721-726
     date: 2026-08-23
+  - url: https://github.com/aaif-goose/goose
+    title: crates/oi-kit-agent/src/mcp/client.rs, no notify_roots_list_changed call and a fixed working_dir
+    commit: "ea5dded7"
+    path: crates/oi-kit-agent/src/mcp/client.rs:197-207,346-373,473-493
+    date: 2026-11-20
   - url: https://crates.io/crates/rmcp/3.1.4
     title: rmcp 3.1.4 source, service/client.rs and service.rs
     path: src/service/client.rs:1139-1161,1720
@@ -28,11 +33,15 @@ sources:
   - url: https://modelcontextprotocol.io/specification/2026-07-28/changelog
     title: 2026-07-28 changelog, major change 5
     date: 2026-08-23
-status: current
-lastVerified: 2026-08-24
+status: stale
+lastVerified: 2026-11-20
 ---
 
 # goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it
+
+## Update, 2026-11-20
+
+At `ea5dded7` goose no longer calls `notify_roots_list_changed`, which was removed in `5bd5e548e` (2026-10-05, #12161), and the note below describes `c5e5929a`.
 
 `notifications/roots/list_changed` was removed in `2026-07-28` under SEP-2575. goose still sends it, and by default negotiates `2026-07-28`.
 

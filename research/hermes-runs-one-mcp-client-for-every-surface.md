@@ -48,7 +48,7 @@ related:
 
 # Hermes runs one MCP client across every surface, and a second one it does not expose
 
-Cline's read established that finding a client's MCP client is not enough — its behaviour splits four ways, by surface and again by transport, with the CLI's stdio path hand-written and four revisions behind the rest. goose's splits by surface on the client name. Hermes is the counter-case, and checking cost the same work.
+Cline's read established that finding a client's MCP client is not enough — its behaviour splits four ways, by surface and again by transport, with the CLI's stdio path hand-written and three revisions behind the rest. goose's splits by surface on the client name. Hermes is the counter-case, and checking cost the same work.
 
 Every user-facing surface uses the client in `tools/mcp_tool.py`, which at `9dcf7714` is split across about 25 `tools/mcp_tool_*` modules: the interactive CLI, the Electron desktop app's backend (Tauri at `a24c12d1`), the gateway, the TUI gateway, the ACP adapter, the cron scheduler and the web server. No `package.json` in the repo depends on `@modelcontextprotocol/sdk`, and a search for a hand-rolled `initialize` frame in the TypeScript and TSX sources returns nothing, so the desktop app has no client of its own and drives the Python one. Capability answers therefore hold for the whole product, which has not been true of any other multi-surface client read here.
 
