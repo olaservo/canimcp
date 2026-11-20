@@ -32,7 +32,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 
 ## Reading the answer
 
-- A status is `full`, `partial`, `unsupported` or `untested`.
+- A status is `full`, `partial`, `opt-in`, `unsupported` or `untested`. `opt-in` means the client implements it and a default install does not use it until a setting, flag or application code turns it on. The notes say what turns it on.
 - A client under `notRecorded` has no entry for that capability. That is not `unsupported`. Say it is not recorded.
 - A client with no `status` has probe records or telemetry and no registry record. Report what the `verified` or `observed` part says, and say the registry has not settled a status.
 - Each evidence item has a `tier`:

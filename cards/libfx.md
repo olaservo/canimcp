@@ -44,10 +44,10 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ isError | ● full | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ media | ◐ partial | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ _meta | ○ unsupported | read ⇧ | `2025-11-25` |
-| **Resources** | ◐ partial | read | `2025-11-25` |
+| **Resources** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
-| **Prompts** | ◐ partial | read | `2025-11-25` |
+| **Prompts** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
@@ -66,9 +66,9 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ◐ partial | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ requestCorrelationMeta | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ requestCorrelationMeta | ◇ opt-in | read | `2025-11-25` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

@@ -356,6 +356,10 @@ marked.use({
 
 const themeJs = read('web', 'theme.js').replace(/^\/\/.*\n/, '');
 
+// Shown on every page, in its Markdown copy and in llms.txt while the site is in development.
+const PROVISIONAL = 'Provisional findings. canimcp is in active development. Statuses, notes and probe results may be incomplete or wrong, and can change without notice. Check the cited source before relying on a claim, and send corrections through the contact page.';
+const PROVISIONAL_MD = `> **${PROVISIONAL.replace('contact page', `[contact page](${ORIGIN}/contact)`)}**\n`;
+
 function renderHtml(p, { robots } = {}) {
   slugs = new Map();
   const body = marked.parse(p.md).replace(/<table>/g, '<div class="scroll"><table>').replace(/<\/table>/g, '</table></div>');
@@ -407,6 +411,7 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical"
 <script>${themeJs}</script>
 ${jsonLd}</head>
 <body>
+<aside class="provisional" role="note"><strong>Provisional findings.</strong> ${esc(PROVISIONAL.replace(/^Provisional findings\. /, '')).replace('contact page', '<a href="/contact">contact page</a>')}</aside>
 <main>
 ${body}</main>
 <nav aria-label="Site">
@@ -427,7 +432,7 @@ for (const p of pages) {
   const frontmatter = p.frontmatter
     || `---\ntitle: ${yamlString(p.title)}\ndescription: ${yamlString(p.description)}\ncanonical: ${ORIGIN}${p.url}\nlast-updated: ${p.lastmod}\n---\n`;
   write(htmlFile(p.url), renderHtml(p));
-  write(mdPath(p.url), `${frontmatter}\n${markdownLinks(p.md)}`);
+  write(mdPath(p.url), `${frontmatter}\n${PROVISIONAL_MD}\n${markdownLinks(p.md)}`);
 }
 
 {
@@ -534,6 +539,7 @@ const llms = `# ${SITE_NAME}
 
 > ${TAGLINE}
 
+${PROVISIONAL_MD}
 canimcp is a registry of Model Context Protocol clients. A capability carries evidence, and each piece of evidence has a tier (\`declared\`, \`verified\`, \`observed\`, \`read\`) and the protocol revision it applies to. Tiers are not ranked and can disagree.
 
 ## When to use this

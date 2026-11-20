@@ -16,6 +16,8 @@ export const SERVER = {
   skillsBundle: '/data/skills.json',
   instructions: `canimcp records which MCP clients support which capabilities and how each claim is known. Every claim carries evidence with a tier (declared, verified, observed or read) and the protocol revision it applies to. Tiers are not ranked and can disagree. A capability missing from a client's entry is not recorded, which is a different claim from unsupported.
 
+The findings are provisional. canimcp is in active development, and statuses, notes and probe results may be incomplete or wrong. Say so when you pass one on, and point to the cited source.
+
 Start with list_clients for client ids or list_capabilities for capability ids. find_capability_support compares one capability across clients. get_client returns one client's entry. get_probe_results returns what a client sent to its model when it called a fixture tool. search_research_notes and get_research_note cover behaviour a status cannot express. Every tool is read-only, and results link to the page on https://canimcp.io they came from.
 
 The skill at skill://check-mcp-client-support/SKILL.md explains how to answer a client-support question with these tools and how to read the evidence.`,

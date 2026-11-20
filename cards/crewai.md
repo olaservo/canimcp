@@ -47,7 +47,7 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | **Resources** | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
-| **Prompts** | ◐ partial | read | `2025-11-25` |
+| **Prompts** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
@@ -73,7 +73,7 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | &nbsp;&nbsp;↳ stdioEnvFilterHook | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ lifecycleEvents | ● full | read | `2025-11-25` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

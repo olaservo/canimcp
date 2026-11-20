@@ -157,7 +157,8 @@
       "repo": "https://github.com/zed-industries/zed",
       "source": "zed",
       "language": "rust",
-      "drive": "gui"
+      "drive": "gui",
+      "registryId": "zed"
     },
     "vscode": {
       "title": "VS Code",
@@ -165,7 +166,8 @@
       "repo": "https://github.com/microsoft/vscode",
       "source": "vscode",
       "language": "typescript",
-      "drive": "gui"
+      "drive": "gui",
+      "registryId": "vscode"
     },
     "kilocode": {
       "title": "Kilo Code",
@@ -244,6 +246,18 @@
       "sdk": "mcp 2.3.0 (python-sdk)",
       "registryId": "agent-framework",
       "notes": "Python only; one config per tool_result_content mode plus responses and anthropic. .NET not probed."
+    },
+    "ts-sdk-client": {
+      "title": "TypeScript SDK client",
+      "kind": "sdk",
+      "repo": "https://github.com/modelcontextprotocol/typescript-sdk",
+      "source": "sdk/typescript-sdk",
+      "language": "typescript",
+      "sdk": "@modelcontextprotocol/client",
+      "drive": "script",
+      "adapter": "hosts/ts-sdk-client",
+      "registryId": "ts-sdk-client",
+      "notes": "The SDK baseline: a minimal host on @modelcontextprotocol/client. See probe/registry/sdks.json."
     }
   }
 }

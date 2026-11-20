@@ -71,7 +71,7 @@ LangChain's Python agent harness. The core deepagents library has no MCP code an
 | &nbsp;&nbsp;↳ sessionRecovery | ◐ partial | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ projectServerApproval | ● full | read | `2025-11-25` |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

@@ -38,7 +38,7 @@ Anthropic's coding agent for the terminal and IDEs. Closed source, so nothing he
 | Extensions | — not recorded | | |
 | Beyond the spec | — not recorded | | |
 
-`●` full  `◐` partial  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
+`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 

@@ -198,10 +198,11 @@
       "enum": [
         "full",
         "partial",
+        "opt-in",
         "unsupported",
         "untested"
       ],
-      "description": "Support status: full (complete), partial (with limitations), unsupported (explicitly not supported), untested (unknown)."
+      "description": "Support status: full (complete), partial (with limitations), opt-in (implemented, and a default install or default construction does not use it until a setting, flag or application code turns it on; the notes name what turns it on), unsupported (explicitly not supported), untested (unknown)."
     },
     "EvidenceTier": {
       "type": "string",
