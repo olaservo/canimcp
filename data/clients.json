@@ -4293,25 +4293,25 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:306-435"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:316-449"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_tool.py:38-70"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_health.py:40-60"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_health.py:38-58"
           }
         ]
       },
@@ -4323,17 +4323,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool.py:143-190"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool.py:176-270"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:562-668"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:575-689"
           }
         ],
         "research": [
@@ -4349,16 +4349,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:532-560,623-668"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:545-574,638-689"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_tool_errors.py:73-91"
           }
         ],
@@ -4378,33 +4378,33 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_oauth.py:1-9,935-1025,1101-1157"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_oauth.py:1-9,988-1078,1147-1204"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_oauth_manager.py:1-6,321-330"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_oauth_device.py:1-5,16-92"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_dashboard_oauth.py:1-3,38-190"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_dashboard_oauth.py:1-3,38-189"
           }
         ]
       },
@@ -4416,17 +4416,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:117-150,600-622"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:117-150,613-637"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_errors.py:213-323"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_errors.py:219-329"
           }
         ]
       }
@@ -4442,17 +4442,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_health.py:60-70,99-170"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_health.py:58-68,97-168"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:177-178"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:187-188"
           }
         ]
       },
@@ -4489,25 +4489,25 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool.py:256-306,425-445"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool.py:343-393,474-497"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_transport.py:158-169,674-692"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_transport.py:168-179,690-710"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_schema.py:15-41,147-183"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_schema.py:15-45,151-187"
         }
       ]
     },
@@ -4522,9 +4522,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_health.py:118-119"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_health.py:116-117"
           },
           {
             "tier": "read",
@@ -4544,8 +4544,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/",
             "note": "No subscribe_resource, resources/subscribe or ResourceUpdatedNotification anywhere in tools/, hermes_cli/, agent/ or gateway/."
           }
@@ -4556,32 +4556,32 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_registration.py:185-212,315-350"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_registration.py:188-215,318-353"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_schema.py:240-253,319-335"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_schema.py:244-257,323-339"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_handlers.py:785-810,839-844"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_handlers.py:970-995,1023-1028"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
           "path": "tools/mcp_tool_content.py:293-309"
         }
       ],
@@ -4600,9 +4600,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_health.py:116-117"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_health.py:114-115"
           },
           {
             "tier": "read",
@@ -4619,17 +4619,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_handlers.py:813-835,845-850"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_handlers.py:997-1019,1029-1034"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_registration.py:185-212"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_registration.py:188-215"
         }
       ],
       "research": [
@@ -4644,8 +4644,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
           "path": "tools/",
           "note": "No completion/complete or CompleteRequest in the MCP client."
         }
@@ -4662,9 +4662,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_sampling.py:110-112,180-188,214-219"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_sampling.py:111-113,181-189,214-220"
           },
           {
             "tier": "declared",
@@ -4684,17 +4684,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_server_run.py:268-270"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_server_run.py:281-283"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_sampling.py:94-118,182-203"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_sampling.py:95-119,181-204"
         },
         {
           "tier": "declared",
@@ -4711,18 +4711,43 @@
     },
     "elicitation": {
       "status": "partial",
-      "notes": "Declared and served by default: elicitation.enabled defaults to true. Hermes passes only an elicitation callback, and mcp 2.3.0 turns any callback into a declaration of both form and url modes. Requests go through Hermes' approval system, and accept, decline and error counts are tracked per server.",
+      "notes": "Declared and served by default: elicitation.enabled defaults to true. Hermes passes only an elicitation callback, and mcp 2.3.0 turns any callback into a declaration of both form and url modes. Form requests are asked on the agent's clarify surface, with the approval prompt as fallback, and accept, decline and error counts are tracked per server.",
       "form": {
-        "status": "partial",
-        "notes": "The user sees the message and a summary of the requested fields and answers accept, decline or cancel. Accept returns empty content, so the server gets no field values back. A timeout or exception fails closed. The empty accept was already there at a24c12d1.",
+        "status": "full",
+        "notes": "When the tool call that triggered the request runs on a surface with a clarify callback (CLI, TUI, Desktop, messaging) and a user can answer, Hermes asks for each schema field, validates answers by type, re-asks a wrong answer up to twice, and returns the values as content. Otherwise it falls back to a yes/no consent prompt. On accept, that fallback fills content only for a form with no required fields, a single required boolean, or a single required enum offering allow_once, and declines any other form. A request outside a tool call, such as during resources/read or prompts/get, takes the fallback. A timeout or exception still fails closed. Through 9dcf7714, accept returned empty content.",
         "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_sampling.py:265-295,351-372"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_elicitation_form.py:1-10,288-343"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "agent/tool_executor.py:750-752"
+          },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
             "date": "2026-11-09",
             "commit": "9dcf7714",
-            "path": "tools/mcp_tool_sampling.py:290-333"
+            "path": "tools/mcp_tool_sampling.py:290-333",
+            "status": "partial"
           },
           {
             "tier": "read",
@@ -4730,7 +4755,8 @@
             "source": "NousResearch/hermes-agent",
             "date": "2026-11-09",
             "commit": "a24c12d1",
-            "path": "tools/mcp_tool.py:2363"
+            "path": "tools/mcp_tool.py:2363",
+            "status": "partial"
           },
           {
             "tier": "declared",
@@ -4753,9 +4779,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_sampling.py:310-313"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_sampling.py:377-380"
           },
           {
             "tier": "read",
@@ -4795,17 +4821,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_server_run.py:273-276"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_server_run.py:286-290"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_sampling.py:264-288"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_sampling.py:297-403"
         },
         {
           "tier": "read",
@@ -4837,9 +4863,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_transport.py:171-186",
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_transport.py:181-196",
           "note": "_session_kwargs carries the sampling and elicitation handlers, message_handler, logging_callback and client_info only."
         },
         {
@@ -4876,17 +4902,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_health.py:73-97"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_health.py:71-95"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_transport.py:179-180"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_transport.py:189-190"
         }
       ]
     },
@@ -4898,17 +4924,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_registration.py:192"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_registration.py:195"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
-          "path": "tools/mcp_tool_transport.py:168"
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
+          "path": "tools/mcp_tool_transport.py:178"
         }
       ]
     },
@@ -4920,8 +4946,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "NousResearch/hermes-agent",
-          "date": "2026-11-09",
-          "commit": "9dcf7714",
+          "date": "2026-11-20",
+          "commit": "2de9f51b",
           "path": "tools/",
           "note": "No tasks/* call in the MCP client."
         }
@@ -4936,9 +4962,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_handlers.py:799-807,842-844"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_handlers.py:986-995,1026-1028"
           }
         ],
         "research": [
@@ -4954,25 +4980,25 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_schema.py:15-41,225-233"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_schema.py:15-45,229-237"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/ansi_strip.py:86-97"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_registration.py:289-297"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_registration.py:292-300"
           }
         ],
         "research": [
@@ -4987,17 +5013,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/tool_search.py:1-7,40-89,150-162,204-221,344-380"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/tool_search.py:1-7,40-89,153-165,207-224,347-383"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "model_tools.py:546-557"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "model_tools.py:546-559"
           }
         ]
       },
@@ -5009,47 +5035,55 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/budget_config.py:17-41,62-63"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_tool_content.py:20-34"
           }
         ]
       },
       "sessionRecovery": {
         "status": "full",
-        "notes": "Expired HTTP sessions are detected and the transport reconnected. The call is retried once only for tools annotated readOnlyHint: true; any other tool gets the transport healed and an outcome_uncertain error instead of a replay. A connect-failure cooldown keeps a dead server from being retried in a tight loop, and a parked server probes itself every 300 seconds.",
+        "notes": "Expired HTTP sessions are detected and the transport reconnected. The call is retried once only for tools annotated readOnlyHint: true; any other tool gets the transport healed and an outcome_uncertain error instead of a replay. A connect-failure cooldown keeps a dead server from being retried in a tight loop, and a parked server first probes after 300 seconds, doubling after each failed revival up to 3600. A stdio server marked single_instance that fails its initial connect attempts parks with no timed probe until an explicit reconnect.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_errors.py:504-532"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_errors.py:516-544"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_handlers.py:233-258,342-385"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_handlers.py:331-356,442-485"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_server_run.py:188-240"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_server_run.py:188-265,513-525"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool.py:325-329"
           }
         ],
         "research": [
@@ -5064,31 +5098,39 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_transport.py:27-29,439-490"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:27-29,450-503"
           }
         ]
       },
       "trustTiers": {
         "status": "full",
-        "notes": "Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way.",
+        "notes": "Each server entry takes trust: full, the default, or untrusted, and an unrecognised value is treated as untrusted. On an untrusted server every tool call needs approval unless the tool's annotations carry readOnlyHint: true, and an approval can be remembered per server and tool. The hint is cached with the schema, so lazily registered tools are gated the same way. A call with no recorded tier re-reads config and fails closed to untrusted. On a reconnect the readOnlyHint is refreshed from the new tools/list, and a call cleared as read-only is refused if the hint is gone by the time it runs.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_registration.py:38-107"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_registration.py:40-110"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_handlers.py:60-74,124-205"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_handlers.py:61-75,125-307,833-933"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_transport.py:716-723"
           }
         ]
       },
@@ -5100,17 +5142,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_tool_costs.py:1-11,63-88,145-232"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_handlers.py:124-205"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_handlers.py:190-307"
           }
         ]
       },
@@ -5122,25 +5164,25 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "tools/mcp_schema_cache.py:1-109"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_registration.py:402-429"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_registration.py:405-432"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_discovery.py:209-216,404-436"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_discovery.py:214-221,415-447"
           }
         ]
       }
@@ -5159,13 +5201,13 @@
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/NousResearch/hermes-agent",
-      "lastVerified": "2026-11-09",
+      "lastVerified": "2026-11-20",
       "source": {
         "repo": "https://github.com/NousResearch/hermes-agent.git",
         "ref": "main",
-        "checkedCommit": "9dcf7714df7a0d49c335925d12d4b017274ee355",
-        "commitDate": "2026-11-09T14:20:28Z",
-        "checkedAt": "2026-11-09",
+        "checkedCommit": "2de9f51b8008a7d49a49221c184f2f11cbfc4af1",
+        "commitDate": "2026-11-20T12:06:20Z",
+        "checkedAt": "2026-11-20",
         "paths": [
           "tools/mcp_tool.py",
           "tools/mcp_tool_*.py",
@@ -5174,6 +5216,7 @@
           "tools/mcp_oauth_device.py",
           "tools/mcp_oauth_provider.py",
           "tools/mcp_dashboard_oauth.py",
+          "tools/mcp_elicitation_form.py",
           "tools/mcp_schema_cache.py",
           "tools/tool_search.py",
           "tools/budget_config.py",
@@ -5186,7 +5229,8 @@
           "hermes_cli/mcp_config.py",
           "hermes_cli/main_install_repair.py",
           "pyproject.toml",
-          "uv.lock"
+          "uv.lock",
+          "agent/tool_executor.py"
         ]
       },
       "sdk": {
@@ -5196,47 +5240,47 @@
         "declared": "==2.3.0",
         "resolved": "2.3.0",
         "patched": false,
-        "notes": "mcp==2.3.0 exactly, resolving to 2.3.0 in uv.lock alongside mcp-types 2.3.0, with no [tool.uv] source override and no vendored fork. Unlike every other client read here, the SDK is not a base dependency. It is declared identically under the mcp and computer-use extras and the dev dependency group. The runtime lazy install the August read found is gone: tools/lazy_deps.py is now a retired shim, and install repair syncs the mcp extra when mcp_servers is configured and the SDK is missing. The import is deferred behind _ensure_mcp_sdk, so a session with no MCP servers configured never pays for it. Every version decision on the live path is the SDK's: Hermes names no revision of its own and picks an era instead. The revisions it names itself are 2025-03-26, in a fallback constant and the non-MCP-endpoint probe frame, and 2025-06-18, in the desktop-app liveness probe.",
+        "notes": "mcp==2.3.0 exactly, resolving to 2.3.0 in uv.lock alongside mcp-types 2.3.0, with no [tool.uv] source override and no vendored fork. Unlike every other client read here, the SDK is not a base dependency. It is declared identically under the mcp and computer-use extras and the dev dependency group. The runtime lazy install the August read found is gone: tools/lazy_deps.py is now a retired shim, and install repair syncs the mcp extra when mcp_servers is configured and the SDK is missing. The import is deferred behind _ensure_mcp_sdk, so a session with no MCP servers configured never pays for it. Every version decision on the live path is the SDK's: Hermes names no revision of its own and picks an era instead. The revisions it names itself are 2025-03-26, in a fallback constant and the non-MCP-endpoint probe frame, and 2025-06-18, in the desktop-app liveness probe. The SDK import probe retries a failure that may be temporary on the next connect instead of caching it.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "pyproject.toml:422-433,443-448,563-570"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "pyproject.toml:422-434,442-449,566-572"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "uv.lock:3554-3592"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "uv.lock:3553-3590"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/lazy_deps.py:1-26"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/lazy_deps.py:1-20"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "hermes_cli/main_install_repair.py:251-310"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "hermes_cli/main_install_repair.py:252-311"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool.py:76-92,143-190"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool.py:76-92,176-270"
           },
           {
             "tier": "read",
@@ -5262,24 +5306,24 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_events.py:1-11,226-245,357-436"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_events.py:1-11,225-244,356-441"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
-            "path": "tools/mcp_tool_registration.py:196-197"
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/mcp_tool_registration.py:199-200"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "NousResearch/hermes-agent",
-            "date": "2026-11-09",
-            "commit": "9dcf7714",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
             "path": "gateway/platforms/webhook_mcp_events.py:1-60"
           }
         ]

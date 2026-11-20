@@ -21,16 +21,21 @@ sources:
     date: 2026-08-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, transport selection and the SSE fallback
-    commit: 9dcf7714
-    path: tools/mcp_tool_transport.py:532-560,600-668
-    date: 2026-11-09
+    commit: 2de9f51b
+    path: tools/mcp_tool_transport.py:545-574,613-689
+    date: 2026-11-20
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_errors.py, _is_streamable_http_rejection
-    commit: 9dcf7714
+    commit: 2de9f51b
     path: tools/mcp_tool_errors.py:73-91
-    date: 2026-11-09
+    date: 2026-11-20
+  - url: https://github.com/NousResearch/hermes-agent
+    title: tools/mcp_tool.py, the streamable_http_client and streamablehttp_client probes
+    commit: 2de9f51b
+    path: tools/mcp_tool.py:228-233
+    date: 2026-11-20
 status: current
-lastVerified: 2026-11-09
+lastVerified: 2026-11-20
 related:
   - cline-defaults-a-url-server-to-sse
   - openclaw-defaults-a-url-server-to-sse
