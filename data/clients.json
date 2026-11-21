@@ -5360,8 +5360,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:69-81,446-471"
           }
         ]
@@ -5374,8 +5374,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:369-438"
           }
         ]
@@ -5388,16 +5388,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:349-386"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/kilocode/mcp/sse-probe.ts"
           }
         ]
@@ -5418,16 +5418,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/oauth-provider.ts:56-83"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/kilocode/mcp/client-metadata.ts"
           },
           {
@@ -5442,16 +5442,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:360-366"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/kilocode/mcp/refresh.ts"
           }
         ],
@@ -5467,8 +5467,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:372-384"
           }
         ]
@@ -5485,8 +5485,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:575-585"
           }
         ]
@@ -5509,8 +5509,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/kilocode/tool/code-mode.ts",
             "note": "Code Mode gate checked at this commit."
           }
@@ -5529,16 +5529,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/catalog.ts:18-35,145-168"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:505"
         }
       ]
@@ -5554,8 +5554,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:571-585"
           }
         ]
@@ -5568,8 +5568,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:571-585"
           }
         ]
@@ -5579,16 +5579,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/session/tools.ts:41-43,229"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/catalog.ts:129-143"
         }
       ],
@@ -5608,16 +5608,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/command/index.ts:144-169"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/catalog.ts:121-127"
         }
       ]
@@ -5630,8 +5630,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp"
         }
       ]
@@ -5644,8 +5644,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:56-67"
         }
       ],
@@ -5661,8 +5661,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:56-67"
         }
       ],
@@ -5682,8 +5682,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:56-67,108-114"
         }
       ]
@@ -5696,8 +5696,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:571-573"
         }
       ]
@@ -5710,8 +5710,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:513"
         }
       ]
@@ -5724,8 +5724,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp"
         }
       ]
@@ -5738,8 +5738,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "Kilo-Org/kilocode",
-          "date": "2026-11-10",
-          "commit": "278edf3a",
+          "date": "2026-11-21",
+          "commit": "b2947d7e",
           "path": "packages/opencode/src/mcp/index.ts:56-67"
         }
       ],
@@ -5756,16 +5756,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/kilocode/mcp/apps.ts"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:56-67"
           }
         ]
@@ -5780,16 +5780,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/session/tools.ts:41-43"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/src/permission/index.ts:507"
           }
         ],
@@ -5805,8 +5805,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "patches/@modelcontextprotocol%2Fsdk@1.32.1.patch"
           }
         ],
@@ -5824,13 +5824,13 @@
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/Kilo-Org/kilocode",
-      "lastVerified": "2026-11-10",
+      "lastVerified": "2026-11-21",
       "source": {
         "repo": "https://github.com/Kilo-Org/kilocode.git",
         "ref": "main",
-        "checkedCommit": "278edf3a3eea1944ab1b14a5989f850df4a9056b",
-        "commitDate": "2026-11-10T14:44:31Z",
-        "checkedAt": "2026-11-10",
+        "checkedCommit": "b2947d7e56c50e599688d48dad27687254280d18",
+        "commitDate": "2026-11-21T03:08:31Z",
+        "checkedAt": "2026-11-21",
         "paths": [
           "packages/opencode/src/mcp/index.ts",
           "packages/opencode/src/mcp/catalog.ts",
@@ -5853,23 +5853,23 @@
         "resolved": "1.32.1",
         "patched": true,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.3.1, also patched, and main has not followed.",
+        "notes": "Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.4.0 at efd2a06b, also patched, and main has not followed.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
             "path": "packages/opencode/package.json:109"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "Kilo-Org/kilocode",
-            "date": "2026-11-10",
-            "commit": "278edf3a",
-            "path": "bun.lock:623,1034,1919"
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
+            "path": "bun.lock:623,1034,1923"
           },
           {
             "tier": "read",

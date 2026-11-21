@@ -14,25 +14,25 @@ specVersions:
 sources:
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/oauth-provider.ts, clientMetadataUrl and clientMetadata
-    commit: 278edf3a
+    commit: b2947d7e
     path: packages/opencode/src/mcp/oauth-provider.ts:56-83
-    date: 2026-11-10
+    date: 2026-11-21
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/kilocode/mcp/refresh.ts
-    commit: 278edf3a
+    commit: b2947d7e
     path: packages/opencode/src/kilocode/mcp/refresh.ts:6-18
-    date: 2026-11-10
+    date: 2026-11-21
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/index.ts, connectRemote
-    commit: 278edf3a
+    commit: b2947d7e
     path: packages/opencode/src/mcp/index.ts:349-366
-    date: 2026-11-10
+    date: 2026-11-21
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1
     title: "@modelcontextprotocol/sdk 1.32.1, dist/esm/client/auth.js"
     path: dist/esm/client/auth.js:302-309
     date: 2026-11-10
 status: current
-lastVerified: 2026-11-10
+lastVerified: 2026-11-21
 related:
   - kilocode-runs-opencodes-mcp-client-behind-every-surface
 ---

@@ -18,8 +18,8 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | SDK | `@modelcontextprotocol/sdk` 1.32.1 · official TypeScript SDK · **patched** · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
-| Source last updated | 2026-11-10 |
-| Last read | 2026-11-10 |
+| Source last updated | 2026-11-21 |
+| Last read | 2026-11-21 |
 
 ## Capabilities
 
@@ -98,15 +98,15 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [opencode declares roots and nothing else, with sampling, elicitation and tasks commented out](../research/opencode-declares-only-roots.md) — *idiosyncrasy*. The client capability object lists sampling, elicitation and tasks, each commented out above a link to the issue tracking it. Only roots is live, so a server that offers any of the other three never gets asked.
 - [opencode ships a patched MCP SDK that recovers an expired HTTP session](../research/opencode-patches-its-sdk-for-session-recovery.md) — *idiosyncrasy*. opencode applies a bun patch to @modelcontextprotocol/sdk 1.29.0 that clears the session and retries once when a request carrying a session id gets a 404. Stock 1.29.0 has no recovery path, so opencode's Streamable HTTP behaviour is not the SDK's.
-- [Kilo Code is built on opencode now, and one MCP client serves the CLI, VS Code and JetBrains](../research/kilocode-runs-opencodes-mcp-client-behind-every-surface.md) — *misconception*. Kilo Code started as a Cline fork. At 278edf3a its MCP client is opencode's, with Kilo's edits marked kilocode_change. The VS Code and JetBrains extensions spawn `kilo serve` and have no MCP client of their own. main ships a patched SDK 1.32.1; the v2 branch uses the split SDK.
+- [Kilo Code is built on opencode now, and one MCP client serves the CLI, VS Code and JetBrains](../research/kilocode-runs-opencodes-mcp-client-behind-every-surface.md) — *misconception*. Kilo Code started as a Cline fork. At b2947d7e its MCP client is opencode's, with Kilo's edits marked kilocode_change. The VS Code and JetBrains extensions spawn `kilo serve` and have no MCP client of their own. main ships a patched SDK 1.32.1; the v2 branch uses the split SDK.
 - [dist/esm/client/auth.js:302-309](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1) — *authentication.oauth*, read 2026-11-10 at `?` in @modelcontextprotocol/sdk.
 - [notes/kilocode-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/kilocode-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Kilo Code source at b6a49d0.
 
 ## Provenance
 
-Read at `278edf3a` on 2026-11-10, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-10.
+Read at `b2947d7e` on 2026-11-21, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-21.
 
-**SDK.** Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.3.1, also patched, and main has not followed.
+**SDK.** Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.4.0 at efd2a06b, also patched, and main has not followed.
 
 Paths read:
 
