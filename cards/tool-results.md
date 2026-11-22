@@ -1,6 +1,6 @@
 # Tool result handling, verified
 
-What reached the model when each client called a fixture tool: 1063 probe records across 17 clients, generated from `data/verified/` by `scripts/build-cards.js`. Each cell is one run of the live probe (`probe/`) against the instrumented fixture server with the model mocked, so the verdict is read off the request the client sent to the model, not inferred from source. Rerun the probe to change a cell.
+What reached the model when each client called a fixture tool: 1092 probe records across 17 clients, generated from `data/verified/` by `scripts/build-cards.js`. Each cell is one run of the live probe (`probe/`) against the instrumented fixture server with the model mocked, so the verdict is read off the request the client sent to the model, not inferred from source. Rerun the probe to change a cell.
 
 `[…]` content reached the model · `{…}` structuredContent reached it · `[…]{…}` both · `⟨…⟩` the whole CallToolResult (or a wrapper around it) · `"…"` a placeholder or error text and no fixture payload · `≡` the mirror fixture, text and JSON identical, with the count · `×n` the payload arrived n times · `+_meta` the result `_meta` reached the model · `∅` tool hidden from the model · `↛` offered but never called · `✗` called but no result reached the model · blank: not run.
 
@@ -70,7 +70,8 @@ Columns are the probe scenarios (`probe/registry/scenarios.json`); drop the `too
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | default | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | anthropic | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
 | [Strands Agents](strands.md) `1.64.0+mcp-2.3.0` | responses | stdio | `2026-07-28` | […] | ≡ | "…" | […] | […] | […] | […] | […] | "…" | […] | […] | "…" | "…" | […] | […] | […] | […] |
-| [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | auto | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ |  |  |  |  |  |  |  |  |  |  |  |  | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | auto | http | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
+| [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | auto | stdio | `2026-07-28` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩+_meta | ⟨…⟩+_meta |
 | [TypeScript SDK client](ts-sdk-client.md) `2.4.0` | legacy | stdio | `2025-11-25` | ⟨…⟩ | ⟨…⟩×2 | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ⟨…⟩ | ✗ | ✗ | ⟨…⟩+_meta | ⟨…⟩+_meta |
 
 ## Scenarios
@@ -1254,31 +1255,60 @@ The full verdict line per run, with a link to the record and its captures.
 
 ### TypeScript SDK client
 
-22 records, version `2.4.0`, registry entry [ts-sdk-client](ts-sdk-client.md). Overlay `data/verified/ts-sdk-client.json`.
+51 records, version `2.4.0`, registry entry [ts-sdk-client](ts-sdk-client.md). Overlay `data/verified/ts-sdk-client.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
+| [app_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.app_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [app_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.app_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [app_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.app_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
-| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.meta_only/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
+| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.meta_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
+| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.meta_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
 | [meta_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.meta_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
-| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_meta/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
+| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_meta/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
+| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_meta/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
 | [with_meta](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.with_meta/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
+| [audience_user](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.audience_user/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [audience_user](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.audience_user/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [audience_user](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.audience_user/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [empty_object](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.empty_object/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [empty_object](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.empty_object/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [empty_object](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.empty_object/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 0x) |
+| [large](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.large/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [large](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.large/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [large](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.large/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [no_content_key](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.no_content_key/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [no_content_key](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.no_content_key/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [no_content_key](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.no_content_key/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
+| [is_error](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.is_error/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [is_error](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.is_error/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [is_error](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.is_error/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [with_image](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_image/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [with_image](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_image/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [with_image](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.with_image/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [schema_match](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_match/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [schema_match](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_match/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [schema_match](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.schema_match/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_mismatch/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_mismatch/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.schema_mismatch/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
-| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.mirror/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.mirror/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.mirror/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
 | [mirror](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.mirror/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [sc_empty](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_empty/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_empty](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_empty/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
 | [sc_empty](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_empty/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_null](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_null/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_null](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_null/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
 | [sc_null](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_null/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
+| [sc_string](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_string/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [sc_string](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_string/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [sc_string](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_string/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
-| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.structured_only/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
+| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.structured_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
+| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.structured_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
 | [structured_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.structured_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
-| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.summary_and_data/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.summary_and_data/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.summary_and_data/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.summary_and_data/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 
 ---

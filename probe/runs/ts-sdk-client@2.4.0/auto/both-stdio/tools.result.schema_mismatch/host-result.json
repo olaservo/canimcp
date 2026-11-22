@@ -1,0 +1,9 @@
+{
+  "negotiation": "auto",
+  "negotiatedVersion": "2026-07-28",
+  "tools": [
+    "probe_schema_mismatch"
+  ],
+  "toolOffered": true,
+  "callError": "ProtocolError: Structured content does not match the tool's output schema: data must have required property 'issues'"
+}

@@ -4,9 +4,9 @@
   "scenario": "tools.result.summary_and_data",
   "evidence": {
     "tier": "verified",
-    "at": "2025-11-25",
+    "at": "2026-07-28",
     "source": "canimcp-probe",
-    "date": "2026-11-08",
+    "date": "2026-11-22",
     "scenario": "tools.result.summary_and_data",
     "clientVersion": "2.4.0",
     "config": "auto",
@@ -19,22 +19,22 @@
       "offeredAs": "probe_summary_and_data",
       "toolCalled": true,
       "resultSentToModel": true,
-      "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
-      "payloadBytes": 311,
+      "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+      "payloadBytes": 409,
       "form": "envelope",
       "markers": [
         {
           "marker": "content",
           "count": 1,
-          "firstIndex": 55
+          "firstIndex": 153
         },
         {
           "marker": "sc",
           "count": 1,
-          "firstIndex": 152
+          "firstIndex": 250
         }
       ],
-      "negotiatedRevision": "2025-11-25",
+      "negotiatedRevision": "2026-07-28",
       "serverMode": "sdk",
       "sentResult": {
         "content": [
@@ -61,6 +61,13 @@
               "state": "open"
             }
           ]
+        },
+        "resultType": "complete",
+        "_meta": {
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
         }
       },
       "sentUnchanged": true,
@@ -73,7 +80,7 @@
   "run": {
     "exitCode": 0,
     "timedOut": false,
-    "durationMs": 1273,
+    "durationMs": 2596,
     "transport": "stdio",
     "serverMode": "sdk",
     "eraPolicy": "both",

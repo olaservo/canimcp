@@ -7,8 +7,1160 @@
     "2.4.0"
   ],
   "capabilities": {
+    "protocol.initializeHandshake": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2073,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 859,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1316,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.echo",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 918,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2028,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 925,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2024-11-05",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2024-11-05"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2024-11-05",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1294,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2024-11-05",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2024-11-05"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2024-11-05"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2024-11-05",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 845,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1985,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 878,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1408,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 955,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1881,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1161,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2026-07-28"
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": false,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1386,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2026-07-28"
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": false,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 767,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        }
+      ]
+    },
+    "protocol.serverDiscover": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2024,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 819,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.serverDiscover.method_not_found",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1401,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "2.4.0",
+          "config": "legacy",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.serverDiscover.method_not_found",
+          "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 880,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        }
+      ]
+    },
     "apps.visibility": {
       "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.app_only",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "toolOffered": true,
+            "offeredAs": "probe_app_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 250
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1867,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.app_only",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "toolOffered": true,
+            "offeredAs": "probe_app_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 250
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 902,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
         {
           "tier": "verified",
           "at": "2025-11-25",
@@ -90,6 +1242,202 @@
     },
     "tools.result.audience": {
       "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.audience_user",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "toolOffered": true,
+            "offeredAs": "probe_audience_user",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Shown to the user only MARK_USER_5a1d\",\"annotations\":{\"audience\":[\"user\"]}},{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 508,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "user",
+                "count": 1,
+                "firstIndex": 156
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 252
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 349
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Shown to the user only MARK_USER_5a1d",
+                  "annotations": {
+                    "audience": [
+                      "user"
+                    ]
+                  }
+                },
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2137,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.audience_user",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "toolOffered": true,
+            "offeredAs": "probe_audience_user",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Shown to the user only MARK_USER_5a1d\",\"annotations\":{\"audience\":[\"user\"]}},{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 508,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "user",
+                "count": 1,
+                "firstIndex": 156
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 252
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 349
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Shown to the user only MARK_USER_5a1d",
+                  "annotations": {
+                    "audience": [
+                      "user"
+                    ]
+                  }
+                },
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 942,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
         {
           "tier": "verified",
           "at": "2025-11-25",
@@ -187,6 +1535,90 @@
       "evidence": [
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.empty_object",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "toolOffered": true,
+            "offeredAs": "probe_empty_object",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "]"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1803,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.empty_object",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "toolOffered": true,
+            "offeredAs": "probe_empty_object",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "]"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1051,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -222,6 +1654,128 @@
             "durationMs": 1062,
             "transport": "stdio",
             "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.large",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.large",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "toolOffered": true,
+            "offeredAs": "probe_large",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inl ... [95697 chars omitted] ... nerated issue number 660 with some padding text\",\"state\":\"open\"},{\"id\":661,\"title\":\"Generated issue number 661 with some padding text\",\"state\":\"open\"},{\"id\":662,\"title\":\"Generated issue number 662 with some padding text\",\"state\":\"open\"},{\"id\":663,\"title\":\"Generated issue number 663 with some padding text\",\"state\":\"open\"},{\"id\":664,\"title\":\"Generated issue number 664 with some padding text\",\"state\":\"open\"},{\"id\":665,\"title\":\"Generated issue number 665 with some padding text\",\"state\":\"open\"},{\"id\":666,\"title\":\"Generated issue number 666 with some padding text\",\"state\":\"open\"},{\"id\":667,\"title\":\"Generated issue number 667 with some padding text\",\"state\":\"open\"},{\"id\":668,\"title\":\"Generated issue number 668 with some padding text\",\"state\":\"open\"},{\"id\":669,\"title\":\"Generated issue number 669 with some padding text\",\"state\":\"open\"},{\"id\":670,\"title\":\"Generated issue number 670 with some padding text\",\"state\":\"open\"},{\"id\":671,\"title\":\"Generated issue number 671 with some padding text\",\"state\":\"open\"},{\"id\":672,\"title\":\"Generated issue number 672 with some padding text\",\"state\":\"open\"},{\"id\":673,\"title\":\"Generated issue number 673 with some padding text\",\"state\":\"open\"},{\"id\":674,\"title\":\"Generated issue number 674 with some padding text\",\"state\":\"open\"},{\"id\":675,\"title\":\"Generated issue number 675 with some padding text\",\"state\":\"open\"},{\"id\":676,\"title\":\"Generated issue number 676 with some padding text\",\"state\":\"open\"},{\"id\":677,\"title\":\"Generated issue number 677 with some padding text\",\"state\":\"open\"},{\"id\":678,\"title\":\"Generated issue number 678 with some padding text\",\"state\":\"open\"},{\"id\":679,\"title\":\"Generated issue number 679 with some padding text\",\"state\":\"open\"},{\"id\":680,\"title\":\"Generated issue number 680 with some padding text\",\"state\":\"open\"},{\"id\":681,\"title\":\"Generated issue number 681 with some padding text\",\"state\":\"open\"},{\"id\":682,\"title\":\"Generated issue number 682 with some padding text\",\"state\":\"open\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}}",
+            "payloadBytes": 99697,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "largeStart",
+                "count": 2,
+                "firstIndex": 133
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 155
+              },
+              {
+                "marker": "largeEnd",
+                "count": 2,
+                "firstIndex": 41110
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 41203
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": "<large; see wire.jsonl>",
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1775,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.large",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.large",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "toolOffered": true,
+            "offeredAs": "probe_large",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inl ... [95697 chars omitted] ... nerated issue number 660 with some padding text\",\"state\":\"open\"},{\"id\":661,\"title\":\"Generated issue number 661 with some padding text\",\"state\":\"open\"},{\"id\":662,\"title\":\"Generated issue number 662 with some padding text\",\"state\":\"open\"},{\"id\":663,\"title\":\"Generated issue number 663 with some padding text\",\"state\":\"open\"},{\"id\":664,\"title\":\"Generated issue number 664 with some padding text\",\"state\":\"open\"},{\"id\":665,\"title\":\"Generated issue number 665 with some padding text\",\"state\":\"open\"},{\"id\":666,\"title\":\"Generated issue number 666 with some padding text\",\"state\":\"open\"},{\"id\":667,\"title\":\"Generated issue number 667 with some padding text\",\"state\":\"open\"},{\"id\":668,\"title\":\"Generated issue number 668 with some padding text\",\"state\":\"open\"},{\"id\":669,\"title\":\"Generated issue number 669 with some padding text\",\"state\":\"open\"},{\"id\":670,\"title\":\"Generated issue number 670 with some padding text\",\"state\":\"open\"},{\"id\":671,\"title\":\"Generated issue number 671 with some padding text\",\"state\":\"open\"},{\"id\":672,\"title\":\"Generated issue number 672 with some padding text\",\"state\":\"open\"},{\"id\":673,\"title\":\"Generated issue number 673 with some padding text\",\"state\":\"open\"},{\"id\":674,\"title\":\"Generated issue number 674 with some padding text\",\"state\":\"open\"},{\"id\":675,\"title\":\"Generated issue number 675 with some padding text\",\"state\":\"open\"},{\"id\":676,\"title\":\"Generated issue number 676 with some padding text\",\"state\":\"open\"},{\"id\":677,\"title\":\"Generated issue number 677 with some padding text\",\"state\":\"open\"},{\"id\":678,\"title\":\"Generated issue number 678 with some padding text\",\"state\":\"open\"},{\"id\":679,\"title\":\"Generated issue number 679 with some padding text\",\"state\":\"open\"},{\"id\":680,\"title\":\"Generated issue number 680 with some padding text\",\"state\":\"open\"},{\"id\":681,\"title\":\"Generated issue number 681 with some padding text\",\"state\":\"open\"},{\"id\":682,\"title\":\"Generated issue number 682 with some padding text\",\"state\":\"open\"},{\"id\":683,\"title\":\"MARK_LARGE_END_e2c4\"}]}}",
+            "payloadBytes": 99697,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "largeStart",
+                "count": 2,
+                "firstIndex": 133
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 155
+              },
+              {
+                "marker": "largeEnd",
+                "count": 2,
+                "firstIndex": 41110
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 41203
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": "<large; see wire.jsonl>",
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 991,
+            "transport": "http",
+            "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
           }
@@ -283,6 +1837,128 @@
             "durationMs": 1283,
             "transport": "stdio",
             "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.no_content_key",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "toolOffered": true,
+            "offeredAs": "probe_no_content_key",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "]"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1728,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.no_content_key",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "toolOffered": true,
+            "offeredAs": "probe_no_content_key",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "]"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 914,
+            "transport": "http",
+            "serverMode": "raw",
             "eraPolicy": "both",
             "modelApi": "chat"
           }
@@ -359,6 +2035,144 @@
       "evidence": [
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.is_error",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "toolOffered": true,
+            "offeredAs": "probe_is_error",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Lookup failed MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"},\"isError\":true}",
+            "payloadBytes": 241,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 147
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 211
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lookup failed MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "error": "rate limited MARK_SC_91be"
+              },
+              "isError": true,
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1999,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.is_error",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "toolOffered": true,
+            "offeredAs": "probe_is_error",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Lookup failed MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"error\":\"rate limited MARK_SC_91be\"},\"isError\":true}",
+            "payloadBytes": 241,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 147
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 211
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lookup failed MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "error": "rate limited MARK_SC_91be"
+              },
+              "isError": true,
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 918,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -425,9 +2239,9 @@
       "evidence": [
         {
           "tier": "verified",
-          "at": "2025-11-25",
+          "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-08",
+          "date": "2026-11-22",
           "scenario": "tools.result.meta_only",
           "clientVersion": "2.4.0",
           "config": "auto",
@@ -440,34 +2254,39 @@
             "offeredAs": "probe_meta_only",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "{\"_meta\":{\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
-            "payloadBytes": 148,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
+            "payloadBytes": 236,
             "form": "envelope",
             "markers": [
               {
                 "marker": "meta",
                 "count": 1,
-                "firstIndex": 31
+                "firstIndex": 119
               },
               {
                 "marker": "content",
                 "count": 1,
-                "firstIndex": 127
+                "firstIndex": 215
               }
             ],
-            "negotiatedRevision": "2025-11-25",
+            "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "sentResult": {
               "_meta": {
                 "probe/trace": "trace MARK_META_4d2e",
-                "probe/source": "fixture"
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
               },
               "content": [
                 {
                   "type": "text",
                   "text": "Found 3 open issues MARK_CONTENT_7f3a"
                 }
-              ]
+              ],
+              "resultType": "complete"
             },
             "sentUnchanged": true,
             "notes": [
@@ -478,8 +2297,75 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1308,
+            "durationMs": 2886,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.meta_only",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.meta_only",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "meta_only",
+            "toolOffered": true,
+            "offeredAs": "probe_meta_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
+            "payloadBytes": 236,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "meta",
+                "count": 1,
+                "firstIndex": 119
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 215
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1069,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -549,9 +2435,9 @@
         },
         {
           "tier": "verified",
-          "at": "2025-11-25",
+          "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-08",
+          "date": "2026-11-22",
           "scenario": "tools.result.with_meta",
           "clientVersion": "2.4.0",
           "config": "auto",
@@ -564,32 +2450,36 @@
             "offeredAs": "probe_with_meta",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "{\"_meta\":{\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
-            "payloadBytes": 383,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 471,
             "form": "envelope",
             "markers": [
               {
                 "marker": "meta",
                 "count": 1,
-                "firstIndex": 31
+                "firstIndex": 119
               },
               {
                 "marker": "content",
                 "count": 1,
-                "firstIndex": 127
+                "firstIndex": 215
               },
               {
                 "marker": "sc",
                 "count": 1,
-                "firstIndex": 224
+                "firstIndex": 312
               }
             ],
-            "negotiatedRevision": "2025-11-25",
+            "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "sentResult": {
               "_meta": {
                 "probe/trace": "trace MARK_META_4d2e",
-                "probe/source": "fixture"
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
               },
               "content": [
                 {
@@ -615,7 +2505,8 @@
                     "state": "open"
                   }
                 ]
-              }
+              },
+              "resultType": "complete"
             },
             "sentUnchanged": true,
             "notes": [
@@ -626,8 +2517,99 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1172,
+            "durationMs": 3257,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.with_meta",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_meta",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_meta",
+            "toolOffered": true,
+            "offeredAs": "probe_with_meta",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 471,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "meta",
+                "count": 1,
+                "firstIndex": 119
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 215
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 312
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1130,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -725,9 +2707,9 @@
       "evidence": [
         {
           "tier": "verified",
-          "at": "2025-11-25",
+          "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-08",
+          "date": "2026-11-22",
           "scenario": "tools.result.mirror",
           "clientVersion": "2.4.0",
           "config": "auto",
@@ -740,17 +2722,17 @@
             "offeredAs": "probe_mirror",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
-            "payloadBytes": 520,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 618,
             "form": "envelope",
             "markers": [
               {
                 "marker": "sc",
                 "count": 2,
-                "firstIndex": 98
+                "firstIndex": 196
               }
             ],
-            "negotiatedRevision": "2025-11-25",
+            "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "sentResult": {
               "content": [
@@ -777,6 +2759,13 @@
                     "state": "open"
                   }
                 ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
               }
             },
             "sentUnchanged": true,
@@ -788,8 +2777,87 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2922,
+            "durationMs": 2155,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.mirror",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.mirror",
+          "note": "⟨…⟩ envelope (payload 2x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "mirror",
+            "toolOffered": true,
+            "offeredAs": "probe_mirror",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"{\\\"issues\\\":[{\\\"id\\\":101,\\\"title\\\":\\\"Login button unresponsive MARK_SC_91be\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":102,\\\"title\\\":\\\"Dark mode flickers on load\\\",\\\"state\\\":\\\"open\\\"},{\\\"id\\\":103,\\\"title\\\":\\\"Export CSV drops header row\\\",\\\"state\\\":\\\"open\\\"}]}\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 618,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "sc",
+                "count": 2,
+                "firstIndex": 196
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1323,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -869,6 +2937,128 @@
         },
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_empty",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{}}",
+            "payloadBytes": 197,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1927,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_empty",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{}}",
+            "payloadBytes": 197,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 993,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -923,6 +3113,116 @@
         },
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_null",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":null}",
+            "payloadBytes": 101,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 55
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2314,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_null",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 0x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":null}",
+            "payloadBytes": 101,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 55
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 809,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -964,6 +3264,126 @@
             "timedOut": false,
             "durationMs": 1044,
             "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_string",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":\"three issues MARK_SC_91be\"}",
+            "payloadBytes": 124,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 55
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 110
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1724,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_string",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "toolOffered": true,
+            "offeredAs": "probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":\"three issues MARK_SC_91be\"}",
+            "payloadBytes": 124,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 55
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 110
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 998,
+            "transport": "http",
             "serverMode": "raw",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -1019,9 +3439,9 @@
         },
         {
           "tier": "verified",
-          "at": "2025-11-25",
+          "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-08",
+          "date": "2026-11-22",
           "scenario": "tools.result.structured_only",
           "clientVersion": "2.4.0",
           "config": "auto",
@@ -1034,17 +3454,17 @@
             "offeredAs": "probe_structured_only",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "{\"content\":[],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
-            "payloadBytes": 249,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 347,
             "form": "envelope",
             "markers": [
               {
                 "marker": "sc",
                 "count": 1,
-                "firstIndex": 90
+                "firstIndex": 188
               }
             ],
-            "negotiatedRevision": "2025-11-25",
+            "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "sentResult": {
               "content": [],
@@ -1066,6 +3486,13 @@
                     "state": "open"
                   }
                 ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
               }
             },
             "sentUnchanged": true,
@@ -1077,8 +3504,82 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1542,
+            "durationMs": 2341,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.structured_only",
+          "note": "⟨…⟩ envelope (content 0x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "toolOffered": true,
+            "offeredAs": "probe_structured_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 347,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 188
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1064,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -1153,9 +3654,9 @@
         },
         {
           "tier": "verified",
-          "at": "2025-11-25",
+          "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-08",
+          "date": "2026-11-22",
           "scenario": "tools.result.summary_and_data",
           "clientVersion": "2.4.0",
           "config": "auto",
@@ -1168,22 +3669,22 @@
             "offeredAs": "probe_summary_and_data",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "{\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
-            "payloadBytes": 311,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
             "form": "envelope",
             "markers": [
               {
                 "marker": "content",
                 "count": 1,
-                "firstIndex": 55
+                "firstIndex": 153
               },
               {
                 "marker": "sc",
                 "count": 1,
-                "firstIndex": 152
+                "firstIndex": 250
               }
             ],
-            "negotiatedRevision": "2025-11-25",
+            "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "sentResult": {
               "content": [
@@ -1210,6 +3711,13 @@
                     "state": "open"
                   }
                 ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
               }
             },
             "sentUnchanged": true,
@@ -1221,8 +3729,92 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1273,
+            "durationMs": 2596,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.summary_and_data",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.summary_and_data",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "summary_and_data",
+            "toolOffered": true,
+            "offeredAs": "probe_summary_and_data",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 250
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1478,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -1311,6 +3903,174 @@
       "evidence": [
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_match",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "toolOffered": true,
+            "offeredAs": "probe_schema_match",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 250
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2156,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_match",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "toolOffered": true,
+            "offeredAs": "probe_schema_match",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 409,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 250
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1012,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -1388,6 +4148,120 @@
         },
         {
           "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_mismatch",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "toolOffered": true,
+            "offeredAs": "probe_schema_mismatch",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "wrong": "not issues MARK_SC_91be"
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: ProtocolError: Structured content does not match the tool's output schema: data must have required property 'issues'",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "PROBE_CALL_ERROR: ProtocolError: Structured content does not match the tool's output schema: data must have required property 'issues'"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2061,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_mismatch",
+          "note": "result never sent to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "toolOffered": true,
+            "offeredAs": "probe_schema_mismatch",
+            "toolCalled": true,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "wrong": "not issues MARK_SC_91be"
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved",
+              "callTool threw: ProtocolError: Structured content does not match the tool's output schema: data must have required property 'issues'",
+              "tool was called on the wire but no tool result reached the model"
+            ],
+            "finalText": "PROBE_CALL_ERROR: ProtocolError: Structured content does not match the tool's output schema: data must have required property 'issues'"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 985,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
           "at": "2025-11-25",
           "source": "canimcp-probe",
           "date": "2026-11-08",
@@ -1440,6 +4314,196 @@
     },
     "tools.result.media": {
       "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_image",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "toolOffered": true,
+            "offeredAs": "probe_with_image",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"image\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\",\"mimeType\":\"image/png\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 555,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "image",
+                "count": 1,
+                "firstIndex": 197
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 396
+              }
+            ],
+            "image": "base64-text",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                },
+                {
+                  "type": "image",
+                  "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                  "mimeType": "image/png"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 2289,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-22",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "2.4.0",
+          "config": "auto",
+          "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_image",
+          "note": "⟨…⟩ envelope (content 1x, structuredContent 1x)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "toolOffered": true,
+            "offeredAs": "probe_with_image",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"}},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"image\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\",\"mimeType\":\"image/png\"}],\"structuredContent\":{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}}",
+            "payloadBytes": 555,
+            "form": "envelope",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 153
+              },
+              {
+                "marker": "image",
+                "count": 1,
+                "firstIndex": 197
+              },
+              {
+                "marker": "sc",
+                "count": 1,
+                "firstIndex": 396
+              }
+            ],
+            "image": "base64-text",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                },
+                {
+                  "type": "image",
+                  "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                  "mimeType": "image/png"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [
+              "host-level result: what the SDK client returned, no model involved"
+            ],
+            "finalText": "PROBE_DONE: host-level result written"
+          },
+          "run": {
+            "exitCode": 3221226505,
+            "timedOut": false,
+            "durationMs": 1261,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
         {
           "tier": "verified",
           "at": "2025-11-25",

@@ -1,11 +1,17 @@
 {
   "negotiation": "auto",
-  "negotiatedVersion": "2025-11-25",
+  "negotiatedVersion": "2026-07-28",
   "tools": [
     "probe_structured_only"
   ],
   "toolOffered": true,
   "result": {
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "canimcp-probe-fixture",
+        "version": "0.1.0"
+      }
+    },
     "content": [],
     "structuredContent": {
       "issues": [

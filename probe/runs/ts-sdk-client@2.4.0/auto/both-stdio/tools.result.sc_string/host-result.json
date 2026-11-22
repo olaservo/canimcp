@@ -1,0 +1,17 @@
+{
+  "negotiation": "auto",
+  "negotiatedVersion": "2026-07-28",
+  "tools": [
+    "probe_sc_string"
+  ],
+  "toolOffered": true,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Found 3 open issues MARK_CONTENT_7f3a"
+      }
+    ],
+    "structuredContent": "three issues MARK_SC_91be"
+  }
+}

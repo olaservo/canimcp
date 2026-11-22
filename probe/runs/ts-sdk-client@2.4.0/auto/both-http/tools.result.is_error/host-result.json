@@ -1,0 +1,26 @@
+{
+  "negotiation": "auto",
+  "negotiatedVersion": "2026-07-28",
+  "tools": [
+    "probe_is_error"
+  ],
+  "toolOffered": true,
+  "result": {
+    "_meta": {
+      "io.modelcontextprotocol/serverInfo": {
+        "name": "canimcp-probe-fixture",
+        "version": "0.1.0"
+      }
+    },
+    "content": [
+      {
+        "type": "text",
+        "text": "Lookup failed MARK_CONTENT_7f3a"
+      }
+    ],
+    "structuredContent": {
+      "error": "rate limited MARK_SC_91be"
+    },
+    "isError": true
+  }
+}

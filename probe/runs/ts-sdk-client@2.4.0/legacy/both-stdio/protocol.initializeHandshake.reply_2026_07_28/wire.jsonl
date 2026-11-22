@@ -1,0 +1,2 @@
+{"t":"2026-11-22T02:14:45.343Z","transport":"stdio","mode":"raw","dir":"in","message":{"method":"initialize","params":{"protocolVersion":"2025-11-25","capabilities":{},"clientInfo":{"name":"canimcp-probe-ts-sdk-client","version":"0.1.0"}},"jsonrpc":"2.0","id":0}}
+{"t":"2026-11-22T02:14:45.347Z","transport":"stdio","mode":"raw","dir":"out","message":{"jsonrpc":"2.0","id":0,"result":{"protocolVersion":"2026-07-28","capabilities":{"tools":{}},"serverInfo":{"name":"canimcp-probe-fixture","version":"0.1.0"}}},"revision":"2026-07-28"}

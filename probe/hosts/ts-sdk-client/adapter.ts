@@ -12,7 +12,7 @@ const adapter: HostAdapter = {
   id: 'ts-sdk-client',
   title: 'TypeScript SDK client',
   configs: [
-    { name: 'auto', description: 'Default version negotiation: server/discover first, initialize fallback.', modelApi: 'chat' },
+    { name: 'auto', description: 'versionNegotiation mode auto: server/discover first, initialize fallback. The SDK default is legacy.', modelApi: 'chat' },
     { name: 'legacy', description: 'versionNegotiation mode legacy: the initialize handshake only.', modelApi: 'chat' },
   ],
   async version() {
