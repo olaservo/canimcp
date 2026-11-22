@@ -1,0 +1,15 @@
+# docker compose -f probe/docker/compose.yaml build
+# docker compose -f probe/docker/compose.yaml run --rm probe --client goose --set core
+name: canimcp-probe
+services:
+  probe:
+    image: canimcp-probe:local
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        CODEX_VERSION: ${CODEX_VERSION:-}
+    # Loopback only: the mock model and fixture server are the only endpoints a client needs.
+    network_mode: none
+    volumes:
+      - ../runs:/canimcp/probe/runs
