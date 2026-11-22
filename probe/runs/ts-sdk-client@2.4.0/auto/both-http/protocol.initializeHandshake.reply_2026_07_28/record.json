@@ -1,0 +1,57 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "clientVersion": "2.4.0",
+    "config": "auto",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2026_07_28",
+    "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2026-07-28",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "supportedVersions": [
+            "2026-07-28"
+          ]
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [
+        "2026-07-28"
+      ],
+      "headerVersions": [
+        "2026-07-28"
+      ],
+      "toolCalled": true,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 1161,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

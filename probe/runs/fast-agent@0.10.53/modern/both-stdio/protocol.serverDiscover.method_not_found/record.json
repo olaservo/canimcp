@@ -1,0 +1,45 @@
+{
+  "client": "fast-agent",
+  "capability": "protocol.serverDiscover",
+  "scenario": "protocol.serverDiscover.method_not_found",
+  "evidence": {
+    "tier": "verified",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "clientVersion": "0.10.53",
+    "config": "modern",
+    "artifact": "probe/runs/fast-agent@0.10.53/modern/both-stdio/protocol.serverDiscover.method_not_found",
+    "note": "server/discover at 2026-07-28 → error -32601; client sent nothing further",
+    "observation": {
+      "type": "protocol.negotiation",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "errorCode": -32601
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [],
+      "requestMetaVersions": [],
+      "headerVersions": [],
+      "toolCalled": false,
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 1,
+    "timedOut": false,
+    "durationMs": 10448,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "client": "fast-agent",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.echo",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-11-25",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "protocol.initializeHandshake.echo",
+    "clientVersion": "0.10.53",
+    "config": "legacy",
+    "artifact": "probe/runs/fast-agent@0.10.53/legacy/both-stdio/protocol.initializeHandshake.echo",
+    "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "initialize",
+          "version": "2025-11-25"
+        },
+        {
+          "dir": "out",
+          "method": "initialize",
+          "version": "2025-11-25"
+        }
+      ],
+      "initializedSent": true,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2025-11-25",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 9308,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

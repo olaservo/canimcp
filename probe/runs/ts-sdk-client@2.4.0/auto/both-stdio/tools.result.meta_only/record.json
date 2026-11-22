@@ -4,9 +4,9 @@
   "scenario": "tools.result.meta_only",
   "evidence": {
     "tier": "verified",
-    "at": "2025-11-25",
+    "at": "2026-07-28",
     "source": "canimcp-probe",
-    "date": "2026-11-08",
+    "date": "2026-11-22",
     "scenario": "tools.result.meta_only",
     "clientVersion": "2.4.0",
     "config": "auto",
@@ -19,34 +19,39 @@
       "offeredAs": "probe_meta_only",
       "toolCalled": true,
       "resultSentToModel": true,
-      "payloadExcerpt": "{\"_meta\":{\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
-      "payloadBytes": 148,
+      "payloadExcerpt": "{\"_meta\":{\"io.modelcontextprotocol/serverInfo\":{\"name\":\"canimcp-probe-fixture\",\"version\":\"0.1.0\"},\"probe/trace\":\"trace MARK_META_4d2e\",\"probe/source\":\"fixture\"},\"content\":[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"}]}",
+      "payloadBytes": 236,
       "form": "envelope",
       "markers": [
         {
           "marker": "meta",
           "count": 1,
-          "firstIndex": 31
+          "firstIndex": 119
         },
         {
           "marker": "content",
           "count": 1,
-          "firstIndex": 127
+          "firstIndex": 215
         }
       ],
-      "negotiatedRevision": "2025-11-25",
+      "negotiatedRevision": "2026-07-28",
       "serverMode": "sdk",
       "sentResult": {
         "_meta": {
           "probe/trace": "trace MARK_META_4d2e",
-          "probe/source": "fixture"
+          "probe/source": "fixture",
+          "io.modelcontextprotocol/serverInfo": {
+            "name": "canimcp-probe-fixture",
+            "version": "0.1.0"
+          }
         },
         "content": [
           {
             "type": "text",
             "text": "Found 3 open issues MARK_CONTENT_7f3a"
           }
-        ]
+        ],
+        "resultType": "complete"
       },
       "sentUnchanged": true,
       "notes": [
@@ -58,7 +63,7 @@
   "run": {
     "exitCode": 0,
     "timedOut": false,
-    "durationMs": 1308,
+    "durationMs": 2886,
     "transport": "stdio",
     "serverMode": "sdk",
     "eraPolicy": "both",

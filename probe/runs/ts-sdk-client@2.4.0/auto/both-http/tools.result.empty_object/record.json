@@ -1,0 +1,47 @@
+{
+  "client": "ts-sdk-client",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "2.4.0",
+    "config": "auto",
+    "artifact": "probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.empty_object",
+    "note": "result never sent to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "toolOffered": true,
+      "offeredAs": "probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "host-level result: what the SDK client returned, no model involved",
+        "callTool threw: SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]",
+        "tool was called on the wire but no tool result reached the model"
+      ],
+      "finalText": "]"
+    }
+  },
+  "run": {
+    "exitCode": 3221226505,
+    "timedOut": false,
+    "durationMs": 1051,
+    "transport": "http",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

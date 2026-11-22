@@ -1,0 +1,9 @@
+{
+  "negotiation": "auto",
+  "negotiatedVersion": "2026-07-28",
+  "tools": [
+    "probe_no_content_key"
+  ],
+  "toolOffered": true,
+  "callError": "SdkError: Invalid result for tools/call: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"content\"\n    ],\n    \"message\": \"Invalid input: expected array, received undefined\"\n  }\n]"
+}

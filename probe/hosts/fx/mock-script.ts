@@ -1,6 +1,8 @@
-// fx advertises no MCP tool until the model selects it. The script first asks
-// capability_search for the fixture tool, then selects the dynamic name the
-// search result quotes, then calls it, then ends with text.
+// fx advertises no MCP tool by name. From 0.0.17 the model reaches MCP tools
+// through one `toolbox` tool: the script searches for the fixture tool, runs
+// the name the search result quotes, then ends with text. Up to 0.0.16 fx had
+// `capability_search` and `mcp_select_tool` instead: the script searches,
+// selects the quoted name, then calls the tool fx then offers.
 import type { Script, ScriptContext, Decision } from '../../mock-model/script.js';
 import { DONE_TEXT } from '../../mock-model/script.js';
 
@@ -17,7 +19,20 @@ function dynamicName(text: string, fixtureTool: string): string | undefined {
   return names.find((n) => n !== fixtureTool) ?? names[0];
 }
 
+function toolboxStep(ctx: ScriptContext): Decision {
+  const n = ctx.toolResults.length;
+  if (n === 0) return { type: 'call', tool: 'toolbox', args: { search: ctx.fixtureTool }, callId: `call_probe_${ctx.seq}` };
+  if (n === 1) {
+    const name = dynamicName(lastResultText(ctx), ctx.fixtureTool);
+    if (name) return { type: 'call', tool: 'toolbox', args: { run: name, arguments: ctx.toolArgs ?? {} }, callId: `call_probe_fixture_${ctx.seq}` };
+    return { type: 'text', text: `PROBE_TOOL_NOT_OFFERED: toolbox search for ${ctx.fixtureTool} quoted no tool name` };
+  }
+  return { type: 'text', text: DONE_TEXT };
+}
+
 const script: Script = (ctx, helpers): Decision | undefined => {
+  if (ctx.offeredTools.some((t) => t.name === 'toolbox')) return toolboxStep(ctx);
+
   const fixture = helpers.findFixtureTool(ctx);
   const calledFixture = ctx.toolResults.some((r) => r.callId && ctx.body && JSON.stringify(ctx.body).includes(`"${r.callId}"`) && JSON.stringify(ctx.body).includes(ctx.fixtureTool) && ctx.toolResults.length >= 1 && fixture === undefined && ctx.toolResults.length >= 3);
   if (calledFixture) return { type: 'text', text: DONE_TEXT };

@@ -105,39 +105,90 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-22 records from the live probe (`probe/`), client version `2.4.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/ts-sdk-client.json`.
+71 records from the live probe (`probe/`), client version `2.4.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/ts-sdk-client.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
+| [app_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.app_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [app_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.app_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [app_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.app_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| **protocol.initializeHandshake** | | | | | |
+| [protocol.initializeHandshake.echo](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.echo/record.json) | auto | http | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.echo](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.echo/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.echo](../probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.echo/record.json) | legacy | http | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.echo](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.echo/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2024_11_05](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2024_11_05/record.json) | auto | http | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2024_11_05](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2024_11_05/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2024_11_05](../probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2024_11_05/record.json) | legacy | http | `2024-11-05` | 2.4.0 | initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2024_11_05](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2024_11_05/record.json) | legacy | stdio | `2024-11-05` | 2.4.0 | initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2025_11_25/record.json) | auto | http | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2025_11_25/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2025_11_25/record.json) | legacy | http | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2025_11_25/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.initializeHandshake.reply_2026_07_28/record.json) | auto | http | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.initializeHandshake.reply_2026_07_28/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.initializeHandshake.reply_2026_07_28/record.json) | legacy | http | `2026-07-28` | 2.4.0 | initialize at 2025-11-25 → 2026-07-28; client sent nothing further |
+| [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.initializeHandshake.reply_2026_07_28/record.json) | legacy | stdio | `2026-07-28` | 2.4.0 | initialize at 2025-11-25 → 2026-07-28; client sent nothing further |
+| **protocol.serverDiscover** | | | | | |
+| [protocol.serverDiscover.method_not_found](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/protocol.serverDiscover.method_not_found/record.json) | auto | http | `2025-11-25` | 2.4.0 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.serverDiscover.method_not_found](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/protocol.serverDiscover.method_not_found/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.serverDiscover.method_not_found](../probe/runs/ts-sdk-client@2.4.0/legacy/both-http/protocol.serverDiscover.method_not_found/record.json) | legacy | http | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| [protocol.serverDiscover.method_not_found](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/protocol.serverDiscover.method_not_found/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
 | **tools.result._meta** | | | | | |
-| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.meta_only/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
+| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.meta_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
+| [meta_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.meta_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
 | [meta_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.meta_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
-| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_meta/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
+| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_meta/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
+| [with_meta](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_meta/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
 | [with_meta](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.with_meta/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta reached the model) |
 | **tools.result.audience** | | | | | |
+| [audience_user](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.audience_user/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [audience_user](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.audience_user/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [audience_user](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.audience_user/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | **tools.result.content** | | | | | |
+| [empty_object](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.empty_object/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [empty_object](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.empty_object/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [empty_object](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.empty_object/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 0x) |
+| [large](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.large/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [large](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.large/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [large](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.large/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [no_content_key](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.no_content_key/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [no_content_key](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.no_content_key/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [no_content_key](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.no_content_key/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
 | **tools.result.isError** | | | | | |
+| [is_error](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.is_error/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [is_error](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.is_error/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [is_error](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.is_error/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | **tools.result.media** | | | | | |
+| [with_image](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.with_image/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [with_image](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.with_image/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [with_image](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.with_image/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | **tools.result.outputSchema** | | | | | |
+| [schema_match](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_match/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [schema_match](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_match/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [schema_match](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.schema_match/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.schema_mismatch/record.json) | auto | http | `2026-07-28` | 2.4.0 | result never sent to the model |
+| [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.schema_mismatch/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | result never sent to the model |
 | [schema_mismatch](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.schema_mismatch/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
 | **tools.result.structuredContent** | | | | | |
-| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.mirror/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.mirror/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [mirror](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.mirror/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
 | [mirror](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.mirror/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (payload 2x) |
+| [sc_empty](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_empty/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_empty](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_empty/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
 | [sc_empty](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_empty/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_null](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_null/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
+| [sc_null](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_null/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 0x) |
 | [sc_null](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_null/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
+| [sc_string](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.sc_string/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [sc_string](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.sc_string/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [sc_string](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.sc_string/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | result never sent to the model |
-| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.structured_only/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
+| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.structured_only/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
+| [structured_only](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.structured_only/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
 | [structured_only](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.structured_only/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 0x, structuredContent 1x) |
-| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.summary_and_data/record.json) | auto | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-http/tools.result.summary_and_data/record.json) | auto | http | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/auto/both-stdio/tools.result.summary_and_data/record.json) | auto | stdio | `2026-07-28` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 | [summary_and_data](../probe/runs/ts-sdk-client@2.4.0/legacy/both-stdio/tools.result.summary_and_data/record.json) | legacy | stdio | `2025-11-25` | 2.4.0 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
 
 ## Research notes

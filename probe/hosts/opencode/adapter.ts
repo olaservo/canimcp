@@ -76,6 +76,8 @@ const adapter: HostAdapter = {
     const env: NodeJS.ProcessEnv = {};
     for (const [k, v] of Object.entries(process.env)) if (!k.startsWith('OPENCODE_') && !k.startsWith('XDG_')) env[k] = v;
     Object.assign(env, {
+      // `opencode run` takes PWD ahead of the process cwd (packages/cli/src/run/run.ts at 73a0eae8).
+      PWD: cwd,
       HOME: home,
       USERPROFILE: home,
       OPENCODE_TEST_HOME: home,

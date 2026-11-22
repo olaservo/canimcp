@@ -11,7 +11,8 @@ const negotiation = process.env.PROBE_NEGOTIATION ?? 'auto';
 const serverUrl = process.env.PROBE_SERVER_URL || undefined;
 const serverCommand = JSON.parse(process.env.PROBE_SERVER_COMMAND as string) as { command: string; args: string[] };
 
-const client = new Client({ name: 'canimcp-probe-ts-sdk-client', version: '0.1.0' }, negotiation === 'legacy' ? { versionNegotiation: { mode: 'legacy' } } : undefined);
+// The SDK's own default is legacy, so auto has to be asked for.
+const client = new Client({ name: 'canimcp-probe-ts-sdk-client', version: '0.1.0' }, { versionNegotiation: { mode: negotiation === 'legacy' ? 'legacy' : 'auto' } });
 const transport = serverUrl ? new StreamableHTTPClientTransport(new URL(serverUrl)) : new StdioClientTransport({ command: serverCommand.command, args: serverCommand.args, stderr: 'inherit' });
 
 const out: Record<string, unknown> = { negotiation };

@@ -1,0 +1,55 @@
+{
+  "client": "fast-agent",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "clientVersion": "0.10.53",
+    "config": "modern",
+    "artifact": "probe/runs/fast-agent@0.10.53/modern/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+    "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2026-07-28",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "supportedVersions": [
+            "2026-07-28"
+          ]
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [
+        "2026-07-28"
+      ],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8731,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

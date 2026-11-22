@@ -1,0 +1,65 @@
+{
+  "client": "hermes-agent",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-22",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "clientVersion": "0.23.0+689.ga9ff979",
+    "config": "default",
+    "artifact": "probe/runs/hermes-agent@0.23.0+689.ga9ff979/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+    "note": "initialize at 2025-11-25 → 2026-07-28; then server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2026-07-28",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "initialize",
+          "version": "2025-11-25"
+        },
+        {
+          "dir": "out",
+          "method": "initialize",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "supportedVersions": [
+            "2026-07-28"
+          ]
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [
+        "2026-07-28"
+      ],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 29161,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}
