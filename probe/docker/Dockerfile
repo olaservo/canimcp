@@ -3,14 +3,14 @@
 # user profile through the OS and list the operator's skills whatever HOME says, so their
 # captures are made here instead. Build context is probe/ (see compose.yaml).
 #
-# Defaults reproduce the pins of the stripped Windows captures: goose built at 4facf56,
-# opencode built at a98e3fa plus the npm 2.2.6 install, codex 0.169.0-alpha.3 from npm.
+# Defaults reproduce the Linux records of 2026-11-26: goose built at d1438fd,
+# opencode built at 82d8fc5, codex 0.174.0-alpha.7 from npm over the 0.169.0-alpha.3 manifest.
 
 ARG NODE_IMAGE=node:24-trixie-slim
 
 # goose: built from source, as on Windows. rust-toolchain.toml at the pin names 1.99.0.
 FROM rust:1.99-trixie AS goose
-ARG GOOSE_COMMIT=4facf56cbab049142809d9afa4648ebe6823ba80
+ARG GOOSE_COMMIT=d1438fde28d6669e0f34cbd2ae90c5fbe903f8d1
 RUN apt-get update && apt-get install -y --no-install-recommends \
       build-essential cmake pkg-config libssl-dev libdbus-1-dev libclang-dev \
       protobuf-compiler libprotobuf-dev ca-certificates git \
@@ -23,7 +23,7 @@ RUN cargo build --release -p goose-cli --bin goose && cp target/release/goose /g
 
 # opencode: built from source at the pin with the bun its package.json names.
 FROM oven/bun:1.4.4 AS opencode
-ARG OPENCODE_COMMIT=a98e3fa7a1a6073f27e39ba0eee8cc13ec8ab438
+ARG OPENCODE_COMMIT=82d8fc5bec961043e47b4d2d3fcd03667f40148a
 RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates git \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /src
@@ -49,7 +49,7 @@ RUN npm ci
 COPY --chown=node hosts/codex/package.json hosts/codex/package-lock.json hosts/codex/
 COPY --chown=node hosts/opencode/package.json hosts/opencode/package-lock.json hosts/opencode/
 # CODEX_VERSION installs another release over the pinned one, for the discover-first runs.
-ARG CODEX_VERSION=
+ARG CODEX_VERSION=0.174.0-alpha.7
 RUN cd hosts/codex && npm ci && if [ -n "$CODEX_VERSION" ]; then npm install --no-save "@openai/codex@$CODEX_VERSION"; fi
 RUN cd hosts/opencode && npm ci
 

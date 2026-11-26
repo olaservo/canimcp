@@ -1,0 +1,55 @@
+{
+  "client": "goose",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+    "clientVersion": "1.61.0",
+    "config": "default",
+    "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+    "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2025-11-25",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "supportedVersions": [
+            "2026-07-28"
+          ]
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [
+        "2026-07-28"
+      ],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1295,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

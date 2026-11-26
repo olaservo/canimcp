@@ -30,7 +30,10 @@ const adapter: HostAdapter = {
     if (!existsSync(bin)) return { missing: `${bin} not found; build opencode at the pin into probe/hosts/opencode/bin (see package.json) or run npm install in probe/hosts/opencode` };
     const r = await runCommand(bin, ['--version'], { timeoutMs: 30000 });
     // `--version` prints `opencode v0.0.0-a98e3fa`; the run directory wants the bare version.
-    if (fromSource) return { version: (r.stdout.trim() || r.stderr.trim()).replace(/^opencode\s+v?/, ''), detail: 'built from source at a98e3fa' };
+    if (fromSource) {
+      const version = (r.stdout.trim() || r.stderr.trim()).replace(/^opencode\s+v?/, '');
+      return { version, detail: `built from source at ${version.replace(/^0\.0\.0-/, '')}` };
+    }
     const pkg = JSON.parse(readFileSync(resolve(hostDir, 'node_modules/@opencode/cli/package.json'), 'utf8')) as { version: string };
     return { version: pkg.version, detail: r.stdout.trim() };
   },

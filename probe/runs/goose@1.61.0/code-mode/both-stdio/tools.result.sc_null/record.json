@@ -1,0 +1,39 @@
+{
+  "client": "goose",
+  "capability": "tools.result.structuredContent",
+  "scenario": "tools.result.sc_null",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "tools.result.sc_null",
+    "clientVersion": "1.61.0",
+    "config": "code-mode",
+    "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_null",
+    "note": "tool not offered to the model",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "sc_null",
+      "api": "chat",
+      "toolOffered": false,
+      "toolCalled": false,
+      "resultSentToModel": false,
+      "form": "unknown",
+      "markers": [],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "notes": [],
+      "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_null among 4 tools."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1361,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

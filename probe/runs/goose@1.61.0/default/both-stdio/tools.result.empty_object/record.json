@@ -1,0 +1,47 @@
+{
+  "client": "goose",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "1.61.0",
+    "config": "default",
+    "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "probe__probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "(empty result)",
+      "payloadBytes": 14,
+      "form": "text",
+      "markers": [],
+      "placeholder": "(empty result)",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 1352,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

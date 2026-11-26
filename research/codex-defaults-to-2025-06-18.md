@@ -166,6 +166,8 @@ What happens when the server refuses `server/discover` depends on the error and 
 
 The `-32601` rows are the `protocol.serverDiscover.method_not_found` scenario. The `-32022` rows are `echo` run with `--era legacy`.
 
+The same commands were run on 0.174.0-alpha.7 on 2026-11-26, a Linux build in the probe's Docker image. On stdio, `default` and `stdio-opt-in-no-flag` now send `server/discover` at `2026-07-28` first, and so do the four `reply_*` scenarios, which therefore no longer reach the `initialize` reply on stdio. HTTP `default` still sends `initialize` at `2025-06-18` and accepts each reply as the table above shows. The refusal rows are unchanged. The 0.169.0-alpha.3 records were removed from `probe/runs` that day and remain in the repo's history.
+
 Three more settings reach the modern lifecycle. None was run for this note. `codex_apps_mcp_2026_07_28` and `use_xaa` are `UnderDevelopment` and off by default. `mcp_connection_sharing` was too at `03cb3294`, and is `Stable` and on by default from `ac784eb1`.
 
 - `mcp_connection_sharing` puts an eligible local stdio server in `DiscoverLocalStdio`, which probes `server/discover` without the `env` marker.
