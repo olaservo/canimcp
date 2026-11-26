@@ -18,10 +18,10 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | SDK | `rmcp` 3.6.0 · declares `=3.6.0 (git rev b11a40d8)` · official Rust SDK · unpatched |
 | Prefers | `2025-06-18` |
 | Speaks | `2025-06-18`, `2026-07-28` |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-26 |
 | Probed | `0.174.0-alpha.7` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
 
@@ -69,7 +69,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## What the table flattens
 
-- **transports.stdio** — Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.
+- **transports.stdio** — Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1, and in alpha tags only as of 2026-11-26) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.
 - **transports.sse** — rmcp 3.6.0 has no standalone SSE client feature. Codex enables transport-child-process, transport-async-rw and the streamable HTTP client and server, and its config has only stdio and streamable HTTP transports.
 - **transports.streamableHttp** — Carries OAuth, a bearer token, or neither, with session-expiry retry on 404 and a configurable redirect policy.
 - **authentication.oauth** — Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. When the server also advertises authorization_response_iss_parameter_supported and names an issuer, the identifier is one shared document, https://chatgpt.com/oauth/codex/client.json. A per-server oauth.client_id and client_secret can be configured instead. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.
@@ -270,14 +270,14 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json), report generated 2026-11-09, window 2026-09-10 to 2026-11-08. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-08: `2026-07-28` <0.1%, `2025-06-18` 100%.
+From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 0.2%, `2025-06-18` 99.8%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
 | elicitation | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
 | elicitation.url | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.011% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
-| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.011% of this client's tool calls over the 30 days to 2026-11-08, so the sample is small. |
+| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
@@ -296,7 +296,7 @@ From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `2fb728da` on 2026-11-20, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-20.
+Read at `475e13ab` on 2026-11-26, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-26.
 
 **SDK.** A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.
 

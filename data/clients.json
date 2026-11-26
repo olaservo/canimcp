@@ -9,7 +9,7 @@
       "goose-cli"
     ],
     "url": "https://block.github.io/goose",
-    "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.10.0.",
+    "description": "Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.11.0.",
     "category": "agent-framework",
     "kind": "host",
     "platforms": [
@@ -30,16 +30,16 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/stdio.rs:14-91"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/mod.rs:723-743"
           }
         ]
@@ -51,8 +51,8 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/streamable_http.rs:554-655"
           }
         ]
@@ -68,16 +68,16 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/client.rs:241-243,388-390"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/mod.rs:265-292"
           }
         ]
@@ -115,16 +115,16 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:763-857"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/mod.rs:293-332"
         },
         {
@@ -140,14 +140,14 @@
     },
     "sampling": {
       "status": "unsupported",
-      "notes": "Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.10.0's default handler answers method not found.",
+      "notes": "Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.11.0's default handler answers method not found.",
       "evidence": [
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:366-494"
         },
         {
@@ -176,8 +176,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:252-304,406-483"
         },
         {
@@ -208,8 +208,8 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/client.rs:197-207,478-479"
           }
         ]
@@ -219,8 +219,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:346-373,478-479"
         }
       ]
@@ -233,16 +233,16 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:354-364,392-404"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/lease.rs:581-585,654-673"
         }
       ]
@@ -255,16 +255,16 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/lease.rs:454-475"
         },
         {
           "tier": "read",
           "at": "2026-07-28",
           "source": "aaif-goose/goose",
-          "date": "2026-11-20",
-          "commit": "ea5dded7",
+          "date": "2026-11-26",
+          "commit": "d1438fde",
           "path": "crates/oi-kit-agent/src/mcp/client.rs:597-606"
         }
       ]
@@ -278,16 +278,16 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/client.rs:52-64,306-318"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/goose/src/agents/extension_manager/mod.rs:95-117"
           }
         ],
@@ -304,13 +304,13 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/aaif-goose/goose",
-      "lastVerified": "2026-11-20",
+      "lastVerified": "2026-11-26",
       "source": {
         "repo": "https://github.com/aaif-goose/goose.git",
         "ref": "main",
-        "checkedCommit": "ea5dded738a46e1eac591642316ca8500a1e8158",
-        "commitDate": "2026-11-20T04:21:50Z",
-        "checkedAt": "2026-11-20",
+        "checkedCommit": "d1438fde28d6669e0f34cbd2ae90c5fbe903f8d1",
+        "commitDate": "2026-11-26T09:10:37Z",
+        "checkedAt": "2026-11-26",
         "paths": [
           "crates/oi-kit-agent/src/mcp/client.rs",
           "crates/oi-kit-agent/src/mcp/mod.rs",
@@ -329,32 +329,32 @@
         "language": "rust",
         "official": true,
         "declared": "3.9.0",
-        "resolved": "3.10.0",
+        "resolved": "3.11.0",
         "patched": false,
-        "notes": "The workspace declares rmcp \"3.9.0\" as a caret requirement and the lockfile resolves it to 3.10.0, so behavioural claims cite 3.10.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.",
+        "notes": "The workspace declares rmcp \"3.9.0\" as a caret requirement and the lockfile resolves it to 3.11.0, so behavioural claims cite 3.11.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "Cargo.toml:21,108-109"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
-            "path": "Cargo.lock:8154-8157"
+            "date": "2026-11-26",
+            "commit": "d1438fde",
+            "path": "Cargo.lock:8064-8067"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "aaif-goose/goose",
-            "date": "2026-11-20",
-            "commit": "ea5dded7",
+            "date": "2026-11-26",
+            "commit": "d1438fde",
             "path": "crates/oi-kit-agent/src/mcp/client.rs:573-596"
           }
         ]
@@ -383,22 +383,22 @@
     "transports": {
       "stdio": {
         "status": "full",
-        "notes": "Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.",
+        "notes": "Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1, and in alpha tags only as of 2026-11-26) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:509-531,555-607"
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:553-575,599-651"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/stdio_server_launcher.rs:896-961",
             "note": "The executor process transport."
           },
@@ -406,18 +406,18 @@
             "tier": "read",
             "at": "2026-07-28",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/features/src/lib.rs:1819-1824",
-            "note": "mcp_connection_sharing is Stable and on by default from ac784eb1 (2026-11-19). The newest stable tag in the clone, rust-v0.167.0, has it off."
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/features/src/lib.rs:1892-1897",
+            "note": "mcp_connection_sharing is Stable and on by default from ac784eb1 (2026-11-19), in alpha tags only. The newest stable tag in the clone, rust-v0.172.0, has it off."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/codex-mcp/src/server.rs:93-116",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/codex-mcp/src/server.rs:109-132",
             "note": "Which local stdio servers are eligible for the server/discover probe."
           }
         ],
@@ -433,8 +433,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/Cargo.toml:37-48"
           }
         ]
@@ -447,27 +447,27 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:669-716"
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:713-760"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:1978",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:2149",
             "note": "Session-expiry retry on 404."
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/rmcp-client/src/http_client_adapter.rs:74",
-            "note": "Redirect policy."
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/rmcp-client/src/http_client_adapter.rs:89-93,1104-1126",
+            "note": "Redirect policy. A third mode, Disabled, applies to extension servers with an in-process auth provider."
           },
           {
             "tier": "declared",
@@ -499,16 +499,16 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/oauth_client_registration.rs:37-135"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/oauth/issuer_binding.rs:11-77",
             "note": "issuerIdentification: rejects an authorization endpoint that cannot be bound to its issuer, honouring authorization_response_iss_parameter_supported. Two hardcoded compatibility exceptions, for Mercado Pago and Robinhood."
           },
@@ -516,8 +516,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/perform_oauth_login.rs:739-743",
             "note": "resourceIndicators: a resource parameter is appended to the authorization URL. Whether it also reaches the token endpoint is rmcp's, not read."
           },
@@ -525,8 +525,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/auth_status.rs:219-285",
             "note": "protectedResourceMetadata: discovery goes through rmcp's AuthorizationManager. Codex's own test drives a WWW-Authenticate resource_metadata challenge end to end, so the behaviour holds, but the implementation was not read."
           },
@@ -534,8 +534,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/oauth_client_credentials.rs:13-40",
             "note": "The pre-registered client from per-server oauth.client_id and client_secret."
           }
@@ -552,16 +552,16 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/http_headers.rs:141,352"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/config/src/mcp_types.rs:408-417",
             "note": "The config fields."
           }
@@ -579,33 +579,33 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:86-88"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/tool_list_changes.rs:57-68"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/codex-mcp/src/connection_manager.rs:290-312"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/features/src/lib.rs:1813-1818",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/features/src/lib.rs:1886-1891",
             "note": "mcp_tool_list_changed is under development and off."
           }
         ]
@@ -643,16 +643,16 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:846-924"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:945-1023"
         },
         {
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/codex-mcp/src/pagination.rs:27-80"
         },
         {
@@ -676,8 +676,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:82-84"
           }
         ]
@@ -690,8 +690,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:74-80",
             "note": "on_resource_updated logs. No resources/subscribe call in codex-rs/rmcp-client/src or codex-rs/codex-mcp/src."
           }
@@ -702,9 +702,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/rmcp-client/src/rmcp_client.rs:886-1002"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/rmcp-client/src/rmcp_client.rs:925-1041"
         }
       ]
     },
@@ -716,8 +716,8 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -729,8 +729,8 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -743,9 +743,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1370-1401"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1469-1500"
         }
       ]
     },
@@ -763,26 +763,26 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/core/src/config/mod.rs:2089-2097"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/core/src/config/mod.rs:2138-2146"
         },
         {
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/features/src/lib.rs:2377-2382",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/features/src/lib.rs:2474-2479",
           "note": "auth_elicitation is stable and default-enabled."
         },
         {
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1178-1194",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1277-1293",
           "note": "The vendor capability keys on stdio connections."
         },
         {
@@ -803,17 +803,17 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:40-141"
         },
         {
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/connection_manager.rs:433",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/connection_manager.rs:442",
           "note": "ready_selected_capability_roots, the Codex-internal concept."
         }
       ],
@@ -829,8 +829,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/rmcp-client/src/logging_client_handler.rs:99-140"
         }
       ]
@@ -843,9 +843,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1063-1082,1282"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1162-1181,1381"
         }
       ]
     },
@@ -857,9 +857,9 @@
           "tier": "read",
           "at": "2025-06-18",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
-          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1403-1421"
+          "date": "2026-11-26",
+          "commit": "475e13ab",
+          "path": "codex-rs/codex-mcp/src/rmcp_client.rs:1502-1520"
         }
       ]
     },
@@ -871,8 +871,8 @@
           "tier": "read",
           "at": "2026-07-28",
           "source": "openai/codex",
-          "date": "2026-11-20",
-          "commit": "2fb728da",
+          "date": "2026-11-26",
+          "commit": "475e13ab",
           "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
         }
       ]
@@ -886,16 +886,16 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/elicitation_client_service.rs:40,277-286"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/codex-mcp/src/client_capabilities.rs:82-86",
             "note": "The legacy form-elicitation flag."
           }
@@ -909,24 +909,24 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/protocol/src/mcp.rs:27"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/elicitation_client_service.rs:41,260-309"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/codex-mcp/src/client_capabilities.rs:14-51,76-81"
           }
         ]
@@ -939,8 +939,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/protocol/src/mcp.rs:31,91"
           }
         ]
@@ -953,8 +953,8 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/codex-mcp/src/client_capabilities.rs:58-88"
           }
         ]
@@ -969,16 +969,16 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/core/src/tools/spec_plan.rs:1265-1285"
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/core/src/tools/spec_plan.rs:1228-1248"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/core/src/tools/handlers/mcp_resource.rs:154-186,297-312",
             "note": "Pagination cursors."
           }
@@ -997,13 +997,13 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/openai/codex",
-      "lastVerified": "2026-11-20",
+      "lastVerified": "2026-11-26",
       "source": {
         "repo": "https://github.com/openai/codex.git",
         "ref": "main",
-        "checkedCommit": "2fb728da7d0b3e4273f19c3b4eb798a13cacb37c",
-        "commitDate": "2026-11-20T06:05:04Z",
-        "checkedAt": "2026-11-20",
+        "checkedCommit": "475e13ab1ace6c63275ee66149c951befc685c96",
+        "commitDate": "2026-11-26T19:54:18Z",
+        "checkedAt": "2026-11-26",
         "paths": [
           "codex-rs/rmcp-client/src",
           "codex-rs/codex-mcp/src",
@@ -1030,24 +1030,24 @@
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/Cargo.toml:485,689-702"
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/Cargo.toml:496,702-715"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
-            "path": "codex-rs/Cargo.lock:13637-13639"
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/Cargo.lock:13766-13768"
           },
           {
             "tier": "read",
             "at": "2025-06-18",
             "source": "openai/codex",
-            "date": "2026-11-20",
-            "commit": "2fb728da",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/protocol_mode.rs:21-36",
             "note": "Codex names 2025-06-18 and 2026-07-28 itself."
           }
@@ -1076,7 +1076,7 @@
       "2025-11-25",
       "2026-07-28"
     ],
-    "preferredProtocolVersion": "2025-11-25",
+    "preferredProtocolVersion": "2026-07-28",
     "transports": {
       "stdio": {
         "status": "full",
@@ -1085,16 +1085,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:464-477"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:545-569"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "packages/core/src/mcp/stdio.ts:54-134"
           },
           {
@@ -1107,7 +1107,7 @@
             "note": "Records stdio, agreeing with the read."
           }
         ],
-        "notes": "opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line."
+        "notes": "opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line. By default the SDK sends server/discover at 2026-07-28 on the same pipe, with a probe timeout of the lesser of 5 s and the startup timeout. A JSON-RPC error such as -32601, or a timeout, falls back to initialize at 2025-11-25 in place. A server that exits on the probe is respawned for a plain initialize."
       },
       "sse": {
         "status": "unsupported",
@@ -1117,9 +1117,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:485-492"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:575-585"
           },
           {
             "tier": "declared",
@@ -1134,23 +1134,23 @@
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "The only remote transport. By default the configured URL is dialled with ?codemode=false appended, and retried once without it when the server answers 400 or 404. A transient connect failure (408, 429, 5xx other than 501, or a network error) is retried twice within the startup timeout. On close the client sends a DELETE for a legacy session.",
+        "notes": "The only remote transport. By default the configured URL is dialled with ?codemode=false appended, and retried once without it when the server answers 400 or 404. A transient connect failure (408, 429, 5xx other than 501, or a network error) is retried twice within the startup timeout. On close the client sends a DELETE for a session on the handshake era. By default the first request is server/discover at 2026-07-28. A JSON-RPC error answer falls back to initialize in place. A probe timeout or a 5xx answer reopens the transport for initialize within the startup deadline.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:485-507"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:571-617"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:62-68,511-529"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:79-85,619-641"
           },
           {
             "tier": "declared",
@@ -1179,17 +1179,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/oauth.ts:36,149-193,492-499,526-542"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/oauth.ts:36,149-193,499-506,533-549"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/oauth.ts:46,264-347",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/oauth.ts:46,270-353",
             "note": "Token refresh ahead of expiry and after a 401."
           }
         ]
@@ -1202,17 +1202,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:486-487"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:579-580"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/oauth.ts:507-511"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/oauth.ts:514-518"
           }
         ]
       }
@@ -1228,24 +1228,24 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:312-317,365-369"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:375-380,445-449"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/connection.ts:159"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/connection.ts:173"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "packages/core/src/tool/mcp.ts:129-140"
           }
         ]
@@ -1279,16 +1279,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:548-549,628-679"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:658-659,853-904"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/tool/mcp.ts:49-120"
         },
         {
@@ -1316,25 +1316,25 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:368"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:448"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/connection.ts:161"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/connection.ts:176"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/index.ts:137,642"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/index.ts:147,758"
           }
         ]
       },
@@ -1346,9 +1346,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:686-703"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:911-928"
           }
         ]
       },
@@ -1357,17 +1357,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/tool/plugin/mcp-resource.ts:16-98"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/plugin/internal.ts:285",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/plugin/internal.ts:304",
           "note": "The resource tools plugin is in the unconditional internal list."
         }
       ],
@@ -1386,16 +1386,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/connection.ts:123-129,160"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/connection.ts:127-133,174"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "packages/core/src/plugin/command.ts:18-26"
           }
         ]
@@ -1405,8 +1405,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/plugin/command.ts:55-81,96-102"
         }
       ],
@@ -1422,8 +1422,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/mcp"
         }
       ]
@@ -1436,9 +1436,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:357-363"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:430-443"
         }
       ]
     },
@@ -1456,17 +1456,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:358,416-429"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:431,497-510"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/index.ts:480-554,596"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/index.ts:595-669,710"
         }
       ]
     },
@@ -1481,9 +1481,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:361,378"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:434,458"
           }
         ]
       },
@@ -1492,17 +1492,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:359-361,377-378"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:432-434,457-458"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/connection.ts:188",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/connection.ts:203",
           "note": "A pooled connection declares no roots."
         }
       ]
@@ -1515,16 +1515,16 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:372-429"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:452-510"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/mcp/stdio.ts:177-189",
           "note": "The stderr drain."
         }
@@ -1532,31 +1532,40 @@
     },
     "instructions": {
       "status": "full",
-      "notes": "Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools.",
+      "notes": "Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools. With the mcp_skills flag, which is off in release builds, a server that lists any non-dynamic skill has its instructions left out.",
       "evidence": [
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:556"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:739"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/index.ts:1008-1016"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/index.ts:1124-1133"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
           "path": "packages/core/src/mcp/instructions.ts:30-31,82-102"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "anomalyco/opencode",
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/index.ts:1124-1133",
+          "note": "The mcp_skills exclusion."
         }
       ]
     },
@@ -1568,9 +1577,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:140-155"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:177-192"
         }
       ]
     },
@@ -1582,9 +1591,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "anomalyco/opencode",
-          "date": "2026-11-20",
-          "commit": "b5e0abd7",
-          "path": "packages/core/src/mcp/client.ts:357-363"
+          "date": "2026-11-26",
+          "commit": "82d8fc5b",
+          "path": "packages/core/src/mcp/client.ts:430-443"
         }
       ]
     },
@@ -1597,16 +1606,16 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "packages/core/src/tool/plugin/mcp-resource.ts:16-98"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "packages/core/src/tool/runtime.ts:300-305",
             "note": "The opencode_ prefix on the effective tool names."
           }
@@ -1617,31 +1626,31 @@
       },
       "sessionRecovery": {
         "status": "full",
-        "notes": "A 404, or a 400 with body \"Bad Request: Server not initialized\", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery.",
+        "notes": "A 404, or a 400 with body \"Bad Request: Server not initialized\", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery. It applies to the handshake era only: a 2026-07-28 connection carries no session id.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:438-460"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:519-541"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/connection.ts:131-151"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/connection.ts:145-165"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/index.ts:1006,1028,1056"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/index.ts:1122,1145,1173"
           }
         ],
         "research": [
@@ -1658,13 +1667,13 @@
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/anomalyco/opencode",
-      "lastVerified": "2026-11-20",
+      "lastVerified": "2026-11-26",
       "source": {
         "repo": "https://github.com/anomalyco/opencode.git",
         "ref": "dev",
-        "checkedCommit": "b5e0abd7306f35f989f419de286aec946223d977",
-        "commitDate": "2026-11-20T06:21:14Z",
-        "checkedAt": "2026-11-20",
+        "checkedCommit": "82d8fc5bec961043e47b4d2d3fcd03667f40148a",
+        "commitDate": "2026-11-26T19:22:00Z",
+        "checkedAt": "2026-11-26",
         "paths": [
           "packages/core/src/mcp/client.ts",
           "packages/core/src/mcp/index.ts",
@@ -1691,41 +1700,41 @@
         "declared": "2.4.0",
         "resolved": "2.4.0",
         "patched": true,
-        "pinsProtocolVersion": "2025-11-25",
-        "notes": "Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. 2026-07-28 is reached only when a server's config sets protocol to auto or 2026-07-28, or pool to true.",
+        "pinsProtocolVersion": "2026-07-28",
+        "notes": "Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. The SDK's default negotiation mode is legacy. opencode sets an unset protocol to auto for stdio and remote servers, so it sends server/discover at 2026-07-28 first and falls back to initialize at 2025-11-25. protocol: \"legacy\" or an attached socket connection skips the probe.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/package.json:110-112"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/package.json:118-120"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "bun.lock:998,1700,1702"
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "bun.lock:1024,1726,1728"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
             "path": "patches/@modelcontextprotocol%2Fclient@2.4.0.patch"
           },
           {
             "tier": "read",
-            "at": "2025-11-25",
+            "at": "2026-07-28",
             "source": "anomalyco/opencode",
-            "date": "2026-11-20",
-            "commit": "b5e0abd7",
-            "path": "packages/core/src/mcp/client.ts:808-813",
-            "note": "An unset or legacy protocol setting sends plain initialize with no server/discover probe."
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:374,1074-1080",
+            "note": "An unset protocol is auto: server/discover first, with fallback. Attached connections default to legacy."
           },
           {
             "tier": "read",
@@ -1734,11 +1743,135 @@
             "date": "2026-11-20",
             "path": "dist/schemas-DscsoNZN.mjs:4-12",
             "note": "@modelcontextprotocol/core 2.4.0, read from the npm tarball. LATEST_PROTOCOL_VERSION = '2025-11-25'; SUPPORTED_PROTOCOL_VERSIONS lists 2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05, 2024-10-07."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "path": "dist/public-CvV4ZHkX.mjs:2181",
+            "note": "@modelcontextprotocol/client 2.4.0, read from the npm tarball. DEFAULT_VERSION_NEGOTIATION_MODE = 'legacy'."
           }
         ],
         "research": [
           "opencode-checks-listed-tools-itself-on-a-patched-sdk"
         ]
+      }
+    },
+    "extensions": {
+      "io.modelcontextprotocol/events": {
+        "status": "full",
+        "notes": "Declared on every connection in both eras; the mcp_events flag is gone. Event methods are used only after negotiating 2026-07-28 with a server that advertises the extension. Event types are validated per type, x-mcp-header values are sent as Mcp-Param-* headers, a heartbeat watchdog runs at three times the server's heartbeatMs, and the event list is kept current over subscriptions/listen.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:435-442,742"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:657-731,989-1032"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/connection.ts:204",
+            "note": "events: true on every connection."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "opt-in",
+        "notes": "Declared only with the mcp_skills flag, which defaults on in local and dev builds and off in releases. For a server that advertises resources it uses the SDK's SkillsClient and registers each skill as <server>:<skill>.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/index.ts:395"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/flag/resolve.ts:21-22",
+            "note": "Flags default on for local and dev builds and off on any other channel."
+          }
+        ]
+      }
+    },
+    "byProtocolVersion": {
+      "2026-07-28": {
+        "roots": {
+          "status": "unsupported",
+          "notes": "roots is still declared and roots/list still answered, but 2026-07-28 deprecates roots and a server on that revision cannot request them.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "anomalyco/opencode",
+              "date": "2026-11-26",
+              "commit": "82d8fc5b",
+              "path": "packages/core/src/mcp/client.ts:432-434,457-458"
+            }
+          ]
+        },
+        "elicitation": {
+          "status": "full",
+          "notes": "Elicitation arrives in the request result through the patched SDK's input-required path.",
+          "url": {
+            "status": "full",
+            "notes": "No elicitationId and no notifications/elicitation/complete on this revision. The form settles when the user confirms and the SDK retries the tool call."
+          },
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "anomalyco/opencode",
+              "date": "2026-11-26",
+              "commit": "82d8fc5b",
+              "path": "packages/core/src/mcp/client.ts:497-506"
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "anomalyco/opencode",
+              "date": "2026-11-26",
+              "commit": "82d8fc5b",
+              "path": "packages/core/src/mcp/index.ts:426,604-606"
+            }
+          ]
+        },
+        "tools": {
+          "listChanged": {
+            "status": "full",
+            "notes": "Delivered over the SDK's subscriptions/listen stream, which the SDK opens itself.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2026-07-28",
+                "source": "anomalyco/opencode",
+                "date": "2026-11-26",
+                "commit": "82d8fc5b",
+                "path": "packages/core/src/mcp/client.ts:370-371"
+              }
+            ]
+          }
+        }
       }
     }
   },

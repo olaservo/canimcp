@@ -15,7 +15,7 @@ OpenAI's Codex outside the CLI. Closed source, so nothing here is a read. Apify 
 | Wire names | `openai-mcp (Codex)` |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-11-25`, `2026-07-28` |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
 
@@ -48,7 +48,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json), report generated 2026-11-09, window 2026-09-10 to 2026-11-08. Grouped as `codex-web` from wire names `openai-mcp (Codex)`. Tool calls by revision over the 30 days to 2026-11-08: `2026-07-28` 96.5%, `2025-11-25` 3.5%.
+From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `codex-web` from wire names `openai-mcp (Codex)`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 97.4%, `2025-11-25` 2.6%, `2025-03-26` <0.1%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|

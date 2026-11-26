@@ -19,14 +19,14 @@ tracking:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/oauth_client_registration.rs
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/oauth_client_registration.rs:37-135
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/oauth_callback.rs, callback_mode and callback_id_from_server_url
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/oauth_callback.rs:52-67, 90-102
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/
     title: OAuth Client ID Metadata Document (IETF Internet-Draft)
     date: 2026-08-24
@@ -34,7 +34,7 @@ sources:
     title: 2026-07-28 authorization, client registration
     date: 2026-08-24
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com

@@ -1,23 +1,23 @@
 # Capabilities observed in traffic
 
-Generated from `data/observed/hf-mcp-clients.json`: `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json), report generated 2026-11-09, window 2026-09-10 to 2026-11-08. 12 clients, 11 with a registry entry.
+Generated from `data/observed/hf-mcp-clients.json`: `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. 12 clients, 11 with a registry entry.
 
 A flag is set when more than 50% of a client's `2026-07-28` tool calls in the window declare the capability, or when a backfill has it. The initialize-era backfill (2026-06-07 to 2026-07-26) can set elicitation, elicitation_url, mcp_apps for a client even though it lies outside the window. Where a backfill could have set a flag the At column is `?`, because the report does not say which path did. `skills` is set by a successful `skills/list` call, so an unset skills flag is not recorded as unsupported. A client with no `2026-07-28` traffic in the window gets no record for an unset flag.
 
 | Client | Wire names | Tool calls by revision, 30d | elicitation | elicitation.url | apps | tasks |
 |---|---|---|---|---|---|---|
 | [Claude Code](claude-code.md) | `claude-code` | `2026-07-28` 99.2%, `2025-11-25` 0.8%, `2025-06-18` <0.1%, `2025-03-26` <0.1% | ● ? | ● | ○ | ○ |
-| [Claude.ai](claude-ai.md) | `Anthropic/ClaudeAI` | `2026-07-28` 99.7%, `2025-11-25` 0.3% | ○ | ○ | ● ? | ○ |
-| [Codex CLI](openai-codex.md) | `codex-mcp-client` | `2026-07-28` <0.1%, `2025-06-18` 100% | ● ? | ● ? | ● | ○ |
-| [Codex Desktop](codex-desktop.md) | `openai-mcp (Codex)` | `2026-07-28` 96.5%, `2025-11-25` 3.5% | ● | ● | ● ? | ○ |
-| [OpenAI ChatGPT](chatgpt.md) | `openai-mcp` | `2026-07-28` 46.2%, `2025-11-25` 53.8% | ○ | ○ | ● ? | ○ |
+| [Claude.ai](claude-ai.md) | `Anthropic/ClaudeAI` | `2026-07-28` 99.3%, `2025-11-25` 0.7% | ○ | ○ | ● ? | ○ |
+| [Codex CLI](openai-codex.md) | `codex-mcp-client` | `2026-07-28` 0.2%, `2025-06-18` 99.8% | ● ? | ● ? | ● | ○ |
+| [Codex Desktop](codex-desktop.md) | `openai-mcp (Codex)` | `2026-07-28` 97.4%, `2025-11-25` 2.6%, `2025-03-26` <0.1% | ● | ● | ● ? | ○ |
+| [OpenAI ChatGPT](chatgpt.md) | `openai-mcp` | `2026-07-28` 64.4%, `2025-11-25` 35.6%, `2025-03-26` <0.1% | ○ | ○ | ● ? | ○ |
 | [Hugging Face ChatUI](huggingface-chat-ui.md) | `chat-ui-mcp` | `2026-07-28` 100% | ● | ● | ○ | ○ |
-| [OpenCode](opencode.md) | `opencode` | `2026-07-28` <0.1%, `2025-11-25` 99.9%, `2025-03-26` <0.1%, `2024-11-05` <0.1% | ● | ● | ○ | ○ |
-| [Cursor](cursor.md) | `Cursor`, `Cursor MCP Availability`, `cursor-agent`, `cursor-check`, `cursor-diag`, `cursor-hf-check`, `cursor-mcp-sync-check`, `cursor-public-preflight`, `cursor-test`, `cursor-vscode` | `2025-11-25` 99.9%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1% | ● ? |  | ● ? |  |
+| [OpenCode](opencode.md) | `opencode` | `2026-07-28` 2.5%, `2025-11-25` 97.5%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1% | ● | ● | ○ | ○ |
+| [Cursor](cursor.md) | `Cursor`, `Cursor MCP Availability`, `cursor-check`, `cursor-diag`, `cursor-hf-check`, `cursor-mcp-sync-check`, `cursor-public-preflight`, `cursor-test`, `cursor-vscode` | `2026-07-28` <0.1%, `2025-11-25` 100%, `2025-03-26` <0.1% | ● ? | ○ | ● ? | ○ |
 | [Visual Studio Code](vscode.md) | `Visual Studio Code`, `Visual Studio Code - Insiders` | `2025-11-25` 100% | ● ? | ● ? | ● ? |  |
-| Llama UI | `llama-ui-mcp` | `2025-11-25` 100% | ○ | ○ | ○ | ○ |
-| [fast-agent](fast-agent.md) | `fast-agent-mcp` | `2026-07-28` 100% | ● ? | ● ? | ○ | ○ |
-| [Antigravity](antigravity.md) | `Antigravity`, `Antigravity-Client`, `antigravity`, `antigravity-client` | `2026-07-28` 97.3%, `2025-11-25` 2.1%, `2025-03-26` <0.1%, `2024-11-05` 0.6% | ● ? | ● ? | ○ | ○ |
+| Llama UI | `llama-ui-mcp` | `2026-07-28` 0.2%, `2025-11-25` 99.8% | ○ | ○ | ○ | ○ |
+| [fast-agent](fast-agent.md) | `fast-agent-mcp` | `2026-07-28` 100%, `2025-11-25` <0.1% | ● ? | ● ? | ○ | ○ |
+| [Antigravity](antigravity.md) | `Antigravity`, `Antigravity-Client`, `antigravity`, `antigravity-client` | `2026-07-28` 98%, `2025-11-25` 1.6%, `2025-03-26` <0.1%, `2024-11-05` 0.5% | ● ? | ● ? | ○ | ○ |
 
 `●` set, observed at `2026-07-28` · `● ?` set, revision unknown · `○` not set · blank: no record.
 

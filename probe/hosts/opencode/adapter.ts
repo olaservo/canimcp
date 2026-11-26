@@ -21,7 +21,7 @@ const adapter: HostAdapter = {
   title: 'opencode',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'Stock settings: Code Mode on, so MCP tools are reached through the execute script tool; protocol legacy.', modelApi: 'chat' },
+    { name: 'default', description: 'Stock settings: Code Mode on, so MCP tools are reached through the execute script tool; protocol unset, which is auto from 82d8fc5 (server/discover first).', modelApi: 'chat' },
     { name: 'codemode-off', description: 'mcp.servers.probe.codemode = false: the server\'s tools are direct model tools.', modelApi: 'chat' },
     { name: 'execute-denied', description: 'permissions deny execute on *: Code Mode disabled for every server, MCP tools exposed directly.', modelApi: 'chat' },
     { name: 'protocol-2026-07-28', description: 'codemode = false plus mcp.servers.probe.protocol = "2026-07-28": direct tools over the discover-first revision.', modelApi: 'chat' },

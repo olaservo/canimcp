@@ -18,9 +18,9 @@ sources:
     date: 2026-08-23
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs, no notify_roots_list_changed call and a fixed working_dir
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/oi-kit-agent/src/mcp/client.rs:197-207,346-373,473-493
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://crates.io/crates/rmcp/3.1.4
     title: rmcp 3.1.4 source, service/client.rs and service.rs
     path: src/service/client.rs:1139-1161,1720
@@ -34,7 +34,7 @@ sources:
     title: 2026-07-28 changelog, major change 5
     date: 2026-08-23
 status: stale
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it

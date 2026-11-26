@@ -17,11 +17,11 @@ sources:
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, tools
-    commit: b5e0abd7
-    path: packages/core/src/mcp/client.ts:628-679
-    date: 2026-11-20
+    commit: 82d8fc5b
+    path: packages/core/src/mcp/client.ts:853-904
+    date: 2026-11-26
 status: stale
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # opencode retries tools/list with outputSchema stripped when the SDK rejects one

@@ -15,11 +15,11 @@ specVersions:
 sources:
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/oi-kit-agent/src/mcp/client.rs:252-304,406-486
-    date: 2026-11-20
+    date: 2026-11-26
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # goose only answers elicitation raised inside a tool call
@@ -45,6 +45,6 @@ For a server author this rules out one pattern: eliciting during connection setu
 
 The timeout is fixed at 300 seconds and is not configurable. A prompt nobody answers fails the tool call after five minutes.
 
-At `ea5dded7` goose declares `elicitation: {"form": {}}`. URL mode is handled but not declared.
+At `d1438fde` goose declares `elicitation: {"form": {}}`. URL mode is handled but not declared.
 
 URL mode is flattened into the form path. Rather than passing the URL through as its own request type, goose builds `{"url": url}` and hands it to the same prompt mechanism that receives a form's requested schema. It works, but a client-side renderer distinguishing the two modes is choosing on the shape of that object, not on the request type.

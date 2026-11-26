@@ -15,7 +15,7 @@ Anthropic's chat product. Closed source, so nothing here is a read. The entry jo
 | Wire names | `Anthropic/ClaudeAI`, `claude-ai` |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-06-18`, `2025-11-25`, `2026-07-28` |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
 
@@ -49,7 +49,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json), report generated 2026-11-09, window 2026-09-10 to 2026-11-08. Grouped as `claude-ai` from wire names `Anthropic/ClaudeAI`. Tool calls by revision over the 30 days to 2026-11-08: `2026-07-28` 99.7%, `2025-11-25` 0.3%.
+From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `claude-ai` from wire names `Anthropic/ClaudeAI`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 99.3%, `2025-11-25` 0.7%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|

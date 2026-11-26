@@ -1,6 +1,6 @@
 # goose
 
-Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.10.0.
+Open-source agent from Block, shipping as a desktop app and a CLI from one Rust codebase. Uses rmcp as its MCP client, resolved to 3.11.0.
 
 ## At a glance
 
@@ -15,11 +15,11 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | Source | <https://github.com/aaif-goose/goose> |
 | Home | <https://block.github.io/goose> |
 | Wire names | `goose-app`, `goose-desktop`, `goose-cli` |
-| SDK | `rmcp` 3.10.0 · declares `3.9.0` · official Rust SDK · unpatched |
+| SDK | `rmcp` 3.11.0 · declares `3.9.0` · official Rust SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-11-25`, `2026-07-28` |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-26 |
 | Probed | `1.61.0` (see below) |
 
 ## Capabilities
@@ -65,7 +65,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **tools.result.content** — Every content block reaches the model, filtered by audience annotation. When nothing non-empty is left the placeholder text (empty result) is sent instead.
 - **tools.result.structuredContent** — No provider formatter names structuredContent, so it never reaches the model. The ACP surface and the desktop app receive it for MCP Apps.
 - **tools.result.audience** — filter_for_audience drops blocks whose annotations.audience excludes the assistant before the provider sees them.
-- **sampling** — Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.10.0's default handler answers method not found.
+- **sampling** — Removed in 7b68b47ff (2026-09-22, #12193). GooseClient has no create_message and declares no sampling capability, so rmcp 3.11.0's default handler answers method not found.
 - **elicitation** — Resolves a session id and a tool-call request id from the request context and returns INTERNAL_ERROR if either is missing, so elicitation only works inside a tool call. Hard 300-second timeout. Declared as {"form": {}}.
 - **elicitation.url** — URL mode is flattened into the same prompt path as form mode, passed as {"url": url} rather than a requested schema. Handled but not declared: the elicitation capability names form only.
 - **roots** — list_roots returns one root derived from the working directory the client was connected with. Marked #[expect(deprecated)] at the declaration site — roots is deprecated as of 2026-07-28 (SEP-2577). Declared as roots: {} with no listChanged.
@@ -217,9 +217,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `ea5dded7` on 2026-11-20, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-11-20.
+Read at `d1438fde` on 2026-11-26, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-11-26.
 
-**SDK.** The workspace declares rmcp "3.9.0" as a caret requirement and the lockfile resolves it to 3.10.0, so behavioural claims cite 3.10.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.
+**SDK.** The workspace declares rmcp "3.9.0" as a caret requirement and the lockfile resolves it to 3.11.0, so behavioural claims cite 3.11.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.
 
 Paths read:
 
