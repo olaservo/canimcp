@@ -35,7 +35,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | &nbsp;&nbsp;↳ oauth | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ header | ● full | read | `2025-11-25` |
 | **Tools** | ● full | read, declared | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ result | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ● full | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ structuredContent | ◐ partial | read ⇧ | `2025-11-25` |
@@ -46,10 +46,10 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | &nbsp;&nbsp;↳ listChanged | ● full | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
-| **Elicitation** | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ form | ● full | read ⇧ | `2025-11-25` |
-| &nbsp;&nbsp;↳ url | ● full | read ⇧ | `2025-11-25` |
-| **Roots** | ● full | read | `2025-11-25` |
+| **Elicitation** | ● full | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ form | ● full | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;↳ url | ● full | read ⇧ | `2026-07-28` |
+| **Roots** | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25`, `2026-07-28` |
@@ -58,6 +58,9 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | JSON Schema | — not recorded | | |
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ● full | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ● full | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
@@ -75,7 +78,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **authentication.oauth** — A configured client_id wins. Otherwise opencode uses a Client ID Metadata Document at https://opencode.ai/oauth/opencode/client.json when the authorization server advertises client_id_metadata_document_supported and the none token auth method and no redirect_uri is configured, and falls back to Dynamic Client Registration. token_endpoint_auth_method is none unless a client_secret is configured, then client_secret_post. The callback is a loopback server on 127.0.0.1 at callback_port, else the redirect_uri port, else an ephemeral port. A connection never starts a login; it refreshes a stored token 30 seconds before expiry or after a 401. oauth: false turns OAuth off for a server.
 - **authentication.header** — A headers map on a remote server is passed through as requestInit headers on the Streamable HTTP transport. The OAuth challenge probe sends them too.
 - **tools** — tools/list is only called when the server declares a tools capability. Pagination is the SDK's: listTools walks every page with a 64-page cap and stops on a repeated cursor with identical items. The SDK is patched to leave listed tools unvalidated; opencode checks each one and skips a tool with no name or a non-object inputSchema. A tools/call carries _meta["ai.opencode/sessionID"] and a progress token. A transient list failure is retried twice. A tool result carrying only structuredContent is stringified into a text block before it reaches the model.
-- **tools.listChanged** — Re-lists the catalog and publishes mcp.tools.changed, so a changed catalog is picked up mid-session. The SDK registers the handler only when the server declared tools.listChanged.
+- **tools.listChanged** — Re-lists the catalog and publishes mcp.tools.changed, so a changed catalog is picked up mid-session. The notification arrives over the subscriptions/listen stream, which the SDK opens itself when the server declared tools.listChanged.
 - **tools.result** — Code Mode is the default route: MCP tools are reachable only through the execute script tool, scripts receive structuredContent, and the model sees the script return value. The direct path applies with codemode: false.
 - **tools.result.content** — On the direct path (codemode: false, or execute wholly denied) the content blocks reach the model; media blocks become data URIs or saved-file notes.
 - **tools.result.structuredContent** — On the direct path it fills in as one text block of JSON.stringify(structuredContent) only when content is empty, and is otherwise held in a tool output field that is not persisted. On the default Code Mode route scripts receive it directly.
@@ -86,8 +89,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **prompts.listChanged** — The SDK handler re-lists prompts and publishes mcp.prompts.changed, and the command plugin reloads the slash commands.
 - **completions** — No completion/complete call at this commit.
 - **sampling** — Not declared, and no sampling/createMessage handler is registered. The commented-out key from the old client is gone.
-- **elicitation** — Declared as elicitation: { form: {}, url: {} } on every connection; no flag gates it. Form mode renders the requested schema as a form and returns accept with the answers or cancel. URL mode shows the URL as an external field and returns accept or cancel; on the handshake era notifications/elicitation/complete settles the form. A schema with no properties is accepted with empty content without asking. decline is never returned.
-- **roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
+- **elicitation** — Declared as elicitation: { form: {}, url: {} } on every connection; no flag gates it. A server asks in the result of the request that needs it, and the patched SDK routes the request to the handler that request brought. Form mode renders the requested schema as a form and returns accept with the answers or cancel. A schema with no properties is accepted with empty content without asking. decline is never returned.
+- **elicitation.url** — Shows the URL as an external field and returns accept or cancel. There is no elicitationId and no notifications/elicitation/complete on this revision, so the form settles when the user confirms and the SDK retries the call.
+- **roots** — roots is still declared and roots/list still answered, but 2026-07-28 deprecates roots and a server on that revision cannot request them.
 - **roots.listChanged** — Declared as a bare roots:{} with no listChanged, and nothing sends notifications/roots/list_changed. The single root is fixed at client creation.
 - **logging** — No notifications/message handler is registered and logging/setLevel is never called. Server stderr on stdio goes to the debug log, which is not MCP logging. At 7cde8329 the client received notifications/message and routed it to the server log.
 - **instructions** — Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools. With the mcp_skills flag, which is off in release builds, a server that lists any non-dynamic skill has its instructions left out.
@@ -95,12 +99,15 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
 - **bonusFeatures.modelInitiatedResourceRead** — Two tools, list_mcp_resources and read_mcp_resource, registered in the opencode namespace, so the effective names are opencode_list_mcp_resources and opencode_read_mcp_resource. The list tool returns resources and templates together, for one server or all. Each call is permission-gated. Image and PDF blobs are passed to the model as files.
 - **bonusFeatures.sessionRecovery** — A 404, or a 400 with body "Bad Request: Server not initialized", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery. It applies to the handshake era only: a 2026-07-28 connection carries no session id.
-- **extensions.io.modelcontextprotocol/events** — Declared on every connection in both eras; the mcp_events flag is gone. Event methods are used only after negotiating 2026-07-28 with a server that advertises the extension. Event types are validated per type, x-mcp-header values are sent as Mcp-Param-* headers, a heartbeat watchdog runs at three times the server's heartbeatMs, and the event list is kept current over subscriptions/listen.
+- **extensions.io.modelcontextprotocol/events** — Declared on every connection in both eras; the mcp_events flag is gone. Event methods are used only after negotiating 2026-07-28 with a server that advertises the extension. An automation can take an MCP event as its trigger, and the model gets opencode_list_mcp_events to find one. Both are registered unconditionally.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream with a resumable cursor. Event types are validated per type, x-mcp-header values are sent as Mcp-Param-* headers, and a heartbeat watchdog fails the stream after three missed heartbeats. The event list is kept current over subscriptions/listen.
+- **extensions.io.modelcontextprotocol/events.poll** — No events/poll call. An event type that does not offer push is rejected, and the list tool leaves such types out.
+- **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe call.
 - **extensions.io.modelcontextprotocol/skills** — Declared only with the mcp_skills flag, which defaults on in local and dev builds and off in releases. For a server that advertises resources it uses the SDK's SkillsClient and registers each skill as <server>:<skill>.
-- **byProtocolVersion.2026-07-28.roots** — roots is still declared and roots/list still answered, but 2026-07-28 deprecates roots and a server on that revision cannot request them.
-- **byProtocolVersion.2026-07-28.elicitation** — Elicitation arrives in the request result through the patched SDK's input-required path.
-- **byProtocolVersion.2026-07-28.elicitation.url** — No elicitationId and no notifications/elicitation/complete on this revision. The form settles when the user confirms and the SDK retries the tool call.
-- **byProtocolVersion.2026-07-28.tools.listChanged** — Delivered over the SDK's subscriptions/listen stream, which the SDK opens itself.
+- **byProtocolVersion.2025-11-25.roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
+- **byProtocolVersion.2025-11-25.elicitation** — The server sends elicitation/create as its own request.
+- **byProtocolVersion.2025-11-25.elicitation.url** — notifications/elicitation/complete settles the form, matched by elicitationId.
+- **byProtocolVersion.2025-11-25.tools.listChanged** — The server sends the notification unprompted. The SDK registers the handler only when the server declared tools.listChanged.
 
 ## Verified by the probe
 

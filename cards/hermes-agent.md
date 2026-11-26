@@ -58,6 +58,9 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | JSON Schema | — not recorded | | |
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolDescriptionScrubbing | ◐ partial | read | `2025-11-25` |
@@ -111,6 +114,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.declaredToolCosts** — A server entry can declare per-tool costs, single figures or ranges, through tool_costs, plus a per-chat spend_limit. The approval prompt names the cost and the chat's running total, counted at the top of each range, and a call that would pass the limit needs an explicit yes even on a trust: full server. The figures come from client config, not from the server.
 - **bonusFeatures.lazyServerStart** — With lazy: true on a server entry, Hermes registers the server's tools from an on-disk schema cache without starting the server, and connects on first use. Entries are keyed by server name and a fingerprint of the connection config, are written after each live registration, and expire on the SEP-2549 ttlMs from tools/list. Entries without a TTL never expire, and a missing or stale entry falls back to a normal connect.
 - **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe with a webhook URL and secret, behind events: true per server. The gateway verifies Standard Webhooks signatures.
 
 ## Verified by the probe
 

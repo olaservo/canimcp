@@ -68,6 +68,9 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read, declared | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ◇ opt-in | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ◇ opt-in | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
@@ -121,6 +124,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/ui** — Declared with an empty settings object on every connection, with no option to leave it out. @mastra/mcp renders nothing. It keeps tool and result _meta, stamps ui.serverId next to ui.resourceUri, and withholds tools whose _meta.ui.visibility lacks model. The renderer is Studio (packages/playground-ui), which an application built on Agent and MCPClient alone does not have.
 - **extensions.io.modelcontextprotocol/tasks** — Declared with an empty settings object only when the server entry sets tasks. See the tasks row.
 - **extensions.io.modelcontextprotocol/events** — Application API for the draft MCP Events extension (SEP-3415). mcp.events.list() sends events/list, and subscribe() delivers occurrences by webhook (events/subscribe) when the client has a webhook option, else push (events/stream), else poll (events/poll), from the modes the event advertises. Nothing is declared in the client capabilities; the client reads the server's io.modelcontextprotocol/events entry. createMCPEventsTools gives a model mcp_events_list, mcp_events_subscribe and mcp_events_unsubscribe.
+- **extensions.io.modelcontextprotocol/events.webhook** — Chosen when the client has a webhook option and the event offers webhook.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream, chosen when there is no webhook option and the event offers push.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll, the fallback when the event offers neither of the others.
 - **bonusFeatures.modelInitiatedResourceRead** — No tool gives the model resources/read. The only model-facing tools @mastra/mcp builds are the server's own tools and the optional MCP Events tools.
 - **bonusFeatures.protocolEraForcing** — protocolVersion on a server entry takes '2026-07-28', which pins that revision with no fallback, or 'legacy', which runs the initialize handshake with no probe. Omitted, the client probes and falls back. getServerProtocolVersions() reports what was negotiated. A successful verdict is reused on reconnect and dropped after a failed connect.
 - **bonusFeatures.toolAnnotationPolicies** — The function form of requireToolApproval receives the server's tool annotations, placed so a caller cannot override them. After a transport failure in mid-call, a tool annotated readOnlyHint or idempotentHint is called again; any other tool fails with MCP_CLIENT_TOOL_CALL_OUTCOME_UNKNOWN and is not resent.

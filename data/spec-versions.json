@@ -512,7 +512,16 @@
         "alias": "events",
         "features": {
           "events": {
-            "notes": "The client lists a server's events and subscribes to them by at least one delivery mode. Say in notes which modes, and whether the client declares the extension in its own capabilities."
+            "notes": "The client lists a server's events and subscribes to them by at least one delivery mode. Say in notes whether the client declares the extension in its own capabilities. Each delivery mode has its own row."
+          },
+          "events.poll": {
+            "notes": "The client calls events/poll for occurrences."
+          },
+          "events.push": {
+            "notes": "The client opens events/stream and receives notifications/events/* on it."
+          },
+          "events.webhook": {
+            "notes": "The client sends events/subscribe with a callback URL, or holds the subscription through a service that does, and receives deliveries at that URL."
           }
         }
       }

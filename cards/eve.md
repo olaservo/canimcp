@@ -66,6 +66,9 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 | **Extensions** |  |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ● full | read | `2026-07-28` |
@@ -118,6 +121,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema.features** — format is removed before validation. Boolean exclusiveMinimum and exclusiveMaximum are rewritten to the numeric form. A schema with an unknown type, an invalid pattern or an unresolvable $ref is advertised and its values pass through unvalidated.
 - **extensions.io.modelcontextprotocol/ui** — Not declared: eve passes no capabilities, and the SDK exports the declaration as mcpAppClientCapabilities for hosts that want it. No code under packages/eve/src reads ui:// resources. A tool whose _meta.ui.visibility leaves out the model is still found by eve__search.
 - **extensions.io.modelcontextprotocol/events** — Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.
+- **extensions.io.modelcontextprotocol/events.webhook** — Vercel Connect holds the subscription and forwards deliveries. eve sends no events/subscribe itself.
+- **extensions.io.modelcontextprotocol/events.poll** — Only webhook-deliverable events are offered.
+- **extensions.io.modelcontextprotocol/events.push** — Only webhook-deliverable events are offered.
 - **bonusFeatures.modelInitiatedResourceRead** — eve has no resource path of any kind.
 - **bonusFeatures.deferredToolLoading** — Every connection tool is a deferred catalog entry with an empty description. The model gets two fixed tools, eve__search and eve__tool, whose definitions do not change when the catalog does.
 - **bonusFeatures.protocolEraForcing** — protocolVersionDiscovery: false on a connection skips server/discover and starts with initialize at 2025-11-25. Nothing restricts a connection to 2026-07-28.

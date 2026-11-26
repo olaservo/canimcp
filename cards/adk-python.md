@@ -49,13 +49,13 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | **Prompts** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
-| **Sampling** | ○ unsupported | read | `2025-11-25` |
-| **Elicitation** | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ form | ○ unsupported | read ⇧ | `2025-11-25` |
+| **Sampling** | ○ unsupported | read | `2026-07-28` |
+| **Elicitation** | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ form | ○ unsupported | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;↳ url | ○ unsupported | read | `2025-11-25` |
 | **Roots** | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ○ unsupported | read ⇧ | `2025-11-25` |
-| **Logging** | ○ unsupported | read | `2025-11-25` |
+| **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
 | **Tasks** | ○ unsupported | read | `2025-11-25` |
@@ -65,7 +65,7 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ sessionRecovery | · untested | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolDescriptionFencing | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ gracefulToolErrors | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ traceContextPropagation | ● full | read | `2025-11-25` |
@@ -98,13 +98,13 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **prompts** — One use: McpInstructionProvider fetches a named prompt and returns it as the agent instruction. It calls prompts/list for the argument names, fills them from session state, calls prompts/get and joins the text of the messages. Non-text content and message roles are dropped. One page of prompts/list. Prompts are not offered to a user or to the model. The provider opens its own session with no callbacks and no header_provider.
 - **prompts.listChanged** — No handler. The provider calls prompts/list and prompts/get each time the instruction is resolved.
 - **completions** — No completion/complete call. A search of src for a ClientSession.complete call finds nothing.
-- **sampling** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional sampling_callback and sampling_capabilities and passes them to ClientSession, and the SDK declares sampling when the callback is present. The handler and the model it calls are the application's.
-- **elicitation** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional elicitation_callback and passes it to ClientSession. No code under src supplies a callback, so the user-input and tool-confirmation flows ADK has for its own tools are not connected to MCP elicitation.
+- **sampling** — On this path a server asks for sampling inside an InputRequiredResult. ADK calls call_tool without allow_input_required, the SDK raises, and the model receives an error dict. An application sampling_callback is still advertised in each request and is not called for tool calls. Read from source, not run.
+- **elicitation** — Same as sampling: an InputRequiredResult from tools/call raises in the SDK and becomes an error dict, so an application elicitation_callback is declared and not called. Read from source, not run.
 - **elicitation.form** — Reached only through an application elicitation_callback.
 - **elicitation.url** — The SDK declares form and url together whenever a callback is passed, so an application cannot declare one without the other.
 - **roots** — No list_roots_callback is passed to ClientSession, and McpToolset has no parameter for one. The SDK default answers roots/list with an error.
 - **roots.listChanged** — Never sent. A search of src for send_roots_list_changed finds nothing.
-- **logging** — No logging_callback is passed, so the SDK default discards notifications/message. logging/setLevel is never called. An application that passes message_handler receives log notifications along with every other server notification.
+- **logging** — ClientSession is built without log_level, so no request opts in to log delivery.
 - **instructions** — The initialize result is discarded after the handshake. Nothing under src reads the server instructions string.
 - **icons** — No icon field is read. McpTool keeps the tool title, from title or annotations.title, and nothing else from the display metadata.
 - **tasks** — No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.
@@ -112,15 +112,15 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/ui** — McpTool reads _meta.ui.resourceUri, or the flat ui/resourceUri key, from the tool definition. After a successful call it adds a UiWidget with provider mcp to the event actions, carrying the resource URI, the tool definition and the call arguments. ADK does not declare the extension, does not fetch the ui:// resource, and has no caller for the visibility property, so an app-only tool is still offered to the model. The bundled dev UI under src/google/adk/cli/browser has no reference to the widget field.
 - **bonusFeatures.modelInitiatedResourceRead** — Opt-in through use_mcp_resources=True. One tool, load_mcp_resource, which takes resource names and has no URI argument. The tool result is a status stub and the contents are appended to the next model request.
 - **bonusFeatures.protocolEraForcing** — One process-wide switch. ADK_ENABLE_MCP_MODERN_PROTOCOL, or override_feature_enabled on the private _MCP_MODERN_PROTOCOL member, moves every connection from handshake-only to a server/discover probe with handshake fallback. It needs SDK 2.x. There is no per-server setting and no modern-only mode.
-- **bonusFeatures.sessionRecovery** — When a server reports that it no longer holds the session, ADK drops the pooled session, opens a new one and retries the tool call once. It recognises the SDK's code 32600 on 1.x and INVALID_REQUEST with the message Session terminated on 2.x. A transport failure in the middle of a tool call is not retried. tools/list and session setup are retried once on any error.
+- **bonusFeatures.sessionRecovery** — The recovery path keys on the session-terminated error that the SDK raises for a dropped Mcp-Session-Id. Whether anything triggers it on a connection with no session id was not checked.
 - **bonusFeatures.toolDescriptionFencing** — Every MCP tool description, and every description inside its input and output schema, is wrapped in BEGIN_UNTRUSTED_TOOL_DESCRIPTION and END_UNTRUSTED_TOOL_DESCRIPTION markers when the declaration goes to the model. One preamble is added to the system instruction saying the quoted text is data.
 - **bonusFeatures.gracefulToolErrors** — On by default. An McpError or any other exception from a tool call becomes an {"error": ...} dict for the model. ADK_DISABLE_MCP_GRACEFUL_ERROR_HANDLING turns it off and the exception reaches the runner. A comment in mcp_tool.py says the flag is off by default, and the registry sets default_on=True.
 - **bonusFeatures.traceContextPropagation** — The OpenTelemetry propagator writes the current trace context into the _meta of each tools/call. An empty carrier sends no _meta. The default probe captures show tools/call with no _meta.
 - **bonusFeatures.providerManagedMcp** — ManagedAgent takes RemoteMcpServer specs and forwards the URL, headers and allowed tools to the Interactions API as an mcp_server tool param. The backend opens the MCP session. ADK speaks no MCP to that server.
-- **byProtocolVersion.2026-07-28.sampling** — On this path a server asks for sampling inside an InputRequiredResult. ADK calls call_tool without allow_input_required, the SDK raises, and the model receives an error dict. An application sampling_callback is still advertised in each request and is not called for tool calls. Read from source, not run.
-- **byProtocolVersion.2026-07-28.elicitation** — Same as sampling: an InputRequiredResult from tools/call raises in the SDK and becomes an error dict, so an application elicitation_callback is declared and not called. Read from source, not run.
-- **byProtocolVersion.2026-07-28.logging** — ClientSession is built without log_level, so no request opts in to log delivery.
-- **byProtocolVersion.2026-07-28.bonusFeatures.sessionRecovery** — The recovery path keys on the session-terminated error that the SDK raises for a dropped Mcp-Session-Id. Whether anything triggers it on a connection with no session id was not checked.
+- **byProtocolVersion.2025-11-25.sampling** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional sampling_callback and sampling_capabilities and passes them to ClientSession, and the SDK declares sampling when the callback is present. The handler and the model it calls are the application's.
+- **byProtocolVersion.2025-11-25.elicitation** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional elicitation_callback and passes it to ClientSession. No code under src supplies a callback, so the user-input and tool-confirmation flows ADK has for its own tools are not connected to MCP elicitation.
+- **byProtocolVersion.2025-11-25.logging** — No logging_callback is passed, so the SDK default discards notifications/message. logging/setLevel is never called. An application that passes message_handler receives log notifications along with every other server notification.
+- **byProtocolVersion.2025-11-25.bonusFeatures.sessionRecovery** — When a server reports that it no longer holds the session, ADK drops the pooled session, opens a new one and retries the tool call once. It recognises the SDK's code 32600 on 1.x and INVALID_REQUEST with the message Session terminated on 2.x. A transport failure in the middle of a tool call is not retried. tools/list and session setup are retried once on any error.
 
 ## Verified by the probe
 
@@ -230,13 +230,13 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [ADK Python speaks 2026-07-28 only on MCP SDK 2.x with ADK_ENABLE_MCP_MODERN_PROTOCOL set](../research/adk-python-modern-protocol-needs-sdk-2-and-a-flag.md) — *nuance*. At c6586f19 a default ADK install runs the initialize handshake at 2025-11-25. server/discover needs MCP SDK 2.x and the default-off ADK_ENABLE_MCP_MODERN_PROTOCOL switch. mcp is an optional extra, and four of ADK's five constraints files pin SDK 1.28.1.
 - [mcp/client/session.py:1278-1289](https://pypi.org/project/mcp/2.3.0/) — *tools*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. list_tools sends one request and takes the cursor only through params.
 - [notes/adk-python-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/adk-python-tool-result-handling.md) — *tools.result*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the ADK source at 287c0b0. Between 287c0b0 and c6586f19 no file under src/google/adk/tools/mcp_tool changed.
-- [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *sampling*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. _build_capabilities declares sampling, elicitation and roots only when a non-default callback was passed.
+- [mcp/client/session.py:1062,1104-1106](https://pypi.org/project/mcp/2.3.0/) — *sampling*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. An InputRequiredResult raises RuntimeError unless allow_input_required is true.
+- [mcp/client/session.py:1062,1104-1106](https://pypi.org/project/mcp/2.3.0/) — *elicitation*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0.
 - [mcp/client/session.py:634-638](https://pypi.org/project/mcp/2.3.0/) — *elicitation.url*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0.
-- [mcp/client/session.py:278-281,1482-1485](https://pypi.org/project/mcp/2.3.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The default logging callback is a no-op, and a log notification goes to it and then to message_handler.
+- [mcp/client/session.py:165-171](https://pypi.org/project/mcp/2.3.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The log-level _meta key is stamped only when log_level is set.
 - [mcp/client/session.py:1156-1183](https://pypi.org/project/mcp/2.3.0/) — *jsonSchema*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. validator_for(output_schema) with an empty registry.
-- [mcp/client/session.py:1062,1104-1106](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2026-07-28.sampling*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. An InputRequiredResult raises RuntimeError unless allow_input_required is true.
-- [mcp/client/session.py:1062,1104-1106](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2026-07-28.elicitation*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0.
-- [mcp/client/session.py:165-171](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2026-07-28.logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The log-level _meta key is stamped only when log_level is set.
+- [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2025-11-25.sampling*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. _build_capabilities declares sampling, elicitation and roots only when a non-default callback was passed.
+- [mcp/client/session.py:278-281,1482-1485](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2025-11-25.logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The default logging callback is a no-op, and a log notification goes to it and then to message_handler.
 
 ## Provenance
 

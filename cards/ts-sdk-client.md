@@ -34,17 +34,17 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | &nbsp;&nbsp;↳ oauth | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ header | ◇ opt-in | read | `2025-11-25` |
 | **Tools** | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2026-07-28` |
 | **Resources** | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2026-07-28` |
 | **Prompts** | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
 | **Completions** | ● full | read | `2025-11-25` |
 | **Sampling** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ context | ◇ opt-in | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;↳ tools | ◇ opt-in | read | `2025-11-25` |
-| **Elicitation** | ◇ opt-in | read | `2025-11-25` |
+| **Elicitation** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ form | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ url | ◇ opt-in | read | `2025-11-25` |
 | **Roots** | ◇ opt-in | read | `2025-11-25` |
@@ -74,17 +74,17 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **authentication.oauth** — Off until the application passes an OAuthClientProvider as the transport authProvider. Then the auth() flow discovers protected resource metadata, then authorization server metadata through RFC 8414 and OpenID Connect paths. It uses a CIMD URL as the client_id when the provider sets clientMetadataUrl and the server advertises client_id_metadata_document_supported, and registers dynamically otherwise. PKCE is S256. The resource parameter goes on the authorize and token requests. The RFC 9207 iss parameter is checked. A 403 insufficient_scope triggers one step-up reauthorization by default. ClientCredentialsProvider and PrivateKeyJwtProvider cover client_credentials. 2.4.0 always adds prompt=consent when the scope includes offline_access; HEAD adds skipOfflineAccessConsentPrompt.
 - **authentication.header** — requestInit.headers on either HTTP transport are sent on every request. Authorization, mcp-session-id and mcp-protocol-version set by the transport take precedence, so a static Authorization header is sent only while an authProvider has no token. An AuthProvider of the form { token: async () => key } sends a bearer token without OAuth.
 - **tools** — listTools() with no cursor walks every page, up to listMaxPages (64), stops on a page that repeats the one before, and caches the aggregate. Passing a cursor fetches one page. Against a server with no tools capability it returns an empty list without a request unless enforceStrictCapabilities is set. callTool() validates structuredContent against the outputSchema of a tool it has seen in a cached tools/list, and throws when a tool with an outputSchema returns no structuredContent. With a cold cache it validates nothing.
-- **tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
+- **tools.listChanged** — With ClientOptions.listChanged set, connect opens a subscriptions/listen stream for the advertised list types. Without it nothing is subscribed.
 - **resources** — listResources(), listResourceTemplates() and readResource() are on the Client, with the same paging and cache rules as tools. resources/read results are cached per URI and evicted on notifications/resources/updated.
 - **resources.listChanged** — Same as tools: the cache entry is always evicted, and the application hears of it through ClientOptions.listChanged.resources.
-- **resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
+- **resources.subscribe** — listen() opens subscriptions/listen with a filter. It throws on a 2025 connection.
 - **prompts** — listPrompts() and getPrompt() are on the Client. Paging and the missing-capability rule match tools.
 - **prompts.listChanged** — Through ClientOptions.listChanged.prompts.
 - **completions** — complete() sends completion/complete for a prompt or resource template argument. The SDK has no UI that calls it.
 - **sampling** — Not declared by default. The application passes capabilities.sampling and registers setRequestHandler('sampling/createMessage'). The SDK validates the request and the handler result against the negotiated era, including the tool-use result shape when the request carries tools. The class comment marks sampling deprecated as of 2026-07-28 (SEP-2577).
 - **sampling.context** — includeContext reaches the application handler unchanged. Honouring it is the handler's job.
 - **sampling.tools** — A request with tools or toolChoice is validated against the tool-use result schema.
-- **elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
+- **elicitation** — Server requests arrive as input_required results on tools/call, prompts/get or resources/read. By default the client answers them through the handler registered for elicitation/create, sampling/createMessage or roots/list and retries the call, up to 10 rounds. With no handler the call fails. An inbound server-to-client request is dropped.
 - **elicitation.form** — Declared as elicitation: {} or elicitation.form.
 - **elicitation.url** — Declared as elicitation.url. A URL-mode request is rejected when only form was declared.
 - **roots** — Not declared by default. The application passes capabilities.roots and registers setRequestHandler('roots/list'). Marked deprecated as of 2026-07-28 (SEP-2577).
@@ -99,9 +99,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code in packages/client or packages/core-internal.
 - **bonusFeatures.protocolEraForcing** — versionNegotiation takes legacy (the default), auto, or { pin: '2026-07-28' }. connect({ prior }) reuses a cached era verdict with no probe. supportedProtocolVersions narrows both lists.
 - **bonusFeatures.standardRequestHeaders** — Only on a 2026-07-28 connection over HTTP: Mcp-Method and Mcp-Name on every request, and Mcp-Param-* mirrored from x-mcp-header input-schema declarations of a cached tool. Skipped in a browser.
-- **byProtocolVersion.2026-07-28.tools.listChanged** — With ClientOptions.listChanged set, connect opens a subscriptions/listen stream for the advertised list types. Without it nothing is subscribed.
-- **byProtocolVersion.2026-07-28.resources.subscribe** — listen() opens subscriptions/listen with a filter. It throws on a 2025 connection.
-- **byProtocolVersion.2026-07-28.elicitation** — Server requests arrive as input_required results on tools/call, prompts/get or resources/read. By default the client answers them through the handler registered for elicitation/create, sampling/createMessage or roots/list and retries the call, up to 10 rounds. With no handler the call fails. An inbound server-to-client request is dropped.
+- **byProtocolVersion.2025-11-25.tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
+- **byProtocolVersion.2025-11-25.resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
+- **byProtocolVersion.2025-11-25.elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
 
 ## Verified by the probe
 
