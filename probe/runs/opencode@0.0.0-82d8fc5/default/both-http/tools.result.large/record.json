@@ -1,0 +1,57 @@
+{
+  "client": "opencode",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.large",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "tools.result.large",
+    "clientVersion": "0.0.0-82d8fc5",
+    "config": "default",
+    "artifact": "probe/runs/opencode@0.0.0-82d8fc5/default/both-http/tools.result.large",
+    "note": "{…} structuredContent only (1x, as text)",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "large",
+      "api": "chat",
+      "toolOffered": true,
+      "offeredAs": "execute (indirect: probe_large)",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "{\"issues\":[{\"id\":0,\"title\":\"MARK_LARGE_START_e2c4 MARK_SC_91be\"},{\"id\":1,\"title\":\"Generated issue number 1 with some padding text\",\"state\":\"open\"},{\"id\":2,\"title\":\"Generated issue number 2 with some padding text\",\"state\":\"open\"},{\"id\":3,\"title\":\"Generated issue number 3 with some padding text\",\"state\":\"open\"},{\"id\":4,\"title\":\"Generated issue number 4 with some padding text\",\"state\":\"open\"},{\"id\":5,\"title\":\"Generated issue number 5 with some padding text\",\"state\":\"open\"},{\"id\":6,\"title\":\"Generated issue number 6 with some padding text\",\"state\":\"open\"},{\"id\":7,\"title\":\"Generated issue number 7 with some padding text\",\"state\":\"open\"},{\"id\":8,\"title\":\"Generated issue number 8 with some padding text\",\"state\":\"open\"},{\"id\":9,\"title\":\"Generated issue number 9 with some padding text\",\"state\":\"open\"},{\"id\":10,\"title\":\"Generated issue number 10 with some padding text\",\"state\":\"open\"},{\"id\":11,\"title\":\"Generated issue number 11 with some padding text\",\"state\":\"open\"},{\"id\":12,\"title\":\"Generated issue number 12 with some padding text\",\"state\":\"open\"},{\"id\":13,\"title\":\"Generated issue number 13 with some padding text\",\"state\":\"open\"},{\"id\":14,\"title\":\"Generated issue number 14 with some padding text\",\"state\":\"open\"},{\"id\":15,\"title\":\"Generated issue number 15 with some padding text\",\"state\":\"open\"},{\"id\":16,\"title\":\"Generated issue number 16 with some padding text\",\"state\":\"open\"},{\"id\":17,\"title\":\"Generated issue number 17 with some padding text\",\"state\":\"open\"},{\"id\":18,\"title\":\"Generated issue number 18 with some padding text\",\"state\":\"open\"},{\"id\":19,\"title\":\"Generated issue number 19 with some padding text\",\"state\":\"open\"},{\"id\":20,\"title\":\"Generated issue number 20 with some padding text\",\"state\":\"open\"},{\"id\":21,\"title\":\"Generated issue number 21 with some padding text\",\"state\":\"open\"},{\"id\":22,\"title\":\"Generated issue number 22 with some padding text\",\"state\":\"open\"},{\"id\":23,\"title\":\"Generated issue number 23 with some padding text\",\"state\":\"open\"},{\"id\":24,\"title\":\"Gen ... [47413 chars omitted] ...  issue number 577 with some padding text\",\"state\":\"open\"},{\"id\":578,\"title\":\"Generated issue number 578 with some padding text\",\"state\":\"open\"},{\"id\":579,\"title\":\"Generated issue number 579 with some padding text\",\"state\":\"open\"},{\"id\":580,\"title\":\"Generated issue number 580 with some padding text\",\"state\":\"open\"},{\"id\":581,\"title\":\"Generated issue number 581 with some padding text\",\"state\":\"open\"},{\"id\":582,\"title\":\"Generated issue number 582 with some padding text\",\"state\":\"open\"},{\"id\":583,\"title\":\"Generated issue number 583 with some padding text\",\"state\":\"open\"},{\"id\":584,\"title\":\"Generated issue number 584 with some padding text\",\"state\":\"open\"},{\"id\":585,\"title\":\"Generated issue number 585 with some padding text\",\"state\":\"open\"},{\"id\":586,\"title\":\"Generated issue number 586 with some padding text\",\"state\":\"open\"},{\"id\":587,\"title\":\"Generated issue number 587 with some padding text\",\"state\":\"open\"},{\"id\":588,\"title\":\"Generated issue number 588 with some padding text\",\"state\":\"open\"},{\"id\":589,\"title\":\"Generated issue number 589 with some padding text\",\"state\":\"open\"},{\"id\":590,\"title\":\"Generated issue number 590 with some padding text\",\"state\":\"open\"},{\"id\":591,\"title\":\"Generated issue number 591 with some padding text\",\"state\":\"open\"},{\"id\":592,\"title\":\"Generated issue number 592 with some padding text\",\"state\":\"open\"},{\"id\":593,\"title\":\"Generated issue number 593 with some padding text\",\"state\":\"open\"},{\"id\":594,\"title\":\"Generated issue number 594 with some padding text\",\"state\":\"open\"},{\"id\":595,\"title\":\"Generated issue number 595 with some padding text\",\"state\":\"open\"},{\"id\":596,\"title\":\"Generated issue number 596 with some padding text\",\"state\":\"open\"},{\"id\":597,\"title\":\"Generated issue number 597 with some padding text\",\"state\":\"open\"},{\"id\":598\n[showing lines 1-1 of 1 (last line cut); full output saved to /tmp/canimcp-probe/opencode@0.0.0-82d8fc5/default/both-http/tools.result.large/home/.local/share/opencode/tool-output/tool_219ae192c001uajKp0CgQJ7xVE]",
+      "payloadBytes": 51413,
+      "form": "text",
+      "markers": [
+        {
+          "marker": "largeStart",
+          "count": 1,
+          "firstIndex": 28
+        },
+        {
+          "marker": "sc",
+          "count": 1,
+          "firstIndex": 50
+        }
+      ],
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "sdk",
+      "sentResult": "<large; see wire.jsonl>",
+      "sentUnchanged": true,
+      "notes": [
+        "fixture tool reached through another tool, not offered to the model by name"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 4869,
+    "transport": "http",
+    "serverMode": "sdk",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

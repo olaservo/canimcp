@@ -12,16 +12,16 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/plugin/command.ts, MCP prompts registered as commands
-    commit: b5e0abd7
+    commit: 82d8fc5b
     path: packages/core/src/plugin/command.ts:55-81,96-102
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, prompts listing
-    commit: b5e0abd7
-    path: packages/core/src/mcp/client.ts:680-685
-    date: 2026-11-20
+    commit: 82d8fc5b
+    path: packages/core/src/mcp/client.ts:905-910
+    date: 2026-11-26
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # opencode keeps only the text parts of an MCP prompt, and fills arguments positionally

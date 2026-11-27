@@ -23,9 +23,9 @@ sources:
     date: 2026-08-23
   - url: https://github.com/openai/codex
     title: codex-rs/core/src/tools/spec_plan.rs, the three built-in resource tools
-    commit: 2fb728da
-    path: codex-rs/core/src/tools/spec_plan.rs:1265-1285
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/core/src/tools/spec_plan.rs:1228-1248
+    date: 2026-11-26
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/tool/plugin/mcp-resource.ts, the two resource tools
     commit: b5e0abd7

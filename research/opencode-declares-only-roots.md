@@ -25,11 +25,11 @@ sources:
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, the capabilities passed to Client
-    commit: b5e0abd7
-    path: packages/core/src/mcp/client.ts:356-363,416-429
-    date: 2026-11-20
+    commit: 82d8fc5b
+    path: packages/core/src/mcp/client.ts:429-443,497-510
+    date: 2026-11-26
 status: stale
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 related:
   - utilized-capability-declarations
 ---

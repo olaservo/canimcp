@@ -18,41 +18,41 @@ specVersions:
 sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
-    commit: 95a2d9a6
-    path: libs/code/deepagents_code/mcp_tools.py:1920-1929,1948-1954
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/code/deepagents_code/mcp_tools.py:1968-1977,1996-2002
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _build_mcp_tool
-    commit: 95a2d9a6
-    path: libs/code/deepagents_code/mcp_tools.py:1483-1488
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/code/deepagents_code/mcp_tools.py:1531-1536
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, MCPAdapter and _cancel_mcp_elicitation
-    commit: 95a2d9a6
-    path: libs/talon/deepagents_talon/mcp.py:423-426,557-572
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/talon/deepagents_talon/mcp.py:425-428,559-574
+    date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/server/providers/proxy.py, the default proxy handlers and ProxyClient.__init__
     path: fastmcp/server/providers/proxy.py:1516-1611,1742-1757
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, _build_capabilities
     path: mcp/client/session.py:614-649
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/shared/exceptions.py, NoBackChannelError
     path: mcp/shared/exceptions.py:55-71
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/shared/transport_context.py, can_send_request
     path: mcp/shared/transport_context.py:25-37
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/langchain
-    title: langchain 1.5.0 wheel, langchain/mcp/elicitation.py, the sentinel handler and _drives_interrupts
+    title: langchain 1.5.2 wheel, langchain/mcp/elicitation.py, the sentinel handler and _drives_interrupts
     path: langchain/mcp/elicitation.py:227-262
-    date: 2026-11-16
+    date: 2026-11-26
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-26
 related:
   - utilized-capability-declarations
   - deepagents-core-library-has-no-mcp-client
@@ -63,7 +63,7 @@ related:
 
 # deepagents-code declares sampling, elicitation and roots to every server and answers none of them
 
-Read at langchain-ai/deepagents 95a2d9a6, with fastmcp-slim 4.1.2, mcp 2.3.0 and langchain 1.5.0 from the PyPI wheels.
+Read at langchain-ai/deepagents 87f6080d, with fastmcp-slim 4.1.2, mcp 2.3.0 and langchain 1.5.2 from the PyPI wheels.
 
 ## What a server sees
 
@@ -85,7 +85,7 @@ The mcp SDK then derives the capability object from which callbacks are set. A s
 
 A forwarding handler relays the server's request to whoever is connected to the front of the proxy. In deepagents-code the front is an in-process FastMCP router, and its one client is `FastMCPClient(router)`, built with no sampling handler, no elicitation handler and no roots. `langchain.mcp.as_langchain_tool` is handed that client as it is. deepagents-code never uses `MCPAdapter`, so the client is not armed for interrupt-driven elicitation either.
 
-I ran a stdio FastMCP server whose tools send `sampling/createMessage`, `elicitation/create` and `roots/list` back to the client, loaded through `_load_tools_from_config` from deepagents-code 0.2.5 with fastmcp 4.1.2, mcp 2.2.0 and langchain 1.4.9, the versions in the probe's environment. `mcp_tools.py`, `mcp_proxy.py`, `mcp_middleware.py` and `mcp_auth.py` in that release are identical to 95a2d9a6, line endings aside. Each request came back to the server as a JSON-RPC error with this message, for the method in question:
+I ran a stdio FastMCP server whose tools send `sampling/createMessage`, `elicitation/create` and `roots/list` back to the client, loaded through `_load_tools_from_config` from deepagents-code 0.2.5 with fastmcp 4.1.2, mcp 2.2.0 and langchain 1.4.9, the versions in the probe's environment. `mcp_tools.py`, `mcp_proxy.py`, `mcp_middleware.py` and `mcp_auth.py` in that release are identical to 95a2d9a6, line endings aside, and `_mount_backends` is unchanged at 87f6080d. Each request came back to the server as a JSON-RPC error with this message, for the method in question:
 
 ```
 Cannot send 'elicitation/create': this transport context has no back-channel for server-initiated requests.

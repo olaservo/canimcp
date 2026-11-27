@@ -1,0 +1,9 @@
+node_modules
+dist
+runs
+docker
+hosts/*/node_modules
+hosts/*/bin
+hosts/*/.venv
+**/__pycache__
+*.md

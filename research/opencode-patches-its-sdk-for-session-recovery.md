@@ -27,16 +27,16 @@ sources:
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, failure
-    commit: b5e0abd7
-    path: packages/core/src/mcp/client.ts:438-460
-    date: 2026-11-20
+    commit: 82d8fc5b
+    path: packages/core/src/mcp/client.ts:519-541
+    date: 2026-11-26
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/connection.ts, recover and recovering
-    commit: b5e0abd7
-    path: packages/core/src/mcp/connection.ts:131-151
-    date: 2026-11-20
+    commit: 82d8fc5b
+    path: packages/core/src/mcp/connection.ts:145-165
+    date: 2026-11-26
 status: stale
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 ---
 
 # opencode ships a patched MCP SDK that recovers an expired HTTP session

@@ -1,0 +1,49 @@
+{
+  "client": "codex",
+  "capability": "tools.result.content",
+  "scenario": "tools.result.empty_object",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "tools.result.empty_object",
+    "clientVersion": "0.174.0-alpha.7",
+    "config": "stdio-opt-in-no-flag",
+    "artifact": "probe/runs/codex@0.174.0-alpha.7/stdio-opt-in-no-flag/both-stdio/tools.result.empty_object",
+    "note": "\"…\" no marker reached the model; payload: \"[{\\\"type\\\":\\\"input_text\\\",\\\"text\\\":\\\"Wall time: 0.0269 seconds\\\\nOutput:\\\"},{\\\"type\\\":\\\"inpu\"",
+    "observation": {
+      "type": "tools.result",
+      "fixture": "empty_object",
+      "api": "responses",
+      "toolOffered": true,
+      "offeredAs": "mcp__probe/probe_empty_object",
+      "toolCalled": true,
+      "resultSentToModel": true,
+      "payloadExcerpt": "[{\"type\":\"input_text\",\"text\":\"Wall time: 0.0269 seconds\\nOutput:\"},{\"type\":\"input_text\",\"text\":\"tool call error: tool call failed for `probe/probe_empty_object`\\n\\nCaused by:\\n    Unexpected response type\"}]",
+      "payloadBytes": 207,
+      "form": "text",
+      "markers": [],
+      "placeholder": "[{\"type\":\"input_text\",\"text\":\"Wall time: 0.0269 seconds\\nOutput:\"},{\"type\":\"input_text\",\"text\":\"tool call error: tool call failed for `probe/probe_empty_object`\\n\\nCaused by:\\n    Unexpected response type\"}]",
+      "negotiatedRevision": "2026-07-28",
+      "serverMode": "raw",
+      "sentResult": {
+        "resultType": "complete"
+      },
+      "sentUnchanged": true,
+      "notes": [
+        "2 text block(s) joined for classification"
+      ],
+      "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 6441,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

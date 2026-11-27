@@ -18,6 +18,7 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | SDK | `@modelcontextprotocol/sdk` 1.32.1 · official TypeScript SDK · **patched** · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-21 |
 | Last read | 2026-11-21 |
 
@@ -50,10 +51,15 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ patchedSdkSessionRecovery | ● full | read | `2025-11-25` |
@@ -87,8 +93,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — Receives notifications/message into the log. Never calls logging/setLevel.
 - **instructions** — Server instructions are trimmed and carried per server.
 - **icons** — No icon handling in the client.
-- **tasks** — Commented out against opencode issue 28567.
 - **extensions.io.modelcontextprotocol/ui** — Behind KILO_EXPERIMENTAL_MCP_APPS. A tool with _meta.ui.resourceUri gets mcpApp metadata on its tool part, and two experimental HTTP endpoints read a resource and call a tool for a widget. The extension is not declared in the capability object, and no widget host is in the repo.
+- **extensions.io.modelcontextprotocol/tasks** — Commented out against opencode issue 28567.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The client capabilities declare roots only, nothing sends skills/list, skills/get or resources/directory/read, and the patched @modelcontextprotocol/sdk 1.32.1 has no skills client.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. The client capabilities declare roots only, nothing sends events/list, events/poll, events/stream or events/subscribe, and the patched @modelcontextprotocol/sdk 1.32.1 has no events client.
 - **bonusFeatures.modelInitiatedResourceRead** — The same three tool names as opencode and Codex, each permission-gated.
 - **bonusFeatures.patchedSdkSessionRecovery** — opencode's session-recovery patch carried forward onto SDK 1.32.1: a 404 on a request carrying a session id re-initializes and retries once. The patch also adds offline_access scope selection and keeps output validators across paginated tools/list pages.
 
@@ -101,6 +109,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Kilo Code is built on opencode now, and one MCP client serves the CLI, VS Code and JetBrains](../research/kilocode-runs-opencodes-mcp-client-behind-every-surface.md) — *misconception*. Kilo Code started as a Cline fork. At b2947d7e its MCP client is opencode's, with Kilo's edits marked kilocode_change. The VS Code and JetBrains extensions spawn `kilo serve` and have no MCP client of their own. main ships a patched SDK 1.32.1; the v2 branch uses the split SDK.
 - [dist/esm/client/auth.js:302-309](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1) — *authentication.oauth*, read 2026-11-10 at `?` in @modelcontextprotocol/sdk.
 - [notes/kilocode-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/kilocode-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Kilo Code source at b6a49d0.
+- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.32.1, the pinned version. Its dist has no skills/* or events/* methods.
+- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.32.1, the pinned version. Its dist has no skills/* or events/* methods.
 
 ## Provenance
 

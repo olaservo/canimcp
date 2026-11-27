@@ -18,6 +18,7 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | SDK | `mcp` · declares `>=1.23.0,<2.4` · official Python SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.64.0+mcp-2.3.0` (see below) |
@@ -58,14 +59,18 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ◇ opt-in | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/oauth-client-credentials | ◐ partial | read | `2026-07-28` |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/oauth-client-credentials | ◐ partial | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ sessionRecovery | ◇ opt-in | read | `2026-07-28` |
@@ -76,6 +81,20 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
+
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, Strands Agents negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** | ● full |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◐ partial | read | `2025-11-25` |
+
+- **tools.listChanged** — Still opt-in through on_tools_changed. The server pushes the notification without a subscription, so a callback set after start() also works. This is the path after a failed discover probe, and the only path on an mcp 1.x install.
+- **extensions.io.modelcontextprotocol/tasks** — On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests. The extension itself is not declared on this revision: its result claim is active at 2026-07-28 only, so the SDK leaves it out of the initialize capabilities.
 
 ## What the table flattens
 
@@ -109,20 +128,18 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No logging callback is passed, so the SDK's default discards notifications/message. logging/setLevel is never called and no log level is set for the per-request envelope. TypeScript differs: a notifications/message handler is always registered, and by default it writes each message to the Strands logger at a mapped level. logHandler replaces it. Neither binding sets a level.
 - **instructions** — The instructions string from negotiation is stored on MCPClient.server_instructions. Nothing in the agent reads it, so it reaches the model only when the application copies it into a prompt. TypeScript: the serverInstructions getter, also unread by the agent.
 - **icons** — The tool spec is built from name, description, inputSchema, outputSchema and annotations. No code in either binding's MCP client reads icons or websiteUrl.
-- **tasks** — Opt-in through tasks_config, and experimental in the docstrings. On mcp 2.x Strands declares the io.modelcontextprotocol/tasks extension. When the server advertises it and the connection negotiated 2026-07-28, a task handle returned by tools/call is completed for the caller: Strands polls tasks/get, answers input requests with tasks/update and sends tasks/cancel on timeout or cancellation. The overall wait defaults to 5 minutes. Manual submit, get, update and cancel methods exist.
-- **tasks.list** — No tasks/list call on either SDK line.
-- **tasks.cancel** — tasks/cancel is sent when a task-backed call times out or is cancelled, and by cancel_task_sync. Needs tasks_config.
-- **extensions.io.modelcontextprotocol/tasks** — Declared in capabilities.extensions only when tasks_config is set and the wire speaks 2026-07-28. Strands defines the SEP-2663 result models itself and sends tasks/get, tasks/update and tasks/cancel through the session's send_request. TypeScript uses @modelcontextprotocol/ext-tasks 0.2.2 and sends task traffic as raw JSON-RPC through its own TaskTransport, because the SDK client does not expose extension methods.
 - **extensions.io.modelcontextprotocol/oauth-client-credentials** — The client_credentials grant with a client secret, through the SDK's provider. Nothing is declared in capabilities.extensions for it. The SDK's private_key_jwt provider is not wired to the auth option, and an application would pass it as auth_provider.
 - **extensions.io.modelcontextprotocol/ui** — No code in either binding reads _meta.ui, and the extension is not declared. A tool whose visibility leaves out the model is listed for the model like any other.
+- **extensions.io.modelcontextprotocol/tasks** — Opt-in through tasks_config, and experimental in the docstrings. On mcp 2.x Strands declares the io.modelcontextprotocol/tasks extension. When the server advertises it and the connection negotiated 2026-07-28, a task handle returned by tools/call is completed for the caller: Strands polls tasks/get, answers input requests with tasks/update and sends tasks/cancel on timeout or cancellation. The overall wait defaults to 5 minutes. Manual submit, get, update and cancel methods exist. Declared in capabilities.extensions only when tasks_config is set and the wire speaks 2026-07-28. Strands defines the SEP-2663 result models itself and sends tasks/get, tasks/update and tasks/cancel through the session's send_request. TypeScript uses @modelcontextprotocol/ext-tasks 0.2.2 and sends task traffic as raw JSON-RPC through its own TaskTransport, because the SDK client does not expose extension methods.
+- **extensions.io.modelcontextprotocol/tasks.list** — No tasks/list call on either SDK line.
+- **extensions.io.modelcontextprotocol/tasks.cancel** — tasks/cancel is sent when a task-backed call times out or is cancelled, and by cancel_task_sync. Needs tasks_config.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented in either binding. The Python SDK has no skills client in any release Strands allows (mcp 1.23 through 2.3.0). TypeScript: the lockfile resolves @modelcontextprotocol/client 2.3.1, and Strands does not import the ext/skills SkillsClient that 2.4.0 adds. The AgentSkills plugin loads skills from the filesystem, Skill instances and https URLs, not from MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented in either binding. Neither the Python SDK through 2.3.0 nor the TypeScript SDK client through 2.4.0 has an events client for Strands to turn on.
 - **bonusFeatures.modelInitiatedResourceRead** — The model gets no tool for resources/read. Resources are reachable through read_resource_sync from application code only, and the opt-in mcp_router tool has no resource command.
 - **bonusFeatures.sessionRecovery** — auto_reconnect, off by default and not in a release tag yet: it landed after python/v1.65.0. A tool call that finds the session dropped or terminated stops the client, starts it again with up to four attempts inside one startup_timeout, and re-sends the call once. The docstring warns that a call that already reached the server may run twice. TypeScript has connect(true) and no automatic retry.
 - **bonusFeatures.callCancellation** — The agent's cancel signal is passed to every MCP tool call. Setting it cancels the in-flight request and returns an error result marked cancelled. On mcp 1.x Strands sends notifications/cancelled itself with the request id it captured. On 2.x the SDK dispatcher sends it. For a task-backed call it sends tasks/cancel.
 - **bonusFeatures.traceContextPropagation** — The active OpenTelemetry context is injected into params._meta of every tools/call, merged over the client-level or per-call meta. A comment there says the mcp 2.x dispatcher then overwrites traceparent with its own span. TypeScript differs: when a span is active it adds a _meta key inside the tool's arguments object, unless disableMcpInstrumentation is set.
 - **bonusFeatures.mcpRouterTool** — An opt-in vended tool, make_mcp_router, lets the model connect to servers on a developer-set allowlist at run time and list and call their tools, up to 10 connections per agent. It builds each connection with MCPClient.load_servers. Both bindings have it.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — Still opt-in through on_tools_changed. The server pushes the notification without a subscription, so a callback set after start() also works. This is the path after a failed discover probe, and the only path on an mcp 1.x install.
-- **byProtocolVersion.2025-11-25.tasks** — On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests.
-- **byProtocolVersion.2025-11-25.extensions.io.modelcontextprotocol/tasks** — The result claim is active at 2026-07-28 only, so the SDK leaves the extension out of the initialize capabilities.
 
 ## Verified by the probe
 
@@ -228,6 +245,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [mcp/client/session.py:639-646](https://pypi.org/project/mcp/2.3.0/) — *roots*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. roots is declared only when a list_roots callback was passed.
 - [mcp/client/session.py:278-281,1483-1485](https://pypi.org/project/mcp/2.3.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The default logging callback is a no-op.
 - [mcp/client/session.py:614-628](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. An extension whose result claims are all inactive at the wire version is left out of the capability object.
+- [mcp/client/](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 wheel. No skills or events module and no skills/list or events/* method string.
+- [mcp/client/](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 wheel. No skills or events module and no skills/list or events/* method string.
 - [mcp/client/session.py:614-628,651-664](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2025-11-25.extensions.io.modelcontextprotocol/tasks*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. initialize builds capabilities for LATEST_HANDSHAKE_VERSION, where no claim is active.
 
 ## Provenance

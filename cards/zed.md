@@ -18,6 +18,7 @@ Code editor with a built-in agent. Zed calls MCP servers context servers and spe
 | SDK | `none` · Rust SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 
@@ -55,10 +56,15 @@ Code editor with a built-in agent. Zed calls MCP servers context servers and spe
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ○ unsupported | read | `2025-11-25` |
@@ -97,8 +103,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No handler for notifications/message and no logging/setLevel call. Server stderr goes to Zed's log.
 - **instructions** — InitializeResponse has no instructions field, so server instructions are discarded at parse time.
 - **icons** — No type in types.rs has an icons or websiteUrl field, including Tool and Implementation.
-- **tasks** — No tasks capability and no tasks methods.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code and no extension declared. The experimental field is always None.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks capability and no tasks methods.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The hand-written context_server client has no extensions field in its capabilities and no skills/list, skills/get or resources/directory/read request. Zed's agent skills load from ~/.agents/skills through the agent_skills crate, which does not depend on context_server.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. The hand-written context_server client has no extensions field in its capabilities and no events/list, events/poll, events/stream or events/subscribe request.
 - **bonusFeatures.modelInitiatedResourceRead** — No resource tools are offered to the model.
 - **bonusFeatures.toolCallCancellation** — The client can send notifications/cancelled through request_with, and nothing calls it. A user cancel or a timeout on a tool call drops the pending request without notifying the server.
 

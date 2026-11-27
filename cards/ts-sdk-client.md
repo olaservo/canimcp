@@ -18,6 +18,7 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | SDK | `@modelcontextprotocol/client` 2.4.0 · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-18 |
 | Last read | 2026-11-20 |
 | Probed | `2.4.0` (see below) |
@@ -34,17 +35,17 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | &nbsp;&nbsp;↳ oauth | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ header | ◇ opt-in | read | `2025-11-25` |
 | **Tools** | ● full | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2026-07-28` |
 | **Resources** | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2026-07-28` |
 | **Prompts** | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
 | **Completions** | ● full | read | `2025-11-25` |
 | **Sampling** | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ context | ◇ opt-in | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;↳ tools | ◇ opt-in | read | `2025-11-25` |
-| **Elicitation** | ◇ opt-in | read | `2025-11-25` |
+| **Elicitation** | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ form | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ url | ◇ opt-in | read | `2025-11-25` |
 | **Roots** | ◇ opt-in | read | `2025-11-25` |
@@ -52,12 +53,15 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | **Logging** | ◇ opt-in | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25`, `2026-07-28` |
 | **Icons** | ● full | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported |  |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ standardRequestHeaders | ◇ opt-in | read | `2026-07-28` |
@@ -65,6 +69,22 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
+
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, TypeScript SDK Client negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| **Resources** |  |  |  |
+| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2025-11-25` |
+| **Elicitation** | ◇ opt-in | read | `2025-11-25` |
+
+- **tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
+- **resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
+- **elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
 
 ## What the table flattens
 
@@ -74,17 +94,17 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **authentication.oauth** — Off until the application passes an OAuthClientProvider as the transport authProvider. Then the auth() flow discovers protected resource metadata, then authorization server metadata through RFC 8414 and OpenID Connect paths. It uses a CIMD URL as the client_id when the provider sets clientMetadataUrl and the server advertises client_id_metadata_document_supported, and registers dynamically otherwise. PKCE is S256. The resource parameter goes on the authorize and token requests. The RFC 9207 iss parameter is checked. A 403 insufficient_scope triggers one step-up reauthorization by default. ClientCredentialsProvider and PrivateKeyJwtProvider cover client_credentials. 2.4.0 always adds prompt=consent when the scope includes offline_access; HEAD adds skipOfflineAccessConsentPrompt.
 - **authentication.header** — requestInit.headers on either HTTP transport are sent on every request. Authorization, mcp-session-id and mcp-protocol-version set by the transport take precedence, so a static Authorization header is sent only while an authProvider has no token. An AuthProvider of the form { token: async () => key } sends a bearer token without OAuth.
 - **tools** — listTools() with no cursor walks every page, up to listMaxPages (64), stops on a page that repeats the one before, and caches the aggregate. Passing a cursor fetches one page. Against a server with no tools capability it returns an empty list without a request unless enforceStrictCapabilities is set. callTool() validates structuredContent against the outputSchema of a tool it has seen in a cached tools/list, and throws when a tool with an outputSchema returns no structuredContent. With a cold cache it validates nothing.
-- **tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
+- **tools.listChanged** — With ClientOptions.listChanged set, connect opens a subscriptions/listen stream for the advertised list types. Without it nothing is subscribed.
 - **resources** — listResources(), listResourceTemplates() and readResource() are on the Client, with the same paging and cache rules as tools. resources/read results are cached per URI and evicted on notifications/resources/updated.
 - **resources.listChanged** — Same as tools: the cache entry is always evicted, and the application hears of it through ClientOptions.listChanged.resources.
-- **resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
+- **resources.subscribe** — listen() opens subscriptions/listen with a filter. It throws on a 2025 connection.
 - **prompts** — listPrompts() and getPrompt() are on the Client. Paging and the missing-capability rule match tools.
 - **prompts.listChanged** — Through ClientOptions.listChanged.prompts.
 - **completions** — complete() sends completion/complete for a prompt or resource template argument. The SDK has no UI that calls it.
 - **sampling** — Not declared by default. The application passes capabilities.sampling and registers setRequestHandler('sampling/createMessage'). The SDK validates the request and the handler result against the negotiated era, including the tool-use result shape when the request carries tools. The class comment marks sampling deprecated as of 2026-07-28 (SEP-2577).
 - **sampling.context** — includeContext reaches the application handler unchanged. Honouring it is the handler's job.
 - **sampling.tools** — A request with tools or toolChoice is validated against the tool-use result schema.
-- **elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
+- **elicitation** — Server requests arrive as input_required results on tools/call, prompts/get or resources/read. By default the client answers them through the handler registered for elicitation/create, sampling/createMessage or roots/list and retries the call, up to 10 rounds. With no handler the call fails. An inbound server-to-client request is dropped.
 - **elicitation.form** — Declared as elicitation: {} or elicitation.form.
 - **elicitation.url** — Declared as elicitation.url. A URL-mode request is rejected when only form was declared.
 - **roots** — Not declared by default. The application passes capabilities.roots and registers setRequestHandler('roots/list'). Marked deprecated as of 2026-07-28 (SEP-2577).
@@ -92,16 +112,13 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No notifications/message handler is registered by default, and the Protocol layer drops a notification with no handler. The application registers one with setNotificationHandler and may call setLoggingLevel(), which is marked deprecated as of 2026-07-28. The logger option added after 2.4.0 is for the SDK's own diagnostics.
 - **instructions** — Kept from the initialize result or the discover result and returned by getInstructions(). Getting them to a model is the application's job.
 - **icons** — The wire schemas carry icons on tools, prompts, resources and Implementation, and the parsed results hand them to the application. The SDK renders nothing.
-- **tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
 - **jsonSchema** — On Node the default validator is Ajv with formats, picked by the schema's $schema: none or 2020-12 uses Ajv2020, 2019-09 uses Ajv2019, draft-07 and draft-06 use classic Ajv. Other dialects fail to compile and callTool throws before sending. Browser and workerd builds use @cfworker/json-schema. jsonSchemaValidator replaces it.
 - **extensions.io.modelcontextprotocol/skills** — SkillsClient from @modelcontextprotocol/client/ext/skills wraps a connected Client and reads the server's skills (SEP-2640). It does not add anything to the client's declared capabilities. Present in 2.4.0.
-- **extensions.io.modelcontextprotocol/tasks** — See the tasks row.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code in packages/client or packages/core-internal.
+- **extensions.io.modelcontextprotocol/tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
+- **extensions.io.modelcontextprotocol/events** — Not implemented in 2.4.0 or at HEAD. No package in the repo sends events/list, events/poll, events/stream or events/subscribe, and the only ext subpath @modelcontextprotocol/client exports is ext/skills. Capabilities are what the application passes plus any ClientExtension it supplies, so an application could write its own events extension on that interface.
 - **bonusFeatures.protocolEraForcing** — versionNegotiation takes legacy (the default), auto, or { pin: '2026-07-28' }. connect({ prior }) reuses a cached era verdict with no probe. supportedProtocolVersions narrows both lists.
 - **bonusFeatures.standardRequestHeaders** — Only on a 2026-07-28 connection over HTTP: Mcp-Method and Mcp-Name on every request, and Mcp-Param-* mirrored from x-mcp-header input-schema declarations of a cached tool. Skipped in a browser.
-- **byProtocolVersion.2026-07-28.tools.listChanged** — With ClientOptions.listChanged set, connect opens a subscriptions/listen stream for the advertised list types. Without it nothing is subscribed.
-- **byProtocolVersion.2026-07-28.resources.subscribe** — listen() opens subscriptions/listen with a filter. It throws on a 2025 connection.
-- **byProtocolVersion.2026-07-28.elicitation** — Server requests arrive as input_required results on tools/call, prompts/get or resources/read. By default the client answers them through the handler registered for elicitation/create, sampling/createMessage or roots/list and retries the call, up to 10 rounds. With no handler the call fails. An inbound server-to-client request is dropped.
 
 ## Verified by the probe
 

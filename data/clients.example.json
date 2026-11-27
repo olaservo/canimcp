@@ -1,17 +1,23 @@
 {
   "$schema": "../schema/mcp-client-registry.schema.json",
   "$comment": "Worked example, not the registry. One entry, showing how evidence records carry a disagreement instead of hiding it. Every field here is sourced from a file on disk; nothing is inferred. The real registry lives in clients.json.",
-
   "claude-code": {
     "title": "Claude Code",
-    "clientInfoNames": ["claude-code"],
+    "clientInfoNames": [
+      "claude-code"
+    ],
     "url": "https://claude.com/product/claude-code",
     "category": "cli",
-    "platforms": ["windows", "macos", "linux"],
-
-    "protocolVersions": ["2025-06-18", "2025-11-25"],
+    "platforms": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "protocolVersions": [
+      "2025-06-18",
+      "2025-11-25"
+    ],
     "preferredProtocolVersion": "2025-11-25",
-
     "elicitation": {
       "status": "full",
       "notes": "Declared and observed disagree. The curated record predates the capability; observed traffic carries it.",
@@ -37,9 +43,10 @@
           "note": "capability_support_60d.elicitation true, read from clientCapabilities.elicitation against the report's own 0.5 proportion threshold."
         }
       ],
-      "research": ["utilized-capability-declarations"]
+      "research": [
+        "utilized-capability-declarations"
+      ]
     },
-
     "tools": {
       "status": "full",
       "evidence": [
@@ -52,7 +59,6 @@
         }
       ]
     },
-
     "resources": {
       "status": "full",
       "evidence": [
@@ -65,7 +71,6 @@
         }
       ]
     },
-
     "prompts": {
       "status": "full",
       "evidence": [
@@ -78,7 +83,6 @@
         }
       ]
     },
-
     "roots": {
       "status": "full",
       "evidence": [
@@ -91,22 +95,6 @@
         }
       ]
     },
-
-    "tasks": {
-      "status": "unsupported",
-      "evidence": [
-        {
-          "tier": "observed",
-          "status": "unsupported",
-          "at": "2025-11-25",
-          "source": "evalstate/mcp-clients",
-          "date": "2026-08-23",
-          "window": "2026-06-24/2026-08-22",
-          "note": "No client in the 12-client panel shows observed task traffic."
-        }
-      ]
-    },
-
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
@@ -121,9 +109,22 @@
             "note": "mcp_apps false, read from clientCapabilities.extensions['io.modelcontextprotocol/ui']."
           }
         ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "observed",
+            "status": "unsupported",
+            "at": "2025-11-25",
+            "source": "evalstate/mcp-clients",
+            "date": "2026-08-23",
+            "window": "2026-06-24/2026-08-22",
+            "note": "No client in the 12-client panel shows observed task traffic."
+          }
+        ]
       }
     },
-
     "metadata": {
       "vendor": "Anthropic",
       "openSource": false,

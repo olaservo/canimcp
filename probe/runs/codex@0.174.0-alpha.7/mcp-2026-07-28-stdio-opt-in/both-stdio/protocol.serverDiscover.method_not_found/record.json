@@ -1,0 +1,60 @@
+{
+  "client": "codex",
+  "capability": "protocol.serverDiscover",
+  "scenario": "protocol.serverDiscover.method_not_found",
+  "evidence": {
+    "tier": "verified",
+    "at": "2025-06-18",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "clientVersion": "0.174.0-alpha.7",
+    "config": "mcp-2026-07-28-stdio-opt-in",
+    "artifact": "probe/runs/codex@0.174.0-alpha.7/mcp-2026-07-28-stdio-opt-in/both-stdio/protocol.serverDiscover.method_not_found",
+    "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "errorCode": -32601
+        },
+        {
+          "dir": "in",
+          "method": "initialize",
+          "version": "2025-06-18"
+        },
+        {
+          "dir": "out",
+          "method": "initialize",
+          "version": "2025-06-18"
+        }
+      ],
+      "initializedSent": true,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2025-06-18",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 6432,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}

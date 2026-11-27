@@ -18,6 +18,7 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | SDK | `@modelcontextprotocol/sdk` 1.32.0 · declares `catalog:` · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 
@@ -46,9 +47,15 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| Extensions | — not recorded | | |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ sessionReusePerExecution | ● full | read | `2025-11-25` |
 
@@ -77,7 +84,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No notifications/message handler and no logging/setLevel call.
 - **instructions** — The SDK stores the server instructions, and nothing calls getInstructions().
 - **icons** — Tool icons are not read. Every MCP tool node shows n8n's own MCP icon.
-- **tasks** — Not declared. capabilities is {}.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared. capabilities is {}.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not implemented on the client side. Both MCP clients build the SDK Client with capabilities {} and nothing reads _meta.ui.resourceUri or fetches ui:// resources. The @n8n/mcp-apps package serves an MCP App from n8n's own MCP server and is not used by the client nodes or @n8n/agents.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented on the client side. Neither MCP client sends skills/list or skills/get. The skills extension code in the repo belongs to n8n's MCP server.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No code in the repo sends events/list, events/poll, events/stream or events/subscribe. The client capabilities are built here.
 - **bonusFeatures.sessionReusePerExecution** — MCP Client Tool v1.4 and registry nodes v1.1 keep one client per execution and node, closed when the execution finishes or is cancelled, on a transport error, or after an idle TTL. Earlier versions connect and close per tool call.
 
 ## Research notes

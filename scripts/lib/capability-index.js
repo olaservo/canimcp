@@ -5,7 +5,7 @@
  * /data/capabilities and the MCP server's capability tools all read this.
  */
 
-import { capabilityNodes, extensionAliases, ownFields } from './capabilities.js';
+import { capabilityNodes, entryAt, extensionAliases, newestRevision, ownFields, recordedPerRevision } from './capabilities.js';
 import { kindOf } from './kinds.js';
 
 const TIER_ORDER = ['read', 'verified', 'observed', 'declared'];
@@ -25,8 +25,11 @@ const distinct = (list) => [...new Set(list.filter((v) => v !== undefined && v !
  * @param {Record<string, object>} [o.probeSdks] probe/registry/sdks.json, for an SDK whose own client is probed
  * @param {{id:string, fm:object}[]} o.notes research notes with their frontmatter
  * @param {string} o.origin
+ * @param {string[]} [o.seed] capability ids to include even when no entry records them at this revision
+ * @param {string} [o.revision] read each registry entry as a server whose newest revision is this one sees it (entryAt). Without it, the top level.
  */
-export function buildCapabilityIndex({ clients, spec, verified, observed, probeClients, probeSdks = {}, notes, origin }) {
+export function buildCapabilityIndex({ clients, spec, verified, observed, probeClients, probeSdks = {}, notes, origin, revision, seed = [] }) {
+  const baseline = spec.protocolVersions.find((v) => v.status === 'current').version;
   const aliases = extensionAliases(spec);
   const subjects = new Map();
   const capabilities = new Map();
@@ -39,10 +42,18 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
   };
   const cell = (capId, subjectId) => (capability(capId).subjects[subjectId] ??= { subject: subjectId });
 
-  for (const id of Object.keys(spec.capabilities)) capability(id);
+  for (const id of [...Object.keys(spec.capabilities), ...seed]) capability(id);
 
-  for (const [id, entry] of clients) {
-    subjects.set(id, { id, title: entry.title, kind: kindOf(entry), registry: true, page: `${origin}/clients/${id}` });
+  for (const [id, raw] of clients) {
+    const at = revision ? entryAt(raw, revision) : { entry: raw, revision: newestRevision(raw), override: null };
+    if (!at) continue;
+    const { entry } = at;
+    // Capabilities whose row comes from the entry's byProtocolVersion record for the negotiated revision.
+    const fromRecord = new Set(at.override ? capabilityNodes(at.override, aliases).map((n) => n.id) : []);
+    subjects.set(id, {
+      id, title: entry.title, kind: kindOf(entry), registry: true, page: `${origin}/clients/${id}`,
+      protocolVersions: raw.protocolVersions ?? [], revision: at.revision, recordedPerRevision: recordedPerRevision(raw, baseline),
+    });
     const nodes = capabilityNodes(entry, aliases);
     const withEvidence = new Map(nodes.filter((n) => n.node.evidence?.length).map((n) => [n.id, n.node.evidence]));
     for (const { id: capId, node } of nodes) {
@@ -56,6 +67,7 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
       Object.assign(cell(capId, id), {
         status, ...(nodeNotes ? { notes: nodeNotes } : {}), evidence, research,
         ...(inheritsFrom ? { inheritsFrom, inheritedEvidence: withEvidence.get(inheritsFrom) } : {}),
+        ...(fromRecord.has(capId) ? { revisionRecord: at.revision } : {}),
         ...(Object.keys(rest).length ? { fields: rest } : {}),
       });
     }
@@ -138,5 +150,5 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
     return i === -1 ? roots.length : i;
   };
   out.sort((a, b) => rank(a.id) - rank(b.id) || a.id.localeCompare(b.id));
-  return { subjects: [...subjects.values()], capabilities: out };
+  return { revision: revision ?? baseline, subjects: [...subjects.values()], capabilities: out };
 }

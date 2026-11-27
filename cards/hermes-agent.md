@@ -18,6 +18,7 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | SDK | `mcp` 2.3.0 · declares `==2.3.0` · official Python SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 | Probed | `0.23.0+689.ga9ff979` (see below) |
@@ -54,10 +55,15 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | Icons | — not recorded | | |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolDescriptionScrubbing | ◐ partial | read | `2025-11-25` |
@@ -100,7 +106,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **roots** — No list_roots_callback is passed at either session construction site and no roots handler exists anywhere in the client, so nothing is declared and roots/list is never answered. Hermes is the second client read here that does not reach the SDK roots.listChanged problem at all, for the same reason as OpenClaw: it never opts in.
 - **logging** — Receives but does not steer. A logging_callback routes notifications/message into Hermes' own logging, tagged with the server name, mapping MCP levels onto Python ones and truncating a single payload at 2000 characters so a chatty or broken server cannot flood the log. The docstring records that without it the SDK's default callback discards them, so server-side warnings during a tool call were invisible, and credits the fix as a port of an opencode change. Nothing calls logging/setLevel, so the server's default verbosity is whatever it chooses.
 - **instructions** — The instructions field of the negotiation result is never read. Only capabilities is consumed, to gate the resource and prompt utility tools.
-- **tasks** — No tasks methods referenced anywhere in the client.
 - **bonusFeatures.modelInitiatedResourceRead** — The model can read a resource with no user in the loop, through the per-server read_resource tool, provided the server advertised resources.
 - **bonusFeatures.toolDescriptionScrubbing** — Ten regexes check every MCP tool description for prompt-injection patterns and log a warning; the text reaches the model unchanged. What is removed is Unicode tag characters and bidi embedding, override and isolate controls. The August entry called the regex pass scrubbing; it was warn-only then too.
 - **bonusFeatures.deferredToolLoading** — MCP tools are removed from the model-visible tool array by default and replaced with a tool_search, tool_describe and tool_call bridge, with a catalog listing embedded in the bridge's description under a token budget that degrades through five fixed forms rather than truncating. Core Hermes tools are deferred only when named in a curated list.
@@ -111,6 +116,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.declaredToolCosts** — A server entry can declare per-tool costs, single figures or ranges, through tool_costs, plus a per-chat spend_limit. The approval prompt names the cost and the chat's running total, counted at the top of each range, and a call that would pass the limit needs an explicit yes even on a trust: full server. The figures come from client config, not from the server.
 - **bonusFeatures.lazyServerStart** — With lazy: true on a server entry, Hermes registers the server's tools from an on-disk schema cache without starting the server, and connects on first use. Entries are keyed by server name and a fingerprint of the connection config, are written after each live registration, and expire on the SEP-2549 ttlMs from tools/list. Entries without a TTL never expire, and a missing or stale entry falls back to a normal connect.
 - **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe with a webhook URL and secret, behind events: true per server. The gateway verifies Standard Webhooks signatures.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks methods referenced anywhere in the client.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not implemented. Hermes passes no extensions to ClientSession, and nothing reads _meta.ui.resourceUri, fetches ui:// resources or hosts an app view. mcp 2.3.0 implements io.modelcontextprotocol/ui on the server side only.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. Nothing sends skills/list, skills/get or resources/directory/read, and mcp 2.3.0 has no skills client. Hermes's own skills come from local directories and the skills hub. A server's skill files are reachable only through the generic list_resources and read_resource utility tools.
 
 ## Verified by the probe
 
@@ -274,6 +283,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
 - [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation.url*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
 - [src/mcp/client/session.py:639-648](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *roots*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk. ClientSession derives the roots capability from list_roots_callback; with none passed the capability is absent.
+- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
+- [mcp/server/apps.py:1,43](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. The SDK's MCP Apps module is server-side. The client package has no apps code.
+- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
 
 ## Provenance
 

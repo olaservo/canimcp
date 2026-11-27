@@ -19,6 +19,7 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | SDK | `@modelcontextprotocol/sdk` · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `0.0.0-eab1401` (see below) |
@@ -59,10 +60,15 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ◐ partial | read | `2025-11-25` |
@@ -105,8 +111,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — The adapter registers no handler for notifications/message and never calls setLoggingLevel.
 - **instructions** — adapter.instructions holds only the resource and prompt text the application asked for. The adapter never reads the server's initialize instructions. An application can append client.getInstructions() to the agent's instructions itself.
 - **icons** — The adapter copies a tool's name, description and inputSchema only.
-- **tasks** — Each call is one callTool that is awaited to its result.
 - **extensions.io.modelcontextprotocol/ui** — Tool _meta is not read, so a tool marked app-only is given to the model like any other.
+- **extensions.io.modelcontextprotocol/tasks** — Each call is one callTool that is awaited to its result.
+- **extensions.io.modelcontextprotocol/skills** — createMcpAdapter calls listTools and callTool, and readResource and getPrompt only for URIs and prompt names the application lists in options. It never calls skills/list. The SkillsClient that @modelcontextprotocol/client 2.4.0 ships under ext/skills would run on the host's client, and libfx does not take its output.
+- **extensions.io.modelcontextprotocol/events** — Not implemented. The adapter makes no events/* request, and no released TypeScript SDK has an events client.
 - **bonusFeatures.modelInitiatedResourceRead** — Resources are read only at construction, from URIs the application lists.
 - **bonusFeatures.toolCallCancellation** — The turn's AbortSignal is passed as callTool's third argument, the options position in SDK v1. @modelcontextprotocol/client 2.4.0 takes options second, so with that client the signal is not received. Read from source and the two packages. No cancellation was run.
 - **bonusFeatures.requestCorrelationMeta** — Off by default. createMcpAdapter(client, { propagateCorrelation: true }) sends a random UUID as _meta["libfx/correlationId"] on each tools/call. It is the only _meta libfx writes.

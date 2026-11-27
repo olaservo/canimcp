@@ -13,59 +13,59 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/protocol_mode.rs
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/protocol_mode.rs:7-54
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/features/src/lib.rs, the mcp_2026_07_28, mcp_connection_sharing, codex_apps_mcp_2026_07_28 and use_xaa feature records
-    commit: 2fb728da
-    path: codex-rs/features/src/lib.rs:1807-1812, 1819-1824, 1849-1854, 1861-1866
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/features/src/lib.rs:1880-1885, 1892-1897, 1922-1927, 1934-1939
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, mcp_initialize_request_params
-    commit: 2fb728da
-    path: codex-rs/codex-mcp/src/rmcp_client.rs:1370-1401
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/codex-mcp/src/rmcp_client.rs:1469-1500
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/core/src/config/mod.rs, discover_local_stdio and mcp_protocol_mode
-    commit: 2fb728da
-    path: codex-rs/core/src/config/mod.rs:2087, 2164-2170
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/core/src/config/mod.rs:2136, 2213-2219
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/connection_manager.rs, per-connection mode selection
-    commit: 2fb728da
-    path: codex-rs/codex-mcp/src/connection_manager.rs:562-582, 688-694
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/codex-mcp/src/connection_manager.rs:571-591, 699-705
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/server.rs, can_discover_local_stdio and stdio_protocol_mode
-    commit: 2fb728da
-    path: codex-rs/codex-mcp/src/server.rs:93-116
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/codex-mcp/src/server.rs:109-132
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/rmcp_client.rs, the stdio opt-in variable, the modern-session check and the discovery handshake
-    commit: 2fb728da
-    path: codex-rs/rmcp-client/src/rmcp_client.rs:564-570, 973-995, 1686-1694, 1731-1781
-    date: 2026-11-20
+    commit: 475e13ab
+    path: codex-rs/rmcp-client/src/rmcp_client.rs:608-614, 1012-1034, 1775-1783, 1833-1883
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_handshake.rs, when a failed discovery restarts the server in Legacy
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/stdio_handshake.rs:18-115
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/local_stdio_transport.rs, handle_reply and the empty discovery reply
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/local_stdio_transport.rs:68-152
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_server_launcher.rs, the Windows fallback to Legacy without a job object
-    commit: 2fb728da
+    commit: 475e13ab
     path: codex-rs/rmcp-client/src/stdio_server_launcher.rs:529-536
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/rust-sdk
     title: rmcp at the revision Codex pins, the Auto lifecycle and the legacy initialize handshake
     commit: b11a40d8
     path: crates/rmcp/src/service/client.rs:861-904, 990-1004
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/openai/codex/pull/62552
     title: Enable MCP connection sharing by default
     commit: ac784eb1
@@ -77,7 +77,7 @@ sources:
     title: Add MCP 2026-07-28 discovery support
     date: 2026-07-28
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 related:
   - codex-reads-one-page-of-tools
 ---
@@ -166,6 +166,8 @@ What happens when the server refuses `server/discover` depends on the error and 
 
 The `-32601` rows are the `protocol.serverDiscover.method_not_found` scenario. The `-32022` rows are `echo` run with `--era legacy`.
 
+The same commands were run on 0.174.0-alpha.7 on 2026-11-26, a Linux build in the probe's Docker image. On stdio, `default` and `stdio-opt-in-no-flag` now send `server/discover` at `2026-07-28` first, and so do the four `reply_*` scenarios, which therefore no longer reach the `initialize` reply on stdio. HTTP `default` still sends `initialize` at `2025-06-18` and accepts each reply as the table above shows. The refusal rows are unchanged. The 0.169.0-alpha.3 records were removed from `probe/runs` that day and remain in the repo's history.
+
 Three more settings reach the modern lifecycle. None was run for this note. `codex_apps_mcp_2026_07_28` and `use_xaa` are `UnderDevelopment` and off by default. `mcp_connection_sharing` was too at `03cb3294`, and is `Stable` and on by default from `ac784eb1`.
 
 - `mcp_connection_sharing` puts an eligible local stdio server in `DiscoverLocalStdio`, which probes `server/discover` without the `env` marker.
@@ -178,11 +180,11 @@ Codex's own modern request paths need both conditions: a mode other than `Legacy
 
 ## Connection sharing is on by default from 0.173.0-alpha.1
 
-`ac784eb1` (openai/codex#62552, 2026-11-19) marks `mcp_connection_sharing` `Stable` with `default_enabled: true`. `rust-v0.173.0-alpha.1` contains it. `rust-v0.167.0`, the newest stable tag in the clone at `2fb728da`, has the flag off.
+`ac784eb1` (openai/codex#62552, 2026-11-19) marks `mcp_connection_sharing` `Stable` with `default_enabled: true`. `rust-v0.173.0-alpha.1` contains it, and so does every later alpha tag up to `rust-v0.174.0-alpha.7`. No stable tag contains it. `rust-v0.172.0`, the newest stable tag in the clone at `475e13ab`, has the flag off.
 
 With the flag on, a stdio server gets `DiscoverLocalStdio` when it runs in the local environment, is not the reserved `codex_apps` server, has no ChatGPT runtime auth provider and does not use enterprise-managed auth. No `env` marker and no `mcp_2026_07_28` flag is needed. Streamable HTTP servers are not affected and stay on `Legacy`.
 
-Read from source at `2fb728da`, not run on the probe:
+Read from source at `475e13ab`. The probe run of 2026-11-26 shows the first two and the Method not found case of the third on the wire:
 
 - The first message to such a server is `server/discover` with `_meta` version `2026-07-28`.
 - A `DiscoverResult` that lists `2026-07-28` gives a `2026-07-28` session with no `initialize`.

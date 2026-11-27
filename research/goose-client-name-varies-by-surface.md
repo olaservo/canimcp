@@ -13,35 +13,35 @@ specVersions:
 sources:
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/agents/extension_manager/mod.rs, client_context
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/goose/src/agents/extension_manager/mod.rs:95-117
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/agents/services.rs, GoosePlatform and its Display impl
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/goose/src/agents/services.rs:261-274
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/acp/server.rs, the ACP client's clientInfo becomes GooseMcpHostInfo
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/goose/src/acp/server.rs:494-514,1089-1103
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: ui/desktop/src/acp/acpConnection.ts, the desktop app's ACP initialize
-    commit: "ea5dded7"
-    path: ui/desktop/src/acp/acpConnection.ts:142-159
-    date: 2026-11-20
+    commit: "d1438fde"
+    path: ui/desktop/src/acp/acpConnection.ts:146-163
+    date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs, resolved_extensions and resolved_client_info
-    commit: "ea5dded7"
+    commit: "d1438fde"
     path: crates/oi-kit-agent/src/mcp/client.rs:306-335
-    date: 2026-11-20
+    date: 2026-11-26
   - url: https://github.com/apify/mcp-client-capabilities
     title: mcp-clients.json, goose record
     commit: "4406120"
     date: 2026-08-23
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-26
 related:
   - utilized-capability-declarations
 ---
@@ -59,7 +59,7 @@ let name = host_info
     .unwrap_or_else(|| platform.to_string());
 ```
 
-At `ea5dded7` the desktop app is an ACP client of `goose serve --platform desktop`. Its ACP `initialize` carries `clientInfo.name` from its `package.json`, which is `goose-app`, and goose copies that into `client_name` for the sessions the app attaches to. `goose-desktop` is the fallback for a session on that server with no ACP client attached.
+At `d1438fde` the desktop app is an ACP client of `goose serve --platform desktop`. Its ACP `initialize` carries `clientInfo.name` from its `package.json`, which is `goose-app`, and goose copies that into `client_name` for the sessions the app attaches to. `goose-desktop` is the fallback for a session on that server with no ACP client attached.
 
 A server keying on `clientInfo.name == "goose"` matches nothing. Since name sniffing is the only mechanism available for adapting to a client — see [[utilized-capability-declarations]] — a registry record under an unsendable key is inert.
 

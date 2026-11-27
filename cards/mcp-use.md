@@ -18,6 +18,7 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 | SDK | `@modelcontextprotocol/client` 2.3.1 · official TypeScript SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-19 |
 | Last read | 2026-11-20 |
 
@@ -49,18 +50,34 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 | **Logging** | ◇ opt-in | read | `2026-07-28` |
 | **Instructions** | ◇ opt-in | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ○ unsupported | read | `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2026-07-28` |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
+
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, mcp-use negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◐ partial |  |  |
+| **Elicitation** | ◇ opt-in |  |  |
+
+- **tools.listChanged** — The server pushes the notification on the session and the connector cache refreshes. The agent still keeps its initial list.
+- **elicitation** — Server-initiated elicitation/create requests go to onElicitation. Default stdio connections are on this revision.
 
 ## What the table flattens
 
@@ -86,14 +103,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — notifications/message falls through to the fallback notification handler and reaches only onNotification callbacks the application registers. Nothing is logged by default and logging/setLevel is never sent. Python: logging_callback on MCPClient, otherwise the SDK default.
 - **instructions** — The connector exposes the server's instructions through an instructions getter. MCPAgent's system prompt is its own string or the application's, and server instructions are never added to it.
 - **icons** — serverInfo.icons is cached on the connector and MCPAgent ignores it. The default clientInfo sends an icon, title, description and websiteUrl. The React useMcp hook uses the first server icon as a favicon, which is application code.
-- **tasks** — No code in either client package sends tasks/* or declares a tasks capability or extension.
 - **jsonSchema** — Both connectors install DialectJsonSchemaValidator, which maps a $schema URI to the matching @cfworker/json-schema draft and treats a schema with no $schema as 2020-12. An unknown $schema falls back to the SDK's strict validator. It exists because the v2 SDK rejects non-2020-12 output schemas from older servers. Used for tool output validation in the SDK.
 - **extensions.io.modelcontextprotocol/ui** — clientOptions.capabilities.views true expands to the extension with mimeTypes text/html;profile=mcp-app. Off by default. The React entry renders views with @modelcontextprotocol/ext-apps. MCPAgent does not render them.
 - **extensions.io.modelcontextprotocol/skills** — The session has listSkills, listAllSkills, getSkill and readResourceDirectory, sent as raw requests. MCPAgent never calls them and the client declares nothing for the extension.
-- **extensions.io.modelcontextprotocol/tasks** — Not declared and not implemented.
+- **extensions.io.modelcontextprotocol/tasks** — No code in either client package sends tasks/* or declares a tasks capability or extension.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented in either binding. The TypeScript client declares roots, sampling and elicitation plus whatever the application passes in clientOptions.capabilities, and sends no events/list, events/poll, events/stream or events/subscribe. @modelcontextprotocol/client 2.3.1 has no events code. The Python binding builds a ClientSession with no extension capabilities, and mcp 1.30.0, the newest release in its range, has no events code and cannot negotiate 2026-07-28.
 - **bonusFeatures.modelInitiatedResourceRead** — Each concrete resource listed at initialize becomes its own tool with no arguments. The model cannot read a URI that was not listed, and templates are not exposed.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — The server pushes the notification on the session and the connector cache refreshes. The agent still keeps its initial list.
-- **byProtocolVersion.2025-11-25.elicitation** — Server-initiated elicitation/create requests go to onElicitation. Default stdio connections are on this revision.
 
 ## Research notes
 

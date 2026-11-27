@@ -18,9 +18,10 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | SDK | `none` · TypeScript SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-08 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
 
@@ -58,12 +59,17 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | **Logging** | ● full | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25` |
 | **Icons** | ● full | read | `2025-11-25` |
-| **Tasks** | ● full | read, declared | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ list | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ cancel | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ● full | read, declared | `2025-06-18`, `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ mcpGateway | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ traceContextInMeta | ● full | read | `2025-11-25` |
@@ -104,15 +110,17 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — notifications/message goes to the server's output log. logging/setLevel is sent after initialize when the server declares logging, and again when the user changes the log level.
 - **instructions** — Stored with the server metadata. Copilot Chat's agent prompt adds each server's instructions in an instruction tag for tools with that server's prefix.
 - **icons** — Parsed for the server, tools, prompts, resources and templates, with theme and sizes. data: URIs are always accepted, http(s) only from the server's own authority on HTTP servers, and file: only for stdio servers. The mime type must be an allowed image type.
-- **tasks** — The read disagrees with the Apify record, which has tasks declared as {"requests":{"tools":{"call":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.
 - **jsonSchema** — Every tool inputSchema is checked with the json.validate command against the draft-07 meta-schema, after adding an empty properties object when one is missing. A tool whose schema fails is omitted. No $schema is read and no 2020-12 handling was found.
 - **extensions.io.modelcontextprotocol/ui** — Declared on every connection with mimeTypes ["text/html;profile=mcp-app"]. Tools with _meta.ui.resourceUri render the app in chat. The app host answers ui/initialize, tools/call, resources/read, sampling/createMessage, ui/open-link, ui/download-file, ui/request-display-mode, ui/message and ui/update-model-context. chat.mcp.apps.enabled (default true, tagged experimental) gates the app data attached to the tool registration, not the declaration. _meta.ui.visibility without model hides a tool from the model.
+- **extensions.io.modelcontextprotocol/tasks** — The read disagrees with the Apify record, which has tasks declared as {"requests":{"tools":{"call":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, and the request handler sends no skills/list, skills/get or resources/directory/read. The MCP gateway the agent host connects to forwards only ping, tools and resources methods. The skills/list calls elsewhere in the repo go to the Codex app server, not to MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, the client sends no events/list, events/poll, events/stream or events/subscribe, and the server notification switch has no notifications/events/* case.
 - **bonusFeatures.mcpGateway** — VS Code re-exposes its connected servers over local HTTP so Copilot CLI sessions use them. Copilot Chat routes CLI sessions through the gateway when chat.cli.mcp.enabled is on, which is the default. The server then sees VS Code's client, not the CLI's.
 - **bonusFeatures.traceContextInMeta** — tools/call _meta carries traceparent and tracestate (SEP-414) when a trace is active, plus vscode.conversationId and vscode.requestId.
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`c30d6f28`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/c30d6f2859b699fe9f36e674e4722bfd2d8a1258/reports/dashboard-v1.json), report generated 2026-11-09, window 2026-09-10 to 2026-11-08. Grouped as `visual-studio-code` from wire names `Visual Studio Code`, `Visual Studio Code - Insiders`. Tool calls by revision over the 30 days to 2026-11-08: `2025-11-25` 100%.
+From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `visual-studio-code` from wire names `Visual Studio Code`, `Visual Studio Code - Insiders`. Tool calls by revision over the 30 days to 2026-11-25: `2025-11-25` 100%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|

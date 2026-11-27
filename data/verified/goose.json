@@ -4,20 +4,546 @@
   "registryId": "goose",
   "title": "goose",
   "versions": [
-    "1.58.0"
+    "1.61.0"
   ],
   "capabilities": {
+    "protocol.initializeHandshake": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1340,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.echo",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.echo",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 993,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1333,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.reply_2024_11_05",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2024-11-05",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1015,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1295,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.reply_2025_11_25",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2025-11-25",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 999,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1419,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.reply_2026_07_28",
+          "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "forcedReply": "2026-07-28",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "supportedVersions": [
+                  "2026-07-28"
+                ]
+              }
+            ],
+            "initializedSent": false,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [
+              "2026-07-28"
+            ],
+            "headerVersions": [
+              "2026-07-28"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2026-07-28",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1128,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        }
+      ]
+    },
+    "protocol.serverDiscover": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1378,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "protocol.serverDiscover.method_not_found",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/protocol.serverDiscover.method_not_found",
+          "note": "server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call)",
+          "observation": {
+            "type": "protocol.negotiation",
+            "handshake": [
+              {
+                "dir": "in",
+                "method": "server/discover",
+                "version": "2026-07-28"
+              },
+              {
+                "dir": "out",
+                "method": "server/discover",
+                "errorCode": -32601
+              },
+              {
+                "dir": "in",
+                "method": "initialize",
+                "version": "2025-11-25"
+              },
+              {
+                "dir": "out",
+                "method": "initialize",
+                "version": "2025-11-25"
+              }
+            ],
+            "initializedSent": true,
+            "followUps": [
+              "tools/list",
+              "tools/call"
+            ],
+            "requestMetaVersions": [],
+            "headerVersions": [
+              "2025-11-25"
+            ],
+            "toolCalled": true,
+            "negotiatedRevision": "2025-11-25",
+            "notes": []
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1122,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        }
+      ]
+    },
     "apps.visibility": {
       "evidence": [
         {
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.app_only",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.app_only",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.app_only",
           "note": "tool not offered to the model",
           "observation": {
             "type": "tools.result",
@@ -36,7 +562,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1890,
+            "durationMs": 1160,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -47,11 +573,113 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.app_only",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.app_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "api": "anthropic",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 1 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 952,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.app_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1359,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.app_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 985,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.app_only",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.app_only",
           "note": "tool not offered to the model",
           "observation": {
             "type": "tools.result",
@@ -70,8 +698,42 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2024,
+            "durationMs": 1245,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.app_only",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.app_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "app_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_app_only among 1 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 925,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -85,11 +747,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.audience_user",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.audience_user",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.audience_user",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -161,7 +823,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2185,
+            "durationMs": 1361,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -172,11 +834,166 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.audience_user",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.audience_user",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_38621_mcp__probe_audience_user",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Shown to the user only MARK_USER_5a1d",
+                  "annotations": {
+                    "audience": [
+                      "user"
+                    ]
+                  }
+                },
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1038,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.audience_user",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_audience_user among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1543,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.audience_user",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_audience_user among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 988,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.audience_user",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.audience_user",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -248,8 +1065,95 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2286,
+            "durationMs": 1610,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.audience_user",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.audience_user",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "audience_user",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_34323_mcp__probe_audience_user",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Shown to the user only MARK_USER_5a1d",
+                  "annotations": {
+                    "audience": [
+                      "user"
+                    ]
+                  }
+                },
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1183,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -263,12 +1167,12 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.empty_object",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.empty_object",
-          "note": "\"…\" no marker reached the model; payload: \"Error: -32603: -32603: Unexpected response type\"",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.empty_object",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
           "observation": {
             "type": "tools.result",
             "fixture": "empty_object",
@@ -277,11 +1181,11 @@
             "offeredAs": "probe__probe_empty_object",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "Error: -32603: -32603: Unexpected response type",
-            "payloadBytes": 47,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
             "form": "text",
             "markers": [],
-            "placeholder": "Error: -32603: -32603: Unexpected response type",
+            "placeholder": "(empty result)",
             "negotiatedRevision": "2026-07-28",
             "serverMode": "raw",
             "sentResult": {
@@ -294,7 +1198,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2143,
+            "durationMs": 1328,
             "transport": "stdio",
             "serverMode": "raw",
             "eraPolicy": "both",
@@ -305,25 +1209,25 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.empty_object",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.empty_object",
-          "note": "\"…\" no marker reached the model; payload: \"The tool call returned the following error:\\n-32603: -32603: Unexpected response \"",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.empty_object",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
           "observation": {
             "type": "tools.result",
             "fixture": "empty_object",
-            "api": "chat",
+            "api": "anthropic",
             "toolOffered": true,
-            "offeredAs": "probe__probe_empty_object",
+            "offeredAs": "127_0_0_1_35755_mcp__probe_empty_object",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "The tool call returned the following error:\n-32603: -32603: Unexpected response type",
-            "payloadBytes": 84,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
             "form": "text",
             "markers": [],
-            "placeholder": "The tool call returned the following error:\n-32603: -32603: Unexpected response type",
+            "placeholder": "(empty result)",
             "negotiatedRevision": "2026-07-28",
             "serverMode": "raw",
             "sentResult": {
@@ -336,7 +1240,41 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2200,
+            "durationMs": 1014,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.empty_object",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_empty_object among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1364,
             "transport": "stdio",
             "serverMode": "raw",
             "eraPolicy": "both",
@@ -347,11 +1285,129 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.empty_object",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_empty_object among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 872,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.empty_object",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_empty_object",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1352,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.empty_object",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.empty_object",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "empty_object",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_39583_mcp__probe_empty_object",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1071,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
           "scenario": "tools.result.large",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.large",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.large",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -391,7 +1447,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2731,
+            "durationMs": 1412,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -402,11 +1458,134 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.large",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.large",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_46069_mcp__probe_large",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [36996 chars omitted] ... ne cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4",
+            "payloadBytes": 40996,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "largeStart",
+                "count": 1,
+                "firstIndex": 0
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 22
+              },
+              {
+                "marker": "largeEnd",
+                "count": 1,
+                "firstIndex": 40977
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": "<large; see wire.jsonl>",
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1104,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.large",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.large",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_large among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1313,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.large",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.large",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_large among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 957,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.large",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.large",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.large",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -446,7 +1625,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2503,
+            "durationMs": 1423,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -457,11 +1636,66 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
+          "scenario": "tools.result.large",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.large",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "large",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_39893_mcp__probe_large",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "MARK_LARGE_START_e2c4 MARK_CONTENT_7f3a Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the  ... [36996 chars omitted] ... ne cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap. Issue line with filler text to push the result past the inline cap.  MARK_LARGE_END_e2c4",
+            "payloadBytes": 40996,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "largeStart",
+                "count": 1,
+                "firstIndex": 0
+              },
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 22
+              },
+              {
+                "marker": "largeEnd",
+                "count": 1,
+                "firstIndex": 40977
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": "<large; see wire.jsonl>",
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1095,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
           "scenario": "tools.result.no_content_key",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.no_content_key",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.no_content_key",
           "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
           "observation": {
             "type": "tools.result",
@@ -507,7 +1741,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2779,
+            "durationMs": 1334,
             "transport": "stdio",
             "serverMode": "raw",
             "eraPolicy": "both",
@@ -518,11 +1752,140 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.no_content_key",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.no_content_key",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_43901_mcp__probe_no_content_key",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1043,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.no_content_key",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_no_content_key among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1289,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.no_content_key",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_no_content_key among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 857,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.no_content_key",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.no_content_key",
           "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
           "observation": {
             "type": "tools.result",
@@ -568,8 +1931,69 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2252,
+            "durationMs": 1419,
             "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.no_content_key",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.no_content_key",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "no_content_key",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_41159_mcp__probe_no_content_key",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1010,
+            "transport": "http",
             "serverMode": "raw",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -583,11 +2007,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.is_error",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.is_error",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.is_error",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -635,7 +2059,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2140,
+            "durationMs": 1274,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -646,11 +2070,142 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.is_error",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.is_error",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_33895_mcp__probe_is_error",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+            "payloadBytes": 31,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 14
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lookup failed MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "error": "rate limited MARK_SC_91be"
+              },
+              "isError": true,
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 999,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.is_error",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_is_error among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1436,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.is_error",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_is_error among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 985,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.is_error",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.is_error",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -698,8 +2253,71 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2321,
+            "durationMs": 1430,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.is_error",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.is_error",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "is_error",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_39019_mcp__probe_is_error",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Lookup failed MARK_CONTENT_7f3a",
+            "payloadBytes": 31,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 14
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Lookup failed MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "error": "rate limited MARK_SC_91be"
+              },
+              "isError": true,
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1109,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -713,11 +2331,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.meta_only",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.meta_only",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.meta_only",
           "note": "[…] content only (1x, as text, _meta did not reach the model)",
           "observation": {
             "type": "tools.result",
@@ -763,7 +2381,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2276,
+            "durationMs": 1418,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -774,11 +2392,72 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.meta_only",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.meta_only",
+          "note": "[…] content only (1x, as text, _meta did not reach the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "meta_only",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_46485_mcp__probe_meta_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 993,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.meta_only",
+          "clientVersion": "1.61.0",
           "config": "code-mode",
-          "artifact": "probe/runs/goose@1.58.0/code-mode/both-stdio/tools.result.meta_only",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.meta_only",
           "note": "tool not offered to the model",
           "observation": {
             "type": "tools.result",
@@ -792,12 +2471,12 @@
             "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "notes": [],
-            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_meta_only among 3 tools."
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_meta_only among 4 tools."
           },
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1722,
+            "durationMs": 1344,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -808,11 +2487,45 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.meta_only",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.meta_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "meta_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_meta_only among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 939,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.meta_only",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.meta_only",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.meta_only",
           "note": "[…] content only (1x, as text, _meta did not reach the model)",
           "observation": {
             "type": "tools.result",
@@ -858,7 +2571,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 3443,
+            "durationMs": 1302,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -869,11 +2582,72 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
+          "scenario": "tools.result.meta_only",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.meta_only",
+          "note": "[…] content only (1x, as text, _meta did not reach the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "meta_only",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_33075_mcp__probe_meta_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1156,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
           "scenario": "tools.result.with_meta",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.with_meta",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_meta",
           "note": "[…] content only (1x, as text, _meta did not reach the model)",
           "observation": {
             "type": "tools.result",
@@ -938,7 +2712,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2306,
+            "durationMs": 1508,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -949,11 +2723,91 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.with_meta",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_meta",
+          "note": "[…] content only (1x, as text, _meta did not reach the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_meta",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_45401_mcp__probe_with_meta",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1041,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_meta",
+          "clientVersion": "1.61.0",
           "config": "code-mode",
-          "artifact": "probe/runs/goose@1.58.0/code-mode/both-stdio/tools.result.with_meta",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_meta",
           "note": "tool not offered to the model",
           "observation": {
             "type": "tools.result",
@@ -967,12 +2821,12 @@
             "negotiatedRevision": "2026-07-28",
             "serverMode": "sdk",
             "notes": [],
-            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_with_meta among 3 tools."
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_with_meta among 4 tools."
           },
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1790,
+            "durationMs": 1308,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -983,11 +2837,45 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.with_meta",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_meta",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_meta",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_with_meta among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 915,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_meta",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.with_meta",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.with_meta",
           "note": "[…] content only (1x, as text, _meta did not reach the model)",
           "observation": {
             "type": "tools.result",
@@ -1052,8 +2940,88 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2407,
+            "durationMs": 1393,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_meta",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.with_meta",
+          "note": "[…] content only (1x, as text, _meta did not reach the model)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_meta",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_35999_mcp__probe_with_meta",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "_meta": {
+                "probe/trace": "trace MARK_META_4d2e",
+                "probe/source": "fixture",
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1138,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -1067,11 +3035,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.mirror",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.mirror",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.mirror",
           "note": "payload once (as json)",
           "observation": {
             "type": "tools.result",
@@ -1134,7 +3102,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2358,
+            "durationMs": 1266,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1145,18 +3113,18 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.mirror",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-http/tools.result.mirror",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.mirror",
           "note": "payload once (as json)",
           "observation": {
             "type": "tools.result",
             "fixture": "mirror",
-            "api": "chat",
+            "api": "anthropic",
             "toolOffered": true,
-            "offeredAs": "127_0_0_1_61122_mcp__probe_mirror",
+            "offeredAs": "127_0_0_1_43911_mcp__probe_mirror",
             "toolCalled": true,
             "resultSentToModel": true,
             "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
@@ -1212,7 +3180,75 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2525,
+            "durationMs": 1061,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.mirror",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.mirror",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "mirror",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_mirror among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1516,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.mirror",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.mirror",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "mirror",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_mirror among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 925,
             "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1223,11 +3259,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.mirror",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.mirror",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.mirror",
           "note": "payload once (as json)",
           "observation": {
             "type": "tools.result",
@@ -1290,7 +3326,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2921,
+            "durationMs": 1456,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1301,88 +3337,28 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_empty",
-          "clientVersion": "1.58.0",
-          "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.sc_empty",
-          "note": "[…] content only (1x, as text)",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "sc_empty",
-            "api": "anthropic",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_sc_empty",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
-            "markers": [
-              {
-                "marker": "content",
-                "count": 1,
-                "firstIndex": 20
-              }
-            ],
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "sdk",
-            "sentResult": {
-              "content": [
-                {
-                  "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
-                }
-              ],
-              "structuredContent": {},
-              "resultType": "complete",
-              "_meta": {
-                "io.modelcontextprotocol/serverInfo": {
-                  "name": "canimcp-probe-fixture",
-                  "version": "0.1.0"
-                }
-              }
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4047,
-            "transport": "stdio",
-            "serverMode": "sdk",
-            "eraPolicy": "both",
-            "modelApi": "anthropic"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_empty",
-          "clientVersion": "1.58.0",
+          "date": "2026-11-26",
+          "scenario": "tools.result.mirror",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.sc_empty",
-          "note": "[…] content only (1x, as text)",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.mirror",
+          "note": "payload once (as json)",
           "observation": {
             "type": "tools.result",
-            "fixture": "sc_empty",
+            "fixture": "mirror",
             "api": "chat",
             "toolOffered": true,
-            "offeredAs": "probe__probe_sc_empty",
+            "offeredAs": "127_0_0_1_35403_mcp__probe_mirror",
             "toolCalled": true,
             "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
+            "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+            "payloadBytes": 214,
+            "form": "json",
             "markers": [
               {
-                "marker": "content",
+                "marker": "sc",
                 "count": 1,
-                "firstIndex": 20
+                "firstIndex": 56
               }
             ],
             "negotiatedRevision": "2026-07-28",
@@ -1391,275 +3367,9 @@
               "content": [
                 {
                   "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                  "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
                 }
               ],
-              "structuredContent": {},
-              "resultType": "complete",
-              "_meta": {
-                "io.modelcontextprotocol/serverInfo": {
-                  "name": "canimcp-probe-fixture",
-                  "version": "0.1.0"
-                }
-              }
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 2510,
-            "transport": "stdio",
-            "serverMode": "sdk",
-            "eraPolicy": "both",
-            "modelApi": "chat"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_null",
-          "clientVersion": "1.58.0",
-          "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.sc_null",
-          "note": "[…] content only (1x, as text)",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "sc_null",
-            "api": "anthropic",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_sc_null",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
-            "markers": [
-              {
-                "marker": "content",
-                "count": 1,
-                "firstIndex": 20
-              }
-            ],
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "raw",
-            "sentResult": {
-              "content": [
-                {
-                  "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
-                }
-              ],
-              "structuredContent": null,
-              "resultType": "complete"
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4170,
-            "transport": "stdio",
-            "serverMode": "raw",
-            "eraPolicy": "both",
-            "modelApi": "anthropic"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_null",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.sc_null",
-          "note": "[…] content only (1x, as text)",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "sc_null",
-            "api": "chat",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_sc_null",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
-            "markers": [
-              {
-                "marker": "content",
-                "count": 1,
-                "firstIndex": 20
-              }
-            ],
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "raw",
-            "sentResult": {
-              "content": [
-                {
-                  "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
-                }
-              ],
-              "structuredContent": null,
-              "resultType": "complete"
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 2224,
-            "transport": "stdio",
-            "serverMode": "raw",
-            "eraPolicy": "both",
-            "modelApi": "chat"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_string",
-          "clientVersion": "1.58.0",
-          "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.sc_string",
-          "note": "[…] content only (1x, as text)",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "sc_string",
-            "api": "anthropic",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_sc_string",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
-            "markers": [
-              {
-                "marker": "content",
-                "count": 1,
-                "firstIndex": 20
-              }
-            ],
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "raw",
-            "sentResult": {
-              "content": [
-                {
-                  "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
-                }
-              ],
-              "structuredContent": "three issues MARK_SC_91be",
-              "resultType": "complete"
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 2988,
-            "transport": "stdio",
-            "serverMode": "raw",
-            "eraPolicy": "both",
-            "modelApi": "anthropic"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.sc_string",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.sc_string",
-          "note": "[…] content only (1x, as text)",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "sc_string",
-            "api": "chat",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_sc_string",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
-            "payloadBytes": 37,
-            "form": "text",
-            "markers": [
-              {
-                "marker": "content",
-                "count": 1,
-                "firstIndex": 20
-              }
-            ],
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "raw",
-            "sentResult": {
-              "content": [
-                {
-                  "type": "text",
-                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
-                }
-              ],
-              "structuredContent": "three issues MARK_SC_91be",
-              "resultType": "complete"
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 2166,
-            "transport": "stdio",
-            "serverMode": "raw",
-            "eraPolicy": "both",
-            "modelApi": "chat"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.structured_only",
-          "clientVersion": "1.58.0",
-          "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.structured_only",
-          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "structured_only",
-            "api": "anthropic",
-            "toolOffered": true,
-            "offeredAs": "probe__probe_structured_only",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "(empty result)",
-            "payloadBytes": 14,
-            "form": "text",
-            "markers": [],
-            "placeholder": "(empty result)",
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "sdk",
-            "sentResult": {
-              "content": [],
               "structuredContent": {
                 "issues": [
                   {
@@ -1694,75 +3404,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2489,
-            "transport": "stdio",
-            "serverMode": "sdk",
-            "eraPolicy": "both",
-            "modelApi": "anthropic"
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.structured_only",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-http/tools.result.structured_only",
-          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
-          "observation": {
-            "type": "tools.result",
-            "fixture": "structured_only",
-            "api": "chat",
-            "toolOffered": true,
-            "offeredAs": "127_0_0_1_61134_mcp__probe_structured_only",
-            "toolCalled": true,
-            "resultSentToModel": true,
-            "payloadExcerpt": "(empty result)",
-            "payloadBytes": 14,
-            "form": "text",
-            "markers": [],
-            "placeholder": "(empty result)",
-            "negotiatedRevision": "2026-07-28",
-            "serverMode": "sdk",
-            "sentResult": {
-              "content": [],
-              "structuredContent": {
-                "issues": [
-                  {
-                    "id": 101,
-                    "title": "Login button unresponsive MARK_SC_91be",
-                    "state": "open"
-                  },
-                  {
-                    "id": 102,
-                    "title": "Dark mode flickers on load",
-                    "state": "open"
-                  },
-                  {
-                    "id": 103,
-                    "title": "Export CSV drops header row",
-                    "state": "open"
-                  }
-                ]
-              },
-              "resultType": "complete",
-              "_meta": {
-                "io.modelcontextprotocol/serverInfo": {
-                  "name": "canimcp-probe-fixture",
-                  "version": "0.1.0"
-                }
-              }
-            },
-            "sentUnchanged": true,
-            "notes": [],
-            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
-          },
-          "run": {
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 2310,
+            "durationMs": 1146,
             "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1773,11 +3415,1091 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
-          "scenario": "tools.result.structured_only",
-          "clientVersion": "1.58.0",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_empty",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1297,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_empty",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_39603_mcp__probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1139,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_empty",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_empty among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1371,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_empty",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_empty among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1077,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.structured_only",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_empty",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1514,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_empty",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.sc_empty",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_empty",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_45349_mcp__probe_sc_empty",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {},
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1208,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_null",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1439,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_null",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_38067_mcp__probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1012,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_null",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_null among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1361,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_null",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_null among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 956,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_null",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1360,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_null",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.sc_null",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_null",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_46481_mcp__probe_sc_null",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": null,
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1067,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_string",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1483,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_string",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_41509_mcp__probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1022,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_string",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_string among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1475,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_string",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_sc_string among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 913,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_string",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1357,
+            "transport": "stdio",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.sc_string",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.sc_string",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "sc_string",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_36727_mcp__probe_sc_string",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "raw",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": "three issues MARK_SC_91be",
+              "resultType": "complete"
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1123,
+            "transport": "http",
+            "serverMode": "raw",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.structured_only",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_structured_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1402,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.structured_only",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_45967_mcp__probe_structured_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1105,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.structured_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_structured_only among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1316,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.structured_only",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_structured_only among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1079,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.structured_only",
           "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
           "observation": {
             "type": "tools.result",
@@ -1830,7 +4552,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2269,
+            "durationMs": 1481,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1841,11 +4563,79 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
+          "scenario": "tools.result.structured_only",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.structured_only",
+          "note": "\"…\" no marker reached the model; payload: \"(empty result)\"",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "structured_only",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_42049_mcp__probe_structured_only",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "(empty result)",
+            "payloadBytes": 14,
+            "form": "text",
+            "markers": [],
+            "placeholder": "(empty result)",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1135,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
           "scenario": "tools.result.summary_and_data",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.summary_and_data",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.summary_and_data",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -1908,7 +4698,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2205,
+            "durationMs": 1388,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1919,18 +4709,18 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.summary_and_data",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-http/tools.result.summary_and_data",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.summary_and_data",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
             "fixture": "summary_and_data",
-            "api": "chat",
+            "api": "anthropic",
             "toolOffered": true,
-            "offeredAs": "127_0_0_1_61152_mcp__probe_summary_and_data",
+            "offeredAs": "127_0_0_1_40811_mcp__probe_summary_and_data",
             "toolCalled": true,
             "resultSentToModel": true,
             "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
@@ -1986,7 +4776,75 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 1879,
+            "durationMs": 1085,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.summary_and_data",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.summary_and_data",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "summary_and_data",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_summary_and_data among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1291,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.summary_and_data",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.summary_and_data",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "summary_and_data",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_summary_and_data among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1067,
             "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -1997,11 +4855,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.summary_and_data",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.summary_and_data",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.summary_and_data",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -2064,8 +4922,86 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2229,
+            "durationMs": 1342,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.summary_and_data",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.summary_and_data",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "summary_and_data",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_40535_mcp__probe_summary_and_data",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1138,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -2079,11 +5015,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.schema_match",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.schema_match",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_match",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -2146,7 +5082,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2258,
+            "durationMs": 1343,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -2157,18 +5093,18 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.schema_match",
-          "clientVersion": "1.58.0",
-          "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.schema_match",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_match",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
             "fixture": "schema_match",
-            "api": "chat",
+            "api": "anthropic",
             "toolOffered": true,
-            "offeredAs": "probe__probe_schema_match",
+            "offeredAs": "127_0_0_1_37823_mcp__probe_schema_match",
             "toolCalled": true,
             "resultSentToModel": true,
             "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
@@ -2224,7 +5160,41 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2491,
+            "durationMs": 1077,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_match",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_schema_match among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1558,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -2235,11 +5205,201 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_match",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_schema_match among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1027,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.schema_match",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "probe__probe_schema_match",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1387,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_match",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.schema_match",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_match",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_38505_mcp__probe_schema_match",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1262,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
           "scenario": "tools.result.schema_mismatch",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.schema_mismatch",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_mismatch",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -2286,7 +5446,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2173,
+            "durationMs": 1284,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -2297,11 +5457,141 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.schema_mismatch",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_mismatch",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_44203_mcp__probe_schema_mismatch",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "wrong": "not issues MARK_SC_91be"
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1019,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_mismatch",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_schema_mismatch among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1433,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_mismatch",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_schema_mismatch among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 973,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.schema_mismatch",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.schema_mismatch",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -2348,8 +5638,70 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2162,
+            "durationMs": 1347,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.schema_mismatch",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.schema_mismatch",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "schema_mismatch",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_42321_mcp__probe_schema_mismatch",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+            "payloadBytes": 37,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                }
+              ],
+              "structuredContent": {
+                "wrong": "not issues MARK_SC_91be"
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1122,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
@@ -2363,11 +5715,11 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.with_image",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
           "config": "anthropic",
-          "artifact": "probe/runs/goose@1.58.0/anthropic/both-stdio/tools.result.with_image",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_image",
           "note": "[…] content only (1x, as blocks)",
           "observation": {
             "type": "tools.result",
@@ -2441,7 +5793,7 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2297,
+            "durationMs": 1281,
             "transport": "stdio",
             "serverMode": "sdk",
             "eraPolicy": "both",
@@ -2452,11 +5804,168 @@
           "tier": "verified",
           "at": "2026-07-28",
           "source": "canimcp-probe",
-          "date": "2026-11-11",
+          "date": "2026-11-26",
           "scenario": "tools.result.with_image",
-          "clientVersion": "1.58.0",
+          "clientVersion": "1.61.0",
+          "config": "anthropic",
+          "artifact": "probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_image",
+          "note": "[…] content only (1x, as blocks)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "api": "anthropic",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_45979_mcp__probe_with_image",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "[{\"type\":\"text\",\"text\":\"Found 3 open issues MARK_CONTENT_7f3a\"},{\"type\":\"image\",\"source\":{\"type\":\"base64\",\"media_type\":\"image/png\",\"data\":\"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"}}]",
+            "payloadBytes": 239,
+            "form": "blocks",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 44
+              },
+              {
+                "marker": "image",
+                "count": 1,
+                "firstIndex": 139
+              }
+            ],
+            "image": "image-part",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                },
+                {
+                  "type": "image",
+                  "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                  "mimeType": "image/png"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 979,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "anthropic"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_image",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_with_image among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1468,
+            "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "1.61.0",
+          "config": "code-mode",
+          "artifact": "probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_image",
+          "note": "tool not offered to the model",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "api": "chat",
+            "toolOffered": false,
+            "toolCalled": false,
+            "resultSentToModel": false,
+            "form": "unknown",
+            "markers": [],
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "notes": [],
+            "finalText": "PROBE_TOOL_NOT_OFFERED: no tool matching probe_with_image among 4 tools."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 981,
+            "transport": "http",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "1.61.0",
           "config": "default",
-          "artifact": "probe/runs/goose@1.58.0/default/both-stdio/tools.result.with_image",
+          "artifact": "probe/runs/goose@1.61.0/default/both-stdio/tools.result.with_image",
           "note": "[…] content only (1x, as text)",
           "observation": {
             "type": "tools.result",
@@ -2525,8 +6034,92 @@
           "run": {
             "exitCode": 0,
             "timedOut": false,
-            "durationMs": 2532,
+            "durationMs": 1450,
             "transport": "stdio",
+            "serverMode": "sdk",
+            "eraPolicy": "both",
+            "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "canimcp-probe",
+          "date": "2026-11-26",
+          "scenario": "tools.result.with_image",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "artifact": "probe/runs/goose@1.61.0/default/both-http/tools.result.with_image",
+          "note": "[…] content only (1x, as text)",
+          "observation": {
+            "type": "tools.result",
+            "fixture": "with_image",
+            "api": "chat",
+            "toolOffered": true,
+            "offeredAs": "127_0_0_1_37015_mcp__probe_with_image",
+            "toolCalled": true,
+            "resultSentToModel": true,
+            "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a This tool result included an image that was omitted as the model does not support vision.",
+            "payloadBytes": 127,
+            "form": "text",
+            "markers": [
+              {
+                "marker": "content",
+                "count": 1,
+                "firstIndex": 20
+              }
+            ],
+            "image": "absent",
+            "negotiatedRevision": "2026-07-28",
+            "serverMode": "sdk",
+            "sentResult": {
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Found 3 open issues MARK_CONTENT_7f3a"
+                },
+                {
+                  "type": "image",
+                  "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==",
+                  "mimeType": "image/png"
+                }
+              ],
+              "structuredContent": {
+                "issues": [
+                  {
+                    "id": 101,
+                    "title": "Login button unresponsive MARK_SC_91be",
+                    "state": "open"
+                  },
+                  {
+                    "id": 102,
+                    "title": "Dark mode flickers on load",
+                    "state": "open"
+                  },
+                  {
+                    "id": 103,
+                    "title": "Export CSV drops header row",
+                    "state": "open"
+                  }
+                ]
+              },
+              "resultType": "complete",
+              "_meta": {
+                "io.modelcontextprotocol/serverInfo": {
+                  "name": "canimcp-probe-fixture",
+                  "version": "0.1.0"
+                }
+              }
+            },
+            "sentUnchanged": true,
+            "notes": [],
+            "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+          },
+          "run": {
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 1104,
+            "transport": "http",
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"

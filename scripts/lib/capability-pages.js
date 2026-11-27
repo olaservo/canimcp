@@ -23,8 +23,27 @@ function citation(e) {
 const pageOf = (cap) => `/capabilities/${cap.slug}`;
 const link = (cap) => `[${code(cap.id)}](${pageOf(cap)})`;
 
+/** The matrix page for one revision. The baseline's is /capabilities/. */
+export const matrixUrl = (revision, views) => (revision === views[0] ? '/capabilities/' : `/capabilities/revision/${revision}`);
+
+/** The line that switches the matrix between revisions. */
+function revisionSwitch(current, views) {
+  return `Protocol revision: ${views.map((v) => (v === current ? `**${v}**` : `[${v}](${matrixUrl(v, views)})`)).join(' · ')}`;
+}
+
+/** Cells of an older view that come from a byProtocolVersion record, keyed by revision. */
+function recordCells(cap, at) {
+  const out = {};
+  for (const [rev, index] of Object.entries(at)) {
+    const other = index.capabilities.find((c) => c.id === cap.id);
+    const cells = Object.values(other?.subjects ?? {}).filter((s) => s.revisionRecord);
+    if (cells.length) out[rev] = cells;
+  }
+  return out;
+}
+
 /** The page for one capability. */
-export function capabilityPage(cap, index, { origin, noteTitles }) {
+export function capabilityPage(cap, index, { origin, noteTitles, views = [index.revision], at = {} }) {
   const subject = Object.fromEntries(index.subjects.map((s) => [s.id, s]));
   const byId = Object.fromEntries(index.capabilities.map((c) => [c.id, c]));
   const subjectLink = (id) => `[${subject[id].title}](${local(subject[id].page, origin)})`;
@@ -54,7 +73,7 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
     for (const s of recorded) {
       const revisions = [...new Set([...(s.evidence ?? []), ...(s.inheritedEvidence ?? [])].map((e) => e.at).filter(Boolean))].sort().map(code).join(', ');
       const from = s.inheritsFrom ? `, through ${link(byId[s.inheritsFrom])}` : '';
-      L.push(`| ${subjectLink(s.subject)} | ${subject[s.subject].kind} | ${STATUS_MARK[s.status] ?? ''} ${s.status} | ${s.tiers.length ? `${s.tiers.join(', ')}${from}` : 'no evidence recorded'} | ${revisions} | ${cellText(s.notes)} |`);
+      L.push(`| ${subjectLink(s.subject)}${subject[s.subject].revision < index.revision ? ' *' : ''} | ${subject[s.subject].kind} | ${STATUS_MARK[s.status] ?? ''} ${s.status} | ${s.tiers.length ? `${s.tiers.join(', ')}${from}` : 'no evidence recorded'} | ${revisions} | ${cellText(s.notes)} |`);
     }
     L.push('');
   } else {
@@ -63,7 +82,36 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
   if (cap.notRecorded.length) {
     L.push(`Not recorded for ${cap.notRecorded.map(subjectLink).join(', ')}. A missing record is not the same as unsupported.`, '');
   }
+  const older = recorded.filter((s) => subject[s.subject].revision < index.revision);
+  if (older.length) {
+    const count = {};
+    for (const s of older) count[subject[s.subject].revision] = (count[subject[s.subject].revision] ?? 0) + 1;
+    const list = Object.entries(count).sort((a, b) => b[0].localeCompare(a[0])).map(([v, n]) => `${code(v)} for ${n} ${n === 1 ? 'client' : 'clients'}`).join(', ');
+    L.push(`Rows describe each client on ${code(index.revision)}. A row marked * is for the newest revision the client speaks, because it cannot negotiate ${code(index.revision)}: ${list}.`, '');
+  }
   L.push('Tiers are not ranked. `read` is a source read at a pinned commit, `verified` is a probe run, `observed` is telemetry, and `declared` is what the client or a curated list says. "Through" names the parent capability whose evidence a row rests on when it has none of its own.', '');
+
+  if (views.length > 1) {
+    const records = recordCells(cap, at);
+    L.push('## By protocol revision', '');
+    for (const rev of views.slice(1)) {
+      const cells = records[rev] ?? [];
+      const unsplit = recorded.filter((s) => !subject[s.subject].recordedPerRevision && subject[s.subject].protocolVersions.includes(rev));
+      if (cells.length) {
+        L.push(`On ${code(rev)} these clients record a different row. The other clients' rows above hold on ${code(rev)} as well.`, '');
+        L.push(`| Client | On ${code(index.revision)} | On ${code(rev)} | Notes on ${code(rev)} |`, '|---|---|---|---|');
+        for (const s of cells) {
+          const base = cap.subjects[s.subject]?.status;
+          L.push(`| ${subjectLink(s.subject)} | ${base ? `${STATUS_MARK[base] ?? ''} ${base}` : 'not recorded'} | ${STATUS_MARK[s.status] ?? ''} ${s.status} | ${cellText(s.notes)} |`);
+        }
+        L.push('');
+      } else {
+        L.push(`No client records a different row on ${code(rev)}, so the rows above hold there too.`, '');
+      }
+      if (unsplit.length) L.push(`${unsplit.map((s) => subjectLink(s.subject)).join(', ')} ${unsplit.length === 1 ? 'has' : 'have'} one set of rows for every revision ${unsplit.length === 1 ? 'it speaks' : 'they speak'}, not yet split by revision.`, '');
+      L.push(`The [matrix on ${code(rev)}](${matrixUrl(rev, views)}) shows every capability on that revision.`, '');
+    }
+  }
 
   const disagreeing = cells.filter((s) => s.disagreements.length);
   if (disagreeing.length) {
@@ -111,10 +159,14 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
   }
 
   const cited = recorded.filter((s) => s.evidence?.length);
-  if (cited.length) {
+  const citedOlder = Object.entries(recordCells(cap, at)).flatMap(([rev, cells]) => cells.filter((s) => s.evidence?.length).map((s) => [rev, s]));
+  if (cited.length || citedOlder.length) {
     L.push('## Evidence', '');
     for (const s of cited) {
       L.push(`${subjectLink(s.subject)}:`, '', ...s.evidence.map((e) => `- ${citation(e)}`), '');
+    }
+    for (const [rev, s] of citedOlder) {
+      L.push(`${subjectLink(s.subject)} on ${code(rev)}:`, '', ...s.evidence.map((e) => `- ${citation(e)}`), '');
     }
   }
 
@@ -143,25 +195,36 @@ export function capabilityPage(cap, index, { origin, noteTitles }) {
 }
 
 /** The matrix: capabilities down, registry entries across. */
-export function matrixPage(index, { origin }) {
+export function matrixPage(index, { origin, views = [index.revision], omitted = [] }) {
   const columns = index.subjects.filter((s) => s.registry);
   const others = index.subjects.filter((s) => !s.registry);
+  const baseline = index.revision === views[0];
+  const older = columns.filter((s) => s.revision < index.revision);
+  const unsplit = columns.filter((s) => !s.recordedPerRevision);
   const L = [];
-  L.push('# Capabilities', '');
-  L.push(`Which MCP clients support what. ${index.capabilities.length} capabilities down, the ${columns.length} clients with a registry entry across. Each capability links to a page with the evidence behind every cell.`, '');
+  L.push(baseline ? '# Capabilities' : `# Capabilities on ${index.revision}`, '');
+  L.push(`Which MCP clients support what${baseline ? '' : ` when the server's newest revision is ${code(index.revision)}`}. ${index.capabilities.length} capabilities down, the ${columns.length} clients with a registry entry across. Each capability links to a page with the evidence behind every cell.`, '');
+  if (views.length > 1) L.push(revisionSwitch(index.revision, views), '');
+  const marks = [
+    `A client negotiates the newest revision it speaks at or below the server's. A column marked * negotiates an older one than ${code(index.revision)} and shows that revision: ${older.length ? older.map((s) => `${cellText(s.title)} (${code(s.revision)})`).join(', ') : 'none'}.`,
+    !baseline && "A cell marked † comes from the client's record for this revision. Every other cell is the same as on the baseline.",
+    unsplit.length && `${unsplit.map((s) => cellText(s.title)).join(', ')} ${unsplit.length === 1 ? 'has' : 'have'} one set of rows for every revision, not yet split.`,
+    omitted.length && `${omitted.map((s) => cellText(s.title)).join(', ')} ${omitted.length === 1 ? 'speaks' : 'speak'} no revision at or below ${code(index.revision)} and ${omitted.length === 1 ? 'is' : 'are'} left out.`,
+  ].filter(Boolean).join(' ');
+  L.push(marks, '');
   L.push('A cell is the status the registry records, then the tiers it is known from: **R** read, **V** verified, **O** observed, **D** declared. ● full, ◐ partial, ◇ opt-in, ○ unsupported, · untested. An empty cell means nothing is recorded, which is not the same as unsupported.', '');
-  L.push(`| Capability | Since | ${columns.map((s) => `[${cellText(s.title)}](${local(s.page, origin)})`).join(' | ')} |`);
+  L.push(`| Capability | Since | ${columns.map((s) => `[${cellText(s.title)}](${local(s.page, origin)})${s.revision < index.revision ? ' *' : ''}`).join(' | ')} |`);
   L.push(`|---|---|${columns.map(() => '---').join('|')}|`);
   for (const cap of index.capabilities) {
     const row = columns.map((s) => {
       const c = cap.subjects[s.id];
       if (!c) return '';
-      return `${STATUS_MARK[c.status] ?? ''} ${c.tiers.map((t) => TIER_LETTER[t]).join('')}`.trim();
+      return `${STATUS_MARK[c.status] ?? ''} ${c.tiers.map((t) => TIER_LETTER[t]).join('')}${c.revisionRecord ? ' †' : ''}`.trim();
     });
     L.push(`| ${link(cap)} | ${cap.lifecycle?.introducedIn ? code(cap.lifecycle.introducedIn) : ''} | ${row.join(' | ')} |`);
   }
   L.push('');
-  if (others.length) {
+  if (others.length && baseline) {
     L.push('## Evidence without a registry entry', '');
     L.push('These have probe records or telemetry and no researched entry yet, so they are not columns above. They appear on the page of each capability they have evidence for.', '');
     L.push('| Project | Kind | Capabilities with evidence |', '|---|---|---|');
@@ -171,13 +234,15 @@ export function matrixPage(index, { origin }) {
     }
     L.push('');
   }
-  L.push('## Data', '', `[${code('/data/capabilities/index.json')}](/data/capabilities/index.json) has this matrix as JSON, and ${code('/data/capabilities/<slug>.json')} has one capability with its evidence. The MCP server's ${code('find_capability_support')} tool returns the same record.`, '');
+  L.push('## Data', '', `[${code('/data/capabilities/index.json')}](/data/capabilities/index.json) has this matrix as JSON${views.length > 1 ? ", with each older revision's statuses under `byRevision`" : ''}, and ${code('/data/capabilities/<slug>.json')} has one capability with its evidence. The MCP server's ${code('find_capability_support')} tool returns the same record.`, '');
   return L.join('\n');
 }
 
 /** The matrix as JSON, for /data/capabilities/index.json. */
-export function indexJson(index, { origin }) {
+export function indexJson(index, { origin, views = [index.revision], at = {} }) {
   return {
+    baseline: index.revision,
+    revisions: views,
     subjects: index.subjects,
     capabilities: index.capabilities.map((cap) => ({
       id: cap.id,
@@ -187,12 +252,22 @@ export function indexJson(index, { origin }) {
       data: `${origin}/data/capabilities/${cap.slug}.json`,
       statuses: Object.fromEntries(Object.values(cap.subjects).filter((s) => s.status !== undefined).map((s) => [s.subject, s.status])),
       tiers: Object.fromEntries(Object.values(cap.subjects).map((s) => [s.subject, s.tiers])),
+      ...(views.length > 1 ? {
+        byRevision: Object.fromEntries(views.slice(1).map((rev) => {
+          const other = at[rev].capabilities.find((c) => c.id === cap.id);
+          const cells = Object.values(other?.subjects ?? {}).filter((s) => s.status !== undefined);
+          return [rev, {
+            statuses: Object.fromEntries(cells.map((s) => [s.subject, s.status])),
+            fromRecord: cells.filter((s) => s.revisionRecord).map((s) => s.subject),
+          }];
+        })),
+      } : {}),
     })),
   };
 }
 
 /** One capability as JSON, for /data/capabilities/<slug>.json. */
-export function capabilityJson(cap, index, { origin }) {
+export function capabilityJson(cap, index, { origin, at = {} }) {
   const subject = Object.fromEntries(index.subjects.map((s) => [s.id, s]));
   return {
     capability: cap.id,
@@ -205,5 +280,7 @@ export function capabilityJson(cap, index, { origin }) {
     clients: Object.values(cap.subjects).map(({ subject: id, inheritedEvidence, ...rest }) => ({ id, title: subject[id].title, kind: subject[id].kind, page: subject[id].page, ...rest })),
     notRecorded: cap.notRecorded,
     research: cap.research,
+    // Rows from a client's byProtocolVersion record for an older revision. Every other client's row holds on that revision too.
+    byRevision: Object.fromEntries(Object.entries(recordCells(cap, at)).map(([rev, cells]) => [rev, cells.map(({ subject: id, inheritedEvidence, ...rest }) => ({ id, title: subject[id].title, kind: subject[id].kind, page: subject[id].page, ...rest }))])),
   };
 }

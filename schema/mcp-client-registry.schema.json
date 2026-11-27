@@ -88,7 +88,7 @@
         },
         "byProtocolVersion": {
           "type": "object",
-          "description": "Per-protocol-version capability OVERRIDES. Top-level capabilities describe the client at its preferred version; entries here record only what differs at another negotiated version (e.g. a capability that is unsupported at an older version). Consumers merge: spec default -> top-level -> this override.",
+          "description": "Per-protocol-version capability OVERRIDES. Top-level capabilities describe the client on 2026-07-28 when it can negotiate that revision at all, by default or opt-in, and otherwise on the newest revision it negotiates. That holds whatever revision the client tries first, which is preferredProtocolVersion. Entries here record only what differs on an older negotiated revision, keyed by that revision. Consumers merge: spec default -> top-level -> this override.",
           "propertyNames": {
             "$ref": "#/$defs/ProtocolVersion"
           },
@@ -169,10 +169,6 @@
           "$ref": "#/$defs/CapabilityStatus",
           "description": "Renders server-provided icons/websiteUrl on tools, resources, prompts, implementations (SEP-973, 2025-11-25+; PNG/JPEG MUST, SVG/WebP SHOULD)."
         },
-        "tasks": {
-          "$ref": "#/$defs/TasksCapability",
-          "description": "Async/durable task support (2025-11-25+; an extension in draft)."
-        },
         "jsonSchema": {
           "$ref": "#/$defs/JsonSchemaSupport",
           "description": "JSON Schema dialect + feature support (tool I/O, elicitation schemas)."
@@ -180,6 +176,15 @@
         "extensions": {
           "type": "object",
           "description": "Named protocol extensions the client supports, keyed by reverse-DNS id (e.g. 'io.modelcontextprotocol/tasks'). See data/spec-versions.json#extensions.known.",
+          "properties": {
+            "io.modelcontextprotocol/tasks": {
+              "$ref": "#/$defs/TasksCapability",
+              "description": "Async/durable task support. An extension from 2026-07-28 (SEP-2663) and core experimental in 2025-11-25 (SEP-1686). Recorded here for every revision, with a byProtocolVersion[\"2025-11-25\"] row for the core form."
+            },
+            "io.modelcontextprotocol/events": {
+              "$ref": "#/$defs/EventsExtension"
+            }
+          },
           "additionalProperties": {
             "$ref": "#/$defs/CapabilityStatus"
           }
@@ -595,6 +600,37 @@
             "url": {
               "$ref": "#/$defs/CapabilityStatus",
               "description": "URL-mode elicitation, e.g. OAuth flows (SEP-1036, 2025-11-25+)."
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "EventsExtension": {
+      "description": "MCP Events (SEP-3415). The parent row covers listing and subscribing. Each delivery mode has its own row.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Status"
+        },
+        {
+          "type": "object",
+          "allOf": [
+            {
+              "$ref": "#/$defs/CapabilityCore"
+            }
+          ],
+          "properties": {
+            "poll": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Poll delivery: the client calls events/poll."
+            },
+            "push": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Push delivery: the client opens events/stream and receives notifications/events/*."
+            },
+            "webhook": {
+              "$ref": "#/$defs/CapabilityStatus",
+              "description": "Webhook delivery: the client sends events/subscribe with a callback URL, or holds the subscription through a service that does."
             }
           },
           "unevaluatedProperties": false

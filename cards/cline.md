@@ -18,6 +18,7 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 | SDK | `@modelcontextprotocol/sdk` 1.30.0 · declares `^1.29.0` · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-19 |
 | Last read | 2026-11-20 |
 | Probed | `3.0.74` (see below) |
@@ -53,10 +54,15 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 | **Logging** | ◐ partial | read | `2024-11-05`, `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2024-11-05`, `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2024-11-05`, `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2024-11-05`, `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2024-11-05`, `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2024-11-05`, `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2024-11-05`, `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ mcpRemoteProxyRewrite | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sharedSettingsFile | ● full | read | `2025-11-25` |
@@ -92,10 +98,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — The extension handles notifications/message and routes it to the active task, or buffers it when no task is running. It never calls logging/setLevel, so the level is whatever the server defaults to. Any other notification is written to the extension log. The CLI handles no notifications.
 - **instructions** — The initialize result's instructions field is never read on either surface.
 - **icons** — No icon handling in either MCP implementation.
-- **tasks** — Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.
 - **bonusFeatures.mcpRemoteProxyRewrite** — The CLI recognizes a stdio config of exactly `npx [-y] mcp-remote <url>` with no env and no extra arguments, and rewrites it to a native Streamable HTTP transport. Cline's own OAuth then handles the server, instead of a child process opening a browser as a side effect of enabling the server. The extension does not do this rewrite, so the same settings file means different things to the two surfaces.
 - **bonusFeatures.sharedSettingsFile** — The extension, the CLI and the JetBrains plugin read and write one settings file at ~/.cline/data/settings/cline_mcp_settings.json, under a cross-process lock with atomic replace. The extension watches it and fingerprints the connection-relevant content, so OAuth churn from another process does not trigger a reconnect loop but a token written elsewhere does.
 - **extensions.io.modelcontextprotocol/ui** — Declared by @cline/core with a mimeTypes list of text/html;profile=mcp-app only when the session config sets mcpApps: true, which defaults to false. No app in the repo sets it, so the CLI and the extension declare no extensions. The extension's own client never declares it.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. No MCP client in the repo sends skills/list, skills/get or resources/directory/read, and @modelcontextprotocol/sdk 1.30.0 has no skills client. Cline's own skills are not loaded from MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No MCP client in the repo sends events/list, events/poll, events/stream or events/subscribe, and @modelcontextprotocol/sdk 1.30.0 has no events client.
 
 ## Verified by the probe
 
@@ -163,6 +171,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Cline declares an empty capability object on both surfaces](../research/cline-declares-no-client-capabilities.md) — *idiosyncrasy*. Both of Cline's MCP implementations send `capabilities: {}` in initialize by default. No roots, no sampling, no elicitation, no tasks — and none of the four are implemented anywhere, so the declaration is accurate.
 - [Cline's CLI rewrites `npx mcp-remote <url>` into a native Streamable HTTP transport](../research/cline-rewrites-mcp-remote-proxy-configs.md) — *idiosyncrasy*. A stdio config of exactly `npx [-y] mcp-remote <url>`, with no env and no other arguments, is replaced by a streamableHttp transport before any process is spawned. The extension does not do this, so one settings file describes two different connections.
 - [notes/cline-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/cline-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Cline source at 94eecbb.
+- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
+- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
 
 ## Provenance
 

@@ -8,6 +8,12 @@ import { SERVER } from './mcp-tools.js';
 const CANONICAL_HOST = 'canimcp.io';
 const JSON_PREFIXES = ['/data/', '/schemas/', '/.well-known/', '/api/'];
 const READ_METHODS = ['GET', 'HEAD', 'OPTIONS'];
+// Pages that moved. Tasks became one capability page when its extension row merged into it.
+const MOVED = {
+  '/capabilities/extensions-io-modelcontextprotocol-tasks': '/capabilities/tasks',
+  '/capabilities/extensions-io-modelcontextprotocol-tasks.md': '/capabilities/tasks.md',
+  '/data/capabilities/extensions-io-modelcontextprotocol-tasks.json': '/data/capabilities/tasks.json',
+};
 
 /** The highest q-value the Accept header gives a media type matching `pattern`, or 0. */
 function quality(accept, pattern) {
@@ -59,6 +65,11 @@ export default {
 
     if (url.hostname === `www.${CANONICAL_HOST}`) {
       url.hostname = CANONICAL_HOST;
+      return Response.redirect(url.toString(), 301);
+    }
+
+    if (MOVED[url.pathname]) {
+      url.pathname = MOVED[url.pathname];
       return Response.redirect(url.toString(), 301);
     }
 

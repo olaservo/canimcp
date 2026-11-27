@@ -1,0 +1,55 @@
+{
+  "client": "codex",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-26",
+    "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+    "clientVersion": "0.174.0-alpha.7",
+    "config": "default",
+    "artifact": "probe/runs/codex@0.174.0-alpha.7/default/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+    "note": "server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call)",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2024-11-05",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "server/discover",
+          "version": "2026-07-28"
+        },
+        {
+          "dir": "out",
+          "method": "server/discover",
+          "supportedVersions": [
+            "2026-07-28"
+          ]
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [
+        "tools/list",
+        "tools/call"
+      ],
+      "requestMetaVersions": [
+        "2026-07-28"
+      ],
+      "headerVersions": [],
+      "toolCalled": true,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 8517,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "responses"
+  }
+}
