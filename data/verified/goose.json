@@ -540,6 +540,39 @@
             "eraPolicy": "both",
             "modelApi": "chat"
           }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance request-metadata at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 3287,
+            "checks": [
+              {
+                "id": "sep-2575-client-retry-supported-version",
+                "status": "SUCCESS"
+              }
+            ]
+          }
         }
       ]
     },
@@ -6235,6 +6268,546 @@
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
+          }
+        }
+      ]
+    },
+    "elicitation.form": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/elicitation-sep1034-client-defaults",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/5 checks pass; failed client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 3617,
+            "checks": [
+              {
+                "id": "client-elicitation-sep1034-string-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-integer-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-number-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-enum-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-boolean-default",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.standardRequestHeaders": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-custom-headers",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance http-custom-headers at 2026-07-28: 18/18 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 3913,
+            "checks": [
+              {
+                "id": "sep-2243-client-supports-custom-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-omit-null",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-invalid-tool-headers",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 3527,
+            "checks": [
+              {
+                "id": "sep-2243-client-reject-invalid-tool",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-not-empty",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-standard-headers",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance http-standard-headers at 2026-07-28: 3/3 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 4085,
+            "checks": [
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.protocolVersionHeader": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance request-metadata at 2026-07-28: 2/2 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 3287,
+            "checks": [
+              {
+                "id": "sep-2575-http-client-sends-version-header",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2575-http-version-header-matches-meta",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.mrtr": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 3452,
+            "checks": [
+              {
+                "id": "sep-2322-client-request-state-echoed",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-jsonrpc-id-different",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-no-state-omitted",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-parallel-isolation",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.resultType": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 3452,
+            "checks": [
+              {
+                "id": "sep-2322-default-result-type-complete",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.sseResumability": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sse-retry",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance sse-retry at 2025-11-25: 0/1 checks pass; failed client-sse-graceful-reconnect",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 3289,
+            "checks": [
+              {
+                "id": "client-sse-graceful-reconnect",
+                "status": "FAILURE",
+                "errorMessage": "Client did not attempt GET reconnection after stream closure. Client should treat graceful stream close as reconnectable."
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tools": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance tools_call at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 4484,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance tools_call at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 4410,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "1.61.0",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/goose.json",
+          "note": "conformance tools_call at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs goose (built from source at d1438fd), mock model bridge/call-every-tool.mjs, MCP tools matched by ^localhost_<port>; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 4192,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
           }
         }
       ]
