@@ -26787,5 +26787,757 @@
         ]
       }
     }
+  },
+  "reachy-mini-conversation-app": {
+    "title": "Reachy Mini conversation app",
+    "clientInfoNames": [
+      "mcp"
+    ],
+    "url": "https://github.com/pollen-robotics/reachy_mini_conversation_app",
+    "description": "Voice conversation app for Pollen Robotics' Reachy Mini robot. A speech-to-speech model on a Hugging Face realtime backend, reached through the OpenAI SDK's Realtime client, gets local robot tools plus tools from Hugging Face Gradio Spaces. The app reaches those Spaces over MCP with the official Python SDK: tools only, Streamable HTTP only, a new connection for every list and every call, and the SDK's placeholder clientInfo.",
+    "category": "other",
+    "kind": "host",
+    "platforms": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "protocolVersions": [
+      "2024-11-05",
+      "2025-03-26",
+      "2025-06-18",
+      "2025-11-25",
+      "2026-07-28"
+    ],
+    "preferredProtocolVersion": "2026-07-28",
+    "transports": {
+      "stdio": {
+        "status": "unsupported",
+        "notes": "The only transport the client loads is streamable_http_client, and a server URL must be http or https.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:74-85,144-152"
+          }
+        ]
+      },
+      "sse": {
+        "status": "unsupported",
+        "notes": "No sse_client import. An installed Space's URL must end in exactly /gradio_api/mcp/, so Gradio's /gradio_api/mcp/sse endpoint is refused.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:144-152"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tool_spaces.py:514-534"
+          }
+        ]
+      },
+      "streamableHttp": {
+        "status": "partial",
+        "notes": "The SDK's streamable_http_client over an httpx2 client the app builds with the server's headers, follow_redirects=False and a timeout of the larger of 10 s and 30 s. Every list and every call opens and closes its own transport. Only Hugging Face Gradio Space endpoints are reachable: https, a host ending in .hf.space, port 443, path /gradio_api/mcp/. The lower-level mcp_client module also accepts any https URL or http on localhost, and no configuration path reaches it with one.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:366-381"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tool_spaces.py:514-534,615-645"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "README.md:375"
+          }
+        ],
+        "research": [
+          "reachy-mini-conversation-app-reaches-only-gradio-spaces",
+          "reachy-mini-conversation-app-connects-once-per-tool-call"
+        ]
+      }
+    },
+    "authentication": {
+      "oauth": {
+        "status": "unsupported",
+        "notes": "The httpx2 client gets headers and no auth flow, and the SDK's OAuth provider is never constructed. A 401 surfaces as a discovery or invocation error.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:366-381"
+          }
+        ]
+      },
+      "header": {
+        "status": "partial",
+        "notes": "One header, chosen by the app: Authorization: Bearer with the Hugging Face token (HF_TOKEN, else the hf auth login cache), sent only to Spaces the Hub reports as private. A person cannot set other headers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tool_spaces.py:615-629,648-667"
+          }
+        ]
+      },
+      "none": {
+        "status": "full",
+        "notes": "Public Spaces, including the four bundled Pollen Spaces, are called with no credentials.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tool_spaces.py:252-266,622-625"
+          }
+        ]
+      }
+    },
+    "tools": {
+      "status": "full",
+      "notes": "tools/list follows nextCursor to the end. It runs when a Space is installed or refreshed (the tool-spaces add CLI or the Tools view), and again only if the model names a tool missing from the cache. Each tool is namespaced <alias>__<tool>, where the alias is the normalised Space slug, and its name, description and inputSchema are cached in installed_tool_spaces.json. The model's tool list is built from that cache with no network call. The bundled Pollen Spaces carry static specs and are never listed. The tools go to the realtime model in session.update, beside the local robot tools. tools/call opens a fresh connection each time, and the SDK sends tools/list after a successful call on that connection to validate structuredContent against outputSchema.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "No connection stays open between calls and the SDK Client gets no message_handler. A changed tool list is seen only when a person re-adds the Space.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:366-381"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tools/core_tools.py:323-373"
+          }
+        ],
+        "research": [
+          "reachy-mini-conversation-app-connects-once-per-tool-call"
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:88-92,204-231,292-364",
+          "note": "Pagination loop, namespacing, and the fields read from each tool."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/tool_spaces.py:648-683,691-770",
+          "note": "Install resolves the Space, lists its tools and writes the manifest."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/tools/core_tools.py:101-140,323-373,447-452"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/huggingface_realtime.py:90-102,479-502,982-993",
+          "note": "Tool specs become Realtime function tools in session.update with tool_choice auto."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/session.py:1100-1127",
+          "note": "mcp 2.2.0. call_tool validates a non-error result and lists tools first when the session has no cached output schema."
+        }
+      ],
+      "research": [
+        "reachy-mini-conversation-app-connects-once-per-tool-call",
+        "reachy-mini-conversation-app-reaches-only-gradio-spaces"
+      ]
+    },
+    "resources": {
+      "status": "unsupported",
+      "notes": "The client calls list_tools and call_tool and nothing else. No resources/* request is sent.",
+      "listChanged": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+          }
+        ]
+      },
+      "subscribe": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381",
+          "note": "RemoteMcpToolClient is the only class that holds an SDK Client, and its methods are list_tool_specs and call_tool."
+        }
+      ]
+    },
+    "prompts": {
+      "status": "unsupported",
+      "notes": "No prompts/* request is sent. The system prompt comes from the selected personality profile.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+        }
+      ]
+    },
+    "completions": {
+      "status": "unsupported",
+      "notes": "No completion/complete request is sent.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "notes": "The SDK Client is built from the transport alone, with no sampling_callback, so the SDK declares no sampling capability.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/session.py:614-649",
+          "note": "mcp 2.2.0. sampling, elicitation and roots are declared only when the matching callback is passed."
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "unsupported",
+      "notes": "No elicitation_callback, so nothing is declared and the SDK's default handler refuses a request.",
+      "form": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381"
+          }
+        ]
+      },
+      "url": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/session.py:633-637"
+        }
+      ]
+    },
+    "roots": {
+      "status": "unsupported",
+      "notes": "No list_roots_callback, so no roots capability is declared.",
+      "listChanged": {
+        "status": "unsupported",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/session.py:638-645"
+        }
+      ]
+    },
+    "logging": {
+      "status": "unsupported",
+      "notes": "No logging_callback and no log_level, so a 2026-07-28 server is never asked for log messages and logging/setLevel is never sent on a handshake connection.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/client.py:310-324"
+        }
+      ]
+    },
+    "instructions": {
+      "status": "unsupported",
+      "notes": "Client.instructions is never read. Session instructions come from the personality profile and memory.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/huggingface_realtime.py:479-483"
+        }
+      ]
+    },
+    "icons": {
+      "status": "unsupported",
+      "notes": "Only a tool's name, description and inputSchema are read. The Tools view shows each Space by slug, private flag and tool count.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:204-222"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/tool_space_routes.py:32-43"
+        }
+      ]
+    },
+    "jsonSchema": {
+      "defaultDialect": "2020-12",
+      "notes": "inputSchema is passed to the realtime model unchanged as the function's parameters, and replaced with an empty object schema when it is not a JSON object. The app does not validate the model's arguments. The SDK validates structuredContent against outputSchema with jsonschema's validator_for, which honours $schema and falls back to 2020-12; on 2026-07-28 it also drops tools whose x-mcp-header annotations are invalid.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "pollen-robotics/reachy_mini_conversation_app",
+          "date": "2026-11-26",
+          "commit": "622a3a67",
+          "path": "src/reachy_mini_conversation_app/mcp_client.py:204-231"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/python-sdk",
+          "url": "https://pypi.org/project/mcp/2.2.0/",
+          "date": "2026-11-26",
+          "path": "mcp/client/session.py:1156-1181,1291-1309"
+        }
+      ]
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared and not rendered. The SDK Client is built without extensions=, and _meta.ui on a tool is not read. The app has a web UI of its own and no ui:// resource handling.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:204-222,377-381"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/2.2.0/",
+            "date": "2026-11-26",
+            "path": "mcp/server/apps.py:1,43",
+            "note": "mcp 2.2.0 ships MCP Apps as a server-side extension only."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks/* request and no tasks capability, as the 2026-07-28 extension or as the 2025-11-25 core experimental feature. mcp 2.2.0's client package has no tasks code to turn on.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:312-343,377-381"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "No skills/list or skills/get request. Profiles and local Python tools are the app's own extension points.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. git grep finds no events/* method in the repo, and mcp 2.2.0 has no events client.",
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "pollen-robotics/reachy_mini_conversation_app",
+              "date": "2026-11-26",
+              "commit": "622a3a67",
+              "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+            }
+          ]
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never opened, and no connection outlives a single request.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "pollen-robotics/reachy_mini_conversation_app",
+              "date": "2026-11-26",
+              "commit": "622a3a67",
+              "path": "src/reachy_mini_conversation_app/mcp_client.py:366-381"
+            }
+          ]
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "pollen-robotics/reachy_mini_conversation_app",
+              "date": "2026-11-26",
+              "commit": "622a3a67",
+              "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381",
+            "note": "Client(transport) with no extensions argument."
+          }
+        ]
+      }
+    },
+    "bonusFeatures": {
+      "modelInitiatedResourceRead": {
+        "status": "unsupported",
+        "notes": "Resources are not used at all.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:284-381"
+          }
+        ],
+        "research": [
+          "model-initiated-resource-read"
+        ]
+      },
+      "toolCallRetry": {
+        "status": "full",
+        "notes": "A tools/call that fails with anything other than a timeout is sent once more after 0.25 s on a new connection. That includes the SDK's rejection of structuredContent that fails outputSchema, after the server has already run the tool. Timeouts are not retried. Per-call timeouts are 10 s for requests and 30 s for the tool.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tools/core_tools.py:96,125-140"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:312-343"
+          }
+        ],
+        "research": [
+          "reachy-mini-conversation-app-connects-once-per-tool-call"
+        ]
+      },
+      "bundledServers": {
+        "status": "full",
+        "notes": "Four Pollen Robotics Gradio Spaces (search, time, weather, knowledge) are seeded with static tool specs when no manifest exists, and their five tools are in the default profile's default_tools. A default install talks MCP to them the first time the model calls one.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/tool_spaces.py:50-171,252-274"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "profiles/default/profile.md:3-23"
+          }
+        ],
+        "research": [
+          "reachy-mini-conversation-app-reaches-only-gradio-spaces"
+        ]
+      }
+    },
+    "research": [
+      "reachy-mini-conversation-app-connects-once-per-tool-call",
+      "reachy-mini-conversation-app-reaches-only-gradio-spaces"
+    ],
+    "metadata": {
+      "vendor": "Pollen Robotics",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "sourceUrl": "https://github.com/pollen-robotics/reachy_mini_conversation_app",
+      "lastVerified": "2026-11-26",
+      "source": {
+        "repo": "https://github.com/pollen-robotics/reachy_mini_conversation_app.git",
+        "ref": "main",
+        "checkedCommit": "622a3a67582a1eb45c82b51251fa9f61a999b51d",
+        "commitDate": "2026-11-26T11:54:06Z",
+        "checkedAt": "2026-11-26",
+        "paths": [
+          "src/reachy_mini_conversation_app/mcp_client.py",
+          "src/reachy_mini_conversation_app/tool_spaces.py",
+          "src/reachy_mini_conversation_app/tool_space_routes.py",
+          "src/reachy_mini_conversation_app/tools/core_tools.py",
+          "src/reachy_mini_conversation_app/huggingface_realtime.py",
+          "src/reachy_mini_conversation_app/config.py",
+          "src/reachy_mini_conversation_app/profile_toolsets.py",
+          "src/reachy_mini_conversation_app/static/js/views/tools.js",
+          "src/reachy_mini_conversation_app/utils.py",
+          "profiles/default/profile.md",
+          "pyproject.toml",
+          "uv.lock"
+        ]
+      },
+      "sdk": {
+        "name": "mcp",
+        "language": "python",
+        "official": true,
+        "declared": ">=2.0,<3",
+        "resolved": "2.2.0",
+        "patched": false,
+        "pinsProtocolVersion": "2026-07-28",
+        "notes": "mcp and mcp-types are both declared >=2.0,<3 and resolve to 2.2.0 in uv.lock; httpx2 resolves to 2.9.1. A pip install outside uv can take a newer 2.x. Not patched: no patches directory, no vendored copy, and [tool.uv] sets only required-version, exclude-newer and per-package exclude-newer exemptions, none for mcp. The app names no protocol revision and leaves Client(mode=) at the SDK default auto, so the SDK decides both the era and the version: server/discover at 2026-07-28 first, then initialize offering 2025-11-25 on any non-modern answer, accepting any handshake revision back to 2024-11-05. A comment beside the Client construction states this. Client gets no client_info, so the wire name is the SDK's placeholder mcp 0.1.0 on both eras, and the capability object is empty.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "pyproject.toml:31-33,50-63"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "uv.lock:1113-1114,1507-1508,1532-1533"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "pollen-robotics/reachy_mini_conversation_app",
+            "date": "2026-11-26",
+            "commit": "622a3a67",
+            "path": "src/reachy_mini_conversation_app/mcp_client.py:377-381",
+            "note": "client_cls(transport) with no keyword arguments, and the comment on mode auto."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/2.2.0/",
+            "date": "2026-11-26",
+            "path": "mcp/client/client.py:327-337,447-462",
+            "note": "mcp 2.2.0. client_info defaults to None and mode to auto; __aenter__ runs negotiate_auto for auto."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/2.2.0/",
+            "date": "2026-11-26",
+            "path": "mcp/client/_probe.py:52-113",
+            "note": "mcp 2.2.0. Probe at LATEST_MODERN_VERSION, fall back to initialize on any MCPError other than a disjoint -32022."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/2.2.0/",
+            "date": "2026-11-26",
+            "path": "mcp/client/session.py:67,424,651-660",
+            "note": "mcp 2.2.0. DEFAULT_CLIENT_INFO is Implementation(name=\"mcp\", version=\"0.1.0\"); initialize offers LATEST_HANDSHAKE_VERSION."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp-types/2.2.0/",
+            "date": "2026-11-26",
+            "path": "mcp_types/version.py:24-59",
+            "note": "mcp-types 2.2.0. KNOWN_PROTOCOL_VERSIONS spans 2024-11-05 to 2026-07-28; LATEST_HANDSHAKE_VERSION is 2025-11-25 and LATEST_MODERN_VERSION is 2026-07-28."
+          }
+        ],
+        "research": [
+          "reachy-mini-conversation-app-reaches-only-gradio-spaces"
+        ]
+      }
+    }
   }
 }
