@@ -7782,7 +7782,7 @@
         "2020-12",
         "draft-07"
       ],
-      "notes": "A tool schema with no $schema is treated as 2020-12. Draft-07 is accepted as is. A 2019-09 schema is converted to 2020-12 when that can be done faithfully, and passed through unchanged when not. An input schema over 128 levels or 10,000 nodes, or one that fails a draft-07-based meta-schema check, drops the tool from the list. Output is validated by the SDK's Ajv validator unless the entry passes a jsonSchemaValidator. Which keywords the validators honour was not read.",
+      "notes": "A tool schema with no $schema is treated as 2020-12. Draft-07 is accepted as is. A 2019-09 schema is converted to 2020-12 when that can be done faithfully, and passed through unchanged when not. An input schema over 128 levels or 10,000 nodes, or one that fails a draft-07-based meta-schema check, drops the tool from the list. Output is validated by the SDK's Ajv validator unless the entry passes a jsonSchemaValidator. Which keywords the validators honour was not read. These checks cover what MCPClient accepts. The agent rewrites the schema again before the model sees it; see features.",
       "evidence": [
         {
           "tier": "read",
@@ -7807,8 +7807,50 @@
           "date": "2026-11-27",
           "commit": "29e1c78d",
           "path": "packages/mcp/src/client/input-schema-meta-schema.ts:INPUT_SCHEMA_META_SCHEMA,loadInputSchemaMetaValidator,getInputSchemaError"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "mastra-ai/mastra",
+          "date": "2026-11-27",
+          "commit": "29e1c78d",
+          "path": "packages/core/src/stream/aisdk/v5/compat/prepare-tools.ts:prepareToolsAndToolChoice",
+          "note": "$schema rewritten to draft-07 for every model."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "mastra-ai/mastra",
+          "date": "2026-11-27",
+          "commit": "29e1c78d",
+          "path": "packages/core/src/tools/tool-builder/builder.ts:CoreToolBuilder.build",
+          "note": "Applies the schema-compat layer whose shouldApply matches the model."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "mastra-ai/mastra",
+          "date": "2026-11-27",
+          "commit": "29e1c78d",
+          "path": "packages/schema-compat/src/schema-compatibility.ts:SchemaCompatLayer.processToJSONSchema,SchemaCompatLayer.defaultAllOfHandler",
+          "note": "allOf removed and properties replaced with the merged branch properties."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "mastra-ai/mastra",
+          "date": "2026-11-27",
+          "commit": "29e1c78d",
+          "path": "packages/schema-compat/src/provider-compats/openai.ts:OpenAISchemaCompatLayer.shouldApply,OpenAISchemaCompatLayer.preProcessJSONNode,OpenAISchemaCompatLayer.postProcessJSONNode"
         }
-      ]
+      ],
+      "features": {
+        "level": "subset",
+        "unsupported": [
+          "allOf"
+        ],
+        "notes": "What the model sees depends on the model. $schema is rewritten to draft-07 for every model. For models a schema-compat layer matches (OpenAI non-reasoning models and Groq, model ids containing claude, Gemini, DeepSeek except R1, model ids containing meta), a top-level allOf is removed and properties is replaced with the properties its branches declare, so a schema whose allOf holds only required or anyOf reaches the model with no properties at all. The OpenAI layer also makes every property required and nullable, adds x-optional, and wraps if, then and else in anyOf with null. $defs, $anchor and additionalProperties survive. A tool whose _meta.mastra.strict is false skips the compat layers but not the $schema rewrite. Observed in the conformance json-schema-2020-12-preservation scenario on 2026-11-27 through probe/conformance: the mock model received $schema draft-07, no allOf and properties {}."
+      }
     },
     "extensions": {
       "io.modelcontextprotocol/ui": {
@@ -8333,7 +8375,11 @@
           "client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts",
           "mastracode/sdk/src/mcp/manager.ts",
           "pnpm-lock.yaml",
-          "pnpm-workspace.yaml"
+          "pnpm-workspace.yaml",
+          "packages/core/src/stream/aisdk/v5/compat/prepare-tools.ts",
+          "packages/core/src/tools/tool-builder/builder.ts",
+          "packages/schema-compat/src/schema-compatibility.ts",
+          "packages/schema-compat/src/provider-compats/openai.ts"
         ]
       },
       "sdk": {
@@ -9795,7 +9841,7 @@
     },
     "resources": {
       "status": "opt-in",
-      "notes": "Fixed context only. The application lists URIs in options.resources. Each is read once with readResource when the adapter is created, and its text is wrapped in <mcp_resource> tags in adapter.instructions. There is no resources/list, no templates, and nothing the model or a user can trigger later. Non-text contents become a one-line placeholder, and the combined instructions are capped at 64 KiB.",
+      "notes": "Fixed context only. The application lists URIs in options.resources. Each is read once with readResource when the adapter is created, and its text is wrapped in <mcp_resource> tags in adapter.instructions. There is no resources/list, no templates, and nothing the model or a user can trigger later. Non-text contents become a one-line placeholder. If the combined resource and prompt instructions exceed 64 KiB, createMcpAdapter throws and no adapter is created. The application passes adapter.instructions to the agent; libfx does not inject it.",
       "listChanged": {
         "status": "unsupported",
         "notes": "Resources are read once at construction.",
@@ -9832,12 +9878,21 @@
           "date": "2026-11-27",
           "commit": "fd39d643",
           "path": "sdk/mcp.js:contentText,createMcpAdapter"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "vercel-labs/fx",
+          "date": "2026-11-27",
+          "commit": "fd39d643",
+          "path": "sdk/README.md",
+          "note": "The application passes adapter.instructions into the agent instructions."
         }
       ]
     },
     "prompts": {
       "status": "opt-in",
-      "notes": "Fixed context only. The application names prompts in options.prompts, each a name or a getPrompt request. Each is fetched once when the adapter is created, and its message text is wrapped in <mcp_prompt> tags in adapter.instructions. There is no prompts/list and no user invocation.",
+      "notes": "Fixed context only. The application names prompts in options.prompts, each a name or a getPrompt request. Each is fetched once when the adapter is created, and the text of its messages is joined by newlines and wrapped in <mcp_prompt> tags in adapter.instructions. Message roles are dropped, and non-text content becomes a one-line placeholder. The same 64 KiB limit applies, and the application passes adapter.instructions to the agent. There is no prompts/list and no user invocation.",
       "listChanged": {
         "status": "unsupported",
         "notes": "Prompts are fetched once at construction.",
@@ -9860,6 +9915,15 @@
           "date": "2026-11-27",
           "commit": "fd39d643",
           "path": "sdk/mcp.js:createMcpAdapter"
+        },
+        {
+          "tier": "read",
+          "at": "2025-11-25",
+          "source": "vercel-labs/fx",
+          "date": "2026-11-27",
+          "commit": "fd39d643",
+          "path": "sdk/README.md",
+          "note": "The application passes adapter.instructions into the agent instructions."
         }
       ]
     },
