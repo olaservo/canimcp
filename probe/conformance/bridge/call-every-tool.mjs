@@ -13,7 +13,9 @@
 //
 // Profile keys: `mcp` picks the MCP tools among the offered ones ('probe', the
 // default: names containing the server name; 'all': every offered tool, for
-// frameworks that offer nothing else). `route: 'eve'` reaches tools through
+// frameworks that offer nothing else). `mcpMatch` is a regex for hosts that name
+// the server after its URL (goose). `warmup` names built-ins to call, up to three
+// times, while no MCP tool is offered yet (codex). `route: 'eve'` reaches tools through
 // eve__search and eve__tool. `route: 'fx-select'` (fx 0.0.16) searches with
 // capability_search, selects each quoted name with mcp_select_tool, then calls
 // the tools fx then offers. `finish` names a tool to call once the plan is
@@ -23,6 +25,7 @@ const CALL_PREFIX = 'call_conf_';
 const SEARCH_PREFIX = 'call_confsearch_';
 const FINISH_PREFIX = 'call_conffinish_';
 const SELECT_PREFIX = 'call_confselect_';
+const WARMUP_PREFIX = 'call_confwarmup_';
 // fx's capability_search is lexical and needs words from the tool names; these
 // are the words of every no-auth client scenario's tools in suite 0.2.0-alpha.12.
 const FX_QUERY = 'add numbers test client elicitation defaults custom headers null valid tool hyphenated json schema 2020 12 echo lookup user mrtr state result type reconnection';
@@ -75,6 +78,7 @@ function argsFor(schema) {
 // Adapters name the MCP server "probe", and most hosts prefix MCP tool names with it.
 function mcpTools(offered, prof) {
   if (prof.mcp === 'all') return offered;
+  if (prof.mcpMatch) return offered.filter((t) => new RegExp(prof.mcpMatch).test(t.name));
   return offered.filter((t) => /probe/i.test(t.name) || /probe/i.test(t.namespace ?? ''));
 }
 
@@ -241,6 +245,11 @@ export default function script(ctx) {
     tools = mcpTools(ctx.offeredTools, prof);
   } else {
     tools = mcpTools(ctx.offeredTools, prof);
+  }
+  if (tools.length === 0 && Array.isArray(prof.warmup)) {
+    const warm = ctx.offeredTools.find((t) => prof.warmup.includes(t.name));
+    const warmups = ctx.toolResults.filter((r) => r.callId?.startsWith(WARMUP_PREFIX)).length;
+    if (warm && warmups < 3) return { type: 'call', tool: warm.name, args: {}, callId: `${WARMUP_PREFIX}${ctx.seq}`, delayMs: 1500 };
   }
   if (tools.length === 0) return finish(ctx, prof, `PROBE_NO_MCP_TOOLS among: ${ctx.offeredTools.map((t) => t.name).join(', ')}`);
   const calls = plan(tools);

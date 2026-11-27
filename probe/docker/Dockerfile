@@ -56,6 +56,11 @@ RUN cd hosts/opencode && npm ci
 COPY --chown=node --from=goose /goose hosts/goose/bin/goose
 COPY --chown=node --from=opencode /opencode hosts/opencode/bin/opencode
 
+# The conformance suite and its scenario servers, for bridge runs inside the container
+# (compose service `conformance`).
+COPY --chown=node conformance/package.json conformance/package-lock.json conformance/
+RUN cd conformance && npm ci
+
 COPY --chown=node . .
 RUN npm run build && mkdir -p runs
 
