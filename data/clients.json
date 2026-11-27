@@ -21105,43 +21105,69 @@
         ]
       },
       "io.modelcontextprotocol/skills": {
-        "status": "unsupported",
-        "notes": "Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, and the request handler sends no skills/list, skills/get or resources/directory/read. The MCP gateway the agent host connects to forwards only ping, tools and resources methods. The skills/list calls elsewhere in the repo go to the Codex app server, not to MCP servers.",
+        "status": "full",
+        "notes": "On by default in Copilot harness sessions, the default harness. chat.agentHost.mcpSkills.enabled defaults to true from VS Code 1.147 (a preview in 1.146), and the agent host passes it to the Copilot runtime it launches as the MCP_SKILLS experiment flag. The runtime calls the server; VS Code applies the skills it reports to the session and caches them. The first time a server provides skills, the user is asked to allow them, and the decision is kept per server identity in mcpSkillsServerApprovals. Server skills appear under \"Skills from <server>\" on the Skills tab of the Agent Customizations editor. Local harness sessions, which are deprecated with removal planned for February 2027 and use VS Code's own MCP client, do not load skills: that client declares only io.modelcontextprotocol/ui and sends no skills/* requests. The Copilot runtime's own MCP code is not in this repository, so what it sends on the wire is not recorded here.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "microsoft/vscode",
             "date": "2026-11-26",
-            "commit": "5a0c9f7f",
-            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:113-140",
-            "note": "Client capabilities sent in initialize."
+            "commit": "e8b6d8b5",
+            "path": "src/vs/platform/agentHost/common/agentHostStarter.config.contribution.ts",
+            "note": "chat.agentHost.mcpSkills.enabled, default true."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "microsoft/vscode",
             "date": "2026-11-26",
-            "commit": "5a0c9f7f",
-            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:452-580",
-            "note": "Every request the client sends to a server."
+            "commit": "e8b6d8b5",
+            "path": "src/vs/platform/agentHost/node/copilot/copilotSessionLauncher.ts",
+            "note": "MCP_SKILLS experiment flag passed to the Copilot runtime."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "microsoft/vscode",
             "date": "2026-11-26",
-            "commit": "5a0c9f7f",
-            "path": "src/vs/platform/mcp/node/mcpGatewaySession.ts:157-173"
+            "commit": "e8b6d8b5",
+            "path": "src/vs/platform/agentHost/node/copilot/copilotAgentSession.ts",
+            "note": "onSkillsLoaded applies the runtime's MCP skills to the session."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "microsoft/vscode",
             "date": "2026-11-26",
-            "commit": "5a0c9f7f",
-            "path": "src/vs/platform/agentHost/node/codex/codexAgent.ts:8598-8600",
-            "note": "Codex app-server skills/list, unrelated to the MCP extension."
+            "commit": "e8b6d8b5",
+            "path": "src/vs/platform/agentHost/common/agentHostSchema.ts",
+            "note": "mcpSkillsServerApprovals, the per-server allow or deny decision."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "e8b6d8b5",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts",
+            "note": "The Local harness client: capabilities declare only io.modelcontextprotocol/ui."
+          },
+          {
+            "tier": "declared",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode-docs",
+            "url": "https://github.com/microsoft/vscode-docs/blob/main/release-notes/v1_147.md",
+            "date": "2026-11-26",
+            "note": "1.147 release notes: Skills over MCP (SEP-2640) is now enabled by default. 1.146 added it as a preview, and docs/agent-customization/agent-skills.md limits it to the Copilot harness."
+          },
+          {
+            "tier": "declared",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode-docs",
+            "url": "https://github.com/microsoft/vscode-docs/blob/main/docs/agents/run/agent-harnesses.md",
+            "date": "2026-11-26",
+            "note": "The Copilot harness is the one to start with; the Local harness is deprecated and will be removed by February 2027."
           }
         ]
       },
