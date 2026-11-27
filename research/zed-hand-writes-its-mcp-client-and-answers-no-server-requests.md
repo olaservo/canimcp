@@ -19,27 +19,27 @@ specVersions:
 sources:
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/protocol.rs, ModelContextProtocol::initialize
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/protocol.rs:ModelContextProtocol
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/context_server.rs, clientInfo
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/context_server.rs:ContextServer.initialize
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/client.rs, request handler table and handle_input
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/client.rs:Client,Client.handle_input
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/transport/http.rs, POST-only transport
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/transport/http.rs:HttpTransport.build_request
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/Cargo.toml, dependencies
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/Cargo.toml
     date: 2026-11-27
 status: current

@@ -12,22 +12,22 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-metadata.ts, sanitizeMcpMetadataText
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/mcp-metadata.ts:sanitizeMcpMetadataText
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-catalog-projection.ts, applied to tool.description
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/agent-bundle-mcp-catalog-projection.ts:projectBundleMcpServerCatalog
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/mcp.ts, applied on the node host surface
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/node-host/mcp.ts:buildNodeMcpToolDescriptors
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-materialize.ts, server instructions take a different path
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/agent-bundle-mcp-materialize.ts:buildBundleMcpToolsFromCatalog
     date: 2026-11-27
 status: current

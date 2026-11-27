@@ -12,7 +12,7 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, ClientSession construction on the stdio and HTTP paths
-    commit: 45e95845
+    commit: 2c8c70f3
     path: tools/mcp_tool_transport.py:MCPServerTask._run_stdio,tools/mcp_tool_transport.py (client_info kwargs near line 195)
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.0.0/
@@ -21,21 +21,21 @@ sources:
     date: 2026-08-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _session_kwargs now passes client_info
-    commit: 45e95845
+    commit: 2c8c70f3
     path: tools/mcp_tool_transport.py:MCPServerTransportMixin._session_kwargs
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: hermes_platform/resolver/app.py, desktop-app liveness probe
-    commit: 45e95845
+    commit: 2c8c70f3
     path: hermes_platform/resolver/app.py:_mcp_initialize
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, the non-MCP-endpoint probe frame
-    commit: 45e95845
+    commit: 2c8c70f3
     path: tools/mcp_tool_transport.py
     date: 2026-11-27
 status: stale
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - goose-client-name-varies-by-surface
   - codex-prefers-a-chatgpt-hosted-client-identifier

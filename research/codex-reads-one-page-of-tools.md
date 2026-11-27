@@ -12,12 +12,12 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, list_tools_for_client_uncached
-    commit: c7005a3d
+    commit: 57b493a6
     path: codex-rs/codex-mcp/src/rmcp_client.rs:list_tools_for_client_uncached
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/pagination.rs
-    commit: c7005a3d
+    commit: 57b493a6
     path: codex-rs/codex-mcp/src/pagination.rs:collect_paginated_with_limit
     date: 2026-11-27
   - url: https://github.com/openai/codex/pull/50035

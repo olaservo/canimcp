@@ -18,12 +18,12 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, __post_init__ and the callback factories
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/client_callback_runtime.py:MCPClientCallbackRuntime.__post_init__,MCPClientCallbackRuntime
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/elicitation_factory.py, resolve_elicitation_handler
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/elicitation_factory.py:resolve_elicitation_handler
     date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk

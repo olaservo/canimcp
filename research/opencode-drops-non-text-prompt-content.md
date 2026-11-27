@@ -1,8 +1,8 @@
 ---
 id: opencode-drops-non-text-prompt-content
-title: opencode keeps only the text parts of an MCP prompt, and fills arguments positionally
+title: opencode drops the media and binary parts of an MCP prompt, and fills arguments positionally
 kind: nuance
-summary: Server prompts become slash commands, but a prompt message carrying an image or an embedded resource maps to an empty string and is joined into the template. Named arguments are also replaced positionally, so argument order decides the result.
+summary: Server prompts become slash commands, but a prompt message carrying an image, audio or a binary resource maps to an empty string and is joined into the template. Embedded text resources are kept. Named arguments are filled positionally, so argument order decides the result.
 capabilities:
   - prompts
 clients:
@@ -12,19 +12,19 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/plugin/command.ts, MCP prompts registered as commands
-    commit: 7bfda960
+    commit: 740bd1d7
     path: packages/core/src/plugin/command.ts:Plugin,promptMessageText
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, prompts listing
-    commit: 449c128a
+    commit: 740bd1d7
     path: packages/core/src/mcp/client.ts:connect
     date: 2026-11-27
 status: current
 lastVerified: 2026-11-27
 ---
 
-# opencode keeps only the text parts of an MCP prompt, and fills arguments positionally
+# opencode drops the media and binary parts of an MCP prompt, and fills arguments positionally
 
 opencode surfaces prompts well at the listing level. `prompts/list` is fully paginated, gated on the server declaring `prompts`, and every prompt becomes a slash command carrying the server's description.
 
@@ -36,19 +36,13 @@ The loss is in the template. A prompt's messages are flattened by taking the tex
 .trim()
 ```
 
-A message whose content is an image or an embedded resource contributes an empty string. It is not skipped and not reported — it becomes a blank line in the middle of the template. A prompt built around a diagram or an attached document arrives as its surrounding prose with a hole where the content was, and nothing distinguishes that from a prompt the server wrote with a blank line in it.
+Text content and embedded text resources are kept. A message whose content is an image, audio, a resource link or a binary embedded resource contributes an empty string. It is not skipped and not reported — it becomes a blank line in the middle of the template. A prompt built around a diagram or an attached PDF arrives as its surrounding prose with a hole where the content was, and nothing distinguishes that from a prompt the server wrote with a blank line in it.
 
 Prompt content has allowed image and resource parts since `2024-11-05`, so this is not a new part of the spec that clients have yet to catch up with.
 
 ## Arguments are positional
 
-Arguments are filled by index rather than by name:
-
-```ts
-Object.fromEntries((prompt.arguments ?? []).map((argument, index) => [argument.name, args[index] ?? ""]))
-```
-
-Each declared argument gets the word at the same position in the text typed after the command, in declaration order, and an empty string when there is none. The names the server declared are used as keys but never shown to the user, so invoking a prompt means knowing what the server put first.
+Arguments are filled by index rather than by name. Each declared argument gets the word at the same position in the text typed after the command, in declaration order. A missing required argument stops the command with a usage line that lists the arguments by name. An optional argument with no word is left out of the request. The usage line is the only place the names appear, so invoking a prompt means knowing what the server put first.
 
 This is fine for a one-argument prompt and gets worse as arguments accumulate, particularly where several are optional — there is no way to supply the third without supplying the first two.
 

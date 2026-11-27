@@ -17,37 +17,37 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: CHANGELOG.md, 0.0.15 breaking changes
-    commit: "79638170"
+    commit: fd39d643
     path: CHANGELOG.md:Breaking Changes
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: CHANGELOG.md, 0.0.8 entries on resources and prompts
-    commit: "79638170"
+    commit: fd39d643
     path: CHANGELOG.md:New Features,Security
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, the What union and onMessage
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/server.zig:What,onMessage
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, answerServerRequest
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/server.zig:Server
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/config.zig, the Held reasons and heldFor
-    commit: "79638170"
+    commit: fd39d643
     path: src/core/mcp_host/config.zig:Held,heldFor
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, the message for a held SSE server
-    commit: "79638170"
+    commit: fd39d643
     path: src/core/mcp_host/runtime.zig:heldReason
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/mcp.zig, the module root
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/mcp.zig
     date: 2026-11-27
 status: current

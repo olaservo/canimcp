@@ -17,32 +17,32 @@ specVersions:
 sources:
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/core/mcp-servers.ts, the McpExposure type and getMcpToolExposure
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/src/core/mcp-servers.ts:McpExposure,MCP_EXPOSURES,MCP_EXPOSURE_ALIASES,getMcpToolExposure
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/index.ts, renderServersSection
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/src/extensions/mcp/index.ts
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/index.ts, syncResourceTools and ensureDiscoveryActive
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/src/extensions/mcp/index.ts:createMcpExtension
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/index.ts, the startup wait and the tool_call wait
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/src/extensions/mcp/index.ts:createMcpExtension
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/tools.ts, toToolExposure
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/src/extensions/mcp/tools.ts:toToolExposure
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/docs/mcp.md, Control tool exposure
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/docs/mcp.md:Control tool exposure
     date: 2026-11-27
   - url: https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/pi-mono-tool-result-handling.md

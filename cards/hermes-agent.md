@@ -260,9 +260,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **elicitation** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `45e95845` `tools/mcp_tool_sampling.py:ElicitationHandler` (2026-11-27)
+  <br>NousResearch/hermes-agent `2c8c70f3` `tools/mcp_tool_sampling.py:ElicitationHandler` (2026-11-27)
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `45e95845` `tools/mcp_tool_sampling.py:ElicitationHandler.__call__` (2026-11-27)
+  <br>NousResearch/hermes-agent `2c8c70f3` `tools/mcp_tool_sampling.py:ElicitationHandler.__call__` (2026-11-27)
 - **elicitation.url** — recorded as `unsupported`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 
