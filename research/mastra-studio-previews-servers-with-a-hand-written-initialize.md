@@ -15,27 +15,27 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts, connectAndListTools
-    commit: ad1a04ff
+    commit: 29e1c78d
     path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/playground mcp-client-create-content.tsx, the form that calls it
-    commit: ad1a04ff
+    commit: 29e1c78d
     path: packages/playground/src/domains/mcps/components/mcp-client-create/mcp-client-create-content.tsx:MCPClientCreateContent
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, the SDK-based client
-    commit: ad1a04ff
+    commit: 29e1c78d
     path: packages/mcp/src/client/client.ts:negotiationMode,InternalMastraMCPClient
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/editor/src/namespaces/agent.ts, stored MCP clients resolved through MCPClient
-    commit: ad1a04ff
+    commit: 29e1c78d
     path: packages/editor/src/namespaces/agent.ts:resolveStoredMCPTools
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: mastracode/sdk/src/mcp/manager.ts, Mastra Code's MCPClient
-    commit: ad1a04ff
+    commit: 29e1c78d
     path: mastracode/sdk/src/mcp/manager.ts:connectAndCollectTools
     date: 2026-11-27
 status: current

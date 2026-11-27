@@ -13,12 +13,12 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-materialize.ts, utility tool materialization
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/agent-bundle-mcp-materialize.ts:buildBundleMcpToolsFromCatalog
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-materialize.ts, utility tool execute functions
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/agent-bundle-mcp-materialize.ts:materializeBundleMcpToolsForRun
     date: 2026-11-27
 status: current

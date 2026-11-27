@@ -15,22 +15,22 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-transport-config.ts, resolveMcpTransportConfig fallthrough
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/mcp-transport-config.ts:resolveMcpTransportConfig
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-transport.ts, transport factory
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/agents/mcp-transport.ts:resolveMcpTransport
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/config/mcp-config-normalize.ts, transport field and type aliases
-    commit: 2237f16b
+    commit: 89425fd7
     path: src/config/mcp-config-normalize.ts:CLI_MCP_TYPE_TO_OPENCLAW_TRANSPORT,resolveConfiguredMcpTransport,canonicalizeConfiguredMcpServer
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: docs/cli/mcp/transports.md, "when omitted, OpenClaw uses sse"
-    commit: 2237f16b
+    commit: 89425fd7
     path: docs/cli/mcp/transports.md:Streamable HTTP transport
     date: 2026-11-27
 status: current

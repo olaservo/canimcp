@@ -15,24 +15,24 @@ specVersions:
 sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
-    commit: 87f6080d
+    commit: 621147a5
     path: libs/code/deepagents_code/mcp_tools.py:connect,_mount_backends
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_auth.py, _drive_handshake
-    commit: 87f6080d
+    commit: 621147a5
     path: libs/code/deepagents_code/mcp_auth.py:_drive_handshake
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, load_mcp_tools
-    commit: 87f6080d
+    commit: 621147a5
     path: libs/talon/deepagents_talon/mcp.py:load_mcp_tools
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp_auth.py, _request_json
-    commit: 87f6080d
+    commit: 621147a5
     path: libs/talon/deepagents_talon/mcp_auth.py:_request_json
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/server/providers/proxy.py, ProxyClient.__init__ and _create_client_factory
     path: fastmcp/server/providers/proxy.py
@@ -62,7 +62,7 @@ sources:
     path: langchain/mcp/adapter.py
     date: 2026-11-26
 status: current
-lastVerified: 2026-11-26
+lastVerified: 2026-11-27
 related:
   - deepagents-core-library-has-no-mcp-client
   - deepagents-code-declares-capabilities-it-cannot-serve

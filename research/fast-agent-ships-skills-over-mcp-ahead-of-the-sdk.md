@@ -15,17 +15,17 @@ tracking:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/skills_extension.py, local wire models
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/skills_extension.py
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/skills/mcp_registry.py, scan_mcp_skill_registry and the install limits
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/skills/mcp_registry.py:_validate_resource_set,_refresh_before_fetch,_stage_verified_mcp_skill
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_connection.py, list_skills / get_skill / read_directory
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/client_connection.py:MCPClientConnection
     date: 2026-11-27
   - url: https://modelcontextprotocol.io/extensions/skills/overview

@@ -19,27 +19,27 @@ specVersions:
 sources:
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/protocol.rs, ModelContextProtocol::initialize
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/protocol.rs:ModelContextProtocol
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/context_server.rs, clientInfo
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/context_server.rs:ContextServer.initialize
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/client.rs, request handler table and handle_input
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/client.rs:Client,Client.handle_input
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/transport/http.rs, POST-only transport
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/src/transport/http.rs:HttpTransport.build_request
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/Cargo.toml, dependencies
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/context_server/Cargo.toml
     date: 2026-11-27
 status: current
@@ -54,7 +54,7 @@ Zed calls MCP servers context servers. The `context_server` crate implements JSO
 
 The handshake is fixed. `initialize` sends `LATEST_PROTOCOL_VERSION`, `2025-11-25`, and accepts `2025-11-25`, `2025-06-18`, `2025-03-26` or `2024-11-05` back. Any other version fails the connection. There is no `2026-07-28` code and no `server/discover` path. `clientInfo` is `{"name": "Zed", "version": "0.1.0"}`. The version comes from `env!("CARGO_PKG_VERSION")` inside the `context_server` crate, whose own version is `0.1.0`, so it does not change with Zed releases (Zed itself is 1.31.0 at this commit).
 
-`ClientCapabilities` is built with `experimental`, `sampling` and `roots` all `None`, and the struct has no field for elicitation, tasks or extensions. The wire value is `"capabilities": {}`.
+`ClientCapabilities` is built with `experimental`, `sampling` and `roots` all `None`, and the struct has no field for elicitation, tasks or extensions. The wire value is `"capabilities": {}`. `ServerCapabilities` has no `extensions` field either, so a server's extension declarations are dropped on parse.
 
 `Client::new` creates a request handler map and nothing ever inserts into it. `handle_input` parses an incoming request, looks up a handler by method, and does nothing when there is none: no result and no `-32601` error. A server's `ping`, `roots/list`, `sampling/createMessage` or `elicitation/create` waits until the server's own timeout. The client also subscribes to only one notification, `notifications/tools/list_changed`, so `notifications/message`, `notifications/prompts/list_changed` and `notifications/resources/list_changed` are dropped.
 

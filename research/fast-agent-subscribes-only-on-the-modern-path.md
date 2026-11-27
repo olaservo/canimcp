@@ -16,17 +16,17 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/mcp_connection_manager.py, _subscription_filter and _run_subscription_loop
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/mcp_connection_manager.py:_subscription_filter,_subscription_filter_fully_honored,_run_subscription_loop
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, _handle_message
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/client_callback_runtime.py:MCPClientCallbackRuntime
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/mcp_aggregator.py, server_notification_callback
-    commit: 71bca7b7
+    commit: ccb3f661
     path: src/fast_agent/mcp/mcp_aggregator.py:MCPAggregator.__init__
     date: 2026-11-27
 status: current

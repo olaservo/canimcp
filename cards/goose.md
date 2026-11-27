@@ -37,8 +37,11 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ content | ● full | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ structuredContent | ○ unsupported | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ audience | ● full | read ⇧ | `2026-07-28` |
-| Resources | — not recorded | | |
-| Prompts | — not recorded | | |
+| **Resources** | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ subscribe | ○ unsupported | read ⇧ | `2026-07-28` |
+| **Prompts** | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2026-07-28` |
 | Completions | — not recorded | | |
 | **Sampling** | ○ unsupported | read, declared | `2025-03-26`, `2026-07-28` |
 | **Elicitation** | ● full | read, declared | `2025-03-26`, `2026-07-28` |
@@ -60,7 +63,8 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
-| Beyond the spec | — not recorded | | |
+| **Beyond the spec** |  |  |  |
+| &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2026-07-28` |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
@@ -86,6 +90,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/tasks.cancel** — goose never calls rmcp's cancel_task.
 - **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. rmcp 3.11.0 has list_skills and get_skill, and goose calls neither. goose's own skills come from SKILL.md files under ~/.agents/skills, installed plugins and the project's .agents/skills, through a single SkillSource implementation that does not read MCP servers.
 - **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. goose sends no events/list, events/poll, events/stream or events/subscribe, and rmcp 3.11.0 defines none of these methods.
+- **prompts** — goose lists prompts with prompts/list and no cursor, so only the first page is read. Prompts are offered as commands, listed afresh on each command, and the CLI caches prompt names for completion.
+- **prompts.listChanged** — Not handled. The CLI's prompt-name completion cache is not refreshed by a notification.
+- **resources** — resources/list is sent with no cursor, so only the first page is read, for the model-facing tools and for MCP Apps ui:// resources alike. The model reaches resources through two tools, list_resources and read_resource, offered only when some extension has resources. list_resources takes only an extension name, and read_resource returns text contents only.
+- **resources.listChanged** — Not handled; resources are listed afresh when asked.
+- **resources.subscribe** — Nothing sends resources/subscribe or handles notifications/resources/updated.
+- **bonusFeatures.modelInitiatedResourceRead** — Two tools, list_resources and read_resource, offered only when some extension has resources. The list is one page per extension and the read returns text contents only.
 
 ## Verified by the probe
 
@@ -226,6 +236,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [goose only answers elicitation raised inside a tool call](../research/goose-elicitation-needs-tool-call-context.md) — *nuance*. create_elicitation resolves a session id and a tool-call request id from the request context and errors if either is missing, so an elicitation raised outside a tool call fails rather than prompting.
 - [goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it](../research/goose-sends-removed-roots-notification.md) — *idiosyncrasy*. notify_roots_list_changed fires on every working-directory change with no version check, goose prefers 2026-07-28 where the notification no longer exists, and rmcp 3.1.4 gates nothing on the outbound notification path.
 - [goose never sends the client name every registry lists it under](../research/goose-client-name-varies-by-surface.md) — *idiosyncrasy*. goose sends clientInfo.name as goose-app, goose-desktop or goose-cli, not goose, and an embedder can override it entirely. The two surfaces also differ on MCP Apps support.
+- [goose follows the tools/list cursor but reads one page of prompts and of resources](../research/goose-reads-one-page-of-prompts-and-resources.md) — *idiosyncrasy*. goose pages tools/list to the end, but sends prompts/list and resources/list once with no cursor. A prompt, ui:// app or resource past the first page never reaches the user or the model, and prompt and resource list_changed are ignored.
 - [notes/goose-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/goose-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the goose source at 5bad61a.
 
 ## Provenance

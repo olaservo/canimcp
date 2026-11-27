@@ -16,22 +16,22 @@ specVersions:
 sources:
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/index.ts, CLIENT_OPTIONS and createClient
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/opencode/src/mcp/index.ts:CLIENT_OPTIONS,createClient
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/kilo-vscode/src/services/cli-backend/server-manager.ts, spawning the CLI backend
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/kilo-vscode/src/services/cli-backend/server-manager.ts:ServerManager.startServer
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: KiloBackendCliManager.kt, spawning the CLI backend from JetBrains
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/kilo-jetbrains/backend/src/main/kotlin/ai/kilocode/backend/cli/KiloBackendCliManager.kt:KiloBackendCliManager.withContext
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/package.json, the SDK pin
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/opencode/package.json
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode/tree/v2

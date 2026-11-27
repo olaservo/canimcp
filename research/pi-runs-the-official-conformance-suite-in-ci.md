@@ -16,37 +16,37 @@ specVersions:
 sources:
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/README.md
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/test/mcp-conformance/README.md:MCP client conformance
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/baseline.json
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/test/mcp-conformance/baseline.json
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/run.ts, the MODES list
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/test/mcp-conformance/run.ts:MODES
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/client.ts, the code under test
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/coding-agent/test/mcp-conformance/client.ts
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: .github/workflows/ci.yml, the mcp-conformance job
-    commit: 129c326a
+    commit: 5c0917b7
     path: .github/workflows/ci.yml
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/protocol/types.ts, SUPPORTED_PROTOCOL_VERSIONS
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/mcp/src/protocol/types.ts:LATEST_PROTOCOL_VERSION,SUPPORTED_PROTOCOL_VERSIONS,SupportedProtocolVersion
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/client.ts, the rejection of a server version outside the list
-    commit: 129c326a
+    commit: 5c0917b7
     path: packages/mcp/src/client.ts:McpClient.connect
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi/commit/a4715ec9bffbfcb8a32a1a4100dcfd06c12c93e4

@@ -38,7 +38,7 @@ function definitionOn(line, lang) {
   if (/^\s*(\/\/|\/\*|\*|#)/.test(line)) return null;
   const top = indentOf(line) === 0;
   const patterns = [
-    [/^\s*(?:export\s+)?(?:default\s+)?(?:declare\s+)?(?:abstract\s+)?(?:public\s+|internal\s+|private\s+|protected\s+|sealed\s+|static\s+|partial\s+|open\s+|final\s+|data\s+)*(?:class|interface|struct|enum|trait|record|object|protocol|extension)\s+([A-Za-z_$][\w$]*)/, 'container'],
+    [/^\s*(?:pub(?:\([^)]*\))?\s+)?(?:export\s+)?(?:default\s+)?(?:declare\s+)?(?:abstract\s+)?(?:public\s+|internal\s+|private\s+|protected\s+|sealed\s+|static\s+|partial\s+|open\s+|final\s+|data\s+)*(?:class|interface|struct|enum|trait|record|object|protocol|extension)\s+([A-Za-z_$][\w$]*)/, 'container'],
     [/^\s*impl(?:<[^>]*>)?\s+(?:[\w:<>, ]+\s+for\s+)?([A-Za-z_][\w]*)/, 'container'],
     [/^\s*(?:pub(?:\([^)]*\))?\s+)?(?:async\s+)?(?:unsafe\s+)?(?:extern\s+"[^"]*"\s+)?fn\s+([A-Za-z_]\w*)/, 'member'],
     [/^\s*(?:pub\s+)?(?:export\s+)?(?:inline\s+)?fn\s+([A-Za-z_]\w*)/, 'member'],

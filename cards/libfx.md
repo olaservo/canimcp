@@ -20,7 +20,7 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-26 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.0.0-eab1401` (see below) |
 
@@ -96,10 +96,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **tools.result.isError** — Thrown as an Error whose message is the same joined text, which the engine uses as the tool's error content. Empty text becomes "MCP tool <name> failed".
 - **tools.result.media** — Image blocks and image/ embedded blobs become typed images next to the text. Audio is dropped.
 - **tools.result._meta** — Result _meta is not read.
-- **resources** — Fixed context only. The application lists URIs in options.resources. Each is read once with readResource when the adapter is created, and its text is wrapped in <mcp_resource> tags in adapter.instructions. There is no resources/list, no templates, and nothing the model or a user can trigger later. Non-text contents become a one-line placeholder, and the combined instructions are capped at 64 KiB.
+- **resources** — Fixed context only. The application lists URIs in options.resources. Each is read once with readResource when the adapter is created, and its text is wrapped in <mcp_resource> tags in adapter.instructions. There is no resources/list, no templates, and nothing the model or a user can trigger later. Non-text contents become a one-line placeholder. If the combined resource and prompt instructions exceed 64 KiB, createMcpAdapter throws and no adapter is created. The application passes adapter.instructions to the agent; libfx does not inject it.
 - **resources.listChanged** — Resources are read once at construction.
 - **resources.subscribe** — The adapter calls readResource and nothing else on resources.
-- **prompts** — Fixed context only. The application names prompts in options.prompts, each a name or a getPrompt request. Each is fetched once when the adapter is created, and its message text is wrapped in <mcp_prompt> tags in adapter.instructions. There is no prompts/list and no user invocation.
+- **prompts** — Fixed context only. The application names prompts in options.prompts, each a name or a getPrompt request. Each is fetched once when the adapter is created, and the text of its messages is joined by newlines and wrapped in <mcp_prompt> tags in adapter.instructions. Message roles are dropped, and non-text content becomes a one-line placeholder. The same 64 KiB limit applies, and the application passes adapter.instructions to the agent. There is no prompts/list and no user invocation.
 - **prompts.listChanged** — Prompts are fetched once at construction.
 - **completions** — The adapter's client interface has no completion method.
 - **sampling** — libfx registers no sampling handler and does not touch the client's capabilities. A Client constructed without options declares none: the probe's initialize capture shows "capabilities": {}. An application can register its own handler on its client. libfx offers its model to no such handler.
@@ -165,7 +165,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `79638170` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-26.
+Read at `fd39d643` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-27.
 
 **SDK.** Host-supplied, and not a dependency. sdk/package.json has no dependencies, devDependencies or peerDependencies field, and the published libfx 0.0.17 lists only its four native-addon packages as optionalDependencies. There is no declared or resolved version to record: the application installs the SDK and passes a connected client in. sdk/types/mcp.d.ts describes the calls as the TypeScript SDK v1 signatures. 1.32.2 was the newest v1 release on npm on 2026-11-16, and it sets LATEST_PROTOCOL_VERSION to 2025-11-25. The probe supplied @modelcontextprotocol/client 2.4.0, which defaults to the initialize handshake at 2025-11-25 and reaches 2026-07-28 only when the application sets its versionNegotiation option. Nothing is patched, because nothing is installed. Published libfx versions are fx's: c3dc80c4 is 88 commits after v0.0.17.
 

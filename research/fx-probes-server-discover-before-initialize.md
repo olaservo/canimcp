@@ -17,32 +17,32 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/core/era.zig, Config, Detector.step and the classify functions
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/core/era.zig
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, the request headers for a probe
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/server.zig:sendAttempt
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, sendLegacy
-    commit: "79638170"
+    commit: fd39d643
     path: src/mcp/server.zig:Server
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, the engine options fx passes
-    commit: "79638170"
+    commit: fd39d643
     path: src/core/mcp_host/runtime.zig:start
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/README.md, the pinned conformance baseline
-    commit: "79638170"
+    commit: fd39d643
     path: tests/e2e/conformance/README.md:MCP conformance baseline
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/expected-failures.yml
-    commit: "79638170"
+    commit: fd39d643
     path: tests/e2e/conformance/expected-failures.yml
     date: 2026-11-27
 status: current

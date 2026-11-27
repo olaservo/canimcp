@@ -14,17 +14,17 @@ specVersions:
 sources:
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/oauth-provider.ts, clientMetadataUrl and clientMetadata
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/opencode/src/mcp/oauth-provider.ts:McpOAuthProvider
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/kilocode/mcp/refresh.ts
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/opencode/src/kilocode/mcp/refresh.ts
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/index.ts, connectRemote
-    commit: 9a84bbeb
+    commit: 698ff4e9
     path: packages/opencode/src/mcp/index.ts:connectRemote
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1

@@ -15,32 +15,32 @@ specVersions:
 sources:
   - url: https://github.com/n8n-io/n8n
     title: McpOAuth2Api credential, useDynamicClientRegistration default true
-    commit: 467bcd35
+    commit: be3c33b8
     path: packages/@n8n/nodes-langchain/credentials/McpOAuth2Api.credentials.ts:McpOAuth2Api
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: oauth.service.ts, protected resource discovery and resource resolution
-    commit: 467bcd35
+    commit: be3c33b8
     path: packages/cli/src/oauth/oauth.service.ts:OauthService.discoverAndResolveResource
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: oauth.service.ts, registerClient (AS metadata, CIMD, DCR)
-    commit: 467bcd35
+    commit: be3c33b8
     path: packages/cli/src/oauth/oauth.service.ts:OauthService
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: auth.config.ts, N8N_OAUTH_CIMD_ENABLED
-    commit: 467bcd35
+    commit: be3c33b8
     path: packages/@n8n/config/src/configs/auth.config.ts:AuthConfig
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: shared/utils.ts, auth headers and the 401 refresh
-    commit: 467bcd35
+    commit: be3c33b8
     path: packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: pkce-challenge patch
-    commit: 467bcd35
+    commit: be3c33b8
     path: patches/pkce-challenge@5.0.0.patch
     date: 2026-11-27
 status: current

@@ -17,6 +17,8 @@ build.mjs                     bundles the everything-client to dist/everything-c
 everything-client/            the TypeScript SDK's conformance client at 951fe56, plus canimcp.patch
 bridge/host-bridge.mjs        conformance --command for probe adapters
 bridge/call-every-tool.mjs    mock-model script: plans tool calls from what the host offers and the suite's context
+bridge/profiles.mjs           per-adapter settings: default config, client timeout, script profile (CONF_PROFILE)
+bridge/adapters/<id>.mjs      conformance-only configs added to an adapter (mastra and fast-agent `answer`, fx `http`)
 summary/<client>.json         committed results summary per client
 ingest-preview/<client>.json  the proposed data/verified overlay, not merged
 results/                      raw checks.json, cli.log and bridge captures (gitignored)
@@ -34,7 +36,22 @@ node run.mjs --client mastra --command "node bridge/host-bridge.mjs mastra" --co
 node summarize.mjs --client ts-sdk-client --client-version 2.4.0 --config default --harness "ts-sdk everything-client 951fe56 + canimcp.patch"
 ```
 
-`run.mjs` lists the client scenarios with `conformance list --client` and runs each one with `--scenario <s> --spec-version <v>` once per version in its applicability tags. Extension scenarios have no tags, so they run at 2025-11-25 and at 2026-07-28 with `--force`, which matches the SDK's own CI legs. Options: `--only a,b`, `--versions v1,v2`, `--concurrency`, `--timeout`. The suite splits `--command` on spaces and runs it through a shell, so no path in it may contain a space, and the command runs with this folder as its working directory. Python adapters need `BRIDGE_TIMEOUT_MS=80000` and `--timeout 100000` for their cold start.
+`run.mjs` lists the client scenarios with `conformance list --client` and runs each one with `--scenario <s> --spec-version <v>` once per version in its applicability tags. Extension scenarios have no tags, so they run at 2025-11-25 and at 2026-07-28 with `--force`, which matches the SDK's own CI legs. Options: `--only a,b`, `--exclude auth/` (scenario name prefixes; this one gives the no-auth set of 15 scored runs plus 8 skills runs), `--versions v1,v2`, `--concurrency`, `--timeout`. The suite splits `--command` on spaces and runs it through a shell, so no path in it may contain a space, and the command runs with this folder as its working directory. Python adapters need `BRIDGE_TIMEOUT_MS=80000` and `--timeout 100000` for their cold start.
+
+The no-auth set for the bridged clients, as run on 2026-11-27 (Windows unless noted):
+
+```
+node run.mjs --client <id> --command "node bridge/host-bridge.mjs <id>" --exclude auth/ --concurrency 2 --timeout 110000
+node run.mjs --client eve --command "node bridge/host-bridge.mjs eve" --exclude auth/ --concurrency 1 --timeout 90000
+node run.mjs --client adk-python-modern --command "node bridge/host-bridge.mjs adk-python modern" --exclude auth/ --versions 2026-07-28 --timeout 110000
+node run.mjs --client mastra-answer --command "node bridge/host-bridge.mjs mastra answer" --exclude auth/ --timeout 60000
+node run.mjs --client fast-agent-answer --command "node bridge/host-bridge.mjs fast-agent answer" --exclude auth/ --timeout 110000
+# fx and libfx, from WSL (see below):
+node run.mjs --client fx --command "node bridge/host-bridge.mjs fx" --exclude auth/ --concurrency 2 --timeout 90000
+node summarize.mjs --client mastra-answer --registry-id mastra --client-version <v> --config answer --harness "..."
+```
+
+`<id>` is one of strands, agent-framework, adk-python, crewai, deepagents, hermes-agent, cline, pi, libfx. `bridge/profiles.mjs` picks each adapter's config and client timeout (Python adapters get 80 s), so the command needs no config argument; a second argument overrides it. A run under a different `--client` id (`mastra-answer`) keeps the default-config summary; `--registry-id` names the registry entry in the ingest preview. Eve runs at concurrency 1: two `eve dev` servers at once exited early ("Development server exited unexpectedly") and the runs timed out.
 
 On Windows, run SDK clients from WSL: `wsl -d Ubuntu -e bash -lc 'cd /mnt/c/.../probe/conformance && export PATH=$HOME/node/current/bin:$PATH && node run.mjs ...'`. Node 24.19.0 on Windows aborts at `process.exit` with `Assertion failed: !(handle->flags & UV_HANDLE_CLOSING), file src\win\async.c` (exit code 3221226505) after every 2026-07-28 run of the everything-client, after all checks have passed. The same bundle exits 0 under WSL. The suite counts the exit code, so on Windows those runs read as failures.
 
@@ -52,11 +69,51 @@ On Windows, run SDK clients from WSL: `wsl -d Ubuntu -e bash -lc 'cd /mnt/c/.../
 
 `fast-agent` 0.10.53, 12 scenarios, Windows: 13 of 17 runs pass, including `json-schema-2020-12-preservation` at both versions. Elicitation fails because fast-agent opens an interactive form (`No Windows console found`), MRTR fails three of five checks, and `auth/metadata-default` gets through discovery and dynamic registration (3 and 4 checks pass) and then times out waiting for a browser.
 
+## Results: the no-auth set across the bridge, 2026-11-27
+
+Suite 0.2.0-alpha.12, no-auth scenarios: 15 scored runs (11 scenarios across their spec versions) and 8 skills runs. "Runs pass" counts scored runs only. Every client recorded no signal on the 8 skills runs except fast-agent `answer` (below). Per run and capability: `summary/<client>.json`.
+
+| Client (config) | Runs pass | Checks pass/fail | Fails because |
+|---|---|---|---|
+| strands 1.64.0, mcp 2.3.0 | 13/15 | 70/9 | no elicitation handler (`-32600`); MRTR 2/5 |
+| agent-framework 1.25.0 | 12/15 | 73/10 | no elicitation handler; MRTR 2/5; `omit-null`: the framework rejects the model's `verbose: null` ("Argument parsing failed") before calling the tool |
+| adk-python 2.14.0 (default) | 7/15 | 32/26 | handshake only, so every 2026-07-28 run fails; no elicitation |
+| adk-python 2.14.0 (`modern`, 2026-07-28 only) | 7/8 | 52/3 | MRTR 2/5: "Server returned InputRequiredResult; pass allow_input_required=True" |
+| cline 3.0.74 | 6/15 | 31/27 | no 2026-07-28; elicitation `-32601`; drops `$schema` from the schema the model sees |
+| pi 1.5.0 (`default`, direct exposure) | 7/15 | 32/26 | no 2026-07-28; elicitation `-32601` |
+| deepagents 0.7.34 + code 0.2.5 | 5/15 | 30/27 | no 2026-07-28; elicitation `-32603` "no back-channel for server-initiated requests"; inlines `$ref`, so `$defs` is gone |
+| crewai 1.15.37 | 5/15 | 26/29 | no 2026-07-28; no elicitation; drops `$schema` and `$defs`; fetches a network `$ref` (`json-schema-ref-no-deref`) |
+| hermes-agent a9ff979 (`tool-search-off`) | 9/15 | 65/16 | `protocol: auto` gives up on the 2026-07-28 servers that answer `initialize` with `-32020`; declines form elicitation; MRTR 1/5: no `allow_input_required`, and after three failed calls hermes marks the server unreachable and skips the fourth |
+| eve 1.0.0-rc.6 | 8/15 | 54/22 | no elicitation handler; schema checks see a reconstruction (below); `omit-null` rejected by eve's input validation; no reconnect after an SSE stream closes (`sse-retry` timed out) |
+| fx 0.0.16 (`http`, WSL) | 13/15 | 71/9 | declares no elicitation; MRTR 2/5 ("the server asked for input fx can't give") |
+| libfx eab1401 (WSL) | 7/15 | 32/26 | no 2026-07-28 (legacy negotiation); elicitation `-32601` |
+| mastra (`answer`) | 13/15 | 75/3 | `json-schema-2020-12-preservation` at both versions, as before; elicitation 5/5 and MRTR 5/5 now pass |
+| fast-agent 0.10.53 (`answer`) | 14/15 | 79/11 incl. skills | elicitation defaults 0/5: the handler accepts with `{}` and nothing fills the defaults. Skills: no-prefetch passes at both versions; the six verify runs record "not testable" FAILUREs because the model never loads a skill |
+
+Mastra `answer` passes the elicitation scenario with `capabilities.elicitation.form.applyDefaults: true`, as the SDK's own conformance client sets it. With Mastra's stock `{ form: {} }` (config `answer-no-defaults`) the five default checks fail. The Python SDK has no equivalent option, so fast-agent `answer` fails them.
+
+Findings from these runs, with the evidence under `results/` (gitignored):
+
+- crewai 1.15.37 dereferences a network `$ref` in a tool `inputSchema`. The canary URL was fetched once with `python-requests/2.34.2`, and the fetched schema reached the model inlined. `crewai/utilities/pydantic_schema_utils.py:866` calls `jsonref.replace_refs(json_schema, proxies=False)` with the default loader; the same line is on crewai main at `77237aec`. Check `sep-2106-no-network-ref-deref`, `results/crewai/2026-11-27T14-14-24-915Z/2026-07-28/json-schema-ref-no-deref/`.
+- The Python SDK (mcp and mcp_types 2.3.0) rejects a 2026-07-28 `CallToolResult` without `resultType` ("CallToolResult.resultType Field required"); `mcp_types/_v2026_07_28` declares it required. Observed through strands, adk-python `modern`, fast-agent `answer`, hermes-agent and agent-framework ("Function failed"). The suite still scores `sep-2322-default-result-type-complete` SUCCESS in each, since the check only records that the server sent the result. Evidence: the `test_mrtr_no_result_type` tool result in `results/bridge/<client>/sep-2322-client-request-state-*/model.jsonl`.
+- hermes-agent `protocol: auto` falls back to `server/discover` only on `-32022` or `-32601`. The suite's 2026-07-28 `tools_call` and `json-schema-2020-12-preservation` servers answer a header-less `initialize` with HTTP 400 `-32020` "Missing MCP-Protocol-Version header", so hermes ends up with no tools. The `request-metadata` server answers `-32022`, the MRTR server `-32601`, and the header scenarios' servers answer `initialize` itself; hermes gets through those.
+- eve does not reconnect after the server closes a `tools/call` SSE stream, and the run times out. The suite scores `client-sse-graceful-reconnect` SUCCESS and `client-sse-retry-timing` FAILURE at -98 ms because it counts the standalone GET eve opened before the close. `results/eve/2026-11-27T14-14-24-967Z/2025-11-25/sse-retry/`.
+
+How the harness reaches each client:
+
+- strands, agent-framework, adk-python and crewai offer the model nothing but the MCP tools, under bare or URL-derived names; their profile is `mcp: 'all'`. Every other client prefixes the server name `probe`, and the script calls only tools whose name carries it, so it never calls a host's built-in tools.
+- cline loops on a plain text reply, so the script ends the run with `submit_and_exit` (profile `finish`).
+- hermes-agent runs `tool-search-off`. The stock config defers MCP tools behind `tool_search`.
+- eve lists no MCP tool to the model. The script calls `eve__search` with `probe__`, reads the tool names and TypeScript signatures from the result, builds arguments from the signatures, and calls each tool through `eve__tool`. The model never sees a JSON Schema, so the echo in `json-schema-2020-12-preservation` is rebuilt from the signature, and its `$schema`, `$defs` and `additionalProperties` failures describe eve's model-facing format.
+- fx 0.0.16 defers MCP tools behind `capability_search` and `mcp_select_tool`. The search is lexical, so the script searches server `probe` with the words of every no-auth scenario's tool names, selects each quoted name, then calls the tools fx offers. fx also skips a `url` server entry without `"type": "http"`, which `hosts/fx/adapter.ts` does not write; `bridge/adapters/fx.mjs` adds the `http` config that does.
+- mastra `answer` runs `hosts/mastra/conformance-agent.mjs`: the adapter's agent plus an `inputRequests` handler that accepts with empty content. fast-agent `answer` runs `hosts/fast-agent/conformance_agent.py`, a FastAgent app with a decorator-supplied `elicitation_handler` that does the same; `fast-agent go` offers only an interactive form or auto-cancel.
+
 ## What blocks the bridge for other clients
 
-- The bridge replaces an adapter's own `mockScript` with `call-every-tool.mjs`. Clients that need a warm-up turn, tool search or a code-mode tool (cline, codex, crewai, deepagents, eve, fx, hermes-agent, opencode, pi) need the two composed: the adapter's script first, with the planned tool as its fixture tool, then the plan.
 - codex, goose and opencode run in the Docker image, which has no network beyond loopback, so the suite has to run inside the container with the bridge. fx and libfx need WSL.
-- Elicitation needs each client configured to answer: a handler in the framework scripts (mastra, strands, adk-python, agent-framework, crewai, deepagents), and for hosts a non-interactive accept mode or a TTY driver. fast-agent shows a console form.
+- Elicitation answer configs exist for mastra and fast-agent only. strands, adk-python, agent-framework, crewai and deepagents need a handler in their agent scripts; cline, pi, eve and libfx answer `-32601`; hermes declines; fx declares none.
+- The stock configs of hermes-agent (tool search), pi (`codemode`) and opencode (Code Mode) hide MCP tools from the model and are not run here.
+- Clients without 2026-07-28 support (adk-python default, cline, pi, deepagents, crewai, libfx) fail every 2026-07-28 scenario at the handshake, which hides what those scenarios test.
 - Auth needs a headless user agent. Frameworks need an OAuth provider wired into their script that follows the authorization redirect, as the SDK's `ConformanceOAuthProvider` does. Hosts open a browser or print the URL and wait on a local callback; a `BROWSER`/`xdg-open` shim or a bridge that tails client output and fetches the URL would complete the flow, since the suite's authorization endpoint redirects without a login page. Hosts that keep tokens in a keyring or the home directory also need a fresh store per run. Client-credentials, enterprise-managed authorization, DPoP and WIF need application code most hosts do not expose.
 - `sep-2322-client-request-state` returns input-required results that embed an elicitation request, so it needs the same elicitation answer.
 - The skills scenarios record nothing unless the client implements the skills extension client side.

@@ -14,22 +14,22 @@ specVersions:
 sources:
   - url: https://github.com/zed-industries/zed
     title: crates/agent_servers/src/acp/v2.rs, building SessionContext.mcp_servers
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/agent_servers/src/acp/v2.rs:AcpV2Connection.session_context
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/agent_servers/src/acp/v1.rs, mcp_servers_for_project
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/agent_servers/src/acp/v1.rs:mcp_servers_for_project
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/agent_servers/src/acp.rs, mcp_configurations_for_project
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/agent_servers/src/acp.rs:mcp_configurations_for_project
     date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/project/src/context_server_store.rs, OAuth session in the keychain
-    commit: 961ac220
+    commit: ed8dc1b6
     path: crates/project/src/context_server_store.rs:ContextServerStore.create_context_server
     date: 2026-11-27
 status: current

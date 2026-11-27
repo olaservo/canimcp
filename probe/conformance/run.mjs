@@ -6,7 +6,8 @@
 //   node run.mjs --client ts-sdk-client --command "node --import tsx everything-client/everythingClient.ts"
 //   node run.mjs --client mastra --command "node bridge/mastra-bridge.mjs" --only tools_call,initialize
 //
-// Options: --only a,b  --versions 2025-11-25,2026-07-28  --concurrency 4  --timeout 30000
+// Options: --only a,b  --exclude auth/  --versions 2025-11-25,2026-07-28  --concurrency 4  --timeout 30000
+// --exclude takes scenario name prefixes; `--exclude auth/` is the no-auth set.
 // The command runs with this folder as its working directory. The suite splits
 // it on spaces and runs it through a shell, so no path in it may contain a space.
 import { spawn } from 'node:child_process';
@@ -26,10 +27,11 @@ const opt = (name, dflt) => {
 const client = opt('client');
 const command = opt('command');
 if (!client || !command) {
-  console.error('usage: node run.mjs --client <id> --command "<cmd>" [--only a,b] [--versions v1,v2] [--concurrency n] [--timeout ms]');
+  console.error('usage: node run.mjs --client <id> --command "<cmd>" [--only a,b] [--exclude prefix,...] [--versions v1,v2] [--concurrency n] [--timeout ms]');
   process.exit(2);
 }
 const only = opt('only')?.split(',');
+const exclude = opt('exclude')?.split(',') ?? [];
 const versions = opt('versions')?.split(',');
 const concurrency = Number(opt('concurrency', '4'));
 const timeout = Number(opt('timeout', '30000'));
@@ -78,7 +80,7 @@ const runId = new Date().toISOString().replace(/[:.]/g, '-');
 const outRoot = resolve(here, 'results', client, runId);
 mkdirSync(outRoot, { recursive: true });
 
-const scenarios = (await listClientScenarios()).filter((s) => !only || only.includes(s.scenario));
+const scenarios = (await listClientScenarios()).filter((s) => (!only || only.includes(s.scenario)) && !exclude.some((p) => s.scenario.startsWith(p)));
 const plan = [];
 for (const s of scenarios) {
   const extension = s.tags.includes('extension');
