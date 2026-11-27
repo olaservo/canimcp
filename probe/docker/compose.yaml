@@ -1,5 +1,6 @@
 # docker compose -f probe/docker/compose.yaml build
 # docker compose -f probe/docker/compose.yaml run --rm probe --client goose --set core
+# docker compose -f probe/docker/compose.yaml run --rm conformance --client goose --command "node bridge/host-bridge.mjs goose" --exclude auth/
 name: canimcp-probe
 services:
   probe:
@@ -13,3 +14,11 @@ services:
     network_mode: none
     volumes:
       - ../runs:/canimcp/probe/runs
+  # conformance/run.mjs in the same image. The scenario servers listen on loopback beside the client.
+  conformance:
+    image: canimcp-probe:local
+    network_mode: none
+    working_dir: /canimcp/probe/conformance
+    entrypoint: ["node", "run.mjs"]
+    volumes:
+      - ../conformance/results:/canimcp/probe/conformance/results

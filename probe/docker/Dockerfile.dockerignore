@@ -5,5 +5,8 @@ docker
 hosts/*/node_modules
 hosts/*/bin
 hosts/*/.venv
+conformance/node_modules
+conformance/dist
+conformance/results
 **/__pycache__
 *.md
