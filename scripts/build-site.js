@@ -369,7 +369,7 @@ marked.use({
 const themeJs = read('web', 'theme.js').replace(/^\/\/.*\n/, '');
 
 // Shown on every page, in its Markdown copy and in llms.txt while the site is in development.
-const PROVISIONAL = 'Provisional findings. canimcp is in active development. Statuses, notes and probe results may be incomplete or wrong, and can change without notice. Check the cited source before relying on a claim, and send corrections through the contact page.';
+const PROVISIONAL = 'Alpha: work in progress. canimcp is an alpha, built by one person and changing often. Statuses, notes and probe results may be incomplete or inaccurate, and pages, data and the API can change without notice. Check the cited source before relying on a claim, and send corrections through the contact page.';
 const PROVISIONAL_MD = `> **${PROVISIONAL.replace('contact page', `[contact page](${ORIGIN}/contact)`)}**\n`;
 
 function renderHtml(p, { robots } = {}) {
@@ -423,7 +423,7 @@ ${robots ? `<meta name="robots" content="${robots}">\n` : `<link rel="canonical"
 <script>${themeJs}</script>
 ${jsonLd}</head>
 <body>
-<aside class="provisional" role="note"><strong>Provisional findings.</strong> ${esc(PROVISIONAL.replace(/^Provisional findings\. /, '')).replace('contact page', '<a href="/contact">contact page</a>')}</aside>
+<aside class="provisional" role="note"><strong class="provisional-title">Alpha: work in progress</strong> ${esc(PROVISIONAL.replace(/^Alpha: work in progress\. /, '')).replace('contact page', '<a href="/contact">contact page</a>')}</aside>
 <main>
 ${body}</main>
 <nav aria-label="Site">
