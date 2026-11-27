@@ -19659,6 +19659,48 @@
     "metadata": {
       "vendor": "Google",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (antigravity) sees io.modelcontextprotocol/ui in at most half of this client's 2026-07-28 tool calls.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (antigravity) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "claude-code": {
@@ -19763,6 +19805,48 @@
     "metadata": {
       "vendor": "Anthropic",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (claude-code) sees io.modelcontextprotocol/ui in at most half of this client's 2026-07-28 tool calls.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (claude-code) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "claude-ai": {
@@ -19867,6 +19951,47 @@
     "metadata": {
       "vendor": "Anthropic",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "full",
+        "notes": "Declared in traffic: the HF telemetry (claude-ai) sees io.modelcontextprotocol/ui in the client capabilities. The telemetry shows the declaration, not how the view is rendered.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "full",
+            "note": "Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (claude-ai) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "chatgpt": {
@@ -19972,6 +20097,47 @@
     "metadata": {
       "vendor": "OpenAI",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "full",
+        "notes": "Declared in traffic: the HF telemetry (openai) sees io.modelcontextprotocol/ui in the client capabilities. The telemetry shows the declaration, not how the view is rendered.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "full",
+            "note": "Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (openai) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "codex-desktop": {
@@ -20004,6 +20170,47 @@
     "metadata": {
       "vendor": "OpenAI",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "full",
+        "notes": "Declared in traffic: the HF telemetry (codex-web) sees io.modelcontextprotocol/ui in the client capabilities. The telemetry shows the declaration, not how the view is rendered.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "full",
+            "note": "Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (codex-web) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "huggingface-chat-ui": {
@@ -20037,6 +20244,48 @@
       "openSource": true,
       "license": "Apache-2.0",
       "sourceUrl": "https://github.com/huggingface/chat-ui"
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (huggingface-chatui) sees io.modelcontextprotocol/ui in at most half of this client's 2026-07-28 tool calls.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (huggingface-chatui) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "cursor": {
@@ -20150,6 +20399,47 @@
     "metadata": {
       "vendor": "Anysphere",
       "openSource": false
+    },
+    "extensions": {
+      "io.modelcontextprotocol/ui": {
+        "status": "full",
+        "notes": "Declared in traffic: the HF telemetry (cursor) sees io.modelcontextprotocol/ui in the client capabilities. The telemetry shows the declaration, not how the view is rendered.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "full",
+            "note": "Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared in traffic: the HF telemetry (cursor) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "evidence": [
+          {
+            "tier": "observed",
+            "source": "evalstate/mcp-clients",
+            "url": "https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json",
+            "date": "2026-11-26",
+            "window": "2026-09-27/2026-11-25",
+            "status": "unsupported",
+            "at": "2026-07-28",
+            "note": "At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.015% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "untested",
+        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "untested",
+        "notes": "No source to read, and the HF telemetry does not report events."
+      }
     }
   },
   "vscode": {

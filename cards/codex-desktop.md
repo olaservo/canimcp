@@ -36,10 +36,10 @@ OpenAI's Codex outside the CLI. Closed source, so nothing here is a read. Apify 
 | Icons | — not recorded | | |
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ● full | observed |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | observed | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | · untested |  |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | · untested |  |  |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -49,6 +49,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 ## What the table flattens
 
 - **tools** — Known only from traffic: the feed counts tool calls from this wire name.
+- **extensions.io.modelcontextprotocol/ui** — Declared in traffic: the HF telemetry (codex-web) sees io.modelcontextprotocol/ui in the client capabilities. The telemetry shows the declaration, not how the view is rendered.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared in traffic: the HF telemetry (codex-web) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.
+- **extensions.io.modelcontextprotocol/skills** — No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it.
+- **extensions.io.modelcontextprotocol/events** — No source to read, and the HF telemetry does not report events.
 
 ## Observed in traffic
 
@@ -58,8 +62,8 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 |---|---|---|---|---|
 | elicitation | ● full | `2026-07-28` | — not recorded | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
 | elicitation.url | ● full | `2026-07-28` | — not recorded | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
-| apps | ● full | ? | — not recorded | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| tasks | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| apps | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 

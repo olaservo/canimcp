@@ -39,10 +39,10 @@ Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts.
 | Icons | — not recorded | | |
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | observed | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | observed | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | · untested |  |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | · untested |  |  |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -53,6 +53,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 - **tools** — Hugging Face traffic includes tool calls from clients sending these names, so the agent does call MCP tools.
 - **elicitation** — The tiers disagree. Apify's record has no elicitation key at 2025-06-18. Hugging Face traffic sets both elicitation and URL elicitation, with no revision recorded. Neither tier exercised it, and the source cannot be read.
+- **extensions.io.modelcontextprotocol/ui** — Not declared in traffic: the HF telemetry (antigravity) sees io.modelcontextprotocol/ui in at most half of this client's 2026-07-28 tool calls.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared in traffic: the HF telemetry (antigravity) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.
+- **extensions.io.modelcontextprotocol/skills** — No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it.
+- **extensions.io.modelcontextprotocol/events** — No source to read, and the HF telemetry does not report events.
 
 ## Observed in traffic
 
@@ -62,8 +66,8 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 |---|---|---|---|---|
 | elicitation | ● full | ? | · untested ≠ | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
 | elicitation.url | ● full | ? | — not recorded | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| apps | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
-| tasks | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
