@@ -401,6 +401,11 @@ function rowKeys(rows) {
   return [...keys.values()].sort((a, b) => configOrder(a.config, b.config) || a.run.localeCompare(b.run));
 }
 
+/** The config name, with its kind when the two differ: `answer (harness)`, `default (setting)`. */
+function configCell(r) {
+  return r.configKind && r.configKind !== r.config ? `${r.config} (${r.configKind})` : r.config;
+}
+
 function escapeCell(s) {
   return String(s ?? '').replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 }
@@ -420,8 +425,10 @@ function verifiedTable(rows, { withCapability }) {
       lastCap = r.capability;
     }
     const scenario = r.scenario.replace(/^tools\.result\./, '');
-    const artifact = r.artifact ? `[${escapeCell(scenario)}](../${r.artifact}/record.json)` : escapeCell(scenario);
-    L.push(`| ${artifact} | ${escapeCell(r.config)} | ${escapeCell(runLabel(r))} | ${r.at ? `\`${r.at}\`` : '?'} | ${escapeCell(r.clientVersion)} | ${escapeCell(r.note)} |`);
+    // A probe run links its record.json; a conformance run links the committed summary file.
+    const target = r.artifact?.endsWith('.json') ? r.artifact : `${r.artifact}/record.json`;
+    const artifact = r.artifact ? `[${escapeCell(scenario)}](../${target})` : escapeCell(scenario);
+    L.push(`| ${artifact} | ${escapeCell(configCell(r))} | ${escapeCell(runLabel(r))} | ${r.at ? `\`${r.at}\`` : '?'} | ${escapeCell(r.clientVersion)} | ${escapeCell(r.note)} |`);
   }
   return L;
 }
@@ -577,7 +584,7 @@ function renderCard(id, entry, notes, verified, observed) {
     L.push(
       `${rows.length} records from the live probe (\`probe/\`), client version${verified.versions.length > 1 ? 's' : ''} ${verified.versions
         .map((v) => `\`${v}\``)
-        .join(', ')}. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: \`[…]\` content, \`{…}\` structuredContent, \`⟨…⟩\` the whole envelope, \`"…"\` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: \`${VERIFIED_DIR}/${verified.file}\`.`,
+        .join(', ')}. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: \`[…]\` content, \`{…}\` structuredContent, \`⟨…⟩\` the whole envelope, \`"…"\` a placeholder. Rows whose scenario starts with \`conformance/\` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: \`setting\` is a switch the client documents, \`harness\` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: \`${VERIFIED_DIR}/${verified.file}\`.`,
     );
     L.push('');
     L.push(...verifiedTable(rows, { withCapability: true }));

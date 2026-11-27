@@ -121,12 +121,35 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-17 records from the live probe (`probe/`), client version `0.0.0-eab1401`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/libfx.json`.
+31 records from the live probe (`probe/`), client version `0.0.0-eab1401`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/libfx.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2025-11-25` | 0.0.0-eab1401 | […] and {…} (content 1x, structuredContent 1x, as json) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/libfx.json) | default | http | `2025-11-25` | 0.0.0-eab1401 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/libfx.json) | default | http | `2025-06-18` | 0.0.0-eab1401 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/libfx.json) | default | http | `2025-11-25` | 0.0.0-eab1401 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation; client exited 1 |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-http-client-sends-version-header; client exited 1 |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete; client exited 1 |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version; client exited 1 |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/libfx.json) | default | http | `2025-11-25` | 0.0.0-eab1401 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance http-custom-headers at 2026-07-28: 0/5 checks pass; failed sep-2243-client-supports-custom-headers, sep-2243-client-mirrors-designated-params, sep-2243-client-encode-values, sep-2243-client-base64-unsafe, sep-2243-client-omit-null; client exited 1 |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; only absence checks passed, which a client that ignores the feature also passes; client exited 1 |
+| [conformance/http-standard-headers](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance http-standard-headers at 2026-07-28: 0/1 checks pass; failed sep-2243-client-includes-standard-headers; client exited 1 |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/libfx.json) | default | http | `2025-06-18` | 0.0.0-eab1401 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/libfx.json) | default | http | `2025-11-25` | 0.0.0-eab1401 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/libfx.json) | default | http | `2026-07-28` | 0.0.0-eab1401 | conformance tools_call at 2026-07-28: 0/1 checks pass; failed tool-add-numbers; client exited 1 |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2025-11-25` | 0.0.0-eab1401 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/libfx@0.0.0-eab1401/default/both-stdio/tools.result.with_meta/record.json) | default | stdio | `2025-11-25` | 0.0.0-eab1401 | […] and {…} (content 1x, structuredContent 1x, as json, _meta did not reach the model) |

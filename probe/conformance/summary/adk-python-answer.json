@@ -3,6 +3,7 @@
   "client": "adk-python-answer",
   "clientVersion": "2.14.0",
   "config": "answer",
+  "configKind": "harness",
   "harness": "bridge/host-bridge.mjs, mock model bridge/call-every-tool.mjs; no-auth scenarios; answer config",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -391,7 +392,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

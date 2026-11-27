@@ -130,86 +130,109 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-68 records from the live probe (`probe/`), client version `0.7.34+code-0.2.5`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/deepagents.json`.
+82 records from the live probe (`probe/`), client version `0.7.34+code-0.2.5`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/deepagents.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.app_only/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.app_only/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
-| [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.app_only/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.app_only/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
+| [app_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.app_only/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/deepagents.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/deepagents.json) | default | http | `2025-06-18` | 0.7.34+code-0.2.5 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/deepagents.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-http-client-sends-version-header |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/deepagents.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance http-custom-headers at 2026-07-28: 0/5 checks pass; failed sep-2243-client-supports-custom-headers, sep-2243-client-mirrors-designated-params, sep-2243-client-encode-values, sep-2243-client-base64-unsafe, sep-2243-client-omit-null |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; only absence checks passed, which a client that ignores the feature also passes |
+| [conformance/http-standard-headers](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance http-standard-headers at 2026-07-28: 0/1 checks pass; failed sep-2243-client-includes-standard-headers |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/deepagents.json) | default | http | `2025-06-18` | 0.7.34+code-0.2.5 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/deepagents.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/deepagents.json) | default | http | `2026-07-28` | 0.7.34+code-0.2.5 | conformance tools_call at 2026-07-28: 0/1 checks pass; failed tool-add-numbers |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.meta_only/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.meta_only/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.meta_only/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.meta_only/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.meta_only/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.with_meta/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.with_meta/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.with_meta/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json, _meta did not reach the model) |
-| [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.with_meta/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
+| [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.with_meta/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json, _meta did not reach the model) |
+| [with_meta](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.with_meta/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text, _meta did not reach the model) |
 | **tools.result.audience** | | | | | |
 | [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.audience_user/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.audience_user/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.audience_user/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
-| [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.audience_user/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.audience_user/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
+| [audience_user](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.audience_user/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | **tools.result.content** | | | | | |
 | [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.empty_object/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
 | [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.empty_object/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.empty_object/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.empty_object/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
+| [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.empty_object/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
+| [empty_object](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.empty_object/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
 | [large](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.large/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [large](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.large/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [large](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.large/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as text) |
-| [large](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.large/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [large](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.large/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as text) |
+| [large](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.large/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.no_content_key/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
 | [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.no_content_key/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.no_content_key/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.no_content_key/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
+| [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.no_content_key/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
+| [no_content_key](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.no_content_key/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
 | **tools.result.isError** | | | | | |
 | [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.is_error/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.is_error/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.is_error/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.is_error/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.is_error/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [is_error](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.is_error/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | **tools.result.media** | | | | | |
 | [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.with_image/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as blocks) |
 | [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.with_image/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as blocks) |
-| [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.with_image/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as blocks) |
-| [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.with_image/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.with_image/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as blocks) |
+| [with_image](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.with_image/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | **tools.result.outputSchema** | | | | | |
 | [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.schema_match/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.schema_match/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.schema_match/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
-| [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.schema_match/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.schema_match/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
+| [schema_match](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.schema_match/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.schema_mismatch/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
 | [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.schema_mismatch/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.schema_mismatch/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.schema_mismatch/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
+| [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.schema_mismatch/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
+| [schema_mismatch](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.schema_mismatch/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
 | **tools.result.structuredContent** | | | | | |
 | [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.mirror/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | payload once (as json) |
 | [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.mirror/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | payload once (as json) |
-| [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.mirror/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | payload 2x (as json) |
-| [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.mirror/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | payload once (as text) |
+| [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.mirror/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | payload 2x (as json) |
+| [mirror](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.mirror/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | payload once (as text) |
 | [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.sc_empty/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.sc_empty/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_empty/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as json) |
-| [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_empty/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_empty/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as json) |
+| [sc_empty](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_empty/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.sc_null/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.sc_null/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_null/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_null/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_null/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_null/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.sc_string/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
 | [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.sc_string/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_string/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
-| [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_string/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
+| [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.sc_string/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | result never sent to the model |
+| [sc_string](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.sc_string/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | tool not offered to the model |
 | [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.structured_only/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | "…" no marker reached the model; payload: "[]" |
 | [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.structured_only/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | "…" no marker reached the model; payload: "[]" |
-| [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.structured_only/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | {…} structuredContent only (1x, as json) |
-| [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.structured_only/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | "…" no marker reached the model; payload: "<result>[]</result>" |
+| [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.structured_only/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | {…} structuredContent only (1x, as json) |
+| [structured_only](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.structured_only/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | "…" no marker reached the model; payload: "<result>[]</result>" |
 | [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-http/tools.result.summary_and_data/record.json) | default | http | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 | [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/default/both-stdio/tools.result.summary_and_data/record.json) | default | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.summary_and_data/record.json) | hooks | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
-| [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.summary_and_data/record.json) | interpreter | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
+| [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/hooks/both-stdio/tools.result.summary_and_data/record.json) | hooks (harness) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] and {…} (content 1x, structuredContent 1x, as json) |
+| [summary_and_data](../probe/runs/deepagents@0.7.34+code-0.2.5/interpreter/both-stdio/tools.result.summary_and_data/record.json) | interpreter (setting) | stdio | `2025-11-25` | 0.7.34+code-0.2.5 | […] content only (1x, as text) |
 
 ## Where the evidence disagrees
 

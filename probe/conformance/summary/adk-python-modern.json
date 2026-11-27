@@ -3,6 +3,7 @@
   "client": "adk-python-modern",
   "clientVersion": "2.14.0",
   "config": "modern",
+  "configKind": "setting",
   "harness": "bridge/host-bridge.mjs adk-python modern, mock model bridge/call-every-tool.mjs; no-auth scenarios at 2026-07-28",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -193,7 +194,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2026-07-28": {
           "full": 1,

@@ -17,7 +17,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 | Which capability ids exist | `list_capabilities` | `/data/capabilities/index.json` |
 | Which clients support a capability | `find_capability_support` | `/data/capabilities/{slug}.json`, where the slug is the id with dots as hyphens |
 | What one client does | `get_client` | `/data/clients/{id}.json` |
-| What reached the model from a tool result | `get_probe_results` | `/data/verified/{client}.json` |
+| What the probe and the conformance suite saw a client do | `get_probe_results` | `/data/verified/{client}.json` |
 | Why a status is what it is | `search_research_notes`, `get_research_note` | `/data/research/index.json` |
 
 `https://canimcp.io/openapi.json` describes the JSON. Every page on the site is Markdown at its URL plus `.md`, and each capability has a page at `/capabilities/{slug}`.
@@ -28,7 +28,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 2. Call `find_capability_support` with the id. When the server in question offers an older protocol revision as its newest, such as `2025-11-25`, pass it as `revision`.
 3. Read each client's `status` together with its `evidence`. Do not report the status alone.
 4. When a client's result has `research` ids, read those notes before answering. They hold the cases a status cannot express.
-5. For `tools.result.*` capabilities, also call `get_probe_results`. The probe ran the real client against a fixture server and recorded what the client sent to its model.
+5. When the `verified` part of a row is present, call `get_probe_results` for that client. The probe ran the real client against a fixture server and recorded what the client sent to its model or the server. The results also hold the MCP conformance suite's scenarios, with a `status` and check counts.
 
 ## Reading the answer
 
@@ -40,6 +40,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
   - `verified`: the probe exercised it.
   - `observed`: it was seen in telemetry over real traffic.
   - `read`: someone read the client's source at the commit given.
+- Each verified result names its `config` and `configKind`. `default` is the client's stock settings, `setting` is a switch the client documents, and `harness` is probe-written code that uses an API the client leaves to the application, such as an elicitation callback. Lead with the `default` results when asked what a client does. A `harness` result says what an application built on the client can do. Pass `configKind` to `get_probe_results` to get one kind.
 - Tiers are not ranked. When two disagree, report both. An evidence item whose own `status` differs from the capability's is a recorded disagreement.
 - Each evidence item has `at`, the protocol revision it applies to. `2026-07-28` is stateless, and every revision through `2025-11-25` uses the initialize handshake. A result at one says nothing about the other.
 - Rows describe each client on `2026-07-28`, or on the newest revision it speaks when it cannot negotiate that one. With `revision`, each client's row is for the newest revision it speaks at or below the one given, and `revision` on the row names it. `revisionRecord` marks a row from the client's own record for that revision. A client with `recordedPerRevision` false in `list_clients` has one set of rows for every revision, so say its rows were not checked revision by revision. Over JSON, the older revisions' rows are under `byRevision` in `/data/capabilities/{slug}.json`.

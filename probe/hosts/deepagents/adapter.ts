@@ -25,9 +25,9 @@ const adapter: HostAdapter = {
   title: 'deepagents',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'create_deep_agent + deepagents-code MCP loader and mcp_tool_middleware, Chat Completions.', modelApi: 'chat' },
-    { name: 'hooks', description: 'plus ServerHooksMiddleware with a PostToolUse hook returning the ToolMessage artifact as additionalContext.', modelApi: 'chat' },
-    { name: 'interpreter', description: 'MCP tools reachable only through the QuickJS js_eval tool (programmatic tool calling).', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'create_deep_agent + deepagents-code MCP loader and mcp_tool_middleware, Chat Completions.', modelApi: 'chat' },
+    { name: 'hooks', kind: 'harness', description: 'plus ServerHooksMiddleware with a PostToolUse hook returning the ToolMessage artifact as additionalContext.', modelApi: 'chat' },
+    { name: 'interpreter', kind: 'setting', description: 'MCP tools reachable only through the QuickJS js_eval tool (programmatic tool calling).', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(python)) return { missing: 'create probe/hosts/deepagents/.venv as requirements.txt says' };

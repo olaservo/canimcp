@@ -11,9 +11,9 @@ const adapter: HostAdapter = {
   id: 'mastra',
   title: 'Mastra',
   configs: [
-    { name: 'default', description: 'Agent + MCPClient, onToolError throw, Chat Completions.', modelApi: 'chat' },
-    { name: 'return-errors', description: 'onToolError: return, so isError results come back as the envelope.', modelApi: 'chat' },
-    { name: 'legacy', description: 'protocolVersion: legacy on the server entry: initialize handshake only.', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'Agent + MCPClient, onToolError throw, Chat Completions.', modelApi: 'chat' },
+    { name: 'return-errors', kind: 'setting', description: 'onToolError: return, so isError results come back as the envelope.', modelApi: 'chat' },
+    { name: 'legacy', kind: 'setting', description: 'protocolVersion: legacy on the server entry: initialize handshake only.', modelApi: 'chat' },
   ],
   async version() {
     const p = resolve(hostDir, 'node_modules/@mastra/mcp/package.json');

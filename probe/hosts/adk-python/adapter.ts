@@ -12,10 +12,10 @@ const adapter: HostAdapter = {
   id: 'adk-python',
   title: 'Google ADK (Python)',
   configs: [
-    { name: 'default', description: 'Gemini model class, Gemini API generateContent: the FunctionResponse carries the whole result dict.', modelApi: 'gemini' },
-    { name: 'anthropic', description: 'AnthropicLlm model class, Messages API: the content text when content is non-empty, else the JSON of the dict.', modelApi: 'anthropic' },
-    { name: 'modern', description: 'Gemini plus ADK_ENABLE_MCP_MODERN_PROTOCOL=1: negotiate_auto, server/discover first.', modelApi: 'gemini' },
-    { name: 'strict-errors', description: 'Gemini plus ADK_DISABLE_MCP_GRACEFUL_ERROR_HANDLING=1: SDK validation errors propagate instead of becoming {"error": ...}.', modelApi: 'gemini' },
+    { name: 'default', kind: 'default', description: 'Gemini model class, Gemini API generateContent: the FunctionResponse carries the whole result dict.', modelApi: 'gemini' },
+    { name: 'anthropic', kind: 'setting', description: 'AnthropicLlm model class, Messages API: the content text when content is non-empty, else the JSON of the dict.', modelApi: 'anthropic' },
+    { name: 'modern', kind: 'setting', description: 'Gemini plus ADK_ENABLE_MCP_MODERN_PROTOCOL=1: negotiate_auto, server/discover first.', modelApi: 'gemini' },
+    { name: 'strict-errors', kind: 'setting', description: 'Gemini plus ADK_DISABLE_MCP_GRACEFUL_ERROR_HANDLING=1: SDK validation errors propagate instead of becoming {"error": ...}.', modelApi: 'gemini' },
   ],
   async version() {
     if (!existsSync(python)) return { missing: `${python} not found; run uv venv --python 3.13 .venv && uv pip install --python .venv/Scripts/python.exe -r requirements.txt in probe/hosts/adk-python` };

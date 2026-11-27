@@ -16,8 +16,8 @@ const adapter: HostAdapter = {
   title: 'eve',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'defineMcpClientConnection with protocolVersionDiscovery on (server/discover first), tools reached through eve__tool, Chat Completions.', modelApi: 'chat' },
-    { name: 'no-discovery', description: 'protocolVersionDiscovery: false on the connection: initialize handshake only.', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'defineMcpClientConnection with protocolVersionDiscovery on (server/discover first), tools reached through eve__tool, Chat Completions.', modelApi: 'chat' },
+    { name: 'no-discovery', kind: 'setting', description: 'protocolVersionDiscovery: false on the connection: initialize handshake only.', modelApi: 'chat' },
   ],
   async version() {
     const p = resolve(hostDir, 'node_modules/eve/package.json');

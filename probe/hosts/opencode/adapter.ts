@@ -21,10 +21,10 @@ const adapter: HostAdapter = {
   title: 'opencode',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'Stock settings: Code Mode on, so MCP tools are reached through the execute script tool; protocol unset, which is auto from 82d8fc5 (server/discover first).', modelApi: 'chat' },
-    { name: 'codemode-off', description: 'mcp.servers.probe.codemode = false: the server\'s tools are direct model tools.', modelApi: 'chat' },
-    { name: 'execute-denied', description: 'permissions deny execute on *: Code Mode disabled for every server, MCP tools exposed directly.', modelApi: 'chat' },
-    { name: 'protocol-2026-07-28', description: 'codemode = false plus mcp.servers.probe.protocol = "2026-07-28": direct tools over the discover-first revision.', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'Stock settings: Code Mode on, so MCP tools are reached through the execute script tool; protocol unset, which is auto from 82d8fc5 (server/discover first).', modelApi: 'chat' },
+    { name: 'codemode-off', kind: 'setting', description: 'mcp.servers.probe.codemode = false: the server\'s tools are direct model tools.', modelApi: 'chat' },
+    { name: 'execute-denied', kind: 'setting', description: 'permissions deny execute on *: Code Mode disabled for every server, MCP tools exposed directly.', modelApi: 'chat' },
+    { name: 'protocol-2026-07-28', kind: 'setting', description: 'codemode = false plus mcp.servers.probe.protocol = "2026-07-28": direct tools over the discover-first revision.', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(bin)) return { missing: `${bin} not found; build opencode at the pin into probe/hosts/opencode/bin (see package.json) or run npm install in probe/hosts/opencode` };

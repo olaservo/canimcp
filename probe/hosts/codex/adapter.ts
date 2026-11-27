@@ -21,20 +21,20 @@ const adapter: HostAdapter = {
   title: 'Codex CLI',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'Stock settings: rmcp legacy mode, 2025-06-18 preferred.', modelApi: 'responses' },
+    { name: 'default', kind: 'default', description: 'Stock settings: rmcp legacy mode, 2025-06-18 preferred.', modelApi: 'responses' },
     {
-      name: 'mcp-2026-07-28',
+      name: 'mcp-2026-07-28', kind: 'setting',
       description:
         'features.mcp_2026_07_28 = true (also passed as --enable): discover-first, 2026-07-28 preferred. On its own it applies to Streamable HTTP servers only; a stdio server keeps the 2025-06-18 handshake unless it also opts in (rmcp-client protocol_mode.rs stdio_mode), which is the next config.',
       modelApi: 'responses',
     },
     {
-      name: 'mcp-2026-07-28-stdio-opt-in',
+      name: 'mcp-2026-07-28-stdio-opt-in', kind: 'setting',
       description: 'The feature flag plus CODEX_MCP_PROTOCOL_VERSION = "2026-07-28" in the stdio server\'s env table. Stdio only; over HTTP it is the same as mcp-2026-07-28.',
       modelApi: 'responses',
     },
     {
-      name: 'stdio-opt-in-no-flag',
+      name: 'stdio-opt-in-no-flag', kind: 'setting',
       description: 'CODEX_MCP_PROTOCOL_VERSION = "2026-07-28" in the stdio server\'s env table with the feature flag off. Stdio only; over HTTP it is the same as default.',
       modelApi: 'responses',
     },

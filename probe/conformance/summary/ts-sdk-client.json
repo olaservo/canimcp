@@ -3,6 +3,7 @@
   "client": "ts-sdk-client",
   "clientVersion": "2.4.0",
   "config": "default",
+  "configKind": "harness",
   "harness": "ts-sdk everything-client 951fe56 + canimcp.patch",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -1700,7 +1701,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

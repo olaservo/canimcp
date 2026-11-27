@@ -12,9 +12,9 @@ const adapter: HostAdapter = {
   id: 'goose',
   title: 'goose',
   configs: [
-    { name: 'default', description: 'openai provider, Chat Completions, stock settings.', modelApi: 'chat' },
-    { name: 'anthropic', description: 'anthropic provider: the Messages API formatter.', modelApi: 'anthropic' },
-    { name: 'code-mode', description: 'The code_execution builtin on: MCP tools reached through the sandbox.', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'openai provider, Chat Completions, stock settings.', modelApi: 'chat' },
+    { name: 'anthropic', kind: 'setting', description: 'anthropic provider: the Messages API formatter.', modelApi: 'anthropic' },
+    { name: 'code-mode', kind: 'setting', description: 'The code_execution builtin on: MCP tools reached through the sandbox.', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(bin)) return { missing: `${bin} not found; build goose-cli at the pin and copy the binary to probe/hosts/goose/bin` };

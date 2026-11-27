@@ -11,8 +11,8 @@ const { runCommand, ensureDir, findFinalText } = await import(pathToFileURL(reso
 
 export default {
   configs: [
-    { name: 'answer', description: 'default plus inputRequests on the server entry and capabilities.elicitation.form.applyDefaults: every elicitation accepted with empty content.', modelApi: 'chat' },
-    { name: 'answer-no-defaults', description: 'answer without applyDefaults: Mastra declares its stock elicitation { form: {} }.', modelApi: 'chat' },
+    { name: 'answer', kind: 'harness', description: 'default plus inputRequests on the server entry and capabilities.elicitation.form.applyDefaults: every elicitation accepted with empty content.', modelApi: 'chat' },
+    { name: 'answer-no-defaults', kind: 'harness', description: 'answer without applyDefaults: Mastra declares its stock elicitation { form: {} }.', modelApi: 'chat' },
   ],
   async run(ctx) {
     const cwd = ensureDir(resolve(ctx.tmpDir, 'workspace'));

@@ -34,13 +34,13 @@ const adapter: HostAdapter = {
   id: 'agent-framework',
   title: 'Microsoft Agent Framework (Python)',
   configs: [
-    { name: 'default', description: 'MCPStdioTool default tool_result_content=structured_first, OpenAIChatCompletionClient (Chat Completions).', modelApi: 'chat' },
-    { name: 'content-first', description: 'tool_result_content=content_first: content when non-empty, else structuredContent.', modelApi: 'chat' },
-    { name: 'content-only', description: 'tool_result_content=content_only: structuredContent ignored.', modelApi: 'chat' },
-    { name: 'structured-only', description: 'tool_result_content=structured_only: content ignored.', modelApi: 'chat' },
-    { name: 'both', description: 'tool_result_content=both: content blocks, then serialized structuredContent.', modelApi: 'chat' },
-    { name: 'responses', description: 'OpenAIChatClient (Responses API), default structured_first.', modelApi: 'responses' },
-    { name: 'anthropic', description: 'AnthropicClient (Messages API), default structured_first.', modelApi: 'anthropic' },
+    { name: 'default', kind: 'default', description: 'MCPStdioTool default tool_result_content=structured_first, OpenAIChatCompletionClient (Chat Completions).', modelApi: 'chat' },
+    { name: 'content-first', kind: 'setting', description: 'tool_result_content=content_first: content when non-empty, else structuredContent.', modelApi: 'chat' },
+    { name: 'content-only', kind: 'setting', description: 'tool_result_content=content_only: structuredContent ignored.', modelApi: 'chat' },
+    { name: 'structured-only', kind: 'setting', description: 'tool_result_content=structured_only: content ignored.', modelApi: 'chat' },
+    { name: 'both', kind: 'setting', description: 'tool_result_content=both: content blocks, then serialized structuredContent.', modelApi: 'chat' },
+    { name: 'responses', kind: 'setting', description: 'OpenAIChatClient (Responses API), default structured_first.', modelApi: 'responses' },
+    { name: 'anthropic', kind: 'setting', description: 'AnthropicClient (Messages API), default structured_first.', modelApi: 'anthropic' },
   ],
   async version() {
     if (!existsSync(venvPython)) return { missing: 'create the venv: see probe/hosts/agent-framework/requirements.txt' };

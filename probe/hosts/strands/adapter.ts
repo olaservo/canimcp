@@ -12,9 +12,9 @@ const adapter: HostAdapter = {
   id: 'strands',
   title: 'Strands Agents (Python)',
   configs: [
-    { name: 'default', description: 'Agent + MCPClient, OpenAIModel, Chat Completions.', modelApi: 'chat' },
-    { name: 'responses', description: 'OpenAIResponsesModel: the Responses API converter.', modelApi: 'responses' },
-    { name: 'anthropic', description: 'AnthropicModel: the Messages API converter.', modelApi: 'anthropic' },
+    { name: 'default', kind: 'default', description: 'Agent + MCPClient, OpenAIModel, Chat Completions.', modelApi: 'chat' },
+    { name: 'responses', kind: 'setting', description: 'OpenAIResponsesModel: the Responses API converter.', modelApi: 'responses' },
+    { name: 'anthropic', kind: 'setting', description: 'AnthropicModel: the Messages API converter.', modelApi: 'anthropic' },
   ],
   async version() {
     if (!existsSync(python)) return { missing: 'create probe/hosts/strands/.venv with uv and install requirements.txt' };

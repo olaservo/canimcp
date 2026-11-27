@@ -354,6 +354,11 @@
           "type": "string",
           "description": "verified tier: the client configuration the run used, 'default' or the switch the run flipped (e.g. 'code-mode', 'anthropic', 'mcp-2026-07-28'). The adapter in probe/hosts/<client>/ documents each name."
         },
+        "configKind": {
+          "type": "string",
+          "enum": ["default", "setting", "harness"],
+          "description": "verified tier: what kind of configuration `config` is. default: the client's stock settings. setting: a switch the client documents. harness: probe-written code that uses an API the client leaves to the application, such as an elicitation callback, so the result says what an application built on the client can do."
+        },
         "artifact": {
           "type": "string",
           "description": "verified tier: repo-relative path to the run directory holding the raw captures (wire.jsonl, model.jsonl, client output, record.json)."
