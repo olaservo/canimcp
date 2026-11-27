@@ -13,37 +13,37 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py MCPClient, application_name, client_name and the client_info passed to ClientSession
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient.__init__,MCPClient,MCPClient._async_background_thread
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _build_client_from_config, application_name defaults to the config key
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/mcp_client.py:_build_client_from_config
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient constructor defaults and loadServers baseOptions
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/mcp/client.ts:McpClient
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts config.node.ts, applicationName falls back to the config key
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/mcp/config.node.ts:baseOptions
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-py agent.py, mcp_servers go through load_servers
-    commit: 8e388465
+    commit: 78855cad
     path: harness-py/src/strands_harness/agent.py:create_harness
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-ts builtin-tools.ts, clientName keys the mcp_servers axis
-    commit: 8e388465
+    commit: 78855cad
     path: harness-ts/src/builtin-tools.ts:UNNAMED_MCP_CLIENT,mcpClientsByClientName
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-cli agent/mcp.ts, applicationName is the server name and the version is the harness version
-    commit: 8e388465
+    commit: 78855cad
     path: strands-cli/src/agent/mcp.ts:CLIENT_DEFAULTS,createClient
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
@@ -51,7 +51,7 @@ sources:
     path: mcp/client/session.py
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - hermes-goes-on-the-wire-as-mcp
   - goose-client-name-varies-by-surface

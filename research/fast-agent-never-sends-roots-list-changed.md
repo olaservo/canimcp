@@ -16,7 +16,7 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, _make_list_roots_callback
-    commit: ccb3f661
+    commit: 16f8bb65
     path: src/fast_agent/mcp/client_callback_runtime.py:MCPClientCallbackRuntime._make_list_roots_callback
     date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk

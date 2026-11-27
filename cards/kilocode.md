@@ -114,7 +114,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `9a84bbeb` on 2026-11-27, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-27.
+Read at `3c7f2659` on 2026-11-27, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-27.
 
 **SDK.** Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.4.0 at efd2a06b, also patched, and main has not followed.
 

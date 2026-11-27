@@ -22,7 +22,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.174.0-alpha.7` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -54,7 +54,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | **Logging** | ◐ partial | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2025-06-18` |
 | **Icons** | ◐ partial | read | `2025-06-18` |
-| JSON Schema | — not recorded | | |
+| **JSON Schema** |  |  |  |
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
@@ -98,6 +98,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — notifications/message is mapped onto tracing levels and written to Codex's own log, not shown in the UI. logging/setLevel is never sent, and neither is the io.modelcontextprotocol/logLevel _meta key that replaces it, so on a 2026-07-28 session a conforming server sends nothing and the handler is unreachable.
 - **instructions** — Server instructions are read from the initialize result and attached to each of that server's tools when the catalog is built.
 - **icons** — Server icons are parsed from the initialize result and carried into McpServerInfo. No rendering path was found in the crates read, and tool-level icons are not handled.
+- **jsonSchema** — A tool inputSchema is not passed through. parse_tool_input_schema sanitizes it, prunes unreachable definitions, compacts a large schema, and deserializes it into codex's own JsonSchema type, and the model-facing schema is serialized from that type. The dialect named by $schema is not read.
+- **jsonSchema.features** — const becomes a single-value enum. A boolean schema becomes {"type": "string"}. Only local $ref into $defs or definitions is kept reachable. Keywords outside this list, among them $schema, format, pattern, minimum, if, then, else and $anchor, are dropped. The conformance run of codex 0.174.0-alpha.7 saw $schema, if/then/else and $anchor missing from the schema the model was shown.
 - **extensions.openai/form** — A vendor elicitation extension. An openai/form request carries message and requestedSchema and is routed into the same elicitation path as elicitation/create. Declared only when the app-server host asks for it, or when the legacy form-elicitation flag is set.
 - **extensions.openai/elicitation** — A vendor elicitation extension. Method openai/elicitation/create with form and userVerification modes. Declared only when the app-server host declares it; the TUI and codex exec declare none of the four extensions. userVerification is stripped for every server except the host-owned Apps server.
 - **extensions.openai/standard-form-input** — Client-only extension, never projected to downstream servers.
@@ -114,7 +116,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-154 records from the live probe (`probe/`), client version `0.174.0-alpha.7`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/codex.json`.
+180 records from the live probe (`probe/`), client version `0.174.0-alpha.7`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/codex.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -127,7 +129,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 | [app_only](../probe/runs/codex@0.174.0-alpha.7/mcp-2026-07-28-stdio-opt-in/both-stdio/tools.result.app_only/record.json) | mcp-2026-07-28-stdio-opt-in (setting) | stdio | `2026-07-28` | 0.174.0-alpha.7 | tool not offered to the model |
 | [app_only](../probe/runs/codex@0.174.0-alpha.7/stdio-opt-in-no-flag/both-http/tools.result.app_only/record.json) | stdio-opt-in-no-flag (setting) | http | `2025-06-18` | 0.174.0-alpha.7 | tool not offered to the model |
 | [app_only](../probe/runs/codex@0.174.0-alpha.7/stdio-opt-in-no-flag/both-stdio/tools.result.app_only/record.json) | stdio-opt-in-no-flag (setting) | stdio | `2026-07-28` | 0.174.0-alpha.7 | tool not offered to the model |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/codex.json) | default | http | `2025-11-25` | 0.174.0-alpha.7 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2025-11-25` | 0.174.0-alpha.7 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
 | **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/codex.json) | default | http | `2025-06-18` | 0.174.0-alpha.7 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/codex.json) | default | http | `2025-11-25` | 0.174.0-alpha.7 | conformance initialize at 2025-11-25: 1/1 checks pass |
 | [protocol.initializeHandshake.echo](../probe/runs/codex@0.174.0-alpha.7/default/both-http/protocol.initializeHandshake.echo/record.json) | default | http | `2025-06-18` | 0.174.0-alpha.7 | initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call) |
 | [protocol.initializeHandshake.echo](../probe/runs/codex@0.174.0-alpha.7/default/both-stdio/protocol.initializeHandshake.echo/record.json) | default | stdio | `2026-07-28` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.echo](../probe/runs/codex@0.174.0-alpha.7/mcp-2026-07-28/both-http/protocol.initializeHandshake.echo/record.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
@@ -142,11 +149,39 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 | [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/codex@0.174.0-alpha.7/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25/record.json) | default | stdio | `2026-07-28` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/codex@0.174.0-alpha.7/default/both-http/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | initialize at 2025-06-18 → 2026-07-28; client continued at 2026-07-28 (notifications/initialized, tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/codex@0.174.0-alpha.7/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | stdio | `2026-07-28` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance sep-2322-client-request-state at 2026-07-28: 4/4 checks pass |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-http-client-sends-version-header |
+| [conformance/request-metadata](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
 | **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version |
+| [conformance/request-metadata](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
 | [protocol.serverDiscover.method_not_found](../probe/runs/codex@0.174.0-alpha.7/default/both-http/protocol.serverDiscover.method_not_found/record.json) | default | http | `2025-06-18` | 0.174.0-alpha.7 | initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call) |
 | [protocol.serverDiscover.method_not_found](../probe/runs/codex@0.174.0-alpha.7/default/both-stdio/protocol.serverDiscover.method_not_found/record.json) | default | stdio | `2025-06-18` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call) |
 | [protocol.serverDiscover.method_not_found](../probe/runs/codex@0.174.0-alpha.7/mcp-2026-07-28/both-http/protocol.serverDiscover.method_not_found/record.json) | mcp-2026-07-28 (setting) | http | `2025-06-18` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call) |
 | [protocol.serverDiscover.method_not_found](../probe/runs/codex@0.174.0-alpha.7/mcp-2026-07-28-stdio-opt-in/both-stdio/protocol.serverDiscover.method_not_found/record.json) | mcp-2026-07-28-stdio-opt-in (setting) | stdio | `2025-06-18` | 0.174.0-alpha.7 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-06-18 → 2025-06-18; client continued at 2025-06-18 (notifications/initialized, tools/list, tools/call) |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/codex.json) | default | http | `2025-11-25` | 0.174.0-alpha.7 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| [conformance/sse-retry](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2025-11-25` | 0.174.0-alpha.7 | conformance sse-retry at 2025-11-25: 0/1 checks pass; failed client-sse-graceful-reconnect |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-custom-headers](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-standard-headers at 2026-07-28: 4/5 checks pass; failed sep-2243-client-includes-standard-headers |
+| [conformance/http-standard-headers](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance http-standard-headers at 2026-07-28: 3/3 checks pass |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/codex.json) | default | http | `2025-06-18` | 0.174.0-alpha.7 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/codex.json) | default | http | `2025-11-25` | 0.174.0-alpha.7 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/codex.json) | default | http | `2026-07-28` | 0.174.0-alpha.7 | conformance tools_call at 2026-07-28: 0/1 checks pass; failed tool-add-numbers |
+| [conformance/tools_call](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2025-06-18` | 0.174.0-alpha.7 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2025-11-25` | 0.174.0-alpha.7 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/codex-mcp-2026-07-28.json) | mcp-2026-07-28 (setting) | http | `2026-07-28` | 0.174.0-alpha.7 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/codex@0.174.0-alpha.7/default/both-http/tools.result.meta_only/record.json) | default | http | `2025-06-18` | 0.174.0-alpha.7 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/codex@0.174.0-alpha.7/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 0.174.0-alpha.7 | […] content only (1x, as text, _meta did not reach the model) |
@@ -285,14 +320,14 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 0.2%, `2025-06-18` 99.8%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 0.2%, `2025-06-18` 99.8%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
 | elicitation | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
 | elicitation.url | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.22% of this client's tool calls over the 30 days to 2026-11-26, so the sample is small. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.22% of this client's tool calls over the 30 days to 2026-11-26, so the sample is small. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
@@ -312,7 +347,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `57b493a6` on 2026-11-27, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-27.
+Read at `18c09f20` on 2026-11-27, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-27.
 
 **SDK.** A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.
 

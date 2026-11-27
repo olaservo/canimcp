@@ -99,7 +99,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-112 records from the live probe (`probe/`), client version `1.61.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/goose.json`.
+124 records from the live probe (`probe/`), client version `1.61.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/goose.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -110,6 +110,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 | [app_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.app_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [app_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.app_only/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [app_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.app_only/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/goose.json) | default | http | `2025-11-25` | 1.61.0 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/5 checks pass; failed client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default; client exited 1 |
 | **protocol.initializeHandshake** | | | | | |
 | [protocol.initializeHandshake.echo](../probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.echo/record.json) | default | http | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.echo](../probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.echo/record.json) | default | stdio | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
@@ -119,9 +121,26 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 | [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25/record.json) | default | stdio | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | http | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | stdio | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation; client exited 1 |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete; client exited 1 |
 | **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
 | [protocol.serverDiscover.method_not_found](../probe/runs/goose@1.61.0/default/both-http/protocol.serverDiscover.method_not_found/record.json) | default | http | `2025-11-25` | 1.61.0 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
 | [protocol.serverDiscover.method_not_found](../probe/runs/goose@1.61.0/default/both-stdio/protocol.serverDiscover.method_not_found/record.json) | default | stdio | `2025-11-25` | 1.61.0 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/goose.json) | default | http | `2025-11-25` | 1.61.0 | conformance sse-retry at 2025-11-25: 0/1 checks pass; failed client-sse-graceful-reconnect |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance http-standard-headers at 2026-07-28: 3/3 checks pass |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/goose.json) | default | http | `2025-06-18` | 1.61.0 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/goose.json) | default | http | `2025-11-25` | 1.61.0 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/goose.json) | default | http | `2026-07-28` | 1.61.0 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/goose@1.61.0/default/both-http/tools.result.meta_only/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |

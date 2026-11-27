@@ -13,27 +13,27 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the Streamable HTTP attempt loop and the 2 s initialize cap
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.session_task
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, attempt count, retry delay, and the transient and SSE-fallback tests
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/util.py:_convert_mcp_result
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the SSE path and the per-server transport preference
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.get_session,MCPSessionManager.session_task
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/services/settings/groups/mcp.py, mcp_server_timeout and its note on the 2 s cap
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/services/settings/groups/mcp.py:McpSettings
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the advisory DELETE sent on disconnect
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/util.py:MCPStreamableHttpClient._terminate_remote_session
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/

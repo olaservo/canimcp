@@ -45,9 +45,12 @@ if (adapter.transports && !adapter.transports.includes('http')) {
   process.exit(2);
 }
 
+// Runs of one scenario at two spec versions can start in the same millisecond, and a shared
+// runDir means a shared client config, so the name carries the version and the pid too.
 const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+const specVersion = process.env.MCP_CONFORMANCE_PROTOCOL_VERSION ?? 'unknown';
 const tmpRoot = process.env.PROBE_TMP ?? resolve(here, '../results/bridge');
-const runDir = resolve(tmpRoot, adapterId, `${scenario.replace(/\//g, '__')}-${stamp}`);
+const runDir = resolve(tmpRoot, adapterId, `${scenario.replace(/\//g, '__')}-${specVersion}-${stamp}-${process.pid}`);
 const tmpDir = resolve(runDir, 'tmp');
 mkdirSync(tmpDir, { recursive: true });
 

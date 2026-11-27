@@ -422,6 +422,72 @@
             "eraPolicy": "both",
             "modelApi": "chat"
           }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/initialize",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance initialize at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 9075,
+            "checks": [
+              {
+                "id": "mcp-client-initialization",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/initialize",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance initialize at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 9165,
+            "checks": [
+              {
+                "id": "mcp-client-initialization",
+                "status": "SUCCESS"
+              }
+            ]
+          }
         }
       ]
     },
@@ -539,6 +605,39 @@
             "serverMode": "raw",
             "eraPolicy": "both",
             "modelApi": "chat"
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance request-metadata at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8279,
+            "checks": [
+              {
+                "id": "sep-2575-client-retry-supported-version",
+                "status": "SUCCESS"
+              }
+            ]
           }
         }
       ]
@@ -9979,6 +10078,632 @@
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "chat"
+          }
+        }
+      ]
+    },
+    "elicitation.form": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/elicitation-sep1034-client-defaults",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 8157,
+            "checks": [
+              {
+                "id": "client-elicitation-sep1034-general",
+                "status": "FAILURE",
+                "errorMessage": "Expected action 'accept', got 'cancel'"
+              },
+              {
+                "id": "client-elicitation-sep1034-string-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-integer-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-number-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-enum-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-boolean-default",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.standardRequestHeaders": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-custom-headers",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance http-custom-headers at 2026-07-28: 18/18 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8739,
+            "checks": [
+              {
+                "id": "sep-2243-client-supports-custom-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-omit-null",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-invalid-tool-headers",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8566,
+            "checks": [
+              {
+                "id": "sep-2243-client-reject-invalid-tool",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-not-empty",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-standard-headers",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance http-standard-headers at 2026-07-28: 4/4 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8570,
+            "checks": [
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.protocolVersionHeader": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance request-metadata at 2026-07-28: 2/2 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8279,
+            "checks": [
+              {
+                "id": "sep-2575-http-client-sends-version-header",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2575-http-version-header-matches-meta",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.mrtr": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "partial",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 4/4 checks pass; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 9622,
+            "checks": [
+              {
+                "id": "sep-2322-client-request-state-echoed",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-jsonrpc-id-different",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-no-state-omitted",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-parallel-isolation",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.resultType": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes; client exited 1",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 1,
+            "timedOut": false,
+            "durationMs": 9622,
+            "checks": [
+              {
+                "id": "sep-2322-default-result-type-complete",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "skills": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2640-client-no-prefetch",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance sep-2640-client-no-prefetch at 2025-11-25 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": true,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 7451,
+            "checks": [
+              {
+                "id": "sep-2640-host-no-prefetch",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2640-client-no-prefetch",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance sep-2640-client-no-prefetch at 2026-07-28 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": true,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8022,
+            "checks": [
+              {
+                "id": "sep-2640-host-no-prefetch",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.sseResumability": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sse-retry",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance sse-retry at 2025-11-25: 3/3 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 9356,
+            "checks": [
+              {
+                "id": "client-sse-graceful-reconnect",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "client-sse-retry-timing",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "client-sse-last-event-id",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tools": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance tools_call at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10019,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance tools_call at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8508,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.0.0-82d8fc5",
+          "config": "codemode-off",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/opencode.json",
+          "note": "conformance tools_call at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs opencode (profile config codemode-off; built from source at 82d8fc5), mock model bridge/call-every-tool.mjs; no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 8250,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
           }
         }
       ]

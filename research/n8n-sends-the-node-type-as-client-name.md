@@ -14,37 +14,37 @@ specVersions:
 sources:
   - url: https://github.com/n8n-io/n8n
     title: shared/utils.ts, connectMcpClientForCredential passes node.type and node.typeVersion
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:connectMcpClientForCredential
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: shared/utils.ts, the Client constructor
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:connectMcpClient
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: McpRegistryClientTool, registry nodes saved as @n8n/mcp-registry.<slug>
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/@n8n/nodes-langchain/nodes/mcp/McpRegistryClientTool/McpRegistryClientTool.node.ts:McpRegistryClientTool
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: microsoft-utils.ts, the Agent 365 trigger connects with its own name
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/@n8n/nodes-langchain/nodes/vendors/Microsoft/microsoft-utils.ts:getMicrosoftMcpTools
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: "@n8n/agents McpConnection"
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/@n8n/agents/src/runtime/mcp/mcp-connection.ts:McpConnection,McpConnection.listTools
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: Agents module builds an @n8n/agents McpClient per JSON-config server
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/cli/src/modules/agents/json-config/mcp-client-factory.ts:buildMcpClientForServer
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: Instance AI reads name=url pairs from N8N_INSTANCE_AI_MCP_SERVERS
-    commit: be3c33b8
+    commit: fb1aec9c
     path: packages/cli/src/modules/instance-ai/turn-setup/assistant-agent.factory.ts:AssistantAgentFactory
     date: 2026-11-27
 status: current

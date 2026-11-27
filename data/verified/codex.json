@@ -709,6 +709,72 @@
             "eraPolicy": "both",
             "modelApi": "responses"
           }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/initialize",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance initialize at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 17380,
+            "checks": [
+              {
+                "id": "mcp-client-initialization",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/initialize",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance initialize at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 17472,
+            "checks": [
+              {
+                "id": "mcp-client-initialization",
+                "status": "SUCCESS"
+              }
+            ]
+          }
         }
       ]
     },
@@ -930,6 +996,71 @@
             "serverMode": "raw",
             "eraPolicy": "both",
             "modelApi": "responses"
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance request-metadata at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15128,
+            "checks": [
+              {
+                "id": "sep-2575-client-retry-supported-version",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16115,
+            "checks": [
+              {
+                "id": "sep-2575-client-retry-supported-version",
+                "status": "WARNING"
+              }
+            ]
           }
         }
       ]
@@ -10070,6 +10201,1080 @@
             "serverMode": "sdk",
             "eraPolicy": "both",
             "modelApi": "responses"
+          }
+        }
+      ]
+    },
+    "elicitation.form": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/elicitation-sep1034-client-defaults",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11455,
+            "checks": [
+              {
+                "id": "client-elicitation-sep1034-general",
+                "status": "FAILURE",
+                "errorMessage": "Expected action 'accept', got 'decline'"
+              },
+              {
+                "id": "client-elicitation-sep1034-string-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-integer-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-number-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-enum-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-boolean-default",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/elicitation-sep1034-client-defaults",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11864,
+            "checks": [
+              {
+                "id": "client-elicitation-sep1034-general",
+                "status": "FAILURE",
+                "errorMessage": "Expected action 'accept', got 'decline'"
+              },
+              {
+                "id": "client-elicitation-sep1034-string-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-integer-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-number-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-enum-default",
+                "status": "FAILURE"
+              },
+              {
+                "id": "client-elicitation-sep1034-boolean-default",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.standardRequestHeaders": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-custom-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance http-custom-headers at 2026-07-28: 18/18 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10336,
+            "checks": [
+              {
+                "id": "sep-2243-client-supports-custom-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-omit-null",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-invalid-tool-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 9662,
+            "checks": [
+              {
+                "id": "sep-2243-client-reject-invalid-tool",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-not-empty",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-standard-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance http-standard-headers at 2026-07-28: 3/3 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10218,
+            "checks": [
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-custom-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance http-custom-headers at 2026-07-28: 18/18 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11584,
+            "checks": [
+              {
+                "id": "sep-2243-client-supports-custom-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-encode-values",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-base64-unsafe",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-mirrors-designated-params",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-omit-null",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-invalid-tool-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11798,
+            "checks": [
+              {
+                "id": "sep-2243-client-reject-invalid-tool",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-not-empty",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-primitive-only",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-unique",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-x-mcp-header-charset",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "partial",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/http-standard-headers",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance http-standard-headers at 2026-07-28: 4/5 checks pass; failed sep-2243-client-includes-standard-headers",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11493,
+            "checks": [
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "FAILURE",
+                "errorMessage": "Missing Mcp-Method header on initialize request. Clients MUST include the Mcp-Method header on all POST requests."
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2243-client-includes-standard-headers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.protocolVersionHeader": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance request-metadata at 2026-07-28: 2/2 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15128,
+            "checks": [
+              {
+                "id": "sep-2575-http-client-sends-version-header",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2575-http-version-header-matches-meta",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/request-metadata",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-http-client-sends-version-header",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16115,
+            "checks": [
+              {
+                "id": "sep-2575-http-client-sends-version-header",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.mrtr": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 4/4 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10754,
+            "checks": [
+              {
+                "id": "sep-2322-client-request-state-echoed",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-jsonrpc-id-different",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-no-state-omitted",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "sep-2322-client-parallel-isolation",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16131,
+            "checks": [
+              {
+                "id": "sep-2322-client-request-state-echoed",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-jsonrpc-id-different",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-no-state-omitted",
+                "status": "FAILURE"
+              },
+              {
+                "id": "sep-2322-client-parallel-isolation",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.resultType": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 10754,
+            "checks": [
+              {
+                "id": "sep-2322-default-result-type-complete",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sep-2322-client-request-state",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16131,
+            "checks": [
+              {
+                "id": "sep-2322-default-result-type-complete",
+                "status": "FAILURE"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "protocol.sseResumability": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sse-retry",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance sse-retry at 2025-11-25: 0/1 checks pass; failed client-sse-graceful-reconnect",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 15164,
+            "checks": [
+              {
+                "id": "client-sse-graceful-reconnect",
+                "status": "FAILURE",
+                "errorMessage": "Client did not attempt GET reconnection after stream closure. Client should treat graceful stream close as reconnectable."
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/sse-retry",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance sse-retry at 2025-11-25: 3/3 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11613,
+            "checks": [
+              {
+                "id": "client-sse-graceful-reconnect",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "client-sse-retry-timing",
+                "status": "SUCCESS"
+              },
+              {
+                "id": "client-sse-last-event-id",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tools": {
+      "evidence": [
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance tools_call at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11927,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance tools_call at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11139,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "mcp-2026-07-28",
+          "configKind": "setting",
+          "artifact": "probe/conformance/summary/codex-mcp-2026-07-28.json",
+          "note": "conformance tools_call at 2026-07-28: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex mcp-2026-07-28, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11453,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-06-18",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance tools_call at 2025-06-18: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-06-18",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 12730,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "status": "full",
+          "at": "2025-11-25",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance tools_call at 2025-11-25: 1/1 checks pass",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2025-11-25",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 0,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 11847,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "SUCCESS"
+              }
+            ]
+          }
+        },
+        {
+          "tier": "verified",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/conformance",
+          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
+          "date": "2026-11-27",
+          "scenario": "conformance/tools_call",
+          "clientVersion": "0.174.0-alpha.7",
+          "config": "default",
+          "configKind": "default",
+          "artifact": "probe/conformance/summary/codex.json",
+          "note": "conformance tools_call at 2026-07-28: 0/1 checks pass; failed tool-add-numbers",
+          "run": {
+            "suite": "@modelcontextprotocol/conformance",
+            "suiteVersion": "0.2.0-alpha.12",
+            "specVersion": "2026-07-28",
+            "forced": false,
+            "harness": "bridge/host-bridge.mjs codex, mock model bridge/call-every-tool.mjs (warm-up list_mcp_resources while no MCP tool is offered); no-auth scenarios; Docker image probe/docker (compose service conformance)",
+            "platform": "linux node v24.22.3",
+            "transport": "http",
+            "cliExit": 1,
+            "exitCode": 0,
+            "timedOut": false,
+            "durationMs": 16435,
+            "checks": [
+              {
+                "id": "tool-add-numbers",
+                "status": "FAILURE"
+              }
+            ]
           }
         }
       ]

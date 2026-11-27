@@ -18,17 +18,17 @@ specVersions:
 sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
-    commit: 621147a5
+    commit: c84eb7f1
     path: libs/code/deepagents_code/mcp_tools.py:connect,_mount_backends
     date: 2026-11-27
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _build_mcp_tool
-    commit: 621147a5
+    commit: c84eb7f1
     path: libs/code/deepagents_code/mcp_tools.py:_build_mcp_tool
     date: 2026-11-27
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, MCPAdapter and _cancel_mcp_elicitation
-    commit: 621147a5
+    commit: c84eb7f1
     path: libs/talon/deepagents_talon/mcp.py:load_mcp_tools,_cancel_mcp_elicitation
     date: 2026-11-27
   - url: https://github.com/PrefectHQ/fastmcp

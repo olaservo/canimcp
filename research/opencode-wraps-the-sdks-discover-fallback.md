@@ -15,17 +15,17 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, connect, the stdio respawn and negotiate
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/client.ts:connect
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, negotiation and the probe cap
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/client.ts:negotiation,PROBE_TIMEOUT,DEFAULT_STARTUP_TIMEOUT
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/stdio.ts, the pid and stderr accessors
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/stdio.ts:make
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode/commit/70e8a0f6f3

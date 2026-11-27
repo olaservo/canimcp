@@ -27,7 +27,7 @@ sources:
     date: 2026-08-24
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/logging_client_handler.rs, the full ClientHandler impl
-    commit: 57b493a6
+    commit: 18c09f20
     path: codex-rs/rmcp-client/src/logging_client_handler.rs
     date: 2026-11-27
   - url: https://modelcontextprotocol.io/specification/2026-07-28/changelog

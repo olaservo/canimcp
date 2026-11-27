@@ -19,27 +19,27 @@ tracking:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: extensions/mcp-events/src/service.ts, McpEventsService.createBinding, the server/discover check
-    commit: 89425fd7
+    commit: b607eb7b
     path: extensions/mcp-events/src/service.ts:McpEventsService.createBinding
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/gateway/server-methods/mcp-events.ts, the same check before the event catalog
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/gateway/server-methods/mcp-events.ts:mcpEventsHandlers
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: extensions/mcp-events/src/protocol.ts, MCP_EVENTS_PROFILE
-    commit: 89425fd7
+    commit: b607eb7b
     path: extensions/mcp-events/src/protocol.ts:MCP_EVENTS_PROFILE
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: extensions/mcp-events/README.md, the server requirement and the protocol reference
-    commit: 89425fd7
+    commit: b607eb7b
     path: extensions/mcp-events/README.md
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-event-request.ts, requestMcpEvent and the per-request _meta
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/agents/mcp-event-request.ts:requestMcpEvent
     date: 2026-11-27
   - url: https://developers.openai.com/plugins/build/mcp-events

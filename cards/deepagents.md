@@ -264,7 +264,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `621147a5` on 2026-11-27, from `main` of https://github.com/langchain-ai/deepagents.git. That commit was authored 2026-11-27.
+Read at `c84eb7f1` on 2026-11-27, from `main` of https://github.com/langchain-ai/deepagents.git. That commit was authored 2026-11-27.
 
 **SDK.** Versions are deepagents-code's, from libs/code. fastmcp 4.1.2 is a metapackage over fastmcp-slim 4.1.2, which holds the code. It runs the official mcp SDK, declared "mcp>=2.0.0" and resolved to 2.3.0 with mcp-types 2.3.0. langchain is declared ">=1.5.2,<2.0.0" and resolves to 1.5.2, whose mcp extra asks for fastmcp>=4.0.11; deepagents-code depends on fastmcp directly and does not use the extra. Not patched: no patches directory, no vendored fork, and the one [tool.uv] override in libs/code is for filelock. deepagents-code does subclass the SDK's OAuthClientProvider and reads private FastMCP attributes (_disconnect, _session_state). The core library's manifest and lockfile hold neither fastmcp nor mcp. deepagents-talon declares "fastmcp>=4.2.3" and "mcp>=2.3.0" and resolves to fastmcp 4.2.3 and mcp 2.3.0. The evals harness declares "langchain[mcp]>=1.4.1" and resolves fastmcp 4.2.2 and mcp 2.3.0. deepagents names no protocol revision: FastMCP's ProxyClient picks the handshake era and the mcp SDK's LATEST_HANDSHAKE_VERSION picks 2025-11-25. The probe ran deepagents-code 0.2.5 with mcp 2.2.0; the lockfile now resolves 2.3.0. The resolved fastmcp 4.1.2 is libs/code's lockfile. deepagents-code declares fastmcp>=4.0.0b4 with no upper bound, so a fresh install of deepagents-code 0.2.15 from PyPI resolves fastmcp 4.2.6 (2026-11-25).
 

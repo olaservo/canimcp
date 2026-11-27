@@ -14,12 +14,12 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _negotiate_session and _complete_handshake_at_offered_version
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_transport.py:MCPServerTransportMixin._advertises_tools
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_errors.py, the fallback signals
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_errors.py:_handshake_rejected_as_modern,_handshake_answered_with_unsupported_version
     date: 2026-11-27
   - url: https://pypi.org/project/mcp-types/2.3.0/
@@ -41,6 +41,8 @@ Hermes has a per-server `protocol` config key with three settings. `legacy` (ali
 This is the mirror image of fast-agent, which reads as the other client on this SDK and leads with `discover`. Same library, opposite default, and both defensible: fast-agent optimises for the era it expects servers to move to, Hermes for the era they are in. A support matrix that records only "supports 2026-07-28" hides the difference, which is what `preferredProtocolVersion` exists to carry.
 
 The fallback also checks `hasattr(session, "discover")` before using it, so a Hermes running against an older mcp 1.x install degrades to handshake-only rather than raising. A timeout never falls back.
+
+Other errors do not fall back either. The conformance suite's 2026-07-28 `tools_call` and `json-schema-2020-12-preservation` servers answer a header-less `initialize` with HTTP 400 and `-32020` "Missing MCP-Protocol-Version header", so on 2026-11-27 hermes under `auto` connected to neither and listed no tools. With `protocol: stateless` the same runs passed (`probe/conformance/README.md`).
 
 Since `a24c12d1` Hermes also handles a server that answers `initialize` with 200 but names `2026-07-28`, and has no `server/discover` either. The SDK rejects that reply as an unsupported version. Hermes then sends a second `initialize` itself at `LATEST_HANDSHAKE_VERSION`, adopts the result pinned to `2025-11-25`, and sends `notifications/initialized` (#113359).
 

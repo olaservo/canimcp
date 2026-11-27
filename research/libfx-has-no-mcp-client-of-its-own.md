@@ -17,47 +17,47 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: sdk/mcp.js, createMcpAdapter
-    commit: fd39d643
+    commit: b4502b01
     path: sdk/mcp.js:createMcpAdapter
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/types/mcp.d.ts, the McpClient interface
-    commit: fd39d643
+    commit: b4502b01
     path: sdk/types/mcp.d.ts:McpClient
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/package.json, no dependency fields
-    commit: fd39d643
+    commit: b4502b01
     path: sdk/package.json
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/README.md, MCP and skills
-    commit: fd39d643
+    commit: b4502b01
     path: sdk/README.md:MCP and skills
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/wasm_core_main.zig, allow_acp_mcp
-    commit: fd39d643
+    commit: b4502b01
     path: src/wasm_core_main.zig:main
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/napi_core_main.zig, allow_acp_mcp
-    commit: fd39d643
+    commit: b4502b01
     path: src/napi_core_main.zig:run
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/acp/sessions.zig, the refusal when MCP is off
-    commit: fd39d643
+    commit: b4502b01
     path: src/acp/sessions.zig:handleNewSession
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/main.zig, no MCP host on WebAssembly
-    commit: fd39d643
+    commit: b4502b01
     path: src/main.zig:init
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/NAPI.md, capability profile
-    commit: fd39d643
+    commit: b4502b01
     path: sdk/NAPI.md:Capability profile
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2

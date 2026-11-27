@@ -22,4 +22,11 @@ export default {
   libfx: {},
   // fx 0.0.16 defers MCP tools behind capability_search and mcp_select_tool. Runs from WSL.
   fx: { timeoutMs: 60000, script: { route: 'fx-select' } },
+  // codex, goose and opencode run in the Docker image (compose service `conformance`).
+  // codex can start its first turn before MCP tools are listed.
+  codex: { timeoutMs: 60000, script: { warmup: ['list_mcp_resources', 'list_mcp_resource_templates'] } },
+  // goose names a --with-streamable-http-extension server after its URL (localhost_<port>_mcp).
+  goose: { timeoutMs: 60000, script: { mcpMatch: '^localhost_\\d+' } },
+  // The default config puts MCP tools behind Code Mode's execute tool; with it off the model sees them directly.
+  opencode: { config: 'codemode-off', timeoutMs: 60000 },
 };

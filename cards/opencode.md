@@ -19,10 +19,10 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-26 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.0.0-82d8fc5` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -127,7 +127,7 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 
 ## Verified by the probe
 
-146 records from the live probe (`probe/`), client version `0.0.0-82d8fc5`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/opencode.json`.
+162 records from the live probe (`probe/`), client version `0.0.0-82d8fc5`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/opencode.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
@@ -140,7 +140,11 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 | [app_only](../probe/runs/opencode@0.0.0-82d8fc5/execute-denied/both-stdio/tools.result.app_only/record.json) | execute-denied (setting) | stdio | `2026-07-28` | 0.0.0-82d8fc5 | […] content only (1x, as text) |
 | [app_only](../probe/runs/opencode@0.0.0-82d8fc5/protocol-2026-07-28/both-http/tools.result.app_only/record.json) | protocol-2026-07-28 (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | […] content only (1x, as text) |
 | [app_only](../probe/runs/opencode@0.0.0-82d8fc5/protocol-2026-07-28/both-stdio/tools.result.app_only/record.json) | protocol-2026-07-28 (setting) | stdio | `2026-07-28` | 0.0.0-82d8fc5 | […] content only (1x, as text) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-11-25` | 0.0.0-82d8fc5 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default; client exited 1 |
 | **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-06-18` | 0.0.0-82d8fc5 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-11-25` | 0.0.0-82d8fc5 | conformance initialize at 2025-11-25: 1/1 checks pass |
 | [protocol.initializeHandshake.echo](../probe/runs/opencode@0.0.0-82d8fc5/default/both-http/protocol.initializeHandshake.echo/record.json) | default | http | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.echo](../probe/runs/opencode@0.0.0-82d8fc5/default/both-stdio/protocol.initializeHandshake.echo/record.json) | default | stdio | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2024_11_05](../probe/runs/opencode@0.0.0-82d8fc5/default/both-http/protocol.initializeHandshake.reply_2024_11_05/record.json) | default | http | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
@@ -149,9 +153,29 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 | [protocol.initializeHandshake.reply_2025_11_25](../probe/runs/opencode@0.0.0-82d8fc5/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25/record.json) | default | stdio | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/opencode@0.0.0-82d8fc5/default/both-http/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | http | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.reply_2026_07_28](../probe/runs/opencode@0.0.0-82d8fc5/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28/record.json) | default | stdio | `2026-07-28` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance sep-2322-client-request-state at 2026-07-28: 4/4 checks pass; client exited 1 |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes; client exited 1 |
 | **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
 | [protocol.serverDiscover.method_not_found](../probe/runs/opencode@0.0.0-82d8fc5/default/both-http/protocol.serverDiscover.method_not_found/record.json) | default | http | `2025-11-25` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
 | [protocol.serverDiscover.method_not_found](../probe/runs/opencode@0.0.0-82d8fc5/default/both-stdio/protocol.serverDiscover.method_not_found/record.json) | default | stdio | `2025-11-25` | 0.0.0-82d8fc5 | server/discover at 2026-07-28 → error -32601; then initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call) |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-11-25` | 0.0.0-82d8fc5 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance http-standard-headers at 2026-07-28: 4/4 checks pass |
+| **skills** | | | | | |
+| [conformance/sep-2640-client-no-prefetch](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-11-25` | 0.0.0-82d8fc5 | conformance sep-2640-client-no-prefetch at 2025-11-25 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| [conformance/sep-2640-client-no-prefetch](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance sep-2640-client-no-prefetch at 2026-07-28 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-06-18` | 0.0.0-82d8fc5 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2025-11-25` | 0.0.0-82d8fc5 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/opencode.json) | codemode-off (setting) | http | `2026-07-28` | 0.0.0-82d8fc5 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/opencode@0.0.0-82d8fc5/default/both-http/tools.result.meta_only/record.json) | default | http | `2026-07-28` | 0.0.0-82d8fc5 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/opencode@0.0.0-82d8fc5/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 0.0.0-82d8fc5 | […] content only (1x, as text, _meta did not reach the model) |
@@ -290,14 +314,14 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `opencode` from wire names `opencode`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 2.5%, `2025-11-25` 97.5%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `opencode` from wire names `opencode`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 5.3%, `2025-11-25` 94.6%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
-| elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
@@ -317,7 +341,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `7bfda960` on 2026-11-27, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-26.
+Read at `5d1f7884` on 2026-11-27, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-27.
 
 **SDK.** Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. The SDK's default negotiation mode is legacy. opencode sets an unset protocol to auto for stdio and remote servers, so it sends server/discover at 2026-07-28 first and falls back to initialize at 2025-11-25. protocol: "legacy" or an attached socket connection skips the probe.
 
