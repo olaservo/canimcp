@@ -9,9 +9,16 @@ export type ModelApi = 'chat' | 'responses' | 'anthropic' | 'gemini';
 export type Era = 'both' | 'legacy' | 'modern';
 export type ServerMode = 'sdk' | 'mcpserver' | 'raw';
 
+/**
+ * default: what the client does with stock settings. setting: a switch the client documents.
+ * harness: probe-written code that uses an API the client leaves to the application, such as an elicitation callback.
+ */
+export type ConfigKind = 'default' | 'setting' | 'harness';
+
 export interface HostConfig {
   /** `default` first, then one per switch the client's note names. */
   name: string;
+  kind: ConfigKind;
   description: string;
   modelApi: ModelApi;
 }

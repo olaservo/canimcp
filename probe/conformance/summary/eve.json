@@ -3,6 +3,7 @@
   "client": "eve",
   "clientVersion": "1.0.0-rc.6",
   "config": "default",
+  "configKind": "default",
   "harness": "bridge/host-bridge.mjs eve, mock model bridge/call-every-tool.mjs route eve (eve__search then eve__tool); no-auth scenarios; concurrency 1",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -387,7 +388,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 0,

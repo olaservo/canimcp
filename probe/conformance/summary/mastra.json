@@ -3,6 +3,7 @@
   "client": "mastra",
   "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
   "config": "default",
+  "configKind": "default",
   "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -1646,7 +1647,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 0,

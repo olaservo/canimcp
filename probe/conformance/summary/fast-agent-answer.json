@@ -3,6 +3,7 @@
   "client": "fast-agent-answer",
   "clientVersion": "0.10.53",
   "config": "answer",
+  "configKind": "harness",
   "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -386,7 +387,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

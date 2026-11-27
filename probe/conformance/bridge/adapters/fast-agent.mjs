@@ -13,7 +13,7 @@ const { runCommand, ensureDir, slash, findFinalText } = await import(pathToFileU
 const y = (s) => JSON.stringify(s);
 
 export default {
-  configs: [{ name: 'answer', description: 'FastAgent app with elicitation_handler accepting every request with empty content; otherwise the default config.', modelApi: 'chat' }],
+  configs: [{ name: 'answer', kind: 'harness', description: 'FastAgent app with elicitation_handler accepting every request with empty content; otherwise the default config.', modelApi: 'chat' }],
   async run(ctx) {
     const home = ensureDir(resolve(ctx.tmpDir, 'fast-agent-home'));
     const cwd = ensureDir(resolve(ctx.tmpDir, 'workspace'));

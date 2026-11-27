@@ -74,7 +74,8 @@
     "authentication.oauth.dpop": "SEP-1932 DPoP-bound tokens. The suite tags the scenarios as an extension.",
     "authentication.oauth.workloadIdentityFederation": "SEP-1933 JWT-bearer grant from a workload identity. Extension-tagged in the suite.",
     "oauthClientCredentials": "Alias for the io.modelcontextprotocol/oauth-client-credentials extension, which has no alias in extensions.known, so its features have no id root.",
-    "enterpriseManagedAuthorization": "Alias for the io.modelcontextprotocol/enterprise-managed-authorization extension, same gap."
+    "enterpriseManagedAuthorization": "Alias for the io.modelcontextprotocol/enterprise-managed-authorization extension, same gap.",
+    "jsonSchemaDialect": "JSON Schema handling: 2020-12 keywords kept intact (SEP-1613) and no network $ref dereferencing (SEP-2106). spec-versions.json has the dialect history as its top-level jsonSchemaDialect section, not a capabilities key, and the registry records dialects under jsonSchema without a status."
   },
   "notCovered": {
     "$comment": "Client capabilities in spec-versions.json that no client scenario in this suite version exercises.",

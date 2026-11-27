@@ -99,17 +99,17 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-112 records from the live probe (`probe/`), client version `1.61.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/goose.json`.
+112 records from the live probe (`probe/`), client version `1.61.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/goose.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/goose@1.61.0/default/both-http/tools.result.app_only/record.json) | default | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [app_only](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [app_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.app_only/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [app_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.app_only/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [app_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.app_only/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [app_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.app_only/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [app_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.app_only/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [app_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.app_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [app_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.app_only/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [app_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.app_only/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **protocol.initializeHandshake** | | | | | |
 | [protocol.initializeHandshake.echo](../probe/runs/goose@1.61.0/default/both-http/protocol.initializeHandshake.echo/record.json) | default | http | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
 | [protocol.initializeHandshake.echo](../probe/runs/goose@1.61.0/default/both-stdio/protocol.initializeHandshake.echo/record.json) | default | stdio | `2026-07-28` | 1.61.0 | server/discover at 2026-07-28 → supported 2026-07-28; client continued at 2026-07-28 (tools/list, tools/call) |
@@ -125,106 +125,106 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/goose@1.61.0/default/both-http/tools.result.meta_only/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.meta_only/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.meta_only/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.meta_only/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [meta_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.meta_only/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [meta_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.meta_only/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.meta_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.meta_only/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [meta_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.meta_only/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [with_meta](../probe/runs/goose@1.61.0/default/both-http/tools.result.with_meta/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.with_meta/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_meta/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_meta/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_meta/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [with_meta](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_meta/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [with_meta](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_meta/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [with_meta](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_meta/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [with_meta](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_meta/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [with_meta](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_meta/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.audience** | | | | | |
 | [audience_user](../probe/runs/goose@1.61.0/default/both-http/tools.result.audience_user/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [audience_user](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.audience_user/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.audience_user/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.audience_user/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.audience_user/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [audience_user](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.audience_user/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [audience_user](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.audience_user/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [audience_user](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.audience_user/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [audience_user](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.audience_user/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [audience_user](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.audience_user/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.content** | | | | | |
 | [empty_object](../probe/runs/goose@1.61.0/default/both-http/tools.result.empty_object/record.json) | default | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
 | [empty_object](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.empty_object/record.json) | default | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [empty_object](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.empty_object/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [empty_object](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.empty_object/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [empty_object](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.empty_object/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [empty_object](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.empty_object/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [empty_object](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.empty_object/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [empty_object](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.empty_object/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [empty_object](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.empty_object/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [empty_object](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.empty_object/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [large](../probe/runs/goose@1.61.0/default/both-http/tools.result.large/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [large](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.large/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [large](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.large/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [large](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.large/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [large](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.large/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [large](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.large/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [large](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.large/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [large](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.large/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [large](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.large/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [large](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.large/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [no_content_key](../probe/runs/goose@1.61.0/default/both-http/tools.result.no_content_key/record.json) | default | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
 | [no_content_key](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.no_content_key/record.json) | default | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [no_content_key](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.no_content_key/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [no_content_key](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.no_content_key/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [no_content_key](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.no_content_key/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [no_content_key](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.no_content_key/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [no_content_key](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.no_content_key/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [no_content_key](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.no_content_key/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [no_content_key](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.no_content_key/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [no_content_key](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.no_content_key/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.isError** | | | | | |
 | [is_error](../probe/runs/goose@1.61.0/default/both-http/tools.result.is_error/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [is_error](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.is_error/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [is_error](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.is_error/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [is_error](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.is_error/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [is_error](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.is_error/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [is_error](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.is_error/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [is_error](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.is_error/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [is_error](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.is_error/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [is_error](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.is_error/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [is_error](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.is_error/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.media** | | | | | |
 | [with_image](../probe/runs/goose@1.61.0/default/both-http/tools.result.with_image/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [with_image](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.with_image/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [with_image](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_image/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as blocks) |
-| [with_image](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_image/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as blocks) |
-| [with_image](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_image/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [with_image](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_image/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [with_image](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.with_image/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as blocks) |
+| [with_image](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.with_image/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as blocks) |
+| [with_image](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.with_image/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [with_image](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.with_image/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.outputSchema** | | | | | |
 | [schema_match](../probe/runs/goose@1.61.0/default/both-http/tools.result.schema_match/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [schema_match](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.schema_match/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_match/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_match/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_match/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [schema_match](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_match/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [schema_match](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_match/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [schema_match](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_match/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [schema_match](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_match/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [schema_match](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_match/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [schema_mismatch](../probe/runs/goose@1.61.0/default/both-http/tools.result.schema_mismatch/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [schema_mismatch](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.schema_mismatch/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_mismatch](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_mismatch/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_mismatch](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_mismatch/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [schema_mismatch](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_mismatch/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [schema_mismatch](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_mismatch/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [schema_mismatch](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.schema_mismatch/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [schema_mismatch](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.schema_mismatch/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [schema_mismatch](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.schema_mismatch/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [schema_mismatch](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.schema_mismatch/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | **tools.result.structuredContent** | | | | | |
 | [mirror](../probe/runs/goose@1.61.0/default/both-http/tools.result.mirror/record.json) | default | http | `2026-07-28` | 1.61.0 | payload once (as json) |
 | [mirror](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.mirror/record.json) | default | stdio | `2026-07-28` | 1.61.0 | payload once (as json) |
-| [mirror](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.mirror/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | payload once (as json) |
-| [mirror](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.mirror/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | payload once (as json) |
-| [mirror](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.mirror/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [mirror](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.mirror/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [mirror](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.mirror/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | payload once (as json) |
+| [mirror](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.mirror/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | payload once (as json) |
+| [mirror](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.mirror/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [mirror](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.mirror/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [sc_empty](../probe/runs/goose@1.61.0/default/both-http/tools.result.sc_empty/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [sc_empty](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_empty/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_empty/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_empty/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_empty/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [sc_empty](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_empty/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_empty](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_empty/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_empty](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_empty/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_empty](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_empty/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_empty](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_empty/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [sc_null](../probe/runs/goose@1.61.0/default/both-http/tools.result.sc_null/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [sc_null](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_null/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_null/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_null/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_null/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [sc_null](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_null/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_null](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_null/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_null/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_null/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_null](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_null/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [sc_string](../probe/runs/goose@1.61.0/default/both-http/tools.result.sc_string/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [sc_string](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.sc_string/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_string](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_string/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_string](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_string/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [sc_string](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_string/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [sc_string](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_string/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_string](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.sc_string/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_string](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.sc_string/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [sc_string](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.sc_string/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [sc_string](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.sc_string/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [structured_only](../probe/runs/goose@1.61.0/default/both-http/tools.result.structured_only/record.json) | default | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
 | [structured_only](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.structured_only/record.json) | default | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [structured_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.structured_only/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [structured_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.structured_only/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
-| [structured_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.structured_only/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [structured_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.structured_only/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [structured_only](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.structured_only/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [structured_only](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.structured_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | "…" no marker reached the model; payload: "(empty result)" |
+| [structured_only](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.structured_only/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [structured_only](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.structured_only/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 | [summary_and_data](../probe/runs/goose@1.61.0/default/both-http/tools.result.summary_and_data/record.json) | default | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
 | [summary_and_data](../probe/runs/goose@1.61.0/default/both-stdio/tools.result.summary_and_data/record.json) | default | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.summary_and_data/record.json) | anthropic | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.summary_and_data/record.json) | anthropic | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.summary_and_data/record.json) | code-mode | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
-| [summary_and_data](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.summary_and_data/record.json) | code-mode | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [summary_and_data](../probe/runs/goose@1.61.0/anthropic/both-http/tools.result.summary_and_data/record.json) | anthropic (setting) | http | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [summary_and_data](../probe/runs/goose@1.61.0/anthropic/both-stdio/tools.result.summary_and_data/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.61.0 | […] content only (1x, as text) |
+| [summary_and_data](../probe/runs/goose@1.61.0/code-mode/both-http/tools.result.summary_and_data/record.json) | code-mode (setting) | http | `2026-07-28` | 1.61.0 | tool not offered to the model |
+| [summary_and_data](../probe/runs/goose@1.61.0/code-mode/both-stdio/tools.result.summary_and_data/record.json) | code-mode (setting) | stdio | `2026-07-28` | 1.61.0 | tool not offered to the model |
 
 ## Where the evidence disagrees
 

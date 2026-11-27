@@ -193,7 +193,7 @@ function buildServer(read) {
         revision: str.optional().describe('The revision this client negotiates, the newest it speaks at or below the one asked for. Absent for clients with no registry entry.'),
         revisionRecord: str.optional().describe('Present when the row comes from the client\'s record for that revision and differs from the baseline.'),
         tiers: z.array(str).describe('The evidence tiers behind this client\'s row.'),
-        verified: z.record(str, z.unknown()).optional().describe('A summary of the probe\'s runs: versions, revisions, and each verdict with its count.'),
+        verified: z.record(str, z.unknown()).optional().describe('A summary of the probe\'s runs: versions, revisions, and each verdict with its count. `configs` breaks them down by client configuration and its kind (default, setting, harness), with conformance check counts per revision.'),
         observed: z.array(loose({ tier: str })).optional().describe('What telemetry saw.'),
         disagreements: z.array(loose({ tier: str })).describe('Evidence whose own status differs from the registry\'s.'),
       })),
@@ -227,12 +227,20 @@ function buildServer(read) {
     inputSchema: z.object({
       client: str.describe('Probe id or registry id of the client. Example: codex, or openai-codex'),
       capability: str.optional().describe('Capability id to narrow to. Example: tools.result.structuredContent'),
+      configKind: z.enum(['default', 'setting', 'harness']).optional().describe('Only runs with this kind of configuration: default for stock settings, setting for a documented switch, harness for probe-written code that uses an API the client leaves to the application.'),
+      config: str.optional().describe('Only runs with this configuration name. Example: default'),
+      revision: str.optional().describe('Only runs at this protocol revision. Example: 2026-07-28'),
+      source: z.enum(['probe', 'conformance']).optional().describe('probe for the canimcp probe scenarios, conformance for the MCP conformance suite.'),
     }),
     outputSchema: z.object({
       client: str, registryId: nullable(str), title: str, versions: z.array(str), page: nullable(str),
       results: z.array(z.object({
         capability: str, scenario: nullable(str), clientVersion: nullable(str),
         config: nullable(str).describe('The model API or client configuration the run used.'),
+        configKind: nullable(str).describe('default, setting or harness.'),
+        source: str.describe('probe or conformance.'),
+        status: nullable(str).describe('Conformance only: full when every check passed, partial when one failed, null when no check that needs the feature passed.'),
+        checks: nullable(z.object({ passed: z.number(), total: z.number() })).describe('Conformance only: the scenario\'s checks for this capability.'),
         revision: nullable(str).describe('The protocol revision negotiated.'),
         date: nullable(str),
         verdict: nullable(str).describe('What reached the model, in one line.'),
@@ -241,7 +249,7 @@ function buildServer(read) {
         captures: nullable(str).describe('The run\'s captures in the repository.'),
       })),
     }),
-  }, async ({ client, capability }) => {
+  }, async ({ client, capability, configKind, config, revision, source }) => {
     const index = await read('/data/verified/index.json');
     const row = index.find((v) => v.client === client) ?? index.find((v) => v.registryId === client);
     if (!row) return fail(`No probe records for "${client}". Probe ids: ${index.map((v) => v.client).join(', ')}.`);
@@ -250,15 +258,20 @@ function buildServer(read) {
     for (const [id, cap] of Object.entries(overlay.capabilities)) {
       if (capability && !under(id, capability)) continue;
       for (const e of cap.evidence ?? []) {
+        const from = e.source === 'modelcontextprotocol/conformance' ? 'conformance' : 'probe';
+        if ((configKind && e.configKind !== configKind) || (config && e.config !== config) || (revision && e.at !== revision) || (source && from !== source)) continue;
+        const checks = e.run?.checks;
         results.push({
           capability: id, scenario: e.scenario ?? null, clientVersion: e.clientVersion ?? null, config: e.config ?? null,
+          configKind: e.configKind ?? null, source: from, status: from === 'conformance' ? e.status ?? null : null,
+          checks: from === 'conformance' && checks ? { passed: checks.filter((c) => c.status === 'SUCCESS').length, total: checks.length } : null,
           revision: e.at ?? null, date: e.date ?? null, verdict: e.note ?? null,
           modelApi: e.observation?.api ?? null, image: e.observation?.image ?? null,
           captures: e.artifact ? `${REPO}/tree/main/${e.artifact}` : null,
         });
       }
     }
-    if (capability && !results.length) return fail(`No probe records for "${capability}" on ${row.title}. It has: ${Object.keys(overlay.capabilities).join(', ')}.`);
+    if (capability && !results.length && !(configKind || config || revision || source)) return fail(`No probe records for "${capability}" on ${row.title}. It has: ${Object.keys(overlay.capabilities).join(', ')}.`);
     return ok({ client: row.client, registryId: row.registryId, title: row.title, versions: row.versions, page: row.page ?? null, results });
   });
 

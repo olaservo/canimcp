@@ -24,7 +24,7 @@ probe/
   hosts/<client>/adapter.ts    one adapter per client: install manifest, config writer, command line, extra mock script
   runner.ts                    takes a client and a scenario set, runs them, writes records
   scripts/sdk-compat.ts        regenerates registry/sdk-compat.json
-  scripts/collect.ts           runs/ -> data/verified/<client>.json
+  scripts/collect.ts           runs/ + conformance/ingest-preview/ -> data/verified/<client>.json
   scripts/reclassify.ts        recomputes records from captures after a classifier change
   runs/<client>@<version>/<config>/<era>-<transport>/<scenario>/   the raw captures and record.json for each run
 ```
@@ -39,7 +39,7 @@ node dist/scripts/sdk-compat.js                   # once per SDK version
 node dist/runner.js --client goose --set core      # or --set tool-results, or --scenarios a,b,c
 node dist/runner.js --client codex --set tool-results --config mcp-2026-07-28 --transport http
 node dist/runner.js --client codex --set negotiation --config default
-node dist/scripts/collect.js                       # writes ../data/verified/<client>.json
+node dist/scripts/collect.js                       # writes ../data/verified/<client>.json, conformance included
 cd .. && npm run validate
 ```
 
@@ -129,7 +129,7 @@ On Windows, run `node scripts/strip-operator-skills.js <run-dir>...` and `node s
 
 1. Add the client to `registry/clients.json`: title, kind (`host`, `harness`, `framework`), repo, `source` (its `_clients/repos.tsv` name), language, SDK, and `drive` (`cli`, `script`, or `gui`).
 2. Create `hosts/<client>/`. Pin the install there: a `package.json` for npm clients, a `requirements.txt` plus a `uv venv` at `hosts/<client>/.venv` for Python clients (the adapter runs the venv interpreter directly, and `python -m compileall` over site-packages cuts the first import from tens of seconds to a few), a note on the build for compiled ones (the goose adapter expects `bin/goose` built at the pin; the fx adapter expects `bin/fx`). Everything but the manifest is gitignored.
-3. Write `hosts/<client>/adapter.ts` exporting a `HostAdapter` (`lib/hosts.ts`): `id`, `configs` (`default` first, then one per switch the client's research note names), `version()`, and `run(ctx)`. `run` writes the client's config into `ctx.tmpDir`, points its model provider at `ctx.mockUrl` and its MCP server at `ctx.serverCommand` or `ctx.serverUrl`, runs the client once with `ctx.prompt`, and returns stdout, stderr and exit code. Set `platforms` when the client does not run everywhere; the fx adapters run from WSL on Windows. Set `transports` when the client lacks one; eve has no stdio MCP client, and the runner then refuses that transport instead of writing failed records.
+3. Write `hosts/<client>/adapter.ts` exporting a `HostAdapter` (`lib/hosts.ts`): `id`, `configs` (`default` first, then one per switch the client's research note names, each with a `kind`: `default` for the stock setup, `setting` for a documented switch, `harness` for probe-written code that uses an API the client leaves to the application), `version()`, and `run(ctx)`. `run` writes the client's config into `ctx.tmpDir`, points its model provider at `ctx.mockUrl` and its MCP server at `ctx.serverCommand` or `ctx.serverUrl`, runs the client once with `ctx.prompt`, and returns stdout, stderr and exit code. Set `platforms` when the client does not run everywhere; the fx adapters run from WSL on Windows. Set `transports` when the client lacks one; eve has no stdio MCP client, and the runner then refuses that transport instead of writing failed records.
 4. If the client needs the model to do something before the tool is reachable (tool search, deferred loading, a warm-up round trip, or a script tool such as pi's `codemode`, opencode's `execute`, eve's `eve__tool` or deepagents' `js_eval`), add `hosts/<client>/mock-script.ts` and name it in the adapter's `mockScript`. The classifier treats a call whose arguments name the fixture tool, or whose call id starts with `call_probe_fixture`, as the fixture tool reached indirectly. The script sees every request's offered tools and tool results and returns a decision; returning `undefined` falls through to the default.
 5. `npm run build`, then `node dist/runner.js --client <client> --set core`. Read `model.jsonl` for the first run: the tool names and the shape the client uses tell you whether the default matcher finds the tool.
 

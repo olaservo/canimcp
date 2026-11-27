@@ -122,17 +122,31 @@ export function capabilityPage(cap, index, { origin, noteTitles, views = [index.
     L.push('');
   }
 
-  if (probed.length) {
+  const configName = (r) => `${r.config ? code(r.config) : 'not recorded'}${r.configKind && r.configKind !== r.config ? ` (${r.configKind})` : ''}`;
+  const probeRows = probed.flatMap((s) => s.verified.configs.filter((r) => r.source === 'probe').map((r) => ({ s, r })));
+  const conformanceRows = probed.flatMap((s) => s.verified.configs.filter((r) => r.source === 'conformance').map((r) => ({ s, r })));
+  const kindLegend = 'Each row is one client configuration. A name other than `default` is followed by its kind: `setting` for a switch the client documents, `harness` for probe-written code that uses an API the client leaves to the application, such as an elicitation callback. A `harness` row says what an application built on the client can do. A configuration named `default` with a kind after it is not the client\'s stock setup.';
+  if (probeRows.length) {
     // A protocol.* scenario is classified from the wire, and its records are listed on the client's page.
     const wire = cap.id.startsWith('protocol.');
-    L.push('## Probe results', '', `The probe ran each client against a fixture server and recorded what the client sent to ${wire ? 'the server' : 'its model'}.`, '');
-    L.push(`| Client | Kind | Versions | Runs | Revisions | ${wire ? 'What the client sent' : 'What reached the model'} |`, '|---|---|---|---|---|---|');
-    for (const s of probed) {
-      const v = s.verified;
-      const verdicts = v.verdicts.slice(0, 4).map((x) => `${cellText(x.verdict)} (${x.count})`).join('; ') + (v.verdicts.length > 4 ? `; ${v.verdicts.length - 4} more` : '');
-      L.push(`| [${subject[s.subject].title}](${local(wire ? subject[s.subject].page : v.records, origin)}) | ${subject[s.subject].kind} | ${v.clientVersions.map(code).join(', ')} | ${v.runs} | ${v.revisions.map(code).join(', ')} | ${verdicts} |`);
+    L.push('## Probe results', '', `The probe ran each client against a fixture server and recorded what the client sent to ${wire ? 'the server' : 'its model'}.`, '', kindLegend, '');
+    L.push(`| Client | Kind | Configuration | Versions | Runs | Revisions | ${wire ? 'What the client sent' : 'What reached the model'} |`, '|---|---|---|---|---|---|---|');
+    for (const { s, r } of probeRows) {
+      const verdicts = r.verdicts.slice(0, 3).map((x) => `${cellText(x.verdict)} (${x.count})`).join('; ') + (r.verdicts.length > 3 ? `; ${r.verdicts.length - 3} more` : '');
+      L.push(`| [${subject[s.subject].title}](${local(wire ? subject[s.subject].page : s.verified.records, origin)}) | ${subject[s.subject].kind} | ${configName(r)} | ${r.clientVersions.map(code).join(', ')} | ${r.runs} | ${r.revisions.map(code).join(', ')} | ${verdicts} |`);
     }
     L.push('', 'The number after each verdict is how many runs ended that way. Each client name links to its full records.', '');
+  }
+  if (conformanceRows.length) {
+    L.push('## Conformance suite results', '', 'The [MCP conformance suite](https://github.com/modelcontextprotocol/conformance) ran its client scenarios for this capability against each client, through the probe\'s adapter and mock model. A scenario counts as full when every check passed and the client exited cleanly, partial when some checks passed and one failed, and failed when no check passed. "Absence only" means the only checks that passed are ones a client that ignores the feature also passes.', '', ...(probeRows.length ? [] : [kindLegend, '']));
+    L.push('| Client | Kind | Configuration | Version | Revision | Scenarios | Checks passed |', '|---|---|---|---|---|---|---|');
+    for (const { s, r } of conformanceRows) {
+      for (const [rev, n] of Object.entries(r.byRevision).sort(([a], [b]) => a.localeCompare(b))) {
+        const scenarios = [n.full && `${n.full} full`, n.partial && `${n.partial} partial`, n.absenceOnly && `${n.absenceOnly} absence only`, n.failed && `${n.failed} failed`].filter(Boolean).join(', ');
+        L.push(`| ${subjectLink(s.subject)} | ${subject[s.subject].kind} | ${configName(r)} | ${r.clientVersions.map(code).join(', ')} | ${code(rev)} | ${scenarios} | ${n.checksPassed} of ${n.checks} |`);
+      }
+    }
+    L.push('', 'The checks behind each row, with their messages, are in the client\'s record file under `/data/verified/`.', '');
   }
 
   const withImage = probed.filter((s) => s.verified.image);

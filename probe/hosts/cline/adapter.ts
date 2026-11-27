@@ -19,7 +19,7 @@ const adapter: HostAdapter = {
   mockScript: 'mock-script.js',
   configs: [
     {
-      name: 'default',
+      name: 'default', kind: 'default',
       description:
         'openai-compatible provider, Chat Completions, --yolo --json, tools auto-approved. The note names no switch that changes which field the model gets (mcpApps is not settable from the CLI; the only per-server knob is timeout), so this is the only config. Transport is the dimension that matters: stdio is the hand-rolled 2024-11-05 client, http is the SDK client.',
       modelApi: 'chat',

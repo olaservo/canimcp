@@ -143,86 +143,123 @@ When a server's newest revision is `2025-11-25`, Strands Agents negotiates it an
 
 ## Verified by the probe
 
-68 records from the live probe (`probe/`), client version `1.64.0+mcp-2.3.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/strands.json`.
+96 records from the live probe (`probe/`), client version `1.64.0+mcp-2.3.0`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/strands.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.app_only/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.app_only/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.app_only/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.app_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [app_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.app_only/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/strands.json) | default | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/5 checks pass; failed client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/strands.json) | default | http | `2025-06-18` | 1.64.0+mcp-2.3.0 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/strands.json) | default | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-06-18` | 1.64.0+mcp-2.3.0 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance sep-2322-client-request-state at 2026-07-28: 1/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance sep-2322-client-request-state at 2026-07-28: 4/4 checks pass |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| [conformance/request-metadata](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
+| [conformance/request-metadata](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/strands.json) | default | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| [conformance/sse-retry](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-custom-headers](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-standard-headers at 2026-07-28: 3/3 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance http-standard-headers at 2026-07-28: 3/3 checks pass |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/strands.json) | default | http | `2025-06-18` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/strands.json) | default | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/strands.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2026-07-28: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-06-18` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2025-11-25` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/strands-answer.json) | answer (harness) | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.meta_only/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.meta_only/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.meta_only/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.meta_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.meta_only/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.with_meta/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.with_meta/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_meta/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
-| [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_meta/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_meta/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
+| [with_meta](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_meta/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text, _meta did not reach the model) |
 | **tools.result.audience** | | | | | |
 | [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.audience_user/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.audience_user/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.audience_user/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.audience_user/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.audience_user/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [audience_user](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.audience_user/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | **tools.result.content** | | | | | |
 | [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.empty_object/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
 | [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.empty_object/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
-| [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.empty_object/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,fu" |
-| [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.empty_object/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
+| [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.empty_object/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,fu" |
+| [empty_object](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.empty_object/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
 | [large](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.large/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [large](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.large/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [large](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.large/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [large](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.large/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [large](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.large/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [large](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.large/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.no_content_key/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
 | [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.no_content_key/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
-| [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.no_content_key/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,fu" |
-| [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.no_content_key/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
+| [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.no_content_key/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: 2 validation errors for union[CallToolResult,fu" |
+| [no_content_key](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.no_content_key/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: 2 validation errors for union[CallToolResult,function-aft" |
 | **tools.result.isError** | | | | | |
 | [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.is_error/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.is_error/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.is_error/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.is_error/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.is_error/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [is_error](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.is_error/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | **tools.result.media** | | | | | |
 | [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.with_image/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.with_image/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_image/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as blocks) |
-| [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_image/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as blocks) |
+| [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.with_image/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as blocks) |
+| [with_image](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.with_image/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as blocks) |
 | **tools.result.outputSchema** | | | | | |
 | [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.schema_match/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.schema_match/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_match/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_match/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_match/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [schema_match](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_match/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.schema_mismatch/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: Invalid structured content returned by tool probe_schema_" |
 | [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.schema_mismatch/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: Invalid structured content returned by tool probe_schema_" |
-| [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_mismatch/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: Invalid structured content returned by tool pro" |
-| [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_mismatch/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: Invalid structured content returned by tool probe_schema_" |
+| [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.schema_mismatch/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "[{\"text\":\"Tool execution failed: Invalid structured content returned by tool pro" |
+| [schema_mismatch](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.schema_mismatch/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" client error text, no fixture field: "Tool execution failed: Invalid structured content returned by tool probe_schema_" |
 | **tools.result.structuredContent** | | | | | |
 | [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.mirror/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
 | [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.mirror/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
-| [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.mirror/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
-| [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.mirror/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
+| [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.mirror/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
+| [mirror](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.mirror/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | payload once (as json) |
 | [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_empty/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_empty/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_empty/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_empty/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_empty/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_empty](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_empty/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_null/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_null/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_null/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_null/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_null/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_null](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_null/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.sc_string/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.sc_string/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_string/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_string/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.sc_string/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [sc_string](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.sc_string/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.structured_only/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "" |
 | [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.structured_only/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "" |
-| [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.structured_only/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "[]" |
-| [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.structured_only/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "" |
+| [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.structured_only/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "[]" |
+| [structured_only](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.structured_only/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | "…" no marker reached the model; payload: "" |
 | [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-http/tools.result.summary_and_data/record.json) | default | http | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 | [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/default/both-stdio/tools.result.summary_and_data/record.json) | default | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.summary_and_data/record.json) | anthropic | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
-| [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.summary_and_data/record.json) | responses | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/anthropic/both-stdio/tools.result.summary_and_data/record.json) | anthropic (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
+| [summary_and_data](../probe/runs/strands@1.64.0+mcp-2.3.0/responses/both-stdio/tools.result.summary_and_data/record.json) | responses (setting) | stdio | `2026-07-28` | 1.64.0+mcp-2.3.0 | […] content only (1x, as text) |
 
 ## Where the evidence disagrees
 

@@ -144,12 +144,35 @@ When a server's newest revision is `2025-11-25`, fx (native engine) negotiates i
 
 ## Verified by the probe
 
-17 records from the live probe (`probe/`), client version `0.0.16`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/fx.json`.
+31 records from the live probe (`probe/`), client version `0.0.16`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/fx.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/fx@0.0.16/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2026-07-28` | 0.0.16 | ⟨…⟩ envelope (content 1x, structuredContent 1x) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/fx.json) | default | http | `2025-11-25` | 0.0.16 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/fx.json) | default | http | `2025-06-18` | 0.0.16 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/fx.json) | default | http | `2025-11-25` | 0.0.16 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance sep-2322-client-request-state at 2026-07-28: 1/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance request-metadata at 2026-07-28: 1/1 checks pass |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/fx.json) | default | http | `2025-11-25` | 0.0.16 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance http-custom-headers at 2026-07-28: 18/18 checks pass |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance http-standard-headers at 2026-07-28: 4/4 checks pass |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/fx.json) | default | http | `2025-06-18` | 0.0.16 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/fx.json) | default | http | `2025-11-25` | 0.0.16 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/fx.json) | default | http | `2026-07-28` | 0.0.16 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/fx@0.0.16/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2026-07-28` | 0.0.16 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta did not reach the model) |
 | [with_meta](../probe/runs/fx@0.0.16/default/both-stdio/tools.result.with_meta/record.json) | default | stdio | `2026-07-28` | 0.0.16 | ⟨…⟩ envelope (content 1x, structuredContent 1x, _meta did not reach the model) |

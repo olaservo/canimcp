@@ -3,6 +3,7 @@
   "client": "fx",
   "clientVersion": "0.0.16",
   "config": "default",
+  "configKind": "default",
   "harness": "bridge/host-bridge.mjs fx (default config, type http written by hosts/fx/adapter.ts), mock model bridge/call-every-tool.mjs route fx-select; no-auth scenarios; WSL",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -369,7 +370,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

@@ -3,6 +3,7 @@
   "client": "fast-agent",
   "clientVersion": "0.10.53",
   "config": "default",
+  "configKind": "default",
   "harness": "bridge/host-bridge.mjs fast-agent, mock model bridge/call-every-tool.mjs; 12 scenarios",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -407,7 +408,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

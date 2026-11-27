@@ -13,7 +13,7 @@ const adapter: HostAdapter = {
   id: 'libfx',
   title: 'libfx (fx JavaScript adapter)',
   platforms: ['linux', 'darwin'],
-  configs: [{ name: 'default', description: 'createMcpAdapter(client) tools on createFxAgent with a custom provider.', modelApi: 'chat' }],
+  configs: [{ name: 'default', kind: 'default', description: 'createMcpAdapter(client) tools on createFxAgent with a custom provider.', modelApi: 'chat' }],
   async version() {
     const p = resolve(hostDir, 'node_modules/libfx/package.json');
     if (!existsSync(p)) return { missing: 'build libfx from the pin (see hosts/libfx/README.md) and npm install it here' };

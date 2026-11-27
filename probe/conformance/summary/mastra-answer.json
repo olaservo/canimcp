@@ -3,6 +3,7 @@
   "client": "mastra-answer",
   "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
   "config": "answer",
+  "configKind": "harness",
   "harness": "bridge/host-bridge.mjs mastra answer (bridge/adapters/mastra.mjs, hosts/mastra/conformance-agent.mjs), mock model bridge/call-every-tool.mjs; no-auth scenarios",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -363,7 +364,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 0,

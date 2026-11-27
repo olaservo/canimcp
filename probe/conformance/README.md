@@ -139,7 +139,7 @@ How the harness reaches each client:
 
 ## Mapping
 
-`mapping.json` maps by check id, first match wins, and falls back to the scenario's default. Ids the vocabulary lacks are listed under `proposed`: `protocol.requestMeta` (SEP-2575 per-request `_meta`), `authentication.oauth.scopes`, `authentication.oauth.refreshTokens` (SEP-2207), `authentication.oauth.dpop` (SEP-1932), `authentication.oauth.workloadIdentityFederation` (SEP-1933), and aliases for the two auth extensions that have none in `extensions.known`. `wire-schema-valid` is kept in the record and mapped to nothing. `jsonSchemaDialect` is a top-level section of `spec-versions.json`, not a `capabilities` key.
+`mapping.json` maps by check id, first match wins, and falls back to the scenario's default. Ids the vocabulary lacks are listed under `proposed`: `protocol.requestMeta` (SEP-2575 per-request `_meta`), `authentication.oauth.scopes`, `authentication.oauth.refreshTokens` (SEP-2207), `authentication.oauth.dpop` (SEP-1932), `authentication.oauth.workloadIdentityFederation` (SEP-1933), aliases for the two auth extensions that have none in `extensions.known`, and `jsonSchemaDialect`. `wire-schema-valid` is kept in the record and mapped to nothing. `jsonSchemaDialect` is a top-level section of `spec-versions.json`, not a `capabilities` key. `probe/scripts/collect.ts` merges the ingest previews into `data/verified/` and leaves the proposed ids out.
 
 Two kinds of check do not count as evidence of support:
 

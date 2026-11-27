@@ -31,8 +31,8 @@ const adapter: HostAdapter = {
   title: 'crewAI',
   mockScript: 'mock-script.js',
   configs: [
-    { name: 'default', description: 'Agent(mcps=[MCPServerStdio|MCPServerHTTP]): the native crewai.mcp client, every block as text, str(result) when content is empty.', modelApi: 'chat' },
-    { name: 'crewai-tools', description: 'crewai_tools.MCPServerAdapter over mcpadapt: first block as text, list repr of text blocks otherwise.', modelApi: 'chat' },
+    { name: 'default', kind: 'default', description: 'Agent(mcps=[MCPServerStdio|MCPServerHTTP]): the native crewai.mcp client, every block as text, str(result) when content is empty.', modelApi: 'chat' },
+    { name: 'crewai-tools', kind: 'setting', description: 'crewai_tools.MCPServerAdapter over mcpadapt: first block as text, list repr of text blocks otherwise.', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(python)) return { missing: 'create the venv: uv venv probe/hosts/crewai/.venv --python 3.12 && uv pip install -r probe/hosts/crewai/requirements.txt' };

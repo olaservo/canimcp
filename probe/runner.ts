@@ -196,6 +196,7 @@ for (const config of configs) {
         scenario: scenario.id,
         clientVersion,
         config: config.name,
+        configKind: config.kind,
         artifact: relative(repoRoot, runDir).replace(/\\/g, '/'),
         note: summary,
         observation,

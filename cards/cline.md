@@ -107,13 +107,36 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Verified by the probe
 
-34 records from the live probe (`probe/`), client version `3.0.74`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/cline.json`.
+48 records from the live probe (`probe/`), client version `3.0.74`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/cline.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/cline@3.0.74/default/both-http/tools.result.app_only/record.json) | default | http | `2025-11-25` | 3.0.74 | tool offered but never called |
 | [app_only](../probe/runs/cline@3.0.74/default/both-stdio/tools.result.app_only/record.json) | default | stdio | `2024-11-05` | 3.0.74 | tool offered but never called |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/cline.json) | default | http | `2025-11-25` | 3.0.74 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/cline.json) | default | http | `2025-06-18` | 3.0.74 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/cline.json) | default | http | `2025-11-25` | 3.0.74 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance sep-2322-client-request-state at 2026-07-28: 0/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted, sep-2322-client-parallel-isolation |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-http-client-sends-version-header |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance sep-2322-client-request-state at 2026-07-28: 0/1 checks pass; failed sep-2322-default-result-type-complete |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/cline.json) | default | http | `2025-11-25` | 3.0.74 | conformance sse-retry at 2025-11-25: 3/3 checks pass |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance http-custom-headers at 2026-07-28: 0/5 checks pass; failed sep-2243-client-supports-custom-headers, sep-2243-client-mirrors-designated-params, sep-2243-client-encode-values, sep-2243-client-base64-unsafe, sep-2243-client-omit-null |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; only absence checks passed, which a client that ignores the feature also passes |
+| [conformance/http-standard-headers](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance http-standard-headers at 2026-07-28: 0/1 checks pass; failed sep-2243-client-includes-standard-headers |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/cline.json) | default | http | `2025-06-18` | 3.0.74 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/cline.json) | default | http | `2025-11-25` | 3.0.74 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/cline.json) | default | http | `2026-07-28` | 3.0.74 | conformance tools_call at 2026-07-28: 0/1 checks pass; failed tool-add-numbers |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/cline@3.0.74/default/both-http/tools.result.meta_only/record.json) | default | http | `2025-11-25` | 3.0.74 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |
 | [meta_only](../probe/runs/cline@3.0.74/default/both-stdio/tools.result.meta_only/record.json) | default | stdio | `2024-11-05` | 3.0.74 | ⟨…⟩ envelope (content 1x, structuredContent 0x, _meta reached the model) |

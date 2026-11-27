@@ -16,11 +16,11 @@ const adapter: HostAdapter = {
   id: 'fast-agent',
   title: 'fast-agent',
   configs: [
-    { name: 'default', description: 'generic provider (Chat Completions), protocol_mode auto: server/discover first, then initialize.', modelApi: 'chat' },
-    { name: 'legacy', description: 'mcp.defaults.protocol_mode: legacy, the initialize handshake only.', modelApi: 'chat' },
-    { name: 'modern', description: 'mcp.defaults.protocol_mode: modern, server/discover only, fails if the server declines.', modelApi: 'chat' },
-    { name: 'ptc', description: 'ptc.enabled: true and --ptc: tools reached from model-written Python through exec_sandbox. Local POSIX only at this version.', modelApi: 'chat' },
-    { name: 'anthropic', description: 'anthropic provider: the Messages API converter.', modelApi: 'anthropic' },
+    { name: 'default', kind: 'default', description: 'generic provider (Chat Completions), protocol_mode auto: server/discover first, then initialize.', modelApi: 'chat' },
+    { name: 'legacy', kind: 'setting', description: 'mcp.defaults.protocol_mode: legacy, the initialize handshake only.', modelApi: 'chat' },
+    { name: 'modern', kind: 'setting', description: 'mcp.defaults.protocol_mode: modern, server/discover only, fails if the server declines.', modelApi: 'chat' },
+    { name: 'ptc', kind: 'setting', description: 'ptc.enabled: true and --ptc: tools reached from model-written Python through exec_sandbox. Local POSIX only at this version.', modelApi: 'chat' },
+    { name: 'anthropic', kind: 'setting', description: 'anthropic provider: the Messages API converter.', modelApi: 'anthropic' },
   ],
   async version() {
     if (!existsSync(bin)) return { missing: `${bin} not found; run uv venv .venv && uv pip install -r requirements.txt in probe/hosts/fast-agent` };

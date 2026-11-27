@@ -13,8 +13,8 @@ const { runCommand, ensureDir, findFinalText } = await import(pathToFileURL(reso
 
 export default {
   configs: [
-    { name: 'answer', description: 'default plus McpToolset elicitation_callback accepting every request with empty content. ADK exposes no allow_input_required.', modelApi: 'gemini' },
-    { name: 'answer-modern', description: 'answer plus ADK_ENABLE_MCP_MODERN_PROTOCOL=1, as in modern. ADK exposes no allow_input_required.', modelApi: 'gemini' },
+    { name: 'answer', kind: 'harness', description: 'default plus McpToolset elicitation_callback accepting every request with empty content. ADK exposes no allow_input_required.', modelApi: 'gemini' },
+    { name: 'answer-modern', kind: 'harness', description: 'answer plus ADK_ENABLE_MCP_MODERN_PROTOCOL=1, as in modern. ADK exposes no allow_input_required.', modelApi: 'gemini' },
   ],
   async run(ctx) {
     const cwd = ensureDir(resolve(ctx.tmpDir, 'workspace'));

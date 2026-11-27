@@ -20,7 +20,7 @@ canimcp is an alpha and a work in progress. Statuses, notes and probe results ma
 
 Rows describe each client on the current revision, 2026-07-28, or on the newest revision it speaks when it cannot negotiate that one. get_client, find_capability_support and list_capabilities take a revision, such as 2025-11-25, and answer as a server offering that revision as its newest would see each client: the client negotiates the newest revision it speaks at or below it, and its record for that revision replaces the rows that differ. A client marked recordedPerRevision false has one set of rows for every revision it speaks.
 
-Start with list_clients for client ids or list_capabilities for capability ids. find_capability_support compares one capability across clients. get_client returns one client's entry. get_probe_results returns what a client sent to its model when it called a fixture tool. search_research_notes and get_research_note cover behaviour a status cannot express. Every tool is read-only, and results link to the page on https://canimcp.io they came from.
+Start with list_clients for client ids or list_capabilities for capability ids. find_capability_support compares one capability across clients. get_client returns one client's entry. get_probe_results returns what the probe and the MCP conformance suite saw one client do, by configuration. search_research_notes and get_research_note cover behaviour a status cannot express. Every tool is read-only, and results link to the page on https://canimcp.io they came from.
 
 The skill at skill://check-mcp-client-support/SKILL.md explains how to answer a client-support question with these tools and how to read the evidence.`,
 };
@@ -49,7 +49,7 @@ export const TOOLS = [
   {
     name: 'get_probe_results',
     title: 'Get probe results for a client',
-    description: 'Returns verified-tier results from the canimcp probe for one client: for each tool-result scenario, what reached the model, with the client version, model API, protocol revision and a link to the captures. For the image scenario it also says whether the image arrived as an image, as base64 text, or not at all. Covers clients that have no registry entry. Pass `capability` to narrow the results.',
+    description: 'Returns verified-tier results from the canimcp probe for one client: for each probe scenario, what reached the model or the server, with the client version, model API, protocol revision and a link to the captures. For the image scenario it also says whether the image arrived as an image, as base64 text, or not at all. Also returns the MCP conformance suite\'s results, with check counts. Each result names its configuration and the configuration\'s kind: default (stock settings), setting (a documented switch) or harness (probe-written code that uses an API the client leaves to the application). Covers clients that have no registry entry. Pass `capability`, `configKind`, `config`, `revision` or `source` to narrow the results.',
   },
   {
     name: 'search_research_notes',

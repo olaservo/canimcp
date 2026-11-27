@@ -12,8 +12,8 @@ const adapter: HostAdapter = {
   id: 'ts-sdk-client',
   title: 'TypeScript SDK client',
   configs: [
-    { name: 'auto', description: 'versionNegotiation mode auto: server/discover first, initialize fallback. The SDK default is legacy.', modelApi: 'chat' },
-    { name: 'legacy', description: 'versionNegotiation mode legacy: the initialize handshake only.', modelApi: 'chat' },
+    { name: 'auto', kind: 'setting', description: 'versionNegotiation mode auto: server/discover first, initialize fallback. The SDK default is legacy.', modelApi: 'chat' },
+    { name: 'legacy', kind: 'default', description: 'versionNegotiation mode legacy: the initialize handshake only.', modelApi: 'chat' },
   ],
   async version() {
     const pkg = JSON.parse(readFileSync(resolve(here, '../../../node_modules/@modelcontextprotocol/client/package.json'), 'utf8')) as { version: string };

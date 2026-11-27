@@ -3,6 +3,7 @@
   "client": "strands",
   "clientVersion": "1.64.0+mcp-2.3.0",
   "config": "default",
+  "configKind": "default",
   "harness": "bridge/host-bridge.mjs, mock model bridge/call-every-tool.mjs; no-auth scenarios",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -369,7 +370,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

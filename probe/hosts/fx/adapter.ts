@@ -15,7 +15,7 @@ const adapter: HostAdapter = {
   title: 'fx (native engine)',
   platforms: ['linux', 'darwin'],
   mockScript: 'mock-script.js',
-  configs: [{ name: 'default', description: 'fx ask --full-access on a configured Chat Completions provider; MCP tools are deferred until the model selects them.', modelApi: 'chat' }],
+  configs: [{ name: 'default', kind: 'default', description: 'fx ask --full-access on a configured Chat Completions provider; MCP tools are deferred until the model selects them.', modelApi: 'chat' }],
   async version() {
     if (!existsSync(bin)) return { missing: `${bin} not found; build fx at the pin with zig build and copy zig-out/bin/fx to probe/hosts/fx/bin` };
     const r = await runCommand(bin, ['--version'], { timeoutMs: 30000 });

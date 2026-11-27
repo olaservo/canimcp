@@ -15,6 +15,44 @@ export const capabilitySlug = (id) => id.replace(/[./]/g, '-');
 /** Distinct values in first-seen order, without empties. */
 const distinct = (list) => [...new Set(list.filter((v) => v !== undefined && v !== null && v !== ''))];
 
+const CONFORMANCE = 'modelcontextprotocol/conformance';
+const CONFIG_KIND_ORDER = ['default', 'setting', 'harness'];
+
+/**
+ * The runs of one capability on one client, one row per (source, config): the probe's own
+ * scenarios with their verdicts, and conformance scenarios with check counts per revision.
+ */
+function configRows(runs) {
+  const rows = new Map();
+  for (const e of runs) {
+    const source = e.source === CONFORMANCE ? 'conformance' : 'probe';
+    const key = `${source}|${e.config ?? ''}`;
+    let row = rows.get(key);
+    if (!row) {
+      row = { source, config: e.config ?? null, configKind: e.configKind ?? null, runs: 0, clientVersions: [], revisions: [], ...(source === 'probe' ? { verdicts: new Map() } : { byRevision: {} }) };
+      rows.set(key, row);
+    }
+    row.runs += 1;
+    if (e.clientVersion && !row.clientVersions.includes(e.clientVersion)) row.clientVersions.push(e.clientVersion);
+    if (e.at && !row.revisions.includes(e.at)) row.revisions.push(e.at);
+    if (source === 'probe') {
+      const v = e.note ?? '(no verdict)';
+      row.verdicts.set(v, (row.verdicts.get(v) ?? 0) + 1);
+    } else {
+      const r = (row.byRevision[e.at ?? 'unknown'] ??= { scenarios: 0, full: 0, partial: 0, absenceOnly: 0, failed: 0, checks: 0, checksPassed: 0 });
+      const checks = e.run?.checks ?? [];
+      r.scenarios += 1;
+      // No status: either only absence checks passed, or every check failed.
+      r[e.status ?? (checks.some((c) => c.status === 'SUCCESS') ? 'absenceOnly' : 'failed')] += 1;
+      r.checks += checks.length;
+      r.checksPassed += checks.filter((c) => c.status === 'SUCCESS').length;
+    }
+  }
+  return [...rows.values()]
+    .map((r) => ({ ...r, revisions: r.revisions.sort(), ...(r.verdicts ? { verdicts: [...r.verdicts].map(([verdict, count]) => ({ verdict, count })).sort((a, b) => b.count - a.count) } : {}) }))
+    .sort((a, b) => a.source.localeCompare(b.source) || CONFIG_KIND_ORDER.indexOf(a.configKind) - CONFIG_KIND_ORDER.indexOf(b.configKind) || String(a.config).localeCompare(String(b.config)));
+}
+
 /**
  * @param {object} o
  * @param {[string, object][]} o.clients registry entries as [id, entry]
@@ -88,8 +126,9 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
     for (const [capId, cap] of Object.entries(overlay.capabilities)) {
       const runs = cap.evidence ?? [];
       if (!runs.length) continue;
+      // The verdict lines are the probe's own scenarios; a conformance note is per scenario run and is summed by configRows instead.
       const verdicts = new Map();
-      for (const e of runs) verdicts.set(e.note ?? '(no verdict)', (verdicts.get(e.note ?? '(no verdict)') ?? 0) + 1);
+      for (const e of runs) if (e.source !== CONFORMANCE) verdicts.set(e.note ?? '(no verdict)', (verdicts.get(e.note ?? '(no verdict)') ?? 0) + 1);
       // The image scenario records how the image reached the model. It varies by model API as well as by client.
       const image = new Map();
       for (const e of runs) {
@@ -110,6 +149,7 @@ export function buildCapabilityIndex({ clients, spec, verified, observed, probeC
         scenarios: distinct(runs.map((e) => e.scenario)),
         latest: runs.map((e) => e.date).filter(Boolean).sort().pop() ?? null,
         verdicts: [...verdicts].map(([verdict, count]) => ({ verdict, count })).sort((a, b) => b.count - a.count),
+        configs: configRows(runs),
         records: `${origin}/tool-results/${overlay.client}`,
         data: `${origin}/data/verified/${overlay.client}.json`,
       };

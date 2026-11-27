@@ -10,7 +10,7 @@ const python = resolve(hostDir, '.venv', process.platform === 'win32' ? 'Scripts
 const { runCommand, ensureDir, findFinalText } = await import(pathToFileURL(resolve(here, '../../../dist/lib/hosts.js')).href);
 
 export default {
-  configs: [{ name: 'answer', description: 'default plus MCPClient(elicitation_callback=...) accepting every request with empty content. Strands already passes allow_input_required=True and resolves input-required results through the same callback.', modelApi: 'chat' }],
+  configs: [{ name: 'answer', kind: 'harness', description: 'default plus MCPClient(elicitation_callback=...) accepting every request with empty content. Strands already passes allow_input_required=True and resolves input-required results through the same callback.', modelApi: 'chat' }],
   async run(ctx) {
     const cwd = ensureDir(resolve(ctx.tmpDir, 'workspace'));
     const env = {

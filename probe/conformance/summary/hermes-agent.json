@@ -3,6 +3,7 @@
   "client": "hermes-agent",
   "clientVersion": "0.23.0+689.ga9ff979",
   "config": "tool-search-off",
+  "configKind": "setting",
   "harness": "bridge/host-bridge.mjs hermes-agent (profile config tool-search-off), mock model bridge/call-every-tool.mjs; no-auth scenarios",
   "suite": {
     "package": "@modelcontextprotocol/conformance",
@@ -380,7 +381,7 @@
       }
     },
     "jsonSchemaDialect": {
-      "proposedId": false,
+      "proposedId": true,
       "perVersion": {
         "2025-11-25": {
           "full": 1,

@@ -20,24 +20,24 @@ const adapter: HostAdapter = {
   mockScript: 'mock-script.js',
   configs: [
     {
-      name: 'default',
+      name: 'default', kind: 'setting',
       description:
         'exposure: direct on the server entry, so the model sees the tool like a built-in and the result goes through convertMcpResult. Chat Completions (openai-completions). The stock exposure at this version is codemode, which hides MCP tools from the model; see the codemode config.',
       modelApi: 'chat',
     },
     {
-      name: 'codemode',
+      name: 'codemode', kind: 'default',
       description:
         'Stock mcp.json entry: exposure codemode, the default. The model gets only the codemode tool and the mock writes a script that awaits tools.mcp__probe__<tool>(args) and returns the value, so the record shows what a script receives.',
       modelApi: 'chat',
     },
     {
-      name: 'deferred',
+      name: 'deferred', kind: 'setting',
       description: 'exposure: deferred. The mock calls tool_search for the fixture tool, then the declared tool on the next request.',
       modelApi: 'chat',
     },
     {
-      name: 'anthropic',
+      name: 'anthropic', kind: 'setting',
       description: 'exposure: direct with api anthropic-messages, for the note’s provider-specific empty-result placeholder.',
       modelApi: 'anthropic',
     },

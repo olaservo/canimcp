@@ -81,15 +81,15 @@ const adapter: HostAdapter = {
   mockScript: 'mock-script.js',
   configs: [
     {
-      name: 'default',
+      name: 'default', kind: 'default',
       description:
         'provider custom (Chat Completions), mcp_servers.probe with protocol auto: initialize first, server/discover only on a modern-only rejection. MCP tools are deferred behind the tool_search bridge, so the model reaches the tool through tool_call.',
       modelApi: 'chat',
     },
-    { name: 'tool-search-off', description: 'tools.tool_search.enabled: off: the MCP tool is offered to the model directly as mcp__probe__<tool>.', modelApi: 'chat' },
-    { name: 'stateless', description: 'mcp_servers.probe.protocol: stateless: server/discover first, one initialize retry on any error.', modelApi: 'chat' },
-    { name: 'legacy', description: 'mcp_servers.probe.protocol: legacy: initialize only, no fallback.', modelApi: 'chat' },
-    { name: 'tool-search-off-stateless', description: 'tool-search-off and stateless together: server/discover first, MCP tools offered directly.', modelApi: 'chat' },
+    { name: 'tool-search-off', kind: 'setting', description: 'tools.tool_search.enabled: off: the MCP tool is offered to the model directly as mcp__probe__<tool>.', modelApi: 'chat' },
+    { name: 'stateless', kind: 'setting', description: 'mcp_servers.probe.protocol: stateless: server/discover first, one initialize retry on any error.', modelApi: 'chat' },
+    { name: 'legacy', kind: 'setting', description: 'mcp_servers.probe.protocol: legacy: initialize only, no fallback.', modelApi: 'chat' },
+    { name: 'tool-search-off-stateless', kind: 'setting', description: 'tool-search-off and stateless together: server/discover first, MCP tools offered directly.', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(bin) || !existsSync(python)) return { missing: `${bin} not found; create the venv as described in probe/hosts/hermes-agent/requirements.txt` };

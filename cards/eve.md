@@ -147,52 +147,75 @@ When a server's newest revision is `2025-11-25`, eve negotiates it and these row
 
 ## Verified by the probe
 
-34 records from the live probe (`probe/`), client version `1.0.0-rc.6`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. The scenario link opens the record; the raw captures sit next to it. Overlay: `data/verified/eve.json`.
+48 records from the live probe (`probe/`), client version `1.0.0-rc.6`. Each row is one run against the instrumented fixture server with the model mocked; a tool-result verdict says which fixture fields reached the model. Glyphs: `[…]` content, `{…}` structuredContent, `⟨…⟩` the whole envelope, `"…"` a placeholder. Rows whose scenario starts with `conformance/` come from the MCP conformance suite, run through the same adapter; their verdict counts the checks. A config name is followed by its kind when the two differ: `setting` is a switch the client documents, `harness` is probe-written code that uses an API the client leaves to the application. The scenario link opens the record; the raw captures sit next to a probe record, and a conformance link opens the run summary. Overlay: `data/verified/eve.json`.
 
 | Scenario | Config | Run | At | Version | Verdict |
 |---|---|---|---|---|---|
 | **apps.visibility** | | | | | |
 | [app_only](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.app_only/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [app_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.app_only/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [app_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.app_only/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| **elicitation.form** | | | | | |
+| [conformance/elicitation-sep1034-client-defaults](../probe/conformance/summary/eve.json) | default | http | `2025-11-25` | 1.0.0-rc.6 | conformance elicitation-sep1034-client-defaults at 2025-11-25: 0/6 checks pass; failed client-elicitation-sep1034-general, client-elicitation-sep1034-string-default, client-elicitation-sep1034-integer-default, client-elicitation-sep1034-number-default, client-elicitation-sep1034-enum-default, client-elicitation-sep1034-boolean-default |
+| **protocol.initializeHandshake** | | | | | |
+| [conformance/initialize](../probe/conformance/summary/eve.json) | default | http | `2025-06-18` | 1.0.0-rc.6 | conformance initialize at 2025-06-18: 1/1 checks pass |
+| [conformance/initialize](../probe/conformance/summary/eve.json) | default | http | `2025-11-25` | 1.0.0-rc.6 | conformance initialize at 2025-11-25: 1/1 checks pass |
+| **protocol.mrtr** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance sep-2322-client-request-state at 2026-07-28: 1/4 checks pass; failed sep-2322-client-request-state-echoed, sep-2322-client-jsonrpc-id-different, sep-2322-client-no-state-omitted |
+| **protocol.protocolVersionHeader** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance request-metadata at 2026-07-28: 2/2 checks pass |
+| **protocol.resultType** | | | | | |
+| [conformance/sep-2322-client-request-state](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes |
+| **protocol.serverDiscover** | | | | | |
+| [conformance/request-metadata](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance request-metadata at 2026-07-28: 0/1 checks pass; failed sep-2575-client-retry-supported-version |
+| **protocol.sseResumability** | | | | | |
+| [conformance/sse-retry](../probe/conformance/summary/eve.json) | default | http | `2025-11-25` | 1.0.0-rc.6 | conformance sse-retry at 2025-11-25: 1/3 checks pass; failed client-sse-retry-timing, client-sse-last-event-id; client exited 124 |
+| **protocol.standardRequestHeaders** | | | | | |
+| [conformance/http-custom-headers](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance http-custom-headers at 2026-07-28: 17/18 checks pass; failed sep-2243-client-omit-null |
+| [conformance/http-invalid-tool-headers](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance http-invalid-tool-headers at 2026-07-28: 12/12 checks pass |
+| [conformance/http-standard-headers](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance http-standard-headers at 2026-07-28: 3/3 checks pass |
+| **tools** | | | | | |
+| [conformance/tools_call](../probe/conformance/summary/eve.json) | default | http | `2025-06-18` | 1.0.0-rc.6 | conformance tools_call at 2025-06-18: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/eve.json) | default | http | `2025-11-25` | 1.0.0-rc.6 | conformance tools_call at 2025-11-25: 1/1 checks pass |
+| [conformance/tools_call](../probe/conformance/summary/eve.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | conformance tools_call at 2026-07-28: 1/1 checks pass |
 | **tools.result._meta** | | | | | |
 | [meta_only](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.meta_only/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | […] content only (1x, as text, _meta did not reach the model) |
-| [meta_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.meta_only/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as text, _meta did not reach the model) |
+| [meta_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.meta_only/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as text, _meta did not reach the model) |
 | [with_meta](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.with_meta/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json, _meta did not reach the model) |
-| [with_meta](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_meta/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json, _meta did not reach the model) |
+| [with_meta](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_meta/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json, _meta did not reach the model) |
 | **tools.result.audience** | | | | | |
 | [audience_user](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.audience_user/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [audience_user](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.audience_user/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [audience_user](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.audience_user/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | **tools.result.content** | | | | | |
 | [empty_object](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.empty_object/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | "…" client error text, no fixture field: "{\"error\":\"MCPClientError: Failed to parse server response\"}" |
-| [empty_object](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.empty_object/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | "…" client error text, no fixture field: "{\"error\":\"MCPClientError: Failed to parse server response\"}" |
+| [empty_object](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.empty_object/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | "…" client error text, no fixture field: "{\"error\":\"MCPClientError: Failed to parse server response\"}" |
 | [large](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.large/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [large](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.large/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [large](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.large/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | [no_content_key](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.no_content_key/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [no_content_key](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.no_content_key/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [no_content_key](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.no_content_key/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | **tools.result.isError** | | | | | |
 | [is_error](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.is_error/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | […] content only (1x, as json) |
-| [is_error](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.is_error/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as json) |
+| [is_error](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.is_error/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as json) |
 | **tools.result.media** | | | | | |
 | [with_image](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.with_image/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | […] content only (1x, as json) |
-| [with_image](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_image/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as json) |
+| [with_image](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.with_image/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | […] content only (1x, as json) |
 | **tools.result.outputSchema** | | | | | |
 | [schema_match](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.schema_match/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [schema_match](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_match/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [schema_match](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_match/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | [schema_mismatch](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.schema_mismatch/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [schema_mismatch](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_mismatch/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [schema_mismatch](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.schema_mismatch/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | **tools.result.structuredContent** | | | | | |
 | [mirror](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.mirror/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | payload once (as json) |
-| [mirror](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.mirror/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | payload once (as json) |
+| [mirror](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.mirror/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | payload once (as json) |
 | [sc_empty](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_empty/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "{}" |
-| [sc_empty](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_empty/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "{}" |
+| [sc_empty](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_empty/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "{}" |
 | [sc_null](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_null/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "null" |
-| [sc_null](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_null/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "null" |
+| [sc_null](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_null/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | "…" no marker reached the model; payload: "null" |
 | [sc_string](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.sc_string/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as text) |
-| [sc_string](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_string/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as text) |
+| [sc_string](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.sc_string/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as text) |
 | [structured_only](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.structured_only/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [structured_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.structured_only/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [structured_only](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.structured_only/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 | [summary_and_data](../probe/runs/eve@1.0.0-rc.6/default/both-http/tools.result.summary_and_data/record.json) | default | http | `2026-07-28` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
-| [summary_and_data](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.summary_and_data/record.json) | no-discovery | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
+| [summary_and_data](../probe/runs/eve@1.0.0-rc.6/no-discovery/both-http/tools.result.summary_and_data/record.json) | no-discovery (setting) | http | `2025-11-25` | 1.0.0-rc.6 | {…} structuredContent only (1x, as json) |
 
 ## Research notes
 
