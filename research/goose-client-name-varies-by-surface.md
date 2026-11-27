@@ -14,27 +14,27 @@ sources:
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/agents/extension_manager/mod.rs, client_context
     commit: "d1438fde"
-    path: crates/goose/src/agents/extension_manager/mod.rs:95-117
+    path: crates/goose/src/agents/extension_manager/mod.rs
     date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/agents/services.rs, GoosePlatform and its Display impl
     commit: "d1438fde"
-    path: crates/goose/src/agents/services.rs:261-274
+    path: crates/goose/src/agents/services.rs
     date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/goose/src/acp/server.rs, the ACP client's clientInfo becomes GooseMcpHostInfo
     commit: "d1438fde"
-    path: crates/goose/src/acp/server.rs:494-514,1089-1103
+    path: crates/goose/src/acp/server.rs
     date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: ui/desktop/src/acp/acpConnection.ts, the desktop app's ACP initialize
     commit: "d1438fde"
-    path: ui/desktop/src/acp/acpConnection.ts:146-163
+    path: ui/desktop/src/acp/acpConnection.ts
     date: 2026-11-26
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs, resolved_extensions and resolved_client_info
     commit: "d1438fde"
-    path: crates/oi-kit-agent/src/mcp/client.rs:306-335
+    path: crates/oi-kit-agent/src/mcp/client.rs
     date: 2026-11-26
   - url: https://github.com/apify/mcp-client-capabilities
     title: mcp-clients.json, goose record

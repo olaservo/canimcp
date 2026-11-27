@@ -20,7 +20,7 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | Speaks | `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-26 |
-| Last read | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `1.61.0` (see below) |
 
 ## Capabilities
@@ -230,7 +230,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `d1438fde` on 2026-11-26, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-11-26.
+Read at `c546eaa1` on 2026-11-27, from `main` of https://github.com/aaif-goose/goose.git. That commit was authored 2026-11-26.
 
 **SDK.** The workspace declares rmcp "3.9.0" as a caret requirement and the lockfile resolves it to 3.11.0, so behavioural claims cite 3.11.0. The lockfile holds one copy of rmcp. [patch.crates-io] exists but covers only cudaforge, not rmcp. goose names ProtocolVersion::V_2026_07_28 and V_2025_11_25 itself rather than inheriting a version from rmcp, and names V_2025_11_25 as the legacy fallback.
 

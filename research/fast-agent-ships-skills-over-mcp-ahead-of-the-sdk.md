@@ -15,24 +15,24 @@ tracking:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/skills_extension.py, local wire models
-    commit: 288b5339
-    path: src/fast_agent/mcp/skills_extension.py:1-99
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/skills_extension.py
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/skills/mcp_registry.py, scan_mcp_skill_registry and the install limits
-    commit: 288b5339
-    path: src/fast_agent/skills/mcp_registry.py:68-177,282-310,410-457
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/skills/mcp_registry.py:_validate_resource_set,_refresh_before_fetch,_stage_verified_mcp_skill
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_connection.py, list_skills / get_skill / read_directory
-    commit: 288b5339
-    path: src/fast_agent/mcp/client_connection.py:288-310
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/client_connection.py:MCPClientConnection
+    date: 2026-11-27
   - url: https://modelcontextprotocol.io/extensions/skills/overview
     title: Skills extension overview, which records SEP-2640 as Final
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - fast-agent-leads-with-the-modern-discover-probe
 ---

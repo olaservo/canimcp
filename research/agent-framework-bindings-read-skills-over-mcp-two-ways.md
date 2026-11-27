@@ -14,32 +14,32 @@ sources:
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_skills.py, MCPSkillsSource
     commit: "10801303"
-    path: python/packages/core/agent_framework/_skills.py:5454-5542
+    path: python/packages/core/agent_framework/_skills.py
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_skills.py, _try_read_index
     commit: "10801303"
-    path: python/packages/core/agent_framework/_skills.py:5662-5686
+    path: python/packages/core/agent_framework/_skills.py
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: AgentMcpSkillsSource.GetSkillsAsync, the extension gate
     commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/AgentMcpSkillsSource.cs:112,158-170
+    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/AgentMcpSkillsSource.cs
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: McpSkillsCatalog, skills/get and skills/list through SendRequestAsync
     commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/McpSkillsCatalog.cs:213-217,322-326
+    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/McpSkillsCatalog.cs
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: AgentMcpSkill, resources/read for skill files
     commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/AgentMcpSkill.cs:254
+    path: dotnet/src/Microsoft.Agents.AI.Mcp/Skills/AgentMcpSkill.cs
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: dotnet/Directory.Packages.props, the two ModelContextProtocol packages referenced
     commit: "10801303"
-    path: dotnet/Directory.Packages.props:128-129
+    path: dotnet/Directory.Packages.props
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

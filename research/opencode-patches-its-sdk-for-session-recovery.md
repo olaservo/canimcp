@@ -18,7 +18,7 @@ sources:
   - url: https://github.com/anomalyco/opencode
     title: bun.lock, the patch registration
     commit: 7cde8329
-    path: bun.lock:1070
+    path: bun.lock
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/opencode/test/fixture/mcp-session-recovery.ts
@@ -27,14 +27,14 @@ sources:
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, failure
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/client.ts:519-541
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/client.ts:connect
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/connection.ts, recover and recovering
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/connection.ts:145-165
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/connection.ts:make
+    date: 2026-11-27
 status: stale
 lastVerified: 2026-11-26
 ---

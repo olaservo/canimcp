@@ -260,9 +260,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **elicitation** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `9dcf7714` `tools/mcp_tool_sampling.py:290-333` (2026-11-09)
+  <br>NousResearch/hermes-agent `9dcf7714` `tools/mcp_tool_sampling.py:ElicitationHandler` (2026-11-09)
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `a24c12d1` `tools/mcp_tool.py:2363` (2026-11-09)
+  <br>NousResearch/hermes-agent `a24c12d1` `tools/mcp_tool.py:ElicitationHandler.__call__` (2026-11-09)
 - **elicitation.url** — recorded as `unsupported`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 
@@ -280,12 +280,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Hermes runs one MCP client across every surface, and a second one it does not expose](../research/hermes-runs-one-mcp-client-for-every-surface.md) — *nuance*. CLI, desktop, gateway, TUI gateway, ACP adapter, cron and web all use the same `tools/mcp_tool*` client. No TypeScript SDK, and no hand-rolled client that carries a session. The one other `ClientSession` is internal, drives a computer-use server, and declares nothing.
 - [Hermes never set clientInfo, so servers saw the SDK's placeholder name](../research/hermes-goes-on-the-wire-as-mcp.md) — *gap*. At `a24c12d1` Hermes passed no `client_info`, so handshakes carried the SDK placeholder `mcp` 0.1.0. At `9dcf7714` it sends `hermes-agent` with its base version, as the probe saw on the wire. Older builds still send `mcp`.
 - [notes/hermes-agent-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/hermes-agent-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Hermes Agent source at e0754412.
-- [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
-- [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation.url*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
-- [src/mcp/client/session.py:639-648](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *roots*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk. ClientSession derives the roots capability from list_roots_callback; with none passed the capability is absent.
-- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
-- [mcp/server/apps.py:1,43](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. The SDK's MCP Apps module is server-side. The client package has no apps code.
-- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
+- [src/mcp/client/session.py:ClientSession._build_capabilities](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
+- [src/mcp/client/session.py:ClientSession._build_capabilities](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation.url*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
+- [src/mcp/client/session.py:ClientSession._build_capabilities](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *roots*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk. ClientSession derives the roots capability from list_roots_callback; with none passed the capability is absent.
+- [mcp/client/session.py](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
+- [mcp/server/apps.py](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. The SDK's MCP Apps module is server-side. The client package has no apps code.
+- [mcp/client/session.py](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
 
 ## Provenance
 

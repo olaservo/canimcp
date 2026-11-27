@@ -22,7 +22,7 @@ sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/computer_use/cua_backend.py, the internal cua-driver session
     commit: a24c12d1
-    path: tools/computer_use/cua_backend.py:1730-1800
+    path: tools/computer_use/cua_backend.py:_CuaDriverSession._lifecycle_coro
     date: 2026-08-27
   - url: https://github.com/NousResearch/hermes-agent
     title: importers of tools/mcp_tool across gateway, tui_gateway, acp_adapter, cron, hermes_cli and model_tools
@@ -31,19 +31,19 @@ sources:
     date: 2026-11-20
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, the two ClientSession construction sites on the configurable path
-    commit: 2de9f51b
-    path: tools/mcp_tool_transport.py:309,432
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTransportMixin._serve_transport,MCPServerTransportMixin._run_stdio
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/computer_use/cua_backend_session.py, the internal cua-driver session
-    commit: 2de9f51b
-    path: tools/computer_use/cua_backend_session.py:211-239
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/computer_use/cua_backend_session.py:_CuaDriverSession._lifecycle_coro
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: hermes_platform/resolver/app.py, desktop-app liveness probe
-    commit: 2de9f51b
-    path: hermes_platform/resolver/app.py:427-474
-    date: 2026-11-20
+    commit: 45e95845
+    path: hermes_platform/resolver/app.py:_mcp_initialize
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 related:

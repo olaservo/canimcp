@@ -16,21 +16,21 @@ sources:
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, the Client construction
     commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:2653-2667
+    path: python/packages/core/agent_framework/_mcp.py
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, sampling_callback and the approval gate
     commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:2818-2849,2916-2953
+    path: python/packages/core/agent_framework/_mcp.py
     date: 2026-11-16
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, default caps and the deprecation message
     commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:817-830
+    path: python/packages/core/agent_framework/_mcp.py
     date: 2026-11-16
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:629-633
+    path: mcp/client/session.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

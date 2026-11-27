@@ -15,41 +15,41 @@ sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp requirement of lfx
     commit: 21381e5b
-    path: src/lfx/pyproject.toml:72
+    path: src/lfx/pyproject.toml
     date: 2026-11-20
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp requirement of langflow-base and its mcp extra
     commit: 21381e5b
-    path: src/backend/base/pyproject.toml:116,381
+    path: src/backend/base/pyproject.toml
     date: 2026-11-20
   - url: https://github.com/langflow-ai/langflow
     title: uv.lock, mcp 1.30.0
     commit: 21381e5b
-    path: uv.lock:11856-11857
+    path: uv.lock
     date: 2026-11-20
   - url: https://github.com/langflow-ai/langflow
     title: pyproject.toml, [tool.uv] constraint and override lists with no mcp entry
     commit: 21381e5b
-    path: pyproject.toml:256-310
+    path: pyproject.toml
     date: 2026-11-20
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/uvx.py, the injected SDK constraint and its reason
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/uvx.py:1-27
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/uvx.py:DEFAULT_MCP_SDK_CONSTRAINT,mcp_sdk_constraint_args
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/services/settings/groups/mcp.py, LANGFLOW_MCP_SDK_CONSTRAINT
-    commit: 21381e5b
-    path: src/lfx/src/lfx/services/settings/groups/mcp.py:105-116
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/services/settings/groups/mcp.py:McpSettings
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/langflow/api/utils/mcp/config_utils.py, the uvx mcp-proxy entry written for each user's starter project
-    commit: 21381e5b
-    path: src/backend/base/langflow/api/utils/mcp/config_utils.py:556-582
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/backend/base/langflow/api/utils/mcp/config_utils.py:auto_configure_starter_projects_mcp
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, LATEST_PROTOCOL_VERSION and SUPPORTED_PROTOCOL_VERSIONS
-    path: mcp/types.py:27
+    path: mcp/types.py
     date: 2026-11-20
 status: current
 lastVerified: 2026-11-20

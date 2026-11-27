@@ -13,16 +13,16 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/remote-proxy.ts
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/remote-proxy.ts:19-62
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/remote-proxy.ts:resolveMcpRemoteProxyTransport,resolveNativeMcpTransport
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/config-loader.ts, resolveNativeMcpTransport call
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:761
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:toMcpServerRegistration
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - cline-defaults-a-url-server-to-sse
   - cline-hand-rolls-stdio-in-its-cli

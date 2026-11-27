@@ -16,18 +16,18 @@ sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/opencode/src/mcp/index.ts, CLIENT_OPTIONS
     commit: 7cde8329
-    path: packages/opencode/src/mcp/index.ts:39-50
+    path: packages/opencode/src/mcp/index.ts:CLIENT_OPTIONS
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/opencode/src/mcp/index.ts, createClient
     commit: 7cde8329
-    path: packages/opencode/src/mcp/index.ts:76-80
+    path: packages/opencode/src/mcp/index.ts:createClient
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, the capabilities passed to Client
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/client.ts:429-443,497-510
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/client.ts:initialize
+    date: 2026-11-27
 status: stale
 lastVerified: 2026-11-26
 related:

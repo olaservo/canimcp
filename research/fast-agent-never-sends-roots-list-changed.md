@@ -16,15 +16,15 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, _make_list_roots_callback
-    commit: 288b5339
-    path: src/fast_agent/mcp/client_callback_runtime.py:144-158
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/client_callback_runtime.py:MCPClientCallbackRuntime._make_list_roots_callback
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:639-646
+    path: mcp/client/session.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - fast-agent-declares-capabilities-per-server
   - opencode-declares-only-roots

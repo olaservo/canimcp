@@ -85,8 +85,15 @@ for (const [id, entry] of registry) {
   const citedGone = cited.filter((f) => tryGit(dir, 'cat-file', '-e', `${head}:${f}`) === null);
   // Notes that cite this repository at the checked commit, in a file that has changed.
   const touched = notes.filter((n) => (n.fm.sources ?? []).some((s) => s.url && sameRepo(s.url, src.repo) && s.commit && src.checkedCommit.startsWith(s.commit) && s.path && changedAll.has(String(s.path).split(':')[0]))).map((n) => n.id);
+  // Commits since the pin that name MCP or an MCP feature, or touch a path with mcp in it. A new
+  // capability usually shows up here first, including one built outside the cited files.
+  const MCP_WORDS = /\bmcp\b|model context protocol|elicitation|sampling|\broots\b|skills? over|server\/discover|structuredContent|resource link|oauth|cimd|sep-\d+|io\.modelcontextprotocol/i;
+  const log = git(dir, 'log', '--format=%h%x09%s', range).split(/\r?\n/).filter(Boolean).map((l) => l.split('\t'));
+  const byPath = new Set(git(dir, 'log', '--format=%h', range, '--', ':(glob,icase)**/*mcp*', ':(glob,icase)**/*mcp*/**').split(/\r?\n/).filter(Boolean));
+  const mcpCommits = log.filter(([hash, subject]) => MCP_WORDS.test(subject ?? '') || byPath.has(hash)).map(([hash, subject]) => ({ hash, subject }));
   reads.push({
     ...row,
+    mcpCommits,
     state: trackedChanged.length || citedChanged.length ? 'moved' : 'unchanged',
     commitsBehind: Number(git(dir, 'rev-list', '--count', range)),
     trackedChanged, citedChanged, citedGone, notes: touched,
@@ -114,9 +121,9 @@ if (flag('--json')) {
   console.log(JSON.stringify(report, null, 2));
 } else {
   const L = [`Registry refresh check, ${report.generatedAt}. Clones in ${clientsDir}.`, ''];
-  L.push('| Client | Read at | Age | State | Behind | Tracked paths changed | Cited files changed | Notes to re-check |', '|---|---|---|---|---|---|---|---|');
+  L.push('| Client | Read at | Age | State | Behind | MCP commits | Tracked paths changed | Cited files changed | Notes to re-check |', '|---|---|---|---|---|---|---|---|---|');
   for (const r of reads) {
-    L.push(`| ${r.id} | ${r.checkedCommit} (${r.checkedAt}) | ${r.ageDays}d | ${r.state} | ${r.commitsBehind ?? ''} | ${r.trackedChanged?.length ?? ''} | ${r.citedChanged ? `${r.citedChanged.length}${r.citedGone.length ? `, ${r.citedGone.length} gone` : ''}` : r.detail} | ${(r.notes ?? []).length || ''} |`);
+    L.push(`| ${r.id} | ${r.checkedCommit} (${r.checkedAt}) | ${r.ageDays}d | ${r.state} | ${r.commitsBehind ?? ''} | ${r.mcpCommits?.length ?? ''} | ${r.trackedChanged?.length ?? ''} | ${r.citedChanged ? `${r.citedChanged.length}${r.citedGone.length ? `, ${r.citedGone.length} gone` : ''}` : r.detail} | ${(r.notes ?? []).length || ''} |`);
   }
   L.push('', '`moved` means a tracked path or a cited file changed, so the entry needs a re-read. `unchanged` means the clone moved and nothing the entry tracks did, so the pin can be bumped after a spot check.');
   for (const r of reads.filter((x) => x.state === 'moved')) {
@@ -124,6 +131,11 @@ if (flag('--json')) {
     if (r.citedChanged.length) L.push(`- cited files changed: ${r.citedChanged.join(', ')}`);
     if (r.citedGone.length) L.push(`- cited files gone at HEAD: ${r.citedGone.join(', ')}`);
     if (r.notes.length) L.push(`- notes citing a changed file: ${r.notes.join(', ')}`);
+  }
+  for (const r of reads.filter((x) => x.mcpCommits?.length)) {
+    L.push('', `${r.id}, MCP commits since ${r.checkedCommit}:`);
+    for (const c of r.mcpCommits.slice(0, 10)) L.push(`- ${c.hash} ${c.subject}`);
+    if (r.mcpCommits.length > 10) L.push(`- and ${r.mcpCommits.length - 10} more`);
   }
   if (unread.length) L.push('', `No source read to refresh (${unread.length}): ${unread.map((u) => `${u.id} [${u.tiers.join(', ') || 'no evidence'}]`).join('; ')}.`);
   for (const r of remote) L.push('', `${r.source}: pinned ${r.pinned.join(', ') || 'nothing'}, upstream ${r.head ?? 'not reachable'}${r.moved ? ', moved' : r.moved === false ? ', current' : ''}.`);

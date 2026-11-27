@@ -13,58 +13,58 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/protocol_mode.rs
-    commit: 475e13ab
-    path: codex-rs/rmcp-client/src/protocol_mode.rs:7-54
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/rmcp-client/src/protocol_mode.rs
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/features/src/lib.rs, the mcp_2026_07_28, mcp_connection_sharing, codex_apps_mcp_2026_07_28 and use_xaa feature records
-    commit: 475e13ab
-    path: codex-rs/features/src/lib.rs:1880-1885, 1892-1897, 1922-1927, 1934-1939
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/features/src/lib.rs:FEATURES
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, mcp_initialize_request_params
-    commit: 475e13ab
-    path: codex-rs/codex-mcp/src/rmcp_client.rs:1469-1500
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/codex-mcp/src/rmcp_client.rs:mcp_initialize_request_params
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/core/src/config/mod.rs, discover_local_stdio and mcp_protocol_mode
-    commit: 475e13ab
-    path: codex-rs/core/src/config/mod.rs:2136, 2213-2219
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/core/src/config/mod.rs:Config.to_mcp_config_with_loaded_plugins,Config.mcp_protocol_mode
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/connection_manager.rs, per-connection mode selection
-    commit: 475e13ab
-    path: codex-rs/codex-mcp/src/connection_manager.rs:571-591, 699-705
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/codex-mcp/src/connection_manager.rs:McpConnectionSet
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/server.rs, can_discover_local_stdio and stdio_protocol_mode
-    commit: 475e13ab
-    path: codex-rs/codex-mcp/src/server.rs:109-132
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/codex-mcp/src/server.rs:EffectiveMcpServer
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/rmcp_client.rs, the stdio opt-in variable, the modern-session check and the discovery handshake
-    commit: 475e13ab
-    path: codex-rs/rmcp-client/src/rmcp_client.rs:608-614, 1012-1034, 1775-1783, 1833-1883
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/rmcp-client/src/rmcp_client.rs:RmcpClient.new_stdio_client_with_protocol_mode,RmcpClient.read_resource,RmcpClient.connect_pending_transport
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_handshake.rs, when a failed discovery restarts the server in Legacy
-    commit: 475e13ab
-    path: codex-rs/rmcp-client/src/stdio_handshake.rs:18-115
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/rmcp-client/src/stdio_handshake.rs
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/local_stdio_transport.rs, handle_reply and the empty discovery reply
-    commit: 475e13ab
-    path: codex-rs/rmcp-client/src/local_stdio_transport.rs:68-152
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/rmcp-client/src/local_stdio_transport.rs:Discovery.handle_reply
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_server_launcher.rs, the Windows fallback to Legacy without a job object
-    commit: 475e13ab
-    path: codex-rs/rmcp-client/src/stdio_server_launcher.rs:529-536
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/rmcp-client/src/stdio_server_launcher.rs:LocalStdioServerLauncher.launch_server
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/rust-sdk
     title: rmcp at the revision Codex pins, the Auto lifecycle and the legacy initialize handshake
     commit: b11a40d8
-    path: crates/rmcp/src/service/client.rs:861-904, 990-1004
+    path: crates/rmcp/src/service/client.rs
     date: 2026-11-26
   - url: https://github.com/openai/codex/pull/62552
     title: Enable MCP connection sharing by default
@@ -77,7 +77,7 @@ sources:
     title: Add MCP 2026-07-28 discovery support
     date: 2026-07-28
 status: current
-lastVerified: 2026-11-26
+lastVerified: 2026-11-27
 related:
   - codex-reads-one-page-of-tools
 ---

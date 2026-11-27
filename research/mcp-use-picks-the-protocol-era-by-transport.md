@@ -16,35 +16,35 @@ specVersions:
 sources:
   - url: https://github.com/mcp-use/mcp-use
     title: HttpConnector defaults and client options
-    commit: 8ff4b865
-    path: libraries/typescript/packages/client/src/transport/http.ts:81-93,268-278,416-464
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/typescript/packages/client/src/transport/http.ts:HttpConnectorOptions,HttpConnector,HttpConnector.buildClientOptions
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: StdioConnector defaults and client options
-    commit: 8ff4b865
-    path: libraries/typescript/packages/client/src/transport/stdio.ts:35-42,91-96,128-176
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/typescript/packages/client/src/transport/stdio.ts:StdioConnectorOptions,StdioConnector,StdioConnector.establishTransport
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: Default clientInfo and normalizeClientInfo
-    commit: 8ff4b865
-    path: libraries/typescript/packages/client/src/core/config.ts:281-311
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/typescript/packages/client/src/core/config.ts:getDefaultClientInfo,normalizeClientInfo
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: MCPClient passes the normalized clientInfo to each connector
-    commit: 8ff4b865
-    path: libraries/typescript/packages/client/src/core/node.ts:492-536
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/typescript/packages/client/src/core/node.ts:MCPClient.createConnectorFromConfig
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: The CLI's deploy check builds its own SDK client named manufact-cli
-    commit: 8ff4b865
-    path: libraries/typescript/packages/cli/src/cloud/deploy/external-url.ts:50-58
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/typescript/packages/cli/src/cloud/deploy/external-url.ts:validateExternalServer
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1
     title: "@modelcontextprotocol/client 2.3.1, resolveVersionNegotiation and the auto-opened subscriptions/listen stream"
-    path: dist/index.mjs:2559-2585,3425-3452
+    path: dist/index.mjs
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - mcp-use-python-binding-runs-on-the-1x-sdk
   - fast-agent-leads-with-the-modern-discover-probe

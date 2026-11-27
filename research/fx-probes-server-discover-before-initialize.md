@@ -17,34 +17,34 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/core/era.zig, Config, Detector.step and the classify functions
-    commit: c3dc80c4
-    path: src/mcp/core/era.zig:19-26,189-288,386-444,476-491
-    date: 2026-11-16
+    commit: ed1f3317
+    path: src/mcp/core/era.zig
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, the request headers for a probe
     commit: c3dc80c4
-    path: src/mcp/server.zig:1062-1080
+    path: src/mcp/server.zig:sendAttempt
     date: 2026-11-16
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, sendLegacy
     commit: c3dc80c4
-    path: src/mcp/server.zig:1505-1518
+    path: src/mcp/server.zig:Server
     date: 2026-11-16
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, the engine options fx passes
     commit: c3dc80c4
-    path: src/core/mcp_host/runtime.zig:528-530
+    path: src/core/mcp_host/runtime.zig:start
     date: 2026-11-16
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/README.md, the pinned conformance baseline
-    commit: c3dc80c4
-    path: tests/e2e/conformance/README.md:1-9
-    date: 2026-11-16
+    commit: ed1f3317
+    path: tests/e2e/conformance/README.md:MCP conformance baseline
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/expected-failures.yml
-    commit: c3dc80c4
-    path: tests/e2e/conformance/expected-failures.yml:1-6
-    date: 2026-11-16
+    commit: ed1f3317
+    path: tests/e2e/conformance/expected-failures.yml
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

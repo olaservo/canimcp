@@ -15,36 +15,36 @@ specVersions:
 sources:
   - url: https://github.com/n8n-io/n8n
     title: McpOAuth2Api credential, useDynamicClientRegistration default true
-    commit: 84decbe0
-    path: packages/@n8n/nodes-langchain/credentials/McpOAuth2Api.credentials.ts:12-29
-    date: 2026-11-20
+    commit: 467bcd35
+    path: packages/@n8n/nodes-langchain/credentials/McpOAuth2Api.credentials.ts:McpOAuth2Api
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: oauth.service.ts, protected resource discovery and resource resolution
-    commit: 84decbe0
-    path: packages/cli/src/oauth/oauth.service.ts:1104-1175
-    date: 2026-11-20
+    commit: 467bcd35
+    path: packages/cli/src/oauth/oauth.service.ts:OauthService.discoverAndResolveResource
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: oauth.service.ts, registerClient (AS metadata, CIMD, DCR)
-    commit: 84decbe0
-    path: packages/cli/src/oauth/oauth.service.ts:1323-1545
-    date: 2026-11-20
+    commit: 467bcd35
+    path: packages/cli/src/oauth/oauth.service.ts:OauthService
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: auth.config.ts, N8N_OAUTH_CIMD_ENABLED
-    commit: 84decbe0
-    path: packages/@n8n/config/src/configs/auth.config.ts:35-50
-    date: 2026-11-20
+    commit: 467bcd35
+    path: packages/@n8n/config/src/configs/auth.config.ts:AuthConfig
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: shared/utils.ts, auth headers and the 401 refresh
-    commit: 84decbe0
-    path: packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:384-510
-    date: 2026-11-20
+    commit: 467bcd35
+    path: packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: pkce-challenge patch
-    commit: 84decbe0
+    commit: 467bcd35
     path: patches/pkce-challenge@5.0.0.patch
-    date: 2026-11-20
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - n8n-sends-the-node-type-as-client-name
 ---

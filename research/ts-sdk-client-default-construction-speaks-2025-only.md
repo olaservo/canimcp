@@ -18,31 +18,31 @@ sources:
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/versionNegotiation.ts, the three modes and DEFAULT_VERSION_NEGOTIATION_MODE
     commit: 5ee54ee3
-    path: packages/client/src/client/versionNegotiation.ts:67-112
+    path: packages/client/src/client/versionNegotiation.ts:VersionNegotiationMode,VersionNegotiationOptions,DEFAULT_VERSION_NEGOTIATION_MODE
     date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/versionNegotiation.ts, resolveVersionNegotiation and the probe request
     commit: 5ee54ee3
-    path: packages/client/src/client/versionNegotiation.ts:132-154,355-376
+    path: packages/client/src/client/versionNegotiation.ts:resolveVersionNegotiation,buildProbeRequest
     date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/versionNegotiation.ts, negotiateStdioViaSibling
     commit: 5ee54ee3
-    path: packages/client/src/client/versionNegotiation.ts:601-664
+    path: packages/client/src/client/versionNegotiation.ts:negotiateStdioViaSibling
     date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/client.ts, connect, the legacy handshake and the negotiated connect
     commit: 5ee54ee3
-    path: packages/client/src/client/client.ts:1040-1053,1093-1158,1166-1244
+    path: packages/client/src/client/client.ts:Client.connect,Client._legacyHandshake,Client._connectNegotiated
     date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/core/src/constants.ts, LATEST_PROTOCOL_VERSION and SUPPORTED_PROTOCOL_VERSIONS
     commit: 5ee54ee3
-    path: packages/core/src/constants.ts:1-3
+    path: packages/core/src/constants.ts:LATEST_PROTOCOL_VERSION,DEFAULT_NEGOTIATED_PROTOCOL_VERSION,SUPPORTED_PROTOCOL_VERSIONS
     date: 2026-11-20
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
     title: "@modelcontextprotocol/client 2.4.0, dist/public-CvV4ZHkX.mjs, DEFAULT_VERSION_NEGOTIATION_MODE"
-    path: dist/public-CvV4ZHkX.mjs:2180
+    path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-20
 status: current
 lastVerified: 2026-11-20

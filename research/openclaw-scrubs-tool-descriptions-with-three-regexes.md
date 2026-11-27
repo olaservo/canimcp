@@ -12,26 +12,26 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-metadata.ts, sanitizeMcpMetadataText
-    commit: 3e7c305f
-    path: src/agents/mcp-metadata.ts:63-78
-    date: 2026-11-20
+    commit: c44c610d
+    path: src/agents/mcp-metadata.ts:sanitizeMcpMetadataText
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-catalog-projection.ts, applied to tool.description
-    commit: 3e7c305f
-    path: src/agents/agent-bundle-mcp-catalog-projection.ts:133
-    date: 2026-11-20
+    commit: c44c610d
+    path: src/agents/agent-bundle-mcp-catalog-projection.ts:projectBundleMcpServerCatalog
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/mcp.ts, applied on the node host surface
-    commit: 3e7c305f
-    path: src/node-host/mcp.ts:151-156
-    date: 2026-11-20
+    commit: c44c610d
+    path: src/node-host/mcp.ts:buildNodeMcpToolDescriptors
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-materialize.ts, server instructions take a different path
-    commit: 3e7c305f
-    path: src/agents/agent-bundle-mcp-materialize.ts:131-143
-    date: 2026-11-20
+    commit: c44c610d
+    path: src/agents/agent-bundle-mcp-materialize.ts:buildBundleMcpToolsFromCatalog
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - openclaw-names-its-resource-tools-a-fourth-way
 ---

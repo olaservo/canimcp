@@ -13,35 +13,35 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the Streamable HTTP attempt loop and the 2 s initialize cap
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/util.py:1817-1877
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.session_task
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, attempt count, retry delay, and the transient and SSE-fallback tests
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/util.py:1133-1134,1152-1207
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/util.py:_convert_mcp_result
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the SSE path and the per-server transport preference
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/util.py:1622-1636,1894-1917
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.get_session,MCPSessionManager.session_task
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/services/settings/groups/mcp.py, mcp_server_timeout and its note on the 2 s cap
-    commit: 21381e5b
-    path: src/lfx/src/lfx/services/settings/groups/mcp.py:19-36
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/services/settings/groups/mcp.py:McpSettings
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, the advisory DELETE sent on disconnect
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/util.py:2625-2649
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/util.py:MCPStreamableHttpClient._terminate_remote_session
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, streamablehttp_client and terminate_on_close
-    path: mcp/client/streamable_http.py:711-745
+    path: mcp/client/streamable_http.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - langflow-speaks-mcp-through-its-own-sdk-wrapper
 ---

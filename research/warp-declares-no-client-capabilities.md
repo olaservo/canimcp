@@ -18,28 +18,28 @@ specVersions:
 sources:
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, make_client_info
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:905-918
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:make_client_info
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, every serve call
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:325-336,374-378,423-427,444-448,492-496
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:spawn_server,serve_streamable_http
+    date: 2026-11-27
   - url: https://crates.io/crates/rmcp/3.5.0
     title: rmcp 3.5.0, src/handler/client.rs, ClientHandler defaults and the impl for ClientConfig
-    path: src/handler/client.rs:97-191,296-304
+    path: src/handler/client.rs
     date: 2026-11-21
   - url: https://crates.io/crates/rmcp/3.5.0
     title: rmcp 3.5.0, src/model/capabilities.rs, ClientCapabilities
-    path: src/model/capabilities.rs:174-194
+    path: src/model/capabilities.rs
     date: 2026-11-21
   - url: https://crates.io/crates/rmcp/3.5.0
     title: rmcp 3.5.0, src/service/client.rs, SEP-2260 association check and notify_roots_list_changed
-    path: src/service/client.rs:309-345,1753
+    path: src/service/client.rs
     date: 2026-11-21
 status: current
-lastVerified: 2026-11-21
+lastVerified: 2026-11-27
 related:
   - goose-sends-removed-roots-notification
   - fast-agent-never-sends-roots-list-changed

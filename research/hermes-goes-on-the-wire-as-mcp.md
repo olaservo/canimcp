@@ -13,27 +13,27 @@ sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, ClientSession construction on the stdio and HTTP paths
     commit: a24c12d1
-    path: tools/mcp_tool.py:3260-3266,3342-3344,3725,3796,3844
+    path: tools/mcp_tool.py:MCPServerTask._run_stdio,MCPServerTask._run_http
     date: 2026-08-27
   - url: https://pypi.org/project/mcp/2.0.0/
     title: mcp 2.0.0, DEFAULT_CLIENT_INFO and the client_info fallback
-    path: mcp/client/session.py:66,381,391
+    path: mcp/client/session.py
     date: 2026-08-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _session_kwargs now passes client_info
-    commit: 2de9f51b
-    path: tools/mcp_tool_transport.py:181-196
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTransportMixin._session_kwargs
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: hermes_platform/resolver/app.py, desktop-app liveness probe
-    commit: 2de9f51b
-    path: hermes_platform/resolver/app.py:427-448
-    date: 2026-11-20
+    commit: 45e95845
+    path: hermes_platform/resolver/app.py:_mcp_initialize
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, the non-MCP-endpoint probe frame
-    commit: 2de9f51b
-    path: tools/mcp_tool_transport.py:27-29
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py
+    date: 2026-11-27
 status: stale
 lastVerified: 2026-11-20
 related:

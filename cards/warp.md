@@ -106,16 +106,16 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Warp declares no client capabilities, and rmcp still answers roots and elicitation for it](../research/warp-declares-no-client-capabilities.md) — *idiosyncrasy*. Warp's MCP handler is rmcp's bare ClientConfig with empty capabilities. rmcp 3.5.0's defaults then answer roots/list with an empty list, decline elicitation and reject sampling. rmcp derives no capability from a handler, and Warp never sends roots/list_changed.
 - [goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it](../research/goose-sends-removed-roots-notification.md) — *idiosyncrasy*. notify_roots_list_changed fires on every working-directory change with no version check, goose prefers 2026-07-28 where the notification no longer exists, and rmcp 3.1.4 gates nothing on the outbound notification path.
 - [Warp's clientInfo.name is the app id, which differs by release channel and operating system](../research/warp-sends-its-app-id-as-client-name.md) — *idiosyncrasy*. Warp sends ChannelState::app_id() as clientInfo.name. On macOS that is the bundle identifier, dev.warp.Warp-Stable for the stable app. Linux and Windows take it from a build-time channel config whose generator is not in the repo. Open-source builds send dev.warp.WarpOss.
-- [src/transport/auth.rs:799-825,1840-1846,1866,2396-2404,2751,3705](https://crates.io/crates/rmcp/3.5.0) — *authentication.oauth*, read 2026-11-21 at `?` in rmcp. PKCE, the resource parameter, PRM and OIDC discovery, and the iss check are rmcp 3.5.0 behaviour.
-- [src/service/client.rs:1760-1774](https://crates.io/crates/rmcp/3.5.0) — *tools*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:241-246,296-304](https://crates.io/crates/rmcp/3.5.0) — *tools.listChanged*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:235-240,296-304](https://crates.io/crates/rmcp/3.5.0) — *resources.listChanged*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:97-105,296-304](https://crates.io/crates/rmcp/3.5.0) — *sampling*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:179-191](https://crates.io/crates/rmcp/3.5.0) — *elicitation*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:107-112,296-304](https://crates.io/crates/rmcp/3.5.0) — *roots*, read 2026-11-21 at `?` in rmcp.
-- [src/model/capabilities.rs:174-194](https://crates.io/crates/rmcp/3.5.0) — *roots.listChanged*, read 2026-11-21 at `?` in rmcp.
-- [src/service/client.rs:1753](https://crates.io/crates/rmcp/3.5.0) — *roots.listChanged*, read 2026-11-21 at `?` in rmcp.
-- [src/handler/client.rs:221-227](https://crates.io/crates/rmcp/3.5.0) — *logging*, read 2026-11-21 at `?` in rmcp.
+- [src/transport/auth.rs](https://crates.io/crates/rmcp/3.5.0) — *authentication.oauth*, read 2026-11-21 at `?` in rmcp. PKCE, the resource parameter, PRM and OIDC discovery, and the iss check are rmcp 3.5.0 behaviour.
+- [src/service/client.rs](https://crates.io/crates/rmcp/3.5.0) — *tools*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *tools.listChanged*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *resources.listChanged*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *sampling*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *elicitation*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *roots*, read 2026-11-21 at `?` in rmcp.
+- [src/model/capabilities.rs](https://crates.io/crates/rmcp/3.5.0) — *roots.listChanged*, read 2026-11-21 at `?` in rmcp.
+- [src/service/client.rs](https://crates.io/crates/rmcp/3.5.0) — *roots.listChanged*, read 2026-11-21 at `?` in rmcp.
+- [src/handler/client.rs](https://crates.io/crates/rmcp/3.5.0) — *logging*, read 2026-11-21 at `?` in rmcp.
 
 ## Provenance
 

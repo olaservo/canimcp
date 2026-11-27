@@ -13,28 +13,28 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/vscode
     title: mcpServerRequestHandler.ts, the initialize request
-    commit: 8e900494
-    path: src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:111-140
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:McpServerRequestHandler.create
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: Copilot Chat's GitHub MCP server definition provider
-    commit: 8e900494
-    path: extensions/copilot/src/extension/githubMcp/vscode-node/githubMcp.contribution.ts:51
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: extensions/copilot/src/extension/githubMcp/vscode-node/githubMcp.contribution.ts:GitHubMcpContrib._registerGitHubMcpDefinitionProvider
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: Copilot CLI session MCP config through the gateway
-    commit: 8e900494
-    path: extensions/copilot/src/extension/chatSessions/copilotcli/node/mcpHandler.ts:51-116
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: extensions/copilot/src/extension/chatSessions/copilotcli/node/mcpHandler.ts:CopilotCLIMCPHandler
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: Agent host Claude session, external MCP servers passed to the SDK
-    commit: 8e900494
-    path: src/vs/platform/agentHost/node/claude/claudeAgentSession.ts:843-875,895-922
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: src/vs/platform/agentHost/node/claude/claudeAgentSession.ts:ClaudeAgentSession._buildStartupToolWiring,ClaudeAgentSession
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: Agent host Codex session, mcp_servers in thread/start config
     commit: 8e900494
-    path: src/vs/platform/agentHost/node/codex/codexAgent.ts:2882-2883
+    path: src/vs/platform/agentHost/node/codex/codexAgent.ts
     date: 2026-11-20
 status: current
 lastVerified: 2026-11-20

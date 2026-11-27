@@ -18,25 +18,25 @@ sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, 401 handling, #createClient, #authorizedFetch and the result challenge
     commit: 0940c042
-    path: packages/eve/src/runtime/connections/mcp-client.ts:55-64,142-202,285-287,436-457,582-622
+    path: packages/eve/src/runtime/connections/mcp-client.ts
     date: 2026-11-16
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, the OAuth client and authorizeOnce, which needs an authProvider"
-    path: dist/index.js:873,954,1047-1062,1262,1844-1855,1904-1914
+    path: dist/index.js
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/shared/connection-types.ts, the two AuthorizationDefinition shapes
     commit: 0940c042
-    path: packages/eve/src/shared/connection-types.ts:156-181
+    path: packages/eve/src/shared/connection-types.ts
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: docs/connections/mcp.mdx, Vercel Connect and when eve asks for sign-in
-    commit: 0940c042
-    path: docs/connections/mcp.mdx:37-54
-    date: 2026-11-16
+    commit: 4545806d
+    path: docs/connections/mcp.mdx:Use Vercel Connect for OAuth,When eve asks for sign-in
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@vercel/connect/v/2.9.2
     title: "@vercel/connect 2.9.2, the token and authorize endpoints"
-    path: dist/token.js:60,83
+    path: dist/token.js
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

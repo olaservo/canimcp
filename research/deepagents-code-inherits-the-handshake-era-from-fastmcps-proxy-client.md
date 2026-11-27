@@ -16,50 +16,50 @@ sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
     commit: 87f6080d
-    path: libs/code/deepagents_code/mcp_tools.py:1968-1977,1996-2002
+    path: libs/code/deepagents_code/mcp_tools.py:connect,_mount_backends
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_auth.py, _drive_handshake
     commit: 87f6080d
-    path: libs/code/deepagents_code/mcp_auth.py:2251-2264
+    path: libs/code/deepagents_code/mcp_auth.py:_drive_handshake
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, load_mcp_tools
     commit: 87f6080d
-    path: libs/talon/deepagents_talon/mcp.py:425-428
+    path: libs/talon/deepagents_talon/mcp.py:load_mcp_tools
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp_auth.py, _request_json
     commit: 87f6080d
-    path: libs/talon/deepagents_talon/mcp_auth.py:43,687-698
+    path: libs/talon/deepagents_talon/mcp_auth.py:_request_json
     date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/server/providers/proxy.py, ProxyClient.__init__ and _create_client_factory
-    path: fastmcp/server/providers/proxy.py:1370-1385,1726-1742
+    path: fastmcp/server/providers/proxy.py
     date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/client/client.py, the mode argument and _negotiate
-    path: fastmcp/client/client.py:441,841-893
+    path: fastmcp/client/client.py
     date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/client/transports/sse.py, legacy_only
-    path: fastmcp/client/transports/sse.py:36-38
+    path: fastmcp/client/transports/sse.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, initialize
-    path: mcp/client/session.py:651-673
+    path: mcp/client/session.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/_probe.py, negotiate_auto
-    path: mcp/client/_probe.py:52-96
+    path: mcp/client/_probe.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp-types 2.3.0 wheel, mcp_types/version.py
-    path: mcp_types/version.py:24-57
+    path: mcp_types/version.py
     date: 2026-11-26
   - url: https://github.com/langchain-ai/langchain
     title: langchain 1.5.2 wheel, langchain/mcp/adapter.py, MCPAdapter.__init__
-    path: langchain/mcp/adapter.py:173-199
+    path: langchain/mcp/adapter.py
     date: 2026-11-26
 status: current
 lastVerified: 2026-11-26

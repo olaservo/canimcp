@@ -16,36 +16,36 @@ sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/connection-entry.ts, connectionEntry, the call path and checkCall
     commit: 0940c042
-    path: packages/eve/src/execution/catalog/connection-entry.ts:79-100,162-240,283-303
+    path: packages/eve/src/execution/catalog/connection-entry.ts
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/catalog-tools.ts, catalogTools and the eve__tool route
     commit: 0940c042
-    path: packages/eve/src/execution/catalog/catalog-tools.ts:53-94,110-138
+    path: packages/eve/src/execution/catalog/catalog-tools.ts:catalogTools,callRoute
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/search.ts, eve__search and its result shape
     commit: 0940c042
-    path: packages/eve/src/execution/catalog/search.ts:1-7,28-29,43-60,88-90,320-337
+    path: packages/eve/src/execution/catalog/search.ts
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, #fetchToolsInner
     commit: 0940c042
-    path: packages/eve/src/runtime/connections/mcp-client.ts:318-350
+    path: packages/eve/src/runtime/connections/mcp-client.ts:McpConnectionClient.fetchToolsInner
     date: 2026-11-16
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, listTools, tools() and the notification branch of onmessage"
-    path: dist/index.js:2750-2760,2896-2907,2411-2418
+    path: dist/index.js
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/connection-auth.ts, the listing deadline and the tool filter
     commit: 0940c042
-    path: packages/eve/src/execution/catalog/connection-auth.ts:88-128
+    path: packages/eve/src/execution/catalog/connection-auth.ts
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/context/providers/connection.ts, one registry per step
     commit: 0940c042
-    path: packages/eve/src/context/providers/connection.ts:9-22
+    path: packages/eve/src/context/providers/connection.ts:connectionProvider
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

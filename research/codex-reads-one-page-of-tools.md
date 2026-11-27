@@ -12,20 +12,20 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, list_tools_for_client_uncached
-    commit: 475e13ab
-    path: codex-rs/codex-mcp/src/rmcp_client.rs:945-1023
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/codex-mcp/src/rmcp_client.rs:list_tools_for_client_uncached
+    date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/pagination.rs
-    commit: 475e13ab
-    path: codex-rs/codex-mcp/src/pagination.rs:27-80
-    date: 2026-11-26
+    commit: bee5dc55
+    path: codex-rs/codex-mcp/src/pagination.rs:collect_paginated_with_limit
+    date: 2026-11-27
   - url: https://github.com/openai/codex/pull/50035
     title: Follow MCP tool pagination in legacy protocol mode
     commit: cc31e374
     date: 2026-10-01
 status: stale
-lastVerified: 2026-11-26
+lastVerified: 2026-11-27
 related:
   - codex-defaults-to-2025-06-18
 ---

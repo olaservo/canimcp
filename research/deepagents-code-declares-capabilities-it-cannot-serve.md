@@ -19,37 +19,37 @@ sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
     commit: 87f6080d
-    path: libs/code/deepagents_code/mcp_tools.py:1968-1977,1996-2002
+    path: libs/code/deepagents_code/mcp_tools.py:connect,_mount_backends
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _build_mcp_tool
     commit: 87f6080d
-    path: libs/code/deepagents_code/mcp_tools.py:1531-1536
+    path: libs/code/deepagents_code/mcp_tools.py:_build_mcp_tool
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, MCPAdapter and _cancel_mcp_elicitation
     commit: 87f6080d
-    path: libs/talon/deepagents_talon/mcp.py:425-428,559-574
+    path: libs/talon/deepagents_talon/mcp.py:load_mcp_tools,_cancel_mcp_elicitation
     date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/server/providers/proxy.py, the default proxy handlers and ProxyClient.__init__
-    path: fastmcp/server/providers/proxy.py:1516-1611,1742-1757
+    path: fastmcp/server/providers/proxy.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:614-649
+    path: mcp/client/session.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/shared/exceptions.py, NoBackChannelError
-    path: mcp/shared/exceptions.py:55-71
+    path: mcp/shared/exceptions.py
     date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/shared/transport_context.py, can_send_request
-    path: mcp/shared/transport_context.py:25-37
+    path: mcp/shared/transport_context.py
     date: 2026-11-26
   - url: https://github.com/langchain-ai/langchain
     title: langchain 1.5.2 wheel, langchain/mcp/elicitation.py, the sentinel handler and _drives_interrupts
-    path: langchain/mcp/elicitation.py:227-262
+    path: langchain/mcp/elicitation.py
     date: 2026-11-26
 status: current
 lastVerified: 2026-11-26

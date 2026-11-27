@@ -15,7 +15,7 @@ sources:
   - url: https://github.com/earendil-works/pi/tree/466db0fecdc20996a553116984d18c0d362b035a
     title: packages/coding-agent/README.md, the Philosophy section the day before the refresh
     commit: 466db0fe
-    path: packages/coding-agent/README.md:537
+    path: packages/coding-agent/README.md
     date: 2026-11-16
   - url: https://github.com/earendil-works/pi/commit/25cc5c7bf4cbc76b2e134c729eb8d57d521ed749
     title: docs(coding-agent) refresh documentation (#9898), which cut the README from 756 lines to 70
@@ -27,49 +27,49 @@ sources:
     date: 2026-11-16
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/index.ts, the built-in extension list
-    commit: 07ece436
-    path: packages/coding-agent/src/extensions/index.ts:7-14
-    date: 2026-11-16
+    commit: ede8bdca
+    path: packages/coding-agent/src/extensions/index.ts:builtInExtensions
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/index.ts, session_start and the deferred runtime load
-    commit: 07ece436
-    path: packages/coding-agent/src/extensions/mcp/index.ts:1112-1149
-    date: 2026-11-16
+    commit: ede8bdca
+    path: packages/coding-agent/src/extensions/mcp/index.ts:createMcpExtension
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/runtime.ts, the McpClient options
-    commit: 07ece436
-    path: packages/coding-agent/src/extensions/mcp/runtime.ts:361-367
-    date: 2026-11-16
+    commit: ede8bdca
+    path: packages/coding-agent/src/extensions/mcp/runtime.ts:McpServerConnection.connectOnce
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/package.json, the runtime dependencies
     commit: 07ece436
-    path: packages/mcp/package.json:53-55
+    path: packages/mcp/package.json
     date: 2026-11-16
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/README.md, the no-SDK statement and the OAuth attribution
     commit: 07ece436
-    path: packages/mcp/README.md:3,150
+    path: packages/mcp/README.md:@earendil-works/pi-mcp,Sign-in in two halves
     date: 2026-11-16
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/README.md, the feature sentence at HEAD
-    commit: 07ece436
-    path: packages/coding-agent/README.md:19
-    date: 2026-11-16
+    commit: ede8bdca
+    path: packages/coding-agent/README.md:Pi
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/docs/mcp.md, replacing or disabling the built-in support
-    commit: 07ece436
-    path: packages/coding-agent/docs/mcp.md:266-274
-    date: 2026-11-16
+    commit: ede8bdca
+    path: packages/coding-agent/docs/mcp.md:Extensions and SDK
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: apps/p2/plugins/mcp/instances.ts, the second McpClient construction
-    commit: 07ece436
-    path: apps/p2/plugins/mcp/instances.ts:306-322
-    date: 2026-11-16
+    commit: ede8bdca
+    path: apps/p2/plugins/mcp/instances.ts:Connection.initialize
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: apps/p2/plugins/mcp/server.ts, clientInfo for p2
-    commit: 07ece436
-    path: apps/p2/plugins/mcp/server.ts:475-480
-    date: 2026-11-16
+    commit: ede8bdca
+    path: apps/p2/plugins/mcp/server.ts:clientInfo
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

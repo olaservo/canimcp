@@ -14,38 +14,38 @@ sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, InternalMastraMCPClient constructor
     commit: bb984550
-    path: packages/mcp/src/client/client.ts:543-551,585-592
+    path: packages/mcp/src/client/client.ts:InternalMastraMCPClient
     date: 2026-11-16
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, MCPClientOptions.clientInfo and getOrCreateClient
-    commit: bb984550
-    path: packages/mcp/src/client/configuration.ts:116-120,1791-1801
-    date: 2026-11-16
+    commit: 79768b13
+    path: packages/mcp/src/client/configuration.ts:MCPClientOptions,MCPClient.getOrCreateClient
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/types.ts, MCPClientInfo and the per-server override
-    commit: bb984550
-    path: packages/mcp/src/client/types.ts:238-250
-    date: 2026-11-16
+    commit: 79768b13
+    path: packages/mcp/src/client/types.ts:MCPClientInfo,BaseServerOptions
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: mastracode/sdk/src/mcp/manager.ts, Mastra Code's MCPClient construction
-    commit: bb984550
-    path: mastracode/sdk/src/mcp/manager.ts:506-512
-    date: 2026-11-16
+    commit: 79768b13
+    path: mastracode/sdk/src/mcp/manager.ts:connectAndCollectTools
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/editor/src/namespaces/mcp.ts, toMCPClientOptions
-    commit: bb984550
-    path: packages/editor/src/namespaces/mcp.ts:102-114
-    date: 2026-11-16
+    commit: 79768b13
+    path: packages/editor/src/namespaces/mcp.ts:toMCPClientOptions
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/connect/src/multi-connection.ts, one MCPClient per connection
-    commit: bb984550
-    path: packages/connect/src/multi-connection.ts:449-452
-    date: 2026-11-16
+    commit: 79768b13
+    path: packages/connect/src/multi-connection.ts:buildMcpMultiConnectionTools
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts, the one fixed name
-    commit: bb984550
-    path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts:49-58
-    date: 2026-11-16
+    commit: 79768b13
+    path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts:connectAndListTools
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

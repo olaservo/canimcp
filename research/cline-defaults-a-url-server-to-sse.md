@@ -14,16 +14,16 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/schemas.ts, createServerTypeSchema
-    commit: 20b04272
-    path: apps/vscode/src/services/mcp/schemas.ts:116-162
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/services/mcp/schemas.ts:createServerTypeSchema
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/config-loader.ts, URL server transform
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:172-207
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/config-loader.ts:legacyUrlRegistrationSchema
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - cline-rewrites-mcp-remote-proxy-configs
 ---

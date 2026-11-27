@@ -14,36 +14,36 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: patches/@modelcontextprotocol%2Fclient@2.4.0.patch
-    commit: 82d8fc5b
+    commit: 449c128a
     path: patches/@modelcontextprotocol%2Fclient@2.4.0.patch
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: package.json and bun.lock, the patch registration
-    commit: 82d8fc5b
-    path: package.json:177
-    date: 2026-11-26
+    commit: 449c128a
+    path: package.json
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: script/upgrade-mcp-sdk.ts, the list of edits and the PR behind each
-    commit: 82d8fc5b
-    path: script/upgrade-mcp-sdk.ts:44-177
-    date: 2026-11-26
+    commit: 449c128a
+    path: script/upgrade-mcp-sdk.ts:edits
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, tools
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/client.ts:853-904
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/client.ts:connect
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, failure
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/client.ts:519-541
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/client.ts:connect
+    date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/connection.ts, recover and recovering
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/connection.ts:145-165
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/connection.ts:make
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-26
+lastVerified: 2026-11-27
 related:
   - opencode-patches-its-sdk-for-session-recovery
   - opencode-retries-tools-list-without-output-schema

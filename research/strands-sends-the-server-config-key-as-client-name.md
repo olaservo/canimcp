@@ -14,41 +14,41 @@ sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py MCPClient, application_name, client_name and the client_info passed to ClientSession
     commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/mcp_client.py:382-386,550-556,1745-1752
+    path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient.__init__,MCPClient,MCPClient._async_background_thread
     date: 2026-11-16
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _build_client_from_config, application_name defaults to the config key
-    commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/mcp_client.py:2963-2972
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/src/strands/tools/mcp/mcp_client.py:_build_client_from_config
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient constructor defaults and loadServers baseOptions
-    commit: d982a0d4
-    path: strands-ts/src/mcp/client.ts:401-403
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/mcp/client.ts:McpClient
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts config.node.ts, applicationName falls back to the config key
-    commit: d982a0d4
-    path: strands-ts/src/mcp/config.node.ts:119-128
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/mcp/config.node.ts:baseOptions
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-py agent.py, mcp_servers go through load_servers
     commit: d982a0d4
-    path: harness-py/src/strands_harness/agent.py:280-283,426-427
+    path: harness-py/src/strands_harness/agent.py:create_harness
     date: 2026-11-16
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-ts builtin-tools.ts, clientName keys the mcp_servers axis
     commit: d982a0d4
-    path: harness-ts/src/builtin-tools.ts:189-207
+    path: harness-ts/src/builtin-tools.ts:UNNAMED_MCP_CLIENT,mcpClientsByClientName
     date: 2026-11-16
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-cli agent/mcp.ts, applicationName is the server name and the version is the harness version
-    commit: d982a0d4
-    path: strands-cli/src/agent/mcp.ts:196,429-439
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-cli/src/agent/mcp.ts:CLIENT_DEFAULTS,createClient
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
     title: mcp 2.3.0, DEFAULT_CLIENT_INFO and the client_info fallback
-    path: mcp/client/session.py:67,424
+    path: mcp/client/session.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16
