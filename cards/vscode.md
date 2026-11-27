@@ -19,8 +19,8 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | Prefers | `2025-11-25` |
 | Speaks | `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
@@ -138,7 +138,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `8e900494` on 2026-11-20, from `main` of https://github.com/microsoft/vscode.git. That commit was authored 2026-11-20.
+Read at `e8b6d8b5` on 2026-11-27, from `main` of https://github.com/microsoft/vscode.git. That commit was authored 2026-11-27.
 
 **SDK.** The client is hand-written: JSON-RPC through src/vs/base/common/jsonRpcProtocol.ts, with types from a generated copy of the spec schema in src/vs/platform/mcp/common/modelContextProtocol.ts (LATEST_PROTOCOL_VERSION 2025-11-25), re-exported under workbench/contrib/mcp. The root package.json has @modelcontextprotocol/sdk ^1.29.0 as a devDependency, resolved to 1.29.0, used by the agent host's Claude integration. extensions/copilot declares ^1.30.0, resolved to 1.30.0, used only for the server Copilot Chat runs for the Copilot CLI. Neither is on the client path. pnpm patchedDependencies patches only foundry-local-sdk.
 

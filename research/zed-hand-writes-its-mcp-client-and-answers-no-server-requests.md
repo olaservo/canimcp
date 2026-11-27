@@ -19,31 +19,31 @@ specVersions:
 sources:
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/protocol.rs, ModelContextProtocol::initialize
-    commit: ad1058d7
-    path: crates/context_server/src/protocol.rs:28-78
-    date: 2026-11-20
+    commit: 961ac220
+    path: crates/context_server/src/protocol.rs:ModelContextProtocol
+    date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/context_server.rs, clientInfo
-    commit: ad1058d7
-    path: crates/context_server/src/context_server.rs:152-161
-    date: 2026-11-20
+    commit: 961ac220
+    path: crates/context_server/src/context_server.rs:ContextServer.initialize
+    date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/client.rs, request handler table and handle_input
-    commit: ad1058d7
-    path: crates/context_server/src/client.rs:216,280-320
-    date: 2026-11-20
+    commit: 961ac220
+    path: crates/context_server/src/client.rs:Client,Client.handle_input
+    date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/src/transport/http.rs, POST-only transport
-    commit: ad1058d7
-    path: crates/context_server/src/transport/http.rs:106-139
-    date: 2026-11-20
+    commit: 961ac220
+    path: crates/context_server/src/transport/http.rs:HttpTransport.build_request
+    date: 2026-11-27
   - url: https://github.com/zed-industries/zed
     title: crates/context_server/Cargo.toml, dependencies
-    commit: ad1058d7
-    path: crates/context_server/Cargo.toml:18-43
-    date: 2026-11-20
+    commit: 961ac220
+    path: crates/context_server/Cargo.toml
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - zed-passes-mcp-servers-to-external-agents-without-oauth
 ---

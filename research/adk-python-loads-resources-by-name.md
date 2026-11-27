@@ -13,16 +13,16 @@ specVersions:
 sources:
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/load_mcp_resource_tool.py, LoadMcpResourceTool
-    commit: c6586f19
-    path: src/google/adk/tools/load_mcp_resource_tool.py:39-183
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/load_mcp_resource_tool.py:LoadMcpResourceTool
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/mcp_toolset.py, use_mcp_resources and the three resource methods
-    commit: c6586f19
-    path: src/google/adk/tools/mcp_tool/mcp_toolset.py:175,223-226,569-626
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/mcp_tool/mcp_toolset.py:McpToolset.__init__,McpToolset
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - model-initiated-resource-read
   - hermes-names-its-resource-tools-a-fifth-way

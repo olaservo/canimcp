@@ -13,32 +13,32 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/scripts/vendor-compiled/@ai-sdk/mcp.mjs, the three patch plugins and the vendor config
-    commit: 0940c042
-    path: packages/eve/scripts/vendor-compiled/@ai-sdk/mcp.mjs:8-33,35-79,81-115,117-141,143-157
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/scripts/vendor-compiled/@ai-sdk/mcp.mjs:patchMcpSourcePlugin,supportedProtocolVersionFallback,singleInboundSseStream
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/package.json, dependencies and the devDependency on the SDK
-    commit: 0940c042
-    path: packages/eve/package.json:50-53,636-645
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/package.json
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: pnpm-workspace.yaml, the catalog range and the only patchedDependencies entry
-    commit: 0940c042
-    path: pnpm-workspace.yaml:39,99-100
-    date: 2026-11-16
+    commit: 4545806d
+    path: pnpm-workspace.yaml
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: pnpm-lock.yaml, the resolved SDK version
-    commit: 0940c042
-    path: pnpm-lock.yaml:202-204,1926-1928,2369
-    date: 2026-11-16
+    commit: 4545806d
+    path: pnpm-lock.yaml
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/scripts/vendor-compiled.mjs, the bundling entry point
-    commit: 0940c042
-    path: packages/eve/scripts/vendor-compiled.mjs:20-24,53-62
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/scripts/vendor-compiled.mjs
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, protocol constants, init, tryProtocolDiscovery and the HTTP transport"
-    path: dist/index.js:7-15,2376,2459-2479,2496-2530,1777-1800,1856-1878
+    path: dist/index.js
     date: 2026-11-16
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp CHANGELOG.md, the 2.0.86 entry on unsupported-version discovery errors"
@@ -46,9 +46,9 @@ sources:
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/context/providers/connection.ts, clients closed at the end of each step
-    commit: 0940c042
-    path: packages/eve/src/context/providers/connection.ts:20-22
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/context/providers/connection.ts:connectionProvider
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

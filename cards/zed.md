@@ -19,8 +19,8 @@ Code editor with a built-in agent. Zed calls MCP servers context servers and spe
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -118,7 +118,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `ad1058d7` on 2026-11-20, from `main` of https://github.com/zed-industries/zed.git. That commit was authored 2026-11-20.
+Read at `961ac220` on 2026-11-27, from `main` of https://github.com/zed-industries/zed.git. That commit was authored 2026-11-27.
 
 **SDK.** Hand-written. The context_server crate depends on serde, serde_json and schemars and implements JSON-RPC, the lifecycle, both transports and OAuth itself. Cargo.lock has no rmcp or other MCP crate. The workspace [patch.crates-io] section patches cpal, tree-sitter-language, async-process, async-task, windows-capture and calloop, none of them MCP. LATEST_PROTOCOL_VERSION is Zed's own constant. clientInfo.version is the context_server crate's CARGO_PKG_VERSION, 0.1.0, not Zed's version (1.31.0 at this commit). The crate also holds an MCP server half (listener.rs) that nothing outside the crate uses at this commit.
 

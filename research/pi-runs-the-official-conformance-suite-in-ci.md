@@ -16,45 +16,45 @@ specVersions:
 sources:
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/README.md
-    commit: 07ece436
-    path: packages/coding-agent/test/mcp-conformance/README.md:1-45
-    date: 2026-11-16
+    commit: 129c326a
+    path: packages/coding-agent/test/mcp-conformance/README.md:MCP client conformance
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/baseline.json
-    commit: 07ece436
+    commit: 129c326a
     path: packages/coding-agent/test/mcp-conformance/baseline.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/run.ts, the MODES list
-    commit: 07ece436
-    path: packages/coding-agent/test/mcp-conformance/run.ts:27
-    date: 2026-11-16
+    commit: 129c326a
+    path: packages/coding-agent/test/mcp-conformance/run.ts:MODES
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/test/mcp-conformance/client.ts, the code under test
-    commit: 07ece436
-    path: packages/coding-agent/test/mcp-conformance/client.ts:1-60
-    date: 2026-11-16
+    commit: 129c326a
+    path: packages/coding-agent/test/mcp-conformance/client.ts
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: .github/workflows/ci.yml, the mcp-conformance job
-    commit: 07ece436
-    path: .github/workflows/ci.yml:121-139
-    date: 2026-11-16
+    commit: 129c326a
+    path: .github/workflows/ci.yml
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/protocol/types.ts, SUPPORTED_PROTOCOL_VERSIONS
-    commit: 07ece436
-    path: packages/mcp/src/protocol/types.ts:4-10
-    date: 2026-11-16
+    commit: 129c326a
+    path: packages/mcp/src/protocol/types.ts:LATEST_PROTOCOL_VERSION,SUPPORTED_PROTOCOL_VERSIONS,SupportedProtocolVersion
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/client.ts, the rejection of a server version outside the list
-    commit: 07ece436
-    path: packages/mcp/src/client.ts:235-237
-    date: 2026-11-16
+    commit: 129c326a
+    path: packages/mcp/src/client.ts:McpClient.connect
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi/commit/a4715ec9bffbfcb8a32a1a4100dcfd06c12c93e4
     title: test(coding-agent) run the official MCP client conformance suite in CI, first released in v1.0.0
     commit: a4715ec9
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - pi-dropped-no-mcp-and-shipped-its-own-client
   - pi-uses-a-per-server-client-id-document-without-iss

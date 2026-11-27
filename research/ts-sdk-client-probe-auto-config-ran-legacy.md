@@ -14,12 +14,12 @@ sources:
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/versionNegotiation.ts, DEFAULT_VERSION_NEGOTIATION_MODE
     commit: 5ee54ee3
-    path: packages/client/src/client/versionNegotiation.ts:108-112
+    path: packages/client/src/client/versionNegotiation.ts:DEFAULT_VERSION_NEGOTIATION_MODE
     date: 2026-11-20
   - url: https://github.com/modelcontextprotocol/typescript-sdk
     title: packages/client/src/client/versionNegotiation.ts, resolveVersionNegotiation
     commit: 5ee54ee3
-    path: packages/client/src/client/versionNegotiation.ts:132-139
+    path: packages/client/src/client/versionNegotiation.ts:resolveVersionNegotiation
     date: 2026-11-20
 status: current
 lastVerified: 2026-11-20

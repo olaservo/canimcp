@@ -12,20 +12,20 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/config.py, MCPServerSettings.protocol_mode
-    commit: 288b5339
-    path: src/fast_agent/config.py:256,701
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/config.py:MCPDefaultsSettings,MCPServerSettings
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_connection.py, sdk_connect_mode
-    commit: 288b5339
-    path: src/fast_agent/mcp/client_connection.py:64-66,69-94,110-122
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/client_connection.py:sdk_connect_mode,_ForcedModernClient,MCPClientConnection.__init__
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0, mcp/client/_probe.py, negotiate_auto
-    path: mcp/client/_probe.py:52-114
+    path: mcp/client/_probe.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - fast-agent-subscribes-only-on-the-modern-path
   - codex-defaults-to-2025-06-18

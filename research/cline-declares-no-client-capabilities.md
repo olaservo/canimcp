@@ -17,26 +17,26 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/McpHub.ts, new Client
-    commit: 20b04272
-    path: apps/vscode/src/services/mcp/McpHub.ts:467-475
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/services/mcp/McpHub.ts:McpHub.connectToServer
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/client.ts, initializeParams
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/client.ts:266-270
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/client.ts:StdioMcpClient.connect
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/apps.ts, createMcpAppsClientCapabilities
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/apps.ts:16-24
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/apps.ts:createMcpAppsClientCapabilities
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts, mcpApps default
-    commit: 20b04272
-    path: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts:409
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - opencode-declares-only-roots
   - utilized-capability-declarations

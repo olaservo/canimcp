@@ -17,54 +17,54 @@ specVersions:
 sources:
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/tool_resolver.py, MCPToolResolver.resolve and the three resolvers
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/tool_resolver.py:81-101,121-232,234-296,335-357,507-526,659-689
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/tool_resolver.py
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/client.py, MCPClient.connect
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/client.py:187-207
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/client.py:MCPClient.connect
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py, MCPToolWrapper
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:52,79-84,165-184
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:MCPToolWrapper.__init__,MCPToolWrapper._run,MCPToolWrapper._execute_tool
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/utilities/string_utils.py, sanitize_tool_name
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/utilities/string_utils.py:14-16,26-60
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/utilities/string_utils.py:sanitize_tool_name
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/agents/agent_builder/base_agent.py, validate_mcps
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/agents/agent_builder/base_agent.py:178-180,562-595
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/agents/agent_builder/base_agent.py:BaseAgent
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/project/crew_base.py, get_mcp_tools on a CrewBase class
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/project/crew_base.py:159-166,311-334
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/project/crew_base.py:_set_mcp_params,get_mcp_tools
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai-tools/src/crewai_tools/adapters/mcp_adapter.py, CrewAIToolAdapter and MCPServerAdapter
-    commit: 758b2c1d
-    path: lib/crewai-tools/src/crewai_tools/adapters/mcp_adapter.py:26-89,136-198
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai-tools/src/crewai_tools/adapters/mcp_adapter.py:MCPServerAdapter
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: merge_agent_handler_tool.py, hand-written tools/list and tools/call
-    commit: 758b2c1d
-    path: lib/crewai-tools/src/crewai_tools/tools/merge_agent_handler_tool/merge_agent_handler_tool.py:73-125,187
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai-tools/src/crewai_tools/tools/merge_agent_handler_tool/merge_agent_handler_tool.py:MergeAgentHandlerTool,MergeAgentHandlerTool.from_tool_name
+    date: 2026-11-27
   - url: https://pypi.org/project/mcpadapt/0.1.20/
     title: mcpadapt 0.1.20, mcpadapt/core.py, mcptools and MCPAdapt
-    path: mcpadapt/core.py:24-28,105-138,226-246,263-290
+    path: mcpadapt/core.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, DEFAULT_CLIENT_INFO and the client_info fallback
-    path: mcp/client/session.py:19,144
+    path: mcp/client/session.py
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - crewai-opens-a-new-mcp-session-for-every-tool-call
   - crewai-caps-the-sdk-below-mcp-2

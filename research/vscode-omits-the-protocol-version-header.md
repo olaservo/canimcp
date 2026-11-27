@@ -13,24 +13,24 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/vscode
     title: extHostMcp.ts, McpHTTPHandle._sendStreamableHttp
-    commit: 8e900494
-    path: src/vs/workbench/api/common/extHostMcp.ts:477-501
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: src/vs/workbench/api/common/extHostMcp.ts:McpHTTPHandle._sendStreamableHttp
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: extHostMcp.ts, _fetchWithAuthRetry, the only place the header is set
-    commit: 8e900494
-    path: src/vs/workbench/api/common/extHostMcp.ts:851-866
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: src/vs/workbench/api/common/extHostMcp.ts:McpHTTPHandle._fetchWithAuthRetry
+    date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: mcpServerRequestHandler.ts, initialize and the stored reply
-    commit: 8e900494
-    path: src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:113-146
-    date: 2026-11-20
+    commit: e8b6d8b5
+    path: src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:McpServerRequestHandler.create
+    date: 2026-11-27
   - url: https://modelcontextprotocol.io/specification/2025-11-25/basic/transports
     title: Streamable HTTP, protocol version header
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 ---
 
 # VS Code sends no MCP-Protocol-Version header on Streamable HTTP requests

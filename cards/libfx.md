@@ -20,8 +20,8 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.0.0-eab1401` (see below) |
 
 ## Capabilities
@@ -160,12 +160,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [dist/esm/client/sse.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2) — *transports.sse*, read 2026-11-16 at `?` in @modelcontextprotocol/sdk.
 - [dist/esm/client/streamableHttp.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2) — *transports.streamableHttp*, read 2026-11-16 at `?` in @modelcontextprotocol/sdk.
 - [notes/fx-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/fx-tool-result-handling.md) — *tools.result*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises the "JS adapter" section of its fx note, which read the fx source at 3fd4905.
-- [dist/esm/client/index.js:479](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2) — *bonusFeatures.toolCallCancellation*, read 2026-11-16 at `?` in @modelcontextprotocol/sdk. callTool(params, resultSchema = CallToolResultSchema, options).
-- [dist/public-CvV4ZHkX.mjs:3866](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0) — *bonusFeatures.toolCallCancellation*, read 2026-11-16 at `?` in @modelcontextprotocol/client. callTool(params, options).
+- [dist/esm/client/index.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2) — *bonusFeatures.toolCallCancellation*, read 2026-11-16 at `?` in @modelcontextprotocol/sdk. callTool(params, resultSchema = CallToolResultSchema, options).
+- [dist/public-CvV4ZHkX.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0) — *bonusFeatures.toolCallCancellation*, read 2026-11-16 at `?` in @modelcontextprotocol/client. callTool(params, options).
 
 ## Provenance
 
-Read at `c3dc80c4` on 2026-11-16, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-16.
+Read at `79638170` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-26.
 
 **SDK.** Host-supplied, and not a dependency. sdk/package.json has no dependencies, devDependencies or peerDependencies field, and the published libfx 0.0.17 lists only its four native-addon packages as optionalDependencies. There is no declared or resolved version to record: the application installs the SDK and passes a connected client in. sdk/types/mcp.d.ts describes the calls as the TypeScript SDK v1 signatures. 1.32.2 was the newest v1 release on npm on 2026-11-16, and it sets LATEST_PROTOCOL_VERSION to 2025-11-25. The probe supplied @modelcontextprotocol/client 2.4.0, which defaults to the initialize handshake at 2025-11-25 and reaches 2026-07-28 only when the application sets its versionNegotiation option. Nothing is patched, because nothing is installed. Published libfx versions are fx's: c3dc80c4 is 88 commits after v0.0.17.
 

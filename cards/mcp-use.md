@@ -19,8 +19,8 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-19 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-24 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -115,15 +115,15 @@ When a server's newest revision is `2025-11-25`, mcp-use negotiates it and these
 - [mcp-use probes 2026-07-28 over HTTP and stays on the handshake over stdio](../research/mcp-use-picks-the-protocol-era-by-transport.md) — *idiosyncrasy*. The TypeScript MCPClient sets the SDK's auto negotiation on HTTP servers, so they get server/discover at 2026-07-28 first, and keeps the SDK's legacy default on stdio, so a local server gets initialize at 2025-11-25. One client, one config file, two eras.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [The mcp-use Python binding is capped below mcp 2 and has a WebSocket connector that skips the handshake](../research/mcp-use-python-binding-runs-on-the-1x-sdk.md) — *idiosyncrasy*. mcp-use 1.7.1 for Python declares mcp>=1.24.0,<2.0.0, so it speaks the initialize handshake up to 2025-11-25 only. Its lists stop at the first page, HTTP falls back to SSE, and its WebSocket connector is hand-written and sends initialize with no protocol version or clientInfo.
-- [dist/index.mjs:2559-2585](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *transports.streamableHttp*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. DEFAULT_VERSION_NEGOTIATION_MODE is legacy, so auto on HTTP is mcp-use's setting.
-- [dist/index.mjs:746-750,770,1086-1100,1210-1218](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *authentication.oauth*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. CIMD when the provider has clientMetadataUrl, the iss check, OpenID discovery URLs and S256 PKCE.
-- [dist/index.mjs:4315-4330](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *tools*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. listTools with no cursor walks every page, capped at 64 by default.
-- [dist/index.mjs:3216-3227,3425-3452](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *tools.listChanged*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. List-changed handlers, and the subscriptions/listen stream opened at connect on a modern connection.
-- [dist/index.mjs:3191-3209](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *sampling*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. input_required rounds are fulfilled through the registered handlers.
+- [dist/index.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *transports.streamableHttp*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. DEFAULT_VERSION_NEGOTIATION_MODE is legacy, so auto on HTTP is mcp-use's setting.
+- [dist/index.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *authentication.oauth*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. CIMD when the provider has clientMetadataUrl, the iss check, OpenID discovery URLs and S256 PKCE.
+- [dist/index.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *tools*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. listTools with no cursor walks every page, capped at 64 by default.
+- [dist/index.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *tools.listChanged*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. List-changed handlers, and the subscriptions/listen stream opened at connect on a modern connection.
+- [dist/index.mjs](https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1) — *sampling*, read 2026-11-20 at `?` in @modelcontextprotocol/client. @modelcontextprotocol/client 2.3.1. input_required rounds are fulfilled through the registered handlers.
 
 ## Provenance
 
-Read at `8ff4b865` on 2026-11-20, from `main` of https://github.com/mcp-use/mcp-use.git. That commit was authored 2026-11-19.
+Read at `bc8fb6f3` on 2026-11-27, from `main` of https://github.com/mcp-use/mcp-use.git. That commit was authored 2026-11-24.
 
 **SDK.** This block is the TypeScript binding. @mcp-use/client 2.4.6 and @mcp-use/agent 2.0.27 pin @modelcontextprotocol/client and @modelcontextprotocol/core at exactly 2.3.1, and pnpm-lock.yaml resolves 2.3.1. The workspace patchedDependencies patches @modelcontextprotocol/server 2.3.1, which the server package uses, and better-call. The client SDK is not patched. patches/@modelcontextprotocol__sdk.patch is still in the tree and is not listed in patchedDependencies, so pnpm does not apply it. @modelcontextprotocol/sdk ^1.32.1 is a dev dependency of the agent package, from the workspace catalog. The SDK's version negotiation default is legacy. mcp-use sets auto on HTTP and keeps legacy on stdio, so the era is mcp-use's choice and pinsProtocolVersion is left unset. The Python binding (mcp-use 1.7.1 on PyPI) declares mcp>=1.24.0,<2.0.0 as a base dependency and commits no lockfile. On 2026-11-20 the newest release in range is mcp 1.30.0, whose LATEST_PROTOCOL_VERSION is 2025-11-25, so the Python binding cannot reach 2026-07-28. Its wire name is mcp-use with the package version. No Python patch or vendored SDK was found.
 

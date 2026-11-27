@@ -16,24 +16,24 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, MCPServerTask._run_http transport selection
-    commit: a24c12d1
-    path: tools/mcp_tool.py:3588-3672
-    date: 2026-08-27
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTask._run_http
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, transport selection and the SSE fallback
-    commit: 2de9f51b
-    path: tools/mcp_tool_transport.py:545-574,613-689
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTransportMixin._reconnect_or_reraise_group
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_errors.py, _is_streamable_http_rejection
-    commit: 2de9f51b
-    path: tools/mcp_tool_errors.py:73-91
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_errors.py:InvalidMcpUrlError
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, the streamable_http_client and streamablehttp_client probes
-    commit: 2de9f51b
-    path: tools/mcp_tool.py:228-233
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool.py:_ensure_mcp_sdk
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 related:

@@ -17,41 +17,41 @@ specVersions:
 sources:
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/tools/mcp_native_tool.py, MCPNativeTool
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/tools/mcp_native_tool.py:18-26,113-132
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/tools/mcp_native_tool.py:MCPNativeTool,MCPNativeTool._run_async
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/tool_resolver.py, _resolve_native and its client factory
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/tool_resolver.py:335-372,450-455
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/tool_resolver.py:MCPToolResolver._resolve_native,MCPToolResolver._client_factory
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/client.py, timeouts, the tool list cache and _retry_operation
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/client.py:53-61,194-197,404-434,702-761
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/client.py:MCPClient.connect,MCPClient.list_tools,MCPClient._retry_operation
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/transports/http.py, terminate_on_close
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/transports/http.py:129-133
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/transports/http.py:HTTPTransport.connect
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/agent/core.py, get_mcp_tools builds a new resolver each time
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/agent/core.py:1486-1495,1721-1726
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/agent/core.py:Agent.get_mcp_tools,Agent._prepare_kickoff
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/crew.py, MCP tools injected per task
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/crew.py:1706-1707,1796-1799
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/crew.py:Crew._prepare_tools,Crew._inject_mcp_tools
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, ClientSession.call_tool and _validate_tool_result
-    path: mcp/client/session.py:386-420
+    path: mcp/client/session.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, streamable_http_client session termination
-    path: mcp/client/streamable_http.py:701-702
+    path: mcp/client/streamable_http.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

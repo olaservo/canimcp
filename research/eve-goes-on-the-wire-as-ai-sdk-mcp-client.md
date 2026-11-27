@@ -14,43 +14,43 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, the createMCPClient calls
-    commit: 0940c042
-    path: packages/eve/src/runtime/connections/mcp-client.ts:153-166
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/runtime/connections/mcp-client.ts:McpConnectionClient.createClient
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/events/actions.ts, the second client for experimental.events
-    commit: 0940c042
-    path: packages/eve/src/runtime/connections/events/actions.ts:99-122
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/runtime/subscriptions/actions.ts:ConnectionEventActions.withClient
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, CLIENT_VERSION, the clientName default and the per-request clientInfo"
-    path: dist/index.js:2256,2376,2419-2422,2677-2688
+    path: dist/index.js
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/public/definitions/connections/mcp.ts, McpClientConnectionDefinition
-    commit: 0940c042
-    path: packages/eve/src/public/definitions/connections/mcp.ts:28-122
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/public/definitions/connections/mcp.ts:McpClientConnectionDefinition
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/src/cli/dev/tui/mcp-connection-status.ts, probeMcpConnection and its tracker
-    commit: 0940c042
-    path: packages/eve/src/cli/dev/tui/mcp-connection-status.ts:3,10-41,55-83
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/cli/dev/tui/mcp-connection-status.ts:DEFAULT_PROBE_INTERVAL_MS,probeMcpConnection,createMcpConnectionStatusTracker
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/src/cli/dev/tui/tui.ts and runner.ts, where the probe is wired in for a local target
-    commit: 0940c042
-    path: packages/eve/src/cli/dev/tui/tui.ts:153-155
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/cli/dev/tui/tui.ts:runDevelopmentTui
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/src/setup/scaffold/connections/catalog.ts, CONNECTION_CATALOG
-    commit: 0940c042
-    path: packages/eve/src/setup/scaffold/connections/catalog.ts:145-152
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/setup/scaffold/connections/catalog.ts:CONNECTION_CATALOG
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: apps/templates/personal-agent-template, a hand-written client in a template web app
-    commit: 0940c042
-    path: apps/templates/personal-agent-template/apps/web/server/utils/linear-mcp.ts:230-240
-    date: 2026-11-16
+    commit: 4545806d
+    path: apps/templates/personal-agent-template/apps/web/server/utils/linear-mcp.ts:fetchLinearIssuesViaMcp
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

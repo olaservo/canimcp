@@ -13,50 +13,50 @@ specVersions:
 sources:
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/pyproject.toml, the base dependency on mcp
-    commit: 758b2c1d
-    path: lib/crewai/pyproject.toml:46,98-99
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai-tools/pyproject.toml, the mcp extra
-    commit: 758b2c1d
-    path: lib/crewai-tools/pyproject.toml:118-121
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai-tools/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: uv.lock, mcp 1.30.0 and mcpadapt 0.1.19 and 0.1.20
-    commit: 758b2c1d
-    path: uv.lock:4767-4768,4798-4799,4825-4826
-    date: 2026-11-16
+    commit: 77237aec
+    path: uv.lock
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: pyproject.toml, [tool.uv] overrides and the litellm comment
-    commit: 758b2c1d
-    path: pyproject.toml:312-317,326-375
-    date: 2026-11-16
+    commit: 77237aec
+    path: pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/transports/http.py, the streamablehttp_client import
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/transports/http.py:122-127
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/transports/http.py:HTTPTransport.connect
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/tool_resolver.py, the same import on the https string route
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/mcp/tool_resolver.py:661-662
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/mcp/tool_resolver.py:MCPToolResolver._discover_mcp_tools
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py, the same import in MCPToolWrapper
-    commit: 758b2c1d
-    path: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:165-166
-    date: 2026-11-16
+    commit: 77237aec
+    path: lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:MCPToolWrapper._execute_tool
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, LATEST_PROTOCOL_VERSION, SUPPORTED_PROTOCOL_VERSIONS and the deprecated streamablehttp_client alias
-    path: mcp/types.py:27
+    path: mcp/types.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp/2.3.0/
     title: mcp 2.3.0, mcp/client/streamable_http.py defines only streamable_http_client, and mcp/client has no websocket module
-    path: mcp/client/streamable_http.py:713
+    path: mcp/client/streamable_http.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcpadapt/0.1.20/
     title: mcpadapt 0.1.20, module-level SDK imports and the mcp requirement
-    path: mcpadapt/core.py:16-21
+    path: mcpadapt/core.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

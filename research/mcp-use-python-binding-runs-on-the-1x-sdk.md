@@ -15,35 +15,35 @@ specVersions:
 sources:
   - url: https://github.com/mcp-use/mcp-use
     title: libraries/python/pyproject.toml, the mcp requirement
-    commit: 8ff4b865
-    path: libraries/python/pyproject.toml:3,23
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/python/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: Python BaseConnector, clientInfo, roots and the list methods
-    commit: 8ff4b865
-    path: libraries/python/mcp_use/client/connectors/base.py:106-136,481-546
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/python/mcp_use/client/connectors/base.py:BaseConnector
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: Python HttpConnector, default OAuth and the SSE fallback
-    commit: 8ff4b865
-    path: libraries/python/mcp_use/client/connectors/http.py:84-159,161-322
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/python/mcp_use/client/connectors/http.py:HttpConnector,HttpConnector.connect
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: Python connector factory, auth defaults to an empty dict
-    commit: 8ff4b865
-    path: libraries/python/mcp_use/client/config.py:107-140
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/python/mcp_use/client/config.py:create_connector_from_config
+    date: 2026-11-27
   - url: https://github.com/mcp-use/mcp-use
     title: Python WebSocketConnector, the hand-written request path
-    commit: 8ff4b865
-    path: libraries/python/mcp_use/client/connectors/websocket.py:181-223
-    date: 2026-11-20
+    commit: bc8fb6f3
+    path: libraries/python/mcp_use/client/connectors/websocket.py:WebSocketConnector
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, LATEST_PROTOCOL_VERSION and the supported list
-    path: mcp/types.py:27
+    path: mcp/types.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - mcp-use-picks-the-protocol-era-by-transport
   - strands-python-speaks-two-sdk-majors

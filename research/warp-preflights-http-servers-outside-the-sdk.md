@@ -15,26 +15,26 @@ specVersions:
 sources:
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, determine_transport
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:510-612
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:determine_transport,unexpected_error
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, negotiate_protocol and send_preflight_request
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:649-861
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:negotiate_protocol,send_preflight_request
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, the connections opened after the preflight
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:358-449,481-497
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:spawn_server,serve_streamable_http
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/sse_transport/mod.rs, the copied SSE client
-    commit: f8223cef
-    path: crates/mcp/src/sse_transport/mod.rs:1-3
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/sse_transport/mod.rs
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-21
+lastVerified: 2026-11-27
 related:
   - warp-declares-no-client-capabilities
 ---

@@ -17,59 +17,59 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: sdk/mcp.js, createMcpAdapter
-    commit: c3dc80c4
-    path: sdk/mcp.js:31-34,44-57,99-129
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/mcp.js:createMcpAdapter
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/types/mcp.d.ts, the McpClient interface
-    commit: c3dc80c4
-    path: sdk/types/mcp.d.ts:1-20
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/types/mcp.d.ts:McpClient
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/package.json, no dependency fields
-    commit: c3dc80c4
+    commit: "79638170"
     path: sdk/package.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/README.md, MCP and skills
-    commit: c3dc80c4
-    path: sdk/README.md:279-301
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/README.md:MCP and skills
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/wasm_core_main.zig, allow_acp_mcp
-    commit: c3dc80c4
-    path: src/wasm_core_main.zig:80
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/wasm_core_main.zig:main
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/napi_core_main.zig, allow_acp_mcp
-    commit: c3dc80c4
-    path: src/napi_core_main.zig:781
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/napi_core_main.zig:run
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/acp/sessions.zig, the refusal when MCP is off
-    commit: c3dc80c4
-    path: src/acp/sessions.zig:423-428
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/acp/sessions.zig:handleNewSession
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/main.zig, no MCP host on WebAssembly
-    commit: c3dc80c4
-    path: src/main.zig:741
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/main.zig:init
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/NAPI.md, capability profile
-    commit: c3dc80c4
-    path: sdk/NAPI.md:144-155
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/NAPI.md:Capability profile
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2
     title: "@modelcontextprotocol/sdk 1.32.2, protocol version constants"
-    path: dist/esm/types.js:2-4
+    path: dist/esm/types.js
     date: 2026-11-16
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
     title: "@modelcontextprotocol/client 2.4.0, the default negotiation mode"
-    path: dist/public-CvV4ZHkX.mjs:2175-2188
+    path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - fx-probes-server-discover-before-initialize
   - libfx-passes-the-abort-signal-in-the-sdk-v1-position

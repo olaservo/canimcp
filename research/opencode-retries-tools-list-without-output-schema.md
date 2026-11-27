@@ -13,13 +13,13 @@ sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/opencode/src/mcp/catalog.ts, listTools and isOutputSchemaValidationError
     commit: 7cde8329
-    path: packages/opencode/src/mcp/catalog.ts:14-16,143-165
+    path: packages/opencode/src/mcp/catalog.ts:TolerantListToolsResultSchema
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, tools
-    commit: 82d8fc5b
-    path: packages/core/src/mcp/client.ts:853-904
-    date: 2026-11-26
+    commit: 449c128a
+    path: packages/core/src/mcp/client.ts:connect
+    date: 2026-11-27
 status: stale
 lastVerified: 2026-11-26
 ---

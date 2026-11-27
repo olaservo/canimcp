@@ -20,8 +20,8 @@ Visual builder for AI flows and agents, served as a web app and a desktop app. I
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-17 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-24 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -121,20 +121,20 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Langflow gives a Streamable HTTP server two seconds to answer initialize, and a timeout never falls back to SSE](../research/langflow-gives-streamable-http-two-seconds-to-initialize.md) — *idiosyncrasy*. Langflow waits a fixed 2 s for initialize on each of three Streamable HTTP attempts, whatever LANGFLOW_MCP_SERVER_TIMEOUT says. It falls back to SSE only on a 400, 404, 405 or 406. A timeout counts as transient, so a slow server fails with no SSE attempt.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [Langflow's MCP client is its own wrapper on the mcp SDK, and langchain-mcp-adapters is an unused extra](../research/langflow-speaks-mcp-through-its-own-sdk-wrapper.md) — *misconception*. Langflow lists langchain-mcp-adapters as an optional extra, and no Langflow code imports it. Every MCP server connection goes through lfx.base.mcp.util, which builds a bare SDK ClientSession, so the wire name is the SDK placeholder mcp and no client capability is declared.
-- [mcp/client/stdio/__init__.py:28-69,127](https://pypi.org/project/mcp/1.30.0/) — *transports.stdio*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The config env is merged over get_default_environment().
-- [mcp/client/streamable_http.py:186-188,711-745](https://pypi.org/project/mcp/1.30.0/) — *transports.streamableHttp*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. MCP-Protocol-Version header after negotiation, and the deprecated alias with terminate_on_close=True.
-- [mcp/client/session.py:69-72,628-640](https://pypi.org/project/mcp/1.30.0/) — *tools.listChanged*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default message handler does nothing.
-- [mcp/client/session.py:75-82,161-165](https://pypi.org/project/mcp/1.30.0/) — *sampling*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default callback and the capability built from it.
-- [mcp/client/session.py:85-92,166-173](https://pypi.org/project/mcp/1.30.0/) — *elicitation*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
-- [mcp/client/session.py:95-101,174-181](https://pypi.org/project/mcp/1.30.0/) — *roots*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
-- [mcp/client/session.py:104-107,628-633](https://pypi.org/project/mcp/1.30.0/) — *logging*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default logging callback is a no-op.
-- [mcp/client/session.py:155-158,193](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
-- [mcp/client/session.py:183-200](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions.
-- [mcp/client/session.py:183-200](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions.
+- [mcp/client/stdio/__init__.py](https://pypi.org/project/mcp/1.30.0/) — *transports.stdio*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The config env is merged over get_default_environment().
+- [mcp/client/streamable_http.py](https://pypi.org/project/mcp/1.30.0/) — *transports.streamableHttp*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. MCP-Protocol-Version header after negotiation, and the deprecated alias with terminate_on_close=True.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *tools.listChanged*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default message handler does nothing.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *sampling*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default callback and the capability built from it.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *elicitation*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *roots*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *logging*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default logging callback is a no-op.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions.
+- [mcp/client/session.py](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions.
 
 ## Provenance
 
-Read at `21381e5b` on 2026-11-20, from `main` of https://github.com/langflow-ai/langflow.git. That commit was authored 2026-11-17.
+Read at `6c9aea6f` on 2026-11-27, from `main` of https://github.com/langflow-ai/langflow.git. That commit was authored 2026-11-24.
 
 **SDK.** A base dependency of both lfx and langflow-base, imported at module level in lfx.base.mcp.util. Not patched: the root [tool.uv] constraint and override lists have no mcp entry, [tool.uv.sources] names only workspace members, and the repository has no patch files or vendored SDK. The <2.0.0 cap rules out mcp 2.x, so 2026-07-28 is unreachable. langchain-mcp-adapters>=0.1.14,<0.2.0 is an optional extra of langflow-base, locked at 0.1.14, and no Langflow code imports it. Separately, Langflow injects --with mcp~=1.28 into the uvx servers it launches itself (LANGFLOW_MCP_SDK_CONSTRAINT).
 

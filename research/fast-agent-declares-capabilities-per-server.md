@@ -18,20 +18,20 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_callback_runtime.py, __post_init__ and the callback factories
-    commit: 288b5339
-    path: src/fast_agent/mcp/client_callback_runtime.py:114-123,144-188
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/client_callback_runtime.py:MCPClientCallbackRuntime.__post_init__,MCPClientCallbackRuntime
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/elicitation_factory.py, resolve_elicitation_handler
-    commit: 288b5339
-    path: src/fast_agent/mcp/elicitation_factory.py:97-146
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/mcp/elicitation_factory.py:resolve_elicitation_handler
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0, mcp/client/session.py, _build_capabilities
-    path: mcp/client/session.py:614-649
+    path: mcp/client/session.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - cline-declares-no-client-capabilities
   - opencode-declares-only-roots

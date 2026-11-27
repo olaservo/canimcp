@@ -14,28 +14,28 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_sampling.py, the elicitation callback with the empty accept
-    commit: 9dcf7714
-    path: tools/mcp_tool_sampling.py:264-333
-    date: 2026-11-09
+    commit: 45e95845
+    path: tools/mcp_tool_sampling.py:ElicitationHandler
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_sampling.py, the elicitation callback and the consent fallback
-    commit: 2de9f51b
-    path: tools/mcp_tool_sampling.py:265-295,297-403
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_sampling.py:_accepted_consent_content,ElicitationHandler
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_elicitation_form.py, form collection through the clarify callback
-    commit: 2de9f51b
-    path: tools/mcp_elicitation_form.py:1-10,288-343
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_elicitation_form.py:_collect,ask_consent,ask_form
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: agent/tool_executor.py, binding the clarify callback per tool call
-    commit: 2de9f51b
-    path: agent/tool_executor.py:750-752
-    date: 2026-11-20
+    commit: 45e95845
+    path: agent/tool_executor.py:_ConcurrentToolAuthorizationGate._dispatch_authorized_once
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0
     title: mcp 2.3.0, ClientSession._build_capabilities
     commit: 2118f14f
-    path: src/mcp/client/session.py:634-638
+    path: src/mcp/client/session.py
     date: 2026-11-09
   - url: https://github.com/olaservo/canimcp
     title: probe run against hermes-agent 0.23.0+689.ga9ff979, initialize request

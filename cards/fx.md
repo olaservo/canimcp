@@ -19,8 +19,8 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 | Prefers | `2026-07-28` |
 | Speaks | `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.0.16` (see below) |
 
 ## Capabilities
@@ -136,7 +136,7 @@ When a server's newest revision is `2025-11-25`, fx (native engine) negotiates i
 - **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/* request is written and no notifications/events/* handler exists.
 - **bonusFeatures.modelInitiatedResourceRead** — fx reads no resources at all.
 - **bonusFeatures.deferredToolLoading** — MCP servers are listed in a toolbox menu and their tools stay out of the tool list, so every request sends the same tools. The toolbox tool searches, opens and runs them. The probe ran 0.0.16, where capability_search and mcp_select_tool did this job.
-- **bonusFeatures.lazyServerStart** — Each server starts when something first needs its tool list or calls it, and is kept until a reload drops it.
+- **bonusFeatures.lazyServerStart** — Each server starts when something first needs its tool list or calls it. A stdio server that stays idle for the idle limit, 10 minutes, is stopped and starts again at the next need. An HTTP server is kept until a reload drops it.
 - **bonusFeatures.standardRequestHeaders** — On 2026-07-28 over HTTP: Mcp-Method on every request, Mcp-Name on tools/call, and Mcp-Param-* headers from a tool's x-mcp-header annotations. A tool with an invalid annotation is dropped from the list.
 - **bonusFeatures.cacheableResult** — A 2026 tool list is served from cache only while every page's ttlMs holds, capped at 24 hours. A 2025 list stays fresh until it is invalidated or the process restarts.
 - **bonusFeatures.progressNotifications** — Every request carries a progressToken equal to its id. Accepted progress on a call reaches the host as a progress event, which the changelog says is shown in the terminal and in fx ask.
@@ -184,7 +184,7 @@ When a server's newest revision is `2025-11-25`, fx (native engine) negotiates i
 
 ## Provenance
 
-Read at `c3dc80c4` on 2026-11-16, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-16.
+Read at `79638170` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-26.
 
 **SDK.** Hand-written in Zig under src/mcp/, whose files import only std and each other. build.zig.zon has an empty dependencies table, so there is no SDK, no lockfile and nothing to patch. fx names its own revisions in src/mcp/core/era.zig. @modelcontextprotocol/sdk 1.30.0 appears in tests/e2e/conformance/package-lock.json as a dependency of the official conformance runner that tests fx. The schema's language enum has no value for Zig, so language is left out. c3dc80c4 is 88 commits after the v0.0.17 tag.
 

@@ -19,8 +19,8 @@ Python framework and CLI for building and running agents, from the maintainer of
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-19 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.10.53` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
@@ -296,12 +296,12 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 - [fast-agent declares roots.listChanged and never sends the notification](../research/fast-agent-never-sends-roots-list-changed.md) — *gap*. The Python SDK sets `roots.listChanged: true` whenever a client passes a roots callback, with no way to opt out. fast-agent's roots come from static config, so it never sends the notification. Two SDKs, three clients, same gap.
 - [fast-agent implements SEP-2640 skills over MCP with wire types it defines itself](../research/fast-agent-ships-skills-over-mcp-ahead-of-the-sdk.md) — *in-flight*. fast-agent calls `skills/list`, `skills/get` and `resources/directory/read` against servers declaring the `io.modelcontextprotocol/skills` extension, verifying every resource against a SHA-256 digest. The Python SDK has none of these types, so fast-agent declares them itself.
 - [notes/fast-agent-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/fast-agent-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the fast-agent source at d89956d.
-- [mcp/server/apps.py:1-11,43,77](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 ships MCP Apps as a server-side Extension only. The client side has the generic Client(extensions=[...]) and advertise() from SEP-2133 and no Apps host.
-- [mcp/client/client.py:356-361](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 and mcp-types 2.3.0 contain no events/* method or Events extension, only the generic extensions= field.
+- [mcp/server/apps.py](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 ships MCP Apps as a server-side Extension only. The client side has the generic Client(extensions=[...]) and advertise() from SEP-2133 and no Apps host.
+- [mcp/client/client.py](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 and mcp-types 2.3.0 contain no events/* method or Events extension, only the generic extensions= field.
 
 ## Provenance
 
-Read at `288b5339` on 2026-11-20, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-19.
+Read at `71bca7b7` on 2026-11-27, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-26.
 
 **SDK.** The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.3.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.
 

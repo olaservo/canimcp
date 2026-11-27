@@ -16,16 +16,16 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_schema.py, utility tool schemas and mcp_prefixed_tool_name
-    commit: 2de9f51b
-    path: tools/mcp_tool_schema.py:151-187,244-257,323-339
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_schema.py:sanitize_mcp_name_component,MCP_TOOL_NAME_PREFIX,mcp_prefixed_tool_name,matches_name_filter
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_registration.py, utility selection and the capability gate
-    commit: 2de9f51b
-    path: tools/mcp_tool_registration.py:188-215
-    date: 2026-11-20
+    commit: 45e95845
+    path: tools/mcp_tool_registration.py:_select_utility_schemas
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - openclaw-names-its-resource-tools-a-fourth-way
   - model-initiated-resource-read

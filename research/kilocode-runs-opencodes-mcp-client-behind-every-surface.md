@@ -16,28 +16,28 @@ specVersions:
 sources:
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/src/mcp/index.ts, CLIENT_OPTIONS and createClient
-    commit: b2947d7e
-    path: packages/opencode/src/mcp/index.ts:56-67,108-114
-    date: 2026-11-21
+    commit: 9a84bbeb
+    path: packages/opencode/src/mcp/index.ts:CLIENT_OPTIONS,createClient
+    date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/kilo-vscode/src/services/cli-backend/server-manager.ts, spawning the CLI backend
-    commit: b2947d7e
-    path: packages/kilo-vscode/src/services/cli-backend/server-manager.ts:100-129
-    date: 2026-11-21
+    commit: 9a84bbeb
+    path: packages/kilo-vscode/src/services/cli-backend/server-manager.ts:ServerManager.startServer
+    date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: KiloBackendCliManager.kt, spawning the CLI backend from JetBrains
-    commit: b2947d7e
-    path: packages/kilo-jetbrains/backend/src/main/kotlin/ai/kilocode/backend/cli/KiloBackendCliManager.kt:158
-    date: 2026-11-21
+    commit: 9a84bbeb
+    path: packages/kilo-jetbrains/backend/src/main/kotlin/ai/kilocode/backend/cli/KiloBackendCliManager.kt:KiloBackendCliManager.withContext
+    date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/package.json, the SDK pin
-    commit: b2947d7e
-    path: packages/opencode/package.json:109
-    date: 2026-11-21
+    commit: 9a84bbeb
+    path: packages/opencode/package.json
+    date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode/tree/v2
     title: v2 branch, packages/core/package.json and packages/client/package.json
     commit: efd2a06b
-    path: packages/core/package.json:111-113
+    path: packages/core/package.json
     date: 2026-11-21
 status: current
 lastVerified: 2026-11-21
