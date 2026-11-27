@@ -16,46 +16,46 @@ sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/deepagents/pyproject.toml, the core library's dependencies
     commit: 87f6080d
-    path: libs/deepagents/pyproject.toml:22-31
+    path: libs/deepagents/pyproject.toml
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, module docstring and _mount_backends
     commit: 87f6080d
-    path: libs/code/deepagents_code/mcp_tools.py:1-14,1930-2006
+    path: libs/code/deepagents_code/mcp_tools.py:_mount_backends
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/pyproject.toml and uv.lock, fastmcp, mcp and langchain
     commit: 87f6080d
-    path: libs/code/pyproject.toml:29,94,107
+    path: libs/code/pyproject.toml
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/CHANGELOG.md, the 0.1.71 entry
     commit: 87f6080d
-    path: libs/code/CHANGELOG.md:482-486
+    path: libs/code/CHANGELOG.md:[0.1.71](https://github.com/langchain-ai/deepagents/compare/deepagents-code==0.1.70...deepagents-code==0.1.71) (2026-09-18)
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, load_mcp_tools
     commit: 87f6080d
-    path: libs/talon/deepagents_talon/mcp.py:401-428
+    path: libs/talon/deepagents_talon/mcp.py:load_mcp_tools
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/evals/deepagents_harbor/langgraph_project/langgraph_agent.py, _mcp_tools, make_bare_graph and make_tau3_graph
     commit: 87f6080d
-    path: libs/evals/deepagents_harbor/langgraph_project/langgraph_agent.py:22,504,577-591,616
+    path: libs/evals/deepagents_harbor/langgraph_project/langgraph_agent.py:make_bare_graph,_mcp_tools,make_tau3_graph
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/acp/deepagents_acp/server.py, _session_mcp_servers
     commit: 87f6080d
-    path: libs/acp/deepagents_acp/server.py:268,371,415
+    path: libs/acp/deepagents_acp/server.py:AgentServerACP.__init__,AgentServerACP.new_session,AgentServerACP.load_session
     date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/THREAT_MODEL.md, two lines that still name langchain_mcp_adapters
     commit: 87f6080d
-    path: libs/code/THREAT_MODEL.md:271,543
+    path: libs/code/THREAT_MODEL.md:TB4: MCP Config → Process / Network,T10: MCP Stdio Env Dict Forwarded Without Filtering
     date: 2026-11-26
   - url: https://github.com/langchain-ai/langchain
     title: langchain 1.5.2 wheel, langchain/mcp/adapter.py, MCPAdapter.__init__
-    path: langchain/mcp/adapter.py:13-21,173-199
+    path: langchain/mcp/adapter.py
     date: 2026-11-26
 status: current
 lastVerified: 2026-11-26

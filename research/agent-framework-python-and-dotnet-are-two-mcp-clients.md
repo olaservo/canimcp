@@ -17,57 +17,57 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, MCPTool._connect_on_owner
-    commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:2653-2667
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/agent_framework/_mcp.py
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/pyproject.toml and python/uv.lock, the Python SDK requirement and its resolution
-    commit: "10801303"
-    path: python/packages/core/pyproject.toml:35-38
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: dotnet/Directory.Packages.props, the C# SDK pins
-    commit: "10801303"
-    path: dotnet/Directory.Packages.props:5-6,128-129
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: dotnet/Directory.Packages.props
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: DefaultMcpToolHandler.CreateClientAsync, one of two McpClient constructions in dotnet/src
-    commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Workflows.Declarative.Mcp/DefaultMcpToolHandler.cs:209-245
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: dotnet/src/Microsoft.Agents.AI.Workflows.Declarative.Mcp/DefaultMcpToolHandler.cs
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: FoundryToolboxService.OpenToolboxAsync, the other McpClient construction
-    commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Foundry.Hosting/FoundryToolboxService.cs:279-295,339-363
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: dotnet/src/Microsoft.Agents.AI.Foundry.Hosting/FoundryToolboxService.cs
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: McpClientTaskExtensions.ListAgentToolsWithTasksAsync
-    commit: "10801303"
-    path: dotnet/src/Microsoft.Agents.AI.Mcp/McpClientTaskExtensions.cs:39-42,130-136
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: dotnet/src/Microsoft.Agents.AI.Mcp/McpClientTaskExtensions.cs
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: agent_framework_claude/_agent.py, mcp_servers passed to the Claude Agent SDK
-    commit: "10801303"
-    path: python/packages/claude/agent_framework_claude/_agent.py:613-617
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/claude/agent_framework_claude/_agent.py
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, DEFAULT_CLIENT_INFO and _build_capabilities
-    path: mcp/client/session.py:67,614-648
+    path: mcp/client/session.py
     date: 2026-11-16
   - url: https://github.com/modelcontextprotocol/csharp-sdk
     title: tag v2.2.0, McpClientImpl, handler-driven capabilities, protocol default and client info
     commit: 6fa38259
-    path: src/ModelContextProtocol.Core/Client/McpClientImpl.cs:15-19,94-161,294-303,424-428
+    path: src/ModelContextProtocol.Core/Client/McpClientImpl.cs:async
     date: 2026-11-16
   - url: https://github.com/modelcontextprotocol/csharp-sdk
     title: tag v2.2.0, StreamableHttpClientSessionTransport, the 404 path
     commit: 6fa38259
-    path: src/ModelContextProtocol.Core/Client/StreamableHttpClientSessionTransport.cs:173-180,677-693
+    path: src/ModelContextProtocol.Core/Client/StreamableHttpClientSessionTransport.cs
     date: 2026-11-16
   - url: https://github.com/modelcontextprotocol/csharp-sdk
     title: tag v2.2.0, RootsCapability.ListChanged
     commit: 6fa38259
-    path: src/ModelContextProtocol.Core/Protocol/RootsCapability.cs:35-36
+    path: src/ModelContextProtocol.Core/Protocol/RootsCapability.cs
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

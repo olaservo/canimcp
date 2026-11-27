@@ -12,36 +12,36 @@ specVersions:
 sources:
   - url: https://github.com/warpdotdev/warp
     title: crates/mcp/src/runtime.rs, make_client_info and the User-Agent
-    commit: f8223cef
-    path: crates/mcp/src/runtime.rs:180-185,905-918
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/mcp/src/runtime.rs:MCP_USER_AGENT,make_client_info
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/warp_core/src/channel/state.rs, ChannelState::new and app_id_from_bundle
-    commit: f8223cef
-    path: crates/warp_core/src/channel/state.rs:64-73,454-478
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/warp_core/src/channel/state.rs:ChannelState,app_id_from_bundle
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: script/macos/bundle, bundle id per channel
-    commit: f8223cef
-    path: script/macos/bundle:392-432
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: script/macos/bundle
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: crates/warp_channel_config/src/lib.rs, embedded channel config
-    commit: f8223cef
-    path: crates/warp_channel_config/src/lib.rs:32-54
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: crates/warp_channel_config/src/lib.rs
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: app/src/bin/oss.rs, the open-source channel config
-    commit: f8223cef
-    path: app/src/bin/oss.rs:10-23
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: app/src/bin/oss.rs:main
+    date: 2026-11-27
   - url: https://github.com/warpdotdev/warp
     title: script/linux/bundle, bundle id per channel
-    commit: f8223cef
-    path: script/linux/bundle:225,283
-    date: 2026-11-21
+    commit: 1c7fda11
+    path: script/linux/bundle
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-21
+lastVerified: 2026-11-27
 ---
 
 # Warp's clientInfo.name is the app id, which differs by release channel and operating system

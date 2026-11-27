@@ -19,8 +19,8 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -94,12 +94,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 - [n8n does MCP OAuth in its credential layer, and CIMD is off until an environment variable turns it on](../research/n8n-does-mcp-oauth-in-its-credential-layer.md) — *nuance*. At 84decbe0 the MCP nodes never pass an SDK auth provider. OAuth discovery, DCR and CIMD run when a user connects an MCP OAuth2 credential in the editor, and the node only sends the bearer token. CIMD needs N8N_OAUTH_CIMD_ENABLED, which defaults to false.
 - [n8n sends the workflow node's type as clientInfo.name, and has a second MCP client with its own name](../research/n8n-sends-the-node-type-as-client-name.md) — *idiosyncrasy*. At 84decbe0 n8n's MCP nodes send the node type as clientInfo.name and the node's typeVersion as version, so one instance sends several names, one per registry server. A second client in @n8n/agents sends `@n8n/agents` 0.1.0. The seed name `n8n-mcp-client` is not in the source.
-- [dist/esm/client/index.js:100-125](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.0) — *tools.listChanged*, read 2026-11-20 at `?` in @modelcontextprotocol/sdk.
-- [dist/esm/client/index.js:302,331-335](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.0) — *instructions*, read 2026-11-20 at `?` in @modelcontextprotocol/sdk.
+- [dist/esm/client/index.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.0) — *tools.listChanged*, read 2026-11-20 at `?` in @modelcontextprotocol/sdk.
+- [dist/esm/client/index.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.0) — *instructions*, read 2026-11-20 at `?` in @modelcontextprotocol/sdk.
 
 ## Provenance
 
-Read at `84decbe0` on 2026-11-20, from `master` of https://github.com/n8n-io/n8n.git. That commit was authored 2026-11-20.
+Read at `467bcd35` on 2026-11-27, from `master` of https://github.com/n8n-io/n8n.git. That commit was authored 2026-11-27.
 
 **SDK.** The pnpm catalog pins 1.32.0, and nodes-langchain, @n8n/agents and cli all resolve to that one copy. The SDK is not in patchedDependencies. Its dependency pkce-challenge 5.0.0 is patched (drops ~ from the verifier alphabet and adds a types field); n8n's own OAuth code imports that package, and the MCP nodes never call the SDK auth module. 1.32.0 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. 2026-07-28 is not reachable. The catalog also lists @modelcontextprotocol/server 2.3.0 and node 2.1.0, which serve n8n's own MCP server.
 

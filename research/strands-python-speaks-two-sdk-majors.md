@@ -15,31 +15,31 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py/pyproject.toml, the mcp requirement and the test-only 1.x override
-    commit: d982a0d4
-    path: strands-py/pyproject.toml:37,195-202
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _compat.py, MCP_V2 and the per-line branches
-    commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/_compat.py:51-54,124-181,459-584
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/src/strands/tools/mcp/_compat.py:MCP_V2,call_tool
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py/docs/MCP_VERSIONS.md
-    commit: d982a0d4
-    path: strands-py/docs/MCP_VERSIONS.md:14-42
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/docs/MCP_VERSIONS.md:MCP 1.x and 2.x Support and Migration
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py mcp_client.py, task gating per SDK line and 1.x cancellation
-    commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/mcp_client.py:1075-1088,2317-2353,2380-2392
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient._call_tool_direct,MCPClient._should_use_task,MCPClient._require_v2_task_lifecycle
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp-types/2.3.0/
     title: mcp-types 2.3.0, protocol version lists
-    path: mcp_types/version.py:24-59
+    path: mcp_types/version.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, LATEST_PROTOCOL_VERSION
-    path: mcp/types.py:27
+    path: mcp/types.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

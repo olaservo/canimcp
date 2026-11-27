@@ -15,24 +15,24 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, _load_prompts_snapshot
-    commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:3216-3338
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/agent_framework/_mcp.py
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, _parse_prompt_result_from_mcp
-    commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:1462-1508
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/agent_framework/_mcp.py
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, functions and _filtered_functions
-    commit: "10801303"
-    path: python/packages/core/agent_framework/_mcp.py:1782-1798
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/agent_framework/_mcp.py
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_agents.py, MCP functions added to a run
-    commit: "10801303"
-    path: python/packages/core/agent_framework/_agents.py:1774-1785
-    date: 2026-11-16
+    commit: f8ade3e9
+    path: python/packages/core/agent_framework/_agents.py
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

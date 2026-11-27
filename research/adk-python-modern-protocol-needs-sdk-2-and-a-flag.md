@@ -13,55 +13,55 @@ specVersions:
 sources:
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/session_context.py, _CLIENT_INFO and _connect
-    commit: c6586f19
-    path: src/google/adk/tools/mcp_tool/session_context.py:45-77
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/mcp_tool/session_context.py:_connect,_warn_probe_unavailable
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/features/_feature_registry.py, _MCP_MODERN_PROTOCOL and is_feature_enabled
-    commit: c6586f19
-    path: src/google/adk/features/_feature_registry.py:69-71,226-228,373-428
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/features/_feature_registry.py:FeatureName,is_feature_enabled
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/dependencies/_mcp.py, SDK major detection and the negotiate_auto import
-    commit: c6586f19
-    path: src/google/adk/dependencies/_mcp.py:77-105
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/dependencies/_mcp.py
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: pyproject.toml, base dependencies and the all, mcp and test extras
-    commit: c6586f19
-    path: pyproject.toml:33-58,127,294-305,395
-    date: 2026-11-16
+    commit: 03725e8c
+    path: pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: constraints-3.13.txt, the mcp pin
-    commit: c6586f19
-    path: constraints-3.13.txt:968
-    date: 2026-11-16
+    commit: 03725e8c
+    path: constraints-3.13.txt
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: constraints-3.15.txt, the mcp and mcp-types pins
-    commit: c6586f19
-    path: constraints-3.15.txt:987-995
-    date: 2026-11-16
+    commit: 03725e8c
+    path: constraints-3.15.txt
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: scripts/update_constraints.sh, the existing file passed back as a constraint
-    commit: c6586f19
-    path: scripts/update_constraints.sh:84-109
-    date: 2026-11-16
+    commit: 03725e8c
+    path: scripts/update_constraints.sh
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: README.md, the recommended install with a constraints file
-    commit: c6586f19
-    path: README.md:80-89
-    date: 2026-11-16
+    commit: 03725e8c
+    path: README.md:For example,for Python 3.11
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
     title: mcp 2.3.0, negotiate_auto and ClientSession.initialize
-    path: mcp/client/_probe.py:52-113, mcp/client/session.py:651-672
+    path: mcp/client/_probe.py, mcp/client/session.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp-types/2.3.0/
     title: mcp-types 2.3.0, the handshake and modern version tables
-    path: mcp_types/version.py:24-59
+    path: mcp_types/version.py
     date: 2026-11-16
   - url: https://pypi.org/project/mcp/1.28.1/
     title: mcp 1.28.1, LATEST_PROTOCOL_VERSION and ClientSession.initialize
-    path: mcp/types.py:27, mcp/client/session.py:160-203
+    path: mcp/types.py, mcp/client/session.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

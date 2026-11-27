@@ -340,7 +340,7 @@
         },
         "path": {
           "type": "string",
-          "description": "read tier: file, or file:line, backing the claim (e.g. 'crates/goose/src/skills/mod.rs:discover_skills')."
+          "description": "read tier: the file backing the claim, or file:Symbol naming the function, class or Markdown heading in it, with several symbols comma-separated (e.g. 'crates/goose/src/skills/mod.rs:discover_skills', 'src/client.ts:Client.connect'). No line numbers: they change with every upstream edit, and scripts/repin-citations.js compares a symbol's text between commits."
         },
         "scenario": {
           "type": "string",

@@ -13,36 +13,36 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/McpHub.ts, fetchResourcesList and fetchPromptsList
-    commit: 20b04272
-    path: apps/vscode/src/services/mcp/McpHub.ts:918-1010
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/services/mcp/McpHub.ts:McpHub
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: apps/vscode/src/shared/tools.ts, ClineDefaultTool
-    commit: 20b04272
-    path: apps/vscode/src/shared/tools.ts:20
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/shared/tools.ts:ClineDefaultTool
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: ServerRow.tsx, Resources and Prompts panel tabs
-    commit: 20b04272
-    path: apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/ServerRow.tsx:323-386
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/ServerRow.tsx:ServerRow
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/tools.ts, createMcpTools
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/tools.ts:17-49
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/tools.ts:createMcpTools
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/McpHub.ts, readResource
-    commit: 20b04272
-    path: apps/vscode/src/services/mcp/McpHub.ts:1748-1769
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/services/mcp/McpHub.ts:McpHub.readResource
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/session-apps.ts, MCP Apps readResource
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/session-apps.ts:88-102
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/session-apps.ts:readResource
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - model-initiated-resource-read
   - utilized-capability-declarations

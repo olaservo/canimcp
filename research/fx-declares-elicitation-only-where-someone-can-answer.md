@@ -15,36 +15,36 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, Options.questions and declaredCapabilities
-    commit: c3dc80c4
-    path: src/core/mcp_host/runtime.zig:186-197,528-530,2332-2338
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/core/mcp_host/runtime.zig:Options,start,declaredCapabilities
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/main.zig, loadMcpHost for the terminal app
-    commit: c3dc80c4
-    path: src/main.zig:1875-1877
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/main.zig:loadMcpHost
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/cli/cli_ask.zig, askElicitationCapabilities
-    commit: c3dc80c4
-    path: src/core/cli/cli_ask.zig:1240-1247,1661-1665
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/core/cli/cli_ask.zig:askElicitationCapabilities,runPromptInternal
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp/elicitation.zig, parseAcpCapabilities
-    commit: c3dc80c4
-    path: src/core/mcp/elicitation.zig:106-118
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/core/mcp/elicitation.zig:parseAcpCapabilities
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/acp/mcp_servers.zig, prepare
-    commit: c3dc80c4
-    path: src/acp/mcp_servers.zig:124-149
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/acp/mcp_servers.zig:prepare
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/protocol/mrtr.zig, supported
-    commit: c3dc80c4
-    path: src/mcp/protocol/mrtr.zig:73-93
-    date: 2026-11-16
+    commit: "79638170"
+    path: src/mcp/protocol/mrtr.zig:supported
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - fast-agent-declares-capabilities-per-server
   - utilized-capability-declarations

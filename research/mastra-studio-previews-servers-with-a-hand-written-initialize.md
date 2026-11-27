@@ -15,31 +15,31 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts, connectAndListTools
-    commit: bb984550
-    path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts:15-119
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/playground mcp-client-create-content.tsx, the form that calls it
-    commit: bb984550
-    path: packages/playground/src/domains/mcps/components/mcp-client-create/mcp-client-create-content.tsx:43
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/playground/src/domains/mcps/components/mcp-client-create/mcp-client-create-content.tsx:MCPClientCreateContent
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, the SDK-based client
-    commit: bb984550
-    path: packages/mcp/src/client/client.ts:467-471,585-592
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/src/client/client.ts:negotiationMode,InternalMastraMCPClient
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/editor/src/namespaces/agent.ts, stored MCP clients resolved through MCPClient
-    commit: bb984550
-    path: packages/editor/src/namespaces/agent.ts:1473-1499
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/editor/src/namespaces/agent.ts:resolveStoredMCPTools
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: mastracode/sdk/src/mcp/manager.ts, Mastra Code's MCPClient
-    commit: bb984550
-    path: mastracode/sdk/src/mcp/manager.ts:506-512
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: mastracode/sdk/src/mcp/manager.ts:connectAndCollectTools
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - cline-hand-rolls-stdio-in-its-cli
   - mastra-sends-the-server-config-key-as-its-client-name

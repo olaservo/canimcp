@@ -19,8 +19,8 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | Prefers | `2025-11-25` |
 | Speaks | `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities
@@ -65,7 +65,7 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ● full | read, declared | `2025-06-18`, `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read, declared | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
@@ -113,7 +113,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema** — Every tool inputSchema is checked with the json.validate command against the draft-07 meta-schema, after adding an empty properties object when one is missing. A tool whose schema fails is omitted. No $schema is read and no 2020-12 handling was found.
 - **extensions.io.modelcontextprotocol/ui** — Declared on every connection with mimeTypes ["text/html;profile=mcp-app"]. Tools with _meta.ui.resourceUri render the app in chat. The app host answers ui/initialize, tools/call, resources/read, sampling/createMessage, ui/open-link, ui/download-file, ui/request-display-mode, ui/message and ui/update-model-context. chat.mcp.apps.enabled (default true, tagged experimental) gates the app data attached to the tool registration, not the declaration. _meta.ui.visibility without model hides a tool from the model.
 - **extensions.io.modelcontextprotocol/tasks** — The read disagrees with the Apify record, which has tasks declared as {"requests":{"tools":{"call":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.
-- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, and the request handler sends no skills/list, skills/get or resources/directory/read. The MCP gateway the agent host connects to forwards only ping, tools and resources methods. The skills/list calls elsewhere in the repo go to the Codex app server, not to MCP servers.
+- **extensions.io.modelcontextprotocol/skills** — On by default in Copilot harness sessions, the default harness. chat.agentHost.mcpSkills.enabled defaults to true from VS Code 1.147 (a preview in 1.146), and the agent host passes it to the Copilot runtime it launches as the MCP_SKILLS experiment flag. The runtime calls the server; VS Code applies the skills it reports to the session and caches them. The first time a server provides skills, the user is asked to allow them, and the decision is kept per server identity in mcpSkillsServerApprovals. Server skills appear under "Skills from <server>" on the Skills tab of the Agent Customizations editor. Local harness sessions, which are deprecated with removal planned for February 2027 and use VS Code's own MCP client, do not load skills: that client declares only io.modelcontextprotocol/ui and sends no skills/* requests. The Copilot runtime's own MCP code is not in this repository, so what it sends on the wire is not recorded here.
 - **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, the client sends no events/list, events/poll, events/stream or events/subscribe, and the server notification switch has no notifications/events/* case.
 - **bonusFeatures.mcpGateway** — VS Code re-exposes its connected servers over local HTTP so Copilot CLI sessions use them. Copilot Chat routes CLI sessions through the gateway when chat.cli.mcp.enabled is on, which is the default. The server then sees VS Code's client, not the CLI's.
 - **bonusFeatures.traceContextInMeta** — tools/call _meta carries traceparent and tracestate (SEP-414) when a trace is active, plus vscode.conversationId and vscode.requestId.
@@ -138,7 +138,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `8e900494` on 2026-11-20, from `main` of https://github.com/microsoft/vscode.git. That commit was authored 2026-11-20.
+Read at `e8b6d8b5` on 2026-11-27, from `main` of https://github.com/microsoft/vscode.git. That commit was authored 2026-11-27.
 
 **SDK.** The client is hand-written: JSON-RPC through src/vs/base/common/jsonRpcProtocol.ts, with types from a generated copy of the spec schema in src/vs/platform/mcp/common/modelContextProtocol.ts (LATEST_PROTOCOL_VERSION 2025-11-25), re-exported under workbench/contrib/mcp. The root package.json has @modelcontextprotocol/sdk ^1.29.0 as a devDependency, resolved to 1.29.0, used by the agent host's Claude integration. extensions/copilot declares ^1.30.0, resolved to 1.30.0, used only for the server Copilot Chat runs for the Copilot CLI. Neither is on the client path. pnpm patchedDependencies patches only foundry-local-sdk.
 

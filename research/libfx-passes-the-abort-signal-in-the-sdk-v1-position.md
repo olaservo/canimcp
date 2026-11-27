@@ -12,29 +12,29 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: sdk/mcp.js, the execute function of an adapted tool
-    commit: c3dc80c4
-    path: sdk/mcp.js:78-83
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/mcp.js:execute
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/types/mcp.d.ts, McpClient.callTool
-    commit: c3dc80c4
-    path: sdk/types/mcp.d.ts:4-13
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/types/mcp.d.ts:McpClient
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/tests/test-mcp-adapter.mjs, the test client's callTool
-    commit: c3dc80c4
-    path: sdk/tests/test-mcp-adapter.mjs:52-57
-    date: 2026-11-16
+    commit: "79638170"
+    path: sdk/tests/test-mcp-adapter.mjs:callTool
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2
     title: "@modelcontextprotocol/sdk 1.32.2, Client.callTool"
-    path: dist/esm/client/index.js:479
+    path: dist/esm/client/index.js
     date: 2026-11-16
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
     title: "@modelcontextprotocol/client 2.4.0, Client.callTool"
-    path: dist/public-CvV4ZHkX.mjs:3866
+    path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - libfx-has-no-mcp-client-of-its-own
 ---

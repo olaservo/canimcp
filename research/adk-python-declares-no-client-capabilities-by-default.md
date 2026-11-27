@@ -18,27 +18,27 @@ specVersions:
 sources:
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/session_context.py, the ClientSession construction
-    commit: c6586f19
-    path: src/google/adk/tools/mcp_tool/session_context.py:452-481
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/mcp_tool/session_context.py:SessionContext._run
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/mcp_toolset.py, the McpToolset constructor and McpToolsetConfig
-    commit: c6586f19
-    path: src/google/adk/tools/mcp_tool/mcp_toolset.py:151-182,247-281,735-760
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/mcp_tool/mcp_toolset.py:McpToolset.__init__,McpToolsetConfig
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/agents/mcp_instruction_provider.py, a session manager with no callbacks
-    commit: c6586f19
-    path: src/google/adk/agents/mcp_instruction_provider.py:47-50
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/agents/mcp_instruction_provider.py:McpInstructionProvider.__init__
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/mcp_tool.py, the tools/call request and the error boundary
-    commit: c6586f19
-    path: src/google/adk/tools/mcp_tool/mcp_tool.py:653-662,756-760,815-820
-    date: 2026-11-16
+    commit: 03725e8c
+    path: src/google/adk/tools/mcp_tool/mcp_tool.py:McpTool.run_async,McpTool._run_async_impl,McpTool._call_tool_on_session
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
     title: mcp 2.3.0, _build_capabilities, call_tool and the input_required driver
-    path: mcp/client/session.py:614-649,1062,1104-1106, mcp/client/_input_required.py:1-10
+    path: mcp/client/session.py, mcp/client/_input_required.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

@@ -18,35 +18,35 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, the capability object and the only request handler
-    commit: bb984550
-    path: packages/mcp/src/client/client.ts:569-608
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/src/client/client.ts:InternalMastraMCPClient
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/types.ts, MCPClientCapabilities
-    commit: bb984550
-    path: packages/mcp/src/client/types.ts:181-188
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/src/client/types.ts:MCPClientCapabilities
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, negotiationMode and the transport choice
-    commit: bb984550
-    path: packages/mcp/src/client/client.ts:467-471,761,1034-1042
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/src/client/client.ts:negotiationMode,InternalMastraMCPClient.connectHttp,InternalMastraMCPClient.connect
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, isModelVisible
-    commit: bb984550
-    path: packages/mcp/src/client/configuration.ts:1888-1901
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/src/client/configuration.ts:isModelVisible,modelVisibleTools
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/CHANGELOG.md, the 2.0.0 entry
-    commit: bb984550
-    path: packages/mcp/CHANGELOG.md:1485-1562
-    date: 2026-11-16
+    commit: ad1a04ff
+    path: packages/mcp/CHANGELOG.md:2.0.0
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
     title: "@modelcontextprotocol/client 2.4.0, dist/public-CvV4ZHkX.mjs, Client class comment and DEFAULT_VERSION_NEGOTIATION_MODE"
-    path: dist/public-CvV4ZHkX.mjs:2180,2654-2662
+    path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - openclaw-declares-nothing-unless-mcp-apps-is-on
   - cline-declares-no-client-capabilities

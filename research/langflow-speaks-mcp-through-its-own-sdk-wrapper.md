@@ -16,27 +16,27 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp base dependency and the langchain-mcp-adapters extra
-    commit: 21381e5b
-    path: src/backend/base/pyproject.toml:116,381,399
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/backend/base/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp base dependency of lfx
-    commit: 21381e5b
-    path: src/lfx/pyproject.toml:72
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/pyproject.toml
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, ClientSession construction on the stdio, Streamable HTTP and SSE paths
-    commit: 21381e5b
-    path: src/lfx/src/lfx/base/mcp/util.py:1721-1724,1824-1832,1899-1908
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.session_task
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/langflow/api/utils/mcp/discovery.py, the server-list check uses the same two client classes
-    commit: 21381e5b
-    path: src/backend/base/langflow/api/utils/mcp/discovery.py:32-53
-    date: 2026-11-20
+    commit: 6c9aea6f
+    path: src/backend/base/langflow/api/utils/mcp/discovery.py:discovery_clients
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, DEFAULT_CLIENT_INFO and the capability object built in initialize
-    path: mcp/client/session.py:19,144,160-196
+    path: mcp/client/session.py
     date: 2026-11-20
 status: current
 lastVerified: 2026-11-20

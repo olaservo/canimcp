@@ -15,9 +15,9 @@ specVersions:
 sources:
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs
-    commit: "d1438fde"
-    path: crates/oi-kit-agent/src/mcp/client.rs:252-304,406-486
-    date: 2026-11-26
+    commit: c546eaa1
+    path: crates/oi-kit-agent/src/mcp/client.rs
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-26
 ---

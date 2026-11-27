@@ -19,8 +19,8 @@ Multi-channel AI gateway that runs agents across chat surfaces and remote nodes.
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -38,7 +38,9 @@ Multi-channel AI gateway that runs agents across chat surfaces and remote nodes.
 | **Prompts** | ● full | read | `2025-11-25` |
 | **Completions** | ○ unsupported | read | `2025-11-25` |
 | **Sampling** | ○ unsupported | read | `2025-11-25` |
-| **Elicitation** | ◇ opt-in | read | `2025-11-25` |
+| **Elicitation** | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ form | ◇ opt-in | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;↳ url | ◐ partial | read ⇧ | `2025-11-25` |
 | **Roots** | ○ unsupported | read | `2025-11-25` |
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ◐ partial | read | `2025-11-25` |
@@ -70,11 +72,13 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **prompts** — Same shape as resources: generated per-server prompts_list and prompts_get tools, gated the same way.
 - **completions** — No completion/complete call on either surface for a configured server. A complete operation exists on the native projection view added in October, which has no production caller.
 - **sampling** — Not declared and not implemented for configured servers. A sampling/createMessage handler exists only on the native projection bridge, registered when a borrowing caller supplies a sampling capability, and nothing in production acquires that view.
-- **elicitation** — Declared as elicitation: { form: {}, url: {} } and handled on both surfaces, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares and handles nothing. With the flag on, the agent bundle routes the request to a Gateway question and the node host forwards it to the Gateway; a request with no single active tool call is rejected. The bundle also declares an openai/elicitation extension.
+- **elicitation** — A default install declares elicitation: { url: {} } on the agent bundle and routes every elicitation/create to a Gateway question for the one active tool call; a request with no single active tool call is rejected. With mcp.apps.enabled, which defaults to false, the bundle declares form and url, adds the openai/elicitation extension, and the node host declares elicitation and forwards it to the Gateway. Without the flag the node host declares nothing.
+- **elicitation.form** — Declared only with mcp.apps.enabled.
+- **elicitation.url** — Declared by default on the agent bundle, and on the node host only with mcp.apps.enabled. Needs exactly one active tool call.
 - **roots** — Not declared and not implemented for configured servers, so unlike goose, opencode and fast-agent this client does not reach the roots.listChanged declaration gap at all. A roots/list handler and a sendRootsListChanged call exist only on the native projection bridge, which nothing in production acquires.
 - **logging** — No logging/setLevel call. A notifications/message handler exists only on the native projection bridge. Server stderr on stdio is drained without logging its content.
 - **instructions** — The agent bundle reads the initialize result's instructions and puts them in the system prompt under an "MCP Server Instructions" heading, per server, cut at 2,000 characters, and only while that server backs at least one tool in the prompt. The node host does not read them.
-- **extensions.io.modelcontextprotocol/ui** — Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares no extensions and no capabilities at all. The same flag also turns on the elicitation declaration.
+- **extensions.io.modelcontextprotocol/ui** — Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. Without the flag the client declares only elicitation: { url: {} }. The same flag also turns on form elicitation and the openai/elicitation extension.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* call anywhere in the MCP client files.
 - **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. Neither MCP client surface (the agent bundle and the node host) sends skills/list, skills/get or resources/directory/read, and nothing imports the SkillsClient that @modelcontextprotocol/client 2.4.0 ships under the ext/skills subpath. The skills/list calls in extensions/codex are the Codex app-server JSON-RPC protocol, not MCP.
 - **extensions.io.modelcontextprotocol/events** — The bundled mcp-events plugin implements OpenAI's webhook profile of MCP Events on protocol 2026-07-28. It is off by default and turns on with plugins.entries.mcp-events.enabled and a required public HTTPS callbackOrigin. It works only with a configured Streamable HTTP server. Each request is stateless with no initialize: it sends server/discover and requires supportedVersions to include 2026-07-28 and capabilities.events to be present, then events/list, events/subscribe and events/unsubscribe. The client sends empty io.modelcontextprotocol/clientCapabilities in _meta, so it declares nothing. A delivered event triggers an Automation: an event-kind cron job runs its authored agent turn with the event as untrusted input. The mcp_events tool lists webhook-capable events for the model and the Automation editor and does not subscribe.
@@ -92,9 +96,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `3e7c305f` on 2026-11-20, from `main` of https://github.com/openclaw/openclaw.git. That commit was authored 2026-11-20.
+Read at `2237f16b` on 2026-11-27, from `main` of https://github.com/openclaw/openclaw.git. That commit was authored 2026-11-27.
 
-**SDK.** Moved from @modelcontextprotocol/sdk 1.30.0 to the v2 split packages: @modelcontextprotocol/client and @modelcontextprotocol/core, both pinned to exactly 2.4.0 at every declaration site (root, ui, extensions/browser, extensions/qa-lab), and the lockfile agrees. Unpatched: patches/ holds 16 patches and pnpm-workspace.yaml patchedDependencies lists 16 packages, none of them an @modelcontextprotocol package, and there is no override. Every SDK Client is constructed with versionNegotiation mode 'legacy', so the handshake is initialize and the revision is the SDK's: client 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25. @modelcontextprotocol/sdk 1.32.2 is still a root dependency, used for v1 result schemas the plugin SDK keeps for one release window. Where opencode patched the SDK for expired-session recovery, OpenClaw wraps the SDK HTTP transports, replaces the stdio transport with its own, and handles expiry in its own lifecycle code.
+**SDK.** Moved from @modelcontextprotocol/sdk 1.30.0 to the v2 split packages: @modelcontextprotocol/client and @modelcontextprotocol/core, both pinned to exactly 2.4.0 at every declaration site (root, ui, extensions/browser, extensions/qa-lab), and the lockfile agrees. Unpatched: patches/ holds 17 patches and pnpm-workspace.yaml patchedDependencies lists 17 packages, none of them an @modelcontextprotocol package, and there is no override. Every SDK Client is constructed with versionNegotiation mode 'legacy', so the handshake is initialize and the revision is the SDK's: client 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25. @modelcontextprotocol/sdk 1.32.2 is still a root dependency, used for v1 result schemas the plugin SDK keeps for one release window. Where opencode patched the SDK for expired-session recovery, OpenClaw wraps the SDK HTTP transports, replaces the stdio transport with its own, and handles expiry in its own lifecycle code.
 
 Paths read:
 

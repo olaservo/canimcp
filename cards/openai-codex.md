@@ -19,8 +19,8 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | Prefers | `2025-06-18` |
 | Speaks | `2025-06-18`, `2026-07-28` |
 | Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
-| Source last updated | 2026-11-26 |
-| Last read | 2026-11-26 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 | Probed | `0.174.0-alpha.7` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
@@ -307,7 +307,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `475e13ab` on 2026-11-26, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-26.
+Read at `c7005a3d` on 2026-11-27, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-27.
 
 **SDK.** A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.
 

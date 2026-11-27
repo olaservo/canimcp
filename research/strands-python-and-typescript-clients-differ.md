@@ -16,56 +16,56 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py MCPClient, session construction and negotiation
-    commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/mcp_client.py:1740-1785
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient._async_background_thread
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _compat, negotiate_session and the tools-changed subscription
-    commit: d982a0d4
-    path: strands-py/src/strands/tools/mcp/_compat.py:522-584
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-py/src/strands/tools/mcp/_compat.py:negotiate_session,tools_changed_subscription
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient, constructor and _createClient
-    commit: d982a0d4
-    path: strands-ts/src/mcp/client.ts:401-462
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/mcp/client.ts:McpClient
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient, tool invocation, legacy tasks and trace context
-    commit: d982a0d4
-    path: strands-ts/src/mcp/client.ts:1023-1110,1327-1385,1638-1693
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/mcp/client.ts
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts Agent.initialize, MCP tool registration and refresh
-    commit: d982a0d4
-    path: strands-ts/src/agent/agent.ts:876-891
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/agent/agent.ts:Agent.initialize
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpTool, content mapping
-    commit: d982a0d4
-    path: strands-ts/src/tools/mcp-tool.ts:58-137
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/tools/mcp-tool.ts:McpTool
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts package.json, MCP dependencies and engines
-    commit: d982a0d4
-    path: strands-ts/package.json:303,331-333,345,364
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/package.json
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: root package-lock.json, resolved MCP packages
-    commit: d982a0d4
-    path: package-lock.json:1800-1802,1832-1834,1866-1868
-    date: 2026-11-16
+    commit: 8e388465
+    path: package-lock.json
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1
     title: "@modelcontextprotocol/client 2.3.1, version negotiation default, the stdio sibling probe and the list page cap"
-    path: dist/index.mjs:2554-2585,2886-2925,3026,3382-3413
+    path: dist/index.mjs
     date: 2026-11-16
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts TaskTransport, the raw JSON-RPC path and the stdio probe shape
-    commit: d982a0d4
-    path: strands-ts/src/mcp/task-transport.ts:64-96,431-467
-    date: 2026-11-16
+    commit: 8e388465
+    path: strands-ts/src/mcp/task-transport.ts
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
     title: mcp 2.3.0, negotiate_auto
-    path: mcp/client/_probe.py:52-113
+    path: mcp/client/_probe.py
     date: 2026-11-16
 status: current
 lastVerified: 2026-11-16

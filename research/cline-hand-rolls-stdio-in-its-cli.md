@@ -13,26 +13,26 @@ specVersions:
 sources:
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/client.ts, StdioMcpClient
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/client.ts:57,72,213-299
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/client.ts:MCP_PROTOCOL_VERSION,DEFAULT_MCP_CONNECT_TIMEOUT_MS,StdioMcpClient
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/extensions/mcp/client.ts, SdkUrlMcpClient
-    commit: 20b04272
-    path: sdk/packages/core/src/extensions/mcp/client.ts:765-1040
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/extensions/mcp/client.ts
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: apps/vscode/src/services/mcp/McpHub.ts, connectToServer
-    commit: 20b04272
-    path: apps/vscode/src/services/mcp/McpHub.ts:467-496
-    date: 2026-11-20
+    commit: cbc7d141
+    path: apps/vscode/src/services/mcp/McpHub.ts:McpHub.connectToServer
+    date: 2026-11-27
   - url: https://github.com/cline/cline
     title: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts, Agent Plugin MCP servers
-    commit: 20b04272
-    path: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts:230-243,615-629
-    date: 2026-11-20
+    commit: cbc7d141
+    path: sdk/packages/core/src/runtime/orchestration/runtime-builder.ts:loadConfiguredMcpTools,DefaultRuntimeBuilder.build
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - cline-declares-no-client-capabilities
   - opencode-patches-its-sdk-for-session-recovery

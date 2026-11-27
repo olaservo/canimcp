@@ -14,24 +14,24 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/ui/prompt/resource_mentions.py, resolve_mentions
-    commit: 288b5339
-    path: src/fast_agent/ui/prompt/resource_mentions.py:298-376
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/ui/prompt/resource_mentions.py:resolve_mentions
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/agents/mcp_agent.py, get_resource and apply_prompt
-    commit: 288b5339
-    path: src/fast_agent/agents/mcp_agent.py:2403-2462,2498-2547
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/agents/mcp_agent.py:McpAgent.apply_prompt,McpAgent
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/core/harness_tools.py, the opt-in get_resource tool
-    commit: 288b5339
-    path: src/fast_agent/core/harness_tools.py:102-115,152-180
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/core/harness_tools.py:_read_resource,set_harness_tools
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/agents/agent_types.py, AgentConfig.harness_tools
-    commit: 288b5339
-    path: src/fast_agent/agents/agent_types.py:118
-    date: 2026-11-20
+    commit: 71bca7b7
+    path: src/fast_agent/agents/agent_types.py:AgentConfig
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 related:

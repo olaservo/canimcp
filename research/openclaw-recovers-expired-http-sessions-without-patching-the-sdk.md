@@ -13,31 +13,31 @@ specVersions:
 sources:
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-client-lifecycle.ts, isMcpHttpSessionExpired
-    commit: 3e7c305f
-    path: src/agents/mcp-client-lifecycle.ts:23-41
-    date: 2026-11-20
+    commit: 2237f16b
+    path: src/agents/mcp-client-lifecycle.ts:isMcpHttpSessionExpired
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-runtime.ts, session recycling
-    commit: 3e7c305f
-    path: src/agents/agent-bundle-mcp-runtime.ts:236-269
-    date: 2026-11-20
+    commit: 2237f16b
+    path: src/agents/agent-bundle-mcp-runtime.ts:createServerMcpRuntime
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/mcp.ts, same check on the node host surface
-    commit: 3e7c305f
-    path: src/node-host/mcp.ts:566-594
-    date: 2026-11-20
+    commit: 2237f16b
+    path: src/node-host/mcp.ts:callMcpTool
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-http-transport.ts, SSE POST 404 raised as McpSseSessionExpiredError
-    commit: 3e7c305f
-    path: src/agents/mcp-http-transport.ts:325-334
-    date: 2026-11-20
+    commit: 2237f16b
+    path: src/agents/mcp-http-transport.ts:OpenClawSSEClientTransport.fetch
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: pnpm-workspace.yaml, patchedDependencies has no @modelcontextprotocol entry
-    commit: 3e7c305f
-    path: pnpm-workspace.yaml:131-147
-    date: 2026-11-20
+    commit: 2237f16b
+    path: pnpm-workspace.yaml
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - opencode-patches-its-sdk-for-session-recovery
 ---

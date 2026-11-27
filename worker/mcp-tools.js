@@ -16,7 +16,7 @@ export const SERVER = {
   skillsBundle: '/data/skills.json',
   instructions: `canimcp records which MCP clients support which capabilities and how each claim is known. Every claim carries evidence with a tier (declared, verified, observed or read) and the protocol revision it applies to. Tiers are not ranked and can disagree. A capability missing from a client's entry is not recorded, which is a different claim from unsupported.
 
-The findings are provisional. canimcp is in active development, and statuses, notes and probe results may be incomplete or wrong. Say so when you pass one on, and point to the cited source.
+canimcp is an alpha and a work in progress. Statuses, notes and probe results may be incomplete or inaccurate, and the data can change without notice. Say so when you pass a finding on, and point to the cited source.
 
 Rows describe each client on the current revision, 2026-07-28, or on the newest revision it speaks when it cannot negotiate that one. get_client, find_capability_support and list_capabilities take a revision, such as 2025-11-25, and answer as a server offering that revision as its newest would see each client: the client negotiates the newest revision it speaks at or below it, and its record for that revision replaces the rows that differ. A client marked recordedPerRevision false has one set of rows for every revision it speaks.
 

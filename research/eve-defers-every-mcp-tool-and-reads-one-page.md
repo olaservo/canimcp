@@ -2,7 +2,7 @@
 id: eve-defers-every-mcp-tool-and-reads-one-page
 title: eve offers MCP tools only through eve__search and eve__tool, and reads one page of tools/list
 kind: idiosyncrasy
-summary: No MCP tool is in the model's tool list. The model searches a catalog with eve__search and calls a result with eve__tool. eve calls tools/list once per step with no cursor, so a tool past the server's first page cannot be found or called.
+summary: No MCP tool is in the model's tool list. The model searches a catalog with eve__search and calls a result with eve__tool. eve calls tools/list with no cursor, so a tool past the server's first page cannot be found or called.
 capabilities:
   - tools
   - tools.listChanged
@@ -15,40 +15,40 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/connection-entry.ts, connectionEntry, the call path and checkCall
-    commit: 0940c042
-    path: packages/eve/src/execution/catalog/connection-entry.ts:79-100,162-240,283-303
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/execution/catalog/connection-entry.ts
+    date: 2026-11-26
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/catalog-tools.ts, catalogTools and the eve__tool route
-    commit: 0940c042
-    path: packages/eve/src/execution/catalog/catalog-tools.ts:53-94,110-138
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/execution/catalog/catalog-tools.ts:catalogTools,callRoute
+    date: 2026-11-26
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/search.ts, eve__search and its result shape
-    commit: 0940c042
-    path: packages/eve/src/execution/catalog/search.ts:1-7,28-29,43-60,88-90,320-337
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/execution/catalog/search.ts
+    date: 2026-11-26
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, #fetchToolsInner
-    commit: 0940c042
-    path: packages/eve/src/runtime/connections/mcp-client.ts:318-350
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/runtime/connections/mcp-client.ts:McpConnectionClient.fetchToolsInner
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, listTools, tools() and the notification branch of onmessage"
-    path: dist/index.js:2750-2760,2896-2907,2411-2418
+    path: dist/index.js
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/execution/catalog/connection-auth.ts, the listing deadline and the tool filter
-    commit: 0940c042
-    path: packages/eve/src/execution/catalog/connection-auth.ts:88-128
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/execution/catalog/connection-auth.ts
+    date: 2026-11-26
   - url: https://github.com/vercel/eve
-    title: packages/eve/src/context/providers/connection.ts, one registry per step
-    commit: 0940c042
-    path: packages/eve/src/context/providers/connection.ts:9-22
-    date: 2026-11-16
+    title: packages/eve/src/context/providers/connection.ts, the registry that takes pooled clients
+    commit: 4545806d
+    path: packages/eve/src/context/providers/connection.ts:connectionProvider
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-26
 related:
   - codex-reads-one-page-of-tools
   - eve-patches-ai-sdk-mcp-at-build-time
@@ -62,6 +62,6 @@ For a server author this moves where the tool text is read. The model reads a to
 
 `#fetchToolsInner` calls `client.listTools()` with no arguments and builds the tool set from that one result. The SDK's `listTools` sends one `tools/list` and returns `nextCursor` with the page. The SDK's `tools()` method follows the cursor, and eve does not call it. The only reader of `nextCursor` under `packages/eve/src/runtime/connections` is the events catalog. A tool on a later page is absent from `eve__search`, and `eve__tool` rejects its name as unknown, because a call is checked against the same listing.
 
-The listing is cached on the client, and the client lives for one step. `connectionProvider` builds a registry per step and disposes it when the step ends, which closes every client. The next step that touches the connection reconnects and lists again. A changed tool list reaches eve that way. A `notifications/tools/list_changed` has no effect. The SDK passes any notification to `onUncaughtError` as an unsupported message, and eve does not set that callback. On `2026-07-28` the client opens no stream that could carry one.
+The listing is cached on the client. Clients come from a pool keyed by connection, session, turn and auth (`McpClientPool`): the steps of one turn share a client, and a client idle for 60 seconds is closed. A new turn, an idle close, a transport failure or an expired session builds a new client, which lists again. A changed tool list reaches eve that way. A `notifications/tools/list_changed` has no effect. The SDK passes any notification to `onUncaughtError` as an unsupported message, and eve does not set that callback. On `2026-07-28` the client opens no stream that could carry one.
 
 Listing has a 10 second deadline per connection, and a call has a 5 minute deadline. Inputs are validated against `inputSchema` before approval and again before the call.

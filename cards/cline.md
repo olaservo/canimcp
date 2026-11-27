@@ -19,8 +19,8 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-19 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `3.0.74` (see below) |
 
 ## Capabilities
@@ -171,12 +171,12 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [Cline declares an empty capability object on both surfaces](../research/cline-declares-no-client-capabilities.md) — *idiosyncrasy*. Both of Cline's MCP implementations send `capabilities: {}` in initialize by default. No roots, no sampling, no elicitation, no tasks — and none of the four are implemented anywhere, so the declaration is accurate.
 - [Cline's CLI rewrites `npx mcp-remote <url>` into a native Streamable HTTP transport](../research/cline-rewrites-mcp-remote-proxy-configs.md) — *idiosyncrasy*. A stdio config of exactly `npx [-y] mcp-remote <url>`, with no env and no other arguments, is replaced by a streamableHttp transport before any process is spawned. The extension does not do this, so one settings file describes two different connections.
 - [notes/cline-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/cline-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Cline source at 94eecbb.
-- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
-- [dist/esm/types.js:413-457](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
+- [dist/esm/types.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
+- [dist/esm/types.js](https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/typescript-sdk. @modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods.
 
 ## Provenance
 
-Read at `20b04272` on 2026-11-20, from `main` of https://github.com/cline/cline.git. That commit was authored 2026-11-19.
+Read at `cbc7d141` on 2026-11-27, from `main` of https://github.com/cline/cline.git. That commit was authored 2026-11-26.
 
 **SDK.** Two workspaces declare it and disagree: sdk/packages/core asks for ^1.29.0 and apps/vscode for ^1.25.1. bun.lock hoists one copy, so both run 1.30.0. patchedDependencies covers @opentui-ui/dialog, ollama-ai-provider-v2 and @shadcn/react and not the SDK, which is the answer to the question opencode raised: Cline is on the same SDK and does not patch it. The protocol version is the SDK's on every path except one - 1.30.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 - but the @cline/core stdio client does not use the SDK at all and sends 2024-11-05 of its own accord.
 
