@@ -157,12 +157,14 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
       path: '/data/capabilities/index.json',
       tag: 'capabilities',
       summary: 'Get the capability matrix',
-      description: 'Every capability with the status each client records for it and the evidence tiers behind each cell. `subjects` lists the clients, including those that have probe records or telemetry and no registry entry. Start here to find a capability slug.',
+      description: 'Every capability with the status each client records for it and the evidence tiers behind each cell, on the baseline revision. `byRevision` has the statuses on each older revision that some client has its own records for. `subjects` lists the clients, including those that have probe records or telemetry and no registry entry. Start here to find a capability slug.',
       returns: 'Every capability, with each client\'s status and evidence tiers',
       schema: {
         type: 'object',
-        required: ['subjects', 'capabilities'],
+        required: ['baseline', 'revisions', 'subjects', 'capabilities'],
         properties: {
+          baseline: { ...str, description: 'The protocol revision `statuses` describes: the current one.' },
+          revisions: { type: 'array', items: str, description: 'The baseline, then each older revision with per-revision records, newest first.' },
           subjects: {
             type: 'array',
             items: {
@@ -175,6 +177,9 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
                 registry: { type: 'boolean', description: 'True when the client has a researched registry entry.' },
                 page: uri,
                 repo: uri,
+                protocolVersions: { type: 'array', items: str, description: 'Registry clients only. The revisions the client speaks.' },
+                revision: { ...str, description: 'Registry clients only. The revision its rows describe on the baseline: the baseline, or the newest it speaks when it cannot negotiate the baseline.' },
+                recordedPerRevision: { type: 'boolean', description: 'Registry clients only. False when one set of rows stands for every revision it speaks.' },
               },
             },
           },
@@ -191,6 +196,17 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
                 data: uri,
                 statuses: { type: 'object', additionalProperties: str, description: 'Client id to status. A client with no status recorded is absent.' },
                 tiers: { type: 'object', additionalProperties: { type: 'array', items: str }, description: 'Client id to the evidence tiers behind it.' },
+                byRevision: {
+                  type: 'object',
+                  description: 'Keyed by older revision. A client negotiates the newest revision it speaks at or below that one.',
+                  additionalProperties: {
+                    type: 'object',
+                    properties: {
+                      statuses: { type: 'object', additionalProperties: str, description: 'Client id to status on that revision.' },
+                      fromRecord: { type: 'array', items: str, description: 'Clients whose status comes from their own record for that revision.' },
+                    },
+                  },
+                },
               },
             },
           },
@@ -238,6 +254,7 @@ export function buildApiFiles({ origin, repo, version, tagline, clients, verifie
           },
           notRecorded: { type: 'array', items: str, description: 'Registry clients with no record. Not the same as unsupported.' },
           research: { type: 'array', items: str, description: 'Research note ids.' },
+          byRevision: { type: 'object', additionalProperties: { type: 'array', items: object }, description: 'Keyed by older revision: the rows that come from a client\'s own record for that revision, shaped like `clients`. Every other client\'s row holds on that revision too.' },
         },
       },
     },

@@ -18,6 +18,7 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | SDK | `mcp` 2.3.0 · declares `==2.3.0` · official Python SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 | Probed | `0.23.0+689.ga9ff979` (see below) |

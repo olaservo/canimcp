@@ -18,6 +18,7 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 | SDK | `none` · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `0.0.16` (see below) |
@@ -77,6 +78,22 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, fx (native engine) negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Transports** |  |  |  |
+| &nbsp;&nbsp;↳ streamableHttp | ● full | read | `2025-11-25` |
+| **Beyond the spec** |  |  |  |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ standardRequestHeaders | ○ unsupported | read | `2025-11-25` |
+
+- **transports.streamableHttp** — After the initialize fallback, requests carry Mcp-Session-Id and the agreed MCP-Protocol-Version. A listening GET is opened, a broken stream is resumed with GET and Last-Event-ID up to twice, a cancel is a notifications/cancelled POST, and the session is ended with DELETE.
+- **bonusFeatures.sessionRecovery** — A 404 for the current session starts a new session with initialize. A 404 without a session id is a plain failure.
+- **bonusFeatures.standardRequestHeaders** — A 2025 session sends Accept, MCP-Protocol-Version, Mcp-Session-Id and Last-Event-ID only.
+
 ## What the table flattens
 
 - **transports.stdio** — One process per server in its own process group, one JSON-RPC message per line. The child gets HOME, LOGNAME, PATH, SHELL, TERM and USER from fx plus the entry's env, and nothing else of fx's environment. stderr lines go to the debug log. Each new process is probed again.
@@ -119,9 +136,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.cacheableResult** — A 2026 tool list is served from cache only while every page's ttlMs holds, capped at 24 hours. A 2025 list stays fresh until it is invalidated or the process restarts.
 - **bonusFeatures.progressNotifications** — Every request carries a progressToken equal to its id. Accepted progress on a call reaches the host as a progress event, which the changelog says is shown in the terminal and in fx ask.
 - **bonusFeatures.shellToolCalls** — fx mcp call TOOL runs one of the session's MCP tools from a command the shell tool runs, through a Unix-socket bridge to the same engine, and prints only the tool's data. It is not a second MCP client.
-- **byProtocolVersion.2025-11-25.transports.streamableHttp** — After the initialize fallback, requests carry Mcp-Session-Id and the agreed MCP-Protocol-Version. A listening GET is opened, a broken stream is resumed with GET and Last-Event-ID up to twice, a cancel is a notifications/cancelled POST, and the session is ended with DELETE.
-- **byProtocolVersion.2025-11-25.bonusFeatures.sessionRecovery** — A 404 for the current session starts a new session with initialize. A 404 without a session id is a plain failure.
-- **byProtocolVersion.2025-11-25.bonusFeatures.standardRequestHeaders** — A 2025 session sends Accept, MCP-Protocol-Version, Mcp-Session-Id and Last-Event-ID only.
 
 ## Verified by the probe
 

@@ -18,6 +18,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | SDK | `rmcp` 3.6.0 · declares `=3.6.0 (git rev b11a40d8)` · official Rust SDK · unpatched |
 | Prefers | `2025-06-18` |
 | Speaks | `2025-06-18`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-26 |
 | Last read | 2026-11-26 |
 | Probed | `0.174.0-alpha.7` (see below) |

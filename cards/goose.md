@@ -18,6 +18,7 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | SDK | `rmcp` 3.11.0 · declares `3.9.0` · official Rust SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-26 |
 | Last read | 2026-11-26 |
 | Probed | `1.61.0` (see below) |

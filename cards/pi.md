@@ -18,6 +18,7 @@ TypeScript coding agent CLI from Earendil Works, formerly badlogic/pi-mono. Its 
 | SDK | `none` · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.5.0` (see below) |

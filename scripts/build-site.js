@@ -25,7 +25,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { API_CATALOG_TYPE, OPENAPI_TYPE, buildApiFiles, checkApiFiles } from './lib/api-files.js';
 import { buildCapabilityIndex } from './lib/capability-index.js';
-import { capabilityJson, capabilityPage, indexJson, matrixPage } from './lib/capability-pages.js';
+import { capabilityJson, capabilityPage, indexJson, matrixPage, matrixUrl } from './lib/capability-pages.js';
+import { revisionViews } from './lib/capabilities.js';
 import { KIND_LABEL, KIND_MEANING, KINDS, kindOf } from './lib/kinds.js';
 import { parseFrontmatter } from './lib/frontmatter.js';
 import { SERVER as MCP_SERVER, TOOLS as MCP_TOOLS } from '../worker/mcp-tools.js';
@@ -211,22 +212,33 @@ for (const f of noteFiles) {
 // Capabilities: the registry, the probe's overlays, the telemetry and the
 // lifecycle joined by capability id, as one page each and a matrix.
 const observedOverlays = readdirSync(join(root, 'data', 'observed')).filter((f) => f.endsWith('.json')).sort().map((f) => readJson('data', 'observed', f));
-const capIndex = buildCapabilityIndex({
-  clients, spec: readJson('data', 'spec-versions.json'), verified, observed: observedOverlays,
+// One index per protocol revision with records: the baseline, then each older
+// revision some entry has byProtocolVersion records for.
+const spec = readJson('data', 'spec-versions.json');
+const views = revisionViews(clients, spec);
+const indexAt = (revision, seed) => buildCapabilityIndex({
+  clients, spec, verified, observed: observedOverlays,
   probeClients: readJson('probe', 'registry', 'clients.json').clients, probeSdks: readJson('probe', 'registry', 'sdks.json').sdks,
-  notes, origin: ORIGIN,
+  notes, origin: ORIGIN, revision, seed,
 });
+const olderIndexes = Object.fromEntries(views.slice(1).map((v) => [v, indexAt(v)]));
+// A capability recorded only on an older revision still gets a page.
+const capIndex = indexAt(views[0], Object.values(olderIndexes).flatMap((i) => i.capabilities.map((c) => c.id)));
 {
   const slugs = new Set(capIndex.capabilities.map((c) => c.slug));
   if (slugs.size !== capIndex.capabilities.length) throw new Error('two capability ids share a page slug');
   const mod = lastmod('data', 'probe/registry/clients.json');
   const noteTitles = Object.fromEntries(notes.map((n) => [n.id, n.fm.title]));
   for (const cap of capIndex.capabilities) {
-    const md = capabilityPage(cap, capIndex, { origin: ORIGIN, noteTitles });
+    const md = capabilityPage(cap, capIndex, { origin: ORIGIN, noteTitles, views, at: olderIndexes });
     page({ url: `/capabilities/${cap.slug}`, title: `${cap.id} support in MCP clients`, description: firstParagraph(md), md: `${md}\n`, lastmod: mod });
   }
-  const md = matrixPage(capIndex, { origin: ORIGIN });
-  page({ url: '/capabilities/', title: 'Capabilities', description: firstParagraph(md), md: `${md}\n`, lastmod: mod });
+  for (const [revision, index] of [[views[0], capIndex], ...Object.entries(olderIndexes)]) {
+    const omitted = capIndex.subjects.filter((s) => s.registry && !index.subjects.some((o) => o.id === s.id));
+    const md = matrixPage(index, { origin: ORIGIN, views, omitted });
+    const title = revision === views[0] ? 'Capabilities' : `Capabilities on ${revision}`;
+    page({ url: matrixUrl(revision, views), title, description: firstParagraph(md), md: `${md}\n`, lastmod: mod });
+  }
 }
 
 const api = buildApiFiles({
@@ -471,10 +483,10 @@ publishJson('data/research/index.json', notes.map(({ id, fm, url }) => ({
   clients: fm.clients ?? [], capabilities: fm.capabilities ?? [], specVersions: fm.specVersions ?? [],
   lastVerified: fm.lastVerified ?? null, page: `${ORIGIN}${url}`, markdown: `${ORIGIN}${url}.md`,
 })));
-publishJson('data/capabilities/index.json', indexJson(capIndex, { origin: ORIGIN }));
+publishJson('data/capabilities/index.json', indexJson(capIndex, { origin: ORIGIN, views, at: olderIndexes }));
 dataFiles.push('/data/capabilities/index.json');
 for (const cap of capIndex.capabilities) {
-  publishJson(`data/capabilities/${cap.slug}.json`, capabilityJson(cap, capIndex, { origin: ORIGIN }));
+  publishJson(`data/capabilities/${cap.slug}.json`, capabilityJson(cap, capIndex, { origin: ORIGIN, at: olderIndexes }));
   dataFiles.push(`/data/capabilities/${cap.slug}.json`);
 }
 for (const [id, c] of clients) {
@@ -622,7 +634,8 @@ write('capabilities/llms.txt', `# ${SITE_NAME}: capabilities
 
 ## Matrix
 
-${mdLink('Capabilities', '/capabilities/', 'every capability by client')}
+${mdLink('Capabilities', '/capabilities/', `every capability by client, on ${views[0]}`)}
+${views.slice(1).map((v) => mdLink(`Capabilities on ${v}`, matrixUrl(v, views), `the same matrix when the server's newest revision is ${v}`)).join('\n')}
 
 ## Capability pages
 

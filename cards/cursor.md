@@ -15,6 +15,7 @@ AI code editor from Anysphere. Closed source, so nothing here is a read. The ent
 | Wire names | `Cursor`, `Cursor MCP Availability`, `cursor-agent`, `cursor-check`, `cursor-diag`, `cursor-hf-check`, `cursor-mcp-sync-check`, `cursor-public-preflight`, `cursor-test`, `cursor-vscode` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities

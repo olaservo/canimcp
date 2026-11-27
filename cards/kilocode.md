@@ -18,6 +18,7 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | SDK | `@modelcontextprotocol/sdk` 1.32.1 · official TypeScript SDK · **patched** · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-21 |
 | Last read | 2026-11-21 |
 

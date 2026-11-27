@@ -18,6 +18,7 @@ Python framework and CLI for building and running agents, from the maintainer of
 | SDK | `mcp` 2.3.0 · declares `==2.3.0` · official Python SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-19 |
 | Last read | 2026-11-20 |
 | Probed | `0.10.53` (see below) |
@@ -74,6 +75,28 @@ Python framework and CLI for building and running agents, from the maintainer of
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, fast-agent negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Resources** | ● full |  |  |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
+| **Prompts** | ● full |  |  |
+| &nbsp;&nbsp;↳ listChanged | ○ unsupported | read | `2025-11-25` |
+| **Beyond the spec** |  |  |  |
+| &nbsp;&nbsp;↳ healthPing | ● full | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
+
+- **resources** — Same read path. The watching stops working.
+- **resources.listChanged** — The notification arrives and is dropped: the handler forwards everything except progress and tools/list_changed to a callback that is never assigned outside a test.
+- **resources.subscribe** — resources/subscribe is never called. The subscription loop is gated on a DiscoverResult being present.
+- **prompts.listChanged** — Dropped with the rest.
+- **bonusFeatures.healthPing** — A ping loop runs on the handshake path only, every 30 seconds by default, treating the connection as failed after three consecutive misses. ping was removed in 2026-07-28 and the SDK deprecates the method outside legacy mode, so a modern connection has no health signal of its own.
+- **bonusFeatures.sessionRecovery** — A -32600 "Session terminated" on a handshake-era connection is turned into a typed error and, with reconnect_on_disconnect left on, the operation is replayed against a fresh connection. The check explicitly excludes modern connections, which carry no session to lose.
+
 ## What the table flattens
 
 - **transports.stdio** — The SDK's stdio_client, wrapped in a tracking layer that records every frame on the transport timeline. Child environment is built from the SDK's default environment plus the server entry's env and cwd. Server stderr is routed line by line into fast-agent's logger.
@@ -110,12 +133,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.transportDiagnostics** — Every frame is attributed to a channel — stdio, GET, POST (JSON), POST (SSE), listen, resumption — and rendered as a bucketed timeline in /mcp. The channel for a POST is decided from the response content type and the request method, so a subscriptions/listen stream is separated from ordinary SSE traffic. Discovery responses are accounted separately so a probe rejection is not counted as a transport error.
 - **bonusFeatures.remoteFileUriSanitization** — A tool result, prompt result or resource read from a remote server that carries a file:// URI is rewritten before it reaches the conversation: a ResourceLink becomes a text block saying the attachment was blocked, and an embedded resource keeps its content under a sanitized URI.
 - **bonusFeatures.providerManagedMcp** — A server entry can set management: provider, which hands the server URL or connector id to the model provider (OpenAI Responses) instead of connecting to it. fast-agent then speaks no MCP to that server at all, and the settings that only make sense for a local connection are rejected in validation.
-- **byProtocolVersion.2025-11-25.resources** — Same read path. The watching stops working.
-- **byProtocolVersion.2025-11-25.resources.listChanged** — The notification arrives and is dropped: the handler forwards everything except progress and tools/list_changed to a callback that is never assigned outside a test.
-- **byProtocolVersion.2025-11-25.resources.subscribe** — resources/subscribe is never called. The subscription loop is gated on a DiscoverResult being present.
-- **byProtocolVersion.2025-11-25.prompts.listChanged** — Dropped with the rest.
-- **byProtocolVersion.2025-11-25.bonusFeatures.healthPing** — A ping loop runs on the handshake path only, every 30 seconds by default, treating the connection as failed after three consecutive misses. ping was removed in 2026-07-28 and the SDK deprecates the method outside legacy mode, so a modern connection has no health signal of its own.
-- **byProtocolVersion.2025-11-25.bonusFeatures.sessionRecovery** — A -32600 "Session terminated" on a handshake-era connection is turned into a typed error and, with reconnect_on_disconnect left on, the operation is replayed against a fresh connection. The check explicitly excludes modern connections, which carry no session to lose.
 
 ## Verified by the probe
 

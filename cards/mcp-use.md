@@ -18,6 +18,7 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 | SDK | `@modelcontextprotocol/client` 2.3.1 · official TypeScript SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-19 |
 | Last read | 2026-11-20 |
 
@@ -62,6 +63,19 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, mcp-use negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◐ partial |  |  |
+| **Elicitation** | ◇ opt-in |  |  |
+
+- **tools.listChanged** — The server pushes the notification on the session and the connector cache refreshes. The agent still keeps its initial list.
+- **elicitation** — Server-initiated elicitation/create requests go to onElicitation. Default stdio connections are on this revision.
+
 ## What the table flattens
 
 - **transports.stdio** — StdioConnector, Node only, built from a config entry with command, args, env, cwd and stderr. The child gets the SDK's safe default environment plus env, and stderr is piped to errlog by default. Its protocolNegotiation defaults to legacy, so a stdio server gets the initialize handshake at 2025-11-25 unless the entry sets auto or a pin. Python: StdioConnector on the SDK's stdio_client.
@@ -91,8 +105,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/skills** — The session has listSkills, listAllSkills, getSkill and readResourceDirectory, sent as raw requests. MCPAgent never calls them and the client declares nothing for the extension.
 - **extensions.io.modelcontextprotocol/tasks** — No code in either client package sends tasks/* or declares a tasks capability or extension.
 - **bonusFeatures.modelInitiatedResourceRead** — Each concrete resource listed at initialize becomes its own tool with no arguments. The model cannot read a URI that was not listed, and templates are not exposed.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — The server pushes the notification on the session and the connector cache refreshes. The agent still keeps its initial list.
-- **byProtocolVersion.2025-11-25.elicitation** — Server-initiated elicitation/create requests go to onElicitation. Default stdio connections are on this revision.
 
 ## Research notes
 

@@ -18,6 +18,8 @@ export const SERVER = {
 
 The findings are provisional. canimcp is in active development, and statuses, notes and probe results may be incomplete or wrong. Say so when you pass one on, and point to the cited source.
 
+Rows describe each client on the current revision, 2026-07-28, or on the newest revision it speaks when it cannot negotiate that one. get_client, find_capability_support and list_capabilities take a revision, such as 2025-11-25, and answer as a server offering that revision as its newest would see each client: the client negotiates the newest revision it speaks at or below it, and its record for that revision replaces the rows that differ. A client marked recordedPerRevision false has one set of rows for every revision it speaks.
+
 Start with list_clients for client ids or list_capabilities for capability ids. find_capability_support compares one capability across clients. get_client returns one client's entry. get_probe_results returns what a client sent to its model when it called a fixture tool. search_research_notes and get_research_note cover behaviour a status cannot express. Every tool is read-only, and results link to the page on https://canimcp.io they came from.
 
 The skill at skill://check-mcp-client-support/SKILL.md explains how to answer a client-support question with these tools and how to read the evidence.`,
@@ -32,17 +34,17 @@ export const TOOLS = [
   {
     name: 'get_client',
     title: 'Get one client',
-    description: 'Returns the registry entry for one MCP client: each capability with its status, notes, evidence and research note ids, plus the SDK and the commit the source was read at. Pass `capability` to get only that capability and the ones beneath it.',
+    description: 'Returns the registry entry for one MCP client: each capability with its status, notes, evidence and research note ids, plus the SDK and the commit the source was read at. Pass `capability` to get only that capability and the ones beneath it. Pass `revision` to get the entry as a server offering that protocol revision sees it.',
   },
   {
     name: 'list_capabilities',
     title: 'List capabilities',
-    description: 'Lists every capability id the registry tracks, such as elicitation.url or tools.result.structuredContent, with the protocol revision that introduced it and a count of clients at each status. Call this to find the id that find_capability_support takes.',
+    description: 'Lists every capability id the registry tracks, such as elicitation.url or tools.result.structuredContent, with the protocol revision that introduced it and a count of clients at each status. Pass `revision` for the counts on an older protocol revision. Call this to find the id that find_capability_support takes.',
   },
   {
     name: 'find_capability_support',
     title: 'Compare one capability across clients',
-    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, a summary of the probe\'s runs, what telemetry observed, where the tiers disagree, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions.',
+    description: 'Answers "which clients support X". For one capability id, returns each client\'s status with its notes and evidence, a summary of the probe\'s runs, what telemetry observed, where the tiers disagree, the clients that have no record for it, and the capability\'s lifecycle across protocol revisions. Pass `revision` for each client\'s row on that protocol revision.',
   },
   {
     name: 'get_probe_results',

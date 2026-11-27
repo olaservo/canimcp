@@ -16,6 +16,7 @@
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { KIND_MEANING, kindOf } from './lib/kinds.js';
+import { newestRevision, recordedPerRevision } from './lib/capabilities.js';
 
 const REGISTRY = 'data/clients.json';
 const RESEARCH_DIR = 'research';
@@ -27,6 +28,7 @@ const MATRIX = 'tool-results.md';
 const OBSERVED_PAGE = 'observed.md';
 const SPEC = JSON.parse(readFileSync('data/spec-versions.json', 'utf8'));
 // Extensions every read records. A card lists each, as not recorded when it is missing.
+const BASELINE = SPEC.protocolVersions.find((v) => v.status === 'current').version;
 const TRACKED_EXTENSIONS = Object.entries(SPEC.extensions.known).filter(([, e]) => e.tracked).map(([name]) => name);
 
 // Order capabilities are presented in, matching $defs/Capabilities in the
@@ -498,6 +500,13 @@ function renderCard(id, entry, notes, verified, observed) {
   row('SDK', sdkCell(m.sdk));
   row('Prefers', entry.preferredProtocolVersion ? `\`${entry.preferredProtocolVersion}\`` : '');
   row('Speaks', (entry.protocolVersions ?? []).map((v) => `\`${v}\``).join(', '));
+  const newest = newestRevision(entry);
+  const older = Object.keys(entry.byProtocolVersion ?? {}).sort().reverse();
+  row('Rows describe', newest < BASELINE
+    ? `\`${newest}\`, the newest revision it speaks`
+    : recordedPerRevision(entry, BASELINE)
+      ? `\`${BASELINE}\`. What differs on ${older.map((v) => `\`${v}\``).join(', ')} is listed under "On ${older[0]}" below`
+      : `\`${BASELINE}\` and every older revision it speaks, not yet split by revision`);
   row('Source last updated', src.commitDate ? src.commitDate.slice(0, 10) : '');
   row('Last read', src.checkedAt ?? m.lastVerified);
   if (verified) row('Probed', `${verified.versions.map((v) => `\`${v}\``).join(', ')} (see below)`);
@@ -531,6 +540,27 @@ function renderCard(id, entry, notes, verified, observed) {
   L.push('');
   L.push('Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.');
   L.push('');
+
+  for (const [revision, over] of Object.entries(entry.byProtocolVersion ?? {}).sort((a, b) => b[0].localeCompare(a[0]))) {
+    L.push(`## On ${revision}`);
+    L.push('');
+    L.push(`When a server's newest revision is \`${revision}\`, ${entry.title} negotiates it and these rows differ from the table above. Every other row holds on \`${revision}\` too.`);
+    L.push('');
+    L.push('| Capability | Status | Known by | At |');
+    L.push('|---|---|---|---|');
+    for (const [key, label] of CAPABILITY_ORDER) {
+      if (over[key] === undefined) continue;
+      if (key === 'extensions') {
+        L.push(`| **${label}** | | | |`);
+        for (const [name, value] of Object.entries(over[key])) capabilityTableRows(L, capabilityRows(name, name, value, 1));
+      } else {
+        capabilityTableRows(L, capabilityRows(key, label, over[key]));
+      }
+    }
+    L.push('');
+    for (const n of collectNotes(over)) L.push(`- **${escapeCell(n.path)}** — ${n.text}`);
+    L.push('');
+  }
 
   const notesRows = collectNotes(entry);
   if (notesRows.length) {
@@ -708,7 +738,7 @@ function collectNotes(entry) {
       out.push({ path: path.join('.'), text: escapeCell(node.notes) });
     }
     for (const [k, v] of Object.entries(node)) {
-      if (k === 'evidence' || k === 'metadata') continue;
+      if (k === 'evidence' || k === 'metadata' || k === 'byProtocolVersion') continue;
       if (isCapabilityNode(v)) walk(v, [...path, k]);
     }
   }

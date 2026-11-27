@@ -19,6 +19,7 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 | SDK | `@ai-sdk/mcp` 2.0.99 · declares `^2.0.99` · TypeScript SDK · **patched** · pins `2026-07-28` |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.0.0-rc.6` (see below) |
@@ -82,6 +83,17 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, eve negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Transports** |  |  |  |
+| &nbsp;&nbsp;↳ streamableHttp | ● full | read | `2025-11-25` |
+
+- **transports.streamableHttp** — Reached when server/discover is answered with a JSON-RPC error other than -32020 and -32021 or with an HTTP error status other than 401, or when the connection sets protocolVersionDiscovery: false. A -32022 qualifies only when it lists a handshake version the client supports. initialize proposes 2025-11-25, or the newest handshake version a -32022 error listed, and any of the five supported revisions is accepted in the reply. The session id is kept, one GET stream is opened, and close sends a DELETE with a 5 second deadline. The client is closed at the end of every step, so each step that uses the connection starts a new session.
+
 ## What the table flattens
 
 - **speaksMcpVia** — The AI SDK's MCP client, used directly through createMCPClient and wrapped by McpConnectionClient. It is not a reference SDK and carries its own protocol constants. eve bundles it at build time and patches three snippets.
@@ -131,7 +143,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.traceContextInRequestMeta** — eve's fetch wrapper rewrites each JSON-RPC request body to add the active OpenTelemetry trace context to params._meta. The probe's capture of eve 1.0.0-rc.6 shows a traceparent key on server/discover, initialize, notifications/initialized, tools/list and tools/call.
 - **bonusFeatures.toolResultAuthChallenge** — An error result with a non-empty _meta["mcp/www_authenticate"] starts sign-in for the connection. The source comment names the key as the OpenAI Apps SDK convention.
 - **bonusFeatures.devReachabilityProbe** — The dev TUI, on a local target, posts a bare initialize at 2025-03-26 with clientInfo eve / connection-probe to every scaffoldable catalog entry that has an MCP URL, at start and every 60 seconds. It sends no notifications/initialized and no DELETE.
-- **byProtocolVersion.2025-11-25.transports.streamableHttp** — Reached when server/discover is answered with a JSON-RPC error other than -32020 and -32021 or with an HTTP error status other than 401, or when the connection sets protocolVersionDiscovery: false. A -32022 qualifies only when it lists a handshake version the client supports. initialize proposes 2025-11-25, or the newest handshake version a -32022 error listed, and any of the five supported revisions is accepted in the reply. The session id is kept, one GET stream is opened, and close sends a DELETE with a 5 second deadline. The client is closed at the end of every step, so each step that uses the connection starts a new session.
 
 ## Verified by the probe
 

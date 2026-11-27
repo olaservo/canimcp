@@ -18,6 +18,7 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | SDK | `mcp` · declares `>=1.23.0,<2.4` · official Python SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.64.0+mcp-2.3.0` (see below) |
@@ -78,6 +79,20 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, Strands Agents negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** | ● full |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◐ partial | read | `2025-11-25` |
+
+- **tools.listChanged** — Still opt-in through on_tools_changed. The server pushes the notification without a subscription, so a callback set after start() also works. This is the path after a failed discover probe, and the only path on an mcp 1.x install.
+- **extensions.io.modelcontextprotocol/tasks** — On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests. The extension itself is not declared on this revision: its result claim is active at 2026-07-28 only, so the SDK leaves it out of the initialize capabilities.
+
 ## What the table flattens
 
 - **transports.stdio** — The application passes a transport factory, usually the SDK's stdio_client. MCPClient.load_servers builds one from a command entry, with ${VAR} interpolation and ~ expansion on command and cwd. TypeScript: StdioClientTransport, passed in or built by loadServers, in Node only. Under the auto negotiation that binding sets, the SDK probes server/discover on a second, disposable process started from the same command before it starts the session process.
@@ -120,8 +135,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.callCancellation** — The agent's cancel signal is passed to every MCP tool call. Setting it cancels the in-flight request and returns an error result marked cancelled. On mcp 1.x Strands sends notifications/cancelled itself with the request id it captured. On 2.x the SDK dispatcher sends it. For a task-backed call it sends tasks/cancel.
 - **bonusFeatures.traceContextPropagation** — The active OpenTelemetry context is injected into params._meta of every tools/call, merged over the client-level or per-call meta. A comment there says the mcp 2.x dispatcher then overwrites traceparent with its own span. TypeScript differs: when a span is active it adds a _meta key inside the tool's arguments object, unless disableMcpInstrumentation is set.
 - **bonusFeatures.mcpRouterTool** — An opt-in vended tool, make_mcp_router, lets the model connect to servers on a developer-set allowlist at run time and list and call their tools, up to 10 connections per agent. It builds each connection with MCPClient.load_servers. Both bindings have it.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — Still opt-in through on_tools_changed. The server pushes the notification without a subscription, so a callback set after start() also works. This is the path after a failed discover probe, and the only path on an mcp 1.x install.
-- **byProtocolVersion.2025-11-25.extensions.io.modelcontextprotocol/tasks** — On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests. The extension itself is not declared on this revision: its result claim is active at 2026-07-28 only, so the SDK leaves it out of the initialize capabilities.
 
 ## Verified by the probe
 

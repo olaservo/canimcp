@@ -18,6 +18,7 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | SDK | `mcp` 2.3.0 · declares `>=2.2.0,<3` · official Python SDK · unpatched · pins `2026-07-28` |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.25.0` (see below) |
@@ -77,6 +78,19 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, Microsoft Agent Framework negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Beyond the spec** |  |  |  |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ healthPing | ◐ partial | read | `2025-11-25` |
+
+- **bonusFeatures.sessionRecovery** — A ClosedResourceError, or an MCPError whose message contains 'session terminated', counts as connection loss. For a framework-owned connection the tool reconnects, reloads tools and prompts if needed, and retries the tools/call once. mcp 2.3.0 produces that message from an HTTP 404 on a request that carried a session id. A caller-owned Client or ClientSession is not recreated and the call fails. prompts/get retries only on ClosedResourceError. .NET: C# SDK 2.2.0 marks the transport closed on the same 404 and does not re-initialize. dotnet/src has no recovery code, and the clients the framework builds live for one invocation or one response.
+- **bonusFeatures.healthPing** — ping is sent before each tools/list and prompts/list page on a handshake-era connection, and a failure triggers a reconnect. A -32601 reply turns pinging off for the session. There is no periodic loop and no ping before tools/call. A 2026-07-28 connection skips it.
+
 ## What the table flattens
 
 - **transports.stdio** — MCPStdioTool passes command, args, env and encoding to the SDK's stdio_client. Extra keyword arguments go into StdioServerParameters. .NET: the framework builds no stdio client. An application passes its own McpClient, on any transport the C# SDK offers.
@@ -118,8 +132,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.deferredToolLoading** — use_progressive_disclosure is off by default and marked experimental. When on, the model sees list_mcp_tools, load_tool and unload_tool plus any always_load tools, and a tool joins the live list when the model loads it.
 - **bonusFeatures.providerManagedMcp** — get_mcp_tool on the OpenAI, Anthropic, Foundry and Gemini chat clients builds a provider-hosted MCP tool. The provider connects to the server and the framework speaks no MCP to it.
 - **bonusFeatures.openTelemetryTraceContext** — Each tools/call carries the current OpenTelemetry context in request _meta, written by the global propagator. Its keys override caller-supplied keys of the same name, and tools/list _meta overrides both. prompts/get carries none.
-- **byProtocolVersion.2025-11-25.bonusFeatures.sessionRecovery** — A ClosedResourceError, or an MCPError whose message contains 'session terminated', counts as connection loss. For a framework-owned connection the tool reconnects, reloads tools and prompts if needed, and retries the tools/call once. mcp 2.3.0 produces that message from an HTTP 404 on a request that carried a session id. A caller-owned Client or ClientSession is not recreated and the call fails. prompts/get retries only on ClosedResourceError. .NET: C# SDK 2.2.0 marks the transport closed on the same 404 and does not re-initialize. dotnet/src has no recovery code, and the clients the framework builds live for one invocation or one response.
-- **byProtocolVersion.2025-11-25.bonusFeatures.healthPing** — ping is sent before each tools/list and prompts/list page on a handshake-era connection, and a failure triggers a reconnect. A -32601 reply turns pinging off for the session. There is no periodic loop and no ping before tools/call. A 2026-07-28 connection skips it.
 
 ## Verified by the probe
 

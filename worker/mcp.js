@@ -7,7 +7,9 @@ import { McpServer, SUPPORTED_PROTOCOL_VERSIONS, createMcpHandler } from '@model
 import { SkillsExtension, memorySkillFiles } from '@modelcontextprotocol/server/ext/skills';
 import * as z from 'zod';
 import pkg from '../package.json';
-import { capabilityNodes, extensionAliases, ownFields } from '../scripts/lib/capabilities.js';
+import {
+  capabilityNodes, effectiveRevision, entryAt, extensionAliases, ownFields, recordedPerRevision, revisionViews,
+} from '../scripts/lib/capabilities.js';
 import { SERVER, TOOLS } from './mcp-tools.js';
 
 const ORIGIN = 'https://canimcp.io';
@@ -52,6 +54,8 @@ const str = z.string();
 const nullable = (s) => s.nullable();
 const loose = (shape) => z.looseObject(shape);
 const capabilityShape = { status: str, notes: str.optional(), evidence: z.array(loose({ tier: str })).optional(), research: z.array(str).optional() };
+const revisionArg = str.regex(/^\d{4}-\d{2}-\d{2}$/).optional()
+  .describe('Protocol revision the server offers as its newest. Example: 2025-11-25. Each client answers on the newest revision it speaks at or below it. Leave it out for the baseline, the current revision.');
 
 // --- server -----------------------------------------------------------------
 
@@ -72,8 +76,11 @@ function buildServer(read) {
 
   const load = async () => {
     const [registry, spec] = await Promise.all([read('/data/clients.json'), read('/data/spec-versions.json')]);
-    return { clients: clientEntries(registry), spec, aliases: extensionAliases(spec) };
+    const clients = clientEntries(registry);
+    return { clients, spec, aliases: extensionAliases(spec), views: revisionViews(clients, spec) };
   };
+  const knownRevision = (spec, revision) => spec.protocolVersions.some((v) => v.version === revision && v.status !== 'draft');
+  const badRevision = (spec, revision) => fail(`"${revision}" is not a protocol revision. Revisions: ${spec.protocolVersions.filter((v) => v.status !== 'draft').map((v) => v.version).join(', ')}.`);
 
   tool('list_clients', {
     inputSchema: z.object({}),
@@ -81,16 +88,19 @@ function buildServer(read) {
       clients: z.array(z.object({
         id: str, title: str, description: str, vendor: nullable(str), category: nullable(str),
         protocolVersions: z.array(str), preferredProtocolVersion: nullable(str), clientInfoNames: z.array(str),
+        revisionRecords: z.array(str).describe('Older revisions with their own records, where some rows differ. get_client and find_capability_support take one as revision.'),
+        recordedPerRevision: z.boolean().describe('False when one set of rows stands for every revision the client speaks, not yet split by revision.'),
         lastVerified: nullable(str), page: str,
       })),
     }),
   }, async () => {
-    const { clients } = await load();
+    const { clients, views } = await load();
     return ok({
       clients: clients.map(([id, c]) => ({
         id, title: c.title, description: c.description, vendor: c.metadata?.vendor ?? null, category: c.category ?? null,
         protocolVersions: c.protocolVersions ?? [], preferredProtocolVersion: c.preferredProtocolVersion ?? null,
-        clientInfoNames: c.clientInfoNames ?? [], lastVerified: c.metadata?.lastVerified ?? null, page: `${ORIGIN}/clients/${id}`,
+        clientInfoNames: c.clientInfoNames ?? [], revisionRecords: Object.keys(c.byProtocolVersion ?? {}).sort().reverse(),
+        recordedPerRevision: recordedPerRevision(c, views[0]), lastVerified: c.metadata?.lastVerified ?? null, page: `${ORIGIN}/clients/${id}`,
       })),
     });
   });
@@ -99,17 +109,38 @@ function buildServer(read) {
     inputSchema: z.object({
       id: str.describe('Registry id of the client, from list_clients. Example: goose'),
       capability: str.optional().describe('Capability id to narrow to, with everything beneath it. Example: elicitation, or tools.result'),
+      revision: revisionArg,
     }),
     outputSchema: z.object({
       id: str, title: str, page: str,
+      revision: z.object({
+        requested: str, negotiated: str,
+        fromRecord: z.array(str).describe('Capability ids whose row comes from the client\'s record for the negotiated revision. Every other row is the same as on the baseline.'),
+        recordedPerRevision: z.boolean().describe('False when one set of rows stands for every revision the client speaks, so the rows were not checked revision by revision.'),
+      }).optional().describe('Present when a revision was given.'),
       entry: z.record(str, z.unknown()).optional().describe('The whole registry entry. Present when no capability was given.'),
       capabilities: z.array(loose({ id: str, ...capabilityShape })).optional().describe('The capability asked for and those beneath it.'),
     }),
-  }, async ({ id, capability }) => {
-    const { clients, aliases } = await load();
-    const entry = clients.find(([k]) => k === id)?.[1];
-    if (!entry) return fail(`No client with id "${id}". Known ids: ${clients.map(([k]) => k).join(', ')}.`);
-    const head = { id, title: entry.title, page: `${ORIGIN}/clients/${id}` };
+  }, async ({ id, capability, revision }) => {
+    const { clients, aliases, spec, views } = await load();
+    const raw = clients.find(([k]) => k === id)?.[1];
+    if (!raw) return fail(`No client with id "${id}". Known ids: ${clients.map(([k]) => k).join(', ')}.`);
+    let entry = raw;
+    let head = { id, title: raw.title, page: `${ORIGIN}/clients/${id}` };
+    if (revision) {
+      if (!knownRevision(spec, revision)) return badRevision(spec, revision);
+      const at = entryAt(raw, revision);
+      if (!at) return fail(`${raw.title} speaks no revision at or below ${revision}. It speaks ${(raw.protocolVersions ?? []).join(', ')}.`);
+      entry = at.entry;
+      head = {
+        ...head,
+        revision: {
+          requested: revision, negotiated: at.revision,
+          fromRecord: at.override ? capabilityNodes(at.override, aliases).map((n) => n.id) : [],
+          recordedPerRevision: recordedPerRevision(raw, views[0]),
+        },
+      };
+    }
     if (!capability) return ok({ ...head, entry });
     const nodes = capabilityNodes(entry, aliases);
     const hits = nodes.filter((n) => under(n.id, capability));
@@ -118,9 +149,10 @@ function buildServer(read) {
   });
 
   tool('list_capabilities', {
-    inputSchema: z.object({}),
+    inputSchema: z.object({ revision: revisionArg }),
     outputSchema: z.object({
-      clientCount: z.number().describe('How many clients have a registry entry.'),
+      revision: str.describe('The revision the counts are for.'),
+      clientCount: z.number().describe('How many clients with a registry entry speak a revision at or below it.'),
       capabilities: z.array(z.object({
         id: str,
         introducedIn: nullable(str).describe('The protocol revision that introduced it, or null when it is not a protocol feature.'),
@@ -128,13 +160,18 @@ function buildServer(read) {
         page: str,
       })),
     }),
-  }, async () => {
-    const index = await read('/data/capabilities/index.json');
+  }, async ({ revision }) => {
+    const [index, spec] = await Promise.all([read('/data/capabilities/index.json'), read('/data/spec-versions.json')]);
+    const rev = revision ?? index.baseline;
+    if (!knownRevision(spec, rev)) return badRevision(spec, rev);
+    const speaks = new Set(index.subjects.filter((s) => s.registry && effectiveRevision(s, rev)).map((s) => s.id));
     return ok({
-      clientCount: index.subjects.filter((s) => s.registry).length,
+      revision: rev,
+      clientCount: speaks.size,
       capabilities: index.capabilities.map((c) => {
         const counts = {};
-        for (const status of Object.values(c.statuses)) counts[status] = (counts[status] ?? 0) + 1;
+        const statuses = c.byRevision?.[rev]?.statuses ?? c.statuses;
+        for (const [client, status] of Object.entries(statuses)) if (speaks.has(client)) counts[status] = (counts[status] ?? 0) + 1;
         return { id: c.id, introducedIn: c.introducedIn, statuses: counts, page: c.page };
       }),
     });
@@ -143,14 +180,18 @@ function buildServer(read) {
   tool('find_capability_support', {
     inputSchema: z.object({
       capability: str.describe('Capability id, from list_capabilities. Example: elicitation.url'),
+      revision: revisionArg,
     }),
     outputSchema: z.object({
       capability: str,
+      revision: str.describe('The revision the registry rows are for.'),
       page: str,
       lifecycle: nullable(z.record(str, z.unknown())).describe('When the protocol introduced, changed, deprecated or removed it. Null when it is not a protocol feature.'),
       clients: z.array(loose({
         id: str, title: str, kind: str, page: str,
         status: str.optional().describe('The registry\'s status. Absent when the client has probe records or telemetry and no registry record.'),
+        revision: str.optional().describe('The revision this client negotiates, the newest it speaks at or below the one asked for. Absent for clients with no registry entry.'),
+        revisionRecord: str.optional().describe('Present when the row comes from the client\'s record for that revision and differs from the baseline.'),
         tiers: z.array(str).describe('The evidence tiers behind this client\'s row.'),
         verified: z.record(str, z.unknown()).optional().describe('A summary of the probe\'s runs: versions, revisions, and each verdict with its count.'),
         observed: z.array(loose({ tier: str })).optional().describe('What telemetry saw.'),
@@ -159,14 +200,26 @@ function buildServer(read) {
       notRecorded: z.array(str).describe('Registry clients whose entry says nothing about it. Not the same as unsupported.'),
       research: z.array(str).describe('Ids of research notes about it, for get_research_note.'),
     }),
-  }, async ({ capability }) => {
-    const index = await read('/data/capabilities/index.json');
+  }, async ({ capability, revision }) => {
+    const [index, spec] = await Promise.all([read('/data/capabilities/index.json'), read('/data/spec-versions.json')]);
+    const rev = revision ?? index.baseline;
+    if (!knownRevision(spec, rev)) return badRevision(spec, rev);
     const hit = index.capabilities.find((c) => c.id === capability);
     if (!hit) return fail(`No capability with id "${capability}". Call list_capabilities for the ids.`);
     const record = await read(`/data/capabilities/${hit.slug}.json`);
+    const subjects = Object.fromEntries(index.subjects.map((s) => [s.id, s]));
+    const negotiated = (id) => (subjects[id]?.registry ? effectiveRevision(subjects[id], rev) : undefined);
+    // Registry rows from the client's record for this revision replace its baseline row. A client that speaks nothing at or below it drops out.
+    const replaced = Object.fromEntries((record.byRevision?.[rev] ?? []).map((c) => [c.id, c]));
+    const rows = record.clients.filter((c) => negotiated(c.id) !== null).map((c) => {
+      const r = replaced[c.id];
+      const base = r ? { ...c, status: r.status, notes: r.notes, evidence: r.evidence, research: r.research, tiers: r.tiers, revisionRecord: r.revisionRecord } : c;
+      return negotiated(c.id) ? { ...base, revision: negotiated(c.id) } : base;
+    });
+    for (const r of Object.values(replaced)) if (!rows.some((c) => c.id === r.id)) rows.push({ ...r, revision: negotiated(r.id) });
     return ok({
-      capability: record.capability, page: record.page, lifecycle: record.lifecycle, clients: record.clients,
-      notRecorded: record.notRecorded, research: record.research,
+      capability: record.capability, revision: rev, page: record.page, lifecycle: record.lifecycle, clients: rows,
+      notRecorded: record.notRecorded.filter((id) => negotiated(id) && !replaced[id]), research: record.research,
     });
   });
 

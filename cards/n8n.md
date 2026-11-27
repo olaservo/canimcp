@@ -18,6 +18,7 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | SDK | `@modelcontextprotocol/sdk` 1.32.0 · declares `catalog:` · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 

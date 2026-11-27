@@ -15,6 +15,7 @@ Anthropic's chat product. Closed source, so nothing here is a read. The entry jo
 | Wire names | `Anthropic/ClaudeAI`, `claude-ai` |
 | Prefers | `2026-07-28` |
 | Speaks | `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities

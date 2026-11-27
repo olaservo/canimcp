@@ -18,6 +18,7 @@ Terminal with a built-in coding agent, for macOS, Linux and Windows, plus a TUI 
 | SDK | `rmcp` 3.5.0 · declares `3.5` · official Rust SDK · unpatched · pins `2026-07-28` |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | Source last updated | 2026-11-21 |
 | Last read | 2026-11-21 |
 

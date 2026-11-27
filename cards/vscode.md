@@ -18,6 +18,7 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | SDK | `none` · TypeScript SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-20 |
 | Last read | 2026-11-20 |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |

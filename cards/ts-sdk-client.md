@@ -18,6 +18,7 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | SDK | `@modelcontextprotocol/client` 2.4.0 · official TypeScript SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-18 |
 | Last read | 2026-11-20 |
 | Probed | `2.4.0` (see below) |
@@ -66,6 +67,22 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, TypeScript SDK Client negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| **Resources** |  |  |  |
+| &nbsp;&nbsp;↳ subscribe | ◇ opt-in | read | `2025-11-25` |
+| **Elicitation** | ◇ opt-in | read | `2025-11-25` |
+
+- **tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
+- **resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
+- **elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
+
 ## What the table flattens
 
 - **transports.stdio** — StdioClientTransport, exported from the @modelcontextprotocol/client/stdio subpath. Spawns without a shell. The child gets a whitelist of environment variables (PATH, HOME and similar; on Windows APPDATA, PATH, SYSTEMROOT, USERPROFILE and others) plus the env the application passes. stderr is inherited unless the application sets it. In auto mode the server/discover probe runs on a second short-lived process spawned from the same parameters.
@@ -98,9 +115,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
 - **bonusFeatures.protocolEraForcing** — versionNegotiation takes legacy (the default), auto, or { pin: '2026-07-28' }. connect({ prior }) reuses a cached era verdict with no probe. supportedProtocolVersions narrows both lists.
 - **bonusFeatures.standardRequestHeaders** — Only on a 2026-07-28 connection over HTTP: Mcp-Method and Mcp-Name on every request, and Mcp-Param-* mirrored from x-mcp-header input-schema declarations of a cached tool. Skipped in a browser.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.
-- **byProtocolVersion.2025-11-25.resources.subscribe** — subscribeResource() and unsubscribeResource() send resources/subscribe on a 2025 connection. The application registers its own handler for notifications/resources/updated; the client only evicts its cached read.
-- **byProtocolVersion.2025-11-25.elicitation** — Not declared by default. The application passes capabilities.elicitation and registers setRequestHandler('elicitation/create'). The SDK rejects a request in a mode the client did not declare, validates the result, and fills schema defaults into an accepted form when elicitation.form.applyDefaults is set. An empty elicitation object means form only.
 
 ## Verified by the probe
 

@@ -16,6 +16,7 @@ Hugging Face's open-source chat interface. Open source, and the source has not b
 | Wire names | `chat-ui-mcp` |
 | Prefers | `2026-07-28` |
 | Speaks | `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities

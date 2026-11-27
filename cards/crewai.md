@@ -19,6 +19,7 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | SDK | `mcp` 1.30.0 · declares `>=1.30.0,<2` · official Python SDK · unpatched · pins `2025-11-25` |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
+| Rows describe | `2025-11-25`, the newest revision it speaks |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `1.15.37` (see below) |

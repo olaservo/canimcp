@@ -16,6 +16,7 @@ Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts.
 | Wire names | `Antigravity`, `Antigravity-Client`, `antigravity`, `antigravity-client` |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
 ## Capabilities

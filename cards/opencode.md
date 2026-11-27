@@ -18,6 +18,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | SDK | `@modelcontextprotocol/client` 2.4.0 · official TypeScript SDK · **patched** · pins `2026-07-28` |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-26 |
 | Last read | 2026-11-26 |
 | Probed | `0.0.0-82d8fc5` (see below) |
@@ -71,6 +72,23 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, opencode negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ● full | read | `2025-11-25` |
+| **Elicitation** | ● full | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ url | ● full | read ⇧ | `2025-11-25` |
+| **Roots** | ● full | read | `2025-11-25` |
+
+- **roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
+- **elicitation** — The server sends elicitation/create as its own request.
+- **elicitation.url** — notifications/elicitation/complete settles the form, matched by elicitationId.
+- **tools.listChanged** — The server sends the notification unprompted. The SDK registers the handler only when the server declared tools.listChanged.
+
 ## What the table flattens
 
 - **transports.stdio** — opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line. By default the SDK sends server/discover at 2026-07-28 on the same pipe, with a probe timeout of the lesser of 5 s and the startup timeout. A JSON-RPC error such as -32601, or a timeout, falls back to initialize at 2025-11-25 in place. A server that exits on the probe is respawned for a plain initialize.
@@ -105,10 +123,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe call.
 - **extensions.io.modelcontextprotocol/skills** — Declared only with the mcp_skills flag, which defaults on in local and dev builds and off in releases. For a server that advertises resources it uses the SDK's SkillsClient and registers each skill as <server>:<skill>.
 - **extensions.io.modelcontextprotocol/tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
-- **byProtocolVersion.2025-11-25.roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
-- **byProtocolVersion.2025-11-25.elicitation** — The server sends elicitation/create as its own request.
-- **byProtocolVersion.2025-11-25.elicitation.url** — notifications/elicitation/complete settles the form, matched by elicitationId.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — The server sends the notification unprompted. The SDK registers the handler only when the server declared tools.listChanged.
 
 ## Verified by the probe
 

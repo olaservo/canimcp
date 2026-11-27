@@ -18,6 +18,7 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | SDK | `mcp` · declares `>=1.24,<3` · official Python SDK · unpatched |
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-15 |
 | Last read | 2026-11-16 |
 | Probed | `2.14.0` (see below) |
@@ -77,6 +78,23 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, Google ADK (Python) negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Sampling** | ○ unsupported | read | `2025-11-25` |
+| **Elicitation** | ○ unsupported | read | `2025-11-25` |
+| **Logging** | ○ unsupported | read | `2025-11-25` |
+| **Beyond the spec** |  |  |  |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full |  |  |
+
+- **sampling** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional sampling_callback and sampling_capabilities and passes them to ClientSession, and the SDK declares sampling when the callback is present. The handler and the model it calls are the application's.
+- **elicitation** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional elicitation_callback and passes it to ClientSession. No code under src supplies a callback, so the user-input and tool-confirmation flows ADK has for its own tools are not connected to MCP elicitation.
+- **logging** — No logging_callback is passed, so the SDK default discards notifications/message. logging/setLevel is never called. An application that passes message_handler receives log notifications along with every other server notification.
+- **bonusFeatures.sessionRecovery** — When a server reports that it no longer holds the session, ADK drops the pooled session, opens a new one and retries the tool call once. It recognises the SDK's code 32600 on 1.x and INVALID_REQUEST with the message Session terminated on 2.x. A transport failure in the middle of a tool call is not retried. tools/list and session setup are retried once on any error.
+
 ## What the table flattens
 
 - **transports.stdio** — StdioConnectionParams wraps the SDK's StdioServerParameters and goes to stdio_client with an errlog stream that defaults to sys.stderr. One session is pooled per toolset. The timeout field defaults to 5 seconds, bounds connect plus initialize, and is also the ClientSession read timeout for every stdio request. An agent config file cannot declare a stdio server unless ADK_ALLOW_CONFIG_STDIO_MCP_SERVERS is set.
@@ -119,10 +137,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.gracefulToolErrors** — On by default. An McpError or any other exception from a tool call becomes an {"error": ...} dict for the model. ADK_DISABLE_MCP_GRACEFUL_ERROR_HANDLING turns it off and the exception reaches the runner. A comment in mcp_tool.py says the flag is off by default, and the registry sets default_on=True.
 - **bonusFeatures.traceContextPropagation** — The OpenTelemetry propagator writes the current trace context into the _meta of each tools/call. An empty carrier sends no _meta. The default probe captures show tools/call with no _meta.
 - **bonusFeatures.providerManagedMcp** — ManagedAgent takes RemoteMcpServer specs and forwards the URL, headers and allowed tools to the Interactions API as an mcp_server tool param. The backend opens the MCP session. ADK speaks no MCP to that server.
-- **byProtocolVersion.2025-11-25.sampling** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional sampling_callback and sampling_capabilities and passes them to ClientSession, and the SDK declares sampling when the callback is present. The handler and the model it calls are the application's.
-- **byProtocolVersion.2025-11-25.elicitation** — Not declared by a default construction, and ADK ships no handler. McpToolset takes an optional elicitation_callback and passes it to ClientSession. No code under src supplies a callback, so the user-input and tool-confirmation flows ADK has for its own tools are not connected to MCP elicitation.
-- **byProtocolVersion.2025-11-25.logging** — No logging_callback is passed, so the SDK default discards notifications/message. logging/setLevel is never called. An application that passes message_handler receives log notifications along with every other server notification.
-- **byProtocolVersion.2025-11-25.bonusFeatures.sessionRecovery** — When a server reports that it no longer holds the session, ADK drops the pooled session, opens a new one and retries the tool call once. It recognises the SDK's code 32600 on 1.x and INVALID_REQUEST with the message Session terminated on 2.x. A transport failure in the middle of a tool call is not retried. tools/list and session setup are retried once on any error.
 
 ## Verified by the probe
 

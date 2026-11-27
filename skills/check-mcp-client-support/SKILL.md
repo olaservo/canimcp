@@ -25,7 +25,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
 ## Steps
 
 1. Find the capability id. Ids are dotted paths that follow the wire field names, such as `elicitation.url`, `roots.listChanged` and `tools.result.structuredContent`. Call `list_capabilities` when unsure.
-2. Call `find_capability_support` with the id.
+2. Call `find_capability_support` with the id. When the server in question offers an older protocol revision as its newest, such as `2025-11-25`, pass it as `revision`.
 3. Read each client's `status` together with its `evidence`. Do not report the status alone.
 4. When a client's result has `research` ids, read those notes before answering. They hold the cases a status cannot express.
 5. For `tools.result.*` capabilities, also call `get_probe_results`. The probe ran the real client against a fixture server and recorded what the client sent to its model.
@@ -42,6 +42,7 @@ Use the MCP server at `https://canimcp.io/mcp` when it is connected. Otherwise f
   - `read`: someone read the client's source at the commit given.
 - Tiers are not ranked. When two disagree, report both. An evidence item whose own `status` differs from the capability's is a recorded disagreement.
 - Each evidence item has `at`, the protocol revision it applies to. `2026-07-28` is stateless, and every revision through `2025-11-25` uses the initialize handshake. A result at one says nothing about the other.
+- Rows describe each client on `2026-07-28`, or on the newest revision it speaks when it cannot negotiate that one. With `revision`, each client's row is for the newest revision it speaks at or below the one given, and `revision` on the row names it. `revisionRecord` marks a row from the client's own record for that revision. A client with `recordedPerRevision` false in `list_clients` has one set of rows for every revision, so say its rows were not checked revision by revision. Over JSON, the older revisions' rows are under `byRevision` in `/data/capabilities/{slug}.json`.
 - For images in tool results, use `tools.result.media`. Each probe result has `image` (`image-part`, `base64-text` or `absent`) and `modelApi`. The same client can pass an image on one model API and drop it on another, so report the API with the outcome. Only one small PNG is tested. Audio, embedded resources and resource links are not.
 - A declaration can be wrong in either direction. Some clients declare a capability their code declines, and some implement one they do not declare.
 - The registry covers only the clients `list_clients` returns. A client that is not listed is unknown here.

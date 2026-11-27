@@ -18,6 +18,7 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 | SDK | `@modelcontextprotocol/client` 2.4.0 · official TypeScript SDK · unpatched |
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
+| Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
 | Last read | 2026-11-16 |
 | Probed | `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` (see below) |
@@ -83,6 +84,26 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 
 Not recorded means nobody has looked, which is not the same claim as unsupported. Under tools.result, full means the field reaches the model on the default conversational path, partial means it does under a condition the notes name, and unsupported means it never does.
 
+## On 2025-11-25
+
+When a server's newest revision is `2025-11-25`, Mastra negotiates it and these rows differ from the table above. Every other row holds on `2025-11-25` too.
+
+| Capability | Status | Known by | At |
+|---|---|---|---|
+| **Tools** |  |  |  |
+| &nbsp;&nbsp;↳ listChanged | ◇ opt-in | read | `2025-11-25` |
+| **Resources** | ◇ opt-in |  |  |
+| &nbsp;&nbsp;↳ subscribe | ○ unsupported | read | `2025-11-25` |
+| **Logging** | ◐ partial | read, declared | `2025-11-25` |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+
+- **tools.listChanged** — No stream is opened. The server pushes the notification unprompted and the handler the application registered runs.
+- **resources** — The list and read calls are the same.
+- **resources.subscribe** — resources/subscribe is never sent. subscribeResource() needs the subscriptions/listen stream and throws an error naming the negotiated revision.
+- **logging** — logging/setLevel is never sent, so the server decides the level. The notifications/message handler is registered all the same, and the logLevel _meta key is still attached to each request.
+- **extensions.io.modelcontextprotocol/tasks** — Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.
+
 ## What the table flattens
 
 - **transports.stdio** — Used when the server entry has a command. The SDK's StdioClientTransport, with args, cwd and a stderr mode from the entry. The child environment is the SDK's default whitelist plus the entry's env, and inheritDefaultEnv: false drops the whitelist. Exit, SIGTERM and SIGHUP hooks disconnect the child unless registerProcessHooks is false.
@@ -132,11 +153,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.hostAllowlist** — allowedHosts on a url entry limits the connect, every POST, OAuth requests routed through the transport fetch and every redirect hop to listed hosts. With the default fetch a disallowed hop is blocked before it is sent; with a custom fetch it is checked from the response URL afterwards.
 - **bonusFeatures.traceContextPropagation** — Each request's _meta carries W3C traceparent, tracestate and baggage, taken from the entry's traceContext provider or from the span making the request.
 - **bonusFeatures.cachedToolDefinitions** — listToolDefinitions() returns the tools/list entries as plain JSON with the server name, version and instructions. toolsFromDefinitions() rebuilds executable tools from it without connecting; each connects on its first call.
-- **byProtocolVersion.2025-11-25.tools.listChanged** — No stream is opened. The server pushes the notification unprompted and the handler the application registered runs.
-- **byProtocolVersion.2025-11-25.resources** — The list and read calls are the same.
-- **byProtocolVersion.2025-11-25.resources.subscribe** — resources/subscribe is never sent. subscribeResource() needs the subscriptions/listen stream and throws an error naming the negotiated revision.
-- **byProtocolVersion.2025-11-25.logging** — logging/setLevel is never sent, so the server decides the level. The notifications/message handler is registered all the same, and the logLevel _meta key is still attached to each request.
-- **byProtocolVersion.2025-11-25.extensions.io.modelcontextprotocol/tasks** — Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.
 
 ## Verified by the probe
 
