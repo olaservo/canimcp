@@ -28,6 +28,19 @@
     { "match": "^wif-", "capability": "authentication.oauth.workloadIdentityFederation" },
     { "match": "^(authorization-server-metadata|authorization-request|token-request|token-endpoint-auth-method|pkce-|valid-bearer-token|pre-registration-auth)", "capability": "authentication.oauth" }
   ],
+  "absence": {
+    "$comment": "Checks that pass when the client does nothing: they fail only if the client does a forbidden thing. A failure counts. A pass counts only next to a passing check of the same capability in the same run that is not on this list, so a client that ignores the feature, or throws, cannot get a status from them alone.",
+    "checks": [
+      { "match": "^sep-2243-x-mcp-header-", "note": "SUCCESS when the client did not call the tool with that invalid header definition." },
+      { "match": "^sep-2640-host-no-prefetch$", "note": "SUCCESS when the client listed skills and read no skill file." },
+      { "match": "^sep-2106-no-network-ref-deref$", "note": "SUCCESS when the canary URL was not fetched." },
+      { "match": "^sep-2322-default-result-type-complete$", "note": "SUCCESS when the client did not retry. A client that rejects the result (Python SDK 2.3.0) passes too." }
+    ]
+  },
+  "notTestable": {
+    "$comment": "Checks the suite emits as FAILURE with an errorMessage starting 'Not testable:' (details.untestable) when the client never reached the behaviour under test. They are left out of the evidence and listed under notTestable in the summary.",
+    "errorMessage": "^Not testable:"
+  },
   "scenarios": {
     "initialize": "protocol.initializeHandshake",
     "tools_call": "tools",

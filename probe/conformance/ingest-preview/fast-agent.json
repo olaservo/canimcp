@@ -764,7 +764,6 @@
         },
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -773,7 +772,7 @@
           "clientVersion": "0.10.53",
           "config": "default",
           "artifact": "probe/conformance/results/fast-agent/2026-11-27T04-40-58-149Z/2026-07-28/json-schema-ref-no-deref",
-          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass",
+          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -967,7 +966,6 @@
       "evidence": [
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -976,7 +974,7 @@
           "clientVersion": "0.10.53",
           "config": "default",
           "artifact": "probe/conformance/results/fast-agent/2026-11-27T04-40-58-149Z/2026-07-28/sep-2322-client-request-state",
-          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",

@@ -21,5 +21,5 @@ export default {
   mastra: {},
   libfx: {},
   // fx 0.0.16 defers MCP tools behind capability_search and mcp_select_tool. Runs from WSL.
-  fx: { config: 'http', timeoutMs: 60000, script: { route: 'fx-select' } },
+  fx: { timeoutMs: 60000, script: { route: 'fx-select' } },
 };

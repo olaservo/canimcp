@@ -362,11 +362,11 @@
       "perVersion": {
         "2026-07-28": {
           "full": 0,
-          "partial": 1,
-          "none": 2,
+          "partial": 0,
+          "none": 3,
           "scenarios": [
             "http-custom-headers (none)",
-            "http-invalid-tool-headers (partial)",
+            "http-invalid-tool-headers (none)",
             "http-standard-headers (none)"
           ]
         }
@@ -405,12 +405,12 @@
           ]
         },
         "2026-07-28": {
-          "full": 1,
+          "full": 0,
           "partial": 0,
-          "none": 1,
+          "none": 2,
           "scenarios": [
             "json-schema-2020-12-preservation (none)",
-            "json-schema-ref-no-deref"
+            "json-schema-ref-no-deref (none)"
           ]
         }
       }
@@ -533,5 +533,6 @@
     "sep-2640-client-verify-size@2025-11-25",
     "sep-2640-client-verify-size@2026-07-28"
   ],
+  "notTestable": [],
   "unmappedChecks": []
 }

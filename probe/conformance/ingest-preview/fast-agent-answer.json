@@ -474,7 +474,6 @@
         },
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -483,7 +482,7 @@
           "clientVersion": "0.10.53",
           "config": "answer",
           "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/json-schema-ref-no-deref",
-          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass",
+          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -677,7 +676,6 @@
       "evidence": [
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -686,7 +684,7 @@
           "clientVersion": "0.10.53",
           "config": "answer",
           "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/sep-2322-client-request-state",
-          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -712,7 +710,6 @@
       "evidence": [
         {
           "tier": "verified",
-          "status": "full",
           "at": "2025-11-25",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -721,7 +718,7 @@
           "clientVersion": "0.10.53",
           "config": "answer",
           "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2025-11-25/sep-2640-client-no-prefetch",
-          "note": "conformance sep-2640-client-no-prefetch at 2025-11-25 (forced): 1/1 checks pass",
+          "note": "conformance sep-2640-client-no-prefetch at 2025-11-25 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -743,7 +740,6 @@
         },
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -752,7 +748,7 @@
           "clientVersion": "0.10.53",
           "config": "answer",
           "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/sep-2640-client-no-prefetch",
-          "note": "conformance sep-2640-client-no-prefetch at 2026-07-28 (forced): 1/1 checks pass",
+          "note": "conformance sep-2640-client-no-prefetch at 2026-07-28 (forced): 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -768,192 +764,6 @@
               {
                 "id": "sep-2640-host-no-prefetch",
                 "status": "SUCCESS"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-digest",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2025-11-25/sep-2640-client-verify-digest",
-          "note": "conformance sep-2640-client-verify-digest at 2025-11-25 (forced): 0/1 checks pass; failed sep-2640-host-verify-digest",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2025-11-25",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 8354,
-            "checks": [
-              {
-                "id": "sep-2640-host-verify-digest",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-digest",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/sep-2640-client-verify-digest",
-          "note": "conformance sep-2640-client-verify-digest at 2026-07-28 (forced): 0/1 checks pass; failed sep-2640-host-verify-digest",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 7913,
-            "checks": [
-              {
-                "id": "sep-2640-host-verify-digest",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-frontmatter",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2025-11-25/sep-2640-client-verify-frontmatter",
-          "note": "conformance sep-2640-client-verify-frontmatter at 2025-11-25 (forced): 0/1 checks pass; failed sep-2640-host-frontmatter-comparison",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2025-11-25",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 8776,
-            "checks": [
-              {
-                "id": "sep-2640-host-frontmatter-comparison",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-frontmatter",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/sep-2640-client-verify-frontmatter",
-          "note": "conformance sep-2640-client-verify-frontmatter at 2026-07-28 (forced): 0/1 checks pass; failed sep-2640-host-frontmatter-comparison",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 9033,
-            "checks": [
-              {
-                "id": "sep-2640-host-frontmatter-comparison",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-size",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2025-11-25/sep-2640-client-verify-size",
-          "note": "conformance sep-2640-client-verify-size at 2025-11-25 (forced): 0/1 checks pass; failed sep-2640-host-size-mismatch-failure",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2025-11-25",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 7884,
-            "checks": [
-              {
-                "id": "sep-2640-host-size-mismatch-failure",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/sep-2640-client-verify-size",
-          "clientVersion": "0.10.53",
-          "config": "answer",
-          "artifact": "probe/conformance/results/fast-agent-answer/2026-11-27T14-23-15-289Z/2026-07-28/sep-2640-client-verify-size",
-          "note": "conformance sep-2640-client-verify-size at 2026-07-28 (forced): 0/1 checks pass; failed sep-2640-host-size-mismatch-failure",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": true,
-            "harness": "bridge/host-bridge.mjs fast-agent answer (bridge/adapters/fast-agent.mjs, hosts/fast-agent/conformance_agent.py), mock model bridge/call-every-tool.mjs; no-auth scenarios",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 8889,
-            "checks": [
-              {
-                "id": "sep-2640-host-size-mismatch-failure",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: the client never read skill://pdf-processing/SKILL.md, so it never loaded the tampered skill and had nothing to reject. Absence of the supporting-file read proves nothing here."
               }
             ]
           }

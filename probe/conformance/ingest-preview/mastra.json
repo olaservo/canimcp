@@ -1515,37 +1515,6 @@
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
           "date": "2026-11-27",
-          "scenario": "conformance/auth/iss-normalized",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__iss-normalized",
-          "note": "conformance auth/iss-normalized at 2026-07-28: 0/1 checks pass; failed sep-2468-client-no-normalization",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4105,
-            "checks": [
-              {
-                "id": "sep-2468-client-no-normalization",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never retrieved the authorization server metadata document, so it never recorded the issuer this comparison is made against"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
           "scenario": "conformance/auth/iss-not-advertised",
           "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
           "config": "default",
@@ -1596,130 +1565,6 @@
               {
                 "id": "sep-2468-client-compare-iss-supported",
                 "status": "FAILURE"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/auth/iss-supported-missing",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__iss-supported-missing",
-          "note": "conformance auth/iss-supported-missing at 2026-07-28: 0/1 checks pass; failed sep-2468-client-reject-missing-iss",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4125,
-            "checks": [
-              {
-                "id": "sep-2468-client-reject-missing-iss",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never retrieved the authorization server metadata document, so it never recorded the issuer this comparison is made against"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/auth/iss-unexpected",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__iss-unexpected",
-          "note": "conformance auth/iss-unexpected at 2026-07-28: 0/1 checks pass; failed sep-2468-client-compare-iss-unadvertised",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4141,
-            "checks": [
-              {
-                "id": "sep-2468-client-compare-iss-unadvertised",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never retrieved the authorization server metadata document, so it never recorded the issuer this comparison is made against"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/auth/iss-wrong-issuer",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__iss-wrong-issuer",
-          "note": "conformance auth/iss-wrong-issuer at 2026-07-28: 0/1 checks pass; failed sep-2468-client-compare-iss-supported",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 4155,
-            "checks": [
-              {
-                "id": "sep-2468-client-compare-iss-supported",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never retrieved the authorization server metadata document, so it never recorded the issuer this comparison is made against"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/auth/metadata-issuer-mismatch",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__metadata-issuer-mismatch",
-          "note": "conformance auth/metadata-issuer-mismatch at 2026-07-28: 0/1 checks pass; failed sep-2468-client-validate-metadata-issuer",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 3936,
-            "checks": [
-              {
-                "id": "sep-2468-client-validate-metadata-issuer",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never retrieved the authorization server metadata document, so issuer validation could not be observed"
               }
             ]
           }
@@ -2120,37 +1965,6 @@
               {
                 "id": "resource-parameter-in-token",
                 "status": "FAILURE"
-              }
-            ]
-          }
-        },
-        {
-          "tier": "verified",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/conformance",
-          "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
-          "date": "2026-11-27",
-          "scenario": "conformance/auth/resource-mismatch",
-          "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
-          "config": "default",
-          "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/auth__resource-mismatch",
-          "note": "conformance auth/resource-mismatch at 2026-07-28: 0/1 checks pass; failed resource-mismatch-rejected",
-          "run": {
-            "suite": "@modelcontextprotocol/conformance",
-            "suiteVersion": "0.2.0-alpha.12",
-            "specVersion": "2026-07-28",
-            "forced": false,
-            "harness": "bridge/host-bridge.mjs mastra, mock model bridge/call-every-tool.mjs",
-            "platform": "win32 node v24.19.0",
-            "cliExit": 1,
-            "exitCode": 0,
-            "timedOut": false,
-            "durationMs": 3751,
-            "checks": [
-              {
-                "id": "resource-mismatch-rejected",
-                "status": "FAILURE",
-                "errorMessage": "Not testable: client never requested the Protected Resource Metadata document, so it never read the resource value it was required to validate"
               }
             ]
           }
@@ -3366,7 +3180,6 @@
         },
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -3375,7 +3188,7 @@
           "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
           "config": "default",
           "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/json-schema-ref-no-deref",
-          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass",
+          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -3561,7 +3374,6 @@
       "evidence": [
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -3570,7 +3382,7 @@
           "clientVersion": "mcp-2.9.0-alpha.1+core-1.83.0-alpha.1",
           "config": "default",
           "artifact": "probe/conformance/results/mastra/2026-11-27T04-39-28-297Z/2026-07-28/sep-2322-client-request-state",
-          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass",
+          "note": "conformance sep-2322-client-request-state at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",

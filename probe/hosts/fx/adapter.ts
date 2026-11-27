@@ -43,7 +43,8 @@ const adapter: HostAdapter = {
       },
     };
     writeFileSync(resolve(fxDir, 'settings.json'), JSON.stringify(settings, null, 2), { mode: 0o600 });
-    const server = ctx.transport === 'http' ? { url: ctx.serverUrl } : { command: ctx.serverCommand.command, args: ctx.serverCommand.args };
+    // fx skips a url entry without "type" ("has a \"url\" but no \"type\"").
+    const server = ctx.transport === 'http' ? { type: 'http', url: ctx.serverUrl } : { command: ctx.serverCommand.command, args: ctx.serverCommand.args };
     const mcpConfig = { mcp: { probe: server } };
     writeFileSync(resolve(fxDir, 'mcp.json'), JSON.stringify(mcpConfig, null, 2), { mode: 0o600 });
     writeFileSync(resolve(ctx.runDir, 'client-config.json'), JSON.stringify({ settings, mcp: mcpConfig }, null, 2));

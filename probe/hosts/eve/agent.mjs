@@ -6,7 +6,7 @@
 // directory; the app's node_modules is a junction to them.
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
-import { existsSync, mkdirSync, rmdirSync, symlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, rmdirSync, symlinkSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -72,8 +72,19 @@ writeFileSync(
     '',
   ].join('\n')
 );
+// eve writes compiled agent modules to <app>/node_modules/.cache/eve, so the app gets
+// its own node_modules with a junction per installed package, and parallel runs keep
+// separate caches.
 const appModules = resolve(appDir, 'node_modules');
-if (!existsSync(appModules)) symlinkSync(resolve(hostDir, 'node_modules'), appModules, 'junction');
+const sharedModules = resolve(hostDir, 'node_modules');
+const linked = [];
+mkdirSync(appModules, { recursive: true });
+for (const name of readdirSync(sharedModules)) {
+  if (name === '.cache') continue;
+  const link = resolve(appModules, name);
+  if (!existsSync(link)) symlinkSync(resolve(sharedModules, name), link, 'junction');
+  linked.push(link);
+}
 
 const env = { ...process.env, EVE_TELEMETRY_DISABLED: '1', EVE_TRACES: 'off', CI: '1', NO_COLOR: '1' };
 
@@ -171,11 +182,13 @@ try {
   console.error(`PROBE_AGENT_ERROR: ${e && e.stack ? e.stack : String(e)}`);
 } finally {
   if (dev) await stop(dev);
-  // Remove the junction itself; a recursive rm would walk into the shared install.
-  try {
-    rmdirSync(appModules);
-  } catch {
-    // already gone
+  // Remove the junctions themselves; a recursive rm would walk into the shared install.
+  for (const link of linked) {
+    try {
+      rmdirSync(link);
+    } catch {
+      // already gone
+    }
   }
 }
 process.exit(exitCode);

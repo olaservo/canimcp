@@ -1711,12 +1711,12 @@
           ]
         },
         "2026-07-28": {
-          "full": 2,
+          "full": 1,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
             "json-schema-2020-12-preservation",
-            "json-schema-ref-no-deref"
+            "json-schema-ref-no-deref (none)"
           ]
         }
       }
@@ -1777,11 +1777,11 @@
       "proposedId": false,
       "perVersion": {
         "2026-07-28": {
-          "full": 1,
+          "full": 0,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
-            "sep-2322-client-request-state"
+            "sep-2322-client-request-state (none)"
           ]
         }
       }
@@ -1790,22 +1790,22 @@
       "proposedId": false,
       "perVersion": {
         "2025-11-25": {
-          "full": 4,
+          "full": 3,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
-            "sep-2640-client-no-prefetch",
+            "sep-2640-client-no-prefetch (none)",
             "sep-2640-client-verify-digest",
             "sep-2640-client-verify-frontmatter",
             "sep-2640-client-verify-size"
           ]
         },
         "2026-07-28": {
-          "full": 4,
+          "full": 3,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
-            "sep-2640-client-no-prefetch",
+            "sep-2640-client-no-prefetch (none)",
             "sep-2640-client-verify-digest",
             "sep-2640-client-verify-frontmatter",
             "sep-2640-client-verify-size"
@@ -1857,5 +1857,6 @@
     }
   },
   "noSignal": [],
+  "notTestable": [],
   "unmappedChecks": []
 }

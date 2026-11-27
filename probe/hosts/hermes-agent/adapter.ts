@@ -89,6 +89,7 @@ const adapter: HostAdapter = {
     { name: 'tool-search-off', description: 'tools.tool_search.enabled: off: the MCP tool is offered to the model directly as mcp__probe__<tool>.', modelApi: 'chat' },
     { name: 'stateless', description: 'mcp_servers.probe.protocol: stateless: server/discover first, one initialize retry on any error.', modelApi: 'chat' },
     { name: 'legacy', description: 'mcp_servers.probe.protocol: legacy: initialize only, no fallback.', modelApi: 'chat' },
+    { name: 'tool-search-off-stateless', description: 'tool-search-off and stateless together: server/discover first, MCP tools offered directly.', modelApi: 'chat' },
   ],
   async version() {
     if (!existsSync(bin) || !existsSync(python)) return { missing: `${bin} not found; create the venv as described in probe/hosts/hermes-agent/requirements.txt` };
@@ -113,6 +114,7 @@ const adapter: HostAdapter = {
       ctx.transport === 'http' ? { url: ctx.serverUrl } : { command, args: ctx.serverCommand.args };
     server.timeout = 60;
     if (ctx.config.name === 'stateless' || ctx.config.name === 'legacy') server.protocol = ctx.config.name;
+    if (ctx.config.name === 'tool-search-off-stateless') server.protocol = 'stateless';
     // YAML is a JSON superset, so the config is written as JSON and needs no quoting rules.
     // _config_version matches cli-config.yaml.example at the pin, so no migration runs.
     const config: Record<string, unknown> = {
@@ -121,7 +123,7 @@ const adapter: HostAdapter = {
       gateway: { unmanaged_idle_exit_seconds: 2 },
       mcp_servers: { probe: server },
     };
-    if (ctx.config.name === 'tool-search-off') config.tools = { tool_search: { enabled: 'off' } };
+    if (ctx.config.name.startsWith('tool-search-off')) config.tools = { tool_search: { enabled: 'off' } };
     const text = JSON.stringify(config, null, 2) + '\n';
     writeFileSync(resolve(home, 'config.yaml'), text);
     writeFileSync(resolve(ctx.runDir, 'client-config.yaml'), text);
