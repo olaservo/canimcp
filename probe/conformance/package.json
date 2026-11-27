@@ -1,0 +1,18 @@
+{
+  "name": "canimcp-probe-conformance",
+  "private": true,
+  "type": "module",
+  "description": "Runs the official MCP conformance suite's client scenarios against probed clients. The everything-client is the TypeScript SDK's test/conformance/src at the @modelcontextprotocol/client@2.4.0 tag (951fe56), which pins conformance 0.2.0-alpha.12, with the four-line change in everything-client/canimcp.patch.",
+  "scripts": {
+    "build": "node build.mjs",
+    "ts-sdk-client": "node run.mjs --client ts-sdk-client --command \"node dist/everything-client.mjs\" --concurrency 6",
+    "summarize": "node summarize.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.4.0",
+    "@modelcontextprotocol/conformance": "0.2.0-alpha.12",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "zod": "4.6.7"
+  }
+}

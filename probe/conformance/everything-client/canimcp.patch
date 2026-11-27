@@ -1,0 +1,38 @@
+--- a/test/conformance/src/everythingClient.ts
++++ b/test/conformance/src/everythingClient.ts
+@@ -571,7 +571,7 @@
+         algorithm: ctx.signing_algorithm || 'ES256'
+     });
+ 
+-    const client = new Client({ name: 'conformance-client-credentials-jwt', version: '1.0.0' }, { capabilities: {} });
++    const client = new Client({ name: 'conformance-client-credentials-jwt', version: '1.0.0' }, { capabilities: {}, ...(isModernConformanceRun() && { versionNegotiation: { mode: 'auto' as const } }) });
+ 
+     const transport = new StreamableHTTPClientTransport(new URL(serverUrl), {
+         authProvider: provider
+@@ -603,7 +603,7 @@
+         clientSecret: ctx.client_secret
+     });
+ 
+-    const client = new Client({ name: 'conformance-client-credentials-basic', version: '1.0.0' }, { capabilities: {} });
++    const client = new Client({ name: 'conformance-client-credentials-basic', version: '1.0.0' }, { capabilities: {}, ...(isModernConformanceRun() && { versionNegotiation: { mode: 'auto' as const } }) });
+ 
+     const transport = new StreamableHTTPClientTransport(new URL(serverUrl), {
+         authProvider: provider
+@@ -657,7 +657,7 @@
+         }
+     });
+ 
+-    const client = new Client({ name: 'conformance-cross-app-access', version: '1.0.0' }, { capabilities: {} });
++    const client = new Client({ name: 'conformance-cross-app-access', version: '1.0.0' }, { capabilities: {}, ...(isModernConformanceRun() && { versionNegotiation: { mode: 'auto' as const } }) });
+ 
+     const transport = new StreamableHTTPClientTransport(new URL(serverUrl), {
+         authProvider: provider
+@@ -700,7 +700,7 @@
+ 
+     const oauthFetch = withOAuthRetry('conformance-pre-registration', new URL(serverUrl), handle401, undefined, provider)(fetch);
+ 
+-    const client = new Client({ name: 'conformance-pre-registration', version: '1.0.0' }, { capabilities: {} });
++    const client = new Client({ name: 'conformance-pre-registration', version: '1.0.0' }, { capabilities: {}, ...(isModernConformanceRun() && { versionNegotiation: { mode: 'auto' as const } }) });
+     const transport = new StreamableHTTPClientTransport(new URL(serverUrl), {
+         fetch: oauthFetch
+     });
