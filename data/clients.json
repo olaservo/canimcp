@@ -292,7 +292,8 @@
           }
         ],
         "research": [
-          "goose-client-name-varies-by-surface"
+          "goose-client-name-varies-by-surface",
+          "goose-reads-one-page-of-prompts-and-resources"
         ]
       },
       "io.modelcontextprotocol/tasks": {
@@ -411,7 +412,8 @@
       }
     },
     "research": [
-      "goose-client-name-varies-by-surface"
+      "goose-client-name-varies-by-surface",
+      "goose-reads-one-page-of-prompts-and-resources"
     ],
     "metadata": {
       "vendor": "Block",
@@ -473,12 +475,119 @@
           }
         ]
       }
+    },
+    "prompts": {
+      "status": "partial",
+      "notes": "goose lists prompts with prompts/list and no cursor, so only the first page is read. Prompts are offered as commands, listed afresh on each command, and the CLI caches prompt names for completion.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "Not handled. The CLI's prompt-name completion cache is not refreshed by a notification.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-27",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:GooseClient.on_tool_list_changed",
+            "note": "The only list-changed handler GooseClient overrides; rmcp 3.11.0 leaves the prompt and resource handlers empty."
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-27",
+          "commit": "c546eaa1",
+          "path": "crates/oi-kit-agent/src/mcp/lease.rs:ExtensionLease.list_prompts_from_extension",
+          "note": "Sends no cursor and drops nextCursor."
+        }
+      ],
+      "research": [
+        "goose-reads-one-page-of-prompts-and-resources"
+      ]
+    },
+    "resources": {
+      "status": "partial",
+      "notes": "resources/list is sent with no cursor, so only the first page is read, for the model-facing tools and for MCP Apps ui:// resources alike. The model reaches resources through two tools, list_resources and read_resource, offered only when some extension has resources. list_resources takes only an extension name, and read_resource returns text contents only.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "Not handled; resources are listed afresh when asked.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-27",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:GooseClient.on_tool_list_changed",
+            "note": "The only list-changed handler GooseClient overrides; rmcp 3.11.0 leaves the prompt and resource handlers empty."
+          }
+        ]
+      },
+      "subscribe": {
+        "status": "unsupported",
+        "notes": "Nothing sends resources/subscribe or handles notifications/resources/updated."
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-27",
+          "commit": "c546eaa1",
+          "path": "crates/oi-kit-agent/src/mcp/lease.rs:ExtensionLease.list_resources_result_from_extension,ExtensionLease.ui_resources",
+          "note": "No cursor sent; nextCursor dropped."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-27",
+          "commit": "c546eaa1",
+          "path": "crates/goose/src/agents/platform_extensions/ext_manager.rs:ExtensionManagerClient.get_tools",
+          "note": "The resource tools are offered only when an extension has resources."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "aaif-goose/goose",
+          "date": "2026-11-27",
+          "commit": "c546eaa1",
+          "path": "crates/goose/src/agents/tool_snapshot.rs:ToolSnapshot.list_resources,ToolSnapshot.read_resource_tool"
+        }
+      ],
+      "research": [
+        "goose-reads-one-page-of-prompts-and-resources"
+      ]
+    },
+    "bonusFeatures": {
+      "modelInitiatedResourceRead": {
+        "status": "partial",
+        "notes": "Two tools, list_resources and read_resource, offered only when some extension has resources. The list is one page per extension and the read returns text contents only.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-27",
+            "commit": "c546eaa1",
+            "path": "crates/goose/src/agents/tool_snapshot.rs:ToolSnapshot.list_resources,ToolSnapshot.read_resource_tool"
+          }
+        ],
+        "research": [
+          "goose-reads-one-page-of-prompts-and-resources"
+        ]
+      }
     }
   },
   "openai-codex": {
     "title": "Codex CLI",
     "clientInfoNames": [
-      "codex-mcp-client"
+      "codex-mcp-client",
+      "codex"
     ],
     "url": "https://openai.com/codex",
     "description": "OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6.0 as its MCP client through a codex-rmcp-client wrapper crate. Codex also runs as an MCP server, which is a separate code path and not described here.",
@@ -555,7 +664,7 @@
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "Carries OAuth, a bearer token, or neither, with session-expiry retry on 404 and a configurable redirect policy.",
+        "notes": "Carries OAuth, a bearer token, or neither, with session recovery on 404 and a configurable redirect policy. A 404 on a request re-initializes and sends the request once more, tool calls included. In alpha releases from rust-v0.174.0-alpha.6, a 404 on a reply to a server request marks the session expired, fails in-flight calls without replaying them, and the next operation re-initializes.",
         "evidence": [
           {
             "tier": "read",
@@ -591,7 +700,19 @@
             "date": "2026-02-02",
             "commit": "4406120",
             "note": "Records stdio only. Streamable HTTP with OAuth is a large part of the client crate."
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/rmcp-client/src/session_expiry_transport.rs:SessionExpiryTransport,send",
+            "note": "A 404 on a reply marks the session expired. Alpha only (358e3dd0)."
           }
+        ],
+        "research": [
+          "codex-recovers-expired-http-sessions-two-ways"
         ]
       }
     },
@@ -1225,6 +1346,46 @@
             "note": "No events/* methods in rmcp 3.6.0 at the rev Codex pins in Cargo.lock."
           }
         ]
+      },
+      "io.modelcontextprotocol/enterprise-managed-authorization": {
+        "status": "opt-in",
+        "notes": "Behind the use_xaa feature, which is under development and off by default, and a per-server EmaAuth setting. With both set, Codex uses the 2026-07-28 mode for that server and declares the extension. Its resource discovery sends server/discover, then initialize at 2025-06-18, with clientInfo name codex in place of codex-mcp-client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/codex-mcp/src/connection_manager.rs:McpConnectionSet"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/features/src/lib.rs",
+            "note": "use_xaa, UnderDevelopment, off by default."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/protocol/src/mcp.rs:ENTERPRISE_MANAGED_AUTHORIZATION_EXTENSION_ID"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/rmcp-client/src/ema_resource.rs:discover_ema_resource",
+            "note": "clientInfo name codex."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -1252,6 +1413,32 @@
         ],
         "research": [
           "model-initiated-resource-read"
+        ]
+      },
+      "sessionRecovery": {
+        "status": "full",
+        "notes": "A request that gets a 404 on a session re-initializes and is sent once more, tool calls included. In alpha releases a 404 on a reply to a server request also marks the session expired; in-flight calls then fail and the next operation re-initializes. A session left behind by a failed recovery handshake is closed with DELETE (alpha only). It applies to the handshake era only.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs:RmcpClient.run_service_operation_with_pause_state,RmcpClient.reinitialize_after_session_expiry_inner"
+          },
+          {
+            "tier": "read",
+            "at": "2025-06-18",
+            "source": "openai/codex",
+            "date": "2026-11-27",
+            "commit": "57b493a6",
+            "path": "codex-rs/rmcp-client/src/session_expiry_transport.rs:SessionExpiryTransport,send",
+            "note": "Alpha only (358e3dd0, rust-v0.174.0-alpha.6)."
+          }
+        ],
+        "research": [
+          "codex-recovers-expired-http-sessions-two-ways"
         ]
       }
     },
@@ -1374,7 +1561,10 @@
             "note": "Records stdio, agreeing with the read."
           }
         ],
-        "notes": "opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line. By default the SDK sends server/discover at 2026-07-28 on the same pipe, with a probe timeout of the lesser of 5 s and the startup timeout. A JSON-RPC error such as -32601, or a timeout, falls back to initialize at 2025-11-25 in place. A server that exits on the probe is respawned for a plain initialize."
+        "notes": "opencode does not use the SDK's StdioClientTransport. It has its own stdio transport that spawns the server through the location's execution environment and hands it to the SDK Client. Frames are newline-delimited JSON with a 16 MiB cap on a single line. By default the SDK sends server/discover at 2026-07-28 on the same pipe, with a probe timeout of the lesser of 5 s and the startup timeout. A JSON-RPC error such as -32601, or a timeout, falls back to initialize at 2025-11-25 in place. A server that exits on the probe is respawned for a plain initialize.",
+        "research": [
+          "opencode-wraps-the-sdks-discover-fallback"
+        ]
       },
       "sse": {
         "status": "unsupported",
@@ -1428,6 +1618,9 @@
             "commit": "4406120",
             "note": "Records stdio only, at 2025-06-18, on platform \"web\". opencode is a terminal agent on the three desktop platforms and negotiates 2025-11-25, and every remote server it connects to uses Streamable HTTP."
           }
+        ],
+        "research": [
+          "opencode-wraps-the-sdks-discover-fallback"
         ]
       }
     },
@@ -4911,7 +5104,7 @@
       },
       "io.modelcontextprotocol/events": {
         "status": "opt-in",
-        "notes": "The bundled mcp-events plugin implements OpenAI's webhook profile of MCP Events on protocol 2026-07-28. It is off by default and turns on with plugins.entries.mcp-events.enabled and a required public HTTPS callbackOrigin. It works only with a configured Streamable HTTP server. Each request is stateless with no initialize: it sends server/discover and requires supportedVersions to include 2026-07-28 and capabilities.events to be present, then events/list, events/subscribe and events/unsubscribe. The client sends empty io.modelcontextprotocol/clientCapabilities in _meta, so it declares nothing. A delivered event triggers an Automation: an event-kind cron job runs its authored agent turn with the event as untrusted input. The mcp_events tool lists webhook-capable events for the model and the Automation editor and does not subscribe.",
+        "notes": "The bundled mcp-events plugin implements OpenAI's webhook profile of MCP Events on protocol 2026-07-28. It is off by default and turns on with plugins.entries.mcp-events.enabled and a required public HTTPS callbackOrigin. It works only with a configured Streamable HTTP server. Each request is stateless with no initialize: it sends server/discover and requires supportedVersions to include 2026-07-28 and capabilities.events to be present, then events/list, events/subscribe and events/unsubscribe. The client sends empty io.modelcontextprotocol/clientCapabilities in _meta, so it declares nothing. A delivered event triggers an Automation: an event-kind cron job runs its authored agent turn with the event as untrusted input. The mcp_events tool lists webhook-capable events for the model and the Automation editor and does not subscribe. capabilities.events is the key from OpenAI's MCP Events profile. A server that follows only SEP-3415 declares extensions[\"io.modelcontextprotocol/events\"], which OpenClaw does not read, and is refused.",
         "evidence": [
           {
             "tier": "read",
@@ -5046,8 +5239,14 @@
               "path": "src/plugins/service-mcp-events.ts:unsubscribe",
               "note": "events/unsubscribe."
             }
+          ],
+          "research": [
+            "openclaw-looks-for-events-under-the-pre-extension-key"
           ]
-        }
+        },
+        "research": [
+          "openclaw-looks-for-events-under-the-pre-extension-key"
+        ]
       }
     },
     "research": [
@@ -5055,7 +5254,8 @@
       "openclaw-recovers-expired-http-sessions-without-patching-the-sdk",
       "openclaw-defaults-a-url-server-to-sse",
       "openclaw-names-its-resource-tools-a-fourth-way",
-      "openclaw-scrubs-tool-descriptions-with-three-regexes"
+      "openclaw-scrubs-tool-descriptions-with-three-regexes",
+      "openclaw-looks-for-events-under-the-pre-extension-key"
     ],
     "metadata": {
       "vendor": "OpenClaw Foundation",
@@ -15917,7 +16117,7 @@
       "notes": "tools/list is sent once per server at load through FastMCP's list_tools, which follows nextCursor for up to 250 pages. Each tool becomes a LangChain StructuredTool through langchain.mcp's as_langchain_tool and is offered to the model as <server>_<tool>. A name with characters outside A-Z, a-z, 0-9, _ and -, or longer than 64, is sanitized and given a 12 character hash suffix. allowedTools and disabledTools filter a server's tools, with glob patterns. A call is cut off after 120 seconds by default and the model gets an error message saying the operation may still be running.",
       "listChanged": {
         "status": "unsupported",
-        "notes": "The per-server client is built with no message handler, so notifications/tools/list_changed is not acted on. The LangChain tools are built once per load.",
+        "notes": "deepagents-code passes no message handler. On fastmcp 4.1.x, which libs/code's lockfile resolves, the per-server client has none. From fastmcp 4.2.0, which a fresh install and Talon resolve, ProxyClient installs a default handler that forwards list_changed to the in-process router. deepagents-code lists each backend's tools once per load and does not list again, so the notification is not acted on.",
         "evidence": [
           {
             "tier": "read",
@@ -15935,6 +16135,23 @@
             "date": "2026-11-16",
             "path": "fastmcp/client/client.py",
             "note": "fastmcp-slim 4.1.2, from the PyPI wheel. The session message handler is the one the caller passed, wrapped only when a response cache is on. Neither is set here."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "PrefectHQ/fastmcp",
+            "date": "2026-11-27",
+            "path": "fastmcp/server/providers/proxy.py",
+            "note": "fastmcp-slim 4.2.6, from the PyPI wheel. default_proxy_message_handler, installed by ProxyClient.__init__ when no message_handler is passed."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-27",
+            "commit": "621147a5",
+            "path": "libs/code/deepagents_code/mcp_tools.py:_mount_backends",
+            "note": "Each backend's tools are listed once at load."
           }
         ]
       },
@@ -16806,7 +17023,7 @@
         "resolved": "4.1.2",
         "patched": false,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Versions are deepagents-code's, from libs/code. fastmcp 4.1.2 is a metapackage over fastmcp-slim 4.1.2, which holds the code. It runs the official mcp SDK, declared \"mcp>=2.0.0\" and resolved to 2.3.0 with mcp-types 2.3.0. langchain is declared \">=1.5.2,<2.0.0\" and resolves to 1.5.2, whose mcp extra asks for fastmcp>=4.0.11; deepagents-code depends on fastmcp directly and does not use the extra. Not patched: no patches directory, no vendored fork, and the one [tool.uv] override in libs/code is for filelock. deepagents-code does subclass the SDK's OAuthClientProvider and reads private FastMCP attributes (_disconnect, _session_state). The core library's manifest and lockfile hold neither fastmcp nor mcp. deepagents-talon declares \"fastmcp>=4.2.3\" and \"mcp>=2.3.0\" and resolves to fastmcp 4.2.3 and mcp 2.3.0. The evals harness declares \"langchain[mcp]>=1.4.1\" and resolves fastmcp 4.2.2 and mcp 2.3.0. deepagents names no protocol revision: FastMCP's ProxyClient picks the handshake era and the mcp SDK's LATEST_HANDSHAKE_VERSION picks 2025-11-25. The probe ran deepagents-code 0.2.5 with mcp 2.2.0; the lockfile now resolves 2.3.0.",
+        "notes": "Versions are deepagents-code's, from libs/code. fastmcp 4.1.2 is a metapackage over fastmcp-slim 4.1.2, which holds the code. It runs the official mcp SDK, declared \"mcp>=2.0.0\" and resolved to 2.3.0 with mcp-types 2.3.0. langchain is declared \">=1.5.2,<2.0.0\" and resolves to 1.5.2, whose mcp extra asks for fastmcp>=4.0.11; deepagents-code depends on fastmcp directly and does not use the extra. Not patched: no patches directory, no vendored fork, and the one [tool.uv] override in libs/code is for filelock. deepagents-code does subclass the SDK's OAuthClientProvider and reads private FastMCP attributes (_disconnect, _session_state). The core library's manifest and lockfile hold neither fastmcp nor mcp. deepagents-talon declares \"fastmcp>=4.2.3\" and \"mcp>=2.3.0\" and resolves to fastmcp 4.2.3 and mcp 2.3.0. The evals harness declares \"langchain[mcp]>=1.4.1\" and resolves fastmcp 4.2.2 and mcp 2.3.0. deepagents names no protocol revision: FastMCP's ProxyClient picks the handshake era and the mcp SDK's LATEST_HANDSHAKE_VERSION picks 2025-11-25. The probe ran deepagents-code 0.2.5 with mcp 2.2.0; the lockfile now resolves 2.3.0. The resolved fastmcp 4.1.2 is libs/code's lockfile. deepagents-code declares fastmcp>=4.0.0b4 with no upper bound, so a fresh install of deepagents-code 0.2.15 from PyPI resolves fastmcp 4.2.6 (2026-11-25).",
         "evidence": [
           {
             "tier": "read",
@@ -20339,20 +20556,252 @@
   "huggingface-chat-ui": {
     "title": "Hugging Face Chat UI",
     "clientInfoNames": [
-      "chat-ui-mcp"
+      "chat-ui-mcp",
+      "chat-ui-intern",
+      "chat-ui-health-check",
+      "chat-ui-mcp-probe"
     ],
     "url": "https://github.com/huggingface/chat-ui",
-    "description": "Hugging Face's open-source chat interface. Open source, and the source has not been read for this entry yet. Apify has no record for it, so the entry rests on Hugging Face MCP traffic alone. 100% of its tool calls in the feed are at 2026-07-28. What the traffic declares is on the capability pages. The wire name chat-ui-mcp appears in `src/lib/server/mcp/client.ts` of that repository.",
+    "description": "Hugging Face's open-source chat interface, the app behind HuggingChat. Its SvelteKit server is the MCP client and reaches remote servers only, over Streamable HTTP with an SSE fallback. It is built on @modelcontextprotocol/client 2.0.0 with versionNegotiation set to auto, so it sends server/discover at 2026-07-28 first and falls back to initialize at 2025-11-25. From servers it uses tools and form and URL elicitation, and nothing else. Servers come from the MCP_SERVERS setting or are added by users in the UI, and authenticate with OAuth (CIMD, DCR or a manually entered client) or with headers. It sends four client names, one per connection purpose.",
     "category": "chat",
     "kind": "host",
+    "platforms": [
+      "web"
+    ],
     "protocolVersions": [
+      "2024-11-05",
+      "2025-03-26",
+      "2025-06-18",
+      "2025-11-25",
       "2026-07-28"
     ],
     "preferredProtocolVersion": "2026-07-28",
+    "transports": {
+      "stdio": {
+        "status": "unsupported",
+        "notes": "A server entry has a name, a URL and headers only, and every connection builds an HTTP transport. Chat UI runs as a web server and launches no processes.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/registry.ts:parseServers"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/clientPool.ts:connectAndPool"
+          }
+        ]
+      },
+      "sse": {
+        "status": "full",
+        "notes": "Fallback against the same URL when the Streamable HTTP connect throws, on the pooled client, the tool-listing client and the health check alike.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/clientPool.ts:connectAndPool"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/tools.ts:listServerTools"
+          }
+        ]
+      },
+      "streamableHttp": {
+        "status": "full",
+        "notes": "Tried first for every server. Requests go through a fetch wrapper that refuses non-HTTPS and private-network URLs unless MCP_ALLOW_INSECURE_URLS is set, and that passes error responses to the OAuth scope-challenge handler. A pooled client sends DELETE for its session when it is disposed.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/clientPool.ts:connectAndPool,disposeClient"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/fetch.ts:mcpFetchForServer"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/urlSafety.ts:isValidUrl,mcpFetch"
+          }
+        ]
+      }
+    },
+    "authentication": {
+      "oauth": {
+        "status": "full",
+        "notes": "Chat UI runs discovery itself when a user adds a server: a hand-written initialize at 2025-11-25 under the name chat-ui-mcp-probe looks for a 401 or 403, then RFC 9728 and RFC 8414 metadata through SDK helpers. The authorization server must advertise PKCE S256. The client is a CIMD document the app serves at /api/mcp/oauth/client-metadata when the server advertises client_id_metadata_document_supported and the app's origin is HTTPS, else DCR, else a client the user types in. The callback checks state and the RFC 9207 iss parameter. Tokens live in MongoDB, encrypted when MCP_OAUTH_ENCRYPTION_KEY is set, and are refreshed before a send. An insufficient_scope challenge on any MCP response records the scope and asks the user to authorize again, at most three times.",
+        "version": "2.1",
+        "pkce": true,
+        "dynamicRegistration": true,
+        "clientIdMetadataDocument": true,
+        "resourceIndicators": true,
+        "protectedResourceMetadata": true,
+        "openIdConnectDiscovery": true,
+        "issuerIdentification": true,
+        "grantTypes": [
+          "authorization_code",
+          "refresh_token"
+        ],
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/oauth/discover.ts:discoverServerOAuth,buildClientMetadataDocumentClient,probeMcpServer,probeBody"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/routes/api/mcp/oauth/client-metadata/+server.ts:GET"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/routes/api/mcp/oauth/callback/+server.ts:GET"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/oauth/validation.ts:assertPkceS256Supported,assertAuthorizationResponseIssuer,assertProtectedResourceMatches"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/oauth/exchange.ts:buildAuthorizationUrl,exchangeCodeForTokens"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/oauth/connections.ts:refreshConnection,recordInsufficientScope,resolveOAuthAccessToken"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "dist/index.mjs:buildDiscoveryUrls,discoverAuthorizationServerMetadata",
+            "note": "@modelcontextprotocol/client 2.0.0. The authorization server metadata lookup tries the OAuth and OpenID Connect well-known paths."
+          }
+        ]
+      },
+      "header": {
+        "status": "full",
+        "notes": "A headers map on an MCP_SERVERS entry or a user-added server is sent on every request. With MCP_FORWARD_HF_USER_TOKEN=true the signed-in user's Hugging Face token is added as a bearer header to Hugging Face MCP URLs that carry ?login, unless an Authorization header is already set. A server cannot use an OAuth connection and a manual Authorization header together.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/registry.ts:parseServers"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/textGeneration/mcp/runMcpFlow.ts:runMcpFlow"
+          }
+        ]
+      }
+    },
     "tools": {
       "status": "full",
-      "notes": "Known only from traffic: the feed counts tool calls from this wire name.",
+      "notes": "Tools are listed on a separate client that connects, calls tools/list with no cursor and closes. The SDK walks every page of that call, up to 64. Each server's listing is cached for 60 seconds, keyed on URL, OAuth connection and headers. Names are rewritten to ^[a-zA-Z0-9_-]{1,64}$ with a server-name suffix on a collision, and input schemas are sanitized for strict providers before they reach the model. Calls go over a pooled client. Tool annotations are kept in the mapping and not sent to the model. No tool-result note for Chat UI exists in olaservo/structured-content-research at f32f225, so tools.result is not recorded here.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "The client is built without the SDK's listChanged option and registers no handler, and the listing client is closed right after tools/list. A changed list is picked up when the 60-second cache entry expires.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:createMcpClient"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/tools.ts:listServerTools,getOpenAiToolsForMcp"
+          }
+        ]
+      },
       "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/tools.ts:listServerTools,fetchServerTools,getOpenAiToolsForMcp,sanitizeName,sanitizeJsonSchema"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/typescript-sdk",
+          "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+          "date": "2026-11-27",
+          "path": "dist/index.mjs:Client.listTools",
+          "note": "@modelcontextprotocol/client 2.0.0. listTools without a cursor aggregates every page, capped by listMaxPages (default 64)."
+        },
         {
           "tier": "observed",
           "source": "evalstate/mcp-clients",
@@ -20362,17 +20811,289 @@
         }
       ]
     },
-    "metadata": {
-      "vendor": "Hugging Face",
-      "openSource": true,
-      "license": "Apache-2.0",
-      "sourceUrl": "https://github.com/huggingface/chat-ui"
+    "resources": {
+      "status": "unsupported",
+      "notes": "Nothing calls resources/list, resources/templates/list or resources/read. Resource support was added in 7b0682fe and reverted in 890cfdf9 in August 2026.",
+      "listChanged": {
+        "status": "unsupported",
+        "notes": "No handler is registered."
+      },
+      "subscribe": {
+        "status": "unsupported",
+        "notes": "No resources/subscribe call."
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/httpClient.ts:callMcpTool",
+          "note": "tools/call is the only method chat-ui sends on a pooled client besides ping."
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/tools.ts:listServerTools"
+        }
+      ]
+    },
+    "prompts": {
+      "status": "unsupported",
+      "notes": "No prompts/list or prompts/get call.",
+      "listChanged": {
+        "status": "unsupported"
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+        }
+      ]
+    },
+    "completions": {
+      "status": "unsupported",
+      "notes": "No completion/complete call.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp"
+        }
+      ]
+    },
+    "sampling": {
+      "status": "unsupported",
+      "notes": "Not declared and no handler. On a 2026-07-28 connection an input_required round that asks for sampling/createMessage is refused as an unsupported input request.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities,createMcpClient"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/elicitation.ts:openDurableElicitation"
+        }
+      ]
+    },
+    "elicitation": {
+      "status": "full",
+      "notes": "Declared as elicitation {form, url} on session and ML Intern connections by default, and dropped when MCP_DISABLE_ELICITATION=true. Health-check connections declare nothing. On 2026-07-28 the client is built with inputRequired.autoFulfill false and each call allows input_required, so a prompt is stored in MongoDB, shown in the conversation and answered later, after which the call is re-sent with inputResponses and requestState. Only one input request per round is accepted. A prompt stays answerable for MCP_ELICITATION_TIMEOUT_MS, one hour by default.",
+      "form": {
+        "status": "full",
+        "notes": "Fields may be strings (with email, uri, date or date-time formats), numbers and integers with minimum and maximum, booleans, single-select from enum or oneOf const, and multi-select arrays. At most 32 fields. Any other field schema, or text over the length limits, is declined with cancel. Answers are validated against the fields on the server before they are accepted.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/elicitationSchema.ts:normalizeRequest,normalizeField,validateElicitationContent"
+          }
+        ]
+      },
+      "url": {
+        "status": "full",
+        "notes": "Shown as a link the user opens. Only http and https URLs are accepted. No notifications/elicitation/complete handler is registered.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/elicitationSchema.ts:normalizeRequest"
+          }
+        ]
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities,createMcpClient,CLIENT_INFO"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/elicitationConfig.ts:isElicitationEnabled,getElicitationTimeoutMs"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/elicitation.ts:openDurableElicitation,submitElicitationAnswer"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/resumeElicitation.ts:resumeParkedToolCall"
+        }
+      ],
+      "research": [
+        "huggingface-chat-ui-parks-modern-elicitations-in-its-database"
+      ]
+    },
+    "roots": {
+      "status": "unsupported",
+      "notes": "Not declared and no roots/list handler.",
+      "listChanged": {
+        "status": "unsupported"
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities,createMcpClient"
+        }
+      ]
+    },
+    "logging": {
+      "status": "unsupported",
+      "notes": "No notifications/message handler is registered and logging/setLevel is never sent.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/client.ts:createMcpClient"
+        }
+      ]
+    },
+    "instructions": {
+      "status": "unsupported",
+      "notes": "getInstructions is never called. The client that lists tools is closed straight after tools/list.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/tools.ts:listServerTools,fetchServerTools"
+        }
+      ]
+    },
+    "icons": {
+      "status": "unsupported",
+      "notes": "The tool listing keeps name, description, inputSchema and annotations only. Server and tool icons are not read.",
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/tools.ts:fetchServerTools"
+        }
+      ]
+    },
+    "jsonSchema": {
+      "defaultDialect": "2020-12",
+      "supportedDialects": [
+        "2020-12",
+        "2019-09",
+        "draft-07",
+        "draft-06"
+      ],
+      "features": {
+        "level": "subset",
+        "notes": "Tool arguments from the model are checked against the server's original inputSchema with the SDK's fromJsonSchema before the call is sent, and a schema that does not compile lets the call through. The schema the model sees is a sanitized copy: null defaults are dropped and a property with no type gets one inferred, string when nothing implies another. Elicitation schemas use the flat subset in the form row."
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/preflightGuard.ts:compile,createSchemaPreflightGuard"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "huggingface/chat-ui",
+          "date": "2026-11-27",
+          "commit": "7fc0f672",
+          "path": "src/lib/server/mcp/tools.ts:sanitizeJsonSchema"
+        },
+        {
+          "tier": "read",
+          "at": "2026-07-28",
+          "source": "modelcontextprotocol/typescript-sdk",
+          "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+          "date": "2026-11-27",
+          "path": "dist/dialects-BOhdv1Fc.mjs",
+          "note": "@modelcontextprotocol/client 2.0.0. No $schema means 2020-12; 2019-09, draft-07 and draft-06 are also accepted, and any other dialect throws."
+        }
+      ]
     },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
-        "notes": "Not declared in traffic: the HF telemetry (huggingface-chatui) sees io.modelcontextprotocol/ui in at most half of this client's 2026-07-28 tool calls.",
+        "notes": "Not declared, and nothing reads _meta.ui or ui:// resources. Resources are not read at all.",
         "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities",
+            "note": "The capability object is elicitation or nothing."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/tools.ts:fetchServerTools",
+            "note": "_meta on a listed tool is not kept."
+          },
           {
             "tier": "observed",
             "source": "evalstate/mcp-clients",
@@ -20387,8 +21108,24 @@
       },
       "io.modelcontextprotocol/tasks": {
         "status": "unsupported",
-        "notes": "Not declared in traffic: the HF telemetry (huggingface-chatui) sees the tasks extension in at most half of this client's 2026-07-28 tool calls. No source to read.",
+        "notes": "Not declared, and callTool is never given task parameters.",
         "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+          },
           {
             "tier": "observed",
             "source": "evalstate/mcp-clients",
@@ -20402,12 +21139,366 @@
         ]
       },
       "io.modelcontextprotocol/skills": {
-        "status": "untested",
-        "notes": "No source to read. The HF telemetry records skills only from a successful skills/list call, and it has seen none from this client, which does not show the client lacks it."
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Nothing sends skills/list or reads skill:// resources, and @modelcontextprotocol/client 2.0.0 exports no skills extension. The HF telemetry has seen no skills/list from this client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "package.json",
+            "note": "@modelcontextprotocol/client 2.0.0 exports ., ./stdio and the validators only."
+          }
+        ]
       },
       "io.modelcontextprotocol/events": {
-        "status": "untested",
-        "notes": "No source to read, and the HF telemetry does not report events."
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Nothing sends events/list, events/poll, events/stream or events/subscribe, and the SDK client 2.0.0 has no events methods. The HF telemetry does not report events.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "dist/index.mjs",
+            "note": "@modelcontextprotocol/client 2.0.0 has subscriptions/listen for list-changed notifications and no events/* methods."
+          }
+        ]
+      }
+    },
+    "bonusFeatures": {
+      "pooledSessions": {
+        "status": "partial",
+        "notes": "Tool calls share pooled clients keyed by URL, OAuth connection, headers, conversation isolation and client name. A client idle more than 30 seconds is pinged before reuse, and one idle 10 minutes is closed. On a 2026-07-28 connection the SDK refuses ping locally, because that revision removed it, so the ping fails and the client is replaced with a new connection and a new server/discover. Reuse holds only within 30 seconds of the last use. A call that fails with a closed connection is retried up to twice on a fresh client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/clientPool.ts:getClient,keyOf,ensureSweeper"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/httpClient.ts:callMcpTool,isConnectionClosedError"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "dist/src-D_zzAWoS.mjs:Protocol._assertOutboundRequestInEra",
+            "note": "@modelcontextprotocol/client 2.0.0. The 2026-07-28 request registry has no ping, and request() throws MethodNotSupportedByProtocolVersion before sending."
+          }
+        ],
+        "research": [
+          "huggingface-chat-ui-cannot-ping-a-modern-pooled-connection"
+        ]
+      },
+      "progressNotifications": {
+        "status": "full",
+        "notes": "Every call passes onprogress, so it carries a progress token. Each progress notification restarts the call's inactivity deadline (MCP_TOOL_TIMEOUT_MS, two minutes by default) and is shown in the tool block.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/httpClient.ts:callMcpTool,createCallDeadline"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/textGeneration/mcp/toolInvocation.ts:executeToolCalls"
+          }
+        ]
+      },
+      "serverInstallLink": {
+        "status": "full",
+        "notes": "A link of the form /?mcp=<url>&mcp_name=<name> opens the add-server form filled in. Nothing is contacted until the user clicks Add.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/utils/linkParams.ts:readLinkMcpServerRequest"
+          }
+        ]
+      }
+    },
+    "byProtocolVersion": {
+      "2025-11-25": {
+        "elicitation": {
+          "status": "full",
+          "notes": "elicitation/create arrives on the connection during the call and is answered while the server waits. It is routed to the conversation whose call is in flight on that connection. A call that can be elicited gets a connection of its own per conversation on a 2025-era server, and a request that still cannot be attributed is declined with cancel. The call deadline pauses while the user answers, though the server's own request timeout may end the wait first.",
+          "form": {
+            "status": "full"
+          },
+          "url": {
+            "status": "full"
+          },
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2025-11-25",
+              "source": "huggingface/chat-ui",
+              "date": "2026-11-27",
+              "commit": "7fc0f672",
+              "path": "src/lib/server/mcp/elicitation.ts:handleElicitationRequest,routeTo,withElicitationContext"
+            },
+            {
+              "tier": "read",
+              "at": "2025-11-25",
+              "source": "huggingface/chat-ui",
+              "date": "2026-11-27",
+              "commit": "7fc0f672",
+              "path": "src/lib/server/mcp/clientPool.ts:getAttributableClient"
+            }
+          ],
+          "research": [
+            "huggingface-chat-ui-parks-modern-elicitations-in-its-database"
+          ]
+        },
+        "extensions": {
+          "io.modelcontextprotocol/ui": {
+            "status": "unsupported",
+            "notes": "Not declared in initialize capabilities.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+              }
+            ]
+          },
+          "io.modelcontextprotocol/tasks": {
+            "status": "unsupported",
+            "notes": "The core experimental form is not used either: no tasks capability in initialize, and no task field on tools/call.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+              },
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+              }
+            ]
+          },
+          "io.modelcontextprotocol/skills": {
+            "status": "unsupported",
+            "notes": "Same as 2026-07-28: no skills/list and no resource reads.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/httpClient.ts:callMcpTool"
+              }
+            ]
+          },
+          "io.modelcontextprotocol/events": {
+            "status": "unsupported",
+            "notes": "Same as 2026-07-28.",
+            "poll": {
+              "status": "unsupported"
+            },
+            "push": {
+              "status": "unsupported"
+            },
+            "webhook": {
+              "status": "unsupported"
+            },
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/client.ts:mcpClientCapabilities"
+              }
+            ]
+          }
+        },
+        "bonusFeatures": {
+          "pooledSessions": {
+            "status": "full",
+            "notes": "The 30-second idle ping succeeds on a handshake-era connection, so a pooled client is reused until it has been idle for 10 minutes.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/clientPool.ts:getClient,ensureSweeper"
+              }
+            ]
+          },
+          "sessionRecovery": {
+            "status": "full",
+            "notes": "An HTTP 404 on a call is treated as an expired session: the pooled client is evicted, a new one runs initialize, and the call is sent again, up to twice.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "huggingface/chat-ui",
+                "date": "2026-11-27",
+                "commit": "7fc0f672",
+                "path": "src/lib/server/mcp/httpClient.ts:callMcpTool,isSessionExpiredError"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "research": [
+      "huggingface-chat-ui-sends-four-client-names",
+      "huggingface-chat-ui-parks-modern-elicitations-in-its-database",
+      "huggingface-chat-ui-cannot-ping-a-modern-pooled-connection"
+    ],
+    "metadata": {
+      "vendor": "Hugging Face",
+      "openSource": true,
+      "license": "Apache-2.0",
+      "sourceUrl": "https://github.com/huggingface/chat-ui",
+      "lastVerified": "2026-11-27",
+      "source": {
+        "repo": "https://github.com/huggingface/chat-ui.git",
+        "ref": "main",
+        "checkedCommit": "7fc0f672685331f11317a448f24c1c66b64894c6",
+        "commitDate": "2026-11-23T18:03:49+01:00",
+        "checkedAt": "2026-11-27",
+        "paths": [
+          "src/lib/server/mcp",
+          "src/lib/server/textGeneration/mcp",
+          "src/routes/api/mcp",
+          "src/lib/utils/mcpOAuth.ts",
+          "src/lib/utils/linkParams.ts",
+          "src/lib/stores/mcpServers.ts",
+          "src/lib/server/urlSafety.ts",
+          "src/lib/server/mlAssistant.ts",
+          "package.json",
+          "package-lock.json",
+          ".env",
+          "chart/env/prod.yaml"
+        ]
+      },
+      "sdk": {
+        "name": "@modelcontextprotocol/client",
+        "language": "typescript",
+        "official": true,
+        "declared": "^2.0.0",
+        "resolved": "2.0.0",
+        "patched": false,
+        "notes": "@modelcontextprotocol/core is also declared ^2.0.0 and resolves to 2.0.0. @modelcontextprotocol/server and @modelcontextprotocol/node 2.0.0 are used only by mock servers under scripts/ and tests/. ^2.0.0 accepts 2.4.0, the newest on npm on 2026-11-27, but package-lock.json holds 2.0.0. Not patched: no patches directory, no patch-package or patchedDependencies, and the package.json overrides touch only @reflink/reflink. The SDK defaults versionNegotiation to legacy and chat-ui sets auto, so leading with 2026-07-28 is chat-ui's choice. The fallback offer of 2025-11-25 is the SDK's LATEST_PROTOCOL_VERSION, and the SDK accepts a handshake answer back to 2024-10-07.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "package.json"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "package-lock.json"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "huggingface/chat-ui",
+            "date": "2026-11-27",
+            "commit": "7fc0f672",
+            "path": "src/lib/server/mcp/client.ts:createMcpClient",
+            "note": "versionNegotiation { mode: auto } and inputRequired { autoFulfill: false }."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "dist/index.mjs:resolveVersionNegotiation,negotiateEra,Client._legacyHandshake",
+            "note": "@modelcontextprotocol/client 2.0.0. DEFAULT_VERSION_NEGOTIATION_MODE is legacy. Auto probes server/discover at 2026-07-28 and falls back to initialize on a legacy verdict."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/core/v/2.0.0",
+            "date": "2026-11-27",
+            "path": "dist/auth-CUe6YdwF.mjs",
+            "note": "@modelcontextprotocol/core 2.0.0. LATEST_PROTOCOL_VERSION is 2025-11-25 and SUPPORTED_PROTOCOL_VERSIONS runs down to 2024-10-07."
+          }
+        ]
       }
     }
   },

@@ -14,7 +14,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | Licence | Apache-2.0 |
 | Source | <https://github.com/openai/codex> |
 | Home | <https://openai.com/codex> |
-| Wire names | `codex-mcp-client` |
+| Wire names | `codex-mcp-client`, `codex` |
 | SDK | `rmcp` 3.6.0 · declares `=3.6.0 (git rev b11a40d8)` · official Rust SDK · unpatched |
 | Prefers | `2025-06-18` |
 | Speaks | `2025-06-18`, `2026-07-28` |
@@ -66,8 +66,10 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | &nbsp;&nbsp;↳ openai/form | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/elicitation | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/standard-form-input | ◐ partial | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/enterprise-managed-authorization | ◇ opt-in | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-06-18` |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
 
@@ -77,7 +79,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 - **transports.stdio** — Three stdio paths: a local child process, an in-process transport, and an executor process transport for sandboxed and remote environments. From ac784eb1 (in 0.173.0-alpha.1, and in alpha tags only as of 2026-11-26) a default install probes an eligible local stdio server with server/discover at 2026-07-28 first and falls back to initialize at 2025-06-18.
 - **transports.sse** — rmcp 3.6.0 has no standalone SSE client feature. Codex enables transport-child-process, transport-async-rw and the streamable HTTP client and server, and its config has only stdio and streamable HTTP transports.
-- **transports.streamableHttp** — Carries OAuth, a bearer token, or neither, with session-expiry retry on 404 and a configurable redirect policy.
+- **transports.streamableHttp** — Carries OAuth, a bearer token, or neither, with session recovery on 404 and a configurable redirect policy. A 404 on a request re-initializes and sends the request once more, tool calls included. In alpha releases from rust-v0.174.0-alpha.6, a 404 on a reply to a server request marks the session expired, fails in-flight calls without replaying them, and the next operation re-initializes.
 - **authentication.oauth** — Prefers CIMD over DCR when the authorization server advertises it, using a ChatGPT-hosted client identifier. When the server also advertises authorization_response_iss_parameter_supported and names an issuer, the identifier is one shared document, https://chatgpt.com/oauth/codex/client.json. A per-server oauth.client_id and client_secret can be configured instead. PKCE and the token exchange are rmcp's AuthorizationManager and were not read at this commit.
 - **authentication.header** — Per-server http_headers, env_http_headers, bearer_token_env_var, and an http_headers_helper command whose stdout supplies headers.
 - **tools** — tools/list is paginated to the end in every protocol mode, capped at 100 pages and 2,048 tools per server. Before cc31e374 (first stable release 0.162.0) the default mode discarded nextCursor and read one page.
@@ -106,7 +108,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/events.poll** — No events/poll request in the repo.
 - **extensions.io.modelcontextprotocol/events.push** — events/stream to codex_apps only, started by the app-server host through the experimental mcpServer/event/stream/start request. Notifications go to the host, not the model.
 - **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe request in the repo.
+- **extensions.io.modelcontextprotocol/enterprise-managed-authorization** — Behind the use_xaa feature, which is under development and off by default, and a per-server EmaAuth setting. With both set, Codex uses the 2026-07-28 mode for that server and declares the extension. Its resource discovery sends server/discover, then initialize at 2025-06-18, with clientInfo name codex in place of codex-mcp-client.
 - **bonusFeatures.modelInitiatedResourceRead** — list_mcp_resources, list_mcp_resource_templates and read_mcp_resource are registered as built-in tools whenever any MCP server is configured, with no feature gate. Pagination cursors are passed to and from the model.
+- **bonusFeatures.sessionRecovery** — A request that gets a 404 on a session re-initializes and is sent once more, tool calls included. In alpha releases a 404 on a reply to a server request also marks the session expired; in-flight calls then fail and the next operation re-initializes. A session left behind by a failed recovery handshake is closed with DELETE (alpha only). It applies to the handshake era only.
 
 ## Verified by the probe
 
@@ -300,6 +304,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 ## Research notes
 
 - [Codex proposes 2025-06-18 and accepts whatever version the server returns](../research/codex-defaults-to-2025-06-18.md) — *idiosyncrasy*. Codex's initialize names 2025-06-18 and the reply's version is not checked, so a server that answers 2025-11-25 still gets a session. From 0.173.0-alpha.1 a default install first sends server/discover at 2026-07-28 to a local stdio server. Over HTTP that needs a flag.
+- [Codex replays a request after a session 404, and fails in-flight calls after a reply 404](../research/codex-recovers-expired-http-sessions-two-ways.md) — *nuance*. After a 404 on a request in a Streamable HTTP session, Codex re-initializes and sends the request again, tool calls included. Since 358e3dd0, a 404 on a reply to a server request closes the session and fails its in-flight calls with no replay.
 - [Codex takes CIMD over DCR, with a client identifier hosted on chatgpt.com](../research/codex-prefers-a-chatgpt-hosted-client-identifier.md) — *idiosyncrasy*. When an authorization server advertises client_id_metadata_document_supported and accepts public clients, Codex registers with an HTTPS client identifier under chatgpt.com, shared or keyed by a per-server callback id, and only falls back to Dynamic Client Registration otherwise.
 - [goose emits a roots notification that 2026-07-28 removed, and rmcp does not stop it](../research/goose-sends-removed-roots-notification.md) — *idiosyncrasy*. notify_roots_list_changed fires on every working-directory change with no version check, goose prefers 2026-07-28 where the notification no longer exists, and rmcp 3.1.4 gates nothing on the outbound notification path.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
