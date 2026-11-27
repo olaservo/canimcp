@@ -169,10 +169,6 @@
           "$ref": "#/$defs/CapabilityStatus",
           "description": "Renders server-provided icons/websiteUrl on tools, resources, prompts, implementations (SEP-973, 2025-11-25+; PNG/JPEG MUST, SVG/WebP SHOULD)."
         },
-        "tasks": {
-          "$ref": "#/$defs/TasksCapability",
-          "description": "Async/durable task support (2025-11-25+; an extension in draft)."
-        },
         "jsonSchema": {
           "$ref": "#/$defs/JsonSchemaSupport",
           "description": "JSON Schema dialect + feature support (tool I/O, elicitation schemas)."
@@ -181,6 +177,10 @@
           "type": "object",
           "description": "Named protocol extensions the client supports, keyed by reverse-DNS id (e.g. 'io.modelcontextprotocol/tasks'). See data/spec-versions.json#extensions.known.",
           "properties": {
+            "io.modelcontextprotocol/tasks": {
+              "$ref": "#/$defs/TasksCapability",
+              "description": "Async/durable task support. An extension from 2026-07-28 (SEP-2663) and core experimental in 2025-11-25 (SEP-1686). Recorded here for every revision, with a byProtocolVersion[\"2025-11-25\"] row for the core form."
+            },
             "io.modelcontextprotocol/events": {
               "$ref": "#/$defs/EventsExtension"
             }

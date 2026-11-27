@@ -36,9 +36,12 @@ Google's agentic IDE and CLI, the successor to Gemini CLI for consumer accounts.
 | Logging | — not recorded | | |
 | Instructions | — not recorded | | |
 | Icons | — not recorded | | |
-| Tasks | — not recorded | | |
 | JSON Schema | — not recorded | | |
-| Extensions | — not recorded | | |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence

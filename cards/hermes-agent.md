@@ -54,9 +54,11 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | Icons | — not recorded | | |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
@@ -103,7 +105,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **roots** — No list_roots_callback is passed at either session construction site and no roots handler exists anywhere in the client, so nothing is declared and roots/list is never answered. Hermes is the second client read here that does not reach the SDK roots.listChanged problem at all, for the same reason as OpenClaw: it never opts in.
 - **logging** — Receives but does not steer. A logging_callback routes notifications/message into Hermes' own logging, tagged with the server name, mapping MCP levels onto Python ones and truncating a single payload at 2000 characters so a chatty or broken server cannot flood the log. The docstring records that without it the SDK's default callback discards them, so server-side warnings during a tool call were invisible, and credits the fix as a port of an opencode change. Nothing calls logging/setLevel, so the server's default verbosity is whatever it chooses.
 - **instructions** — The instructions field of the negotiation result is never read. Only capabilities is consumed, to gate the resource and prompt utility tools.
-- **tasks** — No tasks methods referenced anywhere in the client.
 - **bonusFeatures.modelInitiatedResourceRead** — The model can read a resource with no user in the loop, through the per-server read_resource tool, provided the server advertised resources.
 - **bonusFeatures.toolDescriptionScrubbing** — Ten regexes check every MCP tool description for prompt-injection patterns and log a warning; the text reaches the model unchanged. What is removed is Unicode tag characters and bidi embedding, override and isolate controls. The August entry called the regex pass scrubbing; it was warn-only then too.
 - **bonusFeatures.deferredToolLoading** — MCP tools are removed from the model-visible tool array by default and replaced with a tool_search, tool_describe and tool_call bridge, with a catalog listing embedded in the bridge's description under a token budget that degrades through five fixed forms rather than truncating. Core Hermes tools are deferred only when named in a curated list.
@@ -115,6 +116,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **bonusFeatures.lazyServerStart** — With lazy: true on a server entry, Hermes registers the server's tools from an on-disk schema cache without starting the server, and connects on first use. Entries are keyed by server name and a fingerprint of the connection config, are written after each live registration, and expire on the SEP-2549 ttlMs from tools/list. Entries without a TTL never expire, and a missing or stale entry falls back to a normal connect.
 - **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
 - **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe with a webhook URL and secret, behind events: true per server. The gateway verifies Standard Webhooks signatures.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks methods referenced anywhere in the client.
 
 ## Verified by the probe
 

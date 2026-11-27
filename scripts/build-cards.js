@@ -26,6 +26,8 @@ const OUT_DIR = 'cards';
 const MATRIX = 'tool-results.md';
 const OBSERVED_PAGE = 'observed.md';
 const SPEC = JSON.parse(readFileSync('data/spec-versions.json', 'utf8'));
+// Extensions every read records. A card lists each, as not recorded when it is missing.
+const TRACKED_EXTENSIONS = Object.entries(SPEC.extensions.known).filter(([, e]) => e.tracked).map(([name]) => name);
 
 // Order capabilities are presented in, matching $defs/Capabilities in the
 // registry schema. A capability missing from an entry is reported as not
@@ -43,7 +45,6 @@ const CAPABILITY_ORDER = [
   ['logging', 'Logging'],
   ['instructions', 'Instructions'],
   ['icons', 'Icons'],
-  ['tasks', 'Tasks'],
   ['jsonSchema', 'JSON Schema'],
   ['extensions', 'Extensions'],
   ['bonusFeatures', 'Beyond the spec'],
@@ -454,6 +455,18 @@ function citation(e) {
   return bits.filter(Boolean).join(' ');
 }
 
+/** Appends the table rows for one capability's flattened rows. */
+function capabilityTableRows(L, rows) {
+  for (const r of rows) {
+    const indent = '&nbsp;&nbsp;'.repeat(r.depth);
+    const name = r.depth ? `${indent}↳ ${escapeCell(r.label)}` : `**${escapeCell(r.label)}**`;
+    const from = r.inherited ?? r.node;
+    const suffix = r.inherited ? ' ⇧' : '';
+    const tiers = tiersOf(from);
+    L.push(`| ${name} | ${statusCell(r.node)} | ${tiers.length ? tiers.join(', ') + suffix : ''} | ${revisionsOf(from).map((v) => `\`${v}\``).join(', ')} |`);
+  }
+}
+
 function renderCard(id, entry, notes, verified, observed) {
   const m = entry.metadata ?? {};
   const src = m.source ?? {};
@@ -497,23 +510,22 @@ function renderCard(id, entry, notes, verified, observed) {
   L.push('|---|---|---|---|');
   for (const [key, label] of CAPABILITY_ORDER) {
     const value = entry[key];
+    if (key === 'extensions') {
+      L.push(`| **${label}** | | | |`);
+      const names = [...TRACKED_EXTENSIONS, ...Object.keys(value ?? {}).filter((n) => !TRACKED_EXTENSIONS.includes(n))];
+      for (const name of names) {
+        if (value?.[name] === undefined) L.push(`| &nbsp;&nbsp;↳ ${escapeCell(name)} | — not recorded | | |`);
+        else capabilityTableRows(L, capabilityRows(name, name, value[name], 1));
+      }
+      continue;
+    }
     if (value === undefined) {
       L.push(`| ${label} | — not recorded | | |`);
       continue;
     }
-    for (const r of capabilityRows(key, label, value)) {
-      const indent = '&nbsp;&nbsp;'.repeat(r.depth);
-      const name = r.depth ? `${indent}↳ ${escapeCell(r.label)}` : `**${escapeCell(r.label)}**`;
-      const from = r.inherited ?? r.node;
-      const suffix = r.inherited ? ' ⇧' : '';
-      const tiers = tiersOf(from);
-      L.push(
-        `| ${name} | ${statusCell(r.node)} | ${tiers.length ? tiers.join(', ') + suffix : ''} | ${revisionsOf(from)
-          .map((v) => `\`${v}\``)
-          .join(', ')} |`,
-      );
-    }
+    capabilityTableRows(L, capabilityRows(key, label, value));
   }
+
   L.push('');
   L.push('`●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability\'s evidence');
   L.push('');

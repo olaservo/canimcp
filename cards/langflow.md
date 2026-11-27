@@ -53,10 +53,12 @@ Visual builder for AI flows and agents, served as a web app and a desktop app. I
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ pooledSessions | ● full | read | `2025-11-25` |
@@ -95,10 +97,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — logging/setLevel is never called and no logging_callback is passed, so the SDK's default callback discards notifications/message. Langflow's own logs and the mcp.tool.call tracing span record client-side events only.
 - **instructions** — The stdio path discards the InitializeResult. The HTTP and SSE paths keep it on the session only so a pinned preset can compare serverInfo. instructions is never read or put in front of a model.
 - **icons** — A tool keeps its name, description, inputSchema and outputSchema. Tool icons and the server's icons and websiteUrl are not read.
-- **tasks** — No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers stay at their defaults, which build no capability.
 - **jsonSchema** — inputSchema is rebuilt as a Pydantic model by create_input_schema_from_json_schema, and the model-facing schema comes from that model. The root must have type object. Otherwise the conversion raises ValueError, and update_tools re-raises it, so one such tool fails the whole server's tool load. The dialect named by $schema is not read.
 - **jsonSchema.features** — anyOf becomes the first non-null subtype, or T \| None for a two-member nullable. $ref resolves by its last path segment against $defs only, and a missing or circular target becomes a string. A self-referencing object becomes dict. oneOf and allOf without a type become Any. additionalProperties false drops extra keys, and anything else keeps them. enum and the constraint keywords are not carried into the model.
 - **extensions.io.modelcontextprotocol/ui** — Not declared, and no code reads a tool's _meta.ui or a ui:// resource. Tool _meta is not kept at discovery.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers stay at their defaults, which build no capability.
 - **bonusFeatures.modelInitiatedResourceRead** — There is no resource support of any kind.
 - **bonusFeatures.pooledSessions** — One MCPSessionManager in the component cache keeps up to 10 live sessions per server, keyed by command, args and env for stdio and by URL and headers for HTTP. Runs and chat sessions that reach the same server reuse a live session. Idle sessions are reaped after 400 s. A tool call that fails with a closed connection discards that session and retries once on a new one.
 - **bonusFeatures.pinnedToolContracts** — Preset components shipped by bundles (IBM watsonx.data, Confluent) can pin a server's endpoint, transport, tool names, argument and result schemas, a digest of tools/list and serverInfo. A mismatch at load raises an error. Unpinned tools are hidden, and pinned argument schemas are checked again at call time.
@@ -117,7 +119,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [mcp/client/session.py:85-92,166-173](https://pypi.org/project/mcp/1.30.0/) — *elicitation*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
 - [mcp/client/session.py:95-101,174-181](https://pypi.org/project/mcp/1.30.0/) — *roots*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
 - [mcp/client/session.py:104-107,628-633](https://pypi.org/project/mcp/1.30.0/) — *logging*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default logging callback is a no-op.
-- [mcp/client/session.py:155-158,193](https://pypi.org/project/mcp/1.30.0/) — *tasks*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
+- [mcp/client/session.py:155-158,193](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-20 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel.
 
 ## Provenance
 

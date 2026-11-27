@@ -57,10 +57,12 @@ Python framework and CLI for building and running agents, from the maintainer of
 | **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ○ unsupported | read | `2026-07-28` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
@@ -101,8 +103,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — logging/setLevel is never called and no handler renders a notifications/message. On the handshake path a log notification reaches the generic server-notification callback, which is only ever assigned in a unit test.
 - **instructions** — The server's instructions string is read and injected into the system prompt through a {{serverInstructions}} resolver, re-resolved when servers are attached or detached. Suppressible per server with include_instructions: false, and the UI reports both whether a server sent instructions and whether they are enabled.
 - **icons** — No icon handling anywhere in the MCP client.
-- **tasks** — No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with "tasks" — the enum member is the only trace.
 - **extensions.io.modelcontextprotocol/skills** — SEP-2640, now Final, implemented against locally-declared wire models because the Python SDK (mcp 2.3.0) carries none. The models followed draft d7490ecd in August and follow the stable Skills extension now. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. A skill's resources are a manifest of uri, digest and size, or the string dynamic; a dynamic skill is listed and cannot be installed. Skill resources are verified against their size and SHA-256 digest before install, under size and count limits fast-agent chose itself.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with "tasks" — the enum member is the only trace.
 - **bonusFeatures.modelInitiatedResourceRead** — Off by default. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. An agent configured with harness_tools: true (false by default) also gets a get_resource tool that takes a URI and an optional server name and reads an attached MCP resource, checked against the agent's resources filter. A default agent gives the model no mechanism.
 - **bonusFeatures.protocolEraForcing** — protocol_mode: auto \| modern \| legacy, global or per server, also settable per connection from the CLI. modern subclasses the SDK client so a failed discover unwinds the transport instead of silently falling back. The negotiated era and how it was reached are shown in /mcp.
 - **bonusFeatures.transportDiagnostics** — Every frame is attributed to a channel — stdio, GET, POST (JSON), POST (SSE), listen, resumption — and rendered as a bucketed timeline in /mcp. The channel for a POST is decided from the response content type and the request method, so a subscriptions/listen stream is separated from ordinary SSE traffic. Discovery responses are accounted separately so a probe rejection is not counted as a transport error.

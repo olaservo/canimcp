@@ -59,10 +59,12 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ◐ partial | read | `2025-11-25` |
@@ -105,8 +107,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — The adapter registers no handler for notifications/message and never calls setLoggingLevel.
 - **instructions** — adapter.instructions holds only the resource and prompt text the application asked for. The adapter never reads the server's initialize instructions. An application can append client.getInstructions() to the agent's instructions itself.
 - **icons** — The adapter copies a tool's name, description and inputSchema only.
-- **tasks** — Each call is one callTool that is awaited to its result.
 - **extensions.io.modelcontextprotocol/ui** — Tool _meta is not read, so a tool marked app-only is given to the model like any other.
+- **extensions.io.modelcontextprotocol/tasks** — Each call is one callTool that is awaited to its result.
 - **bonusFeatures.modelInitiatedResourceRead** — Resources are read only at construction, from URIs the application lists.
 - **bonusFeatures.toolCallCancellation** — The turn's AbortSignal is passed as callTool's third argument, the options position in SDK v1. @modelcontextprotocol/client 2.4.0 takes options second, so with that client the signal is not received. Read from source and the two packages. No cancellation was run.
 - **bonusFeatures.requestCorrelationMeta** — Off by default. createMcpAdapter(client, { propagateCorrelation: true }) sends a random UUID as _meta["libfx/correlationId"] on each tools/call. It is the only _meta libfx writes.

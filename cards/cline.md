@@ -53,10 +53,12 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 | **Logging** | ◐ partial | read | `2024-11-05`, `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2024-11-05`, `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ mcpRemoteProxyRewrite | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sharedSettingsFile | ● full | read | `2025-11-25` |
@@ -92,10 +94,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — The extension handles notifications/message and routes it to the active task, or buffers it when no task is running. It never calls logging/setLevel, so the level is whatever the server defaults to. Any other notification is written to the extension log. The CLI handles no notifications.
 - **instructions** — The initialize result's instructions field is never read on either surface.
 - **icons** — No icon handling in either MCP implementation.
-- **tasks** — Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.
 - **bonusFeatures.mcpRemoteProxyRewrite** — The CLI recognizes a stdio config of exactly `npx [-y] mcp-remote <url>` with no env and no extra arguments, and rewrites it to a native Streamable HTTP transport. Cline's own OAuth then handles the server, instead of a child process opening a browser as a side effect of enabling the server. The extension does not do this rewrite, so the same settings file means different things to the two surfaces.
 - **bonusFeatures.sharedSettingsFile** — The extension, the CLI and the JetBrains plugin read and write one settings file at ~/.cline/data/settings/cline_mcp_settings.json, under a cross-process lock with atomic replace. The extension watches it and fingerprints the connection-relevant content, so OAuth churn from another process does not trigger a reconnect loop but a token written elsewhere does.
 - **extensions.io.modelcontextprotocol/ui** — Declared by @cline/core with a mimeTypes list of text/html;profile=mcp-app only when the session config sets mcpApps: true, which defaults to false. No app in the repo sets it, so the CLI and the extension declare no extensions. The extension's own client never declares it.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.
 
 ## Verified by the probe
 

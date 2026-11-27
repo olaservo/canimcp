@@ -53,13 +53,15 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | **Logging** | ◐ partial | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2025-06-18` |
 | **Icons** | ◐ partial | read | `2025-06-18` |
-| **Tasks** | ○ unsupported | read | `2026-07-28` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-06-18` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | &nbsp;&nbsp;↳ openai/form | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/elicitation | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/standard-form-input | ◐ partial | read | `2025-06-18` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-06-18` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-06-18` |
 
@@ -90,11 +92,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — notifications/message is mapped onto tracing levels and written to Codex's own log, not shown in the UI. logging/setLevel is never sent, and neither is the io.modelcontextprotocol/logLevel _meta key that replaces it, so on a 2026-07-28 session a conforming server sends nothing and the handler is unreachable.
 - **instructions** — Server instructions are read from the initialize result and attached to each of that server's tools when the catalog is built.
 - **icons** — Server icons are parsed from the initialize result and carried into McpServerInfo. No rendering path was found in the crates read, and tool-level icons are not handled.
-- **tasks** — No tasks/* calls at this commit.
 - **extensions.openai/form** — A vendor elicitation extension. An openai/form request carries message and requestedSchema and is routed into the same elicitation path as elicitation/create. Declared only when the app-server host asks for it, or when the legacy form-elicitation flag is set.
 - **extensions.openai/elicitation** — A vendor elicitation extension. Method openai/elicitation/create with form and userVerification modes. Declared only when the app-server host declares it; the TUI and codex exec declare none of the four extensions. userVerification is stripped for every server except the host-owned Apps server.
 - **extensions.openai/standard-form-input** — Client-only extension, never projected to downstream servers.
 - **extensions.io.modelcontextprotocol/ui** — Forwarded to servers only when the app-server host declares it. Codex keeps just the four extension namespaces it knows and drops anything else the host declares.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks/* calls at this commit.
 - **bonusFeatures.modelInitiatedResourceRead** — list_mcp_resources, list_mcp_resource_templates and read_mcp_resource are registered as built-in tools whenever any MCP server is configured, with no feature gate. Pagination cursors are passed to and from the model.
 
 ## Verified by the probe

@@ -55,10 +55,12 @@ Code editor with a built-in agent. Zed calls MCP servers context servers and spe
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ○ unsupported | read | `2025-11-25` |
@@ -97,8 +99,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No handler for notifications/message and no logging/setLevel call. Server stderr goes to Zed's log.
 - **instructions** — InitializeResponse has no instructions field, so server instructions are discarded at parse time.
 - **icons** — No type in types.rs has an icons or websiteUrl field, including Tool and Implementation.
-- **tasks** — No tasks capability and no tasks methods.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code and no extension declared. The experimental field is always None.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks capability and no tasks methods.
 - **bonusFeatures.modelInitiatedResourceRead** — No resource tools are offered to the model.
 - **bonusFeatures.toolCallCancellation** — The client can send notifications/cancelled through request_with, and nothing calls it. A user cancel or a timeout on a tool call drops the pending request without notifying the server.
 

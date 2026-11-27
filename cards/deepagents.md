@@ -61,10 +61,12 @@ LangChain's Python agent harness. The core deepagents library has no MCP code an
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ◐ partial | read | `2025-11-25` |
@@ -110,8 +112,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — Receives and does not steer. Each per-server client gets a log handler that writes notifications/message to the deepagents_code.mcp_tools Python logger at the level the server chose, tagged with the server name and the MCP logger name. The records go to the Python logging of deepagents-code. They do not reach the model. logging/setLevel is never sent.
 - **instructions** — The instructions string from the initialize result is available on the FastMCP client and deepagents-code does not read it. langchain.mcp reads server_info from the client it is given, which here is the in-process router, and does not read instructions.
 - **icons** — No reference to icons or websiteUrl under libs/code. The server and tool records the /mcp viewer is given hold names, descriptions, transport, status and input schemas.
-- **tasks** — No tasks/* call. FastMCP's ProxyClient turns off the client's internal tasks extension, so nothing about tasks is declared to a server.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps support. No extension is declared, _meta.ui is not read, and a tool whose visibility leaves out the model is offered to the model like any other.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks/* call. FastMCP's ProxyClient turns off the client's internal tasks extension, so nothing about tasks is declared to a server.
 - **bonusFeatures.modelInitiatedResourceRead** — No resource support of any kind, so the model has no way to read one.
 - **bonusFeatures.deferredToolLoading** — models.provider_tool_search defaults to on. On a listed OpenAI Responses or Anthropic model, reached directly or through the LangSmith gateway, MCP tool schemas are left to the provider's native tool search. Every other route loads all schemas up front.
 - **bonusFeatures.sessionRecovery** — A FastMCP middleware on each mounted proxy catches a closed connection during tools/call, tears the session down so the next call reconnects, and returns an isError result saying the operation may have completed and was not retried. The failed call is never replayed. A failed token refresh is returned as an error result carrying the login command.

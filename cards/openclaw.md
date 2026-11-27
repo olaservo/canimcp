@@ -42,10 +42,12 @@ Multi-channel AI gateway that runs agents across chat surfaces and remote nodes.
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ◐ partial | read | `2025-11-25` |
 | Icons | — not recorded | | |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -68,8 +70,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **roots** — Not declared and not implemented for configured servers, so unlike goose, opencode and fast-agent this client does not reach the roots.listChanged declaration gap at all. A roots/list handler and a sendRootsListChanged call exist only on the native projection bridge, which nothing in production acquires.
 - **logging** — No logging/setLevel call. A notifications/message handler exists only on the native projection bridge. Server stderr on stdio is drained without logging its content.
 - **instructions** — The agent bundle reads the initialize result's instructions and puts them in the system prompt under an "MCP Server Instructions" heading, per server, cut at 2,000 characters, and only while that server backs at least one tool in the prompt. The node host does not read them.
-- **tasks** — No tasks/* call anywhere in the MCP client files.
 - **extensions.io.modelcontextprotocol/ui** — Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares no extensions and no capabilities at all. The same flag also turns on the elicitation declaration.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks/* call anywhere in the MCP client files.
 
 ## Research notes
 

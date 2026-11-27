@@ -61,12 +61,12 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | **Logging** | ◐ partial | read | `2025-11-25`, `2026-07-28` |
 | **Instructions** | ○ unsupported | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ○ unsupported | read | `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ◇ opt-in | read | `2026-07-28` |
@@ -110,11 +110,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — logging_callback writes each notifications/message to the agent_framework._mcp Python logger at the mapped level. The level sent to the server is that logger's own level at connect time, not its effective level. With the level unset nothing is sent: on 2026-07-28 no request carries the logLevel opt-in and no messages arrive, and on the handshake path logging/setLevel is not called and the server's default applies. .NET: no logging call in dotnet/src.
 - **instructions** — The server's instructions string is not read. After connecting the framework reads protocol_version, server_capabilities and initialize_result. The word instructions appears in _mcp.py once, for the system prompt of a sampling request. .NET: no ServerInstructions reference in dotnet/src.
 - **icons** — A tool becomes a FunctionTool with a name, a description and an input schema. icons, title and websiteUrl are not read.
-- **tasks** — task_options is accepted, ignored and warned as deprecated, with the message that the Python SDK does not expose the 2026 Tasks extension runtime. Tools that require tasks are left out of the catalog. .NET differs: see the io.modelcontextprotocol/tasks extension row.
 - **jsonSchema** — inputSchema is passed to FunctionTool unchanged, apart from an empty properties added to an object schema that has none. Whether FunctionTool validates the model's arguments against it was not read. A prompt's arguments are turned into an object schema of string properties. outputSchema validation is the SDK's.
 - **extensions.io.modelcontextprotocol/skills** — Python: MCPSkillsSource is experimental and opt-in, on a Client the application supplies. It reads skill://index.json with resources/read and loads skill-md and archive entries from it. It does not call skills/list or skills/get, does not check the server's extensions capability, and declares nothing. .NET: AgentMcpSkillsSource returns no skills unless the server declares io.modelcontextprotocol/skills, then sends skills/list and skills/get through McpClient.SendRequestAsync with result types it defines itself, and reads files with resources/read.
-- **extensions.io.modelcontextprotocol/tasks** — Python: not supported, as the tasks row says. .NET: McpClient.ListAgentToolsWithTasksAsync wraps each tool so a call goes through CallToolAsTaskAsync from ModelContextProtocol.Extensions.Tasks 2.2.0. The wrapper polls with GetTaskAsync, answers input_required with UpdateTaskAsync, and calls CancelTaskAsync when the local call is cancelled. It is opt-in and ships in Microsoft.Agents.AI.Mcp, which carries an alpha version suffix. The Extensions.Tasks source was not read at 2.2.0, so what it puts on the wire is not recorded here.
 - **extensions.io.modelcontextprotocol/ui** — No file under python/packages/core reads a ui key or a resourceUri in tool _meta. Tool _meta is kept only to send back on tools/call. The extension is not declared.
+- **extensions.io.modelcontextprotocol/tasks** — task_options is accepted, ignored and warned as deprecated, with the message that the Python SDK does not expose the 2026 Tasks extension runtime. Tools that require tasks are left out of the catalog. .NET: McpClient.ListAgentToolsWithTasksAsync wraps each tool so a call goes through CallToolAsTaskAsync from ModelContextProtocol.Extensions.Tasks 2.2.0. The wrapper polls with GetTaskAsync, answers input_required with UpdateTaskAsync, and calls CancelTaskAsync when the local call is cancelled. It is opt-in and ships in Microsoft.Agents.AI.Mcp, which carries an alpha version suffix. The Extensions.Tasks source was not read at 2.2.0, so what it puts on the wire is not recorded here.
 - **bonusFeatures.modelInitiatedResourceRead** — MCPTool gives the model no resource tool and never calls resources/read. When MCPSkillsSource is configured the skills provider can read a skill's files from the server, which covers skill resources only.
 - **bonusFeatures.deferredToolLoading** — use_progressive_disclosure is off by default and marked experimental. When on, the model sees list_mcp_tools, load_tool and unload_tool plus any always_load tools, and a tool joins the live list when the model loads it.
 - **bonusFeatures.providerManagedMcp** — get_mcp_tool on the OpenAI, Anthropic, Foundry and Gemini chat clients builds a provider-hosted MCP tool. The provider connects to the server and the framework speaks no MCP to it.

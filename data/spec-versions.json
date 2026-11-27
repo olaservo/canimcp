@@ -439,7 +439,7 @@
   },
 
   "extensions": {
-    "$comment": "Optional capabilities beyond the core protocol, identified by reverse-DNS names. The `extensions` field was added to ClientCapabilities and ServerCapabilities in 2026-07-28 (SEP-2575); the earlier equivalent was the `experimental` capability field. This catalog lists KNOWN extensions; a client records which it supports via its own `extensions` map in clients.json. `stage` is the lifecycle stage from https://modelcontextprotocol.io/extensions/overview (SEP-3392: experimental, beta, stable), checked 2026-11-20. A beta extension also carries `destination` (stable, core, or null when not yet stated).",
+    "$comment": "Optional capabilities beyond the core protocol, identified by reverse-DNS names. The `extensions` field was added to ClientCapabilities and ServerCapabilities in 2026-07-28 (SEP-2575); the earlier equivalent was the `experimental` capability field. This catalog lists KNOWN extensions; a client records which it supports via its own `extensions` map in clients.json. `stage` is the lifecycle stage from https://modelcontextprotocol.io/extensions/overview (SEP-3392: experimental, beta, stable), checked 2026-11-20. A beta extension also carries `destination` (stable, core, or null when not yet stated). `tracked: true` marks an extension every client read records, so a client card lists it as not recorded when nothing has been read.",
     "capabilityField": {
       "introducedIn": "2026-07-28",
       "sep": "SEP-2575",
@@ -449,6 +449,7 @@
     "known": {
       "io.modelcontextprotocol/ui": {
         "stage": "stable",
+        "tracked": true,
         "introducedIn": "2025-11-25",
         "sep": "SEP-1865",
         "repo": "https://github.com/modelcontextprotocol/ext-apps",
@@ -488,10 +489,19 @@
         "introducedIn": "2026-07-28",
         "sep": "SEP-2663",
         "repo": "https://github.com/modelcontextprotocol/ext-tasks",
-        "notes": "Durable/async requests (polling via tasks/get, client input via tasks/update). Was a core experimental feature in 2025-11-25 before being moved into this extension."
+        "notes": "Durable/async requests (polling via tasks/get, client input via tasks/update). Was a core experimental feature in 2025-11-25 before being moved into this extension. The registry records tasks under this key for every revision: a byProtocolVersion[\"2025-11-25\"] row describes the core experimental feature.",
+        "tracked": true,
+        "alias": "tasks",
+        "features": {
+          "tasks": {
+            "introducedIn": "2025-11-25",
+            "notes": "Lifecycle under capabilities.tasks."
+          }
+        }
       },
       "io.modelcontextprotocol/skills": {
         "stage": "beta",
+        "tracked": true,
         "destination": null,
         "sep": "SEP-2640",
         "repo": "https://github.com/modelcontextprotocol/ext-skills",
@@ -505,6 +515,7 @@
       },
       "io.modelcontextprotocol/events": {
         "stage": "beta",
+        "tracked": true,
         "destination": null,
         "sep": "SEP-3415",
         "repo": "https://github.com/modelcontextprotocol/ext-events",

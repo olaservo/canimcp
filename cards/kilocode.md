@@ -50,10 +50,12 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ patchedSdkSessionRecovery | ● full | read | `2025-11-25` |
@@ -87,8 +89,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — Receives notifications/message into the log. Never calls logging/setLevel.
 - **instructions** — Server instructions are trimmed and carried per server.
 - **icons** — No icon handling in the client.
-- **tasks** — Commented out against opencode issue 28567.
 - **extensions.io.modelcontextprotocol/ui** — Behind KILO_EXPERIMENTAL_MCP_APPS. A tool with _meta.ui.resourceUri gets mcpApp metadata on its tool part, and two experimental HTTP endpoints read a resource and call a tool for a widget. The extension is not declared in the capability object, and no widget host is in the repo.
+- **extensions.io.modelcontextprotocol/tasks** — Commented out against opencode issue 28567.
 - **bonusFeatures.modelInitiatedResourceRead** — The same three tool names as opencode and Codex, each permission-gated.
 - **bonusFeatures.patchedSdkSessionRecovery** — opencode's session-recovery patch carried forward onto SDK 1.32.1: a 404 on a request carrying a session id re-initializes and retries once. The patch also adds offline_access scope selection and keeps output validators across paginated tools/list pages.
 

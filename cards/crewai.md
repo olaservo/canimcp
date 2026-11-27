@@ -61,10 +61,12 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionPerToolCall | ● full | read | `2025-11-25` |
@@ -112,10 +114,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — logging/setLevel is never called and no logging_callback is passed, so the SDK's default callback discards a notifications/message. crewAI's own MCP events on its event bus are client-side records of connections and tool calls.
 - **instructions** — The InitializeResult is discarded at all three call sites, so the server instructions string is never read or shown to a model.
 - **icons** — A tool is reduced to its name, description and inputSchema at discovery. No icons or websiteUrl field is read.
-- **tasks** — No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers are left at their defaults, which build no capability.
 - **jsonSchema** — A tool's inputSchema is not passed through. create_model_from_schema rebuilds it as a Pydantic model, and the model-facing schema is generated from that model. If the conversion raises, the native route registers the tool with no typed schema and logs a warning. The dialect named by $schema is not read.
 - **jsonSchema.features** — oneOf is treated as anyOf. A type given as a list becomes a union. additionalProperties is forced to false on every object. Constraint keywords such as pattern and minimum are copied into field descriptions on the native route. Keywords outside this list were not traced.
 - **extensions.io.modelcontextprotocol/ui** — Not declared, and no code reads _meta.ui or a ui:// resource. A tool marked app-only is offered to the model like any other, as the probe saw on 1.15.37.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers are left at their defaults, which build no capability.
 - **bonusFeatures.modelInitiatedResourceRead** — There is no resource support of any kind, so the model has no way to read one.
 - **bonusFeatures.sessionPerToolCall** — Each tool call on the native route builds a new MCPClient and transport, connects, initializes, calls and disconnects. The stated reason is that parallel calls sharing a session caused anyio cancel-scope errors.
 - **bonusFeatures.toolFiltering** — tool_filter on a server config takes a static allow and block list or a callable that receives the agent and server name. It runs on the discovered list before tools are built.
@@ -205,8 +207,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [mcp/client/session.py:85-92,166-173](https://pypi.org/project/mcp/1.30.0/) — *elicitation*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default callback and the capability built from it.
 - [mcp/client/session.py:95-101,174-181](https://pypi.org/project/mcp/1.30.0/) — *roots*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default callback and the capability built from it.
 - [mcp/client/session.py:104-107,632-633](https://pypi.org/project/mcp/1.30.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default logging callback is a no-op.
-- [mcp/client/session.py:193](https://pypi.org/project/mcp/1.30.0/) — *tasks*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222).
 - [notes/crewai-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/crewai-tool-result-handling.md) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the crewAI source at d7dfa0e. No file under lib/crewai/src/crewai/mcp, the two MCP tool classes or the crewai-tools adapter changed between d7dfa0e and 758b2c1d.
+- [mcp/client/session.py:193](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222).
 
 ## Provenance
 

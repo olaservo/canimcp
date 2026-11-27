@@ -58,10 +58,12 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 | **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ○ unsupported | read | `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ● full | read | `2026-07-28` |
@@ -107,9 +109,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No logging/setLevel, and the per-request _meta carries no logLevel key. The notification handler has no branch for notifications/message, so one is dropped. A stdio server's stderr goes to the debug log, which is a separate channel.
 - **instructions** — Kept from the last discover or initialize result. They reach the model with a tool's schema when the toolbox opens or runs that server's tool, cut at the mcp_server_instructions_bytes limit. They are not in the system prompt.
 - **icons** — A tool's icons are validated, stored and hashed into the definition digest. Nothing renders them.
-- **tasks** — No tasks request. A result whose resultType is anything but complete or input_required, "task" included, is read as unrecognized and treated as invalid.
 - **jsonSchema** — A tool schema that names any other $schema is rejected and the tool is left out. Elicitation forms accept only a flat object of primitive properties. How much of a tool's inputSchema is checked before a call was not read.
 - **extensions.io.modelcontextprotocol/ui** — The declared capability object holds elicitation or nothing. No file under src/ names ui:// or resourceUri, and a tool marked app-only stays available to the model.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks request. A result whose resultType is anything but complete or input_required, "task" included, is read as unrecognized and treated as invalid.
 - **bonusFeatures.modelInitiatedResourceRead** — fx reads no resources at all.
 - **bonusFeatures.deferredToolLoading** — MCP servers are listed in a toolbox menu and their tools stay out of the tool list, so every request sends the same tools. The toolbox tool searches, opens and runs them. The probe ran 0.0.16, where capability_search and mcp_select_tool did this job.
 - **bonusFeatures.lazyServerStart** — Each server starts when something first needs its tool list or calls it, and is kept until a reload drops it.

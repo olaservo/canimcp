@@ -58,10 +58,12 @@ TypeScript coding agent CLI from Earendil Works, formerly badlogic/pi-mono. Its 
 | **Logging** | ◐ partial | read | `2025-11-25` |
 | **Instructions** | ◐ partial | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ codeModeToolExposure | ● full | read | `2025-11-25` |
@@ -107,9 +109,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — notifications/message is appended to mcp.log in the agent directory, one line per message with time, server, level and logger, and the file rotates to mcp.log.1 past 5 MB. Nothing is shown in the session. logging/setLevel is never sent.
 - **instructions** — One line reaches the prompt. For a server with codemode or deferred tools, the first line of its instructions is the server's summary in the mcp_servers section of the system prompt, cut to 250 characters, and only when the entry has no description of its own. The full text is not placed in the prompt: codemode scripts read it with describeNamespace(), and tool_search ranks tools by it. A server whose tools are all direct is not listed in that section.
 - **icons** — No icon is rendered. The Tool type has no icons field, and resource listings drop icons before the model sees them.
-- **tasks** — No tasks capability and no tasks request. execution.taskSupport is in the Tool type and nothing reads it, so a tool that requires task augmentation is called with a plain tools/call. The pi-mcp README lists tasks as outside the initial core.
 - **jsonSchema** — inputSchema goes to the provider with type defaulted to object and an empty properties added when missing; other keywords are kept. Tool arguments are validated before the call by pi's own validator, @earendil-works/pi-schema, which implements drafts 2020-12 and 7 and is called without a draft option, so 2020-12 applies. A $ref that names nothing rejects only the value at its place. Whether a $schema keyword changes the draft was not read. outputSchema is never used to validate a result.
 - **extensions.io.modelcontextprotocol/ui** — No extensions or experimental capability is declared. Resources with ui:// URIs or the mcp-app profile are filtered out of resource listings because pi does not render them. _meta.ui is not read, so a tool marked app-only is registered like any other.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks capability and no tasks request. execution.taskSupport is in the Tool type and nothing reads it, so a tool that requires task augmentation is called with a plain tools/call. The pi-mcp README lists tasks as outside the initial core.
 - **bonusFeatures.modelInitiatedResourceRead** — The same three tool names as Codex and opencode, on purpose: the source says models trained on those tools use them unchanged. The tools take the widest exposure among the servers with resources, so on a default install a codemode script calls them and the model has no declaration for them. A resource_link block in a tool result names read_mcp_resource and the server.
 - **bonusFeatures.codeModeToolExposure** — The default exposure. An MCP tool is callable as tools.mcp__<server>__<tool>() from JavaScript the model writes for the codemode tool. Scripts find tools with searchTools(), describeTool(), describeNamespace() and ALL_TOOLS. The codemode tool is activated when an enabled server has codemode tools, unless autoEnableCodemode is false. Other exposures are deferred, direct and hidden, set per server or per tool.
 - **bonusFeatures.deferredToolLoading** — Opt-in with exposure deferred on a server or a tool. The tools are not declared until the tool_search tool, a BM25 ranker over tool and namespace text, loads matches for the next model call. Loaded tools are then called directly. The default route is codemode, not this one.

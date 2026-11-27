@@ -58,10 +58,12 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | **Logging** | ○ unsupported | read | `2026-07-28` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2025-11-25` |
@@ -107,9 +109,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — ClientSession is built without log_level, so no request opts in to log delivery.
 - **instructions** — The initialize result is discarded after the handshake. Nothing under src reads the server instructions string.
 - **icons** — No icon field is read. McpTool keeps the tool title, from title or annotations.title, and nothing else from the display metadata.
-- **tasks** — No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.
 - **jsonSchema** — ADK validates neither tool arguments nor results itself. The input schema goes to the model as parameters_json_schema when JSON_SCHEMA_FOR_FUNC_DECL is on, which is the registry default, and is converted to a Gemini Schema otherwise. The output schema is checked by the SDK, which picks a jsonschema validator class from the schema's own $schema.
 - **extensions.io.modelcontextprotocol/ui** — McpTool reads _meta.ui.resourceUri, or the flat ui/resourceUri key, from the tool definition. After a successful call it adds a UiWidget with provider mcp to the event actions, carrying the resource URI, the tool definition and the call arguments. ADK does not declare the extension, does not fetch the ui:// resource, and has no caller for the visibility property, so an app-only tool is still offered to the model. The bundled dev UI under src/google/adk/cli/browser has no reference to the widget field.
+- **extensions.io.modelcontextprotocol/tasks** — No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.
 - **bonusFeatures.modelInitiatedResourceRead** — Opt-in through use_mcp_resources=True. One tool, load_mcp_resource, which takes resource names and has no URI argument. The tool result is a status stub and the contents are appended to the next model request.
 - **bonusFeatures.protocolEraForcing** — One process-wide switch. ADK_ENABLE_MCP_MODERN_PROTOCOL, or override_feature_enabled on the private _MCP_MODERN_PROTOCOL member, moves every connection from handshake-only to a server/discover probe with handshake fallback. It needs SDK 2.x. There is no per-server setting and no modern-only mode.
 - **bonusFeatures.sessionRecovery** — The recovery path keys on the session-terminated error that the SDK raises for a dropped Mcp-Session-Id. Whether anything triggers it on a connection with no session id was not checked.

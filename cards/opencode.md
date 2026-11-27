@@ -54,14 +54,15 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25`, `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionRecovery | ● full | read | `2025-11-25` |
@@ -96,7 +97,6 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No notifications/message handler is registered and logging/setLevel is never called. Server stderr on stdio goes to the debug log, which is not MCP logging. At 7cde8329 the client received notifications/message and routed it to the server log.
 - **instructions** — Server instructions are trimmed and carried per server, then rendered into an <mcp_instructions> block. A server's instructions are included only when the session can reach at least one of its tools. With the mcp_skills flag, which is off in release builds, a server that lists any non-dynamic skill has its instructions left out.
 - **icons** — No icon handling. The tool type opencode keeps from tools/list drops icons.
-- **tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
 - **bonusFeatures.modelInitiatedResourceRead** — Two tools, list_mcp_resources and read_mcp_resource, registered in the opencode namespace, so the effective names are opencode_list_mcp_resources and opencode_read_mcp_resource. The list tool returns resources and templates together, for one server or all. Each call is permission-gated. Image and PDF blobs are passed to the model as files.
 - **bonusFeatures.sessionRecovery** — A 404, or a 400 with body "Bad Request: Server not initialized", on a connection that holds an Mcp-Session-Id is mapped to SessionExpiredError. opencode then reconnects and runs the request once more. This is opencode's own code; the SDK patch no longer contains it. Tool calls, prompt gets, resource reads and resource listing recover this way. At 7cde8329 the recovery was a patch to SDK 1.29.0, recorded here as patchedSdkSessionRecovery. It applies to the handshake era only: a 2026-07-28 connection carries no session id.
 - **extensions.io.modelcontextprotocol/events** — Declared on every connection in both eras; the mcp_events flag is gone. Event methods are used only after negotiating 2026-07-28 with a server that advertises the extension. An automation can take an MCP event as its trigger, and the model gets opencode_list_mcp_events to find one. Both are registered unconditionally.
@@ -104,6 +104,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/events.poll** — No events/poll call. An event type that does not offer push is rejected, and the list tool leaves such types out.
 - **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe call.
 - **extensions.io.modelcontextprotocol/skills** — Declared only with the mcp_skills flag, which defaults on in local and dev builds and off in releases. For a server that advertises resources it uses the SDK's SkillsClient and registers each skill as <server>:<skill>.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
 - **byProtocolVersion.2025-11-25.roots** — Declared beside elicitation. roots/list returns exactly one root, the file URL of the location directory. A pooled connection shared across directories declares no roots and leaves roots/list unanswered.
 - **byProtocolVersion.2025-11-25.elicitation** — The server sends elicitation/create as its own request.
 - **byProtocolVersion.2025-11-25.elicitation.url** — notifications/elicitation/complete settles the form, matched by elicitationId.

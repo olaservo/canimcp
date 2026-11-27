@@ -863,20 +863,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks/* calls at this commit.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "openai/codex",
-          "date": "2026-11-26",
-          "commit": "475e13ab",
-          "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
-        }
-      ]
-    },
     "extensions": {
       "openai/form": {
         "status": "partial",
@@ -956,6 +942,20 @@
             "date": "2026-11-26",
             "commit": "475e13ab",
             "path": "codex-rs/codex-mcp/src/client_capabilities.rs:58-88"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks/* calls at this commit.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "475e13ab",
+            "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
           }
         ]
       }
@@ -1584,20 +1584,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "anomalyco/opencode",
-          "date": "2026-11-26",
-          "commit": "82d8fc5b",
-          "path": "packages/core/src/mcp/client.ts:430-443"
-        }
-      ]
-    },
     "bonusFeatures": {
       "modelInitiatedResourceRead": {
         "status": "full",
@@ -1886,6 +1872,20 @@
             "commit": "82d8fc5b",
             "path": "packages/core/src/flag/resolve.ts:21-22",
             "note": "Flags default on for local and dev builds and off on any other channel."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "82d8fc5b",
+            "path": "packages/core/src/mcp/client.ts:430-443"
           }
         ]
       }
@@ -2552,20 +2552,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "cline/cline",
-          "date": "2026-11-20",
-          "commit": "20b04272",
-          "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
-        }
-      ]
-    },
     "bonusFeatures": {
       "mcpRemoteProxyRewrite": {
         "status": "full",
@@ -2742,6 +2728,20 @@
         ],
         "research": [
           "cline-declares-no-client-capabilities"
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented, though SDK 1.30.0 carries an experimental tasks client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-20",
+            "commit": "20b04272",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
+          }
         ]
       }
     }
@@ -3415,20 +3415,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with \"tasks\" — the enum member is the only trace.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "evalstate/fast-agent",
-          "date": "2026-11-20",
-          "commit": "288b5339",
-          "path": "src/fast_agent/mcp/mcp_aggregator.py:1962-1998"
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/skills": {
         "status": "full",
@@ -3461,6 +3447,20 @@
         ],
         "research": [
           "fast-agent-ships-skills-over-mcp-ahead-of-the-sdk"
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with \"tasks\" — the enum member is the only trace.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-20",
+            "commit": "288b5339",
+            "path": "src/fast_agent/mcp/mcp_aggregator.py:1962-1998"
+          }
         ]
       }
     },
@@ -4283,21 +4283,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks/* call anywhere in the MCP client files.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "openclaw/openclaw",
-          "date": "2026-11-20",
-          "commit": "3e7c305f",
-          "path": "src/agents",
-          "note": "No tasks/* request in src/agents or src/node-host."
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "opt-in",
@@ -4340,6 +4325,21 @@
         ],
         "research": [
           "openclaw-declares-nothing-unless-mcp-apps-is-on"
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks/* call anywhere in the MCP client files.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-20",
+            "commit": "3e7c305f",
+            "path": "src/agents",
+            "note": "No tasks/* request in src/agents or src/node-host."
+          }
         ]
       }
     },
@@ -5148,21 +5148,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks methods referenced anywhere in the client.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "NousResearch/hermes-agent",
-          "date": "2026-11-20",
-          "commit": "2de9f51b",
-          "path": "tools/",
-          "note": "No tasks/* call in the MCP client."
-        }
-      ]
-    },
     "bonusFeatures": {
       "modelInitiatedResourceRead": {
         "status": "full",
@@ -5547,6 +5532,21 @@
         "push": {
           "status": "unsupported"
         }
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks methods referenced anywhere in the client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-20",
+            "commit": "2de9f51b",
+            "path": "tools/",
+            "note": "No tasks/* call in the MCP client."
+          }
+        ]
       }
     }
   },
@@ -5950,23 +5950,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Commented out against opencode issue 28567.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "Kilo-Org/kilocode",
-          "date": "2026-11-21",
-          "commit": "b2947d7e",
-          "path": "packages/opencode/src/mcp/index.ts:56-67"
-        }
-      ],
-      "research": [
-        "opencode-declares-only-roots"
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "opt-in",
@@ -5988,6 +5971,23 @@
             "commit": "b2947d7e",
             "path": "packages/opencode/src/mcp/index.ts:56-67"
           }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Commented out against opencode issue 28567.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "Kilo-Org/kilocode",
+            "date": "2026-11-21",
+            "commit": "b2947d7e",
+            "path": "packages/opencode/src/mcp/index.ts:56-67"
+          }
+        ],
+        "research": [
+          "opencode-declares-only-roots"
         ]
       }
     },
@@ -6901,91 +6901,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "opt-in",
-      "notes": "Off by default. tasks: true on a server entry declares the io.modelcontextprotocol/tasks extension (SEP-2663). A tools/call answered with resultType task is polled with tasks/get until it ends, and the final CallToolResult becomes the tool result. An input_required task is answered through inputRequests with tasks/update, or suspends the tool call when there is no handler. Aborting the call or reaching maxWaitMs sends tasks/cancel. mcp.tasks exposes get, update and cancel. The SDK rejects a task result, so Mastra rewrites it on the transport before the SDK parses it.",
-      "list": {
-        "status": "unsupported",
-        "notes": "tasks/list is not sent. The methods used are tasks/get, tasks/update and tasks/cancel.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/shared/tasks/constants.ts:10-14"
-          }
-        ]
-      },
-      "cancel": {
-        "status": "opt-in",
-        "notes": "Sent on abort, at maxWaitMs, and through mcp.tasks.cancel(). Only with tasks enabled on the entry.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/tasks/wait.ts:89,121-149"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/configuration.ts:432-435"
-          }
-        ]
-      },
-      "requests": {
-        "tools.call": true
-      },
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mastra-ai/mastra",
-          "date": "2026-11-16",
-          "commit": "bb984550",
-          "path": "packages/mcp/src/client/types.ts:387-405,454-467"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mastra-ai/mastra",
-          "date": "2026-11-16",
-          "commit": "bb984550",
-          "path": "packages/mcp/src/client/client.ts:567,578-582,1987-2001,2147-2253"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mastra-ai/mastra",
-          "date": "2026-11-16",
-          "commit": "bb984550",
-          "path": "packages/mcp/src/client/tasks/intercept.ts:11-41"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mastra-ai/mastra",
-          "date": "2026-11-16",
-          "commit": "bb984550",
-          "path": "packages/mcp/src/client/tasks/requester.ts:16-49"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mastra-ai/mastra",
-          "date": "2026-11-16",
-          "commit": "bb984550",
-          "path": "packages/mcp/src/shared/tasks/capability.ts:14-22"
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -7065,28 +6980,6 @@
           "mastra-declares-only-mcp-apps-and-dropped-roots-and-sampling"
         ]
       },
-      "io.modelcontextprotocol/tasks": {
-        "status": "opt-in",
-        "notes": "Declared with an empty settings object only when the server entry sets tasks. See the tasks row.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/client/client.ts:567,578-582"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "mastra-ai/mastra",
-            "date": "2026-11-16",
-            "commit": "bb984550",
-            "path": "packages/mcp/src/shared/tasks/capability.ts:14-22"
-          }
-        ]
-      },
       "io.modelcontextprotocol/events": {
         "status": "opt-in",
         "notes": "Application API for the draft MCP Events extension (SEP-3415). mcp.events.list() sends events/list, and subscribe() delivers occurrences by webhook (events/subscribe) when the client has a webhook option, else push (events/stream), else poll (events/poll), from the modes the event advertises. Nothing is declared in the client capabilities; the client reads the server's io.modelcontextprotocol/events entry. createMCPEventsTools gives a model mcp_events_list, mcp_events_subscribe and mcp_events_unsubscribe.",
@@ -7144,6 +7037,99 @@
           "status": "opt-in",
           "notes": "events/poll, the fallback when the event offers neither of the others."
         }
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "opt-in",
+        "notes": "Off by default. tasks: true on a server entry declares the io.modelcontextprotocol/tasks extension (SEP-2663). A tools/call answered with resultType task is polled with tasks/get until it ends, and the final CallToolResult becomes the tool result. An input_required task is answered through inputRequests with tasks/update, or suspends the tool call when there is no handler. Aborting the call or reaching maxWaitMs sends tasks/cancel. mcp.tasks exposes get, update and cancel. The SDK rejects a task result, so Mastra rewrites it on the transport before the SDK parses it. The extension is declared with an empty settings object.",
+        "list": {
+          "status": "unsupported",
+          "notes": "tasks/list is not sent. The methods used are tasks/get, tasks/update and tasks/cancel.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "mastra-ai/mastra",
+              "date": "2026-11-16",
+              "commit": "bb984550",
+              "path": "packages/mcp/src/shared/tasks/constants.ts:10-14"
+            }
+          ]
+        },
+        "cancel": {
+          "status": "opt-in",
+          "notes": "Sent on abort, at maxWaitMs, and through mcp.tasks.cancel(). Only with tasks enabled on the entry.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "mastra-ai/mastra",
+              "date": "2026-11-16",
+              "commit": "bb984550",
+              "path": "packages/mcp/src/client/tasks/wait.ts:89,121-149"
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "mastra-ai/mastra",
+              "date": "2026-11-16",
+              "commit": "bb984550",
+              "path": "packages/mcp/src/client/configuration.ts:432-435"
+            }
+          ]
+        },
+        "requests": {
+          "tools.call": true
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/types.ts:387-405,454-467"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/client.ts:567,578-582,1987-2001,2147-2253"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/tasks/intercept.ts:11-41"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/tasks/requester.ts:16-49"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/shared/tasks/capability.ts:14-22"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-16",
+            "commit": "bb984550",
+            "path": "packages/mcp/src/client/client.ts:567,578-582"
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -7382,27 +7368,29 @@
             }
           ]
         },
-        "tasks": {
-          "status": "unsupported",
-          "notes": "Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.",
-          "evidence": [
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "mastra-ai/mastra",
-              "date": "2026-11-16",
-              "commit": "bb984550",
-              "path": "packages/mcp/src/client/tasks/intercept.ts:11-41"
-            },
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "mastra-ai/mastra",
-              "date": "2026-11-16",
-              "commit": "bb984550",
-              "path": "packages/mcp/src/shared/tasks/capability.ts:3-12"
-            }
-          ]
+        "extensions": {
+          "io.modelcontextprotocol/tasks": {
+            "status": "unsupported",
+            "notes": "Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.",
+            "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "mastra-ai/mastra",
+                "date": "2026-11-16",
+                "commit": "bb984550",
+                "path": "packages/mcp/src/client/tasks/intercept.ts:11-41"
+              },
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "mastra-ai/mastra",
+                "date": "2026-11-16",
+                "commit": "bb984550",
+                "path": "packages/mcp/src/shared/tasks/capability.ts:3-12"
+              }
+            ]
+          }
         }
       }
     },
@@ -8239,20 +8227,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks request. A result whose resultType is anything but complete or input_required, \"task\" included, is read as unrecognized and treated as invalid.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "vercel-labs/fx",
-          "date": "2026-11-16",
-          "commit": "c3dc80c4",
-          "path": "src/mcp/protocol/wire.zig:52-60,328-335"
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -8291,6 +8265,20 @@
             "date": "2026-11-16",
             "commit": "c3dc80c4",
             "path": "src/core/mcp_host/runtime.zig:2332-2338"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks request. A result whose resultType is anything but complete or input_required, \"task\" included, is read as unrecognized and treated as invalid.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-16",
+            "commit": "c3dc80c4",
+            "path": "src/mcp/protocol/wire.zig:52-60,328-335"
           }
         ]
       }
@@ -9065,20 +9053,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Each call is one callTool that is awaited to its result.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "vercel-labs/fx",
-          "date": "2026-11-16",
-          "commit": "c3dc80c4",
-          "path": "sdk/mcp.js:82-84"
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
@@ -9091,6 +9065,20 @@
             "date": "2026-11-16",
             "commit": "c3dc80c4",
             "path": "sdk/mcp.js:71-74"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Each call is one callTool that is awaited to its result.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-16",
+            "commit": "c3dc80c4",
+            "path": "sdk/mcp.js:82-84"
           }
         ]
       }
@@ -9993,30 +9981,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Not declared, and the SDK has no tasks request.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "vercel/eve",
-          "date": "2026-11-16",
-          "commit": "0940c042",
-          "path": "packages/eve/src/runtime/connections/mcp-client.ts:153-166",
-          "note": "createMCPClient is called with protocolVersionDiscovery and transport only. No capabilities, name or handlers are passed."
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "@ai-sdk/mcp",
-          "url": "https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99",
-          "date": "2026-11-16",
-          "path": "dist/index.js:2566-2593",
-          "note": "@ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches. assertCapability lists every request method the client can send. Any other method throws \"Unsupported method\"."
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -10134,6 +10098,30 @@
           "status": "unsupported",
           "notes": "Only webhook-deliverable events are offered."
         }
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared, and the SDK has no tasks request.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-16",
+            "commit": "0940c042",
+            "path": "packages/eve/src/runtime/connections/mcp-client.ts:153-166",
+            "note": "createMCPClient is called with protocolVersionDiscovery and transport only. No capabilities, name or handlers are passed."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "@ai-sdk/mcp",
+            "url": "https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99",
+            "date": "2026-11-16",
+            "path": "dist/index.js:2566-2593",
+            "note": "@ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches. assertCapability lists every request method the client can send. Any other method throws \"Unsupported method\"."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -11239,36 +11227,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks capability and no tasks request. execution.taskSupport is in the Tool type and nothing reads it, so a tool that requires task augmentation is called with a plain tools/call. The pi-mcp README lists tasks as outside the initial core.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "earendil-works/pi",
-          "date": "2026-11-16",
-          "commit": "07ece436",
-          "path": "packages/mcp/src/protocol/types.ts:72-85"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "earendil-works/pi",
-          "date": "2026-11-16",
-          "commit": "07ece436",
-          "path": "packages/mcp/src/client.ts:378-386"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "earendil-works/pi",
-          "date": "2026-11-16",
-          "commit": "07ece436",
-          "path": "packages/mcp/README.md:187"
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -11331,6 +11289,36 @@
             "date": "2026-11-16",
             "commit": "07ece436",
             "path": "packages/coding-agent/docs/mcp.md:248"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks capability and no tasks request. execution.taskSupport is in the Tool type and nothing reads it, so a tool that requires task augmentation is called with a plain tools/call. The pi-mcp README lists tasks as outside the initial core.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-16",
+            "commit": "07ece436",
+            "path": "packages/mcp/src/protocol/types.ts:72-85"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-16",
+            "commit": "07ece436",
+            "path": "packages/mcp/src/client.ts:378-386"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-16",
+            "commit": "07ece436",
+            "path": "packages/mcp/README.md:187"
           }
         ]
       }
@@ -12497,102 +12485,139 @@
         }
       ]
     },
-    "tasks": {
-      "status": "opt-in",
-      "notes": "Opt-in through tasks_config, and experimental in the docstrings. On mcp 2.x Strands declares the io.modelcontextprotocol/tasks extension. When the server advertises it and the connection negotiated 2026-07-28, a task handle returned by tools/call is completed for the caller: Strands polls tasks/get, answers input requests with tasks/update and sends tasks/cancel on timeout or cancellation. The overall wait defaults to 5 minutes. Manual submit, get, update and cancel methods exist.",
-      "list": {
-        "status": "unsupported",
-        "notes": "No tasks/list call on either SDK line.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2394-2464"
-          }
-        ]
-      },
-      "cancel": {
-        "status": "opt-in",
-        "notes": "tasks/cancel is sent when a task-backed call times out or is cancelled, and by cancel_task_sync. Needs tasks_config.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:1477-1521,2055-2072,2451-2464,2656-2668"
-          }
-        ]
-      },
-      "requests": {
-        "tools": {
-          "call": true
-        }
-      },
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-py/src/strands/tools/mcp/mcp_client.py:361,395-398"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2285-2353,2380-2392"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2394-2464,2516-2549,2630-2668"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-py/src/strands/tools/mcp/_compat.py:459-519"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-py/src/strands/tools/mcp/mcp_tasks.py:29-30,226-229"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "strands-agents/harness-sdk",
-          "date": "2026-11-16",
-          "commit": "d982a0d4",
-          "path": "strands-ts/src/mcp/client.ts:1023-1069,1113-1149",
-          "note": "TypeScript binding: tasksConfig, through @modelcontextprotocol/ext-tasks."
-        }
-      ],
-      "research": [
-        "strands-python-and-typescript-clients-differ"
-      ]
-    },
     "extensions": {
+      "io.modelcontextprotocol/oauth-client-credentials": {
+        "status": "partial",
+        "notes": "The client_credentials grant with a client secret, through the SDK's provider. Nothing is declared in capabilities.extensions for it. The SDK's private_key_jwt provider is not wired to the auth option, and an application would pass it as auth_provider.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2847-2871"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/_compat.py:184-218"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "No code in either binding reads _meta.ui, and the extension is not declared. A tool whose visibility leaves out the model is listed for the model like any other.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:842-858",
+            "note": "Every listed tool is wrapped. The only gate is the application's tool_filters."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-ts/src/mcp/client.ts:693-731",
+            "note": "TypeScript binding."
+          }
+        ]
+      },
       "io.modelcontextprotocol/tasks": {
         "status": "opt-in",
-        "notes": "Declared in capabilities.extensions only when tasks_config is set and the wire speaks 2026-07-28. Strands defines the SEP-2663 result models itself and sends tasks/get, tasks/update and tasks/cancel through the session's send_request. TypeScript uses @modelcontextprotocol/ext-tasks 0.2.2 and sends task traffic as raw JSON-RPC through its own TaskTransport, because the SDK client does not expose extension methods.",
+        "notes": "Opt-in through tasks_config, and experimental in the docstrings. On mcp 2.x Strands declares the io.modelcontextprotocol/tasks extension. When the server advertises it and the connection negotiated 2026-07-28, a task handle returned by tools/call is completed for the caller: Strands polls tasks/get, answers input requests with tasks/update and sends tasks/cancel on timeout or cancellation. The overall wait defaults to 5 minutes. Manual submit, get, update and cancel methods exist. Declared in capabilities.extensions only when tasks_config is set and the wire speaks 2026-07-28. Strands defines the SEP-2663 result models itself and sends tasks/get, tasks/update and tasks/cancel through the session's send_request. TypeScript uses @modelcontextprotocol/ext-tasks 0.2.2 and sends task traffic as raw JSON-RPC through its own TaskTransport, because the SDK client does not expose extension methods.",
+        "list": {
+          "status": "unsupported",
+          "notes": "No tasks/list call on either SDK line.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "strands-agents/harness-sdk",
+              "date": "2026-11-16",
+              "commit": "d982a0d4",
+              "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2394-2464"
+            }
+          ]
+        },
+        "cancel": {
+          "status": "opt-in",
+          "notes": "tasks/cancel is sent when a task-backed call times out or is cancelled, and by cancel_task_sync. Needs tasks_config.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "strands-agents/harness-sdk",
+              "date": "2026-11-16",
+              "commit": "d982a0d4",
+              "path": "strands-py/src/strands/tools/mcp/mcp_client.py:1477-1521,2055-2072,2451-2464,2656-2668"
+            }
+          ]
+        },
+        "requests": {
+          "tools": {
+            "call": true
+          }
+        },
         "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:361,395-398"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2285-2353,2380-2392"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2394-2464,2516-2549,2630-2668"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/_compat.py:459-519"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-py/src/strands/tools/mcp/mcp_tasks.py:29-30,226-229"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-16",
+            "commit": "d982a0d4",
+            "path": "strands-ts/src/mcp/client.ts:1023-1069,1113-1149",
+            "note": "TypeScript binding: tasksConfig, through @modelcontextprotocol/ext-tasks."
+          },
           {
             "tier": "read",
             "at": "2026-07-28",
@@ -12647,52 +12672,6 @@
         ],
         "research": [
           "strands-python-and-typescript-clients-differ"
-        ]
-      },
-      "io.modelcontextprotocol/oauth-client-credentials": {
-        "status": "partial",
-        "notes": "The client_credentials grant with a client secret, through the SDK's provider. Nothing is declared in capabilities.extensions for it. The SDK's private_key_jwt provider is not wired to the auth option, and an application would pass it as auth_provider.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2847-2871"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-py/src/strands/tools/mcp/_compat.py:184-218"
-          }
-        ]
-      },
-      "io.modelcontextprotocol/ui": {
-        "status": "unsupported",
-        "notes": "No code in either binding reads _meta.ui, and the extension is not declared. A tool whose visibility leaves out the model is listed for the model like any other.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:842-858",
-            "note": "Every listed tool is wrapped. The only gate is the application's tool_filters."
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "strands-agents/harness-sdk",
-            "date": "2026-11-16",
-            "commit": "d982a0d4",
-            "path": "strands-ts/src/mcp/client.ts:693-731",
-            "note": "TypeScript binding."
-          }
         ]
       }
     },
@@ -12868,55 +12847,45 @@
             ]
           }
         },
-        "tasks": {
-          "status": "partial",
-          "notes": "On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests.",
-          "evidence": [
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "strands-agents/harness-sdk",
-              "date": "2026-11-16",
-              "commit": "d982a0d4",
-              "path": "strands-py/src/strands/tools/mcp/_compat.py:459-483"
-            },
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "strands-agents/harness-sdk",
-              "date": "2026-11-16",
-              "commit": "d982a0d4",
-              "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2335-2353,2380-2392"
-            },
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "strands-agents/harness-sdk",
-              "date": "2026-11-16",
-              "commit": "d982a0d4",
-              "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2670-2820",
-              "note": "The mcp 1.x flow."
-            },
-            {
-              "tier": "read",
-              "at": "2025-11-25",
-              "source": "strands-agents/harness-sdk",
-              "date": "2026-11-16",
-              "commit": "d982a0d4",
-              "path": "strands-ts/src/mcp/client.ts:1036-1056,1089-1094,1327-1385",
-              "note": "TypeScript binding."
-            }
-          ],
-          "research": [
-            "strands-python-and-typescript-clients-differ",
-            "strands-python-speaks-two-sdk-majors"
-          ]
-        },
         "extensions": {
           "io.modelcontextprotocol/tasks": {
-            "status": "unsupported",
-            "notes": "The result claim is active at 2026-07-28 only, so the SDK leaves the extension out of the initialize capabilities.",
+            "status": "partial",
+            "notes": "On mcp 2.x a 2025-11-25 server's tasks capability is not used: support is read from capabilities.extensions only, and the lifecycle methods raise unless the connection negotiated 2026-07-28. On an mcp 1.x install the legacy flow runs through session.experimental, for tools whose taskSupport is optional or required: call_tool_as_task, poll_task, then get_task_result. TypeScript runs the legacy flow on the 2.x SDK with raw tools/call, tasks/get and tasks/result requests. The extension itself is not declared on this revision: its result claim is active at 2026-07-28 only, so the SDK leaves it out of the initialize capabilities.",
             "evidence": [
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "strands-agents/harness-sdk",
+                "date": "2026-11-16",
+                "commit": "d982a0d4",
+                "path": "strands-py/src/strands/tools/mcp/_compat.py:459-483"
+              },
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "strands-agents/harness-sdk",
+                "date": "2026-11-16",
+                "commit": "d982a0d4",
+                "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2335-2353,2380-2392"
+              },
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "strands-agents/harness-sdk",
+                "date": "2026-11-16",
+                "commit": "d982a0d4",
+                "path": "strands-py/src/strands/tools/mcp/mcp_client.py:2670-2820",
+                "note": "The mcp 1.x flow."
+              },
+              {
+                "tier": "read",
+                "at": "2025-11-25",
+                "source": "strands-agents/harness-sdk",
+                "date": "2026-11-16",
+                "commit": "d982a0d4",
+                "path": "strands-ts/src/mcp/client.ts:1036-1056,1089-1094,1327-1385",
+                "note": "TypeScript binding."
+              },
               {
                 "tier": "read",
                 "at": "2025-11-25",
@@ -12934,6 +12903,10 @@
                 "path": "mcp/client/session.py:614-628,651-664",
                 "note": "mcp 2.3.0. initialize builds capabilities for LATEST_HANDSHAKE_VERSION, where no claim is active."
               }
+            ],
+            "research": [
+              "strands-python-and-typescript-clients-differ",
+              "strands-python-speaks-two-sdk-majors"
             ]
           }
         }
@@ -13856,30 +13829,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers are left at their defaults, which build no capability.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "crewAIInc/crewAI",
-          "date": "2026-11-16",
-          "commit": "758b2c1d",
-          "path": "lib/crewai/src/crewai/mcp/client.py:194-197",
-          "note": "ClientSession is constructed with the two streams and nothing else: no callbacks, no message_handler, no client_info."
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/python-sdk",
-          "url": "https://pypi.org/project/mcp/1.30.0/",
-          "date": "2026-11-16",
-          "path": "mcp/client/session.py:193",
-          "note": "mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222)."
-        }
-      ]
-    },
     "jsonSchema": {
       "notes": "A tool's inputSchema is not passed through. create_model_from_schema rebuilds it as a Pydantic model, and the model-facing schema is generated from that model. If the conversion raises, the native route registers the tool with no typed schema and logs a warning. The dialect named by $schema is not read.",
       "features": {
@@ -13941,6 +13890,30 @@
             "commit": "758b2c1d",
             "path": "lib/crewai/src/crewai/mcp/client.py:443-451",
             "note": "Tool _meta is not kept at discovery."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers are left at their defaults, which build no capability.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-16",
+            "commit": "758b2c1d",
+            "path": "lib/crewai/src/crewai/mcp/client.py:194-197",
+            "note": "ClientSession is constructed with the two streams and nothing else: no callbacks, no message_handler, no client_info."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "date": "2026-11-16",
+            "path": "mcp/client/session.py:193",
+            "note": "mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222)."
           }
         ]
       }
@@ -15061,29 +15034,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks/* call. FastMCP's ProxyClient turns off the client's internal tasks extension, so nothing about tasks is declared to a server.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
-          "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "PrefectHQ/fastmcp",
-          "date": "2026-11-16",
-          "path": "fastmcp/server/providers/proxy.py:1704-1708",
-          "note": "fastmcp-slim 4.1.2, from the PyPI wheel. _auto_internal_extensions = False on ProxyClient."
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
@@ -15107,6 +15057,29 @@
             "commit": "95a2d9a6",
             "path": "libs/code/deepagents_code/mcp_tools.py:1920-1922",
             "note": "No extensions argument on the per-server client. A search of libs/ for ui://, resourceUri and io.modelcontextprotocol/ui at this commit finds nothing."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks/* call. FastMCP's ProxyClient turns off the client's internal tasks extension, so nothing about tasks is declared to a server.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-16",
+            "commit": "95a2d9a6",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "PrefectHQ/fastmcp",
+            "date": "2026-11-16",
+            "path": "fastmcp/server/providers/proxy.py:1704-1708",
+            "note": "fastmcp-slim 4.1.2, from the PyPI wheel. _auto_internal_extensions = False on ProxyClient."
           }
         ]
       }
@@ -15982,21 +15955,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "google/adk-python",
-          "date": "2026-11-16",
-          "commit": "c6586f19",
-          "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
-          "note": "The only ClientSession construction under src. It passes sampling_callback, sampling_capabilities, elicitation_callback, message_handler and client_info, and no list_roots_callback or logging_callback."
-        }
-      ]
-    },
     "jsonSchema": {
       "notes": "ADK validates neither tool arguments nor results itself. The input schema goes to the model as parameters_json_schema when JSON_SCHEMA_FOR_FUNC_DECL is on, which is the registry default, and is converted to a Gemini Schema otherwise. The output schema is checked by the SDK, which picks a jsonschema validator class from the schema's own $schema.",
       "evidence": [
@@ -16040,6 +15998,21 @@
             "commit": "c6586f19",
             "path": "src/google/adk/agents/context.py:873-893"
           },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "google/adk-python",
+            "date": "2026-11-16",
+            "commit": "c6586f19",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
+            "note": "The only ClientSession construction under src. It passes sampling_callback, sampling_capabilities, elicitation_callback, message_handler and client_info, and no list_roots_callback or logging_callback."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.",
+        "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
@@ -17323,31 +17296,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "task_options is accepted, ignored and warned as deprecated, with the message that the Python SDK does not expose the 2026 Tasks extension runtime. Tools that require tasks are left out of the catalog. .NET differs: see the io.modelcontextprotocol/tasks extension row.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "microsoft/agent-framework",
-          "date": "2026-11-16",
-          "commit": "10801303",
-          "path": "python/packages/core/agent_framework/_mcp.py:1309-1315"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "microsoft/agent-framework",
-          "date": "2026-11-16",
-          "commit": "10801303",
-          "path": "python/packages/core/agent_framework/_mcp.py:3480-3487"
-        }
-      ],
-      "research": [
-        "agent-framework-python-and-dotnet-are-two-mcp-clients"
-      ]
-    },
     "jsonSchema": {
       "notes": "inputSchema is passed to FunctionTool unchanged, apart from an empty properties added to an object schema that has none. Whether FunctionTool validates the model's arguments against it was not read. A prompt's arguments are turned into an object schema of string properties. outputSchema validation is the SDK's.",
       "evidence": [
@@ -17419,9 +17367,31 @@
           "agent-framework-bindings-read-skills-over-mcp-two-ways"
         ]
       },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "No file under python/packages/core reads a ui key or a resourceUri in tool _meta. Tool _meta is kept only to send back on tools/call. The extension is not declared.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-16",
+            "commit": "10801303",
+            "path": "python/packages/core/agent_framework/_mcp.py:3489-3491"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-16",
+            "commit": "10801303",
+            "path": "python/packages/core/agent_framework/_mcp.py:3926-3931"
+          }
+        ]
+      },
       "io.modelcontextprotocol/tasks": {
         "status": "unsupported",
-        "notes": "Python: not supported, as the tasks row says. .NET: McpClient.ListAgentToolsWithTasksAsync wraps each tool so a call goes through CallToolAsTaskAsync from ModelContextProtocol.Extensions.Tasks 2.2.0. The wrapper polls with GetTaskAsync, answers input_required with UpdateTaskAsync, and calls CancelTaskAsync when the local call is cancelled. It is opt-in and ships in Microsoft.Agents.AI.Mcp, which carries an alpha version suffix. The Extensions.Tasks source was not read at 2.2.0, so what it puts on the wire is not recorded here.",
+        "notes": "task_options is accepted, ignored and warned as deprecated, with the message that the Python SDK does not expose the 2026 Tasks extension runtime. Tools that require tasks are left out of the catalog. .NET: McpClient.ListAgentToolsWithTasksAsync wraps each tool so a call goes through CallToolAsTaskAsync from ModelContextProtocol.Extensions.Tasks 2.2.0. The wrapper polls with GetTaskAsync, answers input_required with UpdateTaskAsync, and calls CancelTaskAsync when the local call is cancelled. It is opt-in and ships in Microsoft.Agents.AI.Mcp, which carries an alpha version suffix. The Extensions.Tasks source was not read at 2.2.0, so what it puts on the wire is not recorded here.",
         "evidence": [
           {
             "tier": "read",
@@ -17430,6 +17400,14 @@
             "date": "2026-11-16",
             "commit": "10801303",
             "path": "python/packages/core/agent_framework/_mcp.py:1309-1315"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-16",
+            "commit": "10801303",
+            "path": "python/packages/core/agent_framework/_mcp.py:3480-3487"
           },
           {
             "tier": "read",
@@ -17466,28 +17444,6 @@
         ],
         "research": [
           "agent-framework-python-and-dotnet-are-two-mcp-clients"
-        ]
-      },
-      "io.modelcontextprotocol/ui": {
-        "status": "unsupported",
-        "notes": "No file under python/packages/core reads a ui key or a resourceUri in tool _meta. Tool _meta is kept only to send back on tools/call. The extension is not declared.",
-        "evidence": [
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "microsoft/agent-framework",
-            "date": "2026-11-16",
-            "commit": "10801303",
-            "path": "python/packages/core/agent_framework/_mcp.py:3489-3491"
-          },
-          {
-            "tier": "read",
-            "at": "2026-07-28",
-            "source": "microsoft/agent-framework",
-            "date": "2026-11-16",
-            "commit": "10801303",
-            "path": "python/packages/core/agent_framework/_mcp.py:3926-3931"
-          }
         ]
       }
     },
@@ -19052,50 +19008,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "full",
-      "notes": "The read disagrees with the Apify record, which has tasks declared as {\"requests\":{\"tools\":{\"call\":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.",
-      "list": {
-        "status": "full"
-      },
-      "cancel": {
-        "status": "full"
-      },
-      "requests": {
-        "sampling": {
-          "createMessage": {}
-        },
-        "elicitation": {
-          "create": {}
-        }
-      },
-      "evidence": [
-        {
-          "tier": "declared",
-          "at": "2025-06-18",
-          "source": "apify/mcp-client-capabilities",
-          "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
-          "date": "2026-11-15",
-          "commit": "2b28e97"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "microsoft/vscode",
-          "date": "2026-11-20",
-          "commit": "8e900494",
-          "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:121-128,305-342,387-388,520-532"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "microsoft/vscode",
-          "date": "2026-11-20",
-          "commit": "8e900494",
-          "path": "src/vs/workbench/contrib/mcp/common/mcpServer.ts:1407-1417"
-        }
-      ]
-    },
     "jsonSchema": {
       "supportedDialects": [
         "draft-07"
@@ -19148,6 +19060,50 @@
             "date": "2026-11-20",
             "commit": "8e900494",
             "path": "src/vs/workbench/contrib/mcp/common/mcpServer.ts:1070-1093"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "full",
+        "notes": "The read disagrees with the Apify record, which has tasks declared as {\"requests\":{\"tools\":{\"call\":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.",
+        "list": {
+          "status": "full"
+        },
+        "cancel": {
+          "status": "full"
+        },
+        "requests": {
+          "sampling": {
+            "createMessage": {}
+          },
+          "elicitation": {
+            "create": {}
+          }
+        },
+        "evidence": [
+          {
+            "tier": "declared",
+            "at": "2025-06-18",
+            "source": "apify/mcp-client-capabilities",
+            "url": "https://github.com/apify/mcp-client-capabilities/blob/2b28e97/src/mcp_client_capabilities/mcp-clients.json",
+            "date": "2026-11-15",
+            "commit": "2b28e97"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-20",
+            "commit": "8e900494",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:121-128,305-342,387-388,520-532"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-20",
+            "commit": "8e900494",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServer.ts:1407-1417"
           }
         ]
       }
@@ -19805,19 +19761,21 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "Not declared. capabilities is {}.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "n8n-io/n8n",
-          "date": "2026-11-20",
-          "commit": "84decbe0",
-          "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
-        }
-      ]
+    "extensions": {
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared. capabilities is {}.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-20",
+            "commit": "84decbe0",
+            "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
+          }
+        ]
+      }
     },
     "bonusFeatures": {
       "sessionReusePerExecution": {
@@ -20563,29 +20521,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers stay at their defaults, which build no capability.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "langflow-ai/langflow",
-          "date": "2026-11-20",
-          "commit": "21381e5b",
-          "path": "src/lfx/src/lfx/base/mcp/util.py:1721-1724,1830-1832,1906-1908"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/python-sdk",
-          "url": "https://pypi.org/project/mcp/1.30.0/",
-          "date": "2026-11-20",
-          "path": "mcp/client/session.py:155-158,193",
-          "note": "mcp 1.30.0 wheel."
-        }
-      ]
-    },
     "jsonSchema": {
       "notes": "inputSchema is rebuilt as a Pydantic model by create_input_schema_from_json_schema, and the model-facing schema comes from that model. The root must have type object. Otherwise the conversion raises ValueError, and update_tools re-raises it, so one such tool fails the whole server's tool load. The dialect named by $schema is not read.",
       "features": {
@@ -20646,6 +20581,29 @@
             "date": "2026-11-20",
             "commit": "21381e5b",
             "path": "src/lfx/src/lfx/base/mcp/util.py:3129-3145"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers stay at their defaults, which build no capability.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langflow-ai/langflow",
+            "date": "2026-11-20",
+            "commit": "21381e5b",
+            "path": "src/lfx/src/lfx/base/mcp/util.py:1721-1724,1830-1832,1906-1908"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "date": "2026-11-20",
+            "path": "mcp/client/session.py:155-158,193",
+            "note": "mcp 1.30.0 wheel."
           }
         ]
       }
@@ -21582,21 +21540,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No code in either client package sends tasks/* or declares a tasks capability or extension.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "mcp-use/mcp-use",
-          "date": "2026-11-20",
-          "commit": "8ff4b865",
-          "path": "libraries/typescript/packages/client/src/transport/http.ts:455-462",
-          "note": "The full capability object."
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -21664,8 +21607,17 @@
       },
       "io.modelcontextprotocol/tasks": {
         "status": "unsupported",
-        "notes": "Not declared and not implemented.",
+        "notes": "No code in either client package sends tasks/* or declares a tasks capability or extension.",
         "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mcp-use/mcp-use",
+            "date": "2026-11-20",
+            "commit": "8ff4b865",
+            "path": "libraries/typescript/packages/client/src/transport/http.ts:455-462",
+            "note": "The full capability object."
+          },
           {
             "tier": "read",
             "at": "2026-07-28",
@@ -22419,20 +22371,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No tasks capability and no tasks methods.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "zed-industries/zed",
-          "date": "2026-11-20",
-          "commit": "ad1058d7",
-          "path": "crates/context_server/src/types.rs:465-474"
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
@@ -22445,6 +22383,20 @@
             "date": "2026-11-20",
             "commit": "ad1058d7",
             "path": "crates/context_server/src/protocol.rs:41-50"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No tasks capability and no tasks methods.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-20",
+            "commit": "ad1058d7",
+            "path": "crates/context_server/src/types.rs:465-474"
           }
         ]
       }
@@ -23136,36 +23088,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/typescript-sdk",
-          "date": "2026-11-20",
-          "commit": "5ee54ee3",
-          "path": "packages/core/src/constants.ts:5-10"
-        },
-        {
-          "tier": "read",
-          "at": "2025-11-25",
-          "source": "modelcontextprotocol/typescript-sdk",
-          "date": "2026-11-20",
-          "commit": "5ee54ee3",
-          "path": "packages/core-internal/src/wire/codec.ts:26"
-        },
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "modelcontextprotocol/typescript-sdk",
-          "date": "2026-11-20",
-          "commit": "5ee54ee3",
-          "path": "packages/client/src/client/extension.ts:20-50"
-        }
-      ]
-    },
     "jsonSchema": {
       "defaultDialect": "2020-12",
       "supportedDialects": [
@@ -23226,13 +23148,39 @@
           }
         ]
       },
-      "io.modelcontextprotocol/tasks": {
-        "status": "unsupported",
-        "notes": "See the tasks row."
-      },
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
         "notes": "No MCP Apps code in packages/client or packages/core-internal."
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-20",
+            "commit": "5ee54ee3",
+            "path": "packages/core/src/constants.ts:5-10"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-20",
+            "commit": "5ee54ee3",
+            "path": "packages/core-internal/src/wire/codec.ts:26"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-20",
+            "commit": "5ee54ee3",
+            "path": "packages/client/src/client/extension.ts:20-50"
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -24070,20 +24018,6 @@
         }
       ]
     },
-    "tasks": {
-      "status": "unsupported",
-      "notes": "The io.modelcontextprotocol/tasks extension is not declared and no tasks call is made.",
-      "evidence": [
-        {
-          "tier": "read",
-          "at": "2026-07-28",
-          "source": "warpdotdev/warp",
-          "date": "2026-11-21",
-          "commit": "f8223cef",
-          "path": "crates/mcp/src/runtime.rs:905-918"
-        }
-      ]
-    },
     "extensions": {
       "io.modelcontextprotocol/ui": {
         "status": "unsupported",
@@ -24096,6 +24030,20 @@
             "date": "2026-11-21",
             "commit": "f8223cef",
             "path": "app/src/ai/agent/api/convert_to.rs:996-1009"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "The io.modelcontextprotocol/tasks extension is not declared and no tasks call is made.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "warpdotdev/warp",
+            "date": "2026-11-21",
+            "commit": "f8223cef",
+            "path": "crates/mcp/src/runtime.rs:905-918"
           }
         ]
       }

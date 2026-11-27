@@ -46,9 +46,12 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | **Logging** | ○ unsupported | read | `2025-11-25` |
 | **Instructions** | ○ unsupported | read | `2025-11-25` |
 | **Icons** | ○ unsupported | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
-| Extensions | — not recorded | | |
+| **Extensions** | | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ sessionReusePerExecution | ● full | read | `2025-11-25` |
 
@@ -77,7 +80,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No notifications/message handler and no logging/setLevel call.
 - **instructions** — The SDK stores the server instructions, and nothing calls getInstructions().
 - **icons** — Tool icons are not read. Every MCP tool node shows n8n's own MCP icon.
-- **tasks** — Not declared. capabilities is {}.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared. capabilities is {}.
 - **bonusFeatures.sessionReusePerExecution** — MCP Client Tool v1.4 and registry nodes v1.1 keep one client per execution and node, closed when the execution finishes or is cancelled, on a transport error, or after an idle TTL. Earlier versions connect and close per tool call.
 
 ## Research notes

@@ -48,10 +48,12 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | **Logging** | ● full | read | `2026-07-28` |
 | **Instructions** | ● full | read | `2026-07-28` |
 | Icons | — not recorded | | |
-| Tasks | — not recorded | | |
 | JSON Schema | — not recorded | | |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence

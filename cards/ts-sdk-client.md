@@ -52,12 +52,12 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | **Logging** | ◇ opt-in | read | `2025-11-25` |
 | **Instructions** | ● full | read | `2025-11-25`, `2026-07-28` |
 | **Icons** | ● full | read | `2025-11-25` |
-| **Tasks** | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported |  |  |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ standardRequestHeaders | ◇ opt-in | read | `2026-07-28` |
@@ -92,11 +92,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — No notifications/message handler is registered by default, and the Protocol layer drops a notification with no handler. The application registers one with setNotificationHandler and may call setLoggingLevel(), which is marked deprecated as of 2026-07-28. The logger option added after 2.4.0 is for the SDK's own diagnostics.
 - **instructions** — Kept from the initialize result or the discover result and returned by getInstructions(). Getting them to a model is the application's job.
 - **icons** — The wire schemas carry icons on tools, prompts, resources and Implementation, and the parsed results hand them to the application. The SDK renders nothing.
-- **tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
 - **jsonSchema** — On Node the default validator is Ajv with formats, picked by the schema's $schema: none or 2020-12 uses Ajv2020, 2019-09 uses Ajv2019, draft-07 and draft-06 use classic Ajv. Other dialects fail to compile and callTool throws before sending. Browser and workerd builds use @cfworker/json-schema. jsonSchemaValidator replaces it.
 - **extensions.io.modelcontextprotocol/skills** — SkillsClient from @modelcontextprotocol/client/ext/skills wraps a connected Client and reads the server's skills (SEP-2640). It does not add anything to the client's declared capabilities. Present in 2.4.0.
-- **extensions.io.modelcontextprotocol/tasks** — See the tasks row.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code in packages/client or packages/core-internal.
+- **extensions.io.modelcontextprotocol/tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
 - **bonusFeatures.protocolEraForcing** — versionNegotiation takes legacy (the default), auto, or { pin: '2026-07-28' }. connect({ prior }) reuses a cached era verdict with no probe. supportedProtocolVersions narrows both lists.
 - **bonusFeatures.standardRequestHeaders** — Only on a 2026-07-28 connection over HTTP: Mcp-Method and Mcp-Name on every request, and Mcp-Param-* mirrored from x-mcp-header input-schema declarations of a cached tool. Skipped in a browser.
 - **byProtocolVersion.2025-11-25.tools.listChanged** — A notifications/tools/list_changed always evicts the cached tools/list. The application is told only when it passes ClientOptions.listChanged.tools, which by default refetches the list and calls onChanged, optionally debounced. The handler is registered only when the server advertises tools.listChanged.

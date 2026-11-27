@@ -60,13 +60,13 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 | **Logging** | ● full | read | `2026-07-28` |
 | **Instructions** | ◇ opt-in | read | `2026-07-28` |
 | **Icons** | ○ unsupported | read | `2026-07-28` |
-| **Tasks** | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
 | **JSON Schema** |  |  |  |
-| **Extensions** |  |  |  |
+| **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read, declared | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ◇ opt-in | read ⇧ | `2026-07-28` |
@@ -117,16 +117,15 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — On by default. Every request carries the io.modelcontextprotocol/logLevel _meta key, info unless serverLogLevel says otherwise, which is how a 2026-07-28 server is asked for logs. A notifications/message is written to the Mastra logger at a mapped level and passed to the entry's logger callback. enableServerLogs: false removes the key and the handler.
 - **instructions** — Read on connect and returned by getServerInstructions(). They are added to the agent's system prompt, under a heading naming the server, only when the entry sets forwardInstructions: true, and are cut to 512 characters unless instructionsMaxLength says otherwise.
 - **icons** — Not rendered or validated by @mastra/mcp. getServerInfo() returns the server's Implementation as sent, icons and websiteUrl included, and its comment says the URLs are not validated. Tool icons are not copied into the Mastra tool or the serialisable definition.
-- **tasks** — Off by default. tasks: true on a server entry declares the io.modelcontextprotocol/tasks extension (SEP-2663). A tools/call answered with resultType task is polled with tasks/get until it ends, and the final CallToolResult becomes the tool result. An input_required task is answered through inputRequests with tasks/update, or suspends the tool call when there is no handler. Aborting the call or reaching maxWaitMs sends tasks/cancel. mcp.tasks exposes get, update and cancel. The SDK rejects a task result, so Mastra rewrites it on the transport before the SDK parses it.
-- **tasks.list** — tasks/list is not sent. The methods used are tasks/get, tasks/update and tasks/cancel.
-- **tasks.cancel** — Sent on abort, at maxWaitMs, and through mcp.tasks.cancel(). Only with tasks enabled on the entry.
 - **jsonSchema** — A tool schema with no $schema is treated as 2020-12. Draft-07 is accepted as is. A 2019-09 schema is converted to 2020-12 when that can be done faithfully, and passed through unchanged when not. An input schema over 128 levels or 10,000 nodes, or one that fails a draft-07-based meta-schema check, drops the tool from the list. Output is validated by the SDK's Ajv validator unless the entry passes a jsonSchemaValidator. Which keywords the validators honour was not read.
 - **extensions.io.modelcontextprotocol/ui** — Declared with an empty settings object on every connection, with no option to leave it out. @mastra/mcp renders nothing. It keeps tool and result _meta, stamps ui.serverId next to ui.resourceUri, and withholds tools whose _meta.ui.visibility lacks model. The renderer is Studio (packages/playground-ui), which an application built on Agent and MCPClient alone does not have.
-- **extensions.io.modelcontextprotocol/tasks** — Declared with an empty settings object only when the server entry sets tasks. See the tasks row.
 - **extensions.io.modelcontextprotocol/events** — Application API for the draft MCP Events extension (SEP-3415). mcp.events.list() sends events/list, and subscribe() delivers occurrences by webhook (events/subscribe) when the client has a webhook option, else push (events/stream), else poll (events/poll), from the modes the event advertises. Nothing is declared in the client capabilities; the client reads the server's io.modelcontextprotocol/events entry. createMCPEventsTools gives a model mcp_events_list, mcp_events_subscribe and mcp_events_unsubscribe.
 - **extensions.io.modelcontextprotocol/events.webhook** — Chosen when the client has a webhook option and the event offers webhook.
 - **extensions.io.modelcontextprotocol/events.push** — events/stream, chosen when there is no webhook option and the event offers push.
 - **extensions.io.modelcontextprotocol/events.poll** — events/poll, the fallback when the event offers neither of the others.
+- **extensions.io.modelcontextprotocol/tasks** — Off by default. tasks: true on a server entry declares the io.modelcontextprotocol/tasks extension (SEP-2663). A tools/call answered with resultType task is polled with tasks/get until it ends, and the final CallToolResult becomes the tool result. An input_required task is answered through inputRequests with tasks/update, or suspends the tool call when there is no handler. Aborting the call or reaching maxWaitMs sends tasks/cancel. mcp.tasks exposes get, update and cancel. The SDK rejects a task result, so Mastra rewrites it on the transport before the SDK parses it. The extension is declared with an empty settings object.
+- **extensions.io.modelcontextprotocol/tasks.list** — tasks/list is not sent. The methods used are tasks/get, tasks/update and tasks/cancel.
+- **extensions.io.modelcontextprotocol/tasks.cancel** — Sent on abort, at maxWaitMs, and through mcp.tasks.cancel(). Only with tasks enabled on the entry.
 - **bonusFeatures.modelInitiatedResourceRead** — No tool gives the model resources/read. The only model-facing tools @mastra/mcp builds are the server's own tools and the optional MCP Events tools.
 - **bonusFeatures.protocolEraForcing** — protocolVersion on a server entry takes '2026-07-28', which pins that revision with no fallback, or 'legacy', which runs the initialize handshake with no probe. Omitted, the client probes and falls back. getServerProtocolVersions() reports what was negotiated. A successful verdict is reused on reconnect and dropped after a failed connect.
 - **bonusFeatures.toolAnnotationPolicies** — The function form of requireToolApproval receives the server's tool annotations, placed so a caller cannot override them. After a transport failure in mid-call, a tool annotated readOnlyHint or idempotentHint is called again; any other tool fails with MCP_CLIENT_TOOL_CALL_OUTCOME_UNKNOWN and is not resent.
@@ -137,7 +136,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **byProtocolVersion.2025-11-25.resources** — The list and read calls are the same.
 - **byProtocolVersion.2025-11-25.resources.subscribe** — resources/subscribe is never sent. subscribeResource() needs the subscriptions/listen stream and throws an error naming the negotiated revision.
 - **byProtocolVersion.2025-11-25.logging** — logging/setLevel is never sent, so the server decides the level. The notifications/message handler is registered all the same, and the logLevel _meta key is still attached to each request.
-- **byProtocolVersion.2025-11-25.tasks** — Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.
+- **byProtocolVersion.2025-11-25.extensions.io.modelcontextprotocol/tasks** — Only the SEP-2663 extension form is implemented: a result with resultType task. The 2025-11-25 task-augmented request form is not sent.
 
 ## Verified by the probe
 
