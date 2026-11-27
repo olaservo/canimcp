@@ -116,7 +116,6 @@
         },
         {
           "tier": "verified",
-          "status": "partial",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -125,7 +124,7 @@
           "clientVersion": "1.15.37",
           "config": "default",
           "artifact": "probe/conformance/results/crewai/2026-11-27T14-14-24-915Z/2026-07-28/http-invalid-tool-headers",
-          "note": "conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; client exited 1",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; only absence checks passed, which a client that ignores the feature also passes; client exited 1",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",

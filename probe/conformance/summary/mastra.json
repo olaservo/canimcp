@@ -17,7 +17,7 @@
     "runs": 79,
     "pass": 17,
     "fail": 62,
-    "noSignal": 8
+    "noSignal": 14
   },
   "scenarios": [
     {
@@ -273,13 +273,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "sep-2468-client-no-normalization"
       ],
-      "capabilities": [
-        "authentication.oauth.issuerIdentification"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/iss-not-advertised",
@@ -318,13 +317,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "sep-2468-client-reject-missing-iss"
       ],
-      "capabilities": [
-        "authentication.oauth.issuerIdentification"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/iss-unexpected",
@@ -333,13 +331,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "sep-2468-client-compare-iss-unadvertised"
       ],
-      "capabilities": [
-        "authentication.oauth.issuerIdentification"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/iss-wrong-issuer",
@@ -348,13 +345,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "sep-2468-client-compare-iss-supported"
       ],
-      "capabilities": [
-        "authentication.oauth.issuerIdentification"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/metadata-default",
@@ -411,13 +407,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "sep-2468-client-validate-metadata-issuer"
       ],
-      "capabilities": [
-        "authentication.oauth.issuerIdentification"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/metadata-var1",
@@ -622,13 +617,12 @@
       "verdict": "fail",
       "clientExitCode": 0,
       "passed": 0,
-      "failed": 1,
-      "failedChecks": [
+      "failed": 0,
+      "failedChecks": [],
+      "notTestable": [
         "resource-mismatch-rejected"
       ],
-      "capabilities": [
-        "authentication.oauth.resourceIndicators"
-      ]
+      "capabilities": []
     },
     {
       "scenario": "auth/scope-from-scopes-supported",
@@ -1464,15 +1458,10 @@
         "2026-07-28": {
           "full": 0,
           "partial": 0,
-          "none": 7,
+          "none": 2,
           "scenarios": [
-            "auth/iss-normalized (none)",
             "auth/iss-not-advertised (none)",
-            "auth/iss-supported (none)",
-            "auth/iss-supported-missing (none)",
-            "auth/iss-unexpected (none)",
-            "auth/iss-wrong-issuer (none)",
-            "auth/metadata-issuer-mismatch (none)"
+            "auth/iss-supported (none)"
           ]
         }
       }
@@ -1520,13 +1509,12 @@
         "2026-07-28": {
           "full": 0,
           "partial": 0,
-          "none": 8,
+          "none": 7,
           "scenarios": [
             "auth/metadata-default (none)",
             "auth/metadata-var1 (none)",
             "auth/metadata-var2 (none)",
             "auth/metadata-var3 (none)",
-            "auth/resource-mismatch (none)",
             "auth/token-endpoint-auth-basic (none)",
             "auth/token-endpoint-auth-none (none)",
             "auth/token-endpoint-auth-post (none)"
@@ -1669,12 +1657,12 @@
           ]
         },
         "2026-07-28": {
-          "full": 1,
+          "full": 0,
           "partial": 1,
-          "none": 0,
+          "none": 1,
           "scenarios": [
             "json-schema-2020-12-preservation (partial)",
-            "json-schema-ref-no-deref"
+            "json-schema-ref-no-deref (none)"
           ]
         }
       }
@@ -1735,11 +1723,11 @@
       "proposedId": false,
       "perVersion": {
         "2026-07-28": {
-          "full": 1,
+          "full": 0,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
-            "sep-2322-client-request-state"
+            "sep-2322-client-request-state (none)"
           ]
         }
       }
@@ -1788,6 +1776,12 @@
     }
   },
   "noSignal": [
+    "auth/iss-normalized@2026-07-28",
+    "auth/iss-supported-missing@2026-07-28",
+    "auth/iss-unexpected@2026-07-28",
+    "auth/iss-wrong-issuer@2026-07-28",
+    "auth/metadata-issuer-mismatch@2026-07-28",
+    "auth/resource-mismatch@2026-07-28",
     "sep-2640-client-no-prefetch@2025-11-25",
     "sep-2640-client-no-prefetch@2026-07-28",
     "sep-2640-client-verify-digest@2025-11-25",
@@ -1796,6 +1790,14 @@
     "sep-2640-client-verify-frontmatter@2026-07-28",
     "sep-2640-client-verify-size@2025-11-25",
     "sep-2640-client-verify-size@2026-07-28"
+  ],
+  "notTestable": [
+    "auth/iss-normalized@2026-07-28: sep-2468-client-no-normalization",
+    "auth/iss-supported-missing@2026-07-28: sep-2468-client-reject-missing-iss",
+    "auth/iss-unexpected@2026-07-28: sep-2468-client-compare-iss-unadvertised",
+    "auth/iss-wrong-issuer@2026-07-28: sep-2468-client-compare-iss-supported",
+    "auth/metadata-issuer-mismatch@2026-07-28: sep-2468-client-validate-metadata-issuer",
+    "auth/resource-mismatch@2026-07-28: resource-mismatch-rejected"
   ],
   "unmappedChecks": []
 }

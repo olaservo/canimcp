@@ -116,7 +116,6 @@
         },
         {
           "tier": "verified",
-          "status": "partial",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -125,7 +124,7 @@
           "clientVersion": "3.0.74",
           "config": "default",
           "artifact": "probe/conformance/results/cline/2026-11-27T14-04-43-169Z/2026-07-28/http-invalid-tool-headers",
-          "note": "conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool",
+          "note": "conformance http-invalid-tool-headers at 2026-07-28: 11/13 checks pass; failed sep-2243-invalid-tool-tools-list-gate, sep-2243-client-reject-invalid-tool; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",
@@ -394,7 +393,6 @@
         },
         {
           "tier": "verified",
-          "status": "full",
           "at": "2026-07-28",
           "source": "modelcontextprotocol/conformance",
           "url": "https://github.com/modelcontextprotocol/conformance/tree/f44482ba17df816d3176962a11cdf36aec9bda00",
@@ -403,7 +401,7 @@
           "clientVersion": "3.0.74",
           "config": "default",
           "artifact": "probe/conformance/results/cline/2026-11-27T14-04-43-169Z/2026-07-28/json-schema-ref-no-deref",
-          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass",
+          "note": "conformance json-schema-ref-no-deref at 2026-07-28: 1/1 checks pass; only absence checks passed, which a client that ignores the feature also passes",
           "run": {
             "suite": "@modelcontextprotocol/conformance",
             "suiteVersion": "0.2.0-alpha.12",

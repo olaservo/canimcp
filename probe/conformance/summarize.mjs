@@ -33,6 +33,10 @@ const harness = opt('harness');
 const SUITE_COMMIT = 'f44482ba17df816d3176962a11cdf36aec9bda00';
 
 const rules = mapping.checks.map((r) => ({ ...r, re: new RegExp(r.match) }));
+const absence = mapping.absence.checks.map((r) => new RegExp(r.match));
+const isAbsence = (id) => absence.some((re) => re.test(id));
+const notTestableRe = new RegExp(mapping.notTestable.errorMessage);
+const isNotTestable = (c) => c.status === 'FAILURE' && notTestableRe.test(c.errorMessage ?? '');
 function scenarioDefault(scenario) {
   return mapping.scenarios[scenario] ?? (scenario.startsWith('auth/') ? mapping.scenarios['auth/*'] : undefined) ?? null;
 }
@@ -47,8 +51,11 @@ const rows = [];
 const evidence = {};
 const unmapped = new Set();
 const noSignal = [];
+const notTestable = [];
 for (const run of raw.runs) {
-  const scored = run.checks.filter((c) => c.status === 'SUCCESS' || c.status === 'FAILURE' || c.status === 'WARNING');
+  const untestable = run.checks.filter(isNotTestable);
+  for (const c of untestable) notTestable.push(`${run.scenario}@${run.specVersion}: ${c.id}`);
+  const scored = run.checks.filter((c) => (c.status === 'SUCCESS' || c.status === 'FAILURE' || c.status === 'WARNING') && !isNotTestable(c));
   const byCap = {};
   for (const c of scored) {
     const cap = capabilityFor(c.id, run.scenario);
@@ -67,6 +74,7 @@ for (const run of raw.runs) {
     passed: scored.filter((c) => c.status === 'SUCCESS').length,
     failed: scored.filter((c) => c.status !== 'SUCCESS').length,
     failedChecks: scored.filter((c) => c.status !== 'SUCCESS').map((c) => c.id),
+    ...(untestable.length ? { notTestable: untestable.map((c) => c.id) } : {}),
     capabilities: Object.keys(byCap),
   };
   rows.push(row);
@@ -76,13 +84,16 @@ for (const run of raw.runs) {
   }
   for (const [cap, checks] of Object.entries(byCap)) {
     const ok = checks.filter((c) => c.status === 'SUCCESS').length;
+    // Absence checks pass when the client does nothing, so a status needs a passing check that is not one.
+    const okPositive = checks.filter((c) => c.status === 'SUCCESS' && !isAbsence(c.id)).length;
     // Negative auth scenarios expect the client to abort; the suite then passes the run despite the exit code.
     const exitOk = run.cliExit === 0 || (run.clientExitCode === 0 && !run.clientTimedOut);
-    const status = ok === checks.length && exitOk ? 'full' : ok > 0 ? 'partial' : undefined;
+    const status = okPositive === 0 ? undefined : ok === checks.length && exitOk ? 'full' : 'partial';
     const failedIds = checks.filter((c) => c.status !== 'SUCCESS').map((c) => c.id);
     const note =
       `conformance ${run.scenario} at ${run.specVersion}${run.forced ? ' (forced)' : ''}: ${ok}/${checks.length} checks pass` +
       (failedIds.length ? `; failed ${failedIds.join(', ')}` : '') +
+      (ok > 0 && okPositive === 0 ? '; only absence checks passed, which a client that ignores the feature also passes' : '') +
       (exitOk ? '' : `; client exited ${run.clientTimedOut ? 'by timeout' : run.clientExitCode}`);
     (evidence[cap] ??= []).push({
       tier: 'verified',
@@ -145,6 +156,7 @@ const summary = {
   scenarios: rows,
   capabilities,
   noSignal,
+  notTestable,
   unmappedChecks: [...unmapped],
 };
 mkdirSync(resolve(here, 'summary'), { recursive: true });

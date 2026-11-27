@@ -54,8 +54,21 @@ def make_connection():
   )
 
 
+answered = []
+
+
+async def accept_empty(context, params):
+  # Conformance answer configs (probe/conformance/bridge/adapters/adk-python.mjs).
+  del context
+  from mcp.types import ElicitResult
+
+  answered.append(getattr(params, "message", ""))
+  return ElicitResult(action="accept", content={})
+
+
 async def main() -> int:
-  toolset = McpToolset(connection_params=make_connection())
+  elicit = accept_empty if os.environ.get("PROBE_ELICIT") == "accept" else None
+  toolset = McpToolset(connection_params=make_connection(), elicitation_callback=elicit)
   exit_code = 0
   try:
     tools = await toolset.get_tools()
@@ -78,6 +91,8 @@ async def main() -> int:
       if event.is_final_response() and event.content and event.content.parts:
         final_text.extend(p.text for p in event.content.parts if p.text)
     print("\n".join(final_text))
+    if elicit:
+      print(f"input requests answered: {len(answered)}", file=sys.stderr)
   except Exception:
     exit_code = 1
     print(f"PROBE_AGENT_ERROR: {traceback.format_exc()}", file=sys.stderr)

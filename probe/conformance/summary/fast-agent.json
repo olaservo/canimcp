@@ -418,12 +418,12 @@
           ]
         },
         "2026-07-28": {
-          "full": 2,
+          "full": 1,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
             "json-schema-2020-12-preservation",
-            "json-schema-ref-no-deref"
+            "json-schema-ref-no-deref (none)"
           ]
         }
       }
@@ -484,11 +484,11 @@
       "proposedId": false,
       "perVersion": {
         "2026-07-28": {
-          "full": 1,
+          "full": 0,
           "partial": 0,
-          "none": 0,
+          "none": 1,
           "scenarios": [
-            "sep-2322-client-request-state"
+            "sep-2322-client-request-state (none)"
           ]
         }
       }
@@ -537,5 +537,6 @@
     }
   },
   "noSignal": [],
+  "notTestable": [],
   "unmappedChecks": []
 }

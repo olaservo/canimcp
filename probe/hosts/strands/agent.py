@@ -3,6 +3,8 @@
 Runs with the pinned packages installed in ./.venv. Environment, as mastra's
 agent.mjs uses it: PROBE_MOCK_URL, PROBE_PROMPT, PROBE_CONFIG, PROBE_SERVER_URL
 (Streamable HTTP) or PROBE_SERVER_COMMAND (stdio, JSON {command, args}).
+PROBE_CONFIG=answer (conformance only, probe/conformance/bridge/adapters/strands.mjs)
+is the default config plus an elicitation_callback that accepts with empty content.
 """
 
 import json
@@ -12,6 +14,7 @@ import traceback
 
 from mcp import StdioServerParameters, stdio_client
 from strands import Agent
+from mcp.types import ElicitResult
 from strands.tools.mcp import MCPClient
 
 # newline="\n": Windows text mode would write \r\n and findFinalText would keep the \r.
@@ -39,11 +42,21 @@ def make_model(name: str):
     return OpenAIModel(client_args={"base_url": f"{mock_url}/v1", "api_key": "probe"}, model_id="gpt-probe")
 
 
+answered = []
+
+
+async def accept_empty(context, params):
+    del context
+    answered.append(getattr(params, "message", ""))
+    return ElicitResult(action="accept", content={})
+
+
+client_kwargs = {"elicitation_callback": accept_empty} if config == "answer" else {}
 if server_url:
-    mcp_client = MCPClient(url=server_url)
+    mcp_client = MCPClient(url=server_url, **client_kwargs)
 else:
     params = StdioServerParameters(command=server_command["command"], args=server_command["args"])
-    mcp_client = MCPClient(lambda: stdio_client(params))
+    mcp_client = MCPClient(lambda: stdio_client(params), **client_kwargs)
 
 exit_code = 0
 try:
@@ -63,4 +76,6 @@ try:
 except Exception:
     exit_code = 1
     print(f"PROBE_AGENT_ERROR: {traceback.format_exc()}", file=sys.stderr)
+if config == "answer":
+    print(f"input requests answered: {len(answered)}", file=sys.stderr)
 sys.exit(exit_code)
