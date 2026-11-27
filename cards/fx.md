@@ -19,7 +19,7 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 | Prefers | `2026-07-28` |
 | Speaks | `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-26 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.0.16` (see below) |
 
@@ -207,7 +207,7 @@ When a server's newest revision is `2025-11-25`, fx (native engine) negotiates i
 
 ## Provenance
 
-Read at `79638170` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-26.
+Read at `b4502b01` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-27.
 
 **SDK.** Hand-written in Zig under src/mcp/, whose files import only std and each other. build.zig.zon has an empty dependencies table, so there is no SDK, no lockfile and nothing to patch. fx names its own revisions in src/mcp/core/era.zig. @modelcontextprotocol/sdk 1.30.0 appears in tests/e2e/conformance/package-lock.json as a dependency of the official conformance runner that tests fx. The schema's language enum has no value for Zig, so language is left out. c3dc80c4 is 88 commits after the v0.0.17 tag.
 

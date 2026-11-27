@@ -260,9 +260,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `129c326a` on 2026-11-27, from `main` of https://github.com/earendil-works/pi.git. That commit was authored 2026-11-27.
+Read at `cdf74062` on 2026-11-27, from `main` of https://github.com/earendil-works/pi.git. That commit was authored 2026-11-27.
 
-**SDK.** Hand-written client, published as @earendil-works/pi-mcp (1.6.1 at this commit, declared 1.6.1). pi's own client, a workspace package in the same repo, published to npm at the version of the coding agent. It is hand-written and has one runtime dependency, cross-spawn; nothing in the repo imports an official MCP SDK. The only @modelcontextprotocol/sdk string in package-lock.json is an optional peer of @google/genai, and the lockfile has no entry that installs it. Only the OAuth code is derived: flow.ts and discovery.ts are adapted from typescript-sdk v1.29.0 src/client/auth.ts, with the licence in THIRD_PARTY_NOTICES. The lockfile resolves the package as a link to packages/mcp. No patches directory, patch-package or patchedDependencies; the one npm override is protobufjs. pinsProtocolVersion is left unset because LATEST_PROTOCOL_VERSION is pi's own constant. The coding agent never passes the protocolVersion option, and the option is typed to the four supported revisions.
+**SDK.** Hand-written client, published as @earendil-works/pi-mcp (1.7.0 at this commit, declared 1.7.0). pi's own client, a workspace package in the same repo, published to npm at the version of the coding agent. It is hand-written and has one runtime dependency, cross-spawn; nothing in the repo imports an official MCP SDK. The only @modelcontextprotocol/sdk string in package-lock.json is an optional peer of @google/genai, and the lockfile has no entry that installs it. Only the OAuth code is derived: flow.ts and discovery.ts are adapted from typescript-sdk v1.29.0 src/client/auth.ts, with the licence in THIRD_PARTY_NOTICES. The lockfile resolves the package as a link to packages/mcp. No patches directory, patch-package or patchedDependencies; the one npm override is protobufjs. pinsProtocolVersion is left unset because LATEST_PROTOCOL_VERSION is pi's own constant. The coding agent never passes the protocolVersion option, and the option is typed to the four supported revisions.
 
 Paths read:
 

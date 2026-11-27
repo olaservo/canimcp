@@ -15,32 +15,32 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, Options.questions and declaredCapabilities
-    commit: fd39d643
+    commit: b4502b01
     path: src/core/mcp_host/runtime.zig:Options,start,declaredCapabilities
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/main.zig, loadMcpHost for the terminal app
-    commit: fd39d643
+    commit: b4502b01
     path: src/main.zig:loadMcpHost
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/cli/cli_ask.zig, askElicitationCapabilities
-    commit: fd39d643
+    commit: b4502b01
     path: src/core/cli/cli_ask.zig:askElicitationCapabilities,runPromptInternal
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp/elicitation.zig, parseAcpCapabilities
-    commit: fd39d643
+    commit: b4502b01
     path: src/core/mcp/elicitation.zig:parseAcpCapabilities
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/acp/mcp_servers.zig, prepare
-    commit: fd39d643
+    commit: b4502b01
     path: src/acp/mcp_servers.zig:prepare
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/protocol/mrtr.zig, supported
-    commit: fd39d643
+    commit: b4502b01
     path: src/mcp/protocol/mrtr.zig:supported
     date: 2026-11-27
 status: current

@@ -18,27 +18,27 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, the capability object and the only request handler
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/client.ts:InternalMastraMCPClient
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/types.ts, MCPClientCapabilities
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/types.ts:MCPClientCapabilities
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, negotiationMode and the transport choice
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/client.ts:negotiationMode,InternalMastraMCPClient.connectHttp,InternalMastraMCPClient.connect
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, isModelVisible
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/configuration.ts:isModelVisible,modelVisibleTools
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/CHANGELOG.md, the 2.0.0 entry
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/CHANGELOG.md:2.0.0
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0

@@ -16,22 +16,22 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp base dependency and the langchain-mcp-adapters extra
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/backend/base/pyproject.toml
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp base dependency of lfx
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/pyproject.toml
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, ClientSession construction on the stdio, Streamable HTTP and SSE paths
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/util.py:MCPSessionManager.session_task
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/langflow/api/utils/mcp/discovery.py, the server-list check uses the same two client classes
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/backend/base/langflow/api/utils/mcp/discovery.py:discovery_clients
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
@@ -39,7 +39,7 @@ sources:
     path: mcp/client/session.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - langflow-caps-the-sdk-below-mcp-2
 ---

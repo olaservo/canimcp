@@ -14,37 +14,37 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp requirement of lfx
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/pyproject.toml
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp requirement of langflow-base and its mcp extra
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/backend/base/pyproject.toml
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: uv.lock, mcp 1.30.0
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: uv.lock
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: pyproject.toml, [tool.uv] constraint and override lists with no mcp entry
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: pyproject.toml
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/uvx.py, the injected SDK constraint and its reason
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/base/mcp/uvx.py:DEFAULT_MCP_SDK_CONSTRAINT,mcp_sdk_constraint_args
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/services/settings/groups/mcp.py, LANGFLOW_MCP_SDK_CONSTRAINT
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/lfx/src/lfx/services/settings/groups/mcp.py:McpSettings
     date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/langflow/api/utils/mcp/config_utils.py, the uvx mcp-proxy entry written for each user's starter project
-    commit: 6c9aea6f
+    commit: 2b6faa1c
     path: src/backend/base/langflow/api/utils/mcp/config_utils.py:auto_configure_starter_projects_mcp
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
@@ -52,7 +52,7 @@ sources:
     path: mcp/types.py
     date: 2026-11-20
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - langflow-speaks-mcp-through-its-own-sdk-wrapper
   - crewai-caps-the-sdk-below-mcp-2

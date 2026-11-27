@@ -20,32 +20,32 @@ sources:
     date: 2026-11-20
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-runtime.ts, mcpAppsEnabled
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/agents/agent-bundle-mcp-runtime.ts:createServerMcpRuntime
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-runtime.ts, bundle client construction
-    commit: 89425fd7
-    path: src/agents/agent-bundle-mcp-runtime.ts:inFlight
+    commit: b607eb7b
+    path: src/agents/agent-bundle-mcp-runtime.ts:createServerMcpRuntime
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/mcp.ts, node host client construction
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/node-host/mcp.ts:connectionAdmission
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/runtime.ts, elicitationClient passed only when mcp.apps.enabled
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/node-host/runtime.ts:start
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-client-elicitation.runtime.ts, bindMcpClientElicitation
-    commit: 3e7c305f
+    commit: b607eb7b
     path: src/agents/mcp-client-elicitation.runtime.ts:bindMcpClientElicitation
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/native-mcp-runtime-client.ts, roots, elicitation and sampling handlers for a borrowed capability context
-    commit: 89425fd7
+    commit: b607eb7b
     path: src/agents/native-mcp-runtime-client.ts:createNativeMcpClientBridge
     date: 2026-11-27
 status: stale

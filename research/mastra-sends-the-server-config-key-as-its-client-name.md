@@ -13,37 +13,37 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, InternalMastraMCPClient constructor
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/client.ts:InternalMastraMCPClient
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, MCPClientOptions.clientInfo and getOrCreateClient
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/configuration.ts:MCPClientOptions,MCPClient.getOrCreateClient
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/types.ts, MCPClientInfo and the per-server override
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/mcp/src/client/types.ts:MCPClientInfo,BaseServerOptions
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: mastracode/sdk/src/mcp/manager.ts, Mastra Code's MCPClient construction
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: mastracode/sdk/src/mcp/manager.ts:connectAndCollectTools
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/editor/src/namespaces/mcp.ts, toMCPClientOptions
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/editor/src/namespaces/mcp.ts:toMCPClientOptions
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/connect/src/multi-connection.ts, one MCPClient per connection
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: packages/connect/src/multi-connection.ts:buildMcpMultiConnectionTools
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts, the one fixed name
-    commit: 29e1c78d
+    commit: 0a31d4d0
     path: client-sdks/react/src/hooks/mcps/use-try-connect-mcp.ts:connectAndListTools
     date: 2026-11-27
 status: current

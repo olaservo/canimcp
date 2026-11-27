@@ -19,10 +19,10 @@ Python framework and CLI for building and running agents, from the maintainer of
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-26 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.10.53` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -63,8 +63,8 @@ Python framework and CLI for building and running agents, from the maintainer of
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ● full | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
@@ -131,9 +131,9 @@ When a server's newest revision is `2025-11-25`, fast-agent negotiates it and th
 - **icons** — No icon handling anywhere in the MCP client.
 - **extensions.io.modelcontextprotocol/skills** — SEP-2640, now Final, implemented against locally-declared wire models because the Python SDK (mcp 2.3.0) carries none. The models followed draft d7490ecd in August and follow the stable Skills extension now. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. A skill's resources are a manifest of uri, digest and size, or the string dynamic; a dynamic skill is listed and cannot be installed. Skill resources are verified against their size and SHA-256 digest before install, under size and count limits fast-agent chose itself.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with "tasks" — the enum member is the only trace.
-- **extensions.io.modelcontextprotocol/ui** — Not declared and not rendered. The SDK Client is constructed without extensions=, and the docs say the terminal client does not advertise the MCP Apps extension because it does not execute app HTML or provide the browser bridge. Discovery reads _meta.ui.resourceUri (and the older flat ui/resourceUri key) on each tool, lists and reads the ui:// resource, and checks for text/html;profile=mcp-app, recording warnings for missing or mismatched resources. Tools whose visibility is exactly ["app"] are left out of the model's tool list. Linked tools are labelled (MCP Apps) in tool summaries and /mcp shows a Ui marker. A tool result is shown as ordinary terminal output with the linked resource URI noted.
-- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/list, events/poll, events/stream or events/subscribe call exists in the repo, and the SDK Client is constructed without extensions=. mcp 2.3.0 has no events client to turn on.
-- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not rendered. The SDK Client advertises only the Events extension, and the docs say the terminal client does not advertise the MCP Apps extension because it does not execute app HTML or provide the browser bridge. Discovery reads _meta.ui.resourceUri (and the older flat ui/resourceUri key) on each tool, lists and reads the ui:// resource, and checks for text/html;profile=mcp-app, recording warnings for missing or mismatched resources. Tools whose visibility is exactly ["app"] are left out of the model's tool list. Linked tools are labelled (MCP Apps) in tool summaries and /mcp shows a Ui marker. A tool result is shown as ordinary terminal output with the linked resource URI noted.
+- **extensions.io.modelcontextprotocol/events** — Declared on every connection, in both eras, with no flag. Only poll delivery is implemented, with local wire models for events/list and events/poll because mcp 2.3.0 has no Events types. Subscriptions come from a server's events list in config and start when an agent first uses that server. Delivered events wait in an inbox and are appended to the next model call as a user message marked untrusted. list_events and poll_events are refused for a server that did not declare the extension.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is sent with the Mcp-Name header. EventSubscriptionManager runs one poll loop per subscription, follows nextPollMs with a 1000 ms floor, polls again at once on hasMore, drops repeated event ids and reports truncation as a gap. NotFound and Unsupported trigger one re-list and resubscribe, Forbidden ends the subscription, and other failures back off and keep the cursor.
 - **extensions.io.modelcontextprotocol/events.push** — events/stream is never opened and no notifications/events/* handler exists.
 - **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — Off by default. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. An agent configured with harness_tools: true (false by default) also gets a get_resource tool that takes a URI and an optional server name and reads an attached MCP resource, checked against the agent's resources filter. A default agent gives the model no mechanism.
@@ -326,7 +326,7 @@ When a server's newest revision is `2025-11-25`, fast-agent negotiates it and th
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `fast-agent` from wire names `fast-agent-mcp`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 100%, `2025-11-25` <0.1%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `fast-agent` from wire names `fast-agent-mcp`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 100%, `2025-11-25` <0.1%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
@@ -351,7 +351,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `71bca7b7` on 2026-11-27, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-26.
+Read at `16f8bb65` on 2026-11-27, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-27.
 
 **SDK.** The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.3.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.
 

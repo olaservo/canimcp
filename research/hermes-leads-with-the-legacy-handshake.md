@@ -14,12 +14,12 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, _negotiate_session and _complete_handshake_at_offered_version
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_transport.py:MCPServerTransportMixin._advertises_tools
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_errors.py, the fallback signals
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_errors.py:_handshake_rejected_as_modern,_handshake_answered_with_unsupported_version
     date: 2026-11-27
   - url: https://pypi.org/project/mcp-types/2.3.0/

@@ -12,12 +12,12 @@ specVersions:
 sources:
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/config.py, MCPServerSettings.protocol_mode
-    commit: ccb3f661
+    commit: 16f8bb65
     path: src/fast_agent/config.py:MCPDefaultsSettings,MCPServerSettings
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/mcp/client_connection.py, sdk_connect_mode
-    commit: ccb3f661
+    commit: 16f8bb65
     path: src/fast_agent/mcp/client_connection.py:sdk_connect_mode,_ForcedModernClient,MCPClientConnection.__init__
     date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk

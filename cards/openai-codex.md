@@ -22,7 +22,7 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.174.0-alpha.7` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -285,14 +285,14 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 0.2%, `2025-06-18` 99.8%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `codex-cli` from wire names `codex-mcp-client`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 0.2%, `2025-06-18` 99.8%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
 | elicitation | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
 | elicitation.url | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.2% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| apps | ● full | `2026-07-28` | ◐ partial ≠ | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.22% of this client's tool calls over the 30 days to 2026-11-26, so the sample is small. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 0.22% of this client's tool calls over the 30 days to 2026-11-26, so the sample is small. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
@@ -312,7 +312,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `57b493a6` on 2026-11-27, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-27.
+Read at `18c09f20` on 2026-11-27, from `main` of https://github.com/openai/codex.git. That commit was authored 2026-11-27.
 
 **SDK.** A git dependency on upstream modelcontextprotocol/rust-sdk at rev b11a40d8, three commits after the rmcp-v3.6.0 tag, with version pinned '=3.6.0'. The lockfile resolves the same rev. patches/ at the repo root holds 32 build-toolchain and native-dependency patches and none touch rmcp, and the [patch.crates-io] rmcp override is commented out as a local-debug escape hatch. Codex selects its protocol version through its own protocol mode and does not inherit one from rmcp.
 

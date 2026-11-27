@@ -15,22 +15,22 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py/pyproject.toml, the mcp requirement and the test-only 1.x override
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/pyproject.toml
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _compat.py, MCP_V2 and the per-line branches
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/_compat.py:MCP_V2,call_tool
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py/docs/MCP_VERSIONS.md
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/docs/MCP_VERSIONS.md:MCP 1.x and 2.x Support and Migration
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py mcp_client.py, task gating per SDK line and 1.x cancellation
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient._call_tool_direct,MCPClient._should_use_task,MCPClient._require_v2_task_lifecycle
     date: 2026-11-27
   - url: https://pypi.org/project/mcp-types/2.3.0/
@@ -42,7 +42,7 @@ sources:
     path: mcp/types.py
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - strands-python-and-typescript-clients-differ
   - fast-agent-leads-with-the-modern-discover-probe

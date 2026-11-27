@@ -14,32 +14,32 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: patches/@modelcontextprotocol%2Fclient@2.4.0.patch
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: patches/@modelcontextprotocol%2Fclient@2.4.0.patch
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: package.json and bun.lock, the patch registration
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: package.json
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: script/upgrade-mcp-sdk.ts, the list of edits and the PR behind each
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: script/upgrade-mcp-sdk.ts:edits
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, tools
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/client.ts:connect
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, failure
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/client.ts:connect
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/connection.ts, recover and recovering
-    commit: 740bd1d7
+    commit: 5d1f7884
     path: packages/core/src/mcp/connection.ts:make
     date: 2026-11-27
 status: current

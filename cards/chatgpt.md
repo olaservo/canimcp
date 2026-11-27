@@ -15,7 +15,7 @@ OpenAI's chat product. Closed source, so nothing here is a read. The entry joins
 | Wire names | `openai-mcp`, `ChatGPT` |
 | Speaks | `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -56,7 +56,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `openai` from wire names `openai-mcp`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 64.4%, `2025-11-25` 35.6%, `2025-03-26` <0.1%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `openai` from wire names `openai-mcp`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 66.1%, `2025-11-25` 33.9%, `2025-03-26` <0.1%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|

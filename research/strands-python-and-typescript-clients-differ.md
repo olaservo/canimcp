@@ -16,42 +16,42 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py MCPClient, session construction and negotiation
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient._async_background_thread
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _compat, negotiate_session and the tools-changed subscription
-    commit: 8e388465
+    commit: 78855cad
     path: strands-py/src/strands/tools/mcp/_compat.py:negotiate_session,tools_changed_subscription
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient, constructor and _createClient
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/mcp/client.ts:McpClient
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpClient, tool invocation, legacy tasks and trace context
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/mcp/client.ts
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts Agent.initialize, MCP tool registration and refresh
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/agent/agent.ts:Agent.initialize
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpTool, content mapping
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/tools/mcp-tool.ts:McpTool
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts package.json, MCP dependencies and engines
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/package.json
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: root package-lock.json, resolved MCP packages
-    commit: 8e388465
+    commit: 78855cad
     path: package-lock.json
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1
@@ -60,7 +60,7 @@ sources:
     date: 2026-11-16
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts TaskTransport, the raw JSON-RPC path and the stdio probe shape
-    commit: 8e388465
+    commit: 78855cad
     path: strands-ts/src/mcp/task-transport.ts
     date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.3.0/
@@ -68,7 +68,7 @@ sources:
     path: mcp/client/_probe.py
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - strands-python-speaks-two-sdk-majors
   - strands-sends-the-server-config-key-as-client-name

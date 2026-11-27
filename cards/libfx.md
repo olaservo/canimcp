@@ -188,7 +188,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `fd39d643` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-27.
+Read at `b4502b01` on 2026-11-27, from `main` of https://github.com/vercel-labs/fx.git. That commit was authored 2026-11-27.
 
 **SDK.** Host-supplied, and not a dependency. sdk/package.json has no dependencies, devDependencies or peerDependencies field, and the published libfx 0.0.17 lists only its four native-addon packages as optionalDependencies. There is no declared or resolved version to record: the application installs the SDK and passes a connected client in. sdk/types/mcp.d.ts describes the calls as the TypeScript SDK v1 signatures. 1.32.2 was the newest v1 release on npm on 2026-11-16, and it sets LATEST_PROTOCOL_VERSION to 2025-11-25. The probe supplied @modelcontextprotocol/client 2.4.0, which defaults to the initialize handshake at 2025-11-25 and reaches 2026-07-28 only when the application sets its versionNegotiation option. Nothing is patched, because nothing is installed. Published libfx versions are fx's: c3dc80c4 is 88 commits after v0.0.17.
 

@@ -15,37 +15,57 @@ specVersions:
   - 2025-11-25
 sources:
   - url: https://github.com/NousResearch/hermes-agent
-    title: importers of tools/mcp_tool across cli, gateway, tui_gateway, acp_adapter, cron and web
-    commit: 2c8c70f3
-    path: cli.py, gateway/session.py, tui_gateway/server.py, acp_adapter/server.py, cron/scheduler.py, hermes_cli/web_server.py
+    title: gateway/session.py, imports tools.mcp_tool_discovery
+    commit: 77236c4a
+    path: gateway/session.py
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
-    title: tools/computer_use/cua_backend.py, the internal cua-driver session
-    commit: 2c8c70f3
-    path: tools/computer_use/cua_backend_session.py:_CuaDriverSession._lifecycle_coro
+    title: tui_gateway/server.py, imports tools.mcp_tool_discovery and tools.mcp_tool_agent
+    commit: 77236c4a
+    path: tui_gateway/server.py
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
-    title: importers of tools/mcp_tool across gateway, tui_gateway, acp_adapter, cron, hermes_cli and model_tools
-    commit: 2c8c70f3
-    path: model_tools.py, gateway/session.py, tui_gateway/agent_factory.py, acp_adapter/server.py, cron/scheduler.py, hermes_cli/cli_info_mixin.py, hermes_cli/web_routers/mcp.py
+    title: tui_gateway/agent_factory.py, imports tools.mcp_tool_common
+    commit: 77236c4a
+    path: tui_gateway/agent_factory.py
+    date: 2026-11-27
+  - url: https://github.com/NousResearch/hermes-agent
+    title: acp_adapter/server.py, imports tools.mcp_tool_discovery and tools.mcp_tool_agent
+    commit: 77236c4a
+    path: acp_adapter/server.py
+    date: 2026-11-27
+  - url: https://github.com/NousResearch/hermes-agent
+    title: cron/scheduler.py, imports tools.mcp_tool_discovery and tools.mcp_tool_costs
+    commit: 77236c4a
+    path: cron/scheduler.py
+    date: 2026-11-27
+  - url: https://github.com/NousResearch/hermes-agent
+    title: hermes_cli/cli_info_mixin.py, imports tools.mcp_tool_lifecycle, _discovery and _agent, for the interactive CLI
+    commit: 77236c4a
+    path: hermes_cli/cli_info_mixin.py
+    date: 2026-11-27
+  - url: https://github.com/NousResearch/hermes-agent
+    title: hermes_cli/web_routers/mcp.py, imports tools.mcp_tool_common, for the web server
+    commit: 77236c4a
+    path: hermes_cli/web_routers/mcp.py
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, the two ClientSession construction sites on the configurable path
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_transport.py:MCPServerTransportMixin._serve_transport,MCPServerTransportMixin._run_stdio
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/computer_use/cua_backend_session.py, the internal cua-driver session
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/computer_use/cua_backend_session.py:_CuaDriverSession._lifecycle_coro
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: hermes_platform/resolver/app.py, desktop-app liveness probe
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: hermes_platform/resolver/app.py:_mcp_initialize
     date: 2026-11-27
 status: current
-lastVerified: 2026-11-20
+lastVerified: 2026-11-27
 related:
   - cline-hand-rolls-stdio-in-its-cli
   - goose-client-name-varies-by-surface

@@ -20,7 +20,7 @@ Visual builder for AI flows and agents, served as a web app and a desktop app. I
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-24 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 
 ## Capabilities
@@ -134,7 +134,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `6c9aea6f` on 2026-11-27, from `main` of https://github.com/langflow-ai/langflow.git. That commit was authored 2026-11-24.
+Read at `2b6faa1c` on 2026-11-27, from `main` of https://github.com/langflow-ai/langflow.git. That commit was authored 2026-11-27.
 
 **SDK.** A base dependency of both lfx and langflow-base, imported at module level in lfx.base.mcp.util. Not patched: the root [tool.uv] constraint and override lists have no mcp entry, [tool.uv.sources] names only workspace members, and the repository has no patch files or vendored SDK. The <2.0.0 cap rules out mcp 2.x, so 2026-07-28 is unreachable. langchain-mcp-adapters>=0.1.14,<0.2.0 is an optional extra of langflow-base, locked at 0.1.14, and no Langflow code imports it. Separately, Langflow injects --with mcp~=1.28 into the uvx servers it launches itself (LANGFLOW_MCP_SDK_CONSTRAINT).
 

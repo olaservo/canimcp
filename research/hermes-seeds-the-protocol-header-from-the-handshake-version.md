@@ -14,12 +14,12 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, HTTP header seeding
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool_transport.py:MCPServerTransportMixin._run_http
     date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, LATEST_HANDSHAKE_VERSION fallback constant
-    commit: 2c8c70f3
+    commit: 77236c4a
     path: tools/mcp_tool.py:LATEST_PROTOCOL_VERSION,LATEST_HANDSHAKE_VERSION,_ensure_mcp_sdk
     date: 2026-11-27
 status: current

@@ -13,17 +13,17 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/vscode
     title: extHostMcp.ts, McpHTTPHandle._sendStreamableHttp
-    commit: c30f00e4
+    commit: 6737a1cc
     path: src/vs/workbench/api/common/extHostMcp.ts:McpHTTPHandle._sendStreamableHttp
     date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: extHostMcp.ts, _fetchWithAuthRetry, the only place the header is set
-    commit: c30f00e4
+    commit: 6737a1cc
     path: src/vs/workbench/api/common/extHostMcp.ts:McpHTTPHandle._fetchWithAuthRetry
     date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: mcpServerRequestHandler.ts, initialize and the stored reply
-    commit: c30f00e4
+    commit: 6737a1cc
     path: src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:McpServerRequestHandler.create
     date: 2026-11-27
   - url: https://modelcontextprotocol.io/specification/2025-11-25/basic/transports

@@ -14,22 +14,22 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/http_client_adapter.rs, SessionExpired404
-    commit: 57b493a6
+    commit: 18c09f20
     path: codex-rs/rmcp-client/src/http_client_adapter.rs:StreamableHttpClientAdapterError,StreamableHttpClientAdapter.post_message_inner
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/rmcp_client.rs, the operation wrapper and session recovery
-    commit: 57b493a6
+    commit: 18c09f20
     path: codex-rs/rmcp-client/src/rmcp_client.rs:RmcpClient.run_service_operation_with_pause_state,RmcpClient.reinitialize_after_session_expiry_inner,RmcpClient.is_session_expired_404,InitializeMode
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/session_expiry_transport.rs, SessionExpiryTransport
-    commit: 57b493a6
+    commit: 18c09f20
     path: codex-rs/rmcp-client/src/session_expiry_transport.rs:SessionExpiryTransport,send,serve_http_transport
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/recovery_handshake_cleanup.rs, RecoveryHandshakeCleanup
-    commit: 57b493a6
+    commit: 18c09f20
     path: codex-rs/rmcp-client/src/recovery_handshake_cleanup.rs:RecoveryHandshakeCleanup
     date: 2026-11-27
   - url: https://github.com/openai/codex/pull/63782

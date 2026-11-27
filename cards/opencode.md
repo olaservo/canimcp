@@ -19,10 +19,10 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-26 |
+| Source last updated | 2026-11-27 |
 | Last read | 2026-11-27 |
 | Probed | `0.0.0-82d8fc5` (see below) |
-| In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
+| In traffic | evalstate/mcp-clients, window ending 2026-11-26 (see below) |
 
 ## Capabilities
 
@@ -290,14 +290,14 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 
 ## Observed in traffic
 
-From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/904917c5574ca3c830de12131ed318dec05ea179/reports/dashboard-v1.json), report generated 2026-11-26, window 2026-09-27 to 2026-11-25. Grouped as `opencode` from wire names `opencode`. Tool calls by revision over the 30 days to 2026-11-25: `2026-07-28` 2.5%, `2025-11-25` 97.5%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1%.
+From `evalstate/mcp-clients` at [`f492b6dd`](https://huggingface.co/datasets/evalstate/mcp-clients/blob/f492b6ddd3fc37c4026db822ecf9f0c70b3edd4c/reports/dashboard-v1.json), report generated 2026-11-27, window 2026-09-28 to 2026-11-26. Grouped as `opencode` from wire names `opencode`. Tool calls by revision over the 30 days to 2026-11-26: `2026-07-28` 5.3%, `2025-11-25` 94.6%, `2025-06-18` <0.1%, `2025-03-26` <0.1%, `2024-11-05` <0.1%.
 
 | Capability | Observed | At | Registry | Note |
 |---|---|---|---|---|
-| elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. |
+| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
+| tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
 
@@ -317,7 +317,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `7bfda960` on 2026-11-27, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-26.
+Read at `5d1f7884` on 2026-11-27, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-27.
 
 **SDK.** Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. The SDK's default negotiation mode is legacy. opencode sets an unset protocol to auto for stdio and remote servers, so it sends server/discover at 2026-07-28 first and falls back to initialize at 2025-11-25. protocol: "legacy" or an attached socket connection skips the probe.
 

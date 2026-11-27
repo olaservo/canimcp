@@ -97,7 +97,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `2237f16b` on 2026-11-27, from `main` of https://github.com/openclaw/openclaw.git. That commit was authored 2026-11-27.
+Read at `b607eb7b` on 2026-11-27, from `main` of https://github.com/openclaw/openclaw.git. That commit was authored 2026-11-27.
 
 **SDK.** Moved from @modelcontextprotocol/sdk 1.30.0 to the v2 split packages: @modelcontextprotocol/client and @modelcontextprotocol/core, both pinned to exactly 2.4.0 at every declaration site (root, ui, extensions/browser, extensions/qa-lab), and the lockfile agrees. Unpatched: patches/ holds 17 patches and pnpm-workspace.yaml patchedDependencies lists 17 packages, none of them an @modelcontextprotocol package, and there is no override. Every SDK Client is constructed with versionNegotiation mode 'legacy', so the handshake is initialize and the revision is the SDK's: client 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25. @modelcontextprotocol/sdk 1.32.2 is still a root dependency, used for v1 result schemas the plugin SDK keeps for one release window. Where opencode patched the SDK for expired-session recovery, OpenClaw wraps the SDK HTTP transports, replaces the stdio transport with its own, and handles expiry in its own lifecycle code.
 
