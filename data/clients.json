@@ -15548,7 +15548,7 @@
       "name": "fastmcp",
       "kind": "sdk",
       "url": "https://github.com/PrefectHQ/fastmcp",
-      "notes": "FastMCP's client is what speaks to a server, over the official mcp SDK's ClientSession. deepagents-code builds one FastMCP StatefulProxyClient per configured server and mounts them on an in-process FastMCP router. langchain.mcp, a module inside the langchain package, turns each MCP tool into a LangChain tool and each result into a ToolMessage. deepagents-code's own code covers config discovery and merging, ${VAR} expansion, project server approval, OAuth login and token storage, tool naming and filtering, timeouts and reconnects. langchain-mcp-adapters was removed in deepagents-code 0.1.71 and is in no manifest or lockfile at 95a2d9a6."
+      "notes": "FastMCP's client is what speaks to a server, over the official mcp SDK's ClientSession. deepagents-code builds one FastMCP StatefulProxyClient per configured server and mounts them on an in-process FastMCP router. langchain.mcp, a module inside the langchain package, turns each MCP tool into a LangChain tool and each result into a ToolMessage. deepagents-code's own code covers config discovery and merging, ${VAR} expansion, project server approval, OAuth login and token storage, tool naming and filtering, timeouts and reconnects. langchain-mcp-adapters was removed in deepagents-code 0.1.71 and is in no manifest or lockfile at 87f6080d."
     },
     "platforms": [
       "windows",
@@ -15571,35 +15571,35 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:393-413",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:400-420",
             "note": "_resolve_server_type: no type and no url means stdio."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1846-1850"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1894-1898"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1412-1432",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1460-1480",
             "note": "The PATH check."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:233-257,1909-1919",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:240-264,1957-1967",
             "note": "stderr goes to os.devnull."
           }
         ]
@@ -15612,9 +15612,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1825-1844"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1873-1892"
           },
           {
             "tier": "read",
@@ -15642,26 +15642,26 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:208-217,408-413"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:215-224,415-420"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1668-1669,1769-1788",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1716-1717,1817-1836",
             "note": "_remote_http_client."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1838-1844"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1886-1892"
           }
         ]
       }
@@ -15688,26 +15688,26 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:2147-2201",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:2195-2249",
             "note": "When the provider is attached, and the unauthenticated status when auth: oauth has no stored tokens."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1995-2025",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:2043-2073",
             "note": "A failed token refresh or a 401 Bearer challenge becomes status unauthenticated with the login command."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_auth.py:1789-1880",
             "note": "build_oauth_provider. The provider is built from server_url, client_metadata, storage and the two handlers. client_metadata_url is not passed."
           },
@@ -15715,8 +15715,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_providers/base.py:72-91",
             "note": "Default client metadata: client_name deepagents-code, grant types authorization_code and refresh_token."
           },
@@ -15724,8 +15724,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_auth.py:1021-1026,1178-1205",
             "note": "The callback result carries code, state and the RFC 9207 iss parameter to the SDK."
           },
@@ -15733,8 +15733,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_auth.py:1648-1757",
             "note": "Metadata discovery before a refresh, and the cross-process refresh lock."
           },
@@ -15742,8 +15742,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_auth.py:1883-2002",
             "note": "RFC 8628 device flow."
           },
@@ -15751,8 +15751,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_providers/github.py:24-62",
             "note": "GitHub hosted MCP: device flow with a public client id."
           },
@@ -15760,8 +15760,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_providers/slack.py:41-57",
             "note": "Slack hosted MCP: public client id and port 3118."
           },
@@ -15769,8 +15769,8 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_auth.py:2267-2362",
             "note": "login, behind dcode mcp login."
           },
@@ -15800,24 +15800,24 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:466-478,520-526"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:473-485,527-533"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:2176-2183"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:2224-2231"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_config.py:1-7"
           }
         ]
@@ -15834,9 +15834,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           },
           {
@@ -15898,9 +15898,9 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1483-1488",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1531-1536",
           "note": "as_langchain_tool from langchain.mcp, called on the router client."
         },
         {
@@ -15915,26 +15915,26 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1549-1572",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1597-1620",
           "note": "_mcp_tool_name."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1608-1665",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1656-1713",
           "note": "allowedTools and disabledTools."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
           "path": "libs/code/deepagents_code/mcp_middleware.py:95-152",
           "note": "The per-call timeout and its error message."
         },
@@ -15942,8 +15942,8 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
           "path": "libs/code/deepagents_code/config_manifest.py:107",
           "note": "MCP_TOOL_TIMEOUT_SECONDS_DEFAULT = 120.0."
         },
@@ -15951,9 +15951,10 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/langchain",
-          "date": "2026-11-16",
+          "date": "2026-11-26",
+          "url": "https://pypi.org/project/langchain/1.5.2/",
           "path": "langchain/mcp/tools.py:234-304",
-          "note": "langchain 1.5.0, from the PyPI wheel. as_langchain_tool builds a StructuredTool with response_format content_and_artifact."
+          "note": "langchain 1.5.2, from the PyPI wheel; tools.py is byte-identical to 1.5.0. as_langchain_tool builds a StructuredTool with response_format content_and_artifact."
         }
       ]
     },
@@ -15968,9 +15969,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           }
         ]
@@ -15983,9 +15984,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           }
         ]
@@ -15995,18 +15996,19 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1928-1931",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1976-1979",
           "note": "The only requests deepagents-code sends on a server connection are the handshake and tools/list here, and tools/call through the adapted tools. No resources/* call exists under libs/."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/langchain",
-          "date": "2026-11-16",
-          "path": "langchain/mcp/__init__.py:19-36",
-          "note": "langchain 1.5.0, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
+          "date": "2026-11-26",
+          "url": "https://pypi.org/project/langchain/1.5.2/",
+          "path": "langchain/mcp/__init__.py:19-38",
+          "note": "langchain 1.5.2, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
         }
       ]
     },
@@ -16021,9 +16023,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           }
         ]
@@ -16033,18 +16035,19 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1928-1931",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1976-1979",
           "note": "The only requests deepagents-code sends on a server connection are the handshake and tools/list here, and tools/call through the adapted tools. No prompts/* call exists under libs/."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/langchain",
-          "date": "2026-11-16",
-          "path": "langchain/mcp/__init__.py:19-36",
-          "note": "langchain 1.5.0, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
+          "date": "2026-11-26",
+          "url": "https://pypi.org/project/langchain/1.5.2/",
+          "path": "langchain/mcp/__init__.py:19-38",
+          "note": "langchain 1.5.2, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
         }
       ]
     },
@@ -16056,24 +16059,25 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1928-1931",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1976-1979",
           "note": "The only requests deepagents-code sends on a server connection are the handshake and tools/list here, and tools/call through the adapted tools. No completion/complete call exists under libs/."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/langchain",
-          "date": "2026-11-16",
-          "path": "langchain/mcp/__init__.py:19-36",
-          "note": "langchain 1.5.0, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
+          "date": "2026-11-26",
+          "url": "https://pypi.org/project/langchain/1.5.2/",
+          "path": "langchain/mcp/__init__.py:19-38",
+          "note": "langchain 1.5.2, from the PyPI wheel. The adapter exports MCPAdapter, MCPToolArtifact and as_langchain_tool. It converts tools only."
         }
       ]
     },
     "sampling": {
       "status": "unsupported",
-      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays sampling/createMessage to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent sampling/createMessage got a JSON-RPC error: \"Cannot send 'sampling/createMessage': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 95a2d9a6.",
+      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays sampling/createMessage to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent sampling/createMessage got a JSON-RPC error: \"Cannot send 'sampling/createMessage': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 87f6080d.",
       "context": {
         "status": "unsupported",
         "notes": "No sampling handler reads includeContext.",
@@ -16082,9 +16086,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
             "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
           }
         ]
@@ -16097,9 +16101,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
             "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
           },
           {
@@ -16125,18 +16129,18 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
           "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
           "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
         },
         {
@@ -16162,7 +16166,7 @@
     },
     "elicitation": {
       "status": "unsupported",
-      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays elicitation/create to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent elicitation/create got a JSON-RPC error: \"Cannot send 'elicitation/create': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 95a2d9a6.",
+      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays elicitation/create to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent elicitation/create got a JSON-RPC error: \"Cannot send 'elicitation/create': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 87f6080d.",
       "form": {
         "status": "unsupported",
         "notes": "Declared, and answered with an error.",
@@ -16171,9 +16175,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
             "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
           },
           {
@@ -16194,9 +16198,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
             "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
           },
           {
@@ -16230,18 +16234,18 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
           "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
           "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
         },
         {
@@ -16267,7 +16271,7 @@
     },
     "roots": {
       "status": "unsupported",
-      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays roots/list to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent roots/list got a JSON-RPC error: \"Cannot send 'roots/list': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 95a2d9a6.",
+      "notes": "Declared to every server and not served. FastMCP's ProxyClient installs a forwarding handler by default, and the handler relays roots/list to the in-process router session, whose client deepagents-code builds with no handler. On deepagents-code 0.2.5 with fastmcp 4.1.2 and mcp 2.2.0 a server that sent roots/list got a JSON-RPC error: \"Cannot send 'roots/list': this transport context has no back-channel for server-initiated requests.\" The loader code is the same at 87f6080d.",
       "listChanged": {
         "status": "unsupported",
         "notes": "The SDK declares roots.listChanged: true whenever a roots callback exists. Nothing in deepagents-code sends notifications/roots/list_changed.",
@@ -16284,9 +16288,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           }
         ]
@@ -16304,18 +16308,18 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
           "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1948-1954",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1996-2002",
           "note": "Each connected client is wrapped with create_proxy and mounted on a FastMCP router. The tools call through FastMCPClient(router), built with no handlers."
         },
         {
@@ -16347,17 +16351,17 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:260-293"
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:267-300"
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1920-1922"
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1968-1970"
         }
       ]
     },
@@ -16369,18 +16373,19 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1928-1931",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1976-1979",
           "note": "After connecting, the loader reads the tool list and nothing else from the client."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/langchain",
-          "date": "2026-11-16",
+          "date": "2026-11-26",
+          "url": "https://pypi.org/project/langchain/1.5.2/",
           "path": "langchain/mcp/tools.py:204-209",
-          "note": "langchain 1.5.0, from the PyPI wheel. _tool_metadata reads client.server_info only."
+          "note": "langchain 1.5.2, from the PyPI wheel. _tool_metadata reads client.server_info only."
         }
       ]
     },
@@ -16392,18 +16397,18 @@
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:72-204",
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:72-211",
           "note": "MCPToolInfo and MCPServerInfo, the metadata the TUI gets: no icon field."
         },
         {
           "tier": "read",
           "at": "2025-11-25",
           "source": "langchain-ai/deepagents",
-          "date": "2026-11-16",
-          "commit": "95a2d9a6",
-          "path": "libs/code/deepagents_code/mcp_tools.py:1507-1518"
+          "date": "2026-11-26",
+          "commit": "87f6080d",
+          "path": "libs/code/deepagents_code/mcp_tools.py:1555-1566"
         }
       ]
     },
@@ -16426,9 +16431,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1922",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1970",
             "note": "No extensions argument on the per-server client. A search of libs/ for ui://, resourceUri and io.modelcontextprotocol/ui at this commit finds nothing."
           }
         ]
@@ -16441,9 +16446,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1920-1929",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1977",
             "note": "The per-server client is StatefulProxyClient(transport=..., log_handler=...). No mode, client_info, roots, sampling_handler, elicitation_handler or message_handler is passed. The calls on it are connect and list_tools."
           },
           {
@@ -16494,7 +16499,7 @@
             "date": "2026-11-26",
             "url": "https://pypi.org/project/langchain/1.5.2/",
             "path": "langchain/mcp/adapter.py:190-199",
-            "note": "langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
+            "note": "langchain 1.5.2 wheel, the version every libs/ uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
           },
           {
             "tier": "read",
@@ -16545,7 +16550,7 @@
             "date": "2026-11-26",
             "url": "https://pypi.org/project/langchain/1.5.2/",
             "path": "langchain/mcp/adapter.py:190-199",
-            "note": "langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
+            "note": "langchain 1.5.2 wheel, the version every libs/ uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
           },
           {
             "tier": "read",
@@ -16580,9 +16585,9 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1928-1931"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1976-1979"
           }
         ],
         "research": [
@@ -16597,17 +16602,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/provider_tool_search.py:1,46-93"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/provider_tool_search.py:1,46-95"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/config_manifest.py:2715-2727"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/config_manifest.py:2728-2740"
           }
         ]
       },
@@ -16619,39 +16624,48 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/deepagents_code/mcp_proxy.py:111-161"
           }
         ]
       },
       "projectServerApproval": {
         "status": "full",
-        "notes": "Config is read from the user-level .mcp.json, <project>/.deepagents/.mcp.json and <project>/.mcp.json. Servers from the two project files, stdio and remote alike, load only when the whole config is trusted with --trust-project-mcp or when a scoped approval or the environment allowlist enables that server, matched on the project root and a fingerprint of the server entry. A server on the user deny list is dropped even from a trusted config.",
+        "notes": "Config is read from the user-level .mcp.json, <project>/.deepagents/.mcp.json and <project>/.mcp.json. Servers from the two project files, stdio and remote alike, load only when the whole config is trusted with --trust-project-mcp or when a scoped approval or the environment allowlist enables that server, matched on the project root and a fingerprint of the server entry. A server on the user deny list is dropped even from a trusted config. A project server skipped for lack of approval is listed in /mcp and after /reload with status untrusted and a message to restart and approve it, since approval happens only in the startup prompt.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:856-892"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:863-899"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:1072-1110"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1079-1117"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/deepagents_code/mcp_tools.py:2566-2585"
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:2625-2644"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:91-121,2852-2861,2887-2914",
+            "note": "MCPServerStatus gains untrusted. resolve_and_load_mcp_tools reports each dropped project server still awaiting approval as MCPServerInfo(status=\"untrusted\") unless the user disabled it or another config supplies the name."
           }
         ]
       }
@@ -16666,13 +16680,13 @@
       "openSource": true,
       "license": "MIT",
       "sourceUrl": "https://github.com/langchain-ai/deepagents",
-      "lastVerified": "2026-11-16",
+      "lastVerified": "2026-11-26",
       "source": {
         "repo": "https://github.com/langchain-ai/deepagents.git",
         "ref": "main",
-        "checkedCommit": "95a2d9a60dcfa8bda0c4d49cd4b3bd518ca1942e",
-        "commitDate": "2026-11-16T08:19:12Z",
-        "checkedAt": "2026-11-16",
+        "checkedCommit": "87f6080d9f3375e0b41aa07a71ce0a8f1027dd9a",
+        "commitDate": "2026-11-26T10:30:00Z",
+        "checkedAt": "2026-11-26",
         "paths": [
           "libs/code/deepagents_code/mcp_tools.py",
           "libs/code/deepagents_code/mcp_proxy.py",
@@ -16690,7 +16704,9 @@
           "libs/talon/pyproject.toml",
           "libs/talon/uv.lock",
           "libs/evals/deepagents_harbor/langgraph_project/langgraph_agent.py",
-          "libs/acp/deepagents_acp/server.py"
+          "libs/acp/deepagents_acp/server.py",
+          "libs/evals/pyproject.toml",
+          "libs/evals/uv.lock"
         ]
       },
       "sdk": {
@@ -16701,14 +16717,14 @@
         "resolved": "4.1.2",
         "patched": false,
         "pinsProtocolVersion": "2025-11-25",
-        "notes": "Versions are deepagents-code's, from libs/code. fastmcp 4.1.2 is a metapackage over fastmcp-slim 4.1.2, which holds the code. It runs the official mcp SDK, declared \"mcp>=2.0.0\" and resolved to 2.3.0 with mcp-types 2.3.0. langchain is declared \">=1.5.0,<2.0.0\" and resolves to 1.5.0, whose mcp extra asks for fastmcp>=4.0.11; deepagents-code depends on fastmcp directly and does not use the extra. Not patched: no patches directory, no vendored fork, and the one [tool.uv] override in libs/code is for filelock. deepagents-code does subclass the SDK's OAuthClientProvider and reads private FastMCP attributes (_disconnect, _session_state). The core library's manifest and lockfile hold neither fastmcp nor mcp. deepagents-talon declares \"fastmcp>=4.1.5\" and \"mcp>=2.3.0\" and resolves to fastmcp 4.1.6 and mcp 2.3.0. deepagents names no protocol revision: FastMCP's ProxyClient picks the handshake era and the mcp SDK's LATEST_HANDSHAKE_VERSION picks 2025-11-25. The probe ran deepagents-code 0.2.5 with mcp 2.2.0; the lockfile now resolves 2.3.0.",
+        "notes": "Versions are deepagents-code's, from libs/code. fastmcp 4.1.2 is a metapackage over fastmcp-slim 4.1.2, which holds the code. It runs the official mcp SDK, declared \"mcp>=2.0.0\" and resolved to 2.3.0 with mcp-types 2.3.0. langchain is declared \">=1.5.2,<2.0.0\" and resolves to 1.5.2, whose mcp extra asks for fastmcp>=4.0.11; deepagents-code depends on fastmcp directly and does not use the extra. Not patched: no patches directory, no vendored fork, and the one [tool.uv] override in libs/code is for filelock. deepagents-code does subclass the SDK's OAuthClientProvider and reads private FastMCP attributes (_disconnect, _session_state). The core library's manifest and lockfile hold neither fastmcp nor mcp. deepagents-talon declares \"fastmcp>=4.2.3\" and \"mcp>=2.3.0\" and resolves to fastmcp 4.2.3 and mcp 2.3.0. The evals harness declares \"langchain[mcp]>=1.4.1\" and resolves fastmcp 4.2.2 and mcp 2.3.0. deepagents names no protocol revision: FastMCP's ProxyClient picks the handshake era and the mcp SDK's LATEST_HANDSHAKE_VERSION picks 2025-11-25. The probe ran deepagents-code 0.2.5 with mcp 2.2.0; the lockfile now resolves 2.3.0.",
         "evidence": [
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/pyproject.toml:29,94,107",
             "note": "langchain, fastmcp and mcp requirements."
           },
@@ -16716,17 +16732,17 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/code/uv.lock:1315-1316,1327-1328,2403-2404,3289-3290,3314-3315",
-            "note": "fastmcp 4.1.2, fastmcp-slim 4.1.2, langchain 1.5.0, mcp 2.3.0, mcp-types 2.3.0."
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/uv.lock:1318-1319,1330-1331,2406-2407,3292-3293,3317-3318",
+            "note": "fastmcp 4.1.2, fastmcp-slim 4.1.2, langchain 1.5.2, mcp 2.3.0, mcp-types 2.3.0."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/code/pyproject.toml:216-222",
             "note": "The only [tool.uv] override is filelock."
           },
@@ -16734,27 +16750,45 @@
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/deepagents/pyproject.toml:22-30",
-            "note": "The core library depends on langchain, langchain-core, two provider packages, langsmith, packaging and wcmatch."
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/deepagents/pyproject.toml:22-31",
+            "note": "The core library depends on langchain, langchain-core, two provider packages, langgraph, langsmith, packaging and wcmatch."
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
             "path": "libs/talon/pyproject.toml:30,44"
           },
           {
             "tier": "read",
             "at": "2025-11-25",
             "source": "langchain-ai/deepagents",
-            "date": "2026-11-16",
-            "commit": "95a2d9a6",
-            "path": "libs/talon/uv.lock:1130-1131,2342-2343",
-            "note": "fastmcp 4.1.6, mcp 2.3.0."
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/talon/uv.lock:1144-1145,2358-2359",
+            "note": "fastmcp 4.2.3, mcp 2.3.0."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/evals/pyproject.toml:21",
+            "note": "langchain[mcp]>=1.4.1."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/evals/uv.lock:975-976,987-988,2344-2345",
+            "note": "fastmcp 4.2.2, fastmcp-slim 4.2.2, mcp 2.3.0."
           },
           {
             "tier": "read",

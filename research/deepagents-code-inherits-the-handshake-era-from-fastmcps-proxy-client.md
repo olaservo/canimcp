@@ -15,54 +15,54 @@ specVersions:
 sources:
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_tools.py, _mount_backends
-    commit: 95a2d9a6
-    path: libs/code/deepagents_code/mcp_tools.py:1920-1929,1948-1954
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/code/deepagents_code/mcp_tools.py:1968-1977,1996-2002
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/code/deepagents_code/mcp_auth.py, _drive_handshake
-    commit: 95a2d9a6
+    commit: 87f6080d
     path: libs/code/deepagents_code/mcp_auth.py:2251-2264
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp.py, load_mcp_tools
-    commit: 95a2d9a6
-    path: libs/talon/deepagents_talon/mcp.py:423-426
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/talon/deepagents_talon/mcp.py:425-428
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/deepagents
     title: libs/talon/deepagents_talon/mcp_auth.py, _request_json
-    commit: 95a2d9a6
-    path: libs/talon/deepagents_talon/mcp_auth.py:43,666-677
-    date: 2026-11-16
+    commit: 87f6080d
+    path: libs/talon/deepagents_talon/mcp_auth.py:43,687-698
+    date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/server/providers/proxy.py, ProxyClient.__init__ and _create_client_factory
     path: fastmcp/server/providers/proxy.py:1370-1385,1726-1742
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/client/client.py, the mode argument and _negotiate
     path: fastmcp/client/client.py:441,841-893
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/PrefectHQ/fastmcp
     title: fastmcp-slim 4.1.2 wheel, fastmcp/client/transports/sse.py, legacy_only
     path: fastmcp/client/transports/sse.py:36-38
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, initialize
     path: mcp/client/session.py:651-673
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/_probe.py, negotiate_auto
     path: mcp/client/_probe.py:52-96
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp-types 2.3.0 wheel, mcp_types/version.py
     path: mcp_types/version.py:24-57
-    date: 2026-11-16
+    date: 2026-11-26
   - url: https://github.com/langchain-ai/langchain
-    title: langchain 1.5.0 wheel, langchain/mcp/adapter.py, MCPAdapter.__init__
+    title: langchain 1.5.2 wheel, langchain/mcp/adapter.py, MCPAdapter.__init__
     path: langchain/mcp/adapter.py:173-199
-    date: 2026-11-16
+    date: 2026-11-26
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-26
 related:
   - deepagents-core-library-has-no-mcp-client
   - deepagents-code-declares-capabilities-it-cannot-serve
@@ -72,7 +72,7 @@ related:
 
 # deepagents-code offers servers 2025-11-25 because FastMCP's proxy client defaults to the handshake
 
-Read at langchain-ai/deepagents 95a2d9a6, with fastmcp-slim 4.1.2, mcp 2.3.0, mcp-types 2.3.0 and langchain 1.5.0 from the PyPI wheels.
+Read at langchain-ai/deepagents 87f6080d, with fastmcp-slim 4.1.2, mcp 2.3.0, mcp-types 2.3.0 and langchain 1.5.2 from the PyPI wheels. Talon resolves fastmcp-slim 4.2.3, whose `Client` also defaults to `auto`.
 
 ## Three layers, and none of them is deepagents
 
@@ -90,7 +90,7 @@ FastMCP can also mirror the front connection's era onto the backend for each req
 
 ## 2026-07-28 is not reachable on the tool path
 
-There is no config key, environment variable or flag in deepagents-code that sets the mode. A server that speaks only `2026-07-28` cannot be used for tools at this commit.
+There is no config key, environment variable or flag in deepagents-code that sets the mode. A server that speaks only `2026-07-28` cannot be used for tools at 87f6080d.
 
 The canimcp probe ran deepagents-code 0.2.5 against a fixture server that offers both eras. All 68 captures start with `initialize` at `2025-11-25`, none contains `server/discover`, and on HTTP the later requests carry `MCP-Protocol-Version: 2025-11-25`.
 
