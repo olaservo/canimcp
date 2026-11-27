@@ -15,32 +15,32 @@ specVersions:
 sources:
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/oauth/client-settings.ts, offersClientMetadataDocument, clientMetadataDocument and callbackId
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/mcp/src/oauth/client-settings.ts
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/oauth/flow.ts, runFlow, where a stored client wins and the iss parameter is checked
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/mcp/src/oauth/flow.ts:runFlow
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/oauth.ts, pi's documents and the rebranded-build rule
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/src/extensions/mcp/oauth.ts
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/core/mcp-servers.ts, isClientMetadataDocumentCallback
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/src/core/mcp-servers.ts:isClientMetadataDocumentCallback
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/src/oauth/loopback.ts, the extra callback path the loopback server listens on
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/mcp/src/oauth/loopback.ts:listenForLoopbackSignIn
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/docs/mcp.md, Authenticate with OAuth
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/docs/mcp.md:Authenticate with OAuth
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi/commit/908aa7b74baa7502321293797313f64c6fec22ee

@@ -16,19 +16,19 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: importers of tools/mcp_tool across cli, gateway, tui_gateway, acp_adapter, cron and web
-    commit: a24c12d1
+    commit: 45e95845
     path: cli.py, gateway/session.py, tui_gateway/server.py, acp_adapter/server.py, cron/scheduler.py, hermes_cli/web_server.py
-    date: 2026-08-27
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/computer_use/cua_backend.py, the internal cua-driver session
-    commit: a24c12d1
-    path: tools/computer_use/cua_backend.py:_CuaDriverSession._lifecycle_coro
-    date: 2026-08-27
+    commit: 45e95845
+    path: tools/computer_use/cua_backend_session.py:_CuaDriverSession._lifecycle_coro
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: importers of tools/mcp_tool across gateway, tui_gateway, acp_adapter, cron, hermes_cli and model_tools
-    commit: 2de9f51b
+    commit: 45e95845
     path: model_tools.py, gateway/session.py, tui_gateway/agent_factory.py, acp_adapter/server.py, cron/scheduler.py, hermes_cli/cli_info_mixin.py, hermes_cli/web_routers/mcp.py
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, the two ClientSession construction sites on the configurable path
     commit: 45e95845

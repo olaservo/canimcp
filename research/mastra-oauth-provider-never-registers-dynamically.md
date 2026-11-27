@@ -16,27 +16,27 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/oauth-provider.ts, header comment, constructor and clientInformation()
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/src/client/oauth-provider.ts:MCPOAuthClientProvider,MCPOAuthClientProvider.clientInformation
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, authenticate() and runAuthorizationFlow
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/src/client/configuration.ts:MCPClient.authenticate,MCPClient.runAuthorizationFlow
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, finishAuth
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/src/client/client.ts:InternalMastraMCPClient.finishAuth
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/CHANGELOG.md, 2.0.0 OAuth change and the 1.0.0 provider description
-    commit: bb984550
+    commit: ad1a04ff
     path: packages/mcp/CHANGELOG.md:Major Changes,Minor Changes
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: mastracode/sdk/src/mcp/manager.ts, Mastra Code's provider construction
-    commit: 79768b13
+    commit: ad1a04ff
     path: mastracode/sdk/src/mcp/manager.ts:createOAuthProvider
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
@@ -44,7 +44,7 @@ sources:
     path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - kilocode-adds-cimd-and-pre-connect-token-refresh
   - codex-prefers-a-chatgpt-hosted-client-identifier

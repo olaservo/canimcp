@@ -19,8 +19,8 @@ Open source agent SDK from AWS with a Python binding (strands-agents) and a Type
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-25 |
+| Last read | 2026-11-27 |
 | Probed | `1.64.0+mcp-2.3.0` (see below) |
 
 ## Capabilities
@@ -251,7 +251,7 @@ When a server's newest revision is `2025-11-25`, Strands Agents negotiates it an
 
 ## Provenance
 
-Read at `d982a0d4` on 2026-11-16, from `main` of https://github.com/strands-agents/harness-sdk.git. That commit was authored 2026-11-16.
+Read at `8e388465` on 2026-11-27, from `main` of https://github.com/strands-agents/harness-sdk.git. That commit was authored 2026-11-25.
 
 **SDK.** This block is the Python binding. mcp is a base dependency of strands-agents, declared as a range across two majors, and no Python lockfile is committed, so there is no resolved version to record. On 2026-11-16 the newest release in range, and the newest on PyPI, is mcp 2.3.0. The probe's environment resolved the same on 2026-11-08. The SDK behaviour cited in this entry was read from the mcp 2.3.0 and mcp-types 2.3.0 wheels. A _compat module branches on whether ClientSession has a discover method, so an environment that holds mcp below 2 runs the same Strands release on the initialize handshake only. The hatch test override that caps mcp below 2.0.0 applies to one CI job. No vendored copy and no dependency patch. On mcp 1.x only, Strands wraps two server-side SDK classes with wrapt at import time for trace context, which does not touch the client. Strands names no revision for ordinary calls: the version lists are the SDK's, and calling the SDK's negotiate_auto is Strands' choice, so pinsProtocolVersion is left unset. The one literal is 2026-07-28 for tasks. The TypeScript binding declares @modelcontextprotocol/client ^2.0.0 as a required peer dependency, resolved to 2.3.1 in the root package-lock.json, unpatched, with versionNegotiation mode auto. Its task code subclasses the SDK Client to call the private _outboundMetaEnvelope and mirrors private fields of the SDK stdio transport. @modelcontextprotocol/sdk ^1.32.1 is a dev dependency there, used by tests and fixtures.
 

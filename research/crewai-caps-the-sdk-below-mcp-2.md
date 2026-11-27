@@ -13,24 +13,24 @@ specVersions:
 sources:
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/pyproject.toml, the base dependency on mcp
-    commit: 758b2c1d
+    commit: 77237aec
     path: lib/crewai/pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai-tools/pyproject.toml, the mcp extra
-    commit: 758b2c1d
+    commit: 77237aec
     path: lib/crewai-tools/pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: uv.lock, mcp 1.30.0 and mcpadapt 0.1.19 and 0.1.20
-    commit: 758b2c1d
+    commit: 77237aec
     path: uv.lock
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: pyproject.toml, [tool.uv] overrides and the litellm comment
-    commit: 758b2c1d
+    commit: 77237aec
     path: pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/mcp/transports/http.py, the streamablehttp_client import
     commit: 77237aec

@@ -15,9 +15,9 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py/pyproject.toml, the mcp requirement and the test-only 1.x override
-    commit: d982a0d4
+    commit: 8e388465
     path: strands-py/pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _compat.py, MCP_V2 and the per-line branches
     commit: 8e388465

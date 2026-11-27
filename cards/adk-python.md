@@ -19,8 +19,8 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-15 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-25 |
+| Last read | 2026-11-27 |
 | Probed | `2.14.0` (see below) |
 
 ## Capabilities
@@ -118,8 +118,8 @@ When a server's newest revision is `2025-11-25`, Google ADK (Python) negotiates 
 - **resources** — Off by default. With use_mcp_resources=True the toolset adds a load_mcp_resource tool that the model calls with resource names. ADK lists resource names into the instructions on every model request, maps a name to a URI with another resources/list, reads it, and appends the contents to the next request as user turns. One page of resources/list, no cursor. Resource templates are never listed.
 - **resources.listChanged** — No handler. The names are listed again on every model request while use_mcp_resources is on.
 - **resources.subscribe** — resources/subscribe is never called. A search of src for subscribe_resource finds nothing.
-- **prompts** — One use: McpInstructionProvider fetches a named prompt and returns it as the agent instruction. It calls prompts/list for the argument names, fills them from session state, calls prompts/get and joins the text of the messages. Non-text content and message roles are dropped. One page of prompts/list. Prompts are not offered to a user or to the model. The provider opens its own session with no callbacks and no header_provider.
-- **prompts.listChanged** — No handler. The provider calls prompts/list and prompts/get each time the instruction is resolved.
+- **prompts** — One use: McpInstructionProvider fetches a named prompt and returns it as the agent instruction. It calls prompts/get with the arguments given to the provider (a mapping, a function of the context, or none) and joins the text of the messages. Non-text content and message roles are dropped. Prompts are not offered to a user or to the model. The provider opens its own session with no callbacks and no header_provider.
+- **prompts.listChanged** — No handler. The provider calls prompts/get each time the instruction is resolved.
 - **completions** — No completion/complete call. A search of src for a ClientSession.complete call finds nothing.
 - **sampling** — On this path a server asks for sampling inside an InputRequiredResult. ADK calls call_tool without allow_input_required, the SDK raises, and the model receives an error dict. An application sampling_callback is still advertised in each request and is not called for tool calls. Read from source, not run.
 - **elicitation** — Same as sampling: an InputRequiredResult from tools/call raises in the SDK and becomes an error dict, so an application elicitation_callback is declared and not called. Read from source, not run.
@@ -268,9 +268,9 @@ When a server's newest revision is `2025-11-25`, Google ADK (Python) negotiates 
 
 ## Provenance
 
-Read at `c6586f19` on 2026-11-16, from `main` of https://github.com/google/adk-python.git. That commit was authored 2026-11-15.
+Read at `03725e8c` on 2026-11-27, from `main` of https://github.com/google/adk-python.git. That commit was authored 2026-11-25.
 
-**SDK.** No resolved version is recorded because the repo commits no lockfile. mcp>=1.24,<3 is declared in the mcp, all and test extras and is absent from the base dependencies, so a plain pip install google-adk installs no MCP SDK. The repo commits five uv pip compile outputs that the README recommends as pip constraints: constraints-3.11.txt to constraints-3.14.txt pin mcp==1.28.1, and constraints-3.15.txt pins mcp==2.3.0 with mcp-types==2.3.0. Observed 2026-11-08: the probe's install of google-adk[mcp]==2.14.0 with no constraints file resolved mcp 2.3.0. Observed 2026-11-16: 2.3.0 is the newest mcp on PyPI. Not patched: there is no patches directory, [tool.uv] holds only a path source for google-adk itself, and no copy of the SDK is vendored. Every SDK import goes through src/google/adk/dependencies/_mcp.py, which tries the 2.x module paths first, sets IS_MCP_SDK_V2 and imports the private mcp.client._probe.negotiate_auto when it exists. Its docstring says Google's internal build swaps that file for one naming a vendored copy, which the open-source build does not use. ADK names no protocol revision. It picks the era, handshake unless ADK_ENABLE_MCP_MODERN_PROTOCOL is set, and the revision strings are the SDK's: 2025-11-25 is LATEST_PROTOCOL_VERSION in 1.28.1 and LATEST_HANDSHAKE_VERSION in 2.3.0. pinsProtocolVersion is left unset because the newest revision 2.3.0 pins is 2026-07-28, which a default ADK install does not offer. SDK constants and behaviour cited in this entry were read from the PyPI wheels mcp 2.3.0, mcp-types 2.3.0 and mcp 1.28.1.
+**SDK.** No resolved version is recorded because the repo commits no lockfile. mcp>=1.24,<3 is declared in the mcp, all and test extras and is absent from the base dependencies, so a plain pip install google-adk installs no MCP SDK. The repo commits five uv pip compile outputs that the README recommends as pip constraints: constraints-3.11.txt to constraints-3.14.txt pin mcp==1.28.1, and constraints-3.15.txt pins mcp==2.3.0 with mcp-types==2.3.0. Observed 2026-11-08: the probe's install of google-adk[mcp]==2.14.0 with no constraints file resolved mcp 2.3.0. Observed 2026-11-16: 2.3.0 is the newest mcp on PyPI. Not patched: there is no patches directory, [tool.uv] holds a path source for google-adk itself and uv settings (required-version, exclude-newer), none for the SDK, and no copy of the SDK is vendored. Every SDK import goes through src/google/adk/dependencies/_mcp.py, which tries the 2.x module paths first, sets IS_MCP_SDK_V2 and imports the private mcp.client._probe.negotiate_auto when it exists. Its docstring says Google's internal build swaps that file for one naming a vendored copy, which the open-source build does not use. ADK names no protocol revision. It picks the era, handshake unless ADK_ENABLE_MCP_MODERN_PROTOCOL is set, and the revision strings are the SDK's: 2025-11-25 is LATEST_PROTOCOL_VERSION in 1.28.1 and LATEST_HANDSHAKE_VERSION in 2.3.0. pinsProtocolVersion is left unset because the newest revision 2.3.0 pins is 2026-07-28, which a default ADK install does not offer. SDK constants and behaviour cited in this entry were read from the PyPI wheels mcp 2.3.0, mcp-types 2.3.0 and mcp 1.28.1.
 
 Paths read:
 

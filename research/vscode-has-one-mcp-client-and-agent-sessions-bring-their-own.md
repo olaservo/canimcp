@@ -33,9 +33,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/microsoft/vscode
     title: Agent host Codex session, mcp_servers in thread/start config
-    commit: 8e900494
+    commit: e8b6d8b5
     path: src/vs/platform/agentHost/node/codex/codexAgent.ts
-    date: 2026-11-20
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 related:

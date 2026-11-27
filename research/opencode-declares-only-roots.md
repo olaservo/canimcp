@@ -25,7 +25,7 @@ sources:
     date: 2026-08-24
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/client.ts, the capabilities passed to Client
-    commit: 449c128a
+    commit: 7bfda960
     path: packages/core/src/mcp/client.ts:initialize
     date: 2026-11-27
 status: stale

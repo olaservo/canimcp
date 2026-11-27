@@ -14,9 +14,9 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_sampling.py, the elicitation callback with the empty accept
-    commit: 9dcf7714
+    commit: 45e95845
     path: tools/mcp_tool_sampling.py:ElicitationHandler
-    date: 2026-11-09
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_sampling.py, the elicitation callback and the consent fallback
     commit: 45e95845

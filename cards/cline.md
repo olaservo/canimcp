@@ -19,8 +19,8 @@ Open-source coding agent shipping as a VS Code extension and a CLI from one mono
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-19 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `3.0.74` (see below) |
 
 ## Capabilities
@@ -176,7 +176,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `20b04272` on 2026-11-20, from `main` of https://github.com/cline/cline.git. That commit was authored 2026-11-19.
+Read at `cbc7d141` on 2026-11-27, from `main` of https://github.com/cline/cline.git. That commit was authored 2026-11-26.
 
 **SDK.** Two workspaces declare it and disagree: sdk/packages/core asks for ^1.29.0 and apps/vscode for ^1.25.1. bun.lock hoists one copy, so both run 1.30.0. patchedDependencies covers @opentui-ui/dialog, ollama-ai-provider-v2 and @shadcn/react and not the SDK, which is the answer to the question opencode raised: Cline is on the same SDK and does not patch it. The protocol version is the SDK's on every path except one - 1.30.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 - but the @cline/core stdio client does not use the SDK at all and sends 2024-11-05 of its own accord.
 

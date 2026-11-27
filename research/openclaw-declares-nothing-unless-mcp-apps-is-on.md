@@ -20,24 +20,24 @@ sources:
     date: 2026-11-20
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-runtime.ts, mcpAppsEnabled
-    commit: 3e7c305f
+    commit: 2237f16b
     path: src/agents/agent-bundle-mcp-runtime.ts:createServerMcpRuntime
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/agent-bundle-mcp-runtime.ts, bundle client construction
-    commit: 3e7c305f
+    commit: 2237f16b
     path: src/agents/agent-bundle-mcp-runtime.ts:inFlight
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/mcp.ts, node host client construction
-    commit: c44c610d
+    commit: 2237f16b
     path: src/node-host/mcp.ts:connectionAdmission
     date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/node-host/runtime.ts, elicitationClient passed only when mcp.apps.enabled
-    commit: 3e7c305f
+    commit: 2237f16b
     path: src/node-host/runtime.ts:start
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/openclaw/openclaw
     title: src/agents/mcp-client-elicitation.runtime.ts, bindMcpClientElicitation
     commit: 3e7c305f
@@ -45,16 +45,19 @@ sources:
     date: 2026-11-20
   - url: https://github.com/openclaw/openclaw
     title: src/agents/native-mcp-runtime-client.ts, roots, elicitation and sampling handlers for a borrowed capability context
-    commit: 3e7c305f
+    commit: 2237f16b
     path: src/agents/native-mcp-runtime-client.ts:createNativeMcpClientBridge
-    date: 2026-11-20
-status: current
-lastVerified: 2026-11-20
+    date: 2026-11-27
+status: stale
+lastVerified: 2026-11-26
 related:
   - cline-declares-no-client-capabilities
   - opencode-declares-only-roots
   - utilized-capability-declarations
 ---
+
+Stale at c44c610d (2026-11-26): a default install now declares elicitation: { url: {} } and the agent bundle handles elicitation/create for every non-native session. Form elicitation and both extensions are still behind mcp.apps.enabled. The registry's elicitation and MCP Apps rows describe the current behaviour.
+
 
 # A default OpenClaw install declares no client capabilities at all
 

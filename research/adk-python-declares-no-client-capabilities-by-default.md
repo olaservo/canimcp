@@ -28,9 +28,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/agents/mcp_instruction_provider.py, a session manager with no callbacks
-    commit: c6586f19
+    commit: 03725e8c
     path: src/google/adk/agents/mcp_instruction_provider.py:McpInstructionProvider.__init__
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/tools/mcp_tool/mcp_tool.py, the tools/call request and the error boundary
     commit: 03725e8c

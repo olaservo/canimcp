@@ -13,52 +13,52 @@ specVersions:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/protocol_mode.rs
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/protocol_mode.rs
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/features/src/lib.rs, the mcp_2026_07_28, mcp_connection_sharing, codex_apps_mcp_2026_07_28 and use_xaa feature records
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/features/src/lib.rs:FEATURES
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/rmcp_client.rs, mcp_initialize_request_params
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/codex-mcp/src/rmcp_client.rs:mcp_initialize_request_params
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/core/src/config/mod.rs, discover_local_stdio and mcp_protocol_mode
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/core/src/config/mod.rs:Config.to_mcp_config_with_loaded_plugins,Config.mcp_protocol_mode
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/connection_manager.rs, per-connection mode selection
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/codex-mcp/src/connection_manager.rs:McpConnectionSet
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/codex-mcp/src/server.rs, can_discover_local_stdio and stdio_protocol_mode
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/codex-mcp/src/server.rs:EffectiveMcpServer
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/rmcp_client.rs, the stdio opt-in variable, the modern-session check and the discovery handshake
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/rmcp_client.rs:RmcpClient.new_stdio_client_with_protocol_mode,RmcpClient.read_resource,RmcpClient.connect_pending_transport
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_handshake.rs, when a failed discovery restarts the server in Legacy
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/stdio_handshake.rs
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/local_stdio_transport.rs, handle_reply and the empty discovery reply
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/local_stdio_transport.rs:Discovery.handle_reply
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/stdio_server_launcher.rs, the Windows fallback to Legacy without a job object
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/stdio_server_launcher.rs:LocalStdioServerLauncher.launch_server
     date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/rust-sdk

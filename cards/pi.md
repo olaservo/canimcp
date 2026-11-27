@@ -19,8 +19,8 @@ TypeScript coding agent CLI from Earendil Works, formerly badlogic/pi-mono. Its 
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 | Probed | `1.5.0` (see below) |
 
 ## Capabilities
@@ -237,9 +237,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `07ece436` on 2026-11-16, from `main` of https://github.com/earendil-works/pi.git. That commit was authored 2026-11-16.
+Read at `129c326a` on 2026-11-27, from `main` of https://github.com/earendil-works/pi.git. That commit was authored 2026-11-27.
 
-**SDK.** Hand-written client, published as @earendil-works/pi-mcp (1.5.2 at this commit, declared 1.5.2). pi's own client, a workspace package in the same repo, published to npm at the version of the coding agent. It is hand-written and has one runtime dependency, cross-spawn; nothing in the repo imports an official MCP SDK. The only @modelcontextprotocol/sdk string in package-lock.json is an optional peer of @google/genai, and the lockfile has no entry that installs it. Only the OAuth code is derived: flow.ts and discovery.ts are adapted from typescript-sdk v1.29.0 src/client/auth.ts, with the licence in THIRD_PARTY_NOTICES. The lockfile resolves the package as a link to packages/mcp. No patches directory, patch-package or patchedDependencies; the one npm override is protobufjs. pinsProtocolVersion is left unset because LATEST_PROTOCOL_VERSION is pi's own constant. The coding agent never passes the protocolVersion option, and the option is typed to the four supported revisions.
+**SDK.** Hand-written client, published as @earendil-works/pi-mcp (1.6.1 at this commit, declared 1.6.1). pi's own client, a workspace package in the same repo, published to npm at the version of the coding agent. It is hand-written and has one runtime dependency, cross-spawn; nothing in the repo imports an official MCP SDK. The only @modelcontextprotocol/sdk string in package-lock.json is an optional peer of @google/genai, and the lockfile has no entry that installs it. Only the OAuth code is derived: flow.ts and discovery.ts are adapted from typescript-sdk v1.29.0 src/client/auth.ts, with the licence in THIRD_PARTY_NOTICES. The lockfile resolves the package as a link to packages/mcp. No patches directory, patch-package or patchedDependencies; the one npm override is protobufjs. pinsProtocolVersion is left unset because LATEST_PROTOCOL_VERSION is pi's own constant. The coding agent never passes the protocolVersion option, and the option is typed to the four supported revisions.
 
 Paths read:
 

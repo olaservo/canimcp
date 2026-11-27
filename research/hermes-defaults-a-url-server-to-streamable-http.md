@@ -16,9 +16,9 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, MCPServerTask._run_http transport selection
-    commit: a24c12d1
-    path: tools/mcp_tool.py:MCPServerTask._run_http
-    date: 2026-08-27
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTask._run_http
+    date: 2026-11-27
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool_transport.py, transport selection and the SSE fallback
     commit: 45e95845

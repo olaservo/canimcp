@@ -19,12 +19,12 @@ tracking:
 sources:
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/oauth_client_registration.rs
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/oauth_client_registration.rs:start_authorization
     date: 2026-11-27
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/oauth_callback.rs, callback_mode and callback_id_from_server_url
-    commit: bee5dc55
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/oauth_callback.rs:callback_mode,callback_id_from_server_url
     date: 2026-11-27
   - url: https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/

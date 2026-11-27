@@ -12,9 +12,9 @@ specVersions:
 sources:
   - url: https://github.com/NousResearch/hermes-agent
     title: tools/mcp_tool.py, ClientSession construction on the stdio and HTTP paths
-    commit: a24c12d1
-    path: tools/mcp_tool.py:MCPServerTask._run_stdio,MCPServerTask._run_http
-    date: 2026-08-27
+    commit: 45e95845
+    path: tools/mcp_tool_transport.py:MCPServerTask._run_stdio,tools/mcp_tool_transport.py (client_info kwargs near line 195)
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/2.0.0/
     title: mcp 2.0.0, DEFAULT_CLIENT_INFO and the client_info fallback
     path: mcp/client/session.py

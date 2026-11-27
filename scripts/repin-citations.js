@@ -32,6 +32,8 @@ const clientsDir = resolve(options('--clients')[0] ?? process.env.CANIMCP_CLIENT
 const only = new Set(options('--client'));
 const write = flag('--write');
 const today = new Date().toISOString().slice(0, 10);
+// YAML reads an all-digit commit as a number, so the notes quote it.
+const yamlCommit = (c) => (/^\d+$/.test(c) ? `"${c}"` : c);
 
 const git = (dir, ...argv) => execFileSync('git', ['-C', dir, ...argv], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'], maxBuffer: 256 * 1024 * 1024 });
 const tryGit = (dir, ...argv) => { try { return git(dir, ...argv); } catch { return null; } };
@@ -170,7 +172,7 @@ for (const f of readdirSync(notesDir).filter((x) => x.endsWith('.md'))) {
     note({ kind: 'note', note: f.slice(0, -3) }, clone, item.commit, item.path, { summary }, result);
     if (!result.path) { all = false; return; }
     if (write) {
-      lines[item.commitLine] = lines[item.commitLine].replace(/commit: .*/, `commit: ${clone.head.slice(0, 8)}`);
+      lines[item.commitLine] = lines[item.commitLine].replace(/commit: .*/, `commit: ${yamlCommit(clone.head.slice(0, 8))}`);
       lines[item.pathLine] = lines[item.pathLine].replace(/path: .*/, `path: ${result.path}`);
       if (item.dateLine !== undefined) lines[item.dateLine] = lines[item.dateLine].replace(/date: .*/, `date: ${today}`);
     }
@@ -181,7 +183,7 @@ for (const f of readdirSync(notesDir).filter((x) => x.endsWith('.md'))) {
     if (!m) { if (!/^\s/.test(line)) { flush(); item = null; } return; }
     if (!item) return;
     if (m[2] === 'url') item.url = m[3].trim();
-    if (m[2] === 'commit') Object.assign(item, { commit: m[3].trim(), commitLine: i });
+    if (m[2] === 'commit') Object.assign(item, { commit: m[3].trim().replace(/^"|"$/g, ''), commitLine: i });
     if (m[2] === 'path') Object.assign(item, { path: m[3].trim(), pathLine: i });
     if (m[2] === 'date') item.dateLine = i;
   });

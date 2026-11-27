@@ -17,41 +17,41 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: CHANGELOG.md, 0.0.15 breaking changes
-    commit: c3dc80c4
+    commit: "79638170"
     path: CHANGELOG.md:Breaking Changes
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: CHANGELOG.md, 0.0.8 entries on resources and prompts
-    commit: c3dc80c4
+    commit: "79638170"
     path: CHANGELOG.md:New Features,Security
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, the What union and onMessage
-    commit: ed1f3317
+    commit: "79638170"
     path: src/mcp/server.zig:What,onMessage
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, answerServerRequest
-    commit: c3dc80c4
+    commit: "79638170"
     path: src/mcp/server.zig:Server
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/config.zig, the Held reasons and heldFor
-    commit: ed1f3317
+    commit: "79638170"
     path: src/core/mcp_host/config.zig:Held,heldFor
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, the message for a held SSE server
-    commit: ed1f3317
+    commit: "79638170"
     path: src/core/mcp_host/runtime.zig:heldReason
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/mcp.zig, the module root
-    commit: c3dc80c4
+    commit: "79638170"
     path: src/mcp/mcp.zig
-    date: 2026-11-16
+    date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - cline-lists-resources-and-prompts-but-never-reads-them
   - model-initiated-resource-read

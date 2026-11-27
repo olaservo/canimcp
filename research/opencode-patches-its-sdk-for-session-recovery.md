@@ -32,7 +32,7 @@ sources:
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/mcp/connection.ts, recover and recovering
-    commit: 449c128a
+    commit: 7bfda960
     path: packages/core/src/mcp/connection.ts:make
     date: 2026-11-27
 status: stale

@@ -13,29 +13,29 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/scripts/vendor-compiled/@ai-sdk/mcp.mjs, the three patch plugins and the vendor config
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/scripts/vendor-compiled/@ai-sdk/mcp.mjs:patchMcpSourcePlugin,supportedProtocolVersionFallback,singleInboundSseStream
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/package.json, dependencies and the devDependency on the SDK
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/package.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: pnpm-workspace.yaml, the catalog range and the only patchedDependencies entry
-    commit: 0940c042
+    commit: 4545806d
     path: pnpm-workspace.yaml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: pnpm-lock.yaml, the resolved SDK version
-    commit: 0940c042
+    commit: 4545806d
     path: pnpm-lock.yaml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/scripts/vendor-compiled.mjs, the bundling entry point
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/scripts/vendor-compiled.mjs
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, protocol constants, init, tryProtocolDiscovery and the HTTP transport"
     path: dist/index.js
@@ -46,9 +46,9 @@ sources:
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/context/providers/connection.ts, clients closed at the end of each step
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/src/context/providers/connection.ts:connectionProvider
-    date: 2026-11-16
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-16
 related:

@@ -18,18 +18,18 @@ sources:
     date: 2026-08-23
   - url: https://github.com/aaif-goose/goose
     title: crates/oi-kit-agent/src/mcp/client.rs, no notify_roots_list_changed call and a fixed working_dir
-    commit: "d1438fde"
+    commit: c546eaa1
     path: crates/oi-kit-agent/src/mcp/client.rs
-    date: 2026-11-26
+    date: 2026-11-27
   - url: https://crates.io/crates/rmcp/3.1.4
     title: rmcp 3.1.4 source, service/client.rs and service.rs
     path: src/service/client.rs
     date: 2026-08-24
   - url: https://github.com/openai/codex
     title: codex-rs/rmcp-client/src/logging_client_handler.rs, the full ClientHandler impl
-    commit: b705b6b0
+    commit: c7005a3d
     path: codex-rs/rmcp-client/src/logging_client_handler.rs
-    date: 2026-08-24
+    date: 2026-11-27
   - url: https://modelcontextprotocol.io/specification/2026-07-28/changelog
     title: 2026-07-28 changelog, major change 5
     date: 2026-08-23

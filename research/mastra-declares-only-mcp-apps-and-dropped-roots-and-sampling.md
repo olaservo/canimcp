@@ -18,27 +18,27 @@ specVersions:
 sources:
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, the capability object and the only request handler
-    commit: bb984550
+    commit: ad1a04ff
     path: packages/mcp/src/client/client.ts:InternalMastraMCPClient
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/types.ts, MCPClientCapabilities
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/src/client/types.ts:MCPClientCapabilities
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/client.ts, negotiationMode and the transport choice
-    commit: bb984550
+    commit: ad1a04ff
     path: packages/mcp/src/client/client.ts:negotiationMode,InternalMastraMCPClient.connectHttp,InternalMastraMCPClient.connect
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/src/client/configuration.ts, isModelVisible
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/src/client/configuration.ts:isModelVisible,modelVisibleTools
     date: 2026-11-27
   - url: https://github.com/mastra-ai/mastra
     title: packages/mcp/CHANGELOG.md, the 2.0.0 entry
-    commit: 79768b13
+    commit: ad1a04ff
     path: packages/mcp/CHANGELOG.md:2.0.0
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.4.0
@@ -46,7 +46,7 @@ sources:
     path: dist/public-CvV4ZHkX.mjs
     date: 2026-11-16
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - openclaw-declares-nothing-unless-mcp-apps-is-on
   - cline-declares-no-client-capabilities

@@ -19,9 +19,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/agents/mcp_agent.py, get_resource and apply_prompt
-    commit: 288b5339
+    commit: 71bca7b7
     path: src/fast_agent/agents/mcp_agent.py:McpAgent.apply_prompt,McpAgent
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/core/harness_tools.py, the opt-in get_resource tool
     commit: 71bca7b7
@@ -29,9 +29,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/evalstate/fast-agent
     title: src/fast_agent/agents/agent_types.py, AgentConfig.harness_tools
-    commit: 288b5339
+    commit: 71bca7b7
     path: src/fast_agent/agents/agent_types.py:AgentConfig
-    date: 2026-11-20
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 related:

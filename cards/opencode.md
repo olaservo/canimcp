@@ -20,7 +20,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-26 |
-| Last read | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.0.0-82d8fc5` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
@@ -316,7 +316,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `82d8fc5b` on 2026-11-26, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-26.
+Read at `7bfda960` on 2026-11-27, from `dev` of https://github.com/anomalyco/opencode.git. That commit was authored 2026-11-26.
 
 **SDK.** Pinned exactly, then patched. package.json and bun.lock register a patch against @modelcontextprotocol/client 2.4.0 only; core and server 2.4.0 are stock. The patch leaves tools/list results unvalidated so opencode can check each tool itself, relaxes outputSchema, passes an input-required request's options to the elicitation handler, drops the query from OAuth metadata discovery URLs, removes the forced prompt=consent for offline_access, and adds Mcp-Name for the draft events methods. The handshake revision is the SDK's: core 2.4.0 pins LATEST_PROTOCOL_VERSION at 2025-11-25 and lists support back to 2024-10-07. The SDK's default negotiation mode is legacy. opencode sets an unset protocol to auto for stdio and remote servers, so it sends server/discover at 2026-07-28 first and falls back to initialize at 2025-11-25. protocol: "legacy" or an attached socket connection skips the probe.
 

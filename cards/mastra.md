@@ -19,8 +19,8 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 | Probed | `mcp-2.9.0-alpha.1+core-1.83.0-alpha.1` (see below) |
 
 ## Capabilities
@@ -223,9 +223,9 @@ When a server's newest revision is `2025-11-25`, Mastra negotiates it and these 
 
 ## Provenance
 
-Read at `bb984550` on 2026-11-16, from `main` of https://github.com/mastra-ai/mastra.git. That commit was authored 2026-11-16.
+Read at `ad1a04ff` on 2026-11-27, from `main` of https://github.com/mastra-ai/mastra.git. That commit was authored 2026-11-27.
 
-**SDK.** packages/mcp pins @modelcontextprotocol/client, core and server at exactly 2.4.0 and node at 2.1.2, and pnpm-lock.yaml resolves each to that version. The lockfile also holds client and core 2.3.1, for the published @mastra/mcp 1.18.0 used in compatibility tests and as the peer of ext-apps 2.0.4, and @modelcontextprotocol/sdk 1.32.1 and 1.32.2 for packages/mcp-registry-registry, packages/playground-ui and third-party SDKs. None of those is the MCP client. Unpatched: patchedDependencies in pnpm-workspace.yaml lists nine packages and patches/ holds twelve files, none for an @modelcontextprotocol package. The workspace overrides raise older @modelcontextprotocol ranges to fixed releases and do not reach 2.4.0. @mastra/mcp is its own package: @mastra/core depends on @modelcontextprotocol/server for types and not on the client. The SDK's default negotiation mode is legacy and Mastra passes auto, so leading with server/discover is Mastra's choice, and 2026-07-28 is named in Mastra's own source as the pin value. The fallback handshake offers the SDK's LATEST_PROTOCOL_VERSION, 2025-11-25, and accepts back to 2024-10-07, a revision this registry does not track. pinsProtocolVersion is left unset for that reason.
+**SDK.** packages/mcp pins @modelcontextprotocol/client, core and server at exactly 2.4.0 and node at 2.1.2, and pnpm-lock.yaml resolves each to that version. The lockfile also holds client and core 2.3.1, for the published @mastra/mcp 1.18.0 used in compatibility tests and as the peer of ext-apps 2.0.4, and @modelcontextprotocol/sdk 1.32.2 for packages/mcp-registry-registry, packages/playground-ui and third-party SDKs. None of those is the MCP client. Unpatched: patchedDependencies in pnpm-workspace.yaml lists ten packages and patches/ holds thirteen files, none for an @modelcontextprotocol package. The workspace overrides raise older @modelcontextprotocol ranges to fixed releases and do not reach 2.4.0. @mastra/mcp is its own package: @mastra/core depends on @modelcontextprotocol/server for types and not on the client. The SDK's default negotiation mode is legacy and Mastra passes auto, so leading with server/discover is Mastra's choice, and 2026-07-28 is named in Mastra's own source as the pin value. The fallback handshake offers the SDK's LATEST_PROTOCOL_VERSION, 2025-11-25, and accepts back to 2024-10-07, a revision this registry does not track. pinsProtocolVersion is left unset for that reason.
 
 Paths read:
 

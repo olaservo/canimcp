@@ -19,8 +19,8 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.23.0+689.ga9ff979` (see below) |
 
 ## Capabilities
@@ -260,9 +260,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **elicitation** — recorded as `partial`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `9dcf7714` `tools/mcp_tool_sampling.py:ElicitationHandler` (2026-11-09)
+  <br>NousResearch/hermes-agent `45e95845` `tools/mcp_tool_sampling.py:ElicitationHandler` (2026-11-27)
 - **elicitation.form** — recorded as `full`, but read-tier evidence at `2025-11-25` says `partial`.
-  <br>NousResearch/hermes-agent `a24c12d1` `tools/mcp_tool.py:ElicitationHandler.__call__` (2026-11-09)
+  <br>NousResearch/hermes-agent `45e95845` `tools/mcp_tool_sampling.py:ElicitationHandler.__call__` (2026-11-27)
 - **elicitation.url** — recorded as `unsupported`, but declared-tier evidence at `2025-11-25` says `full`.
   <br>canimcp-probe (2026-11-08) — initialize.capabilities on the wire was {"sampling":{},"elicitation":{"form":{},"url":{}}} (wire.jsonl).
 
@@ -289,7 +289,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `2de9f51b` on 2026-11-20, from `main` of https://github.com/NousResearch/hermes-agent.git. That commit was authored 2026-11-20.
+Read at `45e95845` on 2026-11-27, from `main` of https://github.com/NousResearch/hermes-agent.git. That commit was authored 2026-11-26.
 
 **SDK.** mcp==2.3.0 exactly, resolving to 2.3.0 in uv.lock alongside mcp-types 2.3.0, with no [tool.uv] source override and no vendored fork. Unlike every other client read here, the SDK is not a base dependency. It is declared identically under the mcp and computer-use extras and the dev dependency group. The runtime lazy install the August read found is gone: tools/lazy_deps.py is now a retired shim, and install repair syncs the mcp extra when mcp_servers is configured and the SDK is missing. The import is deferred behind _ensure_mcp_sdk, so a session with no MCP servers configured never pays for it. Every version decision on the live path is the SDK's: Hermes names no revision of its own and picks an era instead. The revisions it names itself are 2025-03-26, in a fallback constant and the non-MCP-endpoint probe frame, and 2025-06-18, in the desktop-app liveness probe. The SDK import probe retries a failure that may be temporary on the next connect instead of caching it.
 

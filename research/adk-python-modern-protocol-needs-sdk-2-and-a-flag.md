@@ -18,9 +18,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/features/_feature_registry.py, _MCP_MODERN_PROTOCOL and is_feature_enabled
-    commit: c6586f19
+    commit: 03725e8c
     path: src/google/adk/features/_feature_registry.py:FeatureName,is_feature_enabled
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: src/google/adk/dependencies/_mcp.py, SDK major detection and the negotiate_auto import
     commit: 03725e8c
@@ -28,19 +28,19 @@ sources:
     date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: pyproject.toml, base dependencies and the all, mcp and test extras
-    commit: c6586f19
+    commit: 03725e8c
     path: pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: constraints-3.13.txt, the mcp pin
-    commit: c6586f19
+    commit: 03725e8c
     path: constraints-3.13.txt
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: constraints-3.15.txt, the mcp and mcp-types pins
-    commit: c6586f19
+    commit: 03725e8c
     path: constraints-3.15.txt
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/google/adk-python
     title: scripts/update_constraints.sh, the existing file passed back as a constraint
     commit: 03725e8c

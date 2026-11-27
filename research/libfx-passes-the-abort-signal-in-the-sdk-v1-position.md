@@ -12,17 +12,17 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: sdk/mcp.js, the execute function of an adapted tool
-    commit: ed1f3317
+    commit: "79638170"
     path: sdk/mcp.js:execute
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/types/mcp.d.ts, McpClient.callTool
-    commit: ed1f3317
+    commit: "79638170"
     path: sdk/types/mcp.d.ts:McpClient
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: sdk/tests/test-mcp-adapter.mjs, the test client's callTool
-    commit: ed1f3317
+    commit: "79638170"
     path: sdk/tests/test-mcp-adapter.mjs:callTool
     date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.2

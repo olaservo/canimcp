@@ -31,9 +31,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode
     title: packages/opencode/package.json, the SDK pin
-    commit: b2947d7e
+    commit: 9a84bbeb
     path: packages/opencode/package.json
-    date: 2026-11-21
+    date: 2026-11-27
   - url: https://github.com/Kilo-Org/kilocode/tree/v2
     title: v2 branch, packages/core/package.json and packages/client/package.json
     commit: efd2a06b

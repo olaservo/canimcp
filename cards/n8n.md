@@ -19,8 +19,8 @@ Workflow automation platform, self-hosted or n8n Cloud. Its MCP client is the MC
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-20 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -99,7 +99,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `84decbe0` on 2026-11-20, from `master` of https://github.com/n8n-io/n8n.git. That commit was authored 2026-11-20.
+Read at `467bcd35` on 2026-11-27, from `master` of https://github.com/n8n-io/n8n.git. That commit was authored 2026-11-27.
 
 **SDK.** The pnpm catalog pins 1.32.0, and nodes-langchain, @n8n/agents and cli all resolve to that one copy. The SDK is not in patchedDependencies. Its dependency pkce-challenge 5.0.0 is patched (drops ~ from the verifier alphabet and adds a types field); n8n's own OAuth code imports that package, and the MCP nodes never call the SDK auth module. 1.32.0 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. 2026-07-28 is not reachable. The catalog also lists @modelcontextprotocol/server 2.3.0 and node 2.1.0, which serve n8n's own MCP server.
 

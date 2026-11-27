@@ -20,7 +20,7 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
 | Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Last read | 2026-11-27 |
 | Probed | `1.25.0` (see below) |
 
 ## Capabilities
@@ -303,7 +303,7 @@ When a server's newest revision is `2025-11-25`, Microsoft Agent Framework negot
 
 ## Provenance
 
-Read at `10801303` on 2026-11-16, from `main` of https://github.com/microsoft/agent-framework.git. That commit was authored 2026-11-16.
+Read at `f8ade3e9` on 2026-11-27, from `main` of https://github.com/microsoft/agent-framework.git. That commit was authored 2026-11-16.
 
 **SDK.** Python binding, core 1.26.0. mcp is not a base dependency of agent-framework-core. It sits in the core package's all extra with tenacity, and the agent-framework meta package depends on agent-framework-core[all], so pip install agent-framework brings both. MCPTool.connect imports mcp lazily and raises a ToolException naming the package when it is missing. It also imports tenacity on every Client connection, so agent-framework-core with mcp and without tenacity fails at connect. The workspace pyproject lists mcp>=2.2.0,<3 under [tool.uv] override-dependencies as a version floor. There is no [tool.uv.sources] entry for mcp, no patches directory and no vendored copy, and uv.lock resolves mcp and mcp-types 2.3.0 from PyPI. MCPTool passes no mode and no client_info to Client. The SDK's auto mode picks the revision, server/discover at 2026-07-28 and then initialize at 2025-11-25, and the SDK's placeholder name mcp 0.1.0 goes on the wire. The probe's capture at 1.25.0 shows the same name, server/discover at 2026-07-28 as the first request, and MCP-Protocol-Version 2026-07-28 on every HTTP request. The .NET binding uses a second SDK. ModelContextProtocol and ModelContextProtocol.Extensions.Tasks are pinned to 2.2.0 in dotnet/Directory.Packages.props under central package management with transitive pinning. The repository has no packages.lock.json, no NuGet.config and no RestoreSources setting, so the pin is what resolves and nothing replaces the package. C# SDK 2.2.0 also prefers 2026-07-28 when McpClientOptions.ProtocolVersion is null, and the only framework code that sets it passes a property whose default is null. With no ClientInfo the C# SDK sends the entry assembly's name and version, so an application-built .NET client goes on the wire under the application's own assembly name. FoundryToolboxService sends the hosted agent's name.
 

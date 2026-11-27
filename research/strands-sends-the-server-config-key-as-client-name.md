@@ -13,9 +13,9 @@ specVersions:
 sources:
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py MCPClient, application_name, client_name and the client_info passed to ClientSession
-    commit: d982a0d4
+    commit: 8e388465
     path: strands-py/src/strands/tools/mcp/mcp_client.py:MCPClient.__init__,MCPClient,MCPClient._async_background_thread
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-py _build_client_from_config, application_name defaults to the config key
     commit: 8e388465
@@ -33,14 +33,14 @@ sources:
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-py agent.py, mcp_servers go through load_servers
-    commit: d982a0d4
+    commit: 8e388465
     path: harness-py/src/strands_harness/agent.py:create_harness
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: harness-ts builtin-tools.ts, clientName keys the mcp_servers axis
-    commit: d982a0d4
+    commit: 8e388465
     path: harness-ts/src/builtin-tools.ts:UNNAMED_MCP_CLIENT,mcpClientsByClientName
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-cli agent/mcp.ts, applicationName is the server name and the version is the harness version
     commit: 8e388465

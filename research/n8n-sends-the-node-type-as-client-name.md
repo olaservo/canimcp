@@ -34,19 +34,19 @@ sources:
     date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: "@n8n/agents McpConnection"
-    commit: 84decbe0
+    commit: 467bcd35
     path: packages/@n8n/agents/src/runtime/mcp/mcp-connection.ts:McpConnection,McpConnection.listTools
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: Agents module builds an @n8n/agents McpClient per JSON-config server
-    commit: 84decbe0
+    commit: 467bcd35
     path: packages/cli/src/modules/agents/json-config/mcp-client-factory.ts:buildMcpClientForServer
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/n8n-io/n8n
     title: Instance AI reads name=url pairs from N8N_INSTANCE_AI_MCP_SERVERS
-    commit: 84decbe0
+    commit: 467bcd35
     path: packages/cli/src/modules/instance-ai/turn-setup/assistant-agent.factory.ts:AssistantAgentFactory
-    date: 2026-11-20
+    date: 2026-11-27
 status: current
 lastVerified: 2026-11-20
 ---

@@ -19,8 +19,8 @@ Terminal with a built-in coding agent, for macOS, Linux and Windows, plus a TUI 
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28` and every older revision it speaks, not yet split by revision |
-| Source last updated | 2026-11-21 |
-| Last read | 2026-11-21 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -119,7 +119,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `f8223cef` on 2026-11-21, from `master` of https://github.com/warpdotdev/warp.git. That commit was authored 2026-11-21.
+Read at `1c7fda11` on 2026-11-27, from `master` of https://github.com/warpdotdev/warp.git. That commit was authored 2026-11-26.
 
 **SDK.** The workspace declares rmcp "3.5" and Cargo.lock resolves one copy, 3.5.0 (checksum matches the crates.io artifact read). crates/mcp enables client, client-side-sse, auth, transport-streamable-http-client-reqwest and transport-child-process. The [patch.crates-io] section covers core-foundation crates and objc, not rmcp. crates/mcp carries a copy of rmcp's removed SSE client transport; rmcp itself is unmodified. Warp chooses the discover-first lifecycle, but its version list is rmcp's KNOWN_VERSIONS and its first offer is rmcp's LATEST, so the preferred revision follows the SDK. crates/computer_use_mcp is an MCP server and uses rmcp's client only in tests.
 

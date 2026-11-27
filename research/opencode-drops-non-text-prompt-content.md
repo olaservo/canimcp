@@ -12,7 +12,7 @@ specVersions:
 sources:
   - url: https://github.com/anomalyco/opencode
     title: packages/core/src/plugin/command.ts, MCP prompts registered as commands
-    commit: 449c128a
+    commit: 7bfda960
     path: packages/core/src/plugin/command.ts:Plugin,promptMessageText
     date: 2026-11-27
   - url: https://github.com/anomalyco/opencode

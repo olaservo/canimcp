@@ -36,9 +36,9 @@ sources:
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts Agent.initialize, MCP tool registration and refresh
-    commit: d982a0d4
+    commit: 8e388465
     path: strands-ts/src/agent/agent.ts:Agent.initialize
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts McpTool, content mapping
     commit: 8e388465
@@ -46,14 +46,14 @@ sources:
     date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: strands-ts package.json, MCP dependencies and engines
-    commit: d982a0d4
+    commit: 8e388465
     path: strands-ts/package.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/strands-agents/harness-sdk
     title: root package-lock.json, resolved MCP packages
-    commit: d982a0d4
+    commit: 8e388465
     path: package-lock.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@modelcontextprotocol/client/v/2.3.1
     title: "@modelcontextprotocol/client 2.3.1, version negotiation default, the stdio sibling probe and the list page cap"
     path: dist/index.mjs

@@ -17,18 +17,18 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, 401 handling, #createClient, #authorizedFetch and the result challenge
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/src/runtime/connections/mcp-client.ts
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, the OAuth client and authorizeOnce, which needs an authProvider"
     path: dist/index.js
     date: 2026-11-16
   - url: https://github.com/vercel/eve
     title: packages/eve/src/shared/connection-types.ts, the two AuthorizationDefinition shapes
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/src/shared/connection-types.ts
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: docs/connections/mcp.mdx, Vercel Connect and when eve asks for sign-in
     commit: 4545806d

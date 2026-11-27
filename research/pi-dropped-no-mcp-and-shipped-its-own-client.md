@@ -27,51 +27,51 @@ sources:
     date: 2026-11-16
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/index.ts, the built-in extension list
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/src/extensions/index.ts:builtInExtensions
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/index.ts, session_start and the deferred runtime load
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/src/extensions/mcp/index.ts:createMcpExtension
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/src/extensions/mcp/runtime.ts, the McpClient options
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/src/extensions/mcp/runtime.ts:McpServerConnection.connectOnce
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/package.json, the runtime dependencies
-    commit: 07ece436
+    commit: 129c326a
     path: packages/mcp/package.json
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/mcp/README.md, the no-SDK statement and the OAuth attribution
-    commit: 07ece436
+    commit: 129c326a
     path: packages/mcp/README.md:@earendil-works/pi-mcp,Sign-in in two halves
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/README.md, the feature sentence at HEAD
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/README.md:Pi
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: packages/coding-agent/docs/mcp.md, replacing or disabling the built-in support
-    commit: ede8bdca
+    commit: 129c326a
     path: packages/coding-agent/docs/mcp.md:Extensions and SDK
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: apps/p2/plugins/mcp/instances.ts, the second McpClient construction
-    commit: ede8bdca
+    commit: 129c326a
     path: apps/p2/plugins/mcp/instances.ts:Connection.initialize
     date: 2026-11-27
   - url: https://github.com/earendil-works/pi
     title: apps/p2/plugins/mcp/server.ts, clientInfo for p2
-    commit: ede8bdca
+    commit: 129c326a
     path: apps/p2/plugins/mcp/server.ts:clientInfo
     date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - pi-keeps-mcp-tools-out-of-the-models-tool-list
   - pi-runs-the-official-conformance-suite-in-ci

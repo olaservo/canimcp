@@ -20,8 +20,8 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-16 |
-| Last read | 2026-11-16 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `1.15.37` (see below) |
 
 ## Capabilities
@@ -225,7 +225,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `758b2c1d` on 2026-11-16, from `main` of https://github.com/crewAIInc/crewAI.git. That commit was authored 2026-11-16.
+Read at `77237aec` on 2026-11-27, from `main` of https://github.com/crewAIInc/crewAI.git. That commit was authored 2026-11-26.
 
 **SDK.** A base dependency of crewai, imported lazily inside the MCP functions. crewai-tools repeats the same requirement under its mcp extra next to mcpadapt>=0.1.9, which uv.lock resolves to 0.1.19 below Python 3.12 and 0.1.20 from 3.12. Not patched: the root [tool.uv] override-dependencies list has no mcp entry, [tool.uv.sources] names only workspace members, and there is no patches directory or vendored copy. 1.30.0 is the newest 1.x release on PyPI, and the <2 cap keeps out every release that speaks 2026-07-28. crewAI names no protocol revision; mcp 1.30.0 proposes 2025-11-25 and accepts 2024-11-05, 2025-03-26, 2025-06-18 and 2025-11-25. No client_info is passed, so clientInfo is the SDK default, mcp 0.1.0. The probe's wire capture of 1.15.37 shows the same initialize on both configurations: 2025-11-25, capabilities {}, clientInfo mcp 0.1.0.
 

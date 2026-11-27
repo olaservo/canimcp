@@ -19,8 +19,8 @@ Open-source coding agent for VS Code, JetBrains and the terminal. Now built on o
 | Prefers | `2025-11-25` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25` |
 | Rows describe | `2025-11-25`, the newest revision it speaks |
-| Source last updated | 2026-11-21 |
-| Last read | 2026-11-21 |
+| Source last updated | 2026-11-27 |
+| Last read | 2026-11-27 |
 
 ## Capabilities
 
@@ -114,7 +114,7 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 
 ## Provenance
 
-Read at `b2947d7e` on 2026-11-21, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-21.
+Read at `9a84bbeb` on 2026-11-27, from `main` of https://github.com/Kilo-Org/kilocode.git. That commit was authored 2026-11-27.
 
 **SDK.** Pinned exactly in packages/opencode and patched through bun's patchedDependencies. 1.32.1 sets LATEST_PROTOCOL_VERSION to 2025-11-25 and supports back to 2024-10-07, so the SDK decides the revision. Upstream opencode has since moved to @modelcontextprotocol/client 2.4.0; Kilo's v2 branch is on @modelcontextprotocol/client 2.4.0 at efd2a06b, also patched, and main has not followed.
 

@@ -19,8 +19,8 @@ Python framework and CLI for building and running agents, from the maintainer of
 | Prefers | `2026-07-28` |
 | Speaks | `2024-11-05`, `2025-03-26`, `2025-06-18`, `2025-11-25`, `2026-07-28` |
 | Rows describe | `2026-07-28`. What differs on `2025-11-25` is listed under "On 2025-11-25" below |
-| Source last updated | 2026-11-19 |
-| Last read | 2026-11-20 |
+| Source last updated | 2026-11-26 |
+| Last read | 2026-11-27 |
 | Probed | `0.10.53` (see below) |
 | In traffic | evalstate/mcp-clients, window ending 2026-11-25 (see below) |
 
@@ -301,7 +301,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 
 ## Provenance
 
-Read at `288b5339` on 2026-11-20, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-19.
+Read at `71bca7b7` on 2026-11-27, from `main` of https://github.com/evalstate/fast-agent.git. That commit was authored 2026-11-26.
 
 **SDK.** The first Python-SDK read in the registry, and the first client on an SDK that speaks 2026-07-28. Both mcp and its split-out mcp-types are pinned to exactly 2.3.0 in pyproject.toml and resolve there in uv.lock; there is no [tool.uv] override and no vendored fork. src/fast_agent/patch/ is a Python port of codex apply_patch, not an SDK patch. The version range is entirely the SDK's — fast-agent names no revision of its own and picks an era instead, so pinsProtocolVersion would misstate what is happening: the SDK pins both ends of the range, and fast-agent chooses which end to try first.
 

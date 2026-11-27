@@ -17,36 +17,36 @@ specVersions:
 sources:
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/core/era.zig, Config, Detector.step and the classify functions
-    commit: ed1f3317
+    commit: "79638170"
     path: src/mcp/core/era.zig
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, the request headers for a probe
-    commit: c3dc80c4
+    commit: "79638170"
     path: src/mcp/server.zig:sendAttempt
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/mcp/server.zig, sendLegacy
-    commit: c3dc80c4
+    commit: "79638170"
     path: src/mcp/server.zig:Server
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: src/core/mcp_host/runtime.zig, the engine options fx passes
-    commit: c3dc80c4
+    commit: "79638170"
     path: src/core/mcp_host/runtime.zig:start
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/README.md, the pinned conformance baseline
-    commit: ed1f3317
+    commit: "79638170"
     path: tests/e2e/conformance/README.md:MCP conformance baseline
     date: 2026-11-27
   - url: https://github.com/vercel-labs/fx
     title: tests/e2e/conformance/expected-failures.yml
-    commit: ed1f3317
+    commit: "79638170"
     path: tests/e2e/conformance/expected-failures.yml
     date: 2026-11-27
 status: current
-lastVerified: 2026-11-16
+lastVerified: 2026-11-27
 related:
   - fast-agent-leads-with-the-modern-discover-probe
   - hermes-leads-with-the-legacy-handshake

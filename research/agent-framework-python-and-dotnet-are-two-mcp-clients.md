@@ -17,39 +17,39 @@ specVersions:
 sources:
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/agent_framework/_mcp.py, MCPTool._connect_on_owner
-    commit: "10801303"
+    commit: f8ade3e9
     path: python/packages/core/agent_framework/_mcp.py
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: python/packages/core/pyproject.toml and python/uv.lock, the Python SDK requirement and its resolution
-    commit: "10801303"
+    commit: f8ade3e9
     path: python/packages/core/pyproject.toml
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: dotnet/Directory.Packages.props, the C# SDK pins
-    commit: "10801303"
+    commit: f8ade3e9
     path: dotnet/Directory.Packages.props
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: DefaultMcpToolHandler.CreateClientAsync, one of two McpClient constructions in dotnet/src
-    commit: "10801303"
+    commit: f8ade3e9
     path: dotnet/src/Microsoft.Agents.AI.Workflows.Declarative.Mcp/DefaultMcpToolHandler.cs
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: FoundryToolboxService.OpenToolboxAsync, the other McpClient construction
-    commit: "10801303"
+    commit: f8ade3e9
     path: dotnet/src/Microsoft.Agents.AI.Foundry.Hosting/FoundryToolboxService.cs
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: McpClientTaskExtensions.ListAgentToolsWithTasksAsync
-    commit: "10801303"
+    commit: f8ade3e9
     path: dotnet/src/Microsoft.Agents.AI.Mcp/McpClientTaskExtensions.cs
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/microsoft/agent-framework
     title: agent_framework_claude/_agent.py, mcp_servers passed to the Claude Agent SDK
-    commit: "10801303"
+    commit: f8ade3e9
     path: python/packages/claude/agent_framework_claude/_agent.py
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/modelcontextprotocol/python-sdk
     title: mcp 2.3.0 wheel, mcp/client/session.py, DEFAULT_CLIENT_INFO and _build_capabilities
     path: mcp/client/session.py

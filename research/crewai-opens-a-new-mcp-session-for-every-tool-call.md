@@ -37,14 +37,14 @@ sources:
     date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/agent/core.py, get_mcp_tools builds a new resolver each time
-    commit: 758b2c1d
+    commit: 77237aec
     path: lib/crewai/src/crewai/agent/core.py:Agent.get_mcp_tools,Agent._prepare_kickoff
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/crewAIInc/crewAI
     title: lib/crewai/src/crewai/crew.py, MCP tools injected per task
-    commit: 758b2c1d
+    commit: 77237aec
     path: lib/crewai/src/crewai/crew.py:Crew._prepare_tools,Crew._inject_mcp_tools
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://pypi.org/project/mcp/1.30.0/
     title: mcp 1.30.0, ClientSession.call_tool and _validate_tool_result
     path: mcp/client/session.py

@@ -14,24 +14,24 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp requirement of lfx
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: src/lfx/pyproject.toml
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp requirement of langflow-base and its mcp extra
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: src/backend/base/pyproject.toml
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: uv.lock, mcp 1.30.0
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: uv.lock
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: pyproject.toml, [tool.uv] constraint and override lists with no mcp entry
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: pyproject.toml
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/uvx.py, the injected SDK constraint and its reason
     commit: 6c9aea6f

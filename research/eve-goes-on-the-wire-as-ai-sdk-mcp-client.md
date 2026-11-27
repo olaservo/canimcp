@@ -14,14 +14,14 @@ specVersions:
 sources:
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/mcp-client.ts, the createMCPClient calls
-    commit: 0940c042
+    commit: 4545806d
     path: packages/eve/src/runtime/connections/mcp-client.ts:McpConnectionClient.createClient
-    date: 2026-11-16
+    date: 2026-11-27
   - url: https://github.com/vercel/eve
     title: packages/eve/src/runtime/connections/events/actions.ts, the second client for experimental.events
-    commit: 0940c042
-    path: packages/eve/src/runtime/connections/events/actions.ts:ConnectionEventActions.withClient
-    date: 2026-11-16
+    commit: 4545806d
+    path: packages/eve/src/runtime/subscriptions/actions.ts:ConnectionEventActions.withClient
+    date: 2026-11-27
   - url: https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99
     title: "@ai-sdk/mcp 2.0.99, CLIENT_VERSION, the clientName default and the per-request clientInfo"
     path: dist/index.js

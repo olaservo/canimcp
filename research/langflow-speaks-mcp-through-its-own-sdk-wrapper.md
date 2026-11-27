@@ -16,14 +16,14 @@ specVersions:
 sources:
   - url: https://github.com/langflow-ai/langflow
     title: src/backend/base/pyproject.toml, the mcp base dependency and the langchain-mcp-adapters extra
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: src/backend/base/pyproject.toml
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/pyproject.toml, the mcp base dependency of lfx
-    commit: 21381e5b
+    commit: 6c9aea6f
     path: src/lfx/pyproject.toml
-    date: 2026-11-20
+    date: 2026-11-27
   - url: https://github.com/langflow-ai/langflow
     title: src/lfx/src/lfx/base/mcp/util.py, ClientSession construction on the stdio, Streamable HTTP and SSE paths
     commit: 6c9aea6f
