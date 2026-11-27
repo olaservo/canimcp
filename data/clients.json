@@ -1098,6 +1098,49 @@
         }
       ]
     },
+    "jsonSchema": {
+      "notes": "A tool inputSchema is not passed through. parse_tool_input_schema sanitizes it, prunes unreachable definitions, compacts a large schema, and deserializes it into codex's own JsonSchema type, and the model-facing schema is serialized from that type. The dialect named by $schema is not read.",
+      "features": {
+        "level": "subset",
+        "supported": [
+          "type",
+          "description",
+          "enum",
+          "const",
+          "items",
+          "minItems",
+          "properties",
+          "required",
+          "additionalProperties",
+          "anyOf",
+          "oneOf",
+          "allOf",
+          "$ref",
+          "$defs",
+          "definitions"
+        ],
+        "notes": "const becomes a single-value enum. A boolean schema becomes {\"type\": \"string\"}. Only local $ref into $defs or definitions is kept reachable. Keywords outside this list, among them $schema, format, pattern, minimum, if, then, else and $anchor, are dropped. The conformance run of codex 0.174.0-alpha.7 saw $schema, if/then/else and $anchor missing from the schema the model was shown."
+      },
+      "evidence": [
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-27",
+          "commit": "18c09f20",
+          "path": "codex-rs/tools/src/json_schema.rs:parse_tool_input_schema,sanitize_json_schema,prune_unreachable_definitions"
+        },
+        {
+          "tier": "read",
+          "at": "2025-06-18",
+          "source": "openai/codex",
+          "date": "2026-11-27",
+          "commit": "18c09f20",
+          "path": "codex-rs/tools/src/json_schema/types.rs:JsonSchema",
+          "note": "The fields of the type are the keywords that survive."
+        }
+      ]
+    },
     "extensions": {
       "openai/form": {
         "status": "partial",
@@ -10667,7 +10710,7 @@
       },
       "streamableHttp": {
         "status": "full",
-        "notes": "The default and first attempt. eve supplies the fetch: it adds trace context to each request body, resolves auth and headers again on every request, and turns a 401 into its sign-in flow. The SDK refuses redirects. On 2026-07-28 each request carries Mcp-Method and Mcp-Name headers and there is no session, GET stream or DELETE.",
+        "notes": "The default and first attempt. eve supplies the fetch: it adds trace context to each request body, resolves auth and headers again on every request, and turns a 401 into its sign-in flow. The SDK refuses redirects. On 2026-07-28 each request carries Mcp-Method and Mcp-Name headers and there is no session, GET stream or DELETE. The conformance run of eve 1.0.0-rc.6 on 2026-11-27 saw no reconnect after the server closed a tools/call SSE stream, and the call timed out.",
         "evidence": [
           {
             "tier": "read",
@@ -15412,7 +15455,7 @@
           "$ref",
           "format"
         ],
-        "notes": "oneOf is treated as anyOf. A type given as a list becomes a union. additionalProperties is forced to false on every object. Constraint keywords such as pattern and minimum are copied into field descriptions on the native route. Keywords outside this list were not traced."
+        "notes": "oneOf is treated as anyOf. A type given as a list becomes a union. additionalProperties is forced to false on every object. Constraint keywords such as pattern and minimum are copied into field descriptions on the native route. $schema and $defs do not reach the model. Keywords outside this list were not traced."
       },
       "evidence": [
         {

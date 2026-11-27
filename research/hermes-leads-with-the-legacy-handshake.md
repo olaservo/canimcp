@@ -42,6 +42,8 @@ This is the mirror image of fast-agent, which reads as the other client on this 
 
 The fallback also checks `hasattr(session, "discover")` before using it, so a Hermes running against an older mcp 1.x install degrades to handshake-only rather than raising. A timeout never falls back.
 
+Other errors do not fall back either. The conformance suite's 2026-07-28 `tools_call` and `json-schema-2020-12-preservation` servers answer a header-less `initialize` with HTTP 400 and `-32020` "Missing MCP-Protocol-Version header", so on 2026-11-27 hermes under `auto` connected to neither and listed no tools. With `protocol: stateless` the same runs passed (`probe/conformance/README.md`).
+
 Since `a24c12d1` Hermes also handles a server that answers `initialize` with 200 but names `2026-07-28`, and has no `server/discover` either. The SDK rejects that reply as an unsupported version. Hermes then sends a second `initialize` itself at `LATEST_HANDSHAKE_VERSION`, adopts the result pinned to `2025-11-25`, and sends `notifications/initialized` (#113359).
 
 Both result types expose `.capabilities`, so everything downstream of the negotiation — the tools gate, the resource and prompt utility-tool selection, the config probe — works on either era without branching.
