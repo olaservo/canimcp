@@ -294,6 +294,120 @@
         "research": [
           "goose-client-name-varies-by-surface"
         ]
+      },
+      "io.modelcontextprotocol/tasks": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. rmcp 3.11.0 implements the SEP-2663 client side (call_tool_once, get_task, update_task, cancel_task and ClientCapabilitiesBuilder::enable_tasks), and goose uses none of it. The client capabilities are built with roots, the extensions map and elicitation, and the extensions map holds only io.modelcontextprotocol/ui. On 2026-07-28 goose sends tools/call through rmcp's call_tool, which returns UnexpectedResponse for a task result. On 2025-11-25 goose sends a plain CallToolRequest, and rmcp 3.11.0 has no task-augmented request form.",
+        "list": {
+          "status": "unsupported",
+          "notes": "No tasks/list. rmcp 3.11.0 does not define it."
+        },
+        "cancel": {
+          "status": "unsupported",
+          "notes": "goose never calls rmcp's cancel_task."
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:473-494",
+            "note": "get_info builds the client capabilities: roots, extensions and form elicitation."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:52-64,306-318",
+            "note": "The default extensions map holds only io.modelcontextprotocol/ui."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:787-857",
+            "note": "On 2026-07-28 tools/call goes through client.call_tool, else a plain CallToolRequest."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "165f8fd5",
+            "path": "crates/rmcp/src/service/client.rs:2240-2279",
+            "note": "Tag rmcp-v3.11.0, the version goose's Cargo.lock resolves. call_tool returns UnexpectedResponse for CallToolResponse::Task."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "165f8fd5",
+            "path": "crates/rmcp/src/service/client.rs:1531-1568",
+            "note": "Tag rmcp-v3.11.0. get_task, update_task and cancel_task exist for callers that use them."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. rmcp 3.11.0 has list_skills and get_skill, and goose calls neither. goose's own skills come from SKILL.md files under ~/.agents/skills, installed plugins and the project's .agents/skills, through a single SkillSource implementation that does not read MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:473-494"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/goose/src/agents/state_machine/ops_skills.rs:10-19",
+            "note": "The only SkillSource implementation reads SKILL.md files from disk."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "165f8fd5",
+            "path": "crates/rmcp/src/service/client.rs:1570-1601",
+            "note": "Tag rmcp-v3.11.0. list_skills is an explicit call, not sent by default."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. goose sends no events/list, events/poll, events/stream or events/subscribe, and rmcp 3.11.0 defines none of these methods.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "aaif-goose/goose",
+            "date": "2026-11-26",
+            "commit": "c546eaa1",
+            "path": "crates/oi-kit-agent/src/mcp/client.rs:473-494"
+          }
+        ]
       }
     },
     "research": [
@@ -956,6 +1070,159 @@
             "date": "2026-11-26",
             "commit": "475e13ab",
             "path": "codex-rs/rmcp-client/src/rmcp_client.rs"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Codex never sends skills/list, skills/get or resources/directory/read to an MCP server, and the extension allowlist drops io.modelcontextprotocol/skills if the app-server host declares it. The skills/list method in the repo is Codex's own app-server protocol, which lists local, executor and cloud skills for Codex frontends. Cloud skills come from the host-owned codex_apps server or a frozen snapshot file, not from SEP-2640. rmcp at the pinned rev b11a40d8 has no skills support.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:58-88",
+            "note": "Only openai/form, openai/elicitation, the standard form input extension and io.modelcontextprotocol/ui are kept from the host's declared extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/app-server-protocol/src/protocol/common.rs:982-986",
+            "note": "skills/list is a Codex app-server request, not an MCP request."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/ext/skills/src/provider/frozen_cloud.rs:116-151",
+            "note": "Cloud skills are attributed to the codex_apps server and read from a snapshot."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "b11a40d8",
+            "path": "crates/rmcp",
+            "note": "No skills/list or io.modelcontextprotocol/skills in rmcp 3.6.0 at the rev Codex pins in Cargo.lock."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "opt-in",
+        "notes": "Push delivery only, and only against the host-owned codex_apps server. An app-server host that opts into the experimental API calls mcpServer/event/stream/start, and Codex opens a separate MCP client to codex_apps and sends events/stream. Codex forwards each notifications/events/* message unchanged to that host as mcpServer/event/stream/notification, reconnects up to three times, and stops on notifications/events/terminated. Delivered events do not reach the model or wake a turn in Codex itself. Codex does not declare io.modelcontextprotocol/events or check the server's entry, and the extension allowlist drops it if the host declares it. McpResourceClient::list_events sends events/list but has no caller outside tests. rmcp at the pinned rev has no events support; Codex sends events/stream as a custom request.",
+        "poll": {
+          "status": "unsupported",
+          "notes": "No events/poll request in the repo.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openai/codex",
+              "date": "2026-11-26",
+              "commit": "bee5dc55",
+              "path": "codex-rs/codex-mcp/src/resource_client.rs:361-409",
+              "note": "The only events methods sent are events/list and events/stream."
+            }
+          ]
+        },
+        "push": {
+          "status": "opt-in",
+          "notes": "events/stream to codex_apps only, started by the app-server host through the experimental mcpServer/event/stream/start request. Notifications go to the host, not the model.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openai/codex",
+              "date": "2026-11-26",
+              "commit": "bee5dc55",
+              "path": "codex-rs/rmcp-client/src/rmcp_client.rs:1358-1379"
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openai/codex",
+              "date": "2026-11-26",
+              "commit": "bee5dc55",
+              "path": "codex-rs/app-server/src/request_processors/mcp_event_stream.rs:47-57,183-282",
+              "note": "Rejects any server other than codex_apps and forwards notifications to the app-server connection."
+            }
+          ]
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "No events/subscribe request in the repo.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openai/codex",
+              "date": "2026-11-26",
+              "commit": "bee5dc55",
+              "path": "codex-rs/codex-mcp/src/resource_client.rs:361-409"
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/app-server-protocol/src/protocol/common.rs:1381-1393,2171-2172",
+            "note": "mcpServer/event/stream/start, stop and notification are marked experimental."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/app-server/src/message_processor.rs:1056-1060",
+            "note": "Experimental requests are refused unless the host enabled the experimental API at initialize."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/codex-mcp/src/connection_manager.rs:706-720",
+            "note": "Event stream connection settings exist only for the host-owned codex_apps server."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/codex-mcp/src/resource_client.rs:92-113,361-386"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openai/codex",
+            "date": "2026-11-26",
+            "commit": "bee5dc55",
+            "path": "codex-rs/codex-mcp/src/client_capabilities.rs:58-88",
+            "note": "io.modelcontextprotocol/events is not in the allowlist."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "b11a40d8",
+            "path": "crates/rmcp",
+            "note": "No events/* methods in rmcp 3.6.0 at the rev Codex pins in Cargo.lock."
           }
         ]
       }
@@ -1888,6 +2155,30 @@
             "path": "packages/core/src/mcp/client.ts:430-443"
           }
         ]
+      },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The extensions map in the client capabilities holds only the events and skills extensions. Tool _meta is kept on listed tools, and nothing reads _meta.ui.resourceUri, fetches a ui:// resource or renders one. No package in the repo depends on @modelcontextprotocol/ext-apps.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "449c128a",
+            "path": "packages/core/src/mcp/client.ts:429-443",
+            "note": "The client capabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "anomalyco/opencode",
+            "date": "2026-11-26",
+            "commit": "449c128a",
+            "path": "packages/core/src/mcp/client.ts:891",
+            "note": "Tool _meta is copied through and not read."
+          }
+        ]
       }
     },
     "byProtocolVersion": {
@@ -2743,6 +3034,99 @@
             "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475"
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No MCP client in the repo sends skills/list, skills/get or resources/directory/read, and @modelcontextprotocol/sdk 1.30.0 has no skills client. Cline's own skills are not loaded from MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475",
+            "note": "The extension's client initializes with capabilities: {}."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:839-846",
+            "note": "The @cline/core SDK client passes capabilities only for MCP Apps when mcpApps is set."
+          },
+          {
+            "tier": "read",
+            "at": "2024-11-05",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:266-270",
+            "note": "The hand-rolled stdio client declares only the MCP Apps extension, and only when mcpApps is set."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0",
+            "path": "dist/esm/types.js:413-457",
+            "note": "@modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No MCP client in the repo sends events/list, events/poll, events/stream or events/subscribe, and @modelcontextprotocol/sdk 1.30.0 has no events client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "apps/vscode/src/services/mcp/McpHub.ts:467-475",
+            "note": "The extension's client initializes with capabilities: {}."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:839-846",
+            "note": "The @cline/core SDK client passes capabilities only for MCP Apps when mcpApps is set."
+          },
+          {
+            "tier": "read",
+            "at": "2024-11-05",
+            "source": "cline/cline",
+            "date": "2026-11-26",
+            "commit": "cbc7d141",
+            "path": "sdk/packages/core/src/extensions/mcp/client.ts:266-270",
+            "note": "The hand-rolled stdio client declares only the MCP Apps extension, and only when mcpApps is set."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.30.0",
+            "path": "dist/esm/types.js:413-457",
+            "note": "@modelcontextprotocol/sdk 1.30.0, the version bun.lock resolves. Its dist has no skills/* or events/* methods."
+          }
+        ],
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        }
       }
     }
   },
@@ -3460,6 +3844,139 @@
             "date": "2026-11-20",
             "commit": "288b5339",
             "path": "src/fast_agent/mcp/mcp_aggregator.py:1962-1998"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared and not rendered. The SDK Client is constructed without extensions=, and the docs say the terminal client does not advertise the MCP Apps extension because it does not execute app HTML or provide the browser bridge. Discovery reads _meta.ui.resourceUri (and the older flat ui/resourceUri key) on each tool, lists and reads the ui:// resource, and checks for text/html;profile=mcp-app, recording warnings for missing or mismatched resources. Tools whose visibility is exactly [\"app\"] are left out of the model's tool list. Linked tools are labelled (MCP Apps) in tool summaries and /mcp shows a Ui marker. A tool result is shown as ordinary terminal output with the linked resource URI noted.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/mcp/client_connection.py:111-121",
+            "note": "Client(...) is built with callbacks, client_info and cache, and no extensions argument."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "docs/docs/mcp/mcp-apps.md:37-41",
+            "note": "States the terminal client does not advertise the MCP Apps host extension."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/mcp/app_integrations/mcp_apps.py:1-24"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/mcp/mcp_aggregator.py:1494-1526,1700-1757",
+            "note": "Per-server discovery: read the ui:// resource and check its MIME type."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/mcp/mcp_aggregator.py:2007-2033",
+            "note": "list_tools skips app-only tools."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/ui/tool_display.py:1356-1377"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/server/apps.py:1-11,43,77",
+            "note": "mcp 2.3.0 ships MCP Apps as a server-side Extension only. The client side has the generic Client(extensions=[...]) and advertise() from SEP-2133 and no Apps host."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No events/list, events/poll, events/stream or events/subscribe call exists in the repo, and the SDK Client is constructed without extensions=. mcp 2.3.0 has no events client to turn on.",
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "evalstate/fast-agent",
+              "date": "2026-11-26",
+              "commit": "71bca7b7",
+              "path": "src/fast_agent/mcp/client_connection.py:111-121"
+            }
+          ]
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never opened and no notifications/events/* handler exists.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "evalstate/fast-agent",
+              "date": "2026-11-26",
+              "commit": "71bca7b7",
+              "path": "src/fast_agent/mcp/client_connection.py:111-121"
+            }
+          ]
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "evalstate/fast-agent",
+              "date": "2026-11-26",
+              "commit": "71bca7b7",
+              "path": "src/fast_agent/mcp/client_connection.py:111-121"
+            }
+          ]
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "evalstate/fast-agent",
+            "date": "2026-11-26",
+            "commit": "71bca7b7",
+            "path": "src/fast_agent/mcp/client_connection.py:111-121",
+            "note": "Client capabilities come from the SDK Client built here with no extensions argument. git grep finds no events/* method anywhere in the repo."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/client.py:356-361",
+            "note": "mcp 2.3.0 and mcp-types 2.3.0 contain no events/* method or Events extension, only the generic extensions= field."
           }
         ]
       }
@@ -4341,6 +4858,188 @@
             "note": "No tasks/* request in src/agents or src/node-host."
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Neither MCP client surface (the agent bundle and the node host) sends skills/list, skills/get or resources/directory/read, and nothing imports the SkillsClient that @modelcontextprotocol/client 2.4.0 ships under the ext/skills subpath. The skills/list calls in extensions/codex are the Codex app-server JSON-RPC protocol, not MCP.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "src/agents/mcp-metadata.ts:11-21",
+            "note": "Agent bundle client capabilities: the only extension ever declared is io.modelcontextprotocol/ui (plus openai/elicitation), both behind mcp.apps.enabled."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "src/node-host/mcp.ts:346-350",
+            "note": "Node host client capabilities: elicitation only."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "extensions/codex/src/app-server/capabilities.ts:10",
+            "note": "listSkills: skills/list is a Codex app-server method used by the Codex harness plugin, not an MCP request."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "951fe560",
+            "path": "packages/client/package.json:43-52",
+            "note": "@modelcontextprotocol/client 2.4.0 exports SkillsClient at ./ext/skills; a git grep of the OpenClaw repo finds no import of client/ext/ or SkillsClient."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "opt-in",
+        "notes": "The bundled mcp-events plugin implements OpenAI's webhook profile of MCP Events on protocol 2026-07-28. It is off by default and turns on with plugins.entries.mcp-events.enabled and a required public HTTPS callbackOrigin. It works only with a configured Streamable HTTP server. Each request is stateless with no initialize: it sends server/discover and requires supportedVersions to include 2026-07-28 and capabilities.events to be present, then events/list, events/subscribe and events/unsubscribe. The client sends empty io.modelcontextprotocol/clientCapabilities in _meta, so it declares nothing. A delivered event triggers an Automation: an event-kind cron job runs its authored agent turn with the event as untrusted input. The mcp_events tool lists webhook-capable events for the model and the Automation editor and does not subscribe.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "extensions/mcp-events/openclaw.plugin.json:11-17",
+            "note": "enabledByDefault false; callbackOrigin is required."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "src/agents/mcp-event-request.ts:10-15,48-50,74,110-121",
+            "note": "Protocol 2026-07-28 set on the transport, Streamable HTTP only, per-request _meta with empty clientCapabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "extensions/mcp-events/src/service.ts:297-330",
+            "note": "server/discover check on capabilities.events, then paged events/list."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "src/gateway/server-methods/mcp-events.ts:139-167",
+            "note": "mcp.events.list gateway method behind the mcp_events tool, filtered to webhook-capable events and refused unless the plugin is enabled."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "extensions/mcp-events/index.ts:72-103",
+            "note": "mcp_events tool registration."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "openclaw/openclaw",
+            "date": "2026-11-26",
+            "commit": "5f0743a8",
+            "path": "extensions/mcp-events/src/service.ts:644-648",
+            "note": "A queued event is handed to cron.runEvent for its job."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "No events/poll call. The profile excludes polling.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "src/agents/mcp-event-request.ts:11-15",
+              "note": "The request method union is server/discover, events/list, events/subscribe and events/unsubscribe."
+            }
+          ]
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "No events/stream call and no notifications/events/* handler. The profile excludes push streams.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "src/agents/mcp-event-request.ts:11-15"
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "extensions/mcp-events/src/protocol.ts:11-12",
+              "note": "MCP_EVENTS_PROFILE is openai-webhook-2026-07-28."
+            }
+          ]
+        },
+        "webhook": {
+          "status": "opt-in",
+          "notes": "Turned on with the mcp-events plugin and callbackOrigin. events/subscribe sends delivery mode webhook with a per-binding callback URL under /plugins/mcp-events/callback/ and a per-binding signing secret, and the subscription is refreshed before refreshBefore. The callback verifies a Standard Webhooks HMAC signature, answers the verification challenge, validates the event against payloadSchema and stores it in a durable queue before returning 2xx. Control notifications other than verification, such as gap and terminated, are rejected with 400. Subscriptions are removed with events/unsubscribe.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "extensions/mcp-events/src/service.ts:406-435",
+              "note": "events/subscribe with delivery mode webhook, url and secret; refresh scheduled at 80% of the lease."
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "extensions/mcp-events/src/protocol.ts:115-206",
+              "note": "Signature check and callback parsing; any type other than verification is an unsupported control notification."
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "extensions/mcp-events/src/http.ts:125-163",
+              "note": "Durable enqueue before acknowledgement."
+            },
+            {
+              "tier": "read",
+              "at": "2026-07-28",
+              "source": "openclaw/openclaw",
+              "date": "2026-11-26",
+              "commit": "5f0743a8",
+              "path": "src/plugins/service-mcp-events.ts:604",
+              "note": "events/unsubscribe."
+            }
+          ]
+        }
       }
     },
     "research": [
@@ -5547,6 +6246,99 @@
             "note": "No tasks/* call in the MCP client."
           }
         ]
+      },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Hermes passes no extensions to ClientSession, and nothing reads _meta.ui.resourceUri, fetches ui:// resources or hosts an app view. mcp 2.3.0 implements io.modelcontextprotocol/ui on the server side only.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-26",
+            "commit": "45e95845",
+            "path": "tools/mcp_tool_transport.py:181-196",
+            "note": "ClientSession kwargs carry the sampling and elicitation callbacks, message and logging handlers and client_info, with no extensions argument."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-26",
+            "commit": "45e95845",
+            "path": "tools/mcp_tool_transport.py:309,432",
+            "note": "Both ClientSession construction sites use those kwargs."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/session.py:418,427,621-648",
+            "note": "mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/server/apps.py:1,43",
+            "note": "The SDK's MCP Apps module is server-side. The client package has no apps code."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Nothing sends skills/list, skills/get or resources/directory/read, and mcp 2.3.0 has no skills client. Hermes's own skills come from local directories and the skills hub. A server's skill files are reachable only through the generic list_resources and read_resource utility tools.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-26",
+            "commit": "45e95845",
+            "path": "tools/mcp_tool_transport.py:181-196",
+            "note": "ClientSession kwargs carry the sampling and elicitation callbacks, message and logging handlers and client_info, with no extensions argument."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-26",
+            "commit": "45e95845",
+            "path": "tools/mcp_tool_transport.py:309,432",
+            "note": "Both ClientSession construction sites use those kwargs."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/session.py:418,427,621-648",
+            "note": "mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "commit": "9a754b0a",
+            "path": "src/mcp/client/extensions/skills.py",
+            "note": "The SDK's skills client landed in 9a754b0a on 2026-10-11 and is not in the v2.3.0 tag or the 2.3.0 wheel."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "NousResearch/hermes-agent",
+            "date": "2026-11-26",
+            "commit": "45e95845",
+            "path": "tools/mcp_tool_handlers.py:1047-1052",
+            "note": "list_resources and read_resource are the generic resource utility tools."
+          }
+        ]
       }
     }
   },
@@ -5989,6 +6781,81 @@
         "research": [
           "opencode-declares-only-roots"
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The client capabilities declare roots only, nothing sends skills/list, skills/get or resources/directory/read, and the patched @modelcontextprotocol/sdk 1.32.1 has no skills client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "Kilo-Org/kilocode",
+            "date": "2026-11-26",
+            "commit": "9a84bbeb",
+            "path": "packages/opencode/src/mcp/index.ts:56-67,108-114",
+            "note": "CLIENT_OPTIONS declares roots only, and createClient is the one client the CLI, VS Code and JetBrains backends use."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "Kilo-Org/kilocode",
+            "date": "2026-11-26",
+            "commit": "9a84bbeb",
+            "path": "patches/@modelcontextprotocol%2Fsdk@1.32.1.patch",
+            "note": "The SDK patch touches client/auth, client/index (callTool overloads), client/streamableHttp and shared/protocol, with no skills or events code."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1",
+            "path": "dist/esm/types.js:413-457",
+            "note": "@modelcontextprotocol/sdk 1.32.1, the pinned version. Its dist has no skills/* or events/* methods."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The client capabilities declare roots only, nothing sends events/list, events/poll, events/stream or events/subscribe, and the patched @modelcontextprotocol/sdk 1.32.1 has no events client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "Kilo-Org/kilocode",
+            "date": "2026-11-26",
+            "commit": "9a84bbeb",
+            "path": "packages/opencode/src/mcp/index.ts:56-67,108-114",
+            "note": "CLIENT_OPTIONS declares roots only, and createClient is the one client the CLI, VS Code and JetBrains backends use."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "Kilo-Org/kilocode",
+            "date": "2026-11-26",
+            "commit": "9a84bbeb",
+            "path": "patches/@modelcontextprotocol%2Fsdk@1.32.1.patch",
+            "note": "The SDK patch touches client/auth, client/index (callTool overloads), client/streamableHttp and shared/protocol, with no skills or events code."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "url": "https://www.npmjs.com/package/@modelcontextprotocol/sdk/v/1.32.1",
+            "path": "dist/esm/types.js:413-457",
+            "note": "@modelcontextprotocol/sdk 1.32.1, the pinned version. Its dist has no skills/* or events/* methods."
+          }
+        ],
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        }
       }
     },
     "bonusFeatures": {
@@ -7128,6 +7995,39 @@
             "date": "2026-11-16",
             "commit": "bb984550",
             "path": "packages/mcp/src/client/client.ts:567,578-582"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The client capabilities declare io.modelcontextprotocol/ui, the tasks extension when tasks is set, and whatever the application passes in capabilities.extensions. @mastra/mcp sends no skills/list, skills/get or resources/directory/read and does not use the SDK's SkillsClient, which @modelcontextprotocol/client 2.4.0 ships as the separate ext/skills entry point. Agent.listSkills and getSkill read Mastra's own workspace and agent skills, not MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-26",
+            "commit": "79768b13",
+            "path": "packages/mcp/src/client/client.ts:575-583",
+            "note": "The client capabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mastra-ai/mastra",
+            "date": "2026-11-26",
+            "commit": "79768b13",
+            "path": "packages/core/src/agent/agent.ts:3612-3636",
+            "note": "Agent skills resolve from the workspace and agent config."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "951fe560",
+            "path": "packages/client/src/ext/skills/skillsClient.ts:151",
+            "note": "Tag @modelcontextprotocol/client@2.4.0. SkillsClient is constructed by the caller; the base Client does not send skills methods."
           }
         ]
       }
@@ -8281,6 +9181,72 @@
             "path": "src/mcp/protocol/wire.zig:52-60,328-335"
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The engine sends only server/discover, initialize, tools/list, tools/call and subscriptions/listen, and has had no resources/read since 0.0.15. fx's own skills load from SKILL.md files on disk.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "src/core/mcp_host/runtime.zig:672,3023-3029",
+            "note": "The declared capability object holds elicitation or nothing."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "src/mcp/server.zig:1220-1235",
+            "note": "The requests the engine writes: server/discover, initialize, tools/list, tools/call and subscriptions/listen."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "src/core/skills/skill_invocation.zig:1243",
+            "note": "Skills are read from a skills directory in the workspace."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No events/* request is written and no notifications/events/* handler exists.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "src/core/mcp_host/runtime.zig:672,3023-3029",
+            "note": "The declared capability object holds elicitation or nothing."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "src/mcp/server.zig:1220-1235",
+            "note": "The requests the engine writes: server/discover, initialize, tools/list, tools/call and subscriptions/listen."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -9079,6 +10045,61 @@
             "date": "2026-11-16",
             "commit": "c3dc80c4",
             "path": "sdk/mcp.js:82-84"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "createMcpAdapter calls listTools and callTool, and readResource and getPrompt only for URIs and prompt names the application lists in options. It never calls skills/list. The SkillsClient that @modelcontextprotocol/client 2.4.0 ships under ext/skills would run on the host's client, and libfx does not take its output.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "sdk/types/mcp.d.ts:4-20",
+            "note": "The adapter calls listTools, callTool, getServerVersion, readResource, getPrompt and close on the host's client."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "sdk/mcp.js:31-34,47-57,82,100-114"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not implemented. The adapter makes no events/* request, and no released TypeScript SDK has an events client.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "sdk/types/mcp.d.ts:4-20",
+            "note": "The adapter calls listTools, callTool, getServerVersion, readResource, getPrompt and close on the host's client."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "vercel-labs/fx",
+            "date": "2026-11-26",
+            "commit": "fb714da8",
+            "path": "sdk/mcp.js:31-34,47-57,82,100-114"
           }
         ]
       }
@@ -10051,39 +11072,49 @@
       },
       "io.modelcontextprotocol/events": {
         "status": "opt-in",
-        "notes": "Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.",
+        "notes": "Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider that has the events bridge. eve opens a second SDK client to page events/list and keeps the webhook-deliverable events. The model finds a connection's events with eve__search (query subscriptions__<connection>__), subscribes with eve__subscribe and stops with eve__subscription_stop. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.",
         "evidence": [
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/connections/events/actions.ts:32-34,99-152"
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/resolve-connection.ts:125-146"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/resolve-connection.ts:138-158"
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/subscriptions/actions.ts:153-182",
+            "note": "events/list, filtered to webhook delivery."
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "packages/eve/src/runtime/connections/events/lifecycle-step.ts:65-66,109"
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/subscriptions/actions.ts:201-277"
           },
           {
             "tier": "read",
             "at": "2026-07-28",
             "source": "vercel/eve",
-            "date": "2026-11-16",
-            "commit": "0940c042",
-            "path": "docs/connections/mcp.mdx:230-238"
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/subscriptions/tools.ts:38-39"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/subscriptions/sources/connection.ts:49-58",
+            "note": "The Vercel Connect backend adapter holds the subscription."
           }
         ],
         "webhook": {
@@ -10120,6 +11151,48 @@
             "date": "2026-11-16",
             "path": "dist/index.js:2566-2593",
             "note": "@ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches. assertCapability lists every request method the client can send. Any other method throws \"Unsupported method\"."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented in the client. eve passes no capabilities to createMCPClient, and the SDK's assertCapability throws \"Unsupported method\" for skills/list, skills/get and resources/directory/read. The skills code in the repo is server side: the MCP channel serves the agent's own skills under the extension when its skills option is set.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/connections/mcp-client.ts:137-150",
+            "note": "createMCPClient is called with protocolVersionDiscovery and transport only."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/runtime/subscriptions/actions.ts:144-147",
+            "note": "The second SDK client in the package calls experimental_events only."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "@ai-sdk/mcp",
+            "url": "https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99",
+            "date": "2026-11-26",
+            "path": "dist/index.js:2566-2593",
+            "note": "@ai-sdk/mcp 2.0.99, the version pnpm-lock.yaml resolves. assertCapability lists every request method the client can send, and no skills method is among them."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "vercel/eve",
+            "date": "2026-11-26",
+            "commit": "4545806d",
+            "path": "packages/eve/src/internal/mcp/skills.ts:63-67,135-170",
+            "note": "Server-side handlers for skills/list, skills/get and resources/directory/read, registered by the MCP channel at packages/eve/src/public/channels/mcp.ts:485-491."
           }
         ]
       }
@@ -11319,6 +12392,90 @@
             "date": "2026-11-16",
             "commit": "07ece436",
             "path": "packages/mcp/README.md:187"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. pi-mcp has no skills/list call, and neither the coding agent extension nor the p2 MCP plugin sends one through the generic request method. A skill:// resource a server lists would reach the model only as an ordinary resource through read_mcp_resource.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "packages/mcp/src/client.ts:214-219",
+            "note": "capabilities is the options object plus roots when roots are given."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "packages/coding-agent/src/extensions/mcp/runtime.ts:361-367",
+            "note": "The coding agent passes name, version, timeout and roots, and no capabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "apps/p2/plugins/mcp/instances.ts:306-311",
+            "note": "The p2 plugin builds the same client with no capabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "packages/mcp/src/client.ts:297-386",
+            "note": "Typed requests cover tools, resources, resource templates and tools/call."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No events/* request is sent and no notifications/events/* listener is registered.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "packages/mcp/src/client.ts:214-219",
+            "note": "capabilities is the options object plus roots when roots are given."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "packages/coding-agent/src/extensions/mcp/runtime.ts:361-367",
+            "note": "The coding agent passes name, version, timeout and roots, and no capabilities."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "earendil-works/pi",
+            "date": "2026-11-26",
+            "commit": "ede8bdca",
+            "path": "apps/p2/plugins/mcp/instances.ts:306-311",
+            "note": "The p2 plugin builds the same client with no capabilities."
           }
         ]
       }
@@ -12673,6 +13830,99 @@
         "research": [
           "strands-python-and-typescript-clients-differ"
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented in either binding. The Python SDK has no skills client in any release Strands allows (mcp 1.23 through 2.3.0). TypeScript: the lockfile resolves @modelcontextprotocol/client 2.3.1, and Strands does not import the ext/skills SkillsClient that 2.4.0 adds. The AgentSkills plugin loads skills from the filesystem, Skill instances and https URLs, not from MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:1742-1755",
+            "note": "ClientSession gets an elicitation callback and the tasks session arguments, and no extension for skills or events."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "strands-ts/src/mcp/client.ts:431-435",
+            "note": "TypeScript binding. capabilities holds elicitation and the tasks extension when configured."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/",
+            "note": "mcp 2.3.0 wheel. No skills or events module and no skills/list or events/* method string."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "package-lock.json:1807-1809",
+            "note": "TypeScript binding. Resolves @modelcontextprotocol/client 2.3.1, which has no ext/skills subpath."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "strands-py/src/strands/vended_plugins/skills/agent_skills.py:1-13",
+            "note": "AgentSkills sources."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented in either binding. Neither the Python SDK through 2.3.0 nor the TypeScript SDK client through 2.4.0 has an events client for Strands to turn on.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "strands-py/src/strands/tools/mcp/mcp_client.py:1742-1755",
+            "note": "ClientSession gets an elicitation callback and the tasks session arguments, and no extension for skills or events."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "strands-agents/harness-sdk",
+            "date": "2026-11-26",
+            "commit": "8e388465",
+            "path": "strands-ts/src/mcp/client.ts:431-435",
+            "note": "TypeScript binding. capabilities holds elicitation and the tasks extension when configured."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/",
+            "note": "mcp 2.3.0 wheel. No skills or events module and no skills/list or events/* method string."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -13916,6 +15166,129 @@
             "note": "mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222)."
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No skills/list, skills/get or resources/directory/read request is sent, and mcp 1.30.0 has no client extension API to declare one. crewAI's own skills come from local SKILL.md directories and the crewAI Plus registry, not from MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/mcp/client.py:194-197",
+            "note": "ClientSession is constructed with the two streams and nothing else."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/mcp/tool_resolver.py:667",
+            "note": "ClientSession(read, write) with no other arguments."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:176",
+            "note": "ClientSession(read, write) with no other arguments."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "path": "mcp/client/session.py:183-196",
+            "note": "mcp 1.30.0 wheel, the version uv.lock resolves. ClientCapabilities is built from sampling, elicitation, roots and tasks only; 1.x has no extensions field and no skills or events client code."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "grll/mcpadapt",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcpadapt/0.1.20/",
+            "path": "mcpadapt/core.py:130",
+            "note": "mcpadapt 0.1.20 wheel, used by crewai-tools' MCPServerAdapter. It opens a plain mcp ClientSession and has no skills or events code."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/skills/loader.py",
+            "note": "crewAI's own skills load from local SKILL.md directories and the crewAI Plus registry. No file under lib/crewai/src/crewai/skills imports or calls MCP."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No events/* request is sent from crewai or crewai-tools, and mcp 1.30.0 has no events client code. The MCP event types in crewai/events are crewAI's own event bus.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/mcp/client.py:194-197",
+            "note": "ClientSession is constructed with the two streams and nothing else."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/mcp/tool_resolver.py:667",
+            "note": "ClientSession(read, write) with no other arguments."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "crewAIInc/crewAI",
+            "date": "2026-11-26",
+            "commit": "77237aec",
+            "path": "lib/crewai/src/crewai/tools/mcp_tool_wrapper.py:176",
+            "note": "ClientSession(read, write) with no other arguments."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "path": "mcp/client/session.py:183-196",
+            "note": "mcp 1.30.0 wheel, the version uv.lock resolves. ClientCapabilities is built from sampling, elicitation, roots and tasks only; 1.x has no extensions field and no skills or events client code."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "grll/mcpadapt",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcpadapt/0.1.20/",
+            "path": "mcpadapt/core.py:130",
+            "note": "mcpadapt 0.1.20 wheel, used by crewai-tools' MCPServerAdapter. It opens a plain mcp ClientSession and has no skills or events code."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent."
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never sent and notifications/events/* has no handler."
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent."
+        }
       }
     },
     "bonusFeatures": {
@@ -15082,6 +16455,120 @@
             "note": "fastmcp-slim 4.1.2, from the PyPI wheel. _auto_internal_extensions = False on ProxyClient."
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. FastMCP's client has skills/list and skills/get, and they run only on a client built with SkillsClientExtension. No deepagents client passes it: deepagents-code builds StatefulProxyClient and FastMCPClient with no extensions, and deepagents-talon goes through langchain.mcp's MCPAdapter, which does the same. deepagents' own skills load from local directories.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1970,2002",
+            "note": "Each backend is StatefulProxyClient(transport=..., log_handler=...), mounted on an in-process router reached through FastMCPClient(router). Neither passes extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/talon/deepagents_talon/mcp.py:426,521,596",
+            "note": "deepagents-talon loads tools through langchain.mcp's MCPAdapter(connection) and opens sessions with FastMCPClient(connection), with no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/evals/deepagents_harbor/langgraph_project/langgraph_agent.py:588",
+            "note": "The evals harness uses MCPAdapter with an mcpServers config and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/langchain",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/langchain/1.5.2/",
+            "path": "langchain/mcp/adapter.py:190-199",
+            "note": "langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "PrefectHQ/fastmcp",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/fastmcp-slim/4.1.2/",
+            "path": "fastmcp/client/mixins/skills.py:40-59",
+            "note": "fastmcp-slim 4.1.2 wheel (libs/code). list_skills_mcp and get_skill_mcp require a modern connection, SkillsClientExtension in Client(extensions=[...]) and the server's io.modelcontextprotocol/skills entry. 4.2.3 (libs/talon) has the same check in _require_skills_extension at line 73."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "PrefectHQ/fastmcp",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/fastmcp-slim/4.2.3/",
+            "path": "fastmcp/client/extension_hooks.py:54-68",
+            "note": "fastmcp-slim 4.1.2 and 4.2.3 wheels. The only extensions folded in by default come from registered factories, which only fastmcp_tasks registers; skills is never added by default, and neither version has an events client."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No events/* request is sent, and neither fastmcp-slim 4.1.2 nor 4.2.3 nor langchain 1.5.2 has an events client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/code/deepagents_code/mcp_tools.py:1968-1970,2002",
+            "note": "Each backend is StatefulProxyClient(transport=..., log_handler=...), mounted on an in-process router reached through FastMCPClient(router). Neither passes extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/deepagents",
+            "date": "2026-11-26",
+            "commit": "87f6080d",
+            "path": "libs/talon/deepagents_talon/mcp.py:426,521,596",
+            "note": "deepagents-talon loads tools through langchain.mcp's MCPAdapter(connection) and opens sessions with FastMCPClient(connection), with no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langchain-ai/langchain",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/langchain/1.5.2/",
+            "path": "langchain/mcp/adapter.py:190-199",
+            "note": "langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "PrefectHQ/fastmcp",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/fastmcp-slim/4.2.3/",
+            "path": "fastmcp/client/extension_hooks.py:54-68",
+            "note": "fastmcp-slim 4.1.2 and 4.2.3 wheels. The only extensions folded in by default come from registered factories, which only fastmcp_tasks registers; skills is never added by default, and neither version has an events client."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent."
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never sent and notifications/events/* has no handler."
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent."
+        }
       }
     },
     "bonusFeatures": {
@@ -16023,6 +17510,129 @@
             "note": "The only ClientSession construction under src. It passes sampling_callback, sampling_capabilities, elicitation_callback, message_handler and client_info, and no list_roots_callback or logging_callback."
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. ClientSession gets no extensions, and no skills/list, skills/get or resources/directory/read request is sent. ADK's SkillToolset and its list_skills tool serve skills given to the toolset in code, not skills from MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
+            "note": "The only ClientSession constructions under src. They pass sampling, elicitation, message_handler and client_info, and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
+            "note": "The only ClientSession constructions under src. They pass sampling, elicitation, message_handler and client_info, and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:62-68",
+            "note": "2026-07-28 is reached only with ADK_ENABLE_MCP_MODERN_PROTOCOL set and SDK 2.x; the capability set is the same either way."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/session.py:614-649",
+            "note": "mcp 2.3.0 wheel, pinned by constraints-3.15.txt. Client extensions are only what the caller passes in extensions=; 2.3.0 ships no skills or events client."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/1.28.1/",
+            "path": "mcp/client/session.py:188-194",
+            "note": "mcp 1.28.1 wheel, pinned by constraints-3.11.txt to 3.14.txt. ClientCapabilities has no extensions field."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/skill_toolset.py:769-800",
+            "note": "ADK's ListSkillsTool lists skills the SkillToolset was built with; skill_toolset.py has no MCP reference."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. ClientSession gets no extensions, and no events/* request is sent. Neither mcp 1.28.1 nor 2.3.0 has an events client.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
+            "note": "The only ClientSession constructions under src. They pass sampling, elicitation, message_handler and client_info, and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:452-481",
+            "note": "The only ClientSession constructions under src. They pass sampling, elicitation, message_handler and client_info, and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "google/adk-python",
+            "date": "2026-11-26",
+            "commit": "03725e8c",
+            "path": "src/google/adk/tools/mcp_tool/session_context.py:62-68",
+            "note": "2026-07-28 is reached only with ADK_ENABLE_MCP_MODERN_PROTOCOL set and SDK 2.x; the capability set is the same either way."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/session.py:614-649",
+            "note": "mcp 2.3.0 wheel, pinned by constraints-3.15.txt. Client extensions are only what the caller passes in extensions=; 2.3.0 ships no skills or events client."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/1.28.1/",
+            "path": "mcp/client/session.py:188-194",
+            "note": "mcp 1.28.1 wheel, pinned by constraints-3.11.txt to 3.14.txt. ClientCapabilities has no extensions field."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent."
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never sent and notifications/events/* has no handler."
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent."
+        }
       }
     },
     "bonusFeatures": {
@@ -17445,6 +19055,69 @@
         "research": [
           "agent-framework-python-and-dotnet-are-two-mcp-clients"
         ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented in either binding. Python: the mcp Client is built with no extensions and no events/* request is sent. .NET: the framework's McpClientOptions set ClientInfo or ProtocolVersion only, no file in dotnet/src sends an events method, and C# SDK 2.2.0 has no events support.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-26",
+            "commit": "f8ade3e9",
+            "path": "python/packages/core/agent_framework/_mcp.py:2658-2667",
+            "note": "The only mcp Client construction in the Python packages. It passes message, logging and sampling handlers and no extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/python-sdk",
+            "date": "2026-11-26",
+            "url": "https://pypi.org/project/mcp/2.3.0/",
+            "path": "mcp/client/session.py:614-649",
+            "note": "mcp 2.3.0 wheel, the version python/uv.lock resolves. Client extensions are only what the caller passes; 2.3.0 has no events client."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-26",
+            "commit": "f8ade3e9",
+            "path": "dotnet/src/Microsoft.Agents.AI.Foundry.Hosting/FoundryToolboxService.cs:342-361",
+            "note": "McpClientOptions sets only ClientInfo."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "microsoft/agent-framework",
+            "date": "2026-11-26",
+            "commit": "f8ade3e9",
+            "path": "dotnet/src/Microsoft.Agents.AI.Workflows.Declarative.Mcp/DefaultMcpToolHandler.cs:241-243",
+            "note": "McpClientOptions sets only ProtocolVersion."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/csharp-sdk",
+            "date": "2026-11-26",
+            "commit": "6fa38259",
+            "path": "src/",
+            "note": "ModelContextProtocol 2.2.0 (tag v2.2.0), pinned in dotnet/Directory.Packages.props:134-135. The source tree has Extensions.Apps and Extensions.Tasks packages and no events method or extension."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "events/poll is never sent."
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "events/stream is never sent and notifications/events/* has no handler."
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "events/subscribe is never sent."
+        }
       }
     },
     "bonusFeatures": {
@@ -19106,6 +20779,89 @@
             "path": "src/vs/workbench/contrib/mcp/common/mcpServer.ts:1407-1417"
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, and the request handler sends no skills/list, skills/get or resources/directory/read. The MCP gateway the agent host connects to forwards only ping, tools and resources methods. The skills/list calls elsewhere in the repo go to the Codex app server, not to MCP servers.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:113-140",
+            "note": "Client capabilities sent in initialize."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:452-580",
+            "note": "Every request the client sends to a server."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/platform/mcp/node/mcpGatewaySession.ts:157-173"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/platform/agentHost/node/codex/codexAgent.ts:8598-8600",
+            "note": "Codex app-server skills/list, unrelated to the MCP extension."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, the client sends no events/list, events/poll, events/stream or events/subscribe, and the server notification switch has no notifications/events/* case.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:113-140",
+            "note": "Client capabilities sent in initialize."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:361-395",
+            "note": "Server notification switch."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "microsoft/vscode",
+            "date": "2026-11-26",
+            "commit": "5a0c9f7f",
+            "path": "src/vs/workbench/contrib/mcp/common/mcpServerRequestHandler.ts:452-580",
+            "note": "Every request the client sends to a server."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -19773,6 +21529,99 @@
             "date": "2026-11-20",
             "commit": "84decbe0",
             "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/ui": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented on the client side. Both MCP clients build the SDK Client with capabilities {} and nothing reads _meta.ui.resourceUri or fetches ui:// resources. The @n8n/mcp-apps package serves an MCP App from n8n's own MCP server and is not used by the client nodes or @n8n/agents.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/agents/src/runtime/mcp/mcp-connection.ts:137,160"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/mcp-apps/src/server/constants.ts:20-23",
+            "note": "Server-side ui:// resource and MIME type for n8n's MCP server."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented on the client side. Neither MCP client sends skills/list or skills/get. The skills extension code in the repo belongs to n8n's MCP server.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/agents/src/runtime/mcp/mcp-connection.ts:137,160"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/cli/src/modules/mcp/tools/skills/skill-extension.service.ts:19",
+            "note": "Server-side handler for the extension."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No code in the repo sends events/list, events/poll, events/stream or events/subscribe. The client capabilities are built here.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/nodes-langchain/nodes/mcp/shared/utils.ts:211"
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "n8n-io/n8n",
+            "date": "2026-11-26",
+            "commit": "1fbca5e2",
+            "path": "packages/@n8n/agents/src/runtime/mcp/mcp-connection.ts:137,160"
           }
         ]
       }
@@ -20606,6 +22455,105 @@
             "note": "mcp 1.30.0 wheel."
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. Each ClientSession is built with no arguments beyond the streams, so the SDK builds the capabilities with experimental set to None, and the client sends only tools/list and tools/call. The mcp 1.30.0 SDK has no skills/list or resources/directory/read method.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langflow-ai/langflow",
+            "date": "2026-11-26",
+            "commit": "6c9aea6f",
+            "path": "src/lfx/src/lfx/base/mcp/util.py:1722,1830,1906",
+            "note": "ClientSession(read, write) on stdio, Streamable HTTP and SSE."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langflow-ai/langflow",
+            "date": "2026-11-26",
+            "commit": "6c9aea6f",
+            "path": "src/lfx/src/lfx/base/mcp/util.py:1537,2159-2166,2385,2721",
+            "note": "The only session requests are list_tools and call_tool."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "date": "2026-11-26",
+            "path": "mcp/client/session.py:183-200",
+            "note": "mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. No code sends events/list, events/poll, events/stream or events/subscribe, and the client capabilities come from the SDK default with experimental set to None. The mcp 1.30.0 SDK has no events methods.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "langflow-ai/langflow",
+            "date": "2026-11-26",
+            "commit": "6c9aea6f",
+            "path": "src/lfx/src/lfx/base/mcp/util.py:1722,1830,1906",
+            "note": "ClientSession(read, write) on stdio, Streamable HTTP and SSE."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "modelcontextprotocol/python-sdk",
+            "url": "https://pypi.org/project/mcp/1.30.0/",
+            "date": "2026-11-26",
+            "path": "mcp/client/session.py:183-200",
+            "note": "mcp 1.30.0 wheel. The initialize request sends experimental=None and no extensions."
+          }
+        ],
+        "poll": {
+          "status": "unsupported",
+          "notes": "No events/poll request.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2025-11-25",
+              "source": "langflow-ai/langflow",
+              "date": "2026-11-26",
+              "commit": "6c9aea6f",
+              "path": "src/lfx/src/lfx/base/mcp/util.py:1537,2159-2166,2385,2721"
+            }
+          ]
+        },
+        "push": {
+          "status": "unsupported",
+          "notes": "No events/stream request and no handler for notifications/events/*.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2025-11-25",
+              "source": "langflow-ai/langflow",
+              "date": "2026-11-26",
+              "commit": "6c9aea6f",
+              "path": "src/lfx/src/lfx/base/mcp/util.py:1722,1830,1906"
+            }
+          ]
+        },
+        "webhook": {
+          "status": "unsupported",
+          "notes": "No events/subscribe request.",
+          "evidence": [
+            {
+              "tier": "read",
+              "at": "2025-11-25",
+              "source": "langflow-ai/langflow",
+              "date": "2026-11-26",
+              "commit": "6c9aea6f",
+              "path": "src/lfx/src/lfx/base/mcp/util.py:1537,2159-2166,2385,2721"
+            }
+          ]
+        }
       }
     },
     "bonusFeatures": {
@@ -21627,6 +23575,57 @@
             "path": "libraries/typescript/packages/client/src/transport/http.ts:455-462"
           }
         ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented in either binding. The TypeScript client declares roots, sampling and elicitation plus whatever the application passes in clientOptions.capabilities, and sends no events/list, events/poll, events/stream or events/subscribe. @modelcontextprotocol/client 2.3.1 has no events code. The Python binding builds a ClientSession with no extension capabilities, and mcp 1.30.0, the newest release in its range, has no events code and cannot negotiate 2026-07-28.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mcp-use/mcp-use",
+            "date": "2026-11-26",
+            "commit": "bc8fb6f3",
+            "path": "libraries/typescript/packages/client/src/transport/http.ts:455-462",
+            "note": "Client capabilities on HTTP."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "mcp-use/mcp-use",
+            "date": "2026-11-26",
+            "commit": "bc8fb6f3",
+            "path": "libraries/typescript/packages/client/src/transport/stdio.ts:165-174",
+            "note": "Client capabilities on stdio."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "mcp-use/mcp-use",
+            "date": "2026-11-26",
+            "commit": "bc8fb6f3",
+            "path": "libraries/python/mcp_use/client/connectors/stdio.py:88-97",
+            "note": "Python ClientSession construction; http.py:287 and sandbox.py:263 match."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "fcef852f",
+            "path": "packages/client/src",
+            "note": "Tag @modelcontextprotocol/client@2.3.1. No events/* method or io.modelcontextprotocol/events identifier in the client or core packages."
+          }
+        ]
       }
     },
     "bonusFeatures": {
@@ -22399,6 +24398,90 @@
             "path": "crates/context_server/src/types.rs:465-474"
           }
         ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The hand-written context_server client has no extensions field in its capabilities and no skills/list, skills/get or resources/directory/read request. Zed's agent skills load from ~/.agents/skills through the agent_skills crate, which does not depend on context_server.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/protocol.rs:41-47",
+            "note": "initialize sends ClientCapabilities with experimental, sampling and roots all None."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/types.rs:465-474",
+            "note": "ClientCapabilities has no extensions field."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/types.rs:40-87",
+            "note": "The request types cover tools, resources, prompts, completion, logging and roots, with no skills/* or events/* method."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/agent_skills/Cargo.toml",
+            "note": "The skills crate's dependencies do not include context_server."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. The hand-written context_server client has no extensions field in its capabilities and no events/list, events/poll, events/stream or events/subscribe request.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/protocol.rs:41-47",
+            "note": "initialize sends ClientCapabilities with experimental, sampling and roots all None."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/types.rs:465-474",
+            "note": "ClientCapabilities has no extensions field."
+          },
+          {
+            "tier": "read",
+            "at": "2025-11-25",
+            "source": "zed-industries/zed",
+            "date": "2026-11-26",
+            "commit": "961ac220",
+            "path": "crates/context_server/src/types.rs:40-87",
+            "note": "The request types cover tools, resources, prompts, completion, logging and roots, with no skills/* or events/* method."
+          }
+        ],
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        }
       }
     },
     "bonusFeatures": {
@@ -23179,6 +25262,48 @@
             "date": "2026-11-20",
             "commit": "5ee54ee3",
             "path": "packages/client/src/client/extension.ts:20-50"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not implemented in 2.4.0 or at HEAD. No package in the repo sends events/list, events/poll, events/stream or events/subscribe, and the only ext subpath @modelcontextprotocol/client exports is ext/skills. Capabilities are what the application passes plus any ClientExtension it supplies, so an application could write its own events extension on that interface.",
+        "poll": {
+          "status": "unsupported"
+        },
+        "push": {
+          "status": "unsupported"
+        },
+        "webhook": {
+          "status": "unsupported"
+        },
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "5ee54ee3",
+            "path": "packages/client/package.json:22-73",
+            "note": "Exports are ., stdio, ext/skills, validators and _shims."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "5ee54ee3",
+            "path": "packages/client/src/client/client.ts:692,717",
+            "note": "Capabilities come from options.capabilities and installed extensions."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/typescript-sdk",
+            "date": "2026-11-26",
+            "commit": "5ee54ee3",
+            "path": "packages/client/src/client/extension.ts:20-50",
+            "note": "The experimental ClientExtension interface an application would implement."
           }
         ]
       }
@@ -24044,6 +26169,69 @@
             "date": "2026-11-21",
             "commit": "f8223cef",
             "path": "crates/mcp/src/runtime.rs:905-918"
+          }
+        ]
+      },
+      "io.modelcontextprotocol/skills": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. make_client_info builds the client capabilities from Default::default() with no extensions, and after connecting the client only calls resources/list and tools/list. rmcp 3.5.0 has no skills/list support; the SDK added it in 3.10.0.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "warpdotdev/warp",
+            "date": "2026-11-26",
+            "commit": "1c7fda11",
+            "path": "crates/mcp/src/runtime.rs:908-918"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "warpdotdev/warp",
+            "date": "2026-11-26",
+            "commit": "1c7fda11",
+            "path": "crates/mcp/src/runtime.rs:463-467"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "0cde3c5c",
+            "path": "crates/rmcp/src",
+            "note": "At tag rmcp-v3.5.0, the version Cargo.lock resolves, no source file mentions skills; SKILLS_EXTENSION_ID first appears in rmcp-v3.10.0."
+          }
+        ]
+      },
+      "io.modelcontextprotocol/events": {
+        "status": "unsupported",
+        "notes": "Not declared and not implemented. make_client_info builds the client capabilities with no extensions, and no events/list, events/poll, events/stream or events/subscribe call exists in the repo. rmcp 3.5.0 has no events support. The two non-test events grep hits are Warp's own agent event stream endpoints (/api/v1/agent/events/stream), not MCP.",
+        "evidence": [
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "warpdotdev/warp",
+            "date": "2026-11-26",
+            "commit": "1c7fda11",
+            "path": "crates/mcp/src/runtime.rs:908-918"
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "warpdotdev/warp",
+            "date": "2026-11-26",
+            "commit": "1c7fda11",
+            "path": "app/src/server/server_api.rs:684-757",
+            "note": "The events/stream URLs here are Warp's agent event API."
+          },
+          {
+            "tier": "read",
+            "at": "2026-07-28",
+            "source": "modelcontextprotocol/rust-sdk",
+            "date": "2026-11-26",
+            "commit": "0cde3c5c",
+            "path": "crates/rmcp/src",
+            "note": "At tag rmcp-v3.5.0 there is no events/list or io.modelcontextprotocol/events in the SDK source."
           }
         ]
       }

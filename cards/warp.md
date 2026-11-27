@@ -54,8 +54,8 @@ Terminal with a built-in coding agent, for macOS, Linux and Windows, plus a TUI 
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ◐ partial | read | `2026-07-28` |
@@ -91,6 +91,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **icons** — Tool and resource icons are dropped when the lists are converted for the model, and the server info is not read for them.
 - **extensions.io.modelcontextprotocol/ui** — Not declared, and the tool metadata sent to the model has no _meta.
 - **extensions.io.modelcontextprotocol/tasks** — The io.modelcontextprotocol/tasks extension is not declared and no tasks call is made.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. make_client_info builds the client capabilities from Default::default() with no extensions, and after connecting the client only calls resources/list and tools/list. rmcp 3.5.0 has no skills/list support; the SDK added it in 3.10.0.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. make_client_info builds the client capabilities with no extensions, and no events/list, events/poll, events/stream or events/subscribe call exists in the repo. rmcp 3.5.0 has no events support. The two non-test events grep hits are Warp's own agent event stream endpoints (/api/v1/agent/events/stream), not MCP.
 - **bonusFeatures.modelInitiatedResourceRead** — The resource list is part of the agent's context and the agent requests a read by URI or name. The read goes through the same action pipeline as tool calls.
 - **bonusFeatures.toolCallCancellation** — notifications/cancelled is sent only when the 30-minute tool-call deadline passes, with a 5-second bound on sending it. The model is then told the outcome is unknown and not to retry.
 - **bonusFeatures.importsOtherClientConfigs** — Reads ~/.warp/.mcp.json, ~/.claude.json and project .mcp.json, ~/.codex/config.toml (normalised from TOML), and .agents/.mcp.json, and watches them. Servers in ~/.warp/.mcp.json start automatically. Global third-party servers start only when agents.mcp_servers.file_based_mcp_enabled is on, which defaults to false. Project-scoped servers never start automatically.

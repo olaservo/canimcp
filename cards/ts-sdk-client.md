@@ -58,7 +58,10 @@ The Client class of the official TypeScript SDK, published as @modelcontextproto
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported |  |  |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ standardRequestHeaders | ◇ opt-in | read | `2026-07-28` |
@@ -113,6 +116,7 @@ When a server's newest revision is `2025-11-25`, TypeScript SDK Client negotiate
 - **extensions.io.modelcontextprotocol/skills** — SkillsClient from @modelcontextprotocol/client/ext/skills wraps a connected Client and reads the server's skills (SEP-2640). It does not add anything to the client's declared capabilities. Present in 2.4.0.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps code in packages/client or packages/core-internal.
 - **extensions.io.modelcontextprotocol/tasks** — No task runtime in either era. The 2025-11-25 related-task _meta key is marked as kept for interoperability only, with no SDK runtime. The 2026-07-28 wire registry has no tasks/* methods. HEAD (after 2.4.0) adds ClientOptions.extensions, through which an application could supply a tasks extension; the SDK ships none.
+- **extensions.io.modelcontextprotocol/events** — Not implemented in 2.4.0 or at HEAD. No package in the repo sends events/list, events/poll, events/stream or events/subscribe, and the only ext subpath @modelcontextprotocol/client exports is ext/skills. Capabilities are what the application passes plus any ClientExtension it supplies, so an application could write its own events extension on that interface.
 - **bonusFeatures.protocolEraForcing** — versionNegotiation takes legacy (the default), auto, or { pin: '2026-07-28' }. connect({ prior }) reuses a cached era verdict with no probe. supportedProtocolVersions narrows both lists.
 - **bonusFeatures.standardRequestHeaders** — Only on a 2026-07-28 connection over HTTP: Mcp-Method and Mcp-Name on every request, and Mcp-Param-* mirrored from x-mcp-header input-schema declarations of a cached tool. Skipped in a browser.
 

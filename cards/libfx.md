@@ -64,8 +64,11 @@ The fx agent core as a JavaScript library, a native Node.js addon and a WebAssem
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ toolCallCancellation | ◐ partial | read | `2025-11-25` |
@@ -110,6 +113,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **icons** — The adapter copies a tool's name, description and inputSchema only.
 - **extensions.io.modelcontextprotocol/ui** — Tool _meta is not read, so a tool marked app-only is given to the model like any other.
 - **extensions.io.modelcontextprotocol/tasks** — Each call is one callTool that is awaited to its result.
+- **extensions.io.modelcontextprotocol/skills** — createMcpAdapter calls listTools and callTool, and readResource and getPrompt only for URIs and prompt names the application lists in options. It never calls skills/list. The SkillsClient that @modelcontextprotocol/client 2.4.0 ships under ext/skills would run on the host's client, and libfx does not take its output.
+- **extensions.io.modelcontextprotocol/events** — Not implemented. The adapter makes no events/* request, and no released TypeScript SDK has an events client.
 - **bonusFeatures.modelInitiatedResourceRead** — Resources are read only at construction, from URIs the application lists.
 - **bonusFeatures.toolCallCancellation** — The turn's AbortSignal is passed as callTool's third argument, the options position in SDK v1. @modelcontextprotocol/client 2.4.0 takes options second, so with that client the signal is not received. Read from source and the two packages. No cancellation was run.
 - **bonusFeatures.requestCorrelationMeta** — Off by default. createMcpAdapter(client, { propagateCorrelation: true }) sends a random UUID as _meta["libfx/correlationId"] on each tools/call. It is the only _meta libfx writes.

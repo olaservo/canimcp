@@ -55,7 +55,10 @@ Open source MCP framework from mcp-use, Inc. with a TypeScript binding and a Pyt
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◐ partial | read | `2026-07-28` |
 
@@ -104,6 +107,7 @@ When a server's newest revision is `2025-11-25`, mcp-use negotiates it and these
 - **extensions.io.modelcontextprotocol/ui** — clientOptions.capabilities.views true expands to the extension with mimeTypes text/html;profile=mcp-app. Off by default. The React entry renders views with @modelcontextprotocol/ext-apps. MCPAgent does not render them.
 - **extensions.io.modelcontextprotocol/skills** — The session has listSkills, listAllSkills, getSkill and readResourceDirectory, sent as raw requests. MCPAgent never calls them and the client declares nothing for the extension.
 - **extensions.io.modelcontextprotocol/tasks** — No code in either client package sends tasks/* or declares a tasks capability or extension.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented in either binding. The TypeScript client declares roots, sampling and elicitation plus whatever the application passes in clientOptions.capabilities, and sends no events/list, events/poll, events/stream or events/subscribe. @modelcontextprotocol/client 2.3.1 has no events code. The Python binding builds a ClientSession with no extension capabilities, and mcp 1.30.0, the newest release in its range, has no events code and cannot negotiate 2026-07-28.
 - **bonusFeatures.modelInitiatedResourceRead** — Each concrete resource listed at initialize becomes its own tool with no arguments. The model cannot read a URI that was not listed, and templates are not exposed.
 
 ## Research notes

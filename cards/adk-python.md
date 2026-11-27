@@ -63,8 +63,11 @@ Google's Agent Development Kit for Python. An LlmAgent reaches MCP servers throu
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25`, `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ◐ partial | read | `2025-11-25` |
@@ -130,6 +133,11 @@ When a server's newest revision is `2025-11-25`, Google ADK (Python) negotiates 
 - **jsonSchema** — ADK validates neither tool arguments nor results itself. The input schema goes to the model as parameters_json_schema when JSON_SCHEMA_FOR_FUNC_DECL is on, which is the registry default, and is converted to a Gemini Schema otherwise. The output schema is checked by the SDK, which picks a jsonschema validator class from the schema's own $schema.
 - **extensions.io.modelcontextprotocol/ui** — McpTool reads _meta.ui.resourceUri, or the flat ui/resourceUri key, from the tool definition. After a successful call it adds a UiWidget with provider mcp to the event actions, carrying the resource URI, the tool definition and the call arguments. ADK does not declare the extension, does not fetch the ui:// resource, and has no caller for the visibility property, so an app-only tool is still offered to the model. The bundled dev UI under src/google/adk/cli/browser has no reference to the widget field.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks request of any kind, and no experimental task handlers are passed to ClientSession on SDK 1.x.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. ClientSession gets no extensions, and no skills/list, skills/get or resources/directory/read request is sent. ADK's SkillToolset and its list_skills tool serve skills given to the toolset in code, not skills from MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. ClientSession gets no extensions, and no events/* request is sent. Neither mcp 1.28.1 nor 2.3.0 has an events client.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream is never sent and notifications/events/* has no handler.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — Opt-in through use_mcp_resources=True. One tool, load_mcp_resource, which takes resource names and has no URI argument. The tool result is a status stub and the contents are appended to the next model request.
 - **bonusFeatures.protocolEraForcing** — One process-wide switch. ADK_ENABLE_MCP_MODERN_PROTOCOL, or override_feature_enabled on the private _MCP_MODERN_PROTOCOL member, moves every connection from handshake-only to a server/discover probe with handshake fallback. It needs SDK 2.x. There is no per-server setting and no modern-only mode.
 - **bonusFeatures.sessionRecovery** — The recovery path keys on the session-terminated error that the SDK raises for a dropped Mcp-Session-Id. Whether anything triggers it on a connection with no session id was not checked.
@@ -251,6 +259,10 @@ When a server's newest revision is `2025-11-25`, Google ADK (Python) negotiates 
 - [mcp/client/session.py:634-638](https://pypi.org/project/mcp/2.3.0/) — *elicitation.url*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0.
 - [mcp/client/session.py:165-171](https://pypi.org/project/mcp/2.3.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The log-level _meta key is stamped only when log_level is set.
 - [mcp/client/session.py:1156-1183](https://pypi.org/project/mcp/2.3.0/) — *jsonSchema*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. validator_for(output_schema) with an empty registry.
+- [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 wheel, pinned by constraints-3.15.txt. Client extensions are only what the caller passes in extensions=; 2.3.0 ships no skills or events client.
+- [mcp/client/session.py:188-194](https://pypi.org/project/mcp/1.28.1/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.28.1 wheel, pinned by constraints-3.11.txt to 3.14.txt. ClientCapabilities has no extensions field.
+- [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 wheel, pinned by constraints-3.15.txt. Client extensions are only what the caller passes in extensions=; 2.3.0 ships no skills or events client.
+- [mcp/client/session.py:188-194](https://pypi.org/project/mcp/1.28.1/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.28.1 wheel, pinned by constraints-3.11.txt to 3.14.txt. ClientCapabilities has no extensions field.
 - [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2025-11-25.sampling*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. _build_capabilities declares sampling, elicitation and roots only when a non-default callback was passed.
 - [mcp/client/session.py:278-281,1482-1485](https://pypi.org/project/mcp/2.3.0/) — *byProtocolVersion.2025-11-25.logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0. The default logging callback is a no-op, and a log notification goes to it and then to message_handler.
 

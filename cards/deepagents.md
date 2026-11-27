@@ -66,8 +66,11 @@ LangChain's Python agent harness. The core deepagents library has no MCP code an
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ◐ partial | read | `2025-11-25` |
@@ -115,6 +118,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **icons** — No reference to icons or websiteUrl under libs/code. The server and tool records the /mcp viewer is given hold names, descriptions, transport, status and input schemas.
 - **extensions.io.modelcontextprotocol/ui** — No MCP Apps support. No extension is declared, _meta.ui is not read, and a tool whose visibility leaves out the model is offered to the model like any other.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* call. FastMCP's ProxyClient turns off the client's internal tasks extension, so nothing about tasks is declared to a server.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. FastMCP's client has skills/list and skills/get, and they run only on a client built with SkillsClientExtension. No deepagents client passes it: deepagents-code builds StatefulProxyClient and FastMCPClient with no extensions, and deepagents-talon goes through langchain.mcp's MCPAdapter, which does the same. deepagents' own skills load from local directories.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/* request is sent, and neither fastmcp-slim 4.1.2 nor 4.2.3 nor langchain 1.5.2 has an events client.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream is never sent and notifications/events/* has no handler.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — No resource support of any kind, so the model has no way to read one.
 - **bonusFeatures.deferredToolLoading** — models.provider_tool_search defaults to on. On a listed OpenAI Responses or Anthropic model, reached directly or through the LangSmith gateway, MCP tool schemas are left to the provider's native tool search. Every other route loads all schemas up front.
 - **bonusFeatures.sessionRecovery** — A FastMCP middleware on each mounted proxy catches a closed connection during tools/call, tears the session down so the next call reconnects, and returns an isError result saying the operation may have completed and was not retried. The failed call is never replayed. A failed token refresh is returned as an error result carrying the login command.
@@ -220,6 +228,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [deepagents-code offers servers 2025-11-25 because FastMCP's proxy client defaults to the handshake](../research/deepagents-code-inherits-the-handshake-era-from-fastmcps-proxy-client.md) — *idiosyncrasy*. deepagents-code names no protocol revision. Its per-server client is FastMCP's ProxyClient, which defaults to the initialize handshake, so servers are offered 2025-11-25. dcode mcp login and deepagents-talon use a plain FastMCP Client, which probes server/discover first.
 - [notes/deepagents-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/deepagents-tool-result-handling.md) — *tools.result*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the deepagents source at a93aed4 with langchain 1.5.0, fastmcp 4.1.2 and mcp 2.3.0.
 - [notes/deepagents-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/deepagents-tool-result-handling.md) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. That note searched libs/ and langchain.mcp for ui://, resourceUri, io.modelcontextprotocol/ui and visibility at a93aed4 and found nothing MCP-related.
+- [langchain/mcp/adapter.py:190-199](https://pypi.org/project/langchain/1.5.2/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in langchain-ai/langchain. langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters.
+- [fastmcp/client/mixins/skills.py:40-59](https://pypi.org/project/fastmcp-slim/4.1.2/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in PrefectHQ/fastmcp. fastmcp-slim 4.1.2 wheel (libs/code). list_skills_mcp and get_skill_mcp require a modern connection, SkillsClientExtension in Client(extensions=[...]) and the server's io.modelcontextprotocol/skills entry. 4.2.3 (libs/talon) has the same check in _require_skills_extension at line 73.
+- [fastmcp/client/extension_hooks.py:54-68](https://pypi.org/project/fastmcp-slim/4.2.3/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in PrefectHQ/fastmcp. fastmcp-slim 4.1.2 and 4.2.3 wheels. The only extensions folded in by default come from registered factories, which only fastmcp_tasks registers; skills is never added by default, and neither version has an events client.
+- [langchain/mcp/adapter.py:190-199](https://pypi.org/project/langchain/1.5.2/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in langchain-ai/langchain. langchain 1.5.2 wheel, the version every deepagents uv.lock resolves. MCPAdapter builds FastMCPClient(target) with no extensions; langchain/mcp has no skills or events code. No deepagents lockfile contains langchain-mcp-adapters.
+- [fastmcp/client/extension_hooks.py:54-68](https://pypi.org/project/fastmcp-slim/4.2.3/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in PrefectHQ/fastmcp. fastmcp-slim 4.1.2 and 4.2.3 wheels. The only extensions folded in by default come from registered factories, which only fastmcp_tasks registers; skills is never added by default, and neither version has an events client.
 
 ## Provenance
 

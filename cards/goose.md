@@ -52,9 +52,14 @@ Open-source agent from Block, shipping as a desktop app and a CLI from one Rust 
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -76,6 +81,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **logging** — on_logging_message fans notifications out to subscribers. Marked #[expect(deprecated)] — logging is deprecated as of 2026-07-28 (SEP-2577).
 - **instructions** — Server instructions are carried through into the system prompt as a per-extension block.
 - **extensions.io.modelcontextprotocol/ui** — Declared by goose Desktop, not by goose CLI. Advertised with mimeTypes ["text/html;profile=mcp-app"]. An embedder passing explicit host extensions overrides the default either way.
+- **extensions.io.modelcontextprotocol/tasks** — Not declared and not implemented. rmcp 3.11.0 implements the SEP-2663 client side (call_tool_once, get_task, update_task, cancel_task and ClientCapabilitiesBuilder::enable_tasks), and goose uses none of it. The client capabilities are built with roots, the extensions map and elicitation, and the extensions map holds only io.modelcontextprotocol/ui. On 2026-07-28 goose sends tools/call through rmcp's call_tool, which returns UnexpectedResponse for a task result. On 2025-11-25 goose sends a plain CallToolRequest, and rmcp 3.11.0 has no task-augmented request form.
+- **extensions.io.modelcontextprotocol/tasks.list** — No tasks/list. rmcp 3.11.0 does not define it.
+- **extensions.io.modelcontextprotocol/tasks.cancel** — goose never calls rmcp's cancel_task.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. rmcp 3.11.0 has list_skills and get_skill, and goose calls neither. goose's own skills come from SKILL.md files under ~/.agents/skills, installed plugins and the project's .agents/skills, through a single SkillSource implementation that does not read MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. goose sends no events/list, events/poll, events/stream or events/subscribe, and rmcp 3.11.0 defines none of these methods.
 
 ## Verified by the probe
 

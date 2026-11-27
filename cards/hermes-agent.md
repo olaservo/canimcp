@@ -57,9 +57,9 @@ Python agent CLI, desktop app and gateway from Nous Research. The second client 
 | Icons | — not recorded | | |
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
@@ -118,6 +118,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.io.modelcontextprotocol/events** — Opt-in per server with events: true. Implements webhook delivery from the experimental Triggers & Events extension: events/list, events/subscribe with a webhook URL and secret, and events/unsubscribe, exposed to the model as three utility tools. Subscribing always asks the user, and the gateway verifies Standard Webhooks signatures on delivery. Poll and push delivery are not implemented, and nothing is declared in the client capabilities.
 - **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe with a webhook URL and secret, behind events: true per server. The gateway verifies Standard Webhooks signatures.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks methods referenced anywhere in the client.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not implemented. Hermes passes no extensions to ClientSession, and nothing reads _meta.ui.resourceUri, fetches ui:// resources or hosts an app view. mcp 2.3.0 implements io.modelcontextprotocol/ui on the server side only.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. Nothing sends skills/list, skills/get or resources/directory/read, and mcp 2.3.0 has no skills client. Hermes's own skills come from local directories and the skills hub. A server's skill files are reachable only through the generic list_resources and read_resource utility tools.
 
 ## Verified by the probe
 
@@ -281,6 +283,9 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
 - [src/mcp/client/session.py:634-638](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *elicitation.url*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk.
 - [src/mcp/client/session.py:639-648](https://github.com/modelcontextprotocol/python-sdk/tree/v2.3.0) — *roots*, read 2026-11-09 at `2118f14f` in modelcontextprotocol/python-sdk. ClientSession derives the roots capability from list_roots_callback; with none passed the capability is absent.
+- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
+- [mcp/server/apps.py:1,43](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. The SDK's MCP Apps module is server-side. The client package has no apps code.
+- [mcp/client/session.py:418,427,621-648](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 puts extensions in the client capabilities only when the caller passes them.
 
 ## Provenance
 

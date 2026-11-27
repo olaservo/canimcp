@@ -66,7 +66,7 @@ Vercel's TypeScript framework for durable backend agents, authored as files unde
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
@@ -132,11 +132,12 @@ When a server's newest revision is `2025-11-25`, eve negotiates it and these row
 - **jsonSchema** — Tool inputs are validated before the call with @cfworker/json-schema in 2020-12 mode, whatever $schema the tool declares. Omitted properties receive their default values. outputSchema is never validated.
 - **jsonSchema.features** — format is removed before validation. Boolean exclusiveMinimum and exclusiveMaximum are rewritten to the numeric form. A schema with an unknown type, an invalid pattern or an unresolvable $ref is advertised and its values pass through unvalidated.
 - **extensions.io.modelcontextprotocol/ui** — Not declared: eve passes no capabilities, and the SDK exports the declaration as mcpAppClientCapabilities for hosts that want it. No code under packages/eve/src reads ui:// resources. A tool whose _meta.ui.visibility leaves out the model is still found by eve__search.
-- **extensions.io.modelcontextprotocol/events** — Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider. eve opens a second SDK client to page events/list and offers each webhook-deliverable event to the model as an events_subscribe_<name> action. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.
+- **extensions.io.modelcontextprotocol/events** — Opt-in per connection with experimental.events, and only with a static Vercel Connect auth provider that has the events bridge. eve opens a second SDK client to page events/list and keeps the webhook-deliverable events. The model finds a connection's events with eve__search (query subscriptions__<connection>__), subscribes with eve__subscribe and stops with eve__subscription_stop. Vercel Connect holds the subscription and forwards deliveries, so eve sends no events/subscribe itself. Nothing is declared in client capabilities. The SDK marks its events API experimental and names no SEP.
 - **extensions.io.modelcontextprotocol/events.webhook** — Vercel Connect holds the subscription and forwards deliveries. eve sends no events/subscribe itself.
 - **extensions.io.modelcontextprotocol/events.poll** — Only webhook-deliverable events are offered.
 - **extensions.io.modelcontextprotocol/events.push** — Only webhook-deliverable events are offered.
 - **extensions.io.modelcontextprotocol/tasks** — Not declared, and the SDK has no tasks request.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented in the client. eve passes no capabilities to createMCPClient, and the SDK's assertCapability throws "Unsupported method" for skills/list, skills/get and resources/directory/read. The skills code in the repo is server side: the MCP channel serves the agent's own skills under the extension when its skills option is set.
 - **bonusFeatures.modelInitiatedResourceRead** — eve has no resource path of any kind.
 - **bonusFeatures.deferredToolLoading** — Every connection tool is a deferred catalog entry with an empty description. The model gets two fixed tools, eve__search and eve__tool, whose definitions do not change when the catalog does.
 - **bonusFeatures.protocolEraForcing** — protocolVersionDiscovery: false on a connection skips server/discover and starts with initialize at 2025-11-25. Nothing restricts a connection to 2026-07-28.
@@ -229,6 +230,7 @@ When a server's newest revision is `2025-11-25`, eve negotiates it and these row
 - [dist/index.js:2143-2151](https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-16 at `?` in @ai-sdk/mcp. @ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches.
 - [notes/eve-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/eve-tool-result-handling.md) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The MCP Apps and visibility findings are in that note, which read the eve source at be1adda.
 - [dist/index.js:2566-2593](https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-16 at `?` in @ai-sdk/mcp. @ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches. assertCapability lists every request method the client can send. Any other method throws "Unsupported method".
+- [dist/index.js:2566-2593](https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in @ai-sdk/mcp. @ai-sdk/mcp 2.0.99, the version pnpm-lock.yaml resolves. assertCapability lists every request method the client can send, and no skills method is among them.
 - [dist/index.js:2459-2479,2496-2530,2548-2556](https://www.npmjs.com/package/@ai-sdk/mcp/v/2.0.99) — *byProtocolVersion.2025-11-25.transports.streamableHttp*, read 2026-11-16 at `?` in @ai-sdk/mcp. @ai-sdk/mcp 2.0.99, the npm artifact before eve applies its build patches.
 
 ## Provenance

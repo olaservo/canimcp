@@ -60,10 +60,13 @@ Python framework and CLI for building and running agents, from the maintainer of
 | **Icons** | ○ unsupported | read | `2026-07-28` |
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ● full | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ protocolEraForcing | ● full | read | `2026-07-28` |
@@ -128,6 +131,11 @@ When a server's newest revision is `2025-11-25`, fast-agent negotiates it and th
 - **icons** — No icon handling anywhere in the MCP client.
 - **extensions.io.modelcontextprotocol/skills** — SEP-2640, now Final, implemented against locally-declared wire models because the Python SDK (mcp 2.3.0) carries none. The models followed draft d7490ecd in August and follow the stable Skills extension now. skills/list, skills/get, and resources/directory/read when the server's extension settings say directoryRead: true. A skill's resources are a manifest of uri, digest and size, or the string dynamic; a dynamic skill is listed and cannot be installed. Skill resources are verified against their size and SHA-256 digest before install, under size and count limits fast-agent chose itself.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* call of any kind. The server's tasks capability is readable through server_supports_feature, which nothing calls with "tasks" — the enum member is the only trace.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not rendered. The SDK Client is constructed without extensions=, and the docs say the terminal client does not advertise the MCP Apps extension because it does not execute app HTML or provide the browser bridge. Discovery reads _meta.ui.resourceUri (and the older flat ui/resourceUri key) on each tool, lists and reads the ui:// resource, and checks for text/html;profile=mcp-app, recording warnings for missing or mismatched resources. Tools whose visibility is exactly ["app"] are left out of the model's tool list. Linked tools are labelled (MCP Apps) in tool summaries and /mcp shows a Ui marker. A tool result is shown as ordinary terminal output with the linked resource URI noted.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/list, events/poll, events/stream or events/subscribe call exists in the repo, and the SDK Client is constructed without extensions=. mcp 2.3.0 has no events client to turn on.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream is never opened and no notifications/events/* handler exists.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — Off by default. Resources are reachable to a person through @server:uri mentions with URI completion, and to application code through the agent API. An agent configured with harness_tools: true (false by default) also gets a get_resource tool that takes a URI and an optional server name and reads an attached MCP resource, checked against the agent's resources filter. A default agent gives the model no mechanism.
 - **bonusFeatures.protocolEraForcing** — protocol_mode: auto \| modern \| legacy, global or per server, also settable per connection from the CLI. modern subclasses the SDK client so a failed discover unwinds the transport instead of silently falling back. The negotiated era and how it was reached are shown in /mcp.
 - **bonusFeatures.transportDiagnostics** — Every frame is attributed to a channel — stdio, GET, POST (JSON), POST (SSE), listen, resumption — and rendered as a bucketed timeline in /mcp. The channel for a POST is decided from the response content type and the request method, so a subscriptions/listen stream is separated from ordinary SSE traffic. Discovery responses are accounted separately so a probe rejection is not counted as a transport error.
@@ -274,7 +282,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 |---|---|---|---|---|
 | elicitation | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
 | elicitation.url | ● full | ? | ● full | Set because the initialize-era backfill (2026-06-07/2026-07-26) has it, or because more than 50% of 2026-07-28 tool calls declared it; the report does not say which, so no revision is recorded. |
-| apps | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
+| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. |
 | tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.
@@ -288,6 +296,8 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 - [fast-agent declares roots.listChanged and never sends the notification](../research/fast-agent-never-sends-roots-list-changed.md) — *gap*. The Python SDK sets `roots.listChanged: true` whenever a client passes a roots callback, with no way to opt out. fast-agent's roots come from static config, so it never sends the notification. Two SDKs, three clients, same gap.
 - [fast-agent implements SEP-2640 skills over MCP with wire types it defines itself](../research/fast-agent-ships-skills-over-mcp-ahead-of-the-sdk.md) — *in-flight*. fast-agent calls `skills/list`, `skills/get` and `resources/directory/read` against servers declaring the `io.modelcontextprotocol/skills` extension, verifying every resource against a SHA-256 digest. The Python SDK has none of these types, so fast-agent declares them itself.
 - [notes/fast-agent-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/0c0395d/notes/fast-agent-tool-result-handling.md) — *tools.result*, read 2026-11-08 at `0c0395d` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the fast-agent source at d89956d.
+- [mcp/server/apps.py:1-11,43,77](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 ships MCP Apps as a server-side Extension only. The client side has the generic Client(extensions=[...]) and advertise() from SEP-2133 and no Apps host.
+- [mcp/client/client.py:356-361](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 and mcp-types 2.3.0 contain no events/* method or Events extension, only the generic extensions= field.
 
 ## Provenance
 

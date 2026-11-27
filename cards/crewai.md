@@ -66,8 +66,11 @@ Python framework for crews of role-playing agents and for flows. An agent takes 
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ sessionPerToolCall | ● full | read | `2025-11-25` |
@@ -119,6 +122,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema.features** — oneOf is treated as anyOf. A type given as a list becomes a union. additionalProperties is forced to false on every object. Constraint keywords such as pattern and minimum are copied into field descriptions on the native route. Keywords outside this list were not traced.
 - **extensions.io.modelcontextprotocol/ui** — Not declared, and no code reads _meta.ui or a ui:// resource. A tool marked app-only is offered to the model like any other, as the probe saw on 1.15.37.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks capability is declared and no tasks/* request is sent. The SDK's experimental task handlers are left at their defaults, which build no capability.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. No skills/list, skills/get or resources/directory/read request is sent, and mcp 1.30.0 has no client extension API to declare one. crewAI's own skills come from local SKILL.md directories and the crewAI Plus registry, not from MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/* request is sent from crewai or crewai-tools, and mcp 1.30.0 has no events client code. The MCP event types in crewai/events are crewAI's own event bus.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream is never sent and notifications/events/* has no handler.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — There is no resource support of any kind, so the model has no way to read one.
 - **bonusFeatures.sessionPerToolCall** — Each tool call on the native route builds a new MCPClient and transport, connects, initializes, calls and disconnects. The stated reason is that parallel calls sharing a session caused anyio cancel-scope errors.
 - **bonusFeatures.toolFiltering** — tool_filter on a server config takes a static allow and block list or a callable that receives the agent and server name. It runs on the discovered list before tools are built.
@@ -210,6 +218,10 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - [mcp/client/session.py:104-107,632-633](https://pypi.org/project/mcp/1.30.0/) — *logging*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. The default logging callback is a no-op.
 - [notes/crewai-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/crewai-tool-result-handling.md) — *extensions.io.modelcontextprotocol/ui*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the crewAI source at d7dfa0e. No file under lib/crewai/src/crewai/mcp, the two MCP tool classes or the crewai-tools adapter changed between d7dfa0e and 758b2c1d.
 - [mcp/client/session.py:193](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/tasks*, read 2026-11-16 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel. tasks=self._task_handlers.build_capability(), which returns None when no handler is set (mcp/client/experimental/task_handlers.py:206-222).
+- [mcp/client/session.py:183-196](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel, the version uv.lock resolves. ClientCapabilities is built from sampling, elicitation, roots and tasks only; 1.x has no extensions field and no skills or events client code.
+- [mcpadapt/core.py:130](https://pypi.org/project/mcpadapt/0.1.20/) — *extensions.io.modelcontextprotocol/skills*, read 2026-11-26 at `?` in grll/mcpadapt. mcpadapt 0.1.20 wheel, used by crewai-tools' MCPServerAdapter. It opens a plain mcp ClientSession and has no skills or events code.
+- [mcp/client/session.py:183-196](https://pypi.org/project/mcp/1.30.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 1.30.0 wheel, the version uv.lock resolves. ClientCapabilities is built from sampling, elicitation, roots and tasks only; 1.x has no extensions field and no skills or events client code.
+- [mcpadapt/core.py:130](https://pypi.org/project/mcpadapt/0.1.20/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in grll/mcpadapt. mcpadapt 0.1.20 wheel, used by crewai-tools' MCPServerAdapter. It opens a plain mcp ClientSession and has no skills or events code.
 
 ## Provenance
 

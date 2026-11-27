@@ -67,7 +67,10 @@ Microsoft's agent framework, one repository with a Python binding and a .NET bin
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ◇ opt-in | read | `2026-07-28` |
@@ -128,6 +131,10 @@ When a server's newest revision is `2025-11-25`, Microsoft Agent Framework negot
 - **extensions.io.modelcontextprotocol/skills** — Python: MCPSkillsSource is experimental and opt-in, on a Client the application supplies. It reads skill://index.json with resources/read and loads skill-md and archive entries from it. It does not call skills/list or skills/get, does not check the server's extensions capability, and declares nothing. .NET: AgentMcpSkillsSource returns no skills unless the server declares io.modelcontextprotocol/skills, then sends skills/list and skills/get through McpClient.SendRequestAsync with result types it defines itself, and reads files with resources/read.
 - **extensions.io.modelcontextprotocol/ui** — No file under python/packages/core reads a ui key or a resourceUri in tool _meta. Tool _meta is kept only to send back on tools/call. The extension is not declared.
 - **extensions.io.modelcontextprotocol/tasks** — task_options is accepted, ignored and warned as deprecated, with the message that the Python SDK does not expose the 2026 Tasks extension runtime. Tools that require tasks are left out of the catalog. .NET: McpClient.ListAgentToolsWithTasksAsync wraps each tool so a call goes through CallToolAsTaskAsync from ModelContextProtocol.Extensions.Tasks 2.2.0. The wrapper polls with GetTaskAsync, answers input_required with UpdateTaskAsync, and calls CancelTaskAsync when the local call is cancelled. It is opt-in and ships in Microsoft.Agents.AI.Mcp, which carries an alpha version suffix. The Extensions.Tasks source was not read at 2.2.0, so what it puts on the wire is not recorded here.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented in either binding. Python: the mcp Client is built with no extensions and no events/* request is sent. .NET: the framework's McpClientOptions set ClientInfo or ProtocolVersion only, no file in dotnet/src sends an events method, and C# SDK 2.2.0 has no events support.
+- **extensions.io.modelcontextprotocol/events.poll** — events/poll is never sent.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream is never sent and notifications/events/* has no handler.
+- **extensions.io.modelcontextprotocol/events.webhook** — events/subscribe is never sent.
 - **bonusFeatures.modelInitiatedResourceRead** — MCPTool gives the model no resource tool and never calls resources/read. When MCPSkillsSource is configured the skills provider can read a skill's files from the server, which covers skill resources only.
 - **bonusFeatures.deferredToolLoading** — use_progressive_disclosure is off by default and marked experimental. When on, the model sees list_mcp_tools, load_tool and unload_tool plus any always_load tools, and a tool joins the live list when the model loads it.
 - **bonusFeatures.providerManagedMcp** — get_mcp_tool on the OpenAI, Anthropic, Foundry and Gemini chat clients builds a provider-hosted MCP tool. The provider connects to the server and the framework speaks no MCP to it.
@@ -292,6 +299,7 @@ When a server's newest revision is `2025-11-25`, Microsoft Agent Framework negot
 - [Agent Framework's Python binding declares sampling on every connection and refuses it by default](../research/agent-framework-declares-sampling-it-declines-by-default.md) — *nuance*. MCPTool always hands the SDK a sampling callback, so every connection declares sampling. With no chat client the callback answers -32603. With a chat client and no approval callback it answers -32600. The probe saw sampling declared at 1.25.0.
 - [Nothing in the spec says the model can read a resource](../research/model-initiated-resource-read.md) — *in-flight*. Resources are specified as application-driven, with no guidance on whether the model itself can pull one by URI. The PR adding a SHOULD has been open and conflicted since April.
 - [notes/agent-framework-tool-result-handling.md](https://github.com/olaservo/structured-content-research/blob/711f1f6/notes/agent-framework-tool-result-handling.md) — *tools.result*, read 2026-11-16 at `711f1f6` in olaservo/structured-content-research. The read tier for tool result handling lives in that repo (AGENTS.md); this entry summarises its note, which read the Agent Framework source at 92838b6. No commit between 92838b6 and 10801303 touches _mcp.py, dotnet/src/Microsoft.Agents.AI.Mcp, the declarative MCP handler or Directory.Packages.props.
+- [mcp/client/session.py:614-649](https://pypi.org/project/mcp/2.3.0/) — *extensions.io.modelcontextprotocol/events*, read 2026-11-26 at `?` in modelcontextprotocol/python-sdk. mcp 2.3.0 wheel, the version python/uv.lock resolves. Client extensions are only what the caller passes; 2.3.0 has no events client.
 
 ## Provenance
 

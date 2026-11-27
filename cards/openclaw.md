@@ -47,8 +47,11 @@ Multi-channel AI gateway that runs agents across chat surfaces and remote nodes.
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◇ opt-in | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read | `2026-07-28` |
 | Beyond the spec | — not recorded | | |
 
 `●` full  `◐` partial  `◇` opt-in  `○` unsupported  `·` untested  `—` not recorded  `⇧` rests on the parent capability's evidence
@@ -73,6 +76,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **instructions** — The agent bundle reads the initialize result's instructions and puts them in the system prompt under an "MCP Server Instructions" heading, per server, cut at 2,000 characters, and only while that server backs at least one tool in the prompt. The node host does not read them.
 - **extensions.io.modelcontextprotocol/ui** — Declared with a mimeTypes list of text/html;profile=mcp-app, but only when mcp.apps.enabled is true in config, which defaults to false. A default install declares no extensions and no capabilities at all. The same flag also turns on the elicitation declaration.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* call anywhere in the MCP client files.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. Neither MCP client surface (the agent bundle and the node host) sends skills/list, skills/get or resources/directory/read, and nothing imports the SkillsClient that @modelcontextprotocol/client 2.4.0 ships under the ext/skills subpath. The skills/list calls in extensions/codex are the Codex app-server JSON-RPC protocol, not MCP.
+- **extensions.io.modelcontextprotocol/events** — The bundled mcp-events plugin implements OpenAI's webhook profile of MCP Events on protocol 2026-07-28. It is off by default and turns on with plugins.entries.mcp-events.enabled and a required public HTTPS callbackOrigin. It works only with a configured Streamable HTTP server. Each request is stateless with no initialize: it sends server/discover and requires supportedVersions to include 2026-07-28 and capabilities.events to be present, then events/list, events/subscribe and events/unsubscribe. The client sends empty io.modelcontextprotocol/clientCapabilities in _meta, so it declares nothing. A delivered event triggers an Automation: an event-kind cron job runs its authored agent turn with the event as untrusted input. The mcp_events tool lists webhook-capable events for the model and the Automation editor and does not subscribe.
+- **extensions.io.modelcontextprotocol/events.poll** — No events/poll call. The profile excludes polling.
+- **extensions.io.modelcontextprotocol/events.push** — No events/stream call and no notifications/events/* handler. The profile excludes push streams.
+- **extensions.io.modelcontextprotocol/events.webhook** — Turned on with the mcp-events plugin and callbackOrigin. events/subscribe sends delivery mode webhook with a per-binding callback URL under /plugins/mcp-events/callback/ and a per-binding signing secret, and the subscription is refreshed before refreshBefore. The callback verifies a Standard Webhooks HMAC signature, answers the verification challenge, validates the event against payloadSchema and stores it in a durable queue before returning 2xx. Control notifications other than verification, such as gap and terminated, are rejected with 400. Subscriptions are removed with events/unsubscribe.
 
 ## Research notes
 

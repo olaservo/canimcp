@@ -63,8 +63,11 @@ Coding agent CLI from Vercel Labs, one native Zig binary. Its MCP client is hand
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2026-07-28` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ deferredToolLoading | ● full | read | `2026-07-28` |
@@ -129,6 +132,8 @@ When a server's newest revision is `2025-11-25`, fx (native engine) negotiates i
 - **jsonSchema** — A tool schema that names any other $schema is rejected and the tool is left out. Elicitation forms accept only a flat object of primitive properties. How much of a tool's inputSchema is checked before a call was not read.
 - **extensions.io.modelcontextprotocol/ui** — The declared capability object holds elicitation or nothing. No file under src/ names ui:// or resourceUri, and a tool marked app-only stays available to the model.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks request. A result whose resultType is anything but complete or input_required, "task" included, is read as unrecognized and treated as invalid.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The engine sends only server/discover, initialize, tools/list, tools/call and subscriptions/listen, and has had no resources/read since 0.0.15. fx's own skills load from SKILL.md files on disk.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/* request is written and no notifications/events/* handler exists.
 - **bonusFeatures.modelInitiatedResourceRead** — fx reads no resources at all.
 - **bonusFeatures.deferredToolLoading** — MCP servers are listed in a toolbox menu and their tools stay out of the tool list, so every request sends the same tools. The toolbox tool searches, opens and runs them. The probe ran 0.0.16, where capability_search and mcp_select_tool did this job.
 - **bonusFeatures.lazyServerStart** — Each server starts when something first needs its tool list or calls it, and is kept until a reload drops it.

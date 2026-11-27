@@ -65,8 +65,11 @@ Microsoft's editor. Its MCP client is hand-written in the workbench, with no MCP
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ● full | read, declared | `2025-06-18`, `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ● full | read, declared ⇧ | `2025-06-18`, `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ mcpGateway | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ traceContextInMeta | ● full | read | `2025-11-25` |
@@ -110,6 +113,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema** — Every tool inputSchema is checked with the json.validate command against the draft-07 meta-schema, after adding an empty properties object when one is missing. A tool whose schema fails is omitted. No $schema is read and no 2020-12 handling was found.
 - **extensions.io.modelcontextprotocol/ui** — Declared on every connection with mimeTypes ["text/html;profile=mcp-app"]. Tools with _meta.ui.resourceUri render the app in chat. The app host answers ui/initialize, tools/call, resources/read, sampling/createMessage, ui/open-link, ui/download-file, ui/request-display-mode, ui/message and ui/update-model-context. chat.mcp.apps.enabled (default true, tagged experimental) gates the app data attached to the tool registration, not the declaration. _meta.ui.visibility without model hides a tool from the model.
 - **extensions.io.modelcontextprotocol/tasks** — The read disagrees with the Apify record, which has tasks declared as {"requests":{"tools":{"call":{}}}}. At 8e900494 the client declares {list:{}, cancel:{}, requests:{sampling:{createMessage:{}}, elicitation:{create:{}}}} and answers tasks/get, tasks/result, tasks/list and tasks/cancel for task-augmented sampling and elicitation. tools.call is a server-side task capability. On the other side, a tools/call is sent as a task when the server declares tasks.requests.tools.call and the tool's execution.taskSupport is required or optional, and the result is polled.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, and the request handler sends no skills/list, skills/get or resources/directory/read. The MCP gateway the agent host connects to forwards only ping, tools and resources methods. The skills/list calls elsewhere in the repo go to the Codex app server, not to MCP servers.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. The initialize capabilities list only io.modelcontextprotocol/ui under extensions, the client sends no events/list, events/poll, events/stream or events/subscribe, and the server notification switch has no notifications/events/* case.
 - **bonusFeatures.mcpGateway** — VS Code re-exposes its connected servers over local HTTP so Copilot CLI sessions use them. Copilot Chat routes CLI sessions through the gateway when chat.cli.mcp.enabled is on, which is the default. The server then sees VS Code's client, not the CLI's.
 - **bonusFeatures.traceContextInMeta** — tools/call _meta carries traceparent and tracestate (SEP-414) when a trace is active, plus vscode.conversationId and vscode.requestId.
 

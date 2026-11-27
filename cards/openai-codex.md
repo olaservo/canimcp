@@ -58,8 +58,11 @@ OpenAI's coding agent, shipping as a CLI and an app-server. Rust, using rmcp 3.6
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ◇ opt-in | read | `2026-07-28` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ openai/form | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/elicitation | ◐ partial | read | `2025-06-18` |
 | &nbsp;&nbsp;↳ openai/standard-form-input | ◐ partial | read | `2025-06-18` |
@@ -98,6 +101,11 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **extensions.openai/standard-form-input** — Client-only extension, never projected to downstream servers.
 - **extensions.io.modelcontextprotocol/ui** — Forwarded to servers only when the app-server host declares it. Codex keeps just the four extension namespaces it knows and drops anything else the host declares.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks/* calls at this commit.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. Codex never sends skills/list, skills/get or resources/directory/read to an MCP server, and the extension allowlist drops io.modelcontextprotocol/skills if the app-server host declares it. The skills/list method in the repo is Codex's own app-server protocol, which lists local, executor and cloud skills for Codex frontends. Cloud skills come from the host-owned codex_apps server or a frozen snapshot file, not from SEP-2640. rmcp at the pinned rev b11a40d8 has no skills support.
+- **extensions.io.modelcontextprotocol/events** — Push delivery only, and only against the host-owned codex_apps server. An app-server host that opts into the experimental API calls mcpServer/event/stream/start, and Codex opens a separate MCP client to codex_apps and sends events/stream. Codex forwards each notifications/events/* message unchanged to that host as mcpServer/event/stream/notification, reconnects up to three times, and stops on notifications/events/terminated. Delivered events do not reach the model or wake a turn in Codex itself. Codex does not declare io.modelcontextprotocol/events or check the server's entry, and the extension allowlist drops it if the host declares it. McpResourceClient::list_events sends events/list but has no caller outside tests. rmcp at the pinned rev has no events support; Codex sends events/stream as a custom request.
+- **extensions.io.modelcontextprotocol/events.poll** — No events/poll request in the repo.
+- **extensions.io.modelcontextprotocol/events.push** — events/stream to codex_apps only, started by the app-server host through the experimental mcpServer/event/stream/start request. Notifications go to the host, not the model.
+- **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe request in the repo.
 - **bonusFeatures.modelInitiatedResourceRead** — list_mcp_resources, list_mcp_resource_templates and read_mcp_resource are registered as built-in tools whenever any MCP server is configured, with no feature gate. Pagination cursors are passed to and from the model.
 
 ## Verified by the probe

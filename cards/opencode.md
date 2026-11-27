@@ -57,7 +57,7 @@ Open-source terminal coding agent, TypeScript on the official MCP TypeScript SDK
 | **Icons** | ○ unsupported | read | `2025-11-25` |
 | JSON Schema | — not recorded | | |
 | **Extensions** | | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ● full | read | `2026-07-28` |
@@ -123,6 +123,7 @@ When a server's newest revision is `2025-11-25`, opencode negotiates it and thes
 - **extensions.io.modelcontextprotocol/events.webhook** — No events/subscribe call.
 - **extensions.io.modelcontextprotocol/skills** — Declared only with the mcp_skills flag, which defaults on in local and dev builds and off in releases. For a server that advertises resources it uses the SDK's SkillsClient and registers each skill as <server>:<skill>.
 - **extensions.io.modelcontextprotocol/tasks** — Not declared, and nothing in the client calls a tasks method. The commented-out key from the old client is gone.
+- **extensions.io.modelcontextprotocol/ui** — Not declared and not implemented. The extensions map in the client capabilities holds only the events and skills extensions. Tool _meta is kept on listed tools, and nothing reads _meta.ui.resourceUri, fetches a ui:// resource or renders one. No package in the repo depends on @modelcontextprotocol/ext-apps.
 
 ## Verified by the probe
 
@@ -295,7 +296,7 @@ From `evalstate/mcp-clients` at [`904917c5`](https://huggingface.co/datasets/eva
 |---|---|---|---|---|
 | elicitation | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
 | elicitation.url | ● full | `2026-07-28` | ● full | More than 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
-| apps | ○ unsupported | `2026-07-28` | — not recorded | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
+| apps | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it, and the initialize-era backfill does not have it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
 | tasks | ○ unsupported | `2026-07-28` | ○ unsupported | At most 50% of this client's 2026-07-28 tool calls in the window declared it. 2026-07-28 is 2.5% of this client's tool calls over the 30 days to 2026-11-25, so the sample is small. |
 
 `≠` the observed status differs from the registry's. The registry status may be about a different revision; compare the At column with the evidence above. Every row is read against the source's policy block, carried verbatim in `data/observed/hf-mcp-clients.json`.

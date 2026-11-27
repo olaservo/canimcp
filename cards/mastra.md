@@ -67,7 +67,7 @@ TypeScript agent framework. Its MCP client is the @mastra/mcp package: MCPClient
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ list | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ cancel | ◇ opt-in | read | `2026-07-28` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2026-07-28` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ◇ opt-in | read | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ◇ opt-in | read ⇧ | `2026-07-28` |
 | &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ◇ opt-in | read ⇧ | `2026-07-28` |
@@ -147,6 +147,7 @@ When a server's newest revision is `2025-11-25`, Mastra negotiates it and these 
 - **extensions.io.modelcontextprotocol/tasks** — Off by default. tasks: true on a server entry declares the io.modelcontextprotocol/tasks extension (SEP-2663). A tools/call answered with resultType task is polled with tasks/get until it ends, and the final CallToolResult becomes the tool result. An input_required task is answered through inputRequests with tasks/update, or suspends the tool call when there is no handler. Aborting the call or reaching maxWaitMs sends tasks/cancel. mcp.tasks exposes get, update and cancel. The SDK rejects a task result, so Mastra rewrites it on the transport before the SDK parses it. The extension is declared with an empty settings object.
 - **extensions.io.modelcontextprotocol/tasks.list** — tasks/list is not sent. The methods used are tasks/get, tasks/update and tasks/cancel.
 - **extensions.io.modelcontextprotocol/tasks.cancel** — Sent on abort, at maxWaitMs, and through mcp.tasks.cancel(). Only with tasks enabled on the entry.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. The client capabilities declare io.modelcontextprotocol/ui, the tasks extension when tasks is set, and whatever the application passes in capabilities.extensions. @mastra/mcp sends no skills/list, skills/get or resources/directory/read and does not use the SDK's SkillsClient, which @modelcontextprotocol/client 2.4.0 ships as the separate ext/skills entry point. Agent.listSkills and getSkill read Mastra's own workspace and agent skills, not MCP servers.
 - **bonusFeatures.modelInitiatedResourceRead** — No tool gives the model resources/read. The only model-facing tools @mastra/mcp builds are the server's own tools and the optional MCP Events tools.
 - **bonusFeatures.protocolEraForcing** — protocolVersion on a server entry takes '2026-07-28', which pins that revision with no fallback, or 'legacy', which runs the initialize handshake with no probe. Omitted, the client probes and falls back. getServerProtocolVersions() reports what was negotiated. A successful verdict is reused on reconnect and dropped after a failed connect.
 - **bonusFeatures.toolAnnotationPolicies** — The function form of requireToolApproval receives the server's tool annotations, placed so a caller cannot override them. After a transport failure in mid-call, a tool annotated readOnlyHint or idempotentHint is called again; any other tool fails with MCP_CLIENT_TOOL_CALL_OUTCOME_UNKNOWN and is not resent.

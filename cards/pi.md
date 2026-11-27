@@ -63,8 +63,11 @@ TypeScript coding agent CLI from Earendil Works, formerly badlogic/pi-mono. Its 
 | **Extensions** | | | |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/ui | ○ unsupported | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ io.modelcontextprotocol/tasks | ○ unsupported | read | `2025-11-25` |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | — not recorded | | |
-| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | — not recorded | | |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/skills | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;↳ io.modelcontextprotocol/events | ○ unsupported | read | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ poll | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ push | ○ unsupported | read ⇧ | `2025-11-25` |
+| &nbsp;&nbsp;&nbsp;&nbsp;↳ webhook | ○ unsupported | read ⇧ | `2025-11-25` |
 | **Beyond the spec** |  |  |  |
 | &nbsp;&nbsp;↳ modelInitiatedResourceRead | ● full | read | `2025-11-25` |
 | &nbsp;&nbsp;↳ codeModeToolExposure | ● full | read | `2025-11-25` |
@@ -113,6 +116,8 @@ Not recorded means nobody has looked, which is not the same claim as unsupported
 - **jsonSchema** — inputSchema goes to the provider with type defaulted to object and an empty properties added when missing; other keywords are kept. Tool arguments are validated before the call by pi's own validator, @earendil-works/pi-schema, which implements drafts 2020-12 and 7 and is called without a draft option, so 2020-12 applies. A $ref that names nothing rejects only the value at its place. Whether a $schema keyword changes the draft was not read. outputSchema is never used to validate a result.
 - **extensions.io.modelcontextprotocol/ui** — No extensions or experimental capability is declared. Resources with ui:// URIs or the mcp-app profile are filtered out of resource listings because pi does not render them. _meta.ui is not read, so a tool marked app-only is registered like any other.
 - **extensions.io.modelcontextprotocol/tasks** — No tasks capability and no tasks request. execution.taskSupport is in the Tool type and nothing reads it, so a tool that requires task augmentation is called with a plain tools/call. The pi-mcp README lists tasks as outside the initial core.
+- **extensions.io.modelcontextprotocol/skills** — Not declared and not implemented. pi-mcp has no skills/list call, and neither the coding agent extension nor the p2 MCP plugin sends one through the generic request method. A skill:// resource a server lists would reach the model only as an ordinary resource through read_mcp_resource.
+- **extensions.io.modelcontextprotocol/events** — Not declared and not implemented. No events/* request is sent and no notifications/events/* listener is registered.
 - **bonusFeatures.modelInitiatedResourceRead** — The same three tool names as Codex and opencode, on purpose: the source says models trained on those tools use them unchanged. The tools take the widest exposure among the servers with resources, so on a default install a codemode script calls them and the model has no declaration for them. A resource_link block in a tool result names read_mcp_resource and the server.
 - **bonusFeatures.codeModeToolExposure** — The default exposure. An MCP tool is callable as tools.mcp__<server>__<tool>() from JavaScript the model writes for the codemode tool. Scripts find tools with searchTools(), describeTool(), describeNamespace() and ALL_TOOLS. The codemode tool is activated when an enabled server has codemode tools, unless autoEnableCodemode is false. Other exposures are deferred, direct and hidden, set per server or per tool.
 - **bonusFeatures.deferredToolLoading** — Opt-in with exposure deferred on a server or a tool. The tools are not declared until the tool_search tool, a BM25 ranker over tool and namespace text, loads matches for the next model call. Loaded tools are then called directly. The default route is codemode, not this one.
