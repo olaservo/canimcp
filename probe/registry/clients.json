@@ -135,9 +135,11 @@
       "repo": "https://github.com/openclaw/openclaw",
       "source": "openclaw",
       "language": "typescript",
-      "sdk": "@modelcontextprotocol/sdk",
+      "sdk": "@modelcontextprotocol/client 2.4.0",
       "drive": "cli",
-      "registryId": "openclaw"
+      "registryId": "openclaw",
+      "adapter": "hosts/openclaw",
+      "notes": "openclaw agent exec with a pinned config: a custom openai-completions provider and one server under mcp.servers (the agent bundle surface). Built from source at the pin in the Docker image. Tool Search is the default route; tool-search-off and apps-enabled configs cover the direct path and the mcp.apps.enabled capabilities."
     },
     "pi": {
       "title": "pi",

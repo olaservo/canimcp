@@ -29,4 +29,6 @@ export default {
   goose: { timeoutMs: 60000, script: { mcpMatch: '^localhost_\\d+' } },
   // The default config puts MCP tools behind Code Mode's execute tool; with it off the model sees them directly.
   opencode: { config: 'codemode-off', timeoutMs: 60000 },
+  // openclaw runs in the Docker image too. MCP tools are named probe__<tool>.
+  openclaw: { timeoutMs: 90000 },
 };
