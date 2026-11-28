@@ -175,8 +175,11 @@
       "repo": "https://github.com/Kilo-Org/kilocode",
       "source": "kilocode",
       "language": "typescript",
-      "drive": "gui",
-      "notes": "VS Code extension; a CLI exists and may be drivable."
+      "sdk": "@modelcontextprotocol/sdk 1.32.1, patched (patches/@modelcontextprotocol%2Fsdk@1.32.1.patch)",
+      "drive": "cli",
+      "registryId": "kilocode",
+      "adapter": "hosts/kilocode",
+      "notes": "kilo run (npm @kilocode/cli) with a custom OpenAI-compatible provider. The VS Code and JetBrains extensions spawn the same CLI as kilo serve. Direct MCP tools are the default; the code-mode config covers experimental.code_mode."
     },
     "librechat": {
       "title": "LibreChat",

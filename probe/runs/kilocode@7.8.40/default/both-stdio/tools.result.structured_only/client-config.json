@@ -1,0 +1,57 @@
+{
+  "autoupdate": false,
+  "provider": {
+    "probe": {
+      "name": "probe",
+      "npm": "@ai-sdk/openai-compatible",
+      "env": [
+        "PROBE_API_KEY"
+      ],
+      "options": {
+        "baseURL": "http://127.0.0.1:41273/v1",
+        "apiKey": "probe"
+      },
+      "models": {
+        "gpt-probe": {
+          "name": "gpt-probe",
+          "tool_call": true,
+          "attachment": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "model": "probe/gpt-probe",
+  "mcp": {
+    "probe": {
+      "type": "local",
+      "command": [
+        "/usr/local/bin/node",
+        "/canimcp/probe/dist/server/fixture-server.js",
+        "--fixture",
+        "structured_only",
+        "--mode",
+        "sdk",
+        "--era",
+        "both",
+        "--capture",
+        "/canimcp/probe/runs/kilocode@7.8.40/default/both-stdio/tools.result.structured_only",
+        "--transport",
+        "stdio"
+      ],
+      "timeout": 60000
+    }
+  }
+}

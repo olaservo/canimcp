@@ -1,0 +1,1970 @@
+[
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18015,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16854,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16810,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.echo",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.echo",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/protocol.initializeHandshake.echo",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16842,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+    "evidence": {
+      "tier": "verified",
+      "at": "2024-11-05",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+      "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2024-11-05",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2024-11-05"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2024-11-05",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 17140,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2025-11-25",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18309,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+      "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2026-07-28",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2026-07-28"
+          }
+        ],
+        "initializedSent": false,
+        "followUps": [],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": false,
+        "negotiatedRevision": "2026-07-28",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 18390,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.serverDiscover",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.serverDiscover.method_not_found",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-stdio/protocol.serverDiscover.method_not_found",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16824,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/tools.result.summary_and_data",
+      "note": "[…] content only (1x, as text)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_summary_and_data",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "Found 3 open issues MARK_CONTENT_7f3a",
+        "payloadBytes": 37,
+        "form": "text",
+        "markers": [
+          {
+            "marker": "content",
+            "count": 1,
+            "firstIndex": 20
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16207,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_mirror",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 16842,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "probe_probe_structured_only",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}",
+        "payloadBytes": 214,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 56
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 29385,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.echo",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.echo",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/protocol.initializeHandshake.echo",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 26128,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+    "evidence": {
+      "tier": "verified",
+      "at": "2024-11-05",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/protocol.initializeHandshake.reply_2024_11_05",
+      "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2024-11-05",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2024-11-05"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2024-11-05"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2024-11-05",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31015,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/protocol.initializeHandshake.reply_2025_11_25",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2025-11-25",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20495,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/protocol.initializeHandshake.reply_2026_07_28",
+      "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2026-07-28",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2026-07-28"
+          }
+        ],
+        "initializedSent": false,
+        "followUps": [],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": false,
+        "negotiatedRevision": "2026-07-28",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20013,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.serverDiscover",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.serverDiscover.method_not_found",
+      "clientVersion": "7.8.40",
+      "config": "default",
+      "configKind": "default",
+      "artifact": "probe/runs/kilocode@7.8.40/default/both-http/protocol.serverDiscover.method_not_found",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 24897,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_summary_and_data)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20016,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_mirror)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 20624,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_structured_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34432,
+      "transport": "stdio",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.echo",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.echo",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.initializeHandshake.echo",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 30615,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+    "evidence": {
+      "tier": "verified",
+      "at": "2024-11-05",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.initializeHandshake.reply_2024_11_05",
+      "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2024-11-05",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2024-11-05"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2024-11-05",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 33375,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.initializeHandshake.reply_2025_11_25",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2025-11-25",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34915,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+      "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2026-07-28",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2026-07-28"
+          }
+        ],
+        "initializedSent": false,
+        "followUps": [],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": false,
+        "negotiatedRevision": "2026-07-28",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31093,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.serverDiscover",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.serverDiscover.method_not_found",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.serverDiscover.method_not_found",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 34674,
+      "transport": "stdio",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.summary_and_data",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.summary_and_data",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/tools.result.summary_and_data",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "summary_and_data",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_summary_and_data)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Found 3 open issues MARK_CONTENT_7f3a"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31322,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.mirror",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.mirror",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/tools.result.mirror",
+      "note": "payload once (as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "mirror",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_mirror)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [
+            {
+              "type": "text",
+              "text": "{\"issues\":[{\"id\":101,\"title\":\"Login button unresponsive MARK_SC_91be\",\"state\":\"open\"},{\"id\":102,\"title\":\"Dark mode flickers on load\",\"state\":\"open\"},{\"id\":103,\"title\":\"Export CSV drops header row\",\"state\":\"open\"}]}"
+            }
+          ],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31277,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "tools.result.structuredContent",
+    "scenario": "tools.result.structured_only",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "tools.result.structured_only",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/tools.result.structured_only",
+      "note": "{…} structuredContent only (1x, as json)",
+      "observation": {
+        "type": "tools.result",
+        "fixture": "structured_only",
+        "api": "chat",
+        "toolOffered": true,
+        "offeredAs": "execute (indirect: probe_structured_only)",
+        "toolCalled": true,
+        "resultSentToModel": true,
+        "payloadExcerpt": "{\n  \"issues\": [\n    {\n      \"id\": 101,\n      \"title\": \"Login button unresponsive MARK_SC_91be\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 102,\n      \"title\": \"Dark mode flickers on load\",\n      \"state\": \"open\"\n    },\n    {\n      \"id\": 103,\n      \"title\": \"Export CSV drops header row\",\n      \"state\": \"open\"\n    }\n  ]\n}",
+        "payloadBytes": 324,
+        "form": "json",
+        "markers": [
+          {
+            "marker": "sc",
+            "count": 1,
+            "firstIndex": 81
+          }
+        ],
+        "negotiatedRevision": "2025-11-25",
+        "serverMode": "sdk",
+        "sentResult": {
+          "content": [],
+          "structuredContent": {
+            "issues": [
+              {
+                "id": 101,
+                "title": "Login button unresponsive MARK_SC_91be",
+                "state": "open"
+              },
+              {
+                "id": 102,
+                "title": "Dark mode flickers on load",
+                "state": "open"
+              },
+              {
+                "id": 103,
+                "title": "Export CSV drops header row",
+                "state": "open"
+              }
+            ]
+          }
+        },
+        "sentUnchanged": true,
+        "notes": [
+          "fixture tool reached through another tool, not offered to the model by name"
+        ],
+        "finalText": "PROBE_DONE: the tool has been called and its result has been read."
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 32743,
+      "transport": "http",
+      "serverMode": "sdk",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.echo",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.echo",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/protocol.initializeHandshake.echo",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 35031,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+    "evidence": {
+      "tier": "verified",
+      "at": "2024-11-05",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2024_11_05",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/protocol.initializeHandshake.reply_2024_11_05",
+      "note": "initialize at 2025-11-25 → 2024-11-05; client continued at 2024-11-05 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2024-11-05",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2024-11-05"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2024-11-05"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2024-11-05",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31109,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2025_11_25",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/protocol.initializeHandshake.reply_2025_11_25",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2025-11-25",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 31021,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.initializeHandshake",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "evidence": {
+      "tier": "verified",
+      "at": "2026-07-28",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/protocol.initializeHandshake.reply_2026_07_28",
+      "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+      "observation": {
+        "type": "protocol.negotiation",
+        "forcedReply": "2026-07-28",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2026-07-28"
+          }
+        ],
+        "initializedSent": false,
+        "followUps": [],
+        "requestMetaVersions": [],
+        "headerVersions": [],
+        "toolCalled": false,
+        "negotiatedRevision": "2026-07-28",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 32908,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  },
+  {
+    "client": "kilocode",
+    "capability": "protocol.serverDiscover",
+    "scenario": "protocol.serverDiscover.method_not_found",
+    "evidence": {
+      "tier": "verified",
+      "at": "2025-11-25",
+      "source": "canimcp-probe",
+      "date": "2026-11-28",
+      "scenario": "protocol.serverDiscover.method_not_found",
+      "clientVersion": "7.8.40",
+      "config": "code-mode",
+      "configKind": "setting",
+      "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-http/protocol.serverDiscover.method_not_found",
+      "note": "initialize at 2025-11-25 → 2025-11-25; client continued at 2025-11-25 (notifications/initialized, tools/list, tools/call, notifications/cancelled)",
+      "observation": {
+        "type": "protocol.negotiation",
+        "handshake": [
+          {
+            "dir": "in",
+            "method": "initialize",
+            "version": "2025-11-25"
+          },
+          {
+            "dir": "out",
+            "method": "initialize",
+            "version": "2025-11-25"
+          }
+        ],
+        "initializedSent": true,
+        "followUps": [
+          "tools/list",
+          "tools/call",
+          "notifications/cancelled"
+        ],
+        "requestMetaVersions": [],
+        "headerVersions": [
+          "2025-11-25"
+        ],
+        "toolCalled": true,
+        "negotiatedRevision": "2025-11-25",
+        "notes": []
+      }
+    },
+    "run": {
+      "exitCode": 0,
+      "timedOut": false,
+      "durationMs": 37956,
+      "transport": "http",
+      "serverMode": "raw",
+      "eraPolicy": "both",
+      "modelApi": "chat"
+    }
+  }
+]

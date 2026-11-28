@@ -1,0 +1,44 @@
+{
+  "autoupdate": false,
+  "provider": {
+    "probe": {
+      "name": "probe",
+      "npm": "@ai-sdk/openai-compatible",
+      "env": [
+        "PROBE_API_KEY"
+      ],
+      "options": {
+        "baseURL": "http://127.0.0.1:33409/v1",
+        "apiKey": "probe"
+      },
+      "models": {
+        "gpt-probe": {
+          "name": "gpt-probe",
+          "tool_call": true,
+          "attachment": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "model": "probe/gpt-probe",
+  "mcp": {
+    "probe": {
+      "type": "remote",
+      "url": "http://127.0.0.1:35089/mcp",
+      "timeout": 60000
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "canimcp-probe-host-kilocode",
+  "private": true,
+  "type": "module",
+  "description": "The Kilo CLI from npm. @kilocode/cli 7.8.40 is tag v7.8.40 (c0b44ac0b6, 2026-11-27), 11 commits before the research pin 3c7f2659; those commits touch packages/kilo-vscode, CI and RELEASING.md only, so the CLI is the pin's. The postinstall links the platform package's binary; the adapter runs that native binary. A bin/kilo(.exe) built from source wins when present (PROBE_KILOCODE_BIN overrides both).",
+  "dependencies": {
+    "@kilocode/cli": "7.8.40"
+  }
+}

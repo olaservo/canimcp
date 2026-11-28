@@ -1,0 +1,49 @@
+{
+  "client": "kilocode",
+  "capability": "protocol.initializeHandshake",
+  "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+  "evidence": {
+    "tier": "verified",
+    "at": "2026-07-28",
+    "source": "canimcp-probe",
+    "date": "2026-11-28",
+    "scenario": "protocol.initializeHandshake.reply_2026_07_28",
+    "clientVersion": "7.8.40",
+    "config": "code-mode",
+    "configKind": "setting",
+    "artifact": "probe/runs/kilocode@7.8.40/code-mode/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+    "note": "initialize at 2025-11-25 → 2026-07-28; client sent nothing further",
+    "observation": {
+      "type": "protocol.negotiation",
+      "forcedReply": "2026-07-28",
+      "handshake": [
+        {
+          "dir": "in",
+          "method": "initialize",
+          "version": "2025-11-25"
+        },
+        {
+          "dir": "out",
+          "method": "initialize",
+          "version": "2026-07-28"
+        }
+      ],
+      "initializedSent": false,
+      "followUps": [],
+      "requestMetaVersions": [],
+      "headerVersions": [],
+      "toolCalled": false,
+      "negotiatedRevision": "2026-07-28",
+      "notes": []
+    }
+  },
+  "run": {
+    "exitCode": 0,
+    "timedOut": false,
+    "durationMs": 31093,
+    "transport": "stdio",
+    "serverMode": "raw",
+    "eraPolicy": "both",
+    "modelApi": "chat"
+  }
+}

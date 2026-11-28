@@ -29,4 +29,6 @@ export default {
   goose: { timeoutMs: 60000, script: { mcpMatch: '^localhost_\\d+' } },
   // The default config puts MCP tools behind Code Mode's execute tool; with it off the model sees them directly.
   opencode: { config: 'codemode-off', timeoutMs: 60000 },
+  // Kilo Code runs in the Docker image too. Its default config offers MCP tools directly.
+  kilocode: { timeoutMs: 60000 },
 };

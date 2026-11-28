@@ -1,0 +1,59 @@
+{
+  "autoupdate": false,
+  "provider": {
+    "probe": {
+      "name": "probe",
+      "npm": "@ai-sdk/openai-compatible",
+      "env": [
+        "PROBE_API_KEY"
+      ],
+      "options": {
+        "baseURL": "http://127.0.0.1:41605/v1",
+        "apiKey": "probe"
+      },
+      "models": {
+        "gpt-probe": {
+          "name": "gpt-probe",
+          "tool_call": true,
+          "attachment": true,
+          "limit": {
+            "context": 200000,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "model": "probe/gpt-probe",
+  "mcp": {
+    "probe": {
+      "type": "local",
+      "command": [
+        "/usr/local/bin/node",
+        "/canimcp/probe/dist/server/fixture-server.js",
+        "--fixture",
+        "summary_and_data",
+        "--mode",
+        "raw",
+        "--era",
+        "both",
+        "--capture",
+        "/canimcp/probe/runs/kilocode@7.8.40/default/both-stdio/protocol.initializeHandshake.reply_2026_07_28",
+        "--init-reply",
+        "2026-07-28",
+        "--transport",
+        "stdio"
+      ],
+      "timeout": 60000
+    }
+  }
+}

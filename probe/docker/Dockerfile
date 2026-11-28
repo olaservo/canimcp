@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-# Linux image for probe runs of codex, goose and opencode. On Windows these three find the
+# Linux image for probe runs of codex, goose, opencode and Kilo Code. On Windows these find the
 # user profile through the OS and list the operator's skills whatever HOME says, so their
 # captures are made here instead. Build context is probe/ (see compose.yaml).
 #
@@ -52,6 +52,11 @@ COPY --chown=node hosts/opencode/package.json hosts/opencode/package-lock.json h
 ARG CODEX_VERSION=0.174.0-alpha.7
 RUN cd hosts/codex && npm ci && if [ -n "$CODEX_VERSION" ]; then npm install --no-save "@openai/codex@$CODEX_VERSION"; fi
 RUN cd hosts/opencode && npm ci
+# Kilo Code from npm: @kilocode/cli 7.8.40 is the CLI at the research pin 3c7f2659 (hosts/kilocode/package.json).
+# The adapter runs the platform package's binary, so the postinstall is not needed.
+COPY --chown=node hosts/kilocode/package.json hosts/kilocode/package-lock.json hosts/kilocode/
+ARG KILOCODE_VERSION=
+RUN cd hosts/kilocode && npm ci --ignore-scripts && if [ -n "$KILOCODE_VERSION" ]; then npm install --no-save --ignore-scripts "@kilocode/cli@$KILOCODE_VERSION"; fi
 
 COPY --chown=node --from=goose /goose hosts/goose/bin/goose
 COPY --chown=node --from=opencode /opencode hosts/opencode/bin/opencode
