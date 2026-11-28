@@ -31,4 +31,6 @@ export default {
   opencode: { config: 'codemode-off', timeoutMs: 60000 },
   // Kilo Code runs in the Docker image too. Its default config offers MCP tools directly.
   kilocode: { timeoutMs: 60000 },
+  // openclaw runs in the Docker image too. MCP tools are named probe__<tool>.
+  openclaw: { timeoutMs: 90000 },
 };

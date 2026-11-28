@@ -1,0 +1,6 @@
+{
+  "name": "canimcp-probe-host-openclaw",
+  "private": true,
+  "type": "module",
+  "description": "No npm release contains the research pin b607eb7b (main, 2026-11-27): v2026.12.1-beta.1 is cut from a release branch that leaves out 1613 commits of main up to the pin, and src/agents/mcp-content.ts (the tool result projection) and mcp-metadata.ts differ between them. The adapter runs a source build: probe/docker/Dockerfile stage openclaw fetches openclaw/openclaw at OPENCLAW_COMMIT, runs pnpm install --frozen-lockfile (pnpm 12.15.0 through corepack) and pnpm build:docker with bun 1.4.4, and copies the checkout with its node_modules to hosts/openclaw/bin/openclaw. The adapter runs node bin/openclaw/openclaw.mjs agent exec. package.json at the pin says 2026.11.10, so the version carries the commit. PROBE_OPENCLAW_DIR points the adapter at another checkout."
+}

@@ -5,6 +5,7 @@
 #
 # Defaults reproduce the Linux records of 2026-11-26: goose built at d1438fd,
 # opencode built at 82d8fc5, codex 0.174.0-alpha.7 from npm over the 0.169.0-alpha.3 manifest.
+# OpenClaw reads the account home from the OS (os.userInfo) as well as HOME, so it runs here too.
 
 ARG NODE_IMAGE=node:24-trixie-slim
 
@@ -35,6 +36,22 @@ RUN OPENCODE_VERSION="0.0.0-$(echo "$OPENCODE_COMMIT" | cut -c1-7)" OPENCODE_CHA
       bun run script/build.ts --single --skip-install --skip-web-ui \
     && cp dist/*linux-x64/bin/opencode /opencode
 
+# openclaw: built from source at the pin with the pnpm its package.json names and the bun its
+# own Dockerfile copies in. The control UI is not built; the probe runs `openclaw agent exec`.
+FROM oven/bun:1.4.4 AS bun
+FROM node:24-trixie AS openclaw
+ARG OPENCLAW_COMMIT=b607eb7b6915c6fa830e23768fc767bfbe0ce4b3
+COPY --from=bun /usr/local/bin/bun /usr/local/bin/bun
+WORKDIR /openclaw
+RUN git init -q . && git remote add origin https://github.com/openclaw/openclaw.git \
+    && git fetch -q --depth 1 origin "$OPENCLAW_COMMIT" && git checkout -q FETCH_HEAD
+RUN corepack enable && CI=true pnpm install --frozen-lockfile \
+      --config.supportedArchitectures.os=linux --config.supportedArchitectures.libc=glibc
+RUN OPENCLAW_RUN_NODE_SKIP_DTS_BUILD=1 NODE_OPTIONS=--max-old-space-size=8192 \
+      pnpm_config_verify_deps_before_run=false pnpm build:docker \
+    && node openclaw.mjs --version
+RUN echo "$OPENCLAW_COMMIT" > .canimcp-commit
+
 FROM ${NODE_IMAGE}
 # Runtime libraries from goose's own Dockerfile, under their trixie names.
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -60,6 +77,7 @@ RUN cd hosts/kilocode && npm ci --ignore-scripts && if [ -n "$KILOCODE_VERSION" 
 
 COPY --chown=node --from=goose /goose hosts/goose/bin/goose
 COPY --chown=node --from=opencode /opencode hosts/opencode/bin/opencode
+COPY --chown=node --from=openclaw /openclaw hosts/openclaw/bin/openclaw
 
 # The conformance suite and its scenario servers, for bridge runs inside the container
 # (compose service `conformance`).
